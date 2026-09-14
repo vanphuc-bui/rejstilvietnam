@@ -1,6 +1,8 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 const toc = [
   { id: 'overblik', label: 'Phu Quoc i korte træk' },
@@ -16,21 +18,11 @@ const sources = [
   { label: 'Vietnam Tourism - Weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
 ];
 ---
-<ArticleLayout
-  title="Phu Quoc rejseguide 2026 | Hvor skal man bo, strand og vejr"
-  description="Dansk rejseguide til Phu Quoc med praktiske råd om hotelområde, strand, transport, antal dage, vejret og hvordan øen passer ind i en rundrejse."
-  eyebrow="Sydvietnam"
-  heading="Phu Quoc: vælg området før du vælger hotellet"
-  intro="Phu Quoc kan være et rigtig godt sidste stop, men øen er større end mange forventer. Et flot resort er ikke nødvendigvis det bedste valg, hvis du gerne vil kunne gå ud og spise om aftenen."
-  toc={toc}
-  sources={sources}
->
+<ArticleLayout title="Phu Quoc rejseguide 2026 | Hvor skal man bo, strand og vejr" description="Dansk rejseguide til Phu Quoc med billeder, video og praktiske råd om hotelområde, strand, transport, antal dage og vejret." eyebrow="Sydvietnam" heading="Phu Quoc: vælg området før du vælger hotellet" intro="Phu Quoc kan være et rigtig godt sidste stop, men øen er større end mange forventer. Et flot resort er ikke nødvendigvis det bedste valg, hvis du gerne vil kunne gå ud og spise om aftenen." toc={toc} sources={sources}>
+  <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20Quoc%20Beach.jpg?width=1800" alt="Strand på Phu Quoc" caption="Phu Quoc giver mest mening, hvis du faktisk vil bruge tid på strand og ro. Vi ville ikke tage hertil bare for at kunne sige, at øen var med på ruten." credit="FrogsLegs71 / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Phu_Quoc_Beach.jpg" ratio="16 / 7" />
+
   <h2 id="overblik">Phu Quoc i korte træk</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>Godt til</span><b>3-5 nætter</b></div>
-    <div class="fact"><span>Første gang</span><b>Vælg område efter ferieform</b></div>
-    <div class="fact"><span>Mest stabilt strandvejr</span><b>Typisk oktober-juni</b></div>
-  </div>
+  <div class="fact-grid"><div class="fact"><span>Godt til</span><b>3-5 nætter</b></div><div class="fact"><span>Første gang</span><b>Vælg område efter ferieform</b></div><div class="fact"><span>Mest stabilt strandvejr</span><b>Typisk oktober-juni</b></div></div>
   <p>Phu Quoc fungerer bedst som den rolige del af en Vietnam-rejse. Vi ville normalt lægge øen sidst, så stranddagene kommer efter Hanoi, Hoi An eller Ho Chi Minh City.</p>
 
   <h2 id="bo">Hvor skal man bo?</h2>
@@ -41,18 +33,18 @@ const sources = [
   <h2 id="strande">Strande og områder</h2>
   <h3>Long Beach</h3>
   <p>Praktisk til første tur, især hvis du vil kunne gå til restauranter og se solnedgangen uden at arrangere transport hver gang.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20quoc%20beach.JPG?width=1500" alt="Strand på Phu Quoc" caption="Et typisk strandmiljø på Phu Quoc. Når du vælger hotel, er adgang til strand og afstand til restauranter vigtigere end bare antal stjerner." credit="Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Phu_quoc_beach.JPG" ratio="16 / 9" />
+
   <h3>Sao Beach og syd</h3>
   <p>Sydpå ligger flere populære strandområder og udgangspunkt for bådture omkring An Thoi. Det fungerer fint som dagstur, også hvis du bor et andet sted.</p>
   <h3>Nord</h3>
   <p>Her finder du flere rolige resorts og mindre tætte områder. Det er bedst, hvis ro og resort betyder mere for dig end at kunne gå til mange steder udenfor.</p>
 
+  <VideoEmbed youtubeId="RYzanH3WTps" title="4K flycam over Phu Quoc" caption="Flycam-videoen viser godt, hvor stor og grøn øen er. Den er nyttig, fordi hotelområderne ligger langt fra hinanden." />
+
   <h2 id="oplevelser">Oplevelser ud over stranden</h2>
   <p>Vi ville ikke fylde alle dage med ture. Hvis du har fire nætter, er én båd- eller øtur normalt rigeligt for os. Resten af tiden er netop pointen med at være på en ø.</p>
-  <AffiliateCard
-    title="Øhop og snorkling fra Phu Quoc"
-    text="Relevant hvis vejret er godt, og du gerne vil bruge en dag på vandet. Tjek bådtype, antal deltagere og om snorkeludstyr og transfer er inkluderet."
-    label="God på en klar dag"
-  />
+  <AffiliateCard title="Øhop og snorkling fra Phu Quoc" text="Relevant hvis vejret er godt, og du gerne vil bruge en dag på vandet. Tjek bådtype, antal deltagere og om snorkeludstyr og transfer er inkluderet." label="God på en klar dag" />
   <p>Hvis du ikke er glad for lange båddage, så spring den over. Et affiliate-link skal ikke bestemme programmet - en stranddag kan sagtens være et bedre valg.</p>
 
   <h2 id="vejret">Bedste rejsetid til Phu Quoc</h2>
@@ -60,11 +52,7 @@ const sources = [
   <p>Juli til september er mere usikkert til båd og strand. Hvis du rejser der i den periode, ville vi vælge et godt hotel med pool og undgå at forudbetale for mange vejrafhængige aktiviteter.</p>
 
   <h2 id="dage">Hvor mange dage?</h2>
-  <ul>
-    <li><strong>2 nætter:</strong> efter vores mening for kort, medmindre flytiderne passer perfekt.</li>
-    <li><strong>3-4 nætter:</strong> godt til et strandstop sidst på en rundrejse.</li>
-    <li><strong>5+ nætter:</strong> giver mening, hvis Phu Quoc er en stor del af selve ferien.</li>
-  </ul>
+  <ul><li><strong>2 nætter:</strong> efter vores mening for kort, medmindre flytiderne passer perfekt.</li><li><strong>3-4 nætter:</strong> godt til et strandstop sidst på en rundrejse.</li><li><strong>5+ nætter:</strong> giver mening, hvis Phu Quoc er en stor del af selve ferien.</li></ul>
   <p>Husk, at en flydag også tager tid. Tre nætter er ikke det samme som tre hele stranddage.</p>
 
   <h2 id="passer">Er Phu Quoc det rigtige valg?</h2>
@@ -72,8 +60,5 @@ const sources = [
   <p>Vi ville vælge Phu Quoc, hvis strand er en prioritet, og så fjerne noget andet. Hvis du hellere vil have historie, mad og byliv, er dagene ofte bedre brugt på fastlandet.</p>
 
   <h2>Fortsæt planlægningen</h2>
-  <div class="link-list">
-    <a class="link-card" href="/rejseguide/bedste-rejsetid/">Bedste rejsetid til Vietnam <span>Se hvordan Phu Quoc passer med resten af landet.</span></a>
-    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvad vi ville fjerne, hvis Phu Quoc skal med.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/rejseguide/bedste-rejsetid/">Bedste rejsetid til Vietnam <span>Se hvordan Phu Quoc passer med resten af landet.</span></a><a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvad vi ville fjerne, hvis Phu Quoc skal med.</span></a></div>
 </ArticleLayout>
