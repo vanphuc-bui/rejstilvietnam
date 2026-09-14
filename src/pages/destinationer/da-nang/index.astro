@@ -1,0 +1,69 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import AffiliateCard from '../../../components/AffiliateCard.astro';
+
+const toc = [
+  { id: 'overblik', label: 'Da Nang i korte træk' },
+  { id: 'strand', label: 'Strand og by' },
+  { id: 'oplevelser', label: 'Oplevelser' },
+  { id: 'hoian', label: 'Da Nang eller Hoi An?' },
+  { id: 'vejret', label: 'Bedste rejsetid' },
+];
+const sources = [
+  { label: 'Vietnam Tourism – Da Nang', href: 'https://www.vietnam.travel/places-to-go/central-vietnam/da-nang' },
+];
+---
+<ArticleLayout
+  title="Da Nang rejseguide 2026 | Strand, Hoi An og oplevelser"
+  description="Dansk guide til Da Nang: strand, Marble Mountains, Son Tra, bedste rejsetid og om du bør bo i Da Nang eller Hoi An på din Vietnam-rejse."
+  eyebrow="Centralvietnam"
+  heading="Da Nang: strandby og praktisk base i Centralvietnam"
+  intro="Da Nang er nemmere, større og mere moderne end Hoi An. Den fungerer godt, hvis du vil kombinere strand, byliv og korte ture til nogle af Centralvietnams største oplevelser."
+  toc={toc}
+  sources={sources}
+>
+  <h2 id="overblik">Da Nang i korte træk</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>2–4 dage</b></div>
+    <div class="fact"><span>Bedst kendt for</span><b>My Khe, seafood og strandby</b></div>
+    <div class="fact"><span>God base for</span><b>Hoi An, Son Tra og Marble Mountains</b></div>
+  </div>
+  <p>Da Nang har international lufthavn, lange strande og en mere hverdagsagtig storbyfølelse end Hoi An. Det gør byen praktisk både som selvstændigt stop og som base for Centralvietnam.</p>
+
+  <h2 id="strand">Strand og by</h2>
+  <p>My Khe er den mest kendte strandstrækning og ligger tæt på mange hoteller og restauranter. Tidlig morgen og sen eftermiddag er gode tidspunkter, fordi lokale også bruger stranden aktivt til motion, svømning og sociale aktiviteter.</p>
+  <p>Bymidten omkring Han-floden har caféer, lokale restauranter og et mere urbant tempo. Hvis du gerne vil have både strand og by uden resort-følelse, er Da Nang et stærkt valg.</p>
+
+  <h2 id="oplevelser">Oplevelser omkring Da Nang</h2>
+  <h3>Marble Mountains</h3>
+  <p>En kort tur syd for byen giver grotter, pagoder og udsigt. Tag af sted tidligt, hvis du vil undgå den varmeste del af dagen.</p>
+  <h3>Son Tra-halvøen</h3>
+  <p>Son Tra kombinerer kystudsigt, grøn natur og Linh Ung-pagoden. Området passer godt til en halv dag.</p>
+  <h3>Hai Van Pass</h3>
+  <p>Nord for Da Nang ligger Hai Van-passet, som er kendt for dramatiske kyst- og bjergudsigter. Det kan opleves med chauffør eller som del af en organiseret tur.</p>
+  <AffiliateCard
+    title="Privat tur omkring Da Nang"
+    text="Når affiliate-links er aktive, kan denne plads bruges til en kombination af Marble Mountains, Son Tra eller Hai Van Pass."
+    label="Fleksibel dagstur"
+  />
+
+  <h2 id="hoian">Skal du bo i Da Nang eller Hoi An?</h2>
+  <table>
+    <thead><tr><th>Vælg Da Nang hvis…</th><th>Vælg Hoi An hvis…</th></tr></thead>
+    <tbody>
+      <tr><td>Du vil have stor strand, moderne by og nem lufthavn</td><td>Du vil have gammel by, små gader og mere ferieatmosfære</td></tr>
+      <tr><td>Du gerne vil have flere hotel- og restauranttyper</td><td>Mad, cykling og aftener ved floden er vigtigst</td></tr>
+      <tr><td>Du kun vil bo ét sted og tage dagsture</td><td>Du accepterer lidt længere transfer til lufthavnen</td></tr>
+    </tbody>
+  </table>
+  <p>På en første rundrejse ville vi ofte vælge Hoi An som base og besøge Da Nang undervejs. På en strandtung ferie kan Da Nang være det bedre valg.</p>
+
+  <h2 id="vejret">Bedste rejsetid</h2>
+  <p>Vietnam Tourism fremhæver marts til maj og september til oktober som gode måneder i Da Nang. Juni til august har ofte lidt regn og gode strandforhold, men det kan blive varmt. November til februar er generelt vådere.</p>
+
+  <h2>Fortsæt planlægningen</h2>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hoi-an/">Hoi An guide <span>Sammenlign stemning, strand og antal dage.</span></a>
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvordan Centralvietnam passer ind i ruten.</span></a>
+  </div>
+</ArticleLayout>
