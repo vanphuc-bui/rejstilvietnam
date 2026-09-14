@@ -2,18 +2,63 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
 const areas = [
-  { name:'Old Quarter', label:'Bedst første gang', time:'0-15 min til de fleste centrale stop', vibe:'Livligt · mad · gåafstand', good:'Førstegangsbesøg, korte ophold og dig der vil ud af hotellet til fods.', watch:'Kan være støjende, især omkring Ta Hien og de mest travle gader.', image:'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1000&q=82' },
-  { name:'Hoan Kiem / French Quarter', label:'Bedst balance', time:'5-20 min til Old Quarter', vibe:'Mere ro · brede gader · centralt', good:'Par, familier og dig der vil bo centralt uden at være midt i mylderet.', watch:'Typisk lidt mindre street-life lige uden for døren.', image:'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1000&q=82' },
-  { name:'Ba Dinh', label:'Bedst til historie', time:'10-20 min i taxi til Old Quarter', vibe:'Roligere · grønne områder · monumenter', good:'Dig der prioriterer Ho Chi Minh-komplekset, museer og lidt mere plads.', watch:'Mindre oplagt hvis du vil gå til aftensmad i Old Quarter hver aften.', image:'https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?auto=format&fit=crop&w=1000&q=82' },
-  { name:'Tay Ho', label:'Bedst til længere ophold', time:'15-30 min i taxi til centrum', vibe:'Sø · caféer · internationalt', good:'Længere ophold, større værelser, lejligheder og et roligere tempo.', watch:'For langt væk til vores førstevalg på kun 2-3 dage i Hanoi.', image:'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1000&q=82' },
+  {
+    name:'Old Quarter',
+    label:'Bedst første gang',
+    time:'0-15 min til de fleste centrale stop',
+    vibe:'Livligt · mad · gåafstand',
+    good:'Førstegangsbesøg, korte ophold og dig der vil ud af hotellet til fods.',
+    watch:'Kan være støjende, især omkring Ta Hien og de mest travle gader.',
+    image:'https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1200',
+    imageAlt:'Gadeliv i Hanois Old Quarter',
+    credit:'Richard Mortel / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg',
+  },
+  {
+    name:'Hoan Kiem / French Quarter',
+    label:'Bedst balance',
+    time:'5-20 min til Old Quarter',
+    vibe:'Mere ro · brede gader · centralt',
+    good:'Par, familier og dig der vil bo centralt uden at være midt i mylderet.',
+    watch:'Typisk lidt mindre street-life lige uden for døren.',
+    image:'https://commons.wikimedia.org/wiki/Special:FilePath/French%20quarter%2C%20Hanoi%20%284855953547%29.jpg?width=1200',
+    imageAlt:'Gade i French Quarter i Hanoi',
+    credit:'Caitriana Nicholson / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:French_quarter,_Hanoi_(4855953547).jpg',
+  },
+  {
+    name:'Ba Dinh',
+    label:'Bedst til historie',
+    time:'10-20 min i taxi til Old Quarter',
+    vibe:'Roligere · grønne områder · monumenter',
+    good:'Dig der prioriterer Ho Chi Minh-komplekset, museer og lidt mere plads.',
+    watch:'Mindre oplagt hvis du vil gå til aftensmad i Old Quarter hver aften.',
+    image:'https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%2C%20Vietnam%2C%20Ba%20Dinh%20Square%20and%20Ho%20Chi%20Minh%20Mausoleum.jpg?width=1200',
+    imageAlt:'Ba Dinh-pladsen og Ho Chi Minh-mausoleet i Hanoi',
+    credit:'Vyacheslav Argenberg / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Hanoi,_Vietnam,_Ba_Dinh_Square_and_Ho_Chi_Minh_Mausoleum.jpg',
+  },
+  {
+    name:'Tay Ho',
+    label:'Bedst til længere ophold',
+    time:'15-30 min i taxi til centrum',
+    vibe:'Sø · caféer · internationalt',
+    good:'Længere ophold, større værelser, lejligheder og et roligere tempo.',
+    watch:'For langt væk til vores førstevalg på kun 2-3 dage i Hanoi.',
+    image:'https://commons.wikimedia.org/wiki/Special:FilePath/West%20Lake%20Hanoi.jpg?width=1200',
+    imageAlt:'West Lake i Tay Ho, Hanoi',
+    credit:'Sky 269 / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:West_Lake_Hanoi.jpg',
+  },
 ];
 ---
 <BaseLayout title="Hvor skal man bo i Hanoi? 4 bedste områder | RejsTilVietnam.dk" description="Old Quarter, Hoan Kiem, Ba Dinh eller Tay Ho? Se hvilket område i Hanoi der passer bedst til første besøg, familier, ro og længere ophold.">
   <section class="area-hero">
     <div class="container">
-      <p class="eyebrow">Hvor skal man bo i Hanoi?</p>
-      <h1>Vælg området før hotellet.</h1>
-      <p class="lead">Hvis du kun har 2-4 dage i Hanoi, kan en forkert beliggenhed koste mere tid end et billigere hotel sparer dig penge.</p>
+      <a class="hub-back" href="/destinationer/hanoi/">← Hanoi rejseguide</a>
+      <p class="eyebrow">Områder i Hanoi</p>
+      <h1>Hvor skal man bo i Hanoi?</h1>
+      <p class="lead">Vælg området før hotellet. Hvis du kun har 2-4 dage i Hanoi, kan en forkert beliggenhed koste mere tid end et billigere hotel sparer dig penge.</p>
       <div class="answer"><span>Vores korte svar</span><b>Første gang? Start med Old Quarter eller Hoan Kiem.</b></div>
     </div>
   </section>
@@ -28,7 +73,10 @@ const areas = [
     <div class="container area-list">
       {areas.map((area, i) => (
         <article class="area-card">
-          <div class="area-image"><img src={area.image} alt={area.name} loading="lazy" /></div>
+          <div class="area-image">
+            <img src={area.image} alt={area.imageAlt} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+            <a class="photo-source" href={area.creditUrl} target="_blank" rel="noopener noreferrer">Foto: {area.credit} ↗</a>
+          </div>
           <div class="area-copy">
             <div class="area-head"><span>0{i+1}</span><small>{area.label}</small></div>
             <h2>{area.name}</h2>
@@ -52,12 +100,12 @@ const areas = [
   </section>
 
   <section class="section section--tight">
-    <div class="container hotel-cta"><div><p class="eyebrow">Næste skridt</p><h2>Nu kan du vælge hotel.</h2><p>Vi har skåret listen ned til fem hoteller, der giver mening til forskellige budgetter og rejsetyper.</p></div><a class="btn btn--primary" href="/destinationer/hanoi/bedste-hoteller/">Se bedste hoteller i Hanoi →</a></div>
+    <div class="container hotel-cta"><div><p class="eyebrow">Næste skridt</p><h2>Nu kan du vælge hotel.</h2><p>Vi har skåret listen ned til fem hoteller, der giver mening til forskellige budgetter og rejsetyper.</p></div><div class="cta-actions"><a class="btn btn--primary" href="/destinationer/hanoi/bedste-hoteller/">Se bedste hoteller i Hanoi →</a><a class="text-link" href="/destinationer/hanoi/">Tilbage til Hanoi-guiden</a></div></div>
   </section>
 </BaseLayout>
 
 <style>
-.area-hero{padding:84px 0 56px;background:linear-gradient(135deg,#eef4ef,#f6ecda)}.area-hero h1{font-size:clamp(3rem,7vw,5.6rem);max-width:850px}.area-hero .lead{margin-top:20px}.answer{display:inline-flex;flex-direction:column;margin-top:28px;padding:16px 20px;border-radius:18px;background:var(--green-950);color:white}.answer span{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#f0cf95;font-weight:850}.answer b{margin-top:3px}.compare-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.compare-strip>div{padding:18px;border-radius:18px;background:rgba(255,255,255,.75);border:1px solid var(--border)}.compare-strip span{display:block;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase}.compare-strip b{display:block;margin-top:4px}.areas-section{background:#f5efe2}.area-list{display:grid;gap:28px}.area-card{display:grid;grid-template-columns:.85fr 1.15fr;background:#fffdf8;border:1px solid var(--border);border-radius:30px;overflow:hidden}.area-card:nth-child(even){grid-template-columns:1.15fr .85fr}.area-card:nth-child(even) .area-image{order:2}.area-image{min-height:330px}.area-image img{width:100%;height:100%;object-fit:cover}.area-copy{padding:38px}.area-head{display:flex;justify-content:space-between;align-items:center}.area-head>span{font:700 1.2rem Georgia,serif;color:var(--coral)}.area-head small{padding:6px 10px;border-radius:999px;background:var(--green-100);color:var(--green-800);font-weight:800}.area-copy h2{font-size:clamp(2rem,4vw,3.1rem);margin-top:10px}.area-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.area-tags span{padding:6px 10px;border-radius:999px;border:1px solid var(--border);font-size:.8rem;color:var(--muted);font-weight:700}.area-points{margin-top:22px;display:grid;gap:10px;color:#44514b}.choice{padding:26px}.choice>span{font-size:1.7rem}.choice h3{margin-top:12px}.choice p{margin-top:9px;color:var(--muted)}.hotel-cta{padding:36px;border-radius:30px;background:var(--sand);display:flex;align-items:center;justify-content:space-between;gap:30px}.hotel-cta p:not(.eyebrow){margin-top:10px;color:#48554f;max-width:650px}
-@media(max-width:800px){.compare-strip{grid-template-columns:repeat(2,1fr)}.area-card,.area-card:nth-child(even){grid-template-columns:1fr}.area-card:nth-child(even) .area-image{order:0}.area-image{min-height:250px}.hotel-cta{align-items:flex-start;flex-direction:column}}
+.area-hero{padding:84px 0 56px;background:linear-gradient(135deg,#eef4ef,#f6ecda)}.hub-back{display:inline-block;margin-bottom:18px;color:var(--green-700);font-weight:800}.area-hero h1{font-size:clamp(3rem,7vw,5.6rem);max-width:850px}.area-hero .lead{margin-top:20px}.answer{display:inline-flex;flex-direction:column;margin-top:28px;padding:16px 20px;border-radius:18px;background:var(--green-950);color:white}.answer span{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#f0cf95;font-weight:850}.answer b{margin-top:3px}.compare-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.compare-strip>div{padding:18px;border-radius:18px;background:rgba(255,255,255,.75);border:1px solid var(--border)}.compare-strip span{display:block;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase}.compare-strip b{display:block;margin-top:4px}.areas-section{background:#f5efe2}.area-list{display:grid;gap:28px}.area-card{display:grid;grid-template-columns:.85fr 1.15fr;background:#fffdf8;border:1px solid var(--border);border-radius:30px;overflow:hidden}.area-card:nth-child(even){grid-template-columns:1.15fr .85fr}.area-card:nth-child(even) .area-image{order:2}.area-image{position:relative;min-height:330px;background:#e9eee9}.area-image img{width:100%;height:100%;object-fit:cover}.photo-source{position:absolute;left:12px;bottom:12px;padding:6px 9px;border-radius:999px;background:rgba(0,0,0,.62);color:white;font-size:.66rem;line-height:1.2;backdrop-filter:blur(8px)}.area-copy{padding:38px}.area-head{display:flex;justify-content:space-between;align-items:center}.area-head>span{font:700 1.2rem Georgia,serif;color:var(--coral)}.area-head small{padding:6px 10px;border-radius:999px;background:var(--green-100);color:var(--green-800);font-weight:800}.area-copy h2{font-size:clamp(2rem,4vw,3.1rem);margin-top:10px}.area-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.area-tags span{padding:6px 10px;border-radius:999px;border:1px solid var(--border);font-size:.8rem;color:var(--muted);font-weight:700}.area-points{margin-top:22px;display:grid;gap:10px;color:#44514b}.choice{padding:26px}.choice>span{font-size:1.7rem}.choice h3{margin-top:12px}.choice p{margin-top:9px;color:var(--muted)}.hotel-cta{padding:36px;border-radius:30px;background:var(--sand);display:flex;align-items:center;justify-content:space-between;gap:30px}.hotel-cta p:not(.eyebrow){margin-top:10px;color:#48554f;max-width:650px}.cta-actions{display:flex;flex-direction:column;align-items:center;gap:12px}.text-link{color:var(--green-700);font-size:.88rem;font-weight:800}
+@media(max-width:800px){.compare-strip{grid-template-columns:repeat(2,1fr)}.area-card,.area-card:nth-child(even){grid-template-columns:1fr}.area-card:nth-child(even) .area-image{order:0}.area-image{min-height:250px}.hotel-cta{align-items:flex-start;flex-direction:column}.cta-actions{align-items:flex-start}}
 @media(max-width:520px){.compare-strip{grid-template-columns:1fr}.area-copy{padding:26px}}
 </style>
