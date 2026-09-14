@@ -1,0 +1,77 @@
+---
+const { hotels = [], title = 'Hvor ligger hotellerne i Hanoi?' } = Astro.props;
+const mapHotels = hotels.map((hotel, index) => ({
+  name: hotel.name,
+  area: hotel.area,
+  address: hotel.address,
+  lat: hotel.lat,
+  lng: hotel.lng,
+  number: index + 1,
+}));
+const mapId = `hotel-map-${Math.random().toString(36).slice(2, 9)}`;
+---
+<section class="hotel-map-section" aria-labelledby={`${mapId}-title`}>
+  <div class="map-head">
+    <div>
+      <p class="eyebrow">Kort</p>
+      <h2 id={`${mapId}-title`}>{title}</h2>
+      <p>De fleste af valgene ligger tæt på Old Quarter og Hoan Kiem. Kortet gør det lettere at se, hvad “centralt” faktisk betyder, før du booker.</p>
+    </div>
+    <div class="map-legend" aria-label="Kortforklaring">
+      <span><i></i> Hotel på shortlisten</span>
+    </div>
+  </div>
+
+  <div class="map-shell card">
+    <div id={mapId} class="hotel-map" role="region" aria-label="Interaktivt kort over anbefalede hoteller i Hanoi"></div>
+    <noscript><p class="map-fallback">Kortet kræver JavaScript. Adresserne står på hotelkortene ovenfor.</p></noscript>
+  </div>
+  <p class="map-note">Kortdata © OpenStreetMap contributors. Placeringerne er baseret på hotellernes offentliggjorte adresser.</p>
+</section>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script is:inline define:vars={{ mapHotels, mapId }}>
+  (() => {
+    const start = () => {
+      if (!window.L) return;
+      const node = document.getElementById(mapId);
+      if (!node || node.dataset.ready === '1') return;
+      node.dataset.ready = '1';
+
+      const map = L.map(node, { scrollWheelZoom: false, zoomControl: true });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      const bounds = [];
+      mapHotels.forEach((hotel) => {
+        if (!Number.isFinite(hotel.lat) || !Number.isFinite(hotel.lng)) return;
+        const icon = L.divIcon({
+          className: 'hotel-pin-wrap',
+          html: `<span class="hotel-pin">${hotel.number}</span>`,
+          iconSize: [34, 42],
+          iconAnchor: [17, 40],
+          popupAnchor: [0, -36],
+        });
+        const marker = L.marker([hotel.lat, hotel.lng], { icon }).addTo(map);
+        marker.bindPopup(`<strong>${hotel.number}. ${hotel.name}</strong><br>${hotel.area}<br><span>${hotel.address}</span>`);
+        bounds.push([hotel.lat, hotel.lng]);
+      });
+
+      if (bounds.length > 1) map.fitBounds(bounds, { padding: [44, 44] });
+      else if (bounds.length === 1) map.setView(bounds[0], 15);
+      else map.setView([21.0285, 105.8542], 13);
+    };
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
+    else start();
+  })();
+</script>
+
+<style>
+.hotel-map-section{margin-top:24px}.map-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:24px}.map-head h2{font-size:clamp(2rem,5vw,3.3rem)}.map-head>div:first-child>p:not(.eyebrow){margin-top:12px;max-width:700px;color:var(--muted)}.map-legend{flex:0 0 auto;color:var(--muted);font-size:.86rem;font-weight:700}.map-legend span{display:flex;align-items:center;gap:8px}.map-legend i{width:14px;height:14px;border-radius:50%;background:var(--green-950);box-shadow:0 0 0 5px rgba(12,47,37,.12)}.map-shell{overflow:hidden;padding:8px;background:#fffdf8}.hotel-map{height:520px;border-radius:19px;overflow:hidden;background:#e7ece9}.map-note{margin-top:10px;color:#7d8882;font-size:.78rem}.map-fallback{padding:24px;color:var(--muted)}
+:global(.hotel-pin-wrap){background:transparent!important;border:0!important}.hotel-map-section :global(.hotel-pin){display:grid;place-items:center;width:34px;height:34px;border-radius:50% 50% 50% 8px;transform:rotate(-45deg);background:var(--green-950);color:white;border:3px solid #fffdf8;box-shadow:0 6px 18px rgba(12,47,37,.28);font-size:.78rem;font-weight:900}.hotel-map-section :global(.hotel-pin){line-height:1}.hotel-map-section :global(.hotel-pin)::first-letter{transform:rotate(45deg)}.hotel-map-section :global(.leaflet-popup-content-wrapper){border-radius:14px;box-shadow:0 12px 34px rgba(12,47,37,.18)}.hotel-map-section :global(.leaflet-popup-content){line-height:1.5;color:#3e4c46}.hotel-map-section :global(.leaflet-popup-content strong){color:var(--green-950)}
+@media(max-width:700px){.map-head{align-items:flex-start;flex-direction:column}.hotel-map{height:420px}}
+</style>
