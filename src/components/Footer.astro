@@ -1,0 +1,23 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="footer-brand" href="/">RejsTilVietnam<span>.dk</span></a>
+      <p>En uafhængig dansk rejseguide til Vietnam med praktiske råd, inspiration og håndplukkede oplevelser.</p>
+    </div>
+    <div><strong>Udforsk</strong><a href="/destinationer/">Destinationer</a><a href="/rejseguide/">Rejseguide</a><a href="/ture/">Ture</a></div>
+    <div><strong>Om siden</strong><a href="/om/">Om RejsTilVietnam</a><a href="/om/#affiliate">Affiliate & reklame</a><a href="/om/#kontakt">Kontakt</a></div>
+  </div>
+  <div class="container footer-bottom">© {new Date().getFullYear()} RejsTilVietnam.dk · Bygget til danske rejsende.</div>
+</footer>
+<style>
+.site-footer { margin-top: 64px; padding: 64px 0 28px; background: var(--green-950); color: rgba(255,255,255,.75); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+.footer-brand { color: white; font-weight: 900; font-size: 1.25rem; display: inline-block; margin-bottom: 16px; }
+.footer-brand span { color: #f0bc75; }
+.footer-grid p { max-width: 520px; }
+.footer-grid div:not(:first-child) { display: flex; flex-direction: column; gap: 10px; }
+.footer-grid strong { color: white; margin-bottom: 6px; }
+.footer-grid a:hover { color: white; }
+.footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); font-size: .9rem; }
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+</style>
