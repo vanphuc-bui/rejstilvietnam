@@ -1,0 +1,81 @@
+---
+const {
+  places = [],
+  title = 'Hanoi på kortet',
+  description = 'Brug kortet til at se, hvordan stoppene ligger i forhold til hinanden.',
+} = Astro.props;
+
+const mapPlaces = places.map((place, index) => ({
+  name: place.name,
+  detail: place.detail ?? '',
+  lat: place.lat,
+  lng: place.lng,
+  number: index + 1,
+}));
+const mapId = `place-map-${Math.random().toString(36).slice(2, 9)}`;
+---
+<section class="place-map-section" aria-labelledby={`${mapId}-title`}>
+  <div class="map-head">
+    <div>
+      <p class="eyebrow">Kort</p>
+      <h2 id={`${mapId}-title`}>{title}</h2>
+      <p>{description}</p>
+    </div>
+    <div class="map-legend" aria-label="Kortforklaring">
+      <span><i></i> Stop i guiden</span>
+    </div>
+  </div>
+
+  <div class="map-shell card">
+    <div id={mapId} class="place-map" role="region" aria-label={title}></div>
+    <noscript><p class="map-fallback">Kortet kræver JavaScript. Stoppene står også i teksten ovenfor.</p></noscript>
+  </div>
+  <p class="map-note">Kortdata © OpenStreetMap contributors. Markørerne er vejledende og bruges til overblik.</p>
+</section>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script is:inline define:vars={{ mapPlaces, mapId }}>
+  (() => {
+    const start = () => {
+      if (!window.L) return setTimeout(start, 80);
+      const node = document.getElementById(mapId);
+      if (!node || node.dataset.ready === '1') return;
+      node.dataset.ready = '1';
+
+      const map = L.map(node, { scrollWheelZoom: false, zoomControl: true });
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      const bounds = [];
+      mapPlaces.forEach((place) => {
+        if (!Number.isFinite(place.lat) || !Number.isFinite(place.lng)) return;
+        const icon = L.divIcon({
+          className: 'place-pin-wrap',
+          html: `<span class="place-pin"><b>${place.number}</b></span>`,
+          iconSize: [36, 44],
+          iconAnchor: [18, 42],
+          popupAnchor: [0, -38],
+        });
+        const marker = L.marker([place.lat, place.lng], { icon }).addTo(map);
+        marker.bindPopup(`<strong>${place.number}. ${place.name}</strong>${place.detail ? `<br><span>${place.detail}</span>` : ''}`);
+        bounds.push([place.lat, place.lng]);
+      });
+
+      if (bounds.length > 1) map.fitBounds(bounds, { padding: [48, 48] });
+      else if (bounds.length === 1) map.setView(bounds[0], 15);
+      else map.setView([21.0285, 105.8542], 13);
+    };
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
+    else start();
+  })();
+</script>
+
+<style>
+.place-map-section{margin:48px 0 18px}.map-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:22px}.map-head h2{font-size:clamp(1.8rem,4vw,2.7rem);margin:0}.map-head>div:first-child>p:not(.eyebrow){margin-top:10px;max-width:680px;color:var(--muted)}.map-legend{flex:0 0 auto;color:var(--muted);font-size:.86rem;font-weight:700}.map-legend span{display:flex;align-items:center;gap:8px}.map-legend i{width:14px;height:14px;border-radius:50%;background:var(--green-950);box-shadow:0 0 0 5px rgba(12,47,37,.12)}.map-shell{overflow:hidden;padding:8px;background:#fffdf8}.place-map{height:500px;border-radius:19px;overflow:hidden;background:#e7ece9}.map-note{margin-top:10px!important;color:#7d8882!important;font-size:.78rem}.map-fallback{padding:24px;color:var(--muted)}
+:global(.place-pin-wrap){background:transparent!important;border:0!important}.place-map-section :global(.place-pin){display:grid;place-items:center;width:34px;height:34px;border-radius:50% 50% 50% 8px;transform:rotate(-45deg);background:var(--green-950);color:white;border:3px solid #fffdf8;box-shadow:0 6px 18px rgba(12,47,37,.28);font-size:.78rem;font-weight:900}.place-map-section :global(.place-pin b){transform:rotate(45deg);display:block;line-height:1}.place-map-section :global(.leaflet-popup-content-wrapper){border-radius:14px;box-shadow:0 12px 34px rgba(12,47,37,.18)}.place-map-section :global(.leaflet-popup-content){line-height:1.5;color:#3e4c46}.place-map-section :global(.leaflet-popup-content strong){color:var(--green-950)}
+@media(max-width:700px){.map-head{align-items:flex-start;flex-direction:column}.place-map{height:410px}}
+</style>
