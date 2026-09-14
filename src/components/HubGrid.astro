@@ -1,0 +1,29 @@
+---
+const {
+  cards = [],
+  title = 'Planlæg dit ophold',
+  intro = 'Vælg den guide, der svarer på dit næste spørgsmål.',
+} = Astro.props;
+---
+<section class="hub-section" aria-labelledby="hub-grid-title">
+  <div class="hub-head">
+    <p class="eyebrow">Guide hub</p>
+    <h2 id="hub-grid-title">{title}</h2>
+    <p>{intro}</p>
+  </div>
+  <div class="hub-grid">
+    {cards.map((card) => (
+      <a class="hub-card" href={card.href}>
+        <span>{card.label}</span>
+        <h3>{card.title}</h3>
+        <p>{card.text}</p>
+        <b>Åbn guiden →</b>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+.hub-section{margin:36px 0 50px}.hub-head{margin-bottom:22px}.hub-head h2{font-size:clamp(1.9rem,4vw,2.8rem)}.hub-head>p:not(.eyebrow){margin-top:10px;max-width:720px;color:var(--muted)}.hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.hub-card{display:flex;flex-direction:column;min-height:210px;padding:23px;border:1px solid var(--border);border-radius:22px;background:rgba(255,255,255,.78);color:inherit!important;text-decoration:none!important;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.hub-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.28);box-shadow:0 16px 38px rgba(16,55,41,.08)}.hub-card>span{font-size:.72rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--green-700)}.hub-card h3{margin-top:7px;font-size:1.32rem}.hub-card p{margin-top:9px!important;color:var(--muted)!important}.hub-card b{margin-top:auto;padding-top:17px;color:var(--green-700)}
+@media(max-width:700px){.hub-grid{grid-template-columns:1fr}.hub-card{min-height:0}}
+</style>
