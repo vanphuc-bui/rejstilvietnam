@@ -1,0 +1,76 @@
+---
+import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+import SectionMedia from '../../../../components/SectionMedia.astro';
+
+const toc = [
+  { id: 'valg', label: 'Hvilken transport skal du vælge?' },
+  { id: 'grab', label: 'Grab og taxi' },
+  { id: 'bus86', label: 'Bus 86' },
+  { id: 'terminaler', label: 'T1 og T2' },
+  { id: 'sen', label: 'Sen ankomst' },
+];
+
+const sources = [
+  { label: 'Bus 86 - route information', href: 'https://busnoibai.com/en/buyt86/routes' },
+  { label: 'Noi Bai International Airport', href: 'https://noibaiairport.vn/' },
+];
+---
+<ArticleLayout
+  title="Hanoi lufthavn til centrum 2026 | Bus 86, Grab eller taxi?"
+  description="Sådan kommer du fra Noi Bai lufthavn til Hanoi centrum og Old Quarter. Sammenlign Bus 86, Grab og taxi efter bagage, ankomsttid og komfort."
+  eyebrow="Hanoi · Transport"
+  heading="Fra Hanoi lufthavn til centrum: vælg efter bagage og tidspunkt"
+  intro="Der er ikke én transportløsning, der er bedst for alle. Med let bagage og dagslys er lufthavnsbussen attraktiv. Efter en lang flyrejse med kufferter ville vi ofte betale mere for en bil direkte til hotellet."
+  updated="15. september 2026"
+  toc={toc}
+  sources={sources}
+>
+  <SectionMedia
+    slot="heroMedia"
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Noi%20Bai%20Airport.jpg?width=1800"
+    alt="Noi Bai International Airport ved Hanoi"
+    caption="Noi Bai (HAN) ligger uden for centrum, så transporten er værd at planlægge før ankomst."
+    credit="Shyamal / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Noi_Bai_Airport.jpg"
+    ratio="16 / 7"
+  />
+
+  <h2 id="valg">Hvilken løsning ville vi vælge?</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Nemmest</span><b>Grab / bestilt bil</b></div>
+    <div class="fact"><span>Billigst</span><b>Bus 86</b></div>
+    <div class="fact"><span>Meget bagage</span><b>Bil direkte til hotellet</b></div>
+  </div>
+  <p>Hvis du lander midt på dagen, rejser alene og har én rygsæk eller en lille kuffert, er Bus 86 værd at overveje. Hvis I er to eller flere, har store kufferter, børn eller lander sent, bliver forskellen i pris pr. person mindre, og en bil er ofte den mere behagelige start.</p>
+
+  <h2 id="grab">Grab og almindelig taxi</h2>
+  <p>Grab er praktisk, fordi destination og pris vises i appen. Sørg for, at du har internetadgang, og kontrollér nummerpladen, før du sætter dig ind.</p>
+  <p>En almindelig taxi er også fin, især fra en officiel taxikø eller hvis hotellet har arrangeret afhentning. Vi ville undgå tilfældige personer i ankomsthallen, der tilbyder en bil uden tydelig pris eller firma.</p>
+  <div class="callout"><strong>Efter en lang flyrejse:</strong> Hvis du ankommer træt med to store kufferter, er dør-til-dør-transport en af de ting, hvor vi ofte ville vælge komfort frem for den laveste pris.</div>
+
+  <h2 id="bus86">Bus 86 til centrum</h2>
+  <p>Bus 86 forbinder lufthavnen med det centrale Hanoi og bruges meget af rejsende, der skal mod Old Quarter og Hanoi Railway Station. Rute, stoppesteder, pris og køreplan kan ændre sig, så tjek den aktuelle ruteinformation på rejsedagen.</p>
+  <p>Fordelen er prisen. Ulempen er, at du stadig skal fra busstoppet til hotellet, og den sidste gåtur kan føles længere end forventet med bagage i Hanois trafik.</p>
+  <h3>Bus 86 giver mest mening hvis</h3>
+  <ul>
+    <li>du ankommer, mens bussen kører,</li>
+    <li>du har let bagage,</li>
+    <li>dit hotel ligger tæt på et centralt stop,</li>
+    <li>du ikke har noget imod at gå den sidste del.</li>
+  </ul>
+
+  <h2 id="terminaler">T1 eller T2?</h2>
+  <p><strong>T2</strong> bruges til internationale fly, mens <strong>T1</strong> bruges til indenrigsfly. Hvis du skifter mellem en international og en indenrigsafgang, så kontrollér terminalen i god tid - de er ikke samme bygning.</p>
+  <p>Bus- og pickupsteder kan flyttes i forbindelse med ændringer ved terminalerne. Brug derfor skiltene ved ankomst og den aktuelle transportudbyders information frem for et screenshot fra en gammel guide.</p>
+
+  <h2 id="sen">Hvis du lander sent</h2>
+  <p>Ved sen ankomst ville vi planlægge bil eller hoteltransfer på forhånd. Du slipper for at undersøge busstoppesteder og køreplan med bagage efter en lang rejse, og hotellet ved præcis, hvornår de kan forvente dig.</p>
+  <p>Hvis din første nat er i Old Quarter, kan du læse <a href="/destinationer/hanoi/hvor-skal-man-bo/">vores områdeguide</a> før booking. En central placering gør også den næste morgen væsentligt lettere.</p>
+
+  <h2>Næste skridt i Hanoi</h2>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">3 dage i Hanoi <span>Begynd den egentlige plan morgenen efter ankomst.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Se hvilke områder der fungerer bedst på en første rejse.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/bedste-hoteller/">Bedste hoteller i Hanoi <span>En kort shortlist, når du har valgt område.</span></a>
+  </div>
+</ArticleLayout>
