@@ -3,20 +3,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import DestinationCard from '../components/DestinationCard.astro';
 
 const destinations = [
-  { name: 'Hanoi', kicker: 'Nordvietnam', description: 'Gadekøkkener, gamle kvarterer og base for Ninh Binh og Ha Long.', href: '/destinationer/hanoi/', image: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=82' },
-  { name: 'Hoi An', kicker: 'Centralvietnam', description: 'Lanternelys, strande, cykelture og nogle af landets bedste madoplevelser.', href: '/destinationer/hoi-an/', image: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=82' },
-  { name: 'Phu Quoc', kicker: 'Sydvietnam', description: 'Ø-liv, solnedgange og et roligt stop til sidst på Vietnam-rejsen.', href: '/destinationer/phu-quoc/', image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=82' },
+  { name: 'Hanoi', kicker: 'Nordvietnam', description: 'Gadekøkkener, gamle kvarterer og et godt udgangspunkt for Ninh Binh og Ha Long.', href: '/destinationer/hanoi/', image: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=82' },
+  { name: 'Hoi An', kicker: 'Centralvietnam', description: 'Lanterner, strand, cykelture og masser af gode steder at spise.', href: '/destinationer/hoi-an/', image: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=82' },
+  { name: 'Phu Quoc', kicker: 'Sydvietnam', description: 'Strand, solnedgang og nogle rolige dage sidst på rejsen.', href: '/destinationer/phu-quoc/', image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=82' },
 ];
 const practical = [
-  ['☀️','Bedste rejsetid','Hvornår er vejret bedst i nord, midt og syd?','/rejseguide/bedste-rejsetid/'],
-  ['🛂','Visum & indrejse','De aktuelle regler for danske statsborgere.','/rejseguide/visum/'],
-  ['💰','Penge & priser','Budget, kontanter, kort og hvad der styrer prisen.','/rejseguide/penge-og-priser/'],
-  ['🚆','Transport','Fly, tog, bus og den nemmeste vej rundt.','/rejseguide/transport/'],
+  ['☀️','Bedste rejsetid','Se hvornår vejret passer bedst til din rute.','/rejseguide/bedste-rejsetid/'],
+  ['🛂','Visum og indrejse','Se de aktuelle regler for danske statsborgere.','/rejseguide/visum/'],
+  ['💰','Penge og priser','Få et overblik over budget, kort og kontanter.','/rejseguide/penge-og-priser/'],
+  ['🚆','Transport','Læs om fly, tog, bus og transport mellem byerne.','/rejseguide/transport/'],
 ];
 const featured = [
-  ['Rejseplan','Vietnam på 2 uger','En realistisk nord-til-syd-rute med fem stærke stop.','/rejseplaner/vietnam-2-uger/'],
-  ['Fra Hanoi','Ninh Binh på én dag','Dagstur eller overnatning? Sådan vælger du.','/ture/ninh-binh-fra-hanoi/'],
-  ['Cruise-guide','Ha Long Bay','Hvad du skal tjekke før du vælger skib og rute.','/ture/halong-bay-cruise/'],
+  ['Rejseplan','Vietnam på 2 uger','Et forslag til en rolig rute fra nord til syd.','/rejseplaner/vietnam-2-uger/'],
+  ['Fra Hanoi','Ninh Binh på én dag','Se om en dagstur er nok, eller om du bør blive en nat.','/ture/ninh-binh-fra-hanoi/'],
+  ['Cruise','Ha Long Bay','Det er værd at tjekke rute, skib og varighed før du booker.','/ture/halong-bay-cruise/'],
 ];
 ---
 <BaseLayout>
@@ -24,18 +24,18 @@ const featured = [
     <div class="hero-bg"></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow hero-eye">Dansk guide · Lokalt perspektiv</p>
-        <h1>Vietnam,<br/><em>uden gætterier.</em></h1>
-        <p>Planlæg en bedre Vietnam-rejse med danske guides, konkrete rejseplaner og oplevelser, der er værd at bruge tiden på.</p>
-        <div class="hero-actions"><a class="btn btn--light" href="/rejseplaner/vietnam-2-uger/">Se 2-ugers ruten →</a><a class="text-link" href="/destinationer/">Se destinationer</a></div>
+        <p class="eyebrow hero-eye">Vietnam for danskere</p>
+        <h1>Planlæg din<br/><em>rejse til Vietnam.</em></h1>
+        <p>Her finder du praktiske råd, forslag til ruter og guider til de steder, mange danske rejsende besøger.</p>
+        <div class="hero-actions"><a class="btn btn--light" href="/rejseplaner/vietnam-2-uger/">Se forslag til 2 uger →</a><a class="text-link" href="/destinationer/">Se destinationer</a></div>
       </div>
-      <div class="hero-note"><span>🇻🇳</span><div><b>Første gang i Vietnam?</b><p>Start med rejsetid, visum og en enkel rute.</p></div></div>
+      <div class="hero-note"><span>🇻🇳</span><div><b>Første gang i Vietnam?</b><p>Start med rejsetid, visum og rute.</p></div></div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="section-head"><div><p class="eyebrow">Hvor vil du hen?</p><h2>Tre steder at starte</h2></div><p>Fra storby og gadekøkken til lanterner og tropiske strande. Vælg efter årstid og hvor hurtigt du vil rejse.</p></div>
+      <div class="section-head"><div><p class="eyebrow">Destinationer</p><h2>Hvor vil du hen?</h2></div><p>Vietnam er langt fra nord til syd. Det kan derfor betale sig at vælge færre stop og bruge lidt mere tid hvert sted.</p></div>
       <div class="grid grid--3">{destinations.map((d) => <DestinationCard {...d} />)}</div>
       <div class="all-link"><a href="/destinationer/">Se alle destinationer →</a></div>
     </div>
@@ -43,16 +43,16 @@ const featured = [
 
   <section class="section practical">
     <div class="container">
-      <div class="section-head"><div><p class="eyebrow">Det praktiske</p><h2>Få styr på rejsen</h2></div><a class="btn btn--outline" href="/rejseguide/">Hele rejseguiden →</a></div>
+      <div class="section-head"><div><p class="eyebrow">Før du rejser</p><h2>Det praktiske</h2></div><a class="btn btn--outline" href="/rejseguide/">Se hele rejseguiden →</a></div>
       <div class="grid grid--4">
-        {practical.map(([icon,title,text,href]) => <a class="card icon-card" href={href}><span class="icon">{icon}</span><h3>{title}</h3><p>{text}</p><span class="more">Læs guiden →</span></a>)}
+        {practical.map(([icon,title,text,href]) => <a class="card icon-card" href={href}><span class="icon">{icon}</span><h3>{title}</h3><p>{text}</p><span class="more">Læs mere →</span></a>)}
       </div>
     </div>
   </section>
 
   <section class="section featured-guides">
     <div class="container">
-      <div class="section-head"><div><p class="eyebrow">Start her</p><h2>Guider til den første rejse</h2></div><p>De mest nyttige valg først: rute, naturdag og cruise.</p></div>
+      <div class="section-head"><div><p class="eyebrow">Gode steder at begynde</p><h2>Tre guider til den første rejse</h2></div><p>Hvis du ikke ved, hvor du skal starte, er de her tre sider et godt udgangspunkt.</p></div>
       <div class="grid grid--3">
         {featured.map(([kicker,title,text,href]) => <a class="card guide-card" href={href}><span>{kicker}</span><h3>{title}</h3><p>{text}</p><b>Læs guiden →</b></a>)}
       </div>
@@ -61,12 +61,12 @@ const featured = [
 
   <section class="section story">
     <div class="container story-grid">
-      <div class="story-copy"><p class="eyebrow">Rejs smartere</p><h2>Ikke en rejsebureau-side.</h2><p class="lead">RejsTilVietnam.dk er en uafhængig guide. Vi forklarer Vietnam enkelt og linker videre til etablerede bookingplatforme, når en oplevelse er værd at overveje.</p><a class="btn btn--primary" href="/om/">Sådan fungerer siden →</a></div>
-      <div class="route-card"><span>Forslag</span><h3>Vietnam på 14 dage</h3><ol><li><b>01</b> Hanoi</li><li><b>02</b> Ninh Binh</li><li><b>03</b> Ha Long Bay</li><li><b>04</b> Hoi An</li><li><b>05</b> Ho Chi Minh City</li></ol><a href="/rejseplaner/vietnam-2-uger/">Se hele rejseplanen →</a></div>
+      <div class="story-copy"><p class="eyebrow">Om siden</p><h2>Vi sælger ikke rejser.</h2><p class="lead">RejsTilVietnam.dk er en uafhængig guide. Hvis vi linker til en bookingplatform, foregår booking og betaling hos den pågældende udbyder.</p><a class="btn btn--primary" href="/om/">Læs mere om siden →</a></div>
+      <div class="route-card"><span>Forslag til rute</span><h3>Vietnam på 14 dage</h3><ol><li><b>01</b> Hanoi</li><li><b>02</b> Ninh Binh</li><li><b>03</b> Ha Long Bay</li><li><b>04</b> Hoi An</li><li><b>05</b> Ho Chi Minh City</li></ol><a href="/rejseplaner/vietnam-2-uger/">Se hele rejseplanen →</a></div>
     </div>
   </section>
 
-  <section class="section newsletter"><div class="container news-card"><div><p class="eyebrow">Planlæg fra Danmark</p><h2>Start med visum og rejsetid.</h2><p>De to ting afgør resten af ruten mere end endnu en liste over seværdigheder.</p></div><a class="btn btn--light" href="/rejseguide/visum/">Tjek indrejse →</a></div></section>
+  <section class="section newsletter"><div class="container news-card"><div><p class="eyebrow">Inden du booker</p><h2>Tjek visum og vejret først.</h2><p>Det gør det meget lettere at vælge rute og tidspunkt for rejsen.</p></div><a class="btn btn--light" href="/rejseguide/visum/">Se visumregler →</a></div></section>
 </BaseLayout>
 <style>
 .hero { position: relative; min-height: 720px; overflow: hidden; background: var(--green-950); color: white; }
