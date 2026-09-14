@@ -1,5 +1,11 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import HubGrid from '../components/HubGrid.astro';
+import { hoiAnPages } from '../data/hoiAnCluster.js';
+import { hoChiMinhPages } from '../data/hoChiMinhCluster.js';
+import { phuQuocPages } from '../data/phuQuocCluster.js';
+import { daNangPages } from '../data/daNangCluster.js';
+import { nhaTrangPages } from '../data/nhaTrangCluster.js';
 
 const {
   title,
@@ -26,6 +32,23 @@ const destinationNames = {
 };
 const hubHref = destinationSlug ? `/destinationer/${destinationSlug}/` : null;
 const hubLabel = destinationSlug ? `${destinationNames[destinationSlug] ?? destinationSlug} rejseguide` : null;
+
+const clusterSets = {
+  'hoi-an': hoiAnPages,
+  'ho-chi-minh-city': hoChiMinhPages,
+  'phu-quoc': phuQuocPages,
+  'da-nang': daNangPages,
+  'nha-trang': nhaTrangPages,
+};
+const hubMatch = Astro.url.pathname.match(/^\/destinationer\/([^/]+)\/$/);
+const hubSlug = hubMatch?.[1] ?? null;
+const currentCluster = hubSlug ? clusterSets[hubSlug] : null;
+const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, page]) => ({
+  href: `/destinationer/${hubSlug}/${guide}/`,
+  label: page.eyebrow?.split('·').pop()?.trim() ?? 'Guide',
+  title: page.heading,
+  text: page.intro,
+})) : [];
 ---
 <BaseLayout title={title} description={description}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
@@ -58,6 +81,16 @@ const hubLabel = destinationSlug ? `${destinationNames[destinationSlug] ?? desti
   {Astro.slots.has('heroMedia') && (
     <div class="container article-hero-media">
       <slot name="heroMedia" />
+    </div>
+  )}
+
+  {hubCards.length > 0 && (
+    <div class="container auto-hub-grid">
+      <HubGrid
+        cards={hubCards}
+        title={`Planlæg ${destinationNames[hubSlug] ?? hubSlug}`}
+        intro="Vælg den guide, der matcher dit næste spørgsmål. Hver side har ét tydeligt søgeformål, så hotel, områder, oplevelser og transport ikke konkurrerer med hinanden."
+      />
     </div>
   )}
 
@@ -107,6 +140,7 @@ const hubLabel = destinationSlug ? `${destinationNames[destinationSlug] ?? desti
 .article-hero-media { margin-top: 4px; }
 .article-hero-media :global(.section-media) { margin-top: 0; }
 .article-hero-media :global(.media-frame) { aspect-ratio: 16 / 7; }
+.auto-hub-grid { margin-top: 28px; }
 .article-sidebar { display: grid; gap: 24px; }
 .sidebar-label { font-size: .75rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--green-700); margin-bottom: 10px; }
 .toc, .sidebar-sources { display: grid; gap: 9px; }
