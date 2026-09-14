@@ -1,0 +1,64 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import AffiliateCard from '../../../components/AffiliateCard.astro';
+
+const toc = [
+  { id: 'overblik', label: 'Byen i korte træk' },
+  { id: 'oplevelser', label: 'Det skal du opleve' },
+  { id: 'mad', label: 'Mad og kaffe' },
+  { id: 'dagsture', label: 'Dagsture' },
+  { id: 'vejret', label: 'Bedste rejsetid' },
+  { id: 'ankomst', label: 'Ankomst via SGN' },
+];
+const sources = [
+  { label: 'Vietnam Tourism – Ho Chi Minh City', href: 'https://beta-v2.vietnam.travel/places-to-go/southern-vietnam/ho-chi-minh-city' },
+  { label: 'Udenrigsministeriet – Vietnam pas og visum', href: 'https://um.dk/rejse-og-ophold/rejse-til-udlandet/pas-og-visum/vietnam' },
+];
+---
+<ArticleLayout
+  title="Ho Chi Minh City rejseguide 2026 | Saigon, mad og dagsture"
+  description="Dansk guide til Ho Chi Minh City: hvor mange dage, seværdigheder, mad, dagsture til Mekong og Cu Chi, bedste rejsetid og den nye PAI-regel ved ankomst til SGN."
+  eyebrow="Sydvietnam"
+  heading="Ho Chi Minh City: Vietnams hurtigste storby"
+  intro="Ho Chi Minh City er højere tempo end Hoi An og mere moderne i udtrykket end Hanoi. Brug byen som et aktivt slutstop – ikke kun som lufthavn til hjemrejsen."
+  toc={toc}
+  sources={sources}
+>
+  <h2 id="overblik">Byen i korte træk</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>2–4 dage</b></div>
+    <div class="fact"><span>Bedst kendt for</span><b>Mad, historie og energi</b></div>
+    <div class="fact"><span>God base for</span><b>Mekong og Cu Chi</b></div>
+  </div>
+  <p>Ho Chi Minh City – stadig ofte kaldt Saigon i daglig tale – samler moderne højhuse, koloniale bygninger, markeder, lokale kvarterer og en konstant strøm af motorcykler i én storby.</p>
+
+  <h2 id="oplevelser">Det skal du opleve</h2>
+  <p>Start centralt og gå mellem nogle af byens klassiske bygninger og pladser. Kombinér det med mindst ét museum eller historisk stop, så byen ikke kun bliver shopping og rooftop views.</p>
+  <p>War Remnants Museum, Central Post Office, området omkring Dong Khoi og Ben Thanh er oplagte første stop, men byen bliver mere interessant, når du også bevæger dig væk fra de mest oplagte turistgader.</p>
+
+  <h2 id="mad">Mad og kaffe</h2>
+  <p>Byen er stærk til både klassisk vietnamesisk mad og moderne restauranter. Sæt tid af til små måltider frem for kun tre store restaurantbesøg. Kaffe, bánh mì, cơm tấm og supper er lette steder at starte.</p>
+  <AffiliateCard
+    title="Aften-food tour i Ho Chi Minh City"
+    text="En guidet tur kan være en god måde at komme ud af centrum og spise flere små retter på én aften."
+    label="God storbyoplevelse"
+  />
+
+  <h2 id="dagsture">Mekong eller Cu Chi?</h2>
+  <p>Har du kun én ekstra dag, så vælg efter interesse: Cu Chi giver mere krigs- og historieperspektiv, mens Mekong-deltaet giver landskab, flodliv og et andet tempo end storbyen.</p>
+  <p>Begge ture findes i mange varianter. Tjek gruppestørrelse og den konkrete rute – især på Mekong-ture, hvor kvaliteten kan variere meget.</p>
+
+  <h2 id="vejret">Bedste rejsetid</h2>
+  <p>Sydvietnam er varmt året rundt. December til april er typisk den tørrere periode, mens maj til november oftere giver regnbyger. Regntid betyder ikke nødvendigvis heldagsregn, men planlæg lidt mere fleksibelt.</p>
+
+  <h2 id="ankomst">Ankommer du til Tan Son Nhat (SGN)?</h2>
+  <p>Udenrigsministeriet oplyser, at danske statsborgere fra 15. april 2026 skal udfylde en digital <strong>Pre-arrival Information (PAI)</strong>-formular tre dage før ankomst til SGN og gemme den modtagne QR-kode.</p>
+  <div class="notice">Tjek altid den aktuelle procedure hos Udenrigsministeriet før afrejse. Indrejseregler kan ændres med kort varsel.</div>
+
+  <h2>Fortsæt planlægningen</h2>
+  <div class="link-list">
+    <a class="link-card" href="/rejseguide/visum/">Visum og indrejse <span>Se de aktuelle regler for danske statsborgere.</span></a>
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvordan Ho Chi Minh City passer ind som sidste stop.</span></a>
+    <a class="link-card" href="/destinationer/phu-quoc/">Phu Quoc <span>Vil du slutte rejsen med strand i stedet?</span></a>
+  </div>
+</ArticleLayout>
