@@ -1,4 +1,4 @@
-# Preview mode: keep the temporary workers.dev site out of search results.
-# Replace with "Allow: /" after the custom domain rejstilvietnam.dk is connected.
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://rejstilvietnam.dk/sitemap-index.xml
