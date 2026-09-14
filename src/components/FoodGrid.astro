@@ -1,0 +1,36 @@
+---
+const { items = [] } = Astro.props;
+---
+<div class="food-grid">
+  {items.map((item) => (
+    <article class="food-card">
+      <div class="food-image">
+        <img src={item.image} alt={item.alt ?? item.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+      </div>
+      <div class="food-copy">
+        <div class="food-head">
+          <h3>{item.name}</h3>
+          {item.when && <span>{item.when}</span>}
+        </div>
+        <p>{item.text}</p>
+        {item.tip && <div class="food-tip"><strong>Godt at vide:</strong> {item.tip}</div>}
+        {item.credit && <a class="food-credit" href={item.creditUrl} target="_blank" rel="noopener noreferrer">Foto: {item.credit}</a>}
+      </div>
+    </article>
+  ))}
+</div>
+
+<style>
+.food-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; margin: 24px 0 32px; }
+.food-card { overflow: hidden; background: white; border: 1px solid var(--border); border-radius: 24px; box-shadow: 0 7px 24px rgba(16,55,41,.05); }
+.food-image { aspect-ratio: 4 / 3; overflow: hidden; background: #edf0eb; }
+.food-image img { width: 100%; height: 100%; object-fit: cover; }
+.food-copy { padding: 20px; }
+.food-head { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+.food-head h3 { font-size: 1.38rem; }
+.food-head span { flex: 0 0 auto; padding: 5px 8px; border-radius: 999px; background: var(--green-100); color: var(--green-700); font-size: .69rem; font-weight: 850; text-transform: uppercase; letter-spacing: .05em; }
+.food-copy > p { margin: 9px 0 0; color: #45524c; }
+.food-tip { margin-top: 13px; padding-top: 12px; border-top: 1px solid var(--border); color: #536159; font-size: .9rem; }
+.food-credit { display: inline-block; margin-top: 12px; color: #859089; font-size: .72rem; text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 720px) { .food-grid { grid-template-columns: 1fr; } }
+</style>
