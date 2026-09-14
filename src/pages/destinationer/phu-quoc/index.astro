@@ -1,0 +1,71 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import AffiliateCard from '../../../components/AffiliateCard.astro';
+
+const toc = [
+  { id: 'overblik', label: 'Phu Quoc i korte træk' },
+  { id: 'strande', label: 'Strande og områder' },
+  { id: 'oplevelser', label: 'Oplevelser' },
+  { id: 'vejret', label: 'Bedste rejsetid' },
+  { id: 'dage', label: 'Hvor mange dage?' },
+  { id: 'passer', label: 'Hvem passer øen til?' },
+];
+const sources = [
+  { label: 'Vietnam Tourism – Phu Quoc', href: 'https://vietnam.travel/places-to-go/southern-vietnam/phu-quoc' },
+  { label: 'Vietnam Tourism – Weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
+];
+---
+<ArticleLayout
+  title="Phu Quoc rejseguide 2026 | Strande, vejr og oplevelser"
+  description="Dansk rejseguide til Phu Quoc: bedste rejsetid, strande, hvor mange dage du bør bruge, oplevelser og hvordan øen passer ind i en Vietnam-rundrejse."
+  eyebrow="Sydvietnam"
+  heading="Phu Quoc: strandstop til sidst på rejsen"
+  intro="Phu Quoc er nemmest at nyde, når den får lov at være et roligt punktum. Sol, strand og seafood fungerer bedst som kontrast til de mere intense storby- og rundrejsedage."
+  toc={toc}
+  sources={sources}
+>
+  <h2 id="overblik">Phu Quoc i korte træk</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>3–5 dage</b></div>
+    <div class="fact"><span>Bedst kendt for</span><b>Strande, solnedgange og seafood</b></div>
+    <div class="fact"><span>God periode</span><b>Oktober–juni</b></div>
+  </div>
+  <p>Phu Quoc ligger sydvest for Vietnams fastland og fungerer godt som et afslappende sidste stop. Øen er stor nok til, at valget af område betyder noget, men det er ikke nødvendigt at skifte hotel flere gange.</p>
+
+  <h2 id="strande">Strande og områder</h2>
+  <h3>Long Beach</h3>
+  <p>Long Beach er praktisk, hvis du gerne vil være tæt på restauranter, hoteller og solnedgang uden at planlægge meget transport. Det er et enkelt valg til en førstegangsrejse.</p>
+  <h3>Sao Beach og den sydlige del</h3>
+  <p>Sydpå finder du flere klassiske strandoplevelser og adgang til øhop omkring An Thoi. Det er oplagt som en dagstur, også hvis du bor et andet sted på øen.</p>
+  <h3>Nord og mere rolige områder</h3>
+  <p>Hvis du prioriterer ro frem for at kunne gå til mange restauranter, findes der mere tilbagetrukne strandområder mod nord. Tjek dog afstande, før du booker hotel – Phu Quoc er større, end mange forventer.</p>
+
+  <h2 id="oplevelser">Oplevelser ud over stranden</h2>
+  <p>Phu Quoc er kendt for fiskesauce, peber og fiskeri, og du kan kombinere stranddage med små lokale stop. Nationalparken og øens grønne områder giver også mulighed for natur frem for kun resort.</p>
+  <AffiliateCard
+    title="Øhop og snorkling fra Phu Quoc"
+    text="En typisk heldagsoplevelse, hvis du vil ud på vandet og se nogle af de mindre øer syd for Phu Quoc."
+    label="Populær stranddag"
+  />
+
+  <h2 id="vejret">Bedste rejsetid til Phu Quoc</h2>
+  <p>Vietnam Tourism beskriver <strong>oktober til juni</strong> som den mere solrige periode på Phu Quoc. Den tørreste og køligere del af sæsonen ligger typisk omkring oktober til marts.</p>
+  <p>Juli til september er mere ustadig med højere risiko for kraftig regn og uroligt hav. Det betyder ikke, at en rejse er umulig, men strand- og bådplaner kræver mere fleksibilitet.</p>
+
+  <h2 id="dage">Hvor mange dage på Phu Quoc?</h2>
+  <ul>
+    <li><strong>2 nætter:</strong> kun hvis du vil have et meget kort strandstop.</li>
+    <li><strong>3–4 nætter:</strong> godt til en første tur med både strand og én udflugt.</li>
+    <li><strong>5+ nætter:</strong> hvis øen er den egentlige ferie og ikke kun slutningen på en rundrejse.</li>
+  </ul>
+
+  <h2 id="passer">Hvem passer Phu Quoc til?</h2>
+  <p>Øen er især god, hvis du vil afslutte Vietnam-turen med mindre logistik. Den passer til par, familier og alle, der gerne vil have nogle dage, hvor dagens største beslutning er strand, pool eller seafood.</p>
+  <p>Hvis du derimod rejser for historie, storbyliv og konstant sightseeing, ville vi ikke prioritere Phu Quoc på en kort 10-dages rejse.</p>
+
+  <h2>Fortsæt planlægningen</h2>
+  <div class="link-list">
+    <a class="link-card" href="/rejseguide/bedste-rejsetid/">Bedste rejsetid til Vietnam <span>Se hvordan Phu Quoc passer sammen med resten af landet.</span></a>
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Vurdér om du skal vælge Phu Quoc eller mere tid på fastlandet.</span></a>
+  </div>
+</ArticleLayout>
