@@ -14,7 +14,18 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
-const isHanoiChild = Astro.url.pathname.startsWith('/destinationer/hanoi/') && Astro.url.pathname !== '/destinationer/hanoi/';
+const destinationMatch = Astro.url.pathname.match(/^\/destinationer\/([^/]+)\/.+/);
+const destinationSlug = destinationMatch?.[1] ?? null;
+const destinationNames = {
+  'hanoi':'Hanoi',
+  'hoi-an':'Hoi An',
+  'ho-chi-minh-city':'Ho Chi Minh City',
+  'phu-quoc':'Phu Quoc',
+  'da-nang':'Da Nang',
+  'nha-trang':'Nha Trang',
+};
+const hubHref = destinationSlug ? `/destinationer/${destinationSlug}/` : null;
+const hubLabel = destinationSlug ? `${destinationNames[destinationSlug] ?? destinationSlug} rejseguide` : null;
 ---
 <BaseLayout title={title} description={description}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
@@ -54,7 +65,7 @@ const isHanoiChild = Astro.url.pathname.startsWith('/destinationer/hanoi/') && A
     <div class="container article-shell">
       {toc.length > 0 && (
         <nav class="mobile-toc card" aria-label="Indholdsfortegnelse">
-          {isHanoiChild && <a class="mobile-hub-back" href="/destinationer/hanoi/">← Hanoi rejseguide</a>}
+          {hubHref && <a class="mobile-hub-back" href={hubHref}>← {hubLabel}</a>}
           <p class="sidebar-label">På denne side</p>
           <div class="toc">{toc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}</div>
         </nav>
@@ -65,7 +76,7 @@ const isHanoiChild = Astro.url.pathname.startsWith('/destinationer/hanoi/') && A
       </article>
 
       <aside class="card sidebar article-sidebar">
-        {isHanoiChild && <a class="hub-back" href="/destinationer/hanoi/">← Hanoi rejseguide</a>}
+        {hubHref && <a class="hub-back" href={hubHref}>← {hubLabel}</a>}
         {toc.length > 0 && (
           <>
             <p class="sidebar-label">På denne side</p>
