@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const bookingOptions = [
+  { icon:'🏨', title:'Hoteller', text:'Find områder og hoteller, der passer til din rute og dit budget. Vi bygger hotelguides ud destination for destination.', href:'/destinationer/' },
+  { icon:'🛶', title:'Ture & oplevelser', text:'Sammenlign ture, cruises og dagsture, hvor det giver mening at booke på forhånd.', href:'/ture/' },
+  { icon:'✈️', title:'Fly', text:'Internationale og indenrigsfly bliver senere samlet her med fokus på realistiske forbindelser og bagageregler.', href:'' },
+  { icon:'📱', title:'eSIM & internet', text:'En praktisk guide til data i Vietnam kommer her, så du kan vælge mellem lokal SIM og eSIM.', href:'' },
+  { icon:'🛡️', title:'Rejseforsikring', text:'Vi tilføjer senere en uafhængig guide til, hvad du bør kontrollere før du vælger forsikring.', href:'' },
+  { icon:'🧳', title:'Pakkerejser', text:'Til dig der hellere vil have hoteller, transport og oplevelser planlagt samlet af et rejsebureau.', href:'#pakkerejser' },
+];
+---
+<BaseLayout title="Book din rejse til Vietnam | Hoteller, ture og pakkerejser | RejsTilVietnam.dk" description="Saml booking til Vietnam ét sted: hoteller, ture, fly, eSIM, rejseforsikring og pakkerejser med tydelig markering af eventuelle annoncelinks.">
+  <section class="page-hero booking-hero">
+    <div class="container">
+      <p class="eyebrow">Book rejsen</p>
+      <h1>Når ruten er på plads, kan du begynde at booke.</h1>
+      <p class="lead">Vi samler de dele af Vietnam-rejsen, hvor det kan betale sig at sammenligne mulighederne. Du bestemmer selv, om du vil booke alt separat eller få en rejse planlagt for dig.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container grid grid--3">
+      {bookingOptions.map((item) => (
+        item.href ? (
+          <a class="card booking-card" href={item.href}>
+            <span class="booking-icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <b>{item.href.startsWith('#') ? 'Se muligheder →' : 'Læs mere →'}</b>
+          </a>
+        ) : (
+          <article class="card booking-card booking-card--soon">
+            <span class="booking-icon">{item.icon}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <small>Guide kommer senere</small>
+          </article>
+        )
+      ))}
+    </div>
+  </section>
+
+  <section class="section package-section" id="pakkerejser">
+    <div class="container package-grid">
+      <div>
+        <p class="eyebrow">Pakkerejser</p>
+        <h2>Vil du helst have andre til at planlægge rejsen?</h2>
+        <p class="lead">Hvis du ikke selv vil koordinere hoteller, transport og større oplevelser, kan en skræddersyet pakkerejse være et bedre valg. Vi arbejder på at sammenligne relevante danske Vietnam-specialister på prisniveau, rejsetype og hvad der faktisk er inkluderet.</p>
+        <p class="muted">Når vi indgår kommercielle partnerskaber, bliver links og samarbejder markeret tydeligt. Vores mål er stadig at sammenligne mulighederne uafhængigt.</p>
+      </div>
+      <aside class="card package-card">
+        <span>Kommer næste</span>
+        <h3>Sammenlign Vietnam-rejsebureauer</h3>
+        <p>Individuel eller gruppe · dansk rejseleder · familie · luksus · aktive rejser · prisniveau.</p>
+        <a href="/om/#affiliate">Sådan fungerer affiliate på siden →</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container notice"><strong>God rækkefølge:</strong> Vælg først rejsetid og rute. Book derefter de vigtigste fly og hoteller. Til sidst kan du tilføje ture og aktiviteter, så du undgår at låse hele ferien for tidligt.</div>
+  </section>
+</BaseLayout>
+
+<style>
+.booking-hero{background:linear-gradient(180deg,#f7f0e3 0%,rgba(247,240,227,.25) 100%)}
+.booking-card{padding:28px;display:flex;flex-direction:column;min-height:280px;transition:transform .2s ease,border-color .2s ease}
+a.booking-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)}
+.booking-icon{font-size:2rem;margin-bottom:18px}.booking-card h3{font-size:1.55rem}.booking-card p{margin-top:10px;color:var(--muted)}.booking-card b,.booking-card small{margin-top:auto;padding-top:24px}.booking-card b{color:var(--green-700)}.booking-card small{color:#87908b;font-weight:700}.booking-card--soon{background:rgba(255,255,255,.45)}
+.package-section{background:#f5efe2}.package-grid{display:grid;grid-template-columns:1.35fr .75fr;gap:36px;align-items:center}.package-grid .lead{margin-top:18px}.muted{margin-top:16px;color:var(--muted)}.package-card{padding:30px;background:var(--green-950);color:white}.package-card>span{color:#f0c986;font-size:.76rem;font-weight:850;text-transform:uppercase;letter-spacing:.1em}.package-card h3{color:white;margin-top:8px;font-size:1.75rem}.package-card p{margin-top:12px;color:rgba(255,255,255,.72)}.package-card a{display:inline-block;margin-top:22px;font-weight:800;color:#f4d59a}
+@media(max-width:800px){.package-grid{grid-template-columns:1fr}}
+</style>
