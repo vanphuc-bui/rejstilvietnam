@@ -1,6 +1,7 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
 
 const toc = [
   { id: 'ruten', label: 'Ruten i korte træk' },
@@ -12,89 +13,50 @@ const toc = [
   { id: 'tilpas', label: 'Sådan ville vi ændre ruten' },
 ];
 ---
-<ArticleLayout
-  title="Vietnam på 2 uger | Rejseplan fra nord til syd 2026"
-  description="Forslag til 14 dage i Vietnam med Hanoi, Ninh Binh, Ha Long Bay, Hoi An og Ho Chi Minh City. En realistisk rute til første rejse."
-  eyebrow="Rejseplan"
-  heading="Vietnam på 2 uger: den rute vi ville vælge første gang"
-  intro="To uger er nok til nord, midt og syd, men kun hvis du accepterer, at noget skal vælges fra. Vi ville hellere have fem gode stop end at flytte hotel hver anden dag."
-  toc={toc}
->
+<ArticleLayout title="Vietnam på 2 uger | Rejseplan fra nord til syd 2026" description="Forslag til 14 dage i Vietnam med Hanoi, Ninh Binh, Ha Long Bay, Hoi An og Ho Chi Minh City. En realistisk og visuelt forklaret rute til første rejse." eyebrow="Rejseplan" heading="Vietnam på 2 uger: den rute vi ville vælge første gang" intro="To uger er nok til nord, midt og syd, men kun hvis du accepterer, at noget skal vælges fra. Vi ville hellere have fem gode stop end at flytte hotel hver anden dag." toc={toc}>
+  <SectionMedia slot="heroMedia" src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1800&q=86" alt="Landskab i Vietnam" caption="Ruten kombinerer storby, natur, kyst og et roligere stop i Centralvietnam. Pointen er variation uden at skifte hotel hele tiden." ratio="16 / 7" />
+
   <h2 id="ruten">Ruten i korte træk</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>Varighed</span><b>14 dage</b></div>
-    <div class="fact"><span>Tempo</span><b>Mellem</b></div>
-    <div class="fact"><span>Indenrigsfly</span><b>2 strækninger</b></div>
-  </div>
-  <table>
-    <thead><tr><th>Dage</th><th>Stop</th><th>Det vigtigste</th></tr></thead>
-    <tbody>
-      <tr><td>1-3</td><td>Hanoi</td><td>Land efter flyet, mad og byen til fods</td></tr>
-      <tr><td>4</td><td>Ninh Binh</td><td>Natur og bådtur</td></tr>
-      <tr><td>5-6</td><td>Ha Long Bay</td><td>1 overnatning på cruise</td></tr>
-      <tr><td>7-10</td><td>Hoi An</td><td>Gammel by, mad og en rolig dag</td></tr>
-      <tr><td>11-14</td><td>Ho Chi Minh City</td><td>Storby, historie og evt. én dagstur</td></tr>
-    </tbody>
-  </table>
+  <div class="fact-grid"><div class="fact"><span>Varighed</span><b>14 dage</b></div><div class="fact"><span>Tempo</span><b>Mellem</b></div><div class="fact"><span>Indenrigsfly</span><b>2 strækninger</b></div></div>
+  <table><thead><tr><th>Dage</th><th>Stop</th><th>Det vigtigste</th></tr></thead><tbody><tr><td>1-3</td><td>Hanoi</td><td>Land efter flyet, mad og byen til fods</td></tr><tr><td>4</td><td>Ninh Binh</td><td>Natur og bådtur</td></tr><tr><td>5-6</td><td>Ha Long Bay</td><td>1 overnatning på cruise</td></tr><tr><td>7-10</td><td>Hoi An</td><td>Gammel by, mad og en rolig dag</td></tr><tr><td>11-14</td><td>Ho Chi Minh City</td><td>Storby, historie og evt. én dagstur</td></tr></tbody></table>
   <p>Det er ikke den rute, der viser flest steder. Det er med vilje. Hver ekstra destination koster transporttid, check-in og bagage.</p>
 
   <h2 id="hanoi">Dag 1-3: Hanoi</h2>
   <p>Vi ville ikke booke en heldagstur den første morgen efter et langt fly fra Danmark. Brug dag 1 på Old Quarter, Hoan Kiem og et roligt måltid. Hvis du er træt, så gå tidligt i seng uden dårlig samvittighed.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1500" alt="Old Quarter i Hanoi" caption="Første stop er med vilje en by, hvor meget kan klares til fods. Det gør starten lettere efter et langt fly." credit="Richard Mortel / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg" ratio="16 / 9" />
   <p>Dag 2 og 3 kan bruges på historie, kaffe og mad. Bor du centralt, kan meget klares til fods. Til længere ture er Grab eller almindelig taxi let.</p>
-  <AffiliateCard
-    title="Street food-tur i Hanoi"
-    text="God den første eller anden aften, hvis du gerne vil lære et par retter at kende tidligt i rejsen. Vi ville vælge en lille gruppe frem for en lang tur med mange stop."
-    label="God til første tur"
-  />
+  <AffiliateCard title="Street food-tur i Hanoi" text="God den første eller anden aften, hvis du gerne vil lære et par retter at kende tidligt i rejsen. Vi ville vælge en lille gruppe frem for en lang tur med mange stop." label="God til første tur" />
 
   <h2 id="ninh-binh">Dag 4: Ninh Binh</h2>
   <p>På en 14-dages rute ville vi normalt tage Ninh Binh som dagstur fra Hanoi. Det betyder, at du kan beholde samme hotel og eventuelt lade den store bagage stå der.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Trang%20An%2C%20Ninh%20Binh.jpg?width=1500" alt="Trang An i Ninh Binh" caption="Ninh Binh giver naturkontrasten til Hanoi uden endnu et hotelskift, hvis du vælger en dagstur." credit="GieohatchoHaiLy / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Trang_An,_Ninh_Binh.jpg" />
   <p>Har du mere end to uger, er en overnatning bedre. Men på netop denne rute synes vi, at endnu et hotelskift koster mere, end det giver.</p>
-  <AffiliateCard
-    title="Ninh Binh fra Hanoi"
-    text="Se efter en tur med én bådtur og højst et par andre hovedstop. En tur med alt på én dag kan blive mere transport og kø end natur."
-    label="Praktisk dagstur"
-  />
+  <AffiliateCard title="Ninh Binh fra Hanoi" text="Se efter en tur med én bådtur og højst et par andre hovedstop. En tur med alt på én dag kan blive mere transport og kø end natur." label="Praktisk dagstur" />
 
   <h2 id="halong">Dag 5-6: Ha Long Bay</h2>
   <p>Vi ville tage én overnatning på cruise. Det koster mere end en dagstur, men du får sen eftermiddag og tidlig morgen på vandet i stedet for at bruge størstedelen af dagen på transport frem og tilbage.</p>
-  <p>Et vigtigt praktisk punkt: vi ville <strong>ikke</strong> booke et stramt fly sydpå samme aften, som cruiset kommer tilbage til Hanoi-området. Båd, transfer og trafik kan blive forsinket. Sov i Hanoi eller læg flyet med god margin.</p>
-  <AffiliateCard
-    title="Ha Long Bay cruise med 1 overnatning"
-    text="Når vi vælger konkrete cruises, vil vi først se på nyere anmeldelser, rute, kahyt og transfer - ikke bare stjernerne på forsiden."
-    label="Vores normale valg"
-  />
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Ha%20Long%20bay.jpg?width=1500" alt="Cruise i Ha Long Bay" caption="Én nat er efter vores mening det bedste kompromis på en to-ugers tur: nok tid til at opleve bugten uden at bruge tre dage på det." credit="Shyamal / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Ha_Long_bay.jpg" />
+  <p>Vi ville ikke booke et stramt fly sydpå samme aften, som cruiset kommer tilbage til Hanoi-området. Båd, transfer og trafik kan blive forsinket.</p>
+  <AffiliateCard title="Ha Long Bay cruise med 1 overnatning" text="Når vi vælger konkrete cruises, vil vi først se på nyere anmeldelser, rute, kahyt og transfer - ikke bare stjernerne på forsiden." label="Vores normale valg" />
 
   <h2 id="hoi-an">Dag 7-10: Hoi An</h2>
   <p>Flyv til Da Nang og fortsæt med taxi, Grab eller transfer til Hoi An. Med bagage ville vi bare tage en bil hele vejen - det er ikke her, vi ville optimere de sidste kroner.</p>
-  <p>Fire nætter i Hoi An giver plads til den gamle by, en strand- eller cykeldag og mindst én dag uden fast program. Efter Hanoi, Ninh Binh og Ha Long Bay er det rart ikke at skulle op tidligt hver morgen.</p>
-  <p>Hvis strand er vigtigere end den gamle by, kan du i stedet bo i Da Nang eller ved An Bang. Vi ville ikke dele fire nætter mellem to hoteller.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoi%20An%20lanterns.jpg?width=1500" alt="Lanterner i Hoi An" caption="Efter nogle aktive dage i nord er Hoi An bevidst et langsommere stop med mad, gamle gader og mulighed for strand." credit="Lishuilynn / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Hoi_An_lanterns.jpg" />
+  <p>Fire nætter i Hoi An giver plads til den gamle by, en strand- eller cykeldag og mindst én dag uden fast program.</p>
 
   <h2 id="hcmc">Dag 11-14: Ho Chi Minh City</h2>
   <p>Flyv fra Da Nang til Ho Chi Minh City. Vi ville bo centralt i District 1 eller tæt på District 3, så de korte dage ikke forsvinder i trafik.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Nguyen%20Hue%20Street.jpg?width=1500" alt="Nguyen Hue i Ho Chi Minh City" caption="Sidste stop er igen storby, men med en helt anden rytme end Hanoi. Her ville vi holde mindst to hele dage fri til selve byen." credit="Rondano / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Nguyen_Hue_Street.jpg" />
   <p>Brug mindst to hele dage i byen. Den sidste ekstra dag kan gå til Mekong eller Cu Chi, men vi ville ikke føle, at en dagstur er obligatorisk.</p>
-  <p>Hvis dit internationale fly går tidligt på dag 14, så tænk på dag 13 som den sidste rigtige feriedag. Det lyder banalt, men mange 14-dages rejseplaner på nettet tæller transportdage som hele feriedage.</p>
+  <p>Hvis dit internationale fly går tidligt på dag 14, så tænk på dag 13 som den sidste rigtige feriedag.</p>
 
   <h2 id="tilpas">Sådan ville vi ændre ruten</h2>
-  <h3>Hvis du vil have Phu Quoc med</h3>
-  <p>Fjern noget andet. Vi ville typisk droppe Ninh Binh eller skære Ho Chi Minh City ned og give Phu Quoc mindst 3 nætter. Vi ville ikke bare lægge endnu et fly oveni.</p>
-
-  <h3>Hvis du rejser med små børn</h3>
-  <p>Skær mindst ét stop væk. Fire hotelbaser er langt lettere end seks, og private transfers kan være pengene værd på de dage, hvor alle har bagage.</p>
-
-  <h3>Hvis du vil have mindre transport</h3>
-  <p>Drop Sydvietnam og brug flere dage i Hanoi, Ninh Binh og Centralvietnam. Du behøver ikke rejse fra Hanoi til Ho Chi Minh City for at have set "rigtigt Vietnam".</p>
-
-  <h3>Hvis vejret er dårligt i en region</h3>
-  <p>Hold især båd- og stranddage fleksible. Vi ville hellere flytte en dag end at holde fast i en plan, der kun ser god ud på papiret.</p>
-
+  <h3>Hvis du vil have Phu Quoc med</h3><p>Fjern noget andet. Vi ville typisk droppe Ninh Binh eller skære Ho Chi Minh City ned og give Phu Quoc mindst 3 nætter. Vi ville ikke bare lægge endnu et fly oveni.</p>
+  <h3>Hvis du rejser med små børn</h3><p>Skær mindst ét stop væk. Fire hotelbaser er langt lettere end seks, og private transfers kan være pengene værd på de dage, hvor alle har bagage.</p>
+  <h3>Hvis du vil have mindre transport</h3><p>Drop Sydvietnam og brug flere dage i Hanoi, Ninh Binh og Centralvietnam. Du behøver ikke rejse fra Hanoi til Ho Chi Minh City for at have set "rigtigt Vietnam".</p>
+  <h3>Hvis vejret er dårligt i en region</h3><p>Hold især båd- og stranddage fleksible. Vi ville hellere flytte en dag end at holde fast i en plan, der kun ser god ud på papiret.</p>
   <div class="notice"><strong>Det vigtigste råd:</strong> Når du laver din egen version af ruten, så tilføj ikke et nyt stop uden samtidig at beslutte, hvilket stop der skal have mindre tid.</div>
 
   <h2>Læs guiderne til ruten</h2>
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/">Hanoi <span>Hvor vi ville bo, og hvordan vi ville bruge de første dage.</span></a>
-    <a class="link-card" href="/ture/ninh-binh-fra-hanoi/">Ninh Binh fra Hanoi <span>Dagstur eller overnatning?</span></a>
-    <a class="link-card" href="/ture/halong-bay-cruise/">Ha Long Bay cruise <span>Hvad vi ville tjekke før booking.</span></a>
-    <a class="link-card" href="/destinationer/hoi-an/">Hoi An <span>Hotelområde, strand og antal nætter.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/">Hanoi <span>Hvor vi ville bo, og hvordan vi ville bruge de første dage.</span></a><a class="link-card" href="/ture/ninh-binh-fra-hanoi/">Ninh Binh fra Hanoi <span>Dagstur eller overnatning?</span></a><a class="link-card" href="/ture/halong-bay-cruise/">Ha Long Bay cruise <span>Hvad vi ville tjekke før booking.</span></a><a class="link-card" href="/destinationer/hoi-an/">Hoi An <span>Hotelområde, strand og antal nætter.</span></a></div>
 </ArticleLayout>
