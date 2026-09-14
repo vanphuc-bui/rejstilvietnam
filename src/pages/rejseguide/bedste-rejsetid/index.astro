@@ -1,0 +1,85 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const toc = [
+  { id: 'kort-svar', label: 'Kort svar' },
+  { id: 'nord', label: 'Nordvietnam' },
+  { id: 'midt', label: 'Centralvietnam' },
+  { id: 'syd', label: 'Sydvietnam' },
+  { id: 'maaneder', label: 'Måned for måned' },
+  { id: 'valg', label: 'Sådan vælger du' },
+];
+const sources = [
+  { label: 'Vietnam Tourism – Weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
+];
+---
+<ArticleLayout
+  title="Bedste rejsetid til Vietnam 2026 | Vejr måned for måned"
+  description="Hvornår er det bedst at rejse til Vietnam? Få et enkelt overblik over vejret i Hanoi, Hoi An, Ho Chi Minh City og Phu Quoc måned for måned."
+  eyebrow="Bedste rejsetid"
+  heading="Hvornår er det bedst at rejse til Vietnam?"
+  intro="Vietnam er langt og smalt, så der findes ikke én perfekt måned for hele landet. Den bedste periode afhænger af, om din rejse går mod nord, midt eller syd."
+  toc={toc}
+  sources={sources}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>Hvis du vil rejse gennem flere dele af Vietnam på samme tur, er <strong>marts til maj</strong> ofte et godt kompromis. Vietnam Tourism fremhæver netop denne periode som en af de bedste på tværs af landet.</p>
+  <p>Men den bedste måned ændrer sig markant fra region til region. Hanoi kan være kølig, mens Phu Quoc samtidig har klassisk strandvejr.</p>
+
+  <table>
+    <thead><tr><th>Område</th><th>Ofte bedst</th><th>Vær opmærksom på</th></tr></thead>
+    <tbody>
+      <tr><td>Hanoi / Nord</td><td>April–juni, september–november</td><td>Varmt og fugtigt midt på sommeren</td></tr>
+      <tr><td>Hoi An / Midt</td><td>Februar–august</td><td>Mere regn fra september</td></tr>
+      <tr><td>Ho Chi Minh City / Syd</td><td>December–april</td><td>Regntid maj–november</td></tr>
+      <tr><td>Phu Quoc</td><td>Oktober–juni</td><td>Mest ustadigt juli–september</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="nord">Nordvietnam: Hanoi, Ninh Binh og Ha Long Bay</h2>
+  <p>Nordvietnam har tydeligere årstider end syd. Hanoi er typisk mest behagelig i foråret og efteråret, mens juni til august kan være både varmt, fugtigt og regnfuldt.</p>
+  <p>Vietnam Tourism peger på <strong>april til juni</strong> og <strong>september til december</strong> som gode perioder for Hanoi. For Ha Long Bay fremhæves især april til juni samt september til november.</p>
+  <div class="callout"><strong>Godt valg til en førstegangsrejse:</strong> September, oktober og november giver ofte en behagelig kombination af Hanoi, Ninh Binh og Ha Long Bay.</div>
+
+  <h2 id="midt">Centralvietnam: Hoi An, Da Nang og Hue</h2>
+  <p>Hoi An har generelt sin mere solrige periode fra februar til august. Fra september stiger risikoen for kraftig regn, storme og lokale oversvømmelser i Centralvietnam.</p>
+  <p>Marts og april er særligt attraktive, hvis du både vil gå rundt i Hoi Ans gamle bydel, cykle gennem rismarkerne og have mulighed for stranddage.</p>
+
+  <h2 id="syd">Sydvietnam: Ho Chi Minh City, Mekong og Phu Quoc</h2>
+  <p>I Sydvietnam er temperaturerne relativt stabile året rundt. Forskellen handler mere om tør- og regntid. Ho Chi Minh City og Mekong-deltaet har typisk den tørreste periode fra december til april.</p>
+  <p>Phu Quoc er varm hele året, men Vietnam Tourism beskriver oktober til juni som den mere solrige periode. Juli til september er mere udsat for regn og uroligt vejr.</p>
+
+  <h2 id="maaneder">Vietnam måned for måned</h2>
+  <table>
+    <thead><tr><th>Måned</th><th>Hvad passer den godt til?</th></tr></thead>
+    <tbody>
+      <tr><td>Januar</td><td>Phu Quoc og Sydvietnam; nord kan være køligt</td></tr>
+      <tr><td>Februar</td><td>God kombination af syd og Centralvietnam</td></tr>
+      <tr><td>Marts</td><td>En af de stærkeste måneder til rundrejse</td></tr>
+      <tr><td>April</td><td>God på tværs af mange regioner, men varmt i syd</td></tr>
+      <tr><td>Maj</td><td>Fortsat god i midten og nord; mere regn begynder i syd</td></tr>
+      <tr><td>Juni</td><td>Hoi An og strand, men varmt og fugtigt i nord</td></tr>
+      <tr><td>Juli</td><td>Centralvietnam; regn og stormrisiko flere andre steder</td></tr>
+      <tr><td>August</td><td>Varmt; kræver mere fleksibel planlægning</td></tr>
+      <tr><td>September</td><td>Nord bliver bedre; Centralvietnam bliver vådere</td></tr>
+      <tr><td>Oktober</td><td>Stærk måned i nord og på Phu Quoc; vådt omkring Hoi An</td></tr>
+      <tr><td>November</td><td>God i nord og syd; stadig vådt i dele af Centralvietnam</td></tr>
+      <tr><td>December</td><td>Syd og Phu Quoc; Hanoi kan være kølig og diset</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="valg">Sådan ville vi vælge datoer</h2>
+  <p>Hvis Vietnam er din første rejse, så vælg først den rute, du helst vil opleve. Find derefter den periode, hvor de vigtigste stop på netop den rute overlapper bedst.</p>
+  <ul>
+    <li><strong>Klassisk nord-til-syd rundrejse:</strong> marts–april er et stærkt udgangspunkt.</li>
+    <li><strong>Hanoi + Ninh Binh + Ha Long:</strong> september–november.</li>
+    <li><strong>Hoi An + Da Nang:</strong> marts–juni.</li>
+    <li><strong>Phu Quoc + Ho Chi Minh City:</strong> december–marts.</li>
+  </ul>
+
+  <h2>Næste skridt</h2>
+  <div class="link-list">
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvordan du kombinerer nord, midt og syd uden at skynde dig.</span></a>
+    <a class="link-card" href="/rejseguide/visum/">Visum til Vietnam for danskere <span>De aktuelle indrejseregler samlet ét sted.</span></a>
+  </div>
+</ArticleLayout>
