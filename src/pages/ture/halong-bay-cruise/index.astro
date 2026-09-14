@@ -1,0 +1,82 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import AffiliateCard from '../../../components/AffiliateCard.astro';
+
+const toc = [
+  { id: 'valg', label: 'Dagstur eller overnatning?' },
+  { id: 'vurder', label: 'Sådan vurderer du et cruise' },
+  { id: 'vejret', label: 'Vejr og sæson' },
+  { id: 'ruter', label: 'Ha Long, Lan Ha eller Bai Tu Long?' },
+  { id: 'booking', label: 'Før du booker' },
+];
+const sources = [
+  { label: 'Vietnam Tourism – Weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
+];
+---
+<ArticleLayout
+  title="Ha Long Bay cruise 2026 | Dagstur eller overnatning?"
+  description="Guide til Ha Long Bay cruise fra Hanoi: forskellen på dagstur og overnatning, hvad du skal tjekke før booking, vejret og hvordan du vælger mellem cruises."
+  eyebrow="Ture & oplevelser"
+  heading="Ha Long Bay cruise: sådan vælger du rigtigt"
+  intro="Ha Long Bay er nem at booke og svær at sammenligne. Brug mindre tid på flotte billeder og mere tid på rute, skib, transfer og hvad der faktisk er inkluderet."
+  toc={toc}
+  sources={sources}
+>
+  <h2 id="valg">Dagstur eller overnatning?</h2>
+  <p>Hvis Ha Long Bay er et vigtigt punkt på din Vietnam-rejse, ville vi normalt vælge <strong>én overnatning</strong>. En dagstur kan være fin på en kort rejse, men en stor del af dagen går med transport og et stramt program.</p>
+  <table>
+    <thead><tr><th>Type</th><th>Fordel</th><th>Ulempe</th></tr></thead>
+    <tbody>
+      <tr><td>Dagstur</td><td>Billigere og ingen hotelskift</td><td>Lang dag og mindre tid på vandet</td></tr>
+      <tr><td>1 nat</td><td>God balance mellem tid og pris</td><td>Kræver en ekstra overnatning i planen</td></tr>
+      <tr><td>2 nætter</td><td>Mere ro og længere rute</td><td>Dyrere og mindre oplagt på en kort rundrejse</td></tr>
+    </tbody>
+  </table>
+  <AffiliateCard
+    title="Ha Long Bay cruise med 1 overnatning"
+    text="Vi indsætter et konkret Viator-valg her, når affiliate-kontoen er klar og vi har gennemgået anmeldelser, rute og inkluderet transfer."
+    label="Vores standardvalg"
+  />
+
+  <h2 id="vurder">Sådan vurderer du et cruise</h2>
+  <p>To cruises kan se næsten identiske ud på forsiden og alligevel være meget forskellige. Tjek især:</p>
+  <ul>
+    <li><strong>Skibets alder og størrelse:</strong> nyere er ikke altid bedre, men billeder bør matche de seneste anmeldelser.</li>
+    <li><strong>Ruten:</strong> nogle cruises bruger mere tid i de mest besøgte områder, andre sejler længere ud.</li>
+    <li><strong>Transfer fra Hanoi:</strong> er den inkluderet, valgfri eller separat?</li>
+    <li><strong>Kahytten:</strong> vindue, balkon, bad og seng kan variere markant.</li>
+    <li><strong>Måltider og drikkevarer:</strong> tjek præcis hvad der er inkluderet.</li>
+    <li><strong>Aktiviteter:</strong> kajak, grottebesøg og småbåd er ikke altid inkluderet på samme måde.</li>
+  </ul>
+  <div class="callout"><strong>Et simpelt filter:</strong> Vælg først rute og antal nætter. Sammenlign derefter kun 3–4 cruises i samme kategori i stedet for 30 på én gang.</div>
+
+  <h2 id="vejret">Vejr og sæson</h2>
+  <p>Vietnam Tourism fremhæver april til juni samt september til november som perioder med gode chancer for behageligt vejr i Ha Long Bay.</p>
+  <p>Juni til august er varmere, mere fugtig og mere udsat for storme. Tropisk vejr kan i perioder føre til ændringer eller aflysninger af cruises. Om vinteren kan bugten være kølig, diset og mere atmosfærisk.</p>
+  <p>Book derfor ikke en helt ufleksibel international flyafgang umiddelbart efter et cruise, hvis du rejser i en periode med større vejrrisiko.</p>
+
+  <h2 id="ruter">Ha Long, Lan Ha eller Bai Tu Long?</h2>
+  <p>De tre navne dukker ofte op, når du sammenligner cruises. De ligger i samme større kystområde, men oplevelsen kan være forskellig.</p>
+  <ul>
+    <li><strong>Ha Long Bay:</strong> det klassiske navn og det største udvalg af cruises.</li>
+    <li><strong>Lan Ha Bay:</strong> ofte kombineret med Cat Ba-området og markedsført som et roligere alternativ.</li>
+    <li><strong>Bai Tu Long Bay:</strong> færre afgange og ofte valgt af rejsende, der prioriterer mindre trafik.</li>
+  </ul>
+  <p>Vi ville ikke vælge alene ud fra navnet. Kig på den konkrete dagsrute og seneste anmeldelser.</p>
+
+  <h2 id="booking">Før du booker</h2>
+  <ul>
+    <li>Tjek afbestillingsregler og vejrbetingelser.</li>
+    <li>Kontrollér om hotel-pickup gælder dit område i Hanoi.</li>
+    <li>Læs de nyeste anmeldelser – ikke kun gennemsnitskarakteren.</li>
+    <li>Se billeder fra gæster, ikke kun operatørens professionelle billeder.</li>
+    <li>Sammenlign totalprisen inklusive transfer og eventuelle tillæg.</li>
+  </ul>
+
+  <h2>Passer cruiset ind i din rute?</h2>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/">Hanoi guide <span>Planlæg dagene før og efter cruiset.</span></a>
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvordan vi placerer Ha Long Bay i en komplet rute.</span></a>
+    <a class="link-card" href="/rejseguide/bedste-rejsetid/">Bedste rejsetid <span>Vurdér vejret før du vælger dato.</span></a>
+  </div>
+</ArticleLayout>
