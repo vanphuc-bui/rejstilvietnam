@@ -1,205 +1,149 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
-import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
-import FoodGrid from '../../../components/FoodGrid.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 const toc = [
-  { id: 'overblik', label: 'Hanoi i korte træk' },
+  { id: 'start', label: 'Start her' },
+  { id: 'plan', label: 'Planlæg dagene' },
   { id: 'bo', label: 'Hvor skal man bo?' },
-  { id: 'oplevelser', label: 'Det skal du opleve' },
+  { id: 'se', label: 'Seværdigheder' },
   { id: 'mad', label: 'Mad i Hanoi' },
-  { id: 'transport', label: 'Transport i byen' },
-  { id: 'dage', label: 'Hvor mange dage?' },
-  { id: 'dagsture', label: 'Dagsture fra Hanoi' },
+  { id: 'praktisk', label: 'Praktisk transport' },
+  { id: 'videre', label: 'Videre fra Hanoi' },
 ];
 
 const sources = [
   { label: 'Vietnam Tourism - Hanoi', href: 'https://vietnam.travel/places-to-go/northern-vietnam/ha-noi' },
-  { label: 'Vietnam Tourism - Weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
+  { label: 'Vietnam Tourism - Hanoi attractions', href: 'https://vietnam.travel/things-to-do/11-must-see-attractions-ha-noi' },
+  { label: 'Vietnam Tourism - weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
 ];
 
-const food = [
-  {
-    name: 'Phở',
-    when: 'Morgen / frokost',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pho%20Ha%20Noi.jpg?width=1200',
-    alt: 'En skål phở i Hanoi',
-    text: 'Den klassiske nudelsuppe er et nemt sted at begynde, hvis det er din første tur til Vietnam. I Hanoi er smagen ofte mere enkel og mindre sød end mange versioner uden for Nordvietnam.',
-    tip: 'Prøv den gerne om morgenen. Et lille sted med mange lokale gæster er ofte et bedre tegn end en lang turistmenu.',
-    credit: 'snips / Wikimedia Commons',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Pho_Ha_Noi.jpg',
-  },
-  {
-    name: 'Bún chả',
-    when: 'Frokost',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=1200',
-    alt: 'Bún chả med grillet svinekød, nudler og urter',
-    text: 'Grillet svinekød serveret med risnudler, urter og en let syrlig-sød fiskesauce. Det er en af de retter, vi især ville prioritere i Hanoi.',
-    tip: 'Frokost er et godt tidspunkt. Mange steder fokuserer på få retter og lukker tidligere end almindelige restauranter.',
-    credit: 'Valentin Orange / Wikimedia Commons',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Bun-cha-hanoi.jpg',
-  },
-  {
-    name: 'Bánh cuốn',
-    when: 'Morgen / let frokost',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Banh-cuon-hanoi.jpg?width=1200',
-    alt: 'Bánh cuốn, tynde dampede risruller',
-    text: 'Tynde, bløde risruller med fyld, ofte serveret med fiskesauce og vietnamesisk pølse. God hvis du vil prøve noget lettere end en stor nudelsuppe.',
-    tip: 'Retten er mild og derfor også et godt valg, hvis du ikke er vant til stærk eller meget krydret mad.',
-    credit: 'Valentin Orange / Wikimedia Commons',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Banh-cuon-hanoi.jpg',
-  },
-  {
-    name: 'Chả cá',
-    when: 'Aftensmad',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ch%E1%BA%A3%20c%C3%A1%20t%E1%BA%A1i%20Ph%E1%BB%91%20ch%E1%BA%A3%20c%C3%A1%20H%C3%A0%20N%E1%BB%99i.jpg?width=1200',
-    alt: 'Chả cá serveret i Hanoi',
-    text: 'Fisk med gurkemeje, dild og krydderurter, som ofte færdigtilberedes ved bordet. Smagen er ret anderledes end phở og bún chả, så den giver lidt variation i madplanen.',
-    tip: 'Bedst som et rigtigt måltid og ikke som endnu et hurtigt stop på en food crawl.',
-    credit: 'Phương Huy / Wikimedia Commons',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Ch%E1%BA%A3_c%C3%A1_t%E1%BA%A1i_Ph%E1%BB%91_ch%E1%BA%A3_c%C3%A1_H%C3%A0_N%E1%BB%99i.jpg',
-  },
-  {
-    name: 'Cà phê trứng',
-    when: 'Kaffepause',
-    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Egg%20coffee%20in%20Hanoi.jpg?width=1000',
-    alt: 'Vietnamesisk æggekaffe i Hanoi',
-    text: 'Æggekaffe er mere dessert end almindelig sort kaffe: sød, cremet og tungere, end navnet måske får det til at lyde. Den er værd at prøve én gang i Hanoi.',
-    tip: 'Bestil én først, hvis I er to. Den er sød nok til, at ikke alle har lyst til en hel kop alene.',
-    credit: 'Fabrizio Berloco / Wikimedia Commons',
-    creditUrl: 'https://commons.wikimedia.org/wiki/File:Egg_coffee_in_Hanoi.jpg',
-  },
+const hubCards = [
+  { href: '/destinationer/hanoi/sevaerdigheder/', label: 'Seværdigheder', title: 'Hvad skal man se i Hanoi?', text: 'Old Quarter, Hoan Kiem, Litteraturtemplet, Hoa Lo, Ba Dinh og de stop vi faktisk ville prioritere.' },
+  { href: '/destinationer/hanoi/3-dage-i-hanoi/', label: 'Rejseplan', title: '3 dage i Hanoi', text: 'En dag-for-dag plan, der ikke forsøger at presse hele byen ind på 48 timer.' },
+  { href: '/destinationer/hanoi/hvor-skal-man-bo/', label: 'Områder', title: 'Hvor skal man bo?', text: 'Sammenlign Old Quarter, Hoan Kiem, French Quarter, Ba Dinh og Tay Ho før du vælger hotel.' },
+  { href: '/destinationer/hanoi/bedste-hoteller/', label: 'Hoteller', title: 'Bedste hoteller i Hanoi', text: 'En kort, visuel shortlist med område, type og kort - uden at vælge ud fra stjerner alene.' },
+  { href: '/destinationer/hanoi/mad-i-hanoi/', label: 'Mad', title: 'Hvad skal man spise?', text: 'Phở, bún chả, bánh cuốn, chả cá og æggekaffe - med billeder og en enkel maddag.' },
+  { href: '/destinationer/hanoi/train-street/', label: 'Praktisk guide', title: 'Train Street', text: 'Hvor den ligger, hvordan adgang kan ændre sig, og hvorfor gamle togtider ikke bør styre hele dagen.' },
+  { href: '/destinationer/hanoi/lufthavn-til-centrum/', label: 'Transport', title: 'Lufthavn til centrum', text: 'Bus 86, Grab eller taxi - vælg efter bagage, tidspunkt og hvor dit hotel ligger.' },
+  { href: '/destinationer/hanoi/ninh-binh-fra-hanoi/', label: 'Dagstur', title: 'Ninh Binh fra Hanoi', text: 'Dagstur eller overnatning? Trang An, Hang Mua og hvordan vi ville bruge tiden.' },
+  { href: '/destinationer/hanoi/ha-long-bay-fra-hanoi/', label: 'Cruise', title: 'Ha Long Bay fra Hanoi', text: 'Sammenlign dagstur, én nat på vandet og de forskellige bugter før du vælger cruise.' },
 ];
 ---
 <ArticleLayout
-  title="Hanoi rejseguide 2026 | Hvor skal man bo, mad og dagsture"
-  description="Dansk rejseguide til Hanoi med billeder, video og praktiske råd om hotelområde, seværdigheder, mad, transport og dagsture til Ninh Binh og Ha Long Bay."
-  eyebrow="Nordvietnam"
-  heading="Hanoi: sådan ville vi planlægge de første dage"
-  intro="Hanoi kan virke ret voldsom den første time. Trafikken, lydene og de smalle gader kræver lidt tilvænning, men byen bliver hurtigt lettere, når du ikke prøver at nå for meget på én gang."
+  title="Hanoi rejseguide 2026 | Seværdigheder, 3 dage, hoteller og mad"
+  description="Dansk Hanoi-rejseguide med visuelle guider til seværdigheder, 3-dages rejseplan, områder, hoteller, mad, Train Street, lufthavn og ture til Ninh Binh og Ha Long Bay."
+  eyebrow="Nordvietnam · Hanoi hub"
+  heading="Hanoi: planlæg byen uden at drukne i lister"
+  intro="Hanoi er lettere at forstå, når du deler rejsen op i konkrete valg: hvor du skal bo, hvad du faktisk vil se, hvad du vil spise, og om du vil bruge byen som base for Ninh Binh eller Ha Long Bay. Denne side samler alle vores Hanoi-guider ét sted."
+  updated="15. september 2026"
   toc={toc}
   sources={sources}
 >
   <SectionMedia
     slot="heroMedia"
     src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1800"
-    alt="Gadeliv i Hanois gamle kvarter"
-    caption="Old Quarter giver et meget bedre billede af Hanoi end en liste over seværdigheder gør."
+    alt="Gadeliv i Hanois Old Quarter"
+    caption="Hanoi giver mere mening som områder og dage end som én lang liste over seværdigheder."
     credit="Richard Mortel / Wikimedia Commons"
     creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg"
     ratio="16 / 7"
   />
 
-  <h2 id="overblik">Hanoi i korte træk</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>Godt til</span><b>3 nætter</b></div>
-    <div class="fact"><span>Første gang</span><b>Bo omkring Old Quarter / Hoan Kiem</b></div>
-    <div class="fact"><span>God base for</span><b>Ninh Binh og Ha Long Bay</b></div>
+  <h2 id="start">Start her: vælg det spørgsmål du prøver at løse</h2>
+  <p>Hvis du allerede har booket fly, behøver du ikke læse alt fra toppen. Gå direkte til den guide, der svarer på dit næste valg.</p>
+
+  <div class="hub-grid">
+    {hubCards.map((card) => (
+      <a class="hub-card" href={card.href}>
+        <span>{card.label}</span>
+        <h3>{card.title}</h3>
+        <p>{card.text}</p>
+        <b>Åbn guiden →</b>
+      </a>
+    ))}
   </div>
-  <p>Hanoi er et oplagt første stop, hvis du rejser fra nord mod syd. Tre nætter er efter vores mening et godt udgangspunkt: nok til at lande efter flyrejsen, spise godt og se byen uden at bruge alle timer på sightseeing.</p>
+
+  <h2 id="plan">Hvor mange dage i Hanoi?</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>2 dage</span><b>Centrum + lidt historie</b></div>
+    <div class="fact"><span>3 dage</span><b>Vores udgangspunkt</b></div>
+    <div class="fact"><span>4-5 dage</span><b>Tilføj Ninh Binh eller Ha Long</b></div>
+  </div>
+  <p>Til en første rejse ville vi normalt planlægge <strong>tre nætter</strong> i Hanoi. Det giver tid til at lande efter flyrejsen, se centrum, spise godt og tage en historisk halvdag uden at alle timer bliver booket.</p>
+  <p>Hvis du har fire eller fem dage i området, ville vi ikke nødvendigvis bruge alle dagene inde i byen. Ninh Binh giver natur og landskab, mens Ha Long Bay giver en helt anden oplevelse på vandet.</p>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">Se vores 3-dages plan <span>Dag 1 i centrum, dag 2 med historie og en fleksibel dag 3.</span></a>
+  </div>
 
   <h2 id="bo">Hvor skal man bo?</h2>
-  <p>Hvis det er din første tur og du kun har 2-4 dage, ville vi bo i eller lige ved <strong>Old Quarter og Hoan Kiem</strong>. Du kan gå til meget, der er masser af mad omkring dig, og pickups til organiserede ture er ofte lettere herfra.</p>
-  <p>Tay Ho omkring West Lake er roligere og har mange caféer og internationale restauranter. Det kan være rart på et længere ophold, men på en kort førstegangsrejse bruger du mere tid i taxi eller Grab for at komme til de klassiske områder.</p>
-  <div class="callout"><strong>Hotelråd:</strong> Kig ikke kun på afstand i kilometer. En central placering, god lydisolering og ordentlige anmeldelser af sengen betyder mere i Hanoi end at spare lidt på hotellet langt ude.</div>
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Sammenlign Old Quarter, Hoan Kiem, Ba Dinh og Tay Ho.</span></a>
-    <a class="link-card" href="/destinationer/hanoi/bedste-hoteller/">Bedste hoteller i Hanoi <span>Se vores korte shortlist til forskellige budgetter og rejsetyper.</span></a>
-  </div>
-
-  <h2 id="oplevelser">Det skal du opleve</h2>
-
-  <h3>Old Quarter</h3>
-  <p>Gå rundt uden en alt for fast rute. Området er tæt, og det er mere behageligt at tage et par gader ad gangen end at forsøge at krydse hele kvarteret efter en lang Google Maps-liste.</p>
-  <SectionMedia
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1400"
-    alt="En travl gade i Hanois Old Quarter"
-    caption="Typisk gadeliv i Old Quarter med butikker, scootere og meget aktivitet tæt på fortovet."
-    credit="Richard Mortel / Wikimedia Commons"
-    creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg"
-  />
-  <p><strong>Hvornår ville vi gå her?</strong> Første eftermiddag og igen om aftenen. Du behøver ikke en guide for bare at gå rundt, men en food tour kan være nyttig, hvis du gerne vil have hjælp til de små spisesteder.</p>
-
-  <h3>Hoan Kiem-søen</h3>
-  <p>Brug søen som orienteringspunkt. Tidlig morgen er god, hvis du vil se byen før trafikken og varmen tager til. Om aftenen er området mere livligt.</p>
+  <p>På en kort førstegangsrejse ville vi bo omkring <strong>Old Quarter eller Hoan Kiem</strong>. Du kan gå til meget, der er mad overalt, og mange pickups til udflugter starter centralt.</p>
+  <p>Tay Ho er roligere og fungerer bedre på et længere ophold. Ba Dinh er interessant for historie og mere lokalt byliv. French Quarter er centralt, men mere roligt og ofte dyrere.</p>
   <SectionMedia
     src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoan%20Kiem%20Lake%20photo.jpg?width=1400"
     alt="Hoan Kiem-søen i centrum af Hanoi"
-    caption="Hoan Kiem ligger lige ved Old Quarter og er et nemt referencepunkt, når du bevæger dig rundt i centrum."
+    caption="For en kort første rejse er området omkring Hoan Kiem et meget praktisk udgangspunkt."
     credit="Tranhuutukkt / Wikimedia Commons"
     creditUrl="https://commons.wikimedia.org/wiki/File:Hoan_Kiem_Lake_photo.jpg"
     ratio="16 / 9"
   />
-  <p>Hvis du bor tæt på søen, ville vi ikke sætte en særskilt halv dag af til den. Gå forbi flere gange under opholdet i stedet - stemningen er forskellig om morgenen og om aftenen.</p>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Vælg område efter støj, gåafstand, pris og rejsetype.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/bedste-hoteller/">Bedste hoteller i Hanoi <span>Se hotelvalg og placeringer på et interaktivt kort.</span></a>
+  </div>
 
-  <h3>Văn Miếu - Litteraturtemplet</h3>
-  <p>Hvis du vil have mere end caféer og mad, er Litteraturtemplet et enkelt historisk stop at kombinere med centrum. Vælg hellere ét eller to historiske steder ordentligt end fem på en eftermiddag.</p>
-  <SectionMedia
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%20-%20Temple%20of%20Literature.jpg?width=1200"
-    alt="Khue Van Cac-pavillonen ved Litteraturtemplet i Hanoi"
-    caption="Khue Van Cac ved Văn Miếu. Besøget giver mest mening, hvis du tager dig tid til at læse lidt om stedets historie undervejs."
-    credit="P. Hughes / Wikimedia Commons"
-    creditUrl="https://commons.wikimedia.org/wiki/File:Hanoi_-_Temple_of_Literature.jpg"
-    ratio="4 / 3"
-    position="center 45%"
-  />
-  <p><strong>Praktisk:</strong> Vi ville tage en Grab eller taxi dertil fra Old Quarter og derefter gå videre til et andet område. Det er ikke nødvendigt at bygge hele dagen omkring besøget.</p>
+  <h2 id="se">Hvad skal man se?</h2>
+  <p>Vi ville ikke forsøge at nå 15 seværdigheder. Begynd med Old Quarter og Hoan Kiem, og vælg derefter et par steder efter interesse: Litteraturtemplet, Hoa Lo Prison, Imperial Citadel eller Ba Dinh-området.</p>
+  <p>Train Street er interessant, men adgang og togtider ændrer sig. Derfor har den sin egen praktiske guide i stedet for en fast “kom kl. 15:30”-anbefaling.</p>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/sevaerdigheder/">Seværdigheder i Hanoi <span>Prioriterede stop, forslag til én dag og interaktivt kort.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/train-street/">Train Street i Hanoi <span>Adgang, sikkerhed, områder og nyere video.</span></a>
+  </div>
 
   <VideoEmbed
     youtubeId="xId3cHWsta4"
     title="4K walking tour i Hanoi Old Quarter"
-    caption="Vil du forstå tempoet, trafikken og hvor tæt gaderne føles, giver en walking-video et bedre indtryk end stillbilleder alene. Videoen er fra en ekstern YouTube-kanal."
+    caption="En walking-video gør det nemmere at forstå trafik, fortove og afstanden mellem stederne end stillbilleder alene. Videoen er fra en ekstern YouTube-kanal."
   />
 
   <h2 id="mad">Mad i Hanoi</h2>
-  <p>Hanoi er ikke et sted, hvor vi ville spise alle måltider på hotellet. Mange af de mest interessante retter serveres på små steder, der kun laver én eller få ting.</p>
-  <p>Hvis du kun har tre dage, ville vi prioritere mindst <strong>phở, bún chả og én kop æggekaffe</strong>. Bánh cuốn og chả cá er gode næste valg, hvis du har mere tid.</p>
-
-  <FoodGrid items={food} />
-
-  <div class="callout"><strong>Sådan ville vi vælge spisested:</strong> Kig efter høj udskiftning, mange lokale gæster og et kort menukort. Vi ville normalt hellere spise på et travlt sted med fem retter end et tomt sted med 80 retter og billeder af alt.</div>
-
-  <AffiliateCard
-    title="Street food-tur i Hanoi"
-    text="God den første eller anden aften, hvis du gerne vil lære et par retter og bestillingsvaner at kende i stedet for selv at gætte dig frem."
-    label="God til første tur"
+  <p>Hvis du kun har få dage, ville vi begynde med phở, bún chả, bánh cuốn, chả cá og én æggekaffe. Du behøver ikke finde “den bedste” version af hver ret før afrejse. Et travlt specialsted med få retter er ofte et bedre udgangspunkt end et langt menukort.</p>
+  <SectionMedia
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=1400"
+    alt="Bún chả med grillet svinekød og nudler"
+    caption="Bún chả er en ret, vi især ville gemme en frokost til i Hanoi."
+    credit="Valentin Orange / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Bun-cha-hanoi.jpg"
+    ratio="4 / 3"
   />
-
-  <h2 id="transport">Transport i Hanoi</h2>
-  <p>Til korte afstande i centrum går vi helst. Til længere ture er både almindelig taxi og Grab praktiske.</p>
-  <p>Hvis du er vant til apps, er Grab let, fordi du kan se pris og destination på forhånd. Hvis du lige er landet med store kufferter eller ikke gider stå med telefonen ved en travl pickup-zone, er en taxi fra den officielle taxikø eller en transfer bestilt af hotellet ofte mere afslappet.</p>
-  <p>GrabBike er hurtig til én person uden bagage, men vi ville ikke gøre det til første transportoplevelse direkte fra lufthavnen.</p>
-  <div class="callout"><strong>At krydse vejen:</strong> Vent ikke på en dansk-lignende pause i trafikken - den kommer ofte ikke. Kryds roligt og forudsigeligt, og undgå pludselige retningsskift.</div>
-
-  <h2 id="dage">Hvor mange dage skal man bruge?</h2>
-  <ul>
-    <li><strong>1 dag:</strong> kun hvis Hanoi mest er transit.</li>
-    <li><strong>2 dage:</strong> nok til centrum, mad og et par seværdigheder.</li>
-    <li><strong>3 nætter:</strong> vores valg til første gang.</li>
-    <li><strong>4+ dage:</strong> fint hvis du vil have museer, flere kvarterer eller tage rejsen meget roligt.</li>
-  </ul>
-
-  <h2 id="dagsture">Dagsture fra Hanoi</h2>
-  <h3>Ninh Binh</h3>
-  <p>Har du kun én naturdag, ville vi vælge Ninh Binh. En organiseret dagstur er praktisk, hvis du vil beholde samme hotel i Hanoi. Har du mere tid, er en overnatning bedre, fordi du undgår at presse bådtur, udsigtspunkt og transport ind på samme dag.</p>
-  <AffiliateCard
-    title="Ninh Binh - heldagstur fra Hanoi"
-    text="Vælg en tur med 2-3 hovedstop og tydelig pickup frem for den længste liste af seværdigheder."
-    label="Nem dagstur"
-  />
-
-  <h3>Ha Long Bay</h3>
-  <p>Hvis Ha Long Bay er vigtig for dig, ville vi normalt tage én overnatning på vandet. En dagstur kan fungere, men det bliver en lang dag med meget transport.</p>
-  <p>Vi ville heller ikke lægge et stramt indenrigsfly få timer efter et cruise. Båd- og vejtransport kan tage længere tid end planlagt, så lidt luft i planen er pengene værd.</p>
-
-  <h2>Fortsæt planlægningen</h2>
   <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Vælg område før hotel.</span></a>
-    <a class="link-card" href="/destinationer/hanoi/bedste-hoteller/">Bedste hoteller i Hanoi <span>Fem konkrete hotelvalg til forskellige rejsetyper.</span></a>
-    <a class="link-card" href="/ture/ninh-binh-fra-hanoi/">Ninh Binh fra Hanoi <span>Dagstur eller overnatning? Se forskellen.</span></a>
-    <a class="link-card" href="/ture/halong-bay-cruise/">Ha Long Bay cruise <span>Se hvad vi ville tjekke før booking.</span></a>
-    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvor Hanoi passer ind i en rundrejse.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Se retterne med billeder og en enkel plan for en maddag.</span></a>
   </div>
+
+  <h2 id="praktisk">Praktisk: fra lufthavnen og rundt i byen</h2>
+  <p>Noi Bai-lufthavnen ligger uden for centrum. Med let bagage kan Bus 86 være en god budgetløsning. Efter en lang flyrejse, med børn eller store kufferter ville vi ofte vælge Grab, officiel taxi eller en bil arrangeret af hotellet.</p>
+  <p>Inde i centrum går vi gerne korte afstande. Til Ba Dinh, Litteraturtemplet eller West Lake er Grab/taxi ofte mere praktisk end at gå langt i varme og tæt trafik.</p>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/lufthavn-til-centrum/">Hanoi lufthavn til centrum <span>Sammenlign Bus 86, Grab og taxi efter din situation.</span></a>
+  </div>
+
+  <h2 id="videre">Videre fra Hanoi</h2>
+  <div class="trip-grid">
+    <a href="/destinationer/hanoi/ninh-binh-fra-hanoi/" class="trip-card">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Trang%20An%2C%20Ninh%20Binh.jpg?width=900" alt="Trang An i Ninh Binh" loading="lazy" referrerpolicy="no-referrer" />
+      <div><span>Natur · Bådtur</span><h3>Ninh Binh</h3><p>Dagstur er mulig. Én nat er bedre, hvis du har plads i rejseplanen.</p></div>
+    </a>
+    <a href="/destinationer/hanoi/ha-long-bay-fra-hanoi/" class="trip-card">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/HALONG%20BAY%20.jpg?width=900" alt="Ha Long Bay" loading="lazy" referrerpolicy="no-referrer" />
+      <div><span>Cruise · Kalkstensøer</span><h3>Ha Long Bay</h3><p>Vælg mellem en lang dagstur og et roligere cruise med overnatning.</p></div>
+    </a>
+  </div>
+
+  <div class="callout"><strong>Affiliate kommer senere:</strong> Vi bygger først informationsarkitekturen, søgeresultaterne og brugeroplevelsen. Hotel-, tour- og cruise-links bliver først koblet på, når de passer naturligt til sider med reel trafik.</div>
 </ArticleLayout>
+
+<style>
+.hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:26px 0 36px}.hub-card{display:flex;flex-direction:column;min-height:220px;padding:24px;border:1px solid var(--border);border-radius:22px;background:rgba(255,255,255,.78);color:inherit!important;text-decoration:none!important;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.hub-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.28);box-shadow:0 16px 38px rgba(16,55,41,.08)}.hub-card>span,.trip-card span{font-size:.73rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--green-700)}.hub-card h3{margin-top:8px;font-size:1.35rem}.hub-card p{margin-top:10px!important;color:var(--muted)!important}.hub-card b{margin-top:auto;padding-top:18px;color:var(--green-700)}.trip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}.trip-card{overflow:hidden;border:1px solid var(--border);border-radius:22px;background:#fffdf8;color:inherit!important;text-decoration:none!important}.trip-card img{width:100%;height:220px;object-fit:cover}.trip-card div{padding:20px}.trip-card h3{margin-top:5px}.trip-card p{margin-top:8px!important;color:var(--muted)!important}.trip-card:hover{border-color:rgba(28,106,77,.3)}
+@media(max-width:700px){.hub-grid,.trip-grid{grid-template-columns:1fr}.trip-card img{height:200px}}
+</style>
