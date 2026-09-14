@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const hotels = [
+  { tag:'Bedst samlet', name:'Peridot Grand Luxury Boutique Hotel', area:'Old Quarter', why:'God hvis du vil bo centralt uden at give afkald på pool, rooftop og en mere rolig hoteloplevelse.', fit:'Par · første gang · komfort', query:'Peridot+Grand+Luxury+Boutique+Hotel+Hanoi' },
+  { tag:'Boutique', name:'La Siesta Classic Ma May', area:'Old Quarter', why:'Meget central placering og et godt valg, hvis du vil kunne gå til mad, caféer og seværdigheder.', fit:'Par · byliv · kort ophold', query:'La+Siesta+Classic+Ma+May+Hanoi' },
+  { tag:'God værdi', name:'Salute Premium Hotel & Spa', area:'Old Quarter', why:'Et stærkt mellemklassevalg, hvis beliggenhed og komfort betyder mere end store resortfaciliteter.', fit:'Par · venner · value', query:'Salute+Premium+Hotel+Spa+Hanoi' },
+  { tag:'Familie', name:'Hanoi Emerald Waters Hotel Valley', area:'Hoan Kiem', why:'Praktisk base med nem adgang til søen og Old Quarter. Relevant hvis I vil have central beliggenhed uden at bo midt i den mest hektiske del.', fit:'Familier · første gang', query:'Hanoi+Emerald+Waters+Hotel+Valley' },
+  { tag:'Luksus', name:'Capella Hanoi', area:'French Quarter', why:'Til dig der prioriterer design, service og ro højere end at bo midt i Old Quarters mest travle gader.', fit:'Luksus · par · special occasion', query:'Capella+Hanoi' },
+];
+---
+<BaseLayout title="Bedste hoteller i Hanoi 2026 | 5 gode valg | RejsTilVietnam.dk" description="Vores korte guide til de bedste hoteller i Hanoi: centrale boutiquehoteller, familievenlige valg og luksus - med fokus på område, komfort og hvem hotellet passer til.">
+  <section class="hotel-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Hoteller i Hanoi</p>
+        <h1>5 hoteller vi ville starte med.</h1>
+        <p class="lead">I Hanoi er <strong>området vigtigere end antallet af stjerner</strong>. Først vælger vi, hvor vi vil bo. Derefter sammenligner vi hotellerne.</p>
+        <div class="hero-actions"><a class="btn btn--primary" href="#hoteller">Se de 5 hoteller</a><a class="btn btn--outline" href="/destinationer/hanoi/hvor-skal-man-bo/">Vælg område først →</a></div>
+      </div>
+      <div class="hero-photo"><img src="https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=84" alt="Hanoi med tæt byliv og klassisk arkitektur" /></div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container quick-grid">
+      <div><span>Første gang</span><b>Old Quarter / Hoan Kiem</b></div>
+      <div><span>Mere ro</span><b>French Quarter</b></div>
+      <div><span>Længere ophold</span><b>Tay Ho</b></div>
+      <div><span>Vores regel</span><b>Placering før stjerner</b></div>
+    </div>
+  </section>
+
+  <section class="section hotels-section" id="hoteller">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">Shortlist</p><h2>Gode valg til forskellige rejser.</h2></div><p>Priser ændrer sig meget efter dato. Derfor rangerer vi ikke efter dagens laveste pris, men efter område, type og hvor let hotellet er at bruge som base.</p></div>
+      <div class="hotel-list">
+        {hotels.map((hotel, i) => (
+          <article class="hotel-card">
+            <div class="hotel-number">0{i+1}</div>
+            <div class="hotel-main">
+              <div class="hotel-meta"><span>{hotel.tag}</span><small>{hotel.area}</small></div>
+              <h3>{hotel.name}</h3>
+              <p>{hotel.why}</p>
+              <div class="fit">Passer godt til: <b>{hotel.fit}</b></div>
+            </div>
+            <div class="hotel-action"><a class="btn btn--outline" href={`https://www.booking.com/searchresults.html?ss=${hotel.query}`} target="_blank" rel="noopener nofollow">Se aktuelle priser ↗</a><small>Eksternt link · ikke annoncelink endnu</small></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section decision-section">
+    <div class="container decision-grid">
+      <div><p class="eyebrow">Vælg hurtigt</p><h2>Hvis du bare vil have ét svar.</h2></div>
+      <div class="decision-card"><b>Første rejse til Hanoi</b><p>Bo omkring Old Quarter eller den nordlige del af Hoan Kiem. Det gør de første dage markant lettere.</p></div>
+      <div class="decision-card"><b>Vil du sove mere roligt?</b><p>Se mod French Quarter eller gader lige syd for Old Quarter i stedet for midt ved Beer Street.</p></div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container next-card"><div><p class="eyebrow">Næste valg</p><h2>Er du stadig i tvivl om området?</h2><p>Læs områdeguiden først. Den gør hotelvalget meget nemmere.</p></div><a class="btn btn--primary" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? →</a></div>
+  </section>
+</BaseLayout>
+
+<style>
+.hotel-hero{padding:76px 0 56px;background:linear-gradient(180deg,#f4ecdc 0%,var(--cream) 100%)}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}.hotel-hero h1{font-size:clamp(2.8rem,6vw,5.3rem)}.hotel-hero .lead{margin-top:20px}.hero-actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.hero-photo{overflow:hidden;border-radius:32px;box-shadow:var(--shadow);aspect-ratio:4/3}.hero-photo img{width:100%;height:100%;object-fit:cover}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.quick-grid>div{padding:20px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.7)}.quick-grid span{display:block;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;font-weight:800}.quick-grid b{display:block;margin-top:5px;color:var(--green-950)}.hotels-section{background:#f5efe2}.hotel-list{display:grid;gap:14px}.hotel-card{display:grid;grid-template-columns:72px 1fr 220px;gap:22px;align-items:center;padding:24px;background:#fffdf8;border:1px solid var(--border);border-radius:24px}.hotel-number{font:700 1.35rem Georgia,serif;color:var(--coral)}.hotel-meta{display:flex;gap:10px;align-items:center}.hotel-meta span{padding:5px 9px;border-radius:999px;background:var(--green-100);color:var(--green-800);font-size:.74rem;font-weight:850}.hotel-meta small{color:var(--muted);font-weight:700}.hotel-main h3{margin-top:8px;font-size:1.55rem}.hotel-main p{margin-top:8px;color:var(--muted)}.fit{margin-top:12px;font-size:.9rem;color:var(--muted)}.hotel-action{text-align:right}.hotel-action .btn{width:100%}.hotel-action small{display:block;margin-top:8px;color:#87908b;font-size:.72rem}.decision-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:20px;align-items:stretch}.decision-card{padding:26px;border-radius:22px;background:var(--green-950);color:white}.decision-card b{font-size:1.18rem}.decision-card p{margin-top:8px;color:rgba(255,255,255,.72)}.next-card{padding:34px;border-radius:28px;background:var(--sand);display:flex;justify-content:space-between;gap:28px;align-items:center}.next-card p:not(.eyebrow){margin-top:10px;color:#48554f}
+@media(max-width:900px){.hero-grid,.decision-grid{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}.hotel-card{grid-template-columns:54px 1fr}.hotel-action{grid-column:2;text-align:left;max-width:260px}}
+@media(max-width:640px){.quick-grid{grid-template-columns:1fr}.hotel-card{grid-template-columns:1fr}.hotel-number{display:none}.hotel-action{grid-column:auto;max-width:none}.next-card{align-items:flex-start;flex-direction:column}.hero-actions{flex-direction:column}}
+</style>
