@@ -7,7 +7,8 @@ const {
   eyebrow = 'Rejseguide',
   heading,
   intro,
-  updated = '14. september 2026',
+  updated = '15. september 2026',
+  dateModified = '2026-09-15',
   toc = [],
   sources = [],
 } = Astro.props;
@@ -22,7 +23,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
     description,
     mainEntityOfPage: canonical,
     inLanguage: 'da-DK',
-    dateModified: '2026-09-14',
+    dateModified,
     publisher: {
       '@type': 'Organization',
       name: 'RejsTilVietnam.dk',
