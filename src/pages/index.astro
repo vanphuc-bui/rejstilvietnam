@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DestinationCard from '../components/DestinationCard.astro';
+
+const destinations = [
+  { name: 'Hanoi', kicker: 'Nordvietnam', description: 'Gadekøkkener, gamle kvarterer og base for Ninh Binh og Ha Long.', href: '/destinationer/', image: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=82' },
+  { name: 'Hoi An', kicker: 'Centralvietnam', description: 'Lanternelys, strande, cykelture og nogle af landets bedste madoplevelser.', href: '/destinationer/', image: 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=82' },
+  { name: 'Phu Quoc', kicker: 'Sydvietnam', description: 'Ø-liv, solnedgange og et roligt stop til sidst på Vietnam-rejsen.', href: '/destinationer/', image: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=82' },
+];
+const practical = [
+  ['☀️','Bedste rejsetid','Hvornår er vejret bedst i nord, midt og syd?'],
+  ['🛂','Visum & indrejse','Det praktiske før afrejse fra Danmark.'],
+  ['💰','Priser i Vietnam','Budget, kontanter, kort og hvad ting typisk koster.'],
+  ['🛵','Transport','Fly, tog, Grab og den nemmeste vej rundt.'],
+];
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow hero-eye">Dansk guide · Lokalt perspektiv</p>
+        <h1>Vietnam,<br/><em>uden gætterier.</em></h1>
+        <p>Planlæg en bedre Vietnam-rejse med danske guides, konkrete rejseplaner og oplevelser, der er værd at bruge tiden på.</p>
+        <div class="hero-actions"><a class="btn btn--light" href="/rejseguide/">Planlæg din rejse →</a><a class="text-link" href="/destinationer/">Se destinationer</a></div>
+      </div>
+      <div class="hero-note"><span>🇻🇳</span><div><b>Første gang i Vietnam?</b><p>Start med vores trin-for-trin rejseguide.</p></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">Hvor vil du hen?</p><h2>Tre steder at starte</h2></div><p>Fra storby og gadekøkken til lanterner og tropiske strande. Vi bygger guiderne ud løbende.</p></div>
+      <div class="grid grid--3">{destinations.map((d) => <DestinationCard {...d} />)}</div>
+    </div>
+  </section>
+
+  <section class="section practical">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">Det praktiske</p><h2>Få styr på rejsen</h2></div><a class="btn btn--outline" href="/rejseguide/">Hele rejseguiden →</a></div>
+      <div class="grid grid--4">
+        {practical.map(([icon,title,text]) => <a class="card icon-card" href="/rejseguide/"><span class="icon">{icon}</span><h3>{title}</h3><p>{text}</p><span class="more">Læs guiden →</span></a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section story">
+    <div class="container story-grid">
+      <div class="story-copy"><p class="eyebrow">Rejs smartere</p><h2>Ikke en rejsebureau-side.</h2><p class="lead">RejsTilVietnam.dk er en uafhængig guide. Vi forklarer Vietnam enkelt og linker videre til etablerede bookingplatforme, når en oplevelse er værd at overveje.</p><a class="btn btn--primary" href="/om/">Sådan fungerer siden →</a></div>
+      <div class="route-card"><span>Forslag</span><h3>Vietnam på 14 dage</h3><ol><li><b>01</b> Hanoi</li><li><b>02</b> Ninh Binh</li><li><b>03</b> Hoi An</li><li><b>04</b> Ho Chi Minh City</li></ol><a href="/rejseplaner/">Se rejseplaner →</a></div>
+    </div>
+  </section>
+
+  <section class="section newsletter"><div class="container news-card"><div><p class="eyebrow">Nye guider på vej</p><h2>Byg din Vietnam-rejse trin for trin.</h2><p>Vi starter med destinationer, rejseplaner og de mest nyttige råd for danske rejsende.</p></div><a class="btn btn--light" href="/rejseguide/">Start her →</a></div></section>
+</BaseLayout>
+<style>
+.hero { position: relative; min-height: 720px; overflow: hidden; background: var(--green-950); color: white; }
+.hero-bg { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,28,21,.94) 0%, rgba(5,28,21,.72) 44%, rgba(5,28,21,.18) 74%), url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=2000&q=88') center/cover; }
+.hero-inner { min-height: 720px; position: relative; display: flex; align-items: center; justify-content: space-between; padding-top: 48px; padding-bottom: 48px; }
+.hero-copy { max-width: 760px; }
+.hero-eye { color: #f6d99c; }
+.hero-copy h1 { color: white; max-width: 800px; }
+.hero-copy h1 em { color: #f2c986; font-family: Georgia, serif; font-weight: 400; }
+.hero-copy > p:not(.eyebrow) { margin-top: 24px; max-width: 610px; color: rgba(255,255,255,.78); font-size: 1.18rem; }
+.hero-actions { margin-top: 30px; display: flex; align-items: center; gap: 22px; }
+.text-link { font-weight: 800; border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 3px; }
+.hero-note { align-self: end; margin-bottom: 12px; width: 300px; display: flex; gap: 14px; padding: 18px; border-radius: 20px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(16px); }
+.hero-note > span { font-size: 1.8rem; }
+.hero-note p { color: rgba(255,255,255,.7); font-size: .9rem; margin-top: 3px; }
+.practical { background: #f5efe2; }
+.story-grid { display: grid; grid-template-columns: 1.4fr .8fr; gap: 28px; align-items: stretch; }
+.story-copy { padding: 42px 0; }
+.story-copy .lead { margin: 22px 0 28px; }
+.route-card { background: var(--green-950); color: white; padding: 32px; border-radius: 30px; box-shadow: var(--shadow); }
+.route-card > span { color: #f0c986; font-size: .76rem; font-weight: 850; text-transform: uppercase; letter-spacing: .12em; }
+.route-card h3 { color: white; font-size: 2rem; margin-top: 6px; }
+.route-card ol { list-style: none; padding: 0; margin: 24px 0; }
+.route-card li { display: flex; gap: 14px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.route-card li b { color: #f0c986; }
+.route-card a { font-weight: 800; }
+.newsletter { padding-top: 16px; }
+.news-card { padding: 44px; background: linear-gradient(125deg, #14533d, #0c2f25); color: white; border-radius: 34px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.news-card h2 { color: white; font-size: clamp(2rem,4vw,3rem); }
+.news-card p:not(.eyebrow) { color: rgba(255,255,255,.72); margin-top: 12px; }
+.news-card .eyebrow { color: #f3cf8e; }
+@media(max-width:900px){ .hero-note{display:none}.story-grid{grid-template-columns:1fr}.hero{min-height:650px}.hero-inner{min-height:650px}.news-card{align-items:flex-start;flex-direction:column} }
+@media(max-width:640px){ .hero-actions{align-items:stretch;flex-direction:column}.text-link{text-align:center}.news-card{padding:28px} }
+</style>
