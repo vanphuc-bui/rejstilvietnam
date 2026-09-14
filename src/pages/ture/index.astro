@@ -1,14 +1,56 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AffiliateCard from '../../components/AffiliateCard.astro';
+
+const guides = [
+  { kicker:'Cruise', title:'Ha Long Bay', text:'Dagstur, 1 nat eller 2 nætter? Sammenlign ud fra rute, skib og transfer – ikke kun billeder.', href:'/ture/halong-bay-cruise/' },
+  { kicker:'Fra Hanoi', title:'Ninh Binh', text:'Dagstur eller overnatning? Se hvad en god tur bør indeholde, og hvilke stop du kan springe over.', href:'/ture/ninh-binh-fra-hanoi/' },
+  { kicker:'Mad & storby', title:'Hanoi street food', text:'Vi bygger næste guide til madture og de vigtigste ting at tjekke før booking.', href:'/destinationer/hanoi/' },
+];
 ---
-<BaseLayout title="Ture og oplevelser i Vietnam | RejsTilVietnam.dk" description="Håndplukkede ture og oplevelser i Vietnam. Affiliate-links kommer først, når RejsTilVietnam har valgt relevante partnere.">
-<section class="page-hero"><div class="container"><p class="eyebrow">Ture & oplevelser</p><h1>Oplevelser, der fortjener en plads i rejsen.</h1><p class="lead">Denne sektion er klar til Viator og TourRadar. Links er foreløbig placeholders, indtil affiliate-kontiene er aktive.</p></div></section>
-<section class="section section--tight"><div class="container"><div style="display:grid;gap:16px">
-<AffiliateCard title="Ha Long Bay – dagscruise" text="Et oplagt valg, hvis du har få dage i Hanoi og vil opleve bugten uden overnatning." />
-<AffiliateCard title="Ninh Binh – dagstur fra Hanoi" text="Natur, kalkstenslandskaber og bådtur – en af de nemmeste dagsture fra hovedstaden." label="God til førstegangsrejsen" />
-<AffiliateCard title="Hanoi street food tour" text="En lille guidet madtur er en nem måde at forstå retter, bestilling og lokale spisesteder." />
-<AffiliateCard title="Mekongdeltaet fra Ho Chi Minh City" text="En klassisk dagstur sydpå med flodliv, mindre landsbyer og lokal mad." />
-</div></div></section>
-<section class="section"><div class="container"><div class="notice"><strong>Affiliate-status:</strong> Ingen kommercielle links er aktive endnu. Når Viator/TourRadar er tilsluttet, markeres alle betalte links tydeligt som “Annoncelink”.</div></div></section>
+<BaseLayout title="Ture og oplevelser i Vietnam | RejsTilVietnam.dk" description="Guides til ture og oplevelser i Vietnam: Ha Long Bay cruise, Ninh Binh fra Hanoi, food tours og senere håndplukkede Viator- og TourRadar-links.">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Ture & oplevelser</p>
+      <h1>Book mindre. Vælg bedre.</h1>
+      <p class="lead">Vi laver først en guide til oplevelsen – og tilføjer derefter affiliate-links til de ture, der faktisk passer til guiden.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container grid grid--3">
+      {guides.map((guide) => (
+        <a class="card tour-guide" href={guide.href}>
+          <span>{guide.kicker}</span>
+          <h3>{guide.title}</h3>
+          <p>{guide.text}</p>
+          <b>Læs før du booker →</b>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container article-shell">
+      <article class="prose">
+        <p class="eyebrow">Vores princip</p>
+        <h2>Affiliate-linket kommer efter anbefalingen.</h2>
+        <p>RejsTilVietnam.dk tager ikke imod betaling fra den rejsende og gennemfører ikke bookingen. Når affiliate-programmerne er aktive, sender et tydeligt markeret <strong>Annoncelink</strong> dig videre til bookingplatformen.</p>
+        <p>Det gør det muligt at holde selve guiden fokuseret på rute, kvalitet, timing og hvem oplevelsen passer til.</p>
+        <div class="notice"><strong>Status:</strong> Ingen kommercielle links er aktive endnu. Viator/TourRadar-links bliver først indsat, når partnerkontiene er godkendt.</div>
+      </article>
+      <aside class="card sidebar">
+        <h3>Før vi anbefaler</h3>
+        <p style="margin-top:12px;color:var(--muted)">Vi ser på rute, seneste anmeldelser, gruppestørrelse, transport, inkluderede ydelser og afbestillingsvilkår.</p>
+      </aside>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+.tour-guide { padding: 28px; transition: transform .2s ease, border-color .2s ease; }
+.tour-guide:hover { transform: translateY(-3px); border-color: rgba(28,106,77,.25); }
+.tour-guide > span { color: var(--coral); font-size: .75rem; font-weight: 850; text-transform: uppercase; letter-spacing: .1em; }
+.tour-guide h3 { margin-top: 8px; font-size: 1.7rem; }
+.tour-guide p { margin-top: 10px; color: var(--muted); }
+.tour-guide b { display:inline-block; margin-top:20px; color:var(--green-700); }
+</style>
