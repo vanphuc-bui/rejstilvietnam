@@ -1,12 +1,15 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import FoodGrid from '../../../components/FoodGrid.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 const toc = [
   { id: 'overblik', label: 'Hoi An i korte træk' },
   { id: 'bo', label: 'Hvor skal man bo?' },
   { id: 'oplevelser', label: 'Hvad er værd at bruge tid på?' },
-  { id: 'mad', label: 'Mad og madlavning' },
+  { id: 'mad', label: 'Mad du bør prøve' },
   { id: 'strand', label: 'Strand og cykling' },
   { id: 'vejret', label: 'Bedste rejsetid' },
   { id: 'dage', label: 'Hvor mange dage?' },
@@ -15,22 +18,17 @@ const sources = [
   { label: 'Vietnam Tourism - Hoi An highlights', href: 'https://www.vietnam.travel/things-to-do/7-things-to-do-hoi-an' },
   { label: 'Vietnam Tourism - Weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
 ];
+const food = [
+  { name:'Cao lầu', when:'Frokost / aften', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Cao%20l%E1%BA%A7u%20H%E1%BB%99i%20An.jpg?width=1200', alt:'Cao lau i Hoi An', text:'Tykke nudler med svinekød, urter og sprøde elementer. Det er den ret, vi først ville prøve i Hoi An.', tip:'Bestil den et sted, der har cao lầu som en af få hovedretter, frem for på en meget lang turistmenu.', credit:'Prenn / Wikimedia Commons', creditUrl:'https://commons.wikimedia.org/wiki/File:Cao_l%E1%BA%A7u_H%E1%BB%99i_An.jpg' },
+  { name:'White rose', when:'Snack / let måltid', image:'https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh%20bao%20b%C3%A1nh%20v%E1%BA%A1c%20-%20hoi%20an%20%282024%29.jpg?width=1200', alt:'White rose dumplings i Hoi An', text:'Små dampede dumplings med tynd dej og fyld. De er milde og nemme at dele som ekstra ret.', tip:'God som en ret ved siden af noget andet. Vi ville ikke bygge et helt måltid omkring dem.', credit:'Chainwit / Wikimedia Commons', creditUrl:'https://commons.wikimedia.org/wiki/File:B%C3%A1nh_bao_b%C3%A1nh_v%E1%BA%A1c_-_hoi_an_(2024).jpg' },
+  { name:'Mì Quảng', when:'Frokost', image:'https://commons.wikimedia.org/wiki/Special:FilePath/M%C3%AC%20Qu%E1%BA%A3ng.jpg?width=1200', alt:'Mi Quang med nudler, urter og topping', text:'En regional nudelret med relativt lidt bouillon, urter, kød eller rejer og sprød riskiks.', tip:'Prøv den også i Da Nang. Retten hører til hele Quang Nam-området og smager forskelligt fra sted til sted.', credit:'SauceSupreme / Wikimedia Commons', creditUrl:'https://commons.wikimedia.org/wiki/File:M%C3%AC_Qu%E1%BA%A3ng.jpg' },
+];
 ---
-<ArticleLayout
-  title="Hoi An rejseguide 2026 | Hvor skal man bo, mad og strand"
-  description="Dansk guide til Hoi An med praktiske råd om hotelområde, antal dage, strand, cykling, mad og bedste rejsetid."
-  eyebrow="Centralvietnam"
-  heading="Hoi An: sådan får du mest ud af nogle rolige dage"
-  intro="Hoi An er bedst, hvis du ikke prøver at gøre den gamle by til endnu en sightseeing-liste. Brug stedet som en pause i rundrejsen og vælg hotel efter, om du helst vil være tæt på byen eller stranden."
-  toc={toc}
-  sources={sources}
->
+<ArticleLayout title="Hoi An rejseguide 2026 | Hvor skal man bo, mad og strand" description="Dansk guide til Hoi An med billeder, video og praktiske råd om hotelområde, mad, strand, cykling og bedste rejsetid." eyebrow="Centralvietnam" heading="Hoi An: sådan får du mest ud af nogle rolige dage" intro="Hoi An er bedst, hvis du ikke prøver at gøre den gamle by til endnu en sightseeing-liste. Brug stedet som en pause i rundrejsen og vælg hotel efter, om du helst vil være tæt på byen eller stranden." toc={toc} sources={sources}>
+  <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoi%20An%20lanterns.jpg?width=1800" alt="Røde lanterner i Hoi An" caption="Lanternerne er en del af Hoi Ans visuelle identitet, men byen er bedst, når du også kommer ud i sidegaderne og området omkring centrum." credit="Lishuilynn / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Hoi_An_lanterns.jpg" ratio="16 / 7" />
+
   <h2 id="overblik">Hoi An i korte træk</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>Godt til</span><b>3-4 nætter</b></div>
-    <div class="fact"><span>Første gang</span><b>Bo tæt på den gamle by</b></div>
-    <div class="fact"><span>Hvis strand er vigtig</span><b>Se mod An Bang</b></div>
-  </div>
+  <div class="fact-grid"><div class="fact"><span>Godt til</span><b>3-4 nætter</b></div><div class="fact"><span>Første gang</span><b>Bo tæt på den gamle by</b></div><div class="fact"><span>Hvis strand er vigtig</span><b>Se mod An Bang</b></div></div>
   <p>Hoi An er lille nok til, at du hurtigt lærer området at kende. Det gør byen til et godt sted at sænke tempoet efter Hanoi eller før Ho Chi Minh City.</p>
 
   <h2 id="bo">Hvor skal man bo?</h2>
@@ -41,21 +39,22 @@ const sources = [
   <h2 id="oplevelser">Hvad er værd at bruge tid på?</h2>
   <h3>Den gamle by</h3>
   <p>Kom tidligt om morgenen, hvis du vil se gaderne uden de største grupper. Om aftenen er stemningen god, men der er også markant flere mennesker.</p>
+  <SectionMedia src="https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1600&q=82" alt="Gule facader i den gamle by i Hoi An" caption="Den gamle by er kompakt. Vi ville gå rundt i små bidder i stedet for at følge en lang liste af seværdigheder." />
   <p>Vi ville ikke planlægge fem historiske bygninger på én dag. Gå rundt, vælg et par steder, og brug resten af tiden på café, mad og små sidegader.</p>
+
+  <VideoEmbed youtubeId="U0qPJRrEfbg" title="4K walking tour i Hoi An" caption="Walking-videoen viser bedre end et foto, hvor tæt gaderne er, og hvordan stemningen ændrer sig gennem den gamle by. Videoen ligger hos en ekstern YouTube-kanal." />
 
   <h3>My Son</h3>
   <p>My Son er et fint valg, hvis du gerne vil have mere historie og kultur ind i opholdet. Tag helst af sted tidligt på dagen. Varmen kan gøre en sen formiddagstur mere trættende end selve besøget.</p>
 
-  <h2 id="mad">Mad og madlavning</h2>
-  <p>Prøv lokale retter som <strong>cao lầu</strong>, <strong>white rose dumplings</strong> og <strong>mì Quảng</strong>. Vi ville sprede måltiderne ud over flere steder i stedet for at gå efter én restaurant med en lang "best of Hoi An"-menu.</p>
-  <AffiliateCard
-    title="Madlavningskursus i Hoi An"
-    text="Godt valg, hvis kurset også inkluderer marked eller lokale råvarer. Tjek gruppestørrelse og hvor meget af tiden der faktisk bruges på madlavning."
-    label="God på en rolig dag"
-  />
+  <h2 id="mad">Mad du bør prøve i Hoi An</h2>
+  <p>Vi ville ikke nøjes med én restaurant med en lang "best of Hoi An"-menu. Tre retter er særligt oplagte at prøve, fordi de fortæller mere om området end endnu en international café.</p>
+  <FoodGrid items={food} />
+  <AffiliateCard title="Madlavningskursus i Hoi An" text="Godt valg, hvis kurset også inkluderer marked eller lokale råvarer. Tjek gruppestørrelse og hvor meget af tiden der faktisk bruges på madlavning." label="God på en rolig dag" />
 
   <h2 id="strand">Strand, cykling og landskab</h2>
   <p>En cykeltur ud mellem rismarkerne er en god kontrast til den gamle by. Men midt på dagen kan varmen være hård, så tidlig morgen eller sen eftermiddag er mere behagelig.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/An%20Bang%20Beach%20%2846353448872%29.jpg?width=1500" alt="An Bang Beach ved Hoi An" caption="An Bang er tæt nok på Hoi An til en halv stranddag. Du behøver ikke flytte hotel for at få strand med i programmet." credit="Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/Category:An_Bang_Beach" ratio="16 / 9" />
   <p>An Bang er let at kombinere med byen. Hvis du bare vil have en halv stranddag, ville vi tage taxi/Grab ud og tilbage i stedet for at flytte hotel.</p>
   <div class="callout"><strong>Hvis du rejser med små børn eller meget bagage:</strong> Cykel er hyggeligt, men ikke nødvendigvis den praktiske løsning til alt. Brug den som aktivitet, ikke som eneste transportform.</div>
 
@@ -65,16 +64,8 @@ const sources = [
   <p>Hvis du allerede har booket en efterårsrejse, ville vi ikke droppe Hoi An automatisk. Vi ville bare undgå ikke-refunderbare båd- og strandaktiviteter langt i forvejen.</p>
 
   <h2 id="dage">Hvor mange dage?</h2>
-  <ul>
-    <li><strong>2 nætter:</strong> nok til den gamle by, men det bliver et kort stop.</li>
-    <li><strong>3-4 nætter:</strong> det vi ville vælge første gang.</li>
-    <li><strong>5+ nætter:</strong> giver mening, hvis Hoi An også skal fungere som strand- og afslapningsdel af rejsen.</li>
-  </ul>
+  <ul><li><strong>2 nætter:</strong> nok til den gamle by, men det bliver et kort stop.</li><li><strong>3-4 nætter:</strong> det vi ville vælge første gang.</li><li><strong>5+ nætter:</strong> giver mening, hvis Hoi An også skal fungere som strand- og afslapningsdel af rejsen.</li></ul>
 
   <h2>Fortsæt planlægningen</h2>
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/da-nang/">Da Nang <span>Se om du hellere skal bo ved stranden eller i Hoi An.</span></a>
-    <a class="link-card" href="/rejseguide/bedste-rejsetid/">Bedste rejsetid til Vietnam <span>Se hvordan Centralvietnam passer med resten af ruten.</span></a>
-    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvor mange nætter vi ville lægge i Hoi An.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/destinationer/da-nang/">Da Nang <span>Se om du hellere skal bo ved stranden eller i Hoi An.</span></a><a class="link-card" href="/rejseguide/bedste-rejsetid/">Bedste rejsetid til Vietnam <span>Se hvordan Centralvietnam passer med resten af ruten.</span></a><a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvor mange nætter vi ville lægge i Hoi An.</span></a></div>
 </ArticleLayout>
