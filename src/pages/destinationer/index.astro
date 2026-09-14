@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DestinationCard from '../../components/DestinationCard.astro';
+const places = [
+  ['Hanoi','Nordvietnam','Historie, street food og den perfekte base for nordens natur.','https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=82'],
+  ['Ha Long Bay','Nordvietnam','Kalkstensøer, cruises og kajak mellem bugtens dramatiske klipper.','https://images.unsplash.com/photo-1504457047772-27faf1c00561?auto=format&fit=crop&w=1200&q=82'],
+  ['Hoi An','Centralvietnam','Lanterner, madkurser, strand og afslappede aftener ved floden.','https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=82'],
+  ['Da Nang','Centralvietnam','Moderne kystby med brede strande og nem adgang til Hoi An.','https://images.unsplash.com/photo-1564596823821-79b97151055e?auto=format&fit=crop&w=1200&q=82'],
+  ['Ho Chi Minh City','Sydvietnam','Energi, historie og udgangspunkt for Mekongdeltaet.','https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=82'],
+  ['Phu Quoc','Sydvietnam','Tropiske strande og et roligt sidste stop før hjemrejsen.','https://images.unsplash.com/photo-1570366583862-f91883984fde?auto=format&fit=crop&w=1200&q=82'],
+];
+---
+<BaseLayout title="Destinationer i Vietnam | RejsTilVietnam.dk" description="Find de bedste destinationer i Vietnam for danske rejsende – fra Hanoi og Ha Long Bay til Hoi An, Saigon og Phu Quoc.">
+<section class="page-hero"><div class="container"><p class="eyebrow">Destinationer</p><h1>Find dit Vietnam.</h1><p class="lead">Seks stærke udgangspunkter – og snart dybdegående guider til hver by og region.</p></div></section>
+<section class="section section--tight"><div class="container grid grid--3">{places.map(([name,kicker,description,image]) => <DestinationCard name={name} kicker={kicker} description={description} image={image} href="/rejseguide/" />)}</div></section>
+</BaseLayout>
