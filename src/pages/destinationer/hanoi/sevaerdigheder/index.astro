@@ -1,0 +1,142 @@
+---
+import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+import SectionMedia from '../../../../components/SectionMedia.astro';
+import PlaceMap from '../../../../components/PlaceMap.astro';
+
+const toc = [
+  { id: 'prioriter', label: 'Hvad skal du prioritere?' },
+  { id: 'centrum', label: 'Old Quarter og Hoan Kiem' },
+  { id: 'historie', label: 'Historie og museer' },
+  { id: 'train-street', label: 'Train Street' },
+  { id: 'rute', label: 'Forslag til 1 dag' },
+  { id: 'kort', label: 'Kort over seværdigheder' },
+];
+
+const sources = [
+  { label: 'Vietnam Tourism - 11 must-see attractions in Ha Noi', href: 'https://vietnam.travel/things-to-do/11-must-see-attractions-ha-noi' },
+  { label: 'Tripadvisor Danmark - aktiviteter i Hanoi', href: 'https://www.tripadvisor.dk/Attractions-g293924-Activities-Hanoi.html' },
+];
+
+const places = [
+  { name: 'Old Quarter', detail: 'Godt område at udforske til fods', lat: 21.0352, lng: 105.8502 },
+  { name: 'Hoan Kiem-søen', detail: 'Centralt pejlemærke', lat: 21.0287, lng: 105.8525 },
+  { name: 'St. Joseph’s Cathedral', detail: 'Kort stop tæt på Hoan Kiem', lat: 21.0289, lng: 105.8494 },
+  { name: 'Hoa Lo Prison', detail: 'Museum og moderne historie', lat: 21.0253, lng: 105.8464 },
+  { name: 'Litteraturtemplet', detail: 'Historisk tempel- og universitetsområde', lat: 21.0280, lng: 105.8355 },
+  { name: 'Imperial Citadel of Thang Long', detail: 'UNESCO-område', lat: 21.0354, lng: 105.8403 },
+  { name: 'Ho Chi Minh-mausoleet', detail: 'Ba Dinh-området', lat: 21.0368, lng: 105.8346 },
+  { name: 'Train Street', detail: 'Adgang og regler kan ændre sig', lat: 21.0301, lng: 105.8441 },
+];
+---
+<ArticleLayout
+  title="Hanoi seværdigheder 2026 | Hvad skal man se i Hanoi?"
+  description="Guide til de vigtigste seværdigheder i Hanoi med billeder, kort og et realistisk forslag til, hvad du kan nå på 1-3 dage."
+  eyebrow="Hanoi · Seværdigheder"
+  heading="Seværdigheder i Hanoi: det ville vi prioritere"
+  intro="Du behøver ikke krydse 20 steder af på en liste for at få noget ud af Hanoi. Vælg nogle få områder, gå mere, og gem tid til mad, kaffe og bare at se byen fungere."
+  updated="15. september 2026"
+  toc={toc}
+  sources={sources}
+>
+  <SectionMedia
+    slot="heroMedia"
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1800"
+    alt="Gadeliv i Hanois Old Quarter"
+    caption="Old Quarter er ikke én seværdighed, men det er det område, der bedst viser tempoet i Hanoi."
+    credit="Richard Mortel / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg"
+    ratio="16 / 7"
+  />
+
+  <h2 id="prioriter">Hvis du kun har kort tid</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>1 dag</span><b>Old Quarter + Hoan Kiem + 1 historisk stop</b></div>
+    <div class="fact"><span>2 dage</span><b>Tilføj Ba Dinh eller Hoa Lo</b></div>
+    <div class="fact"><span>3 dage</span><b>Se byen roligt og tag evt. Train Street</b></div>
+  </div>
+  <p>På en første rejse ville vi begynde med <strong>Old Quarter og Hoan Kiem</strong>. De ligger tæt på hinanden, og du får hurtigt en fornemmelse af byen uden at bruge halvdelen af dagen i trafik. Derefter vælger vi ét eller to historiske steder efter interesse.</p>
+  <p>Hvis du allerede ved, at du har tre dage, ligger der en færdig rækkefølge i vores <a href="/destinationer/hanoi/3-dage-i-hanoi/">3-dages rejseplan for Hanoi</a>.</p>
+
+  <h2 id="centrum">Old Quarter og Hoan Kiem</h2>
+  <h3>Old Quarter</h3>
+  <p>Det gamle kvarter er bedst, når du ikke behandler det som et museum. Gå nogle gader, stop når noget ser interessant ud, og accepter at fortovet ofte også bruges til parkering, madlavning og små butikker.</p>
+  <p>Vi ville lægge den første gåtur sidst på eftermiddagen og komme tilbage efter mørkets frembrud. Så ser du både hverdagslivet og den mere livlige aftenside af området.</p>
+
+  <h3>Hoan Kiem-søen</h3>
+  <p>Søen fungerer som et praktisk pejlemærke mellem Old Quarter og det franske kvarter. Tidlig morgen er roligere; om aftenen er der mere aktivitet. Hvis du bor centralt, behøver du ikke sætte en halv dag af til søen - du kommer sandsynligvis forbi flere gange.</p>
+  <SectionMedia
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoan%20Kiem%20Lake%20photo.jpg?width=1400"
+    alt="Hoan Kiem-søen i Hanoi"
+    caption="Hoan Kiem er et nemt sted at orientere sig fra, når du går rundt i centrum."
+    credit="Tranhuutukkt / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Hoan_Kiem_Lake_photo.jpg"
+    ratio="16 / 9"
+  />
+
+  <h3>St. Joseph’s Cathedral</h3>
+  <p>Katedralen ligger få minutters gang fra søen. Vi ville se den som et naturligt stop på en gåtur gennem centrum, ikke som en særskilt udflugt. Området omkring katedralen har også mange caféer, så det er et nemt sted at holde pause.</p>
+
+  <h2 id="historie">Historie og museer</h2>
+  <h3>Litteraturtemplet</h3>
+  <p>Hvis du kun vælger ét klassisk historisk sted, er Litteraturtemplet et godt bud. Det er overskueligt, grønnere og roligere end Old Quarter og giver en anden side af byen.</p>
+  <SectionMedia
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%20-%20Temple%20of%20Literature.jpg?width=1400"
+    alt="Khue Van Cac ved Litteraturtemplet i Hanoi"
+    caption="Litteraturtemplet er let at kombinere med Ba Dinh eller Train Street samme dag."
+    credit="P. Hughes / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Hanoi_-_Temple_of_Literature.jpg"
+    ratio="4 / 3"
+  />
+
+  <h3>Hoa Lo Prison</h3>
+  <p>Hoa Lo er et mere koncentreret museumsbesøg og fungerer godt, hvis du gerne vil forstå noget af byens koloniale og nyere krigshistorie. Det kan føles tungt, så vi ville ikke kombinere det med tre andre museer samme dag.</p>
+  <SectionMedia
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoa%20Lo%20Prison%20%28Maison%20Centrale%29%2C%20Hanoi%20%286923115824%29.jpg?width=1400"
+    alt="Indgang ved Hoa Lo Prison i Hanoi"
+    caption="Hoa Lo ligger centralt og kan nemt nås fra Hoan Kiem til fods eller med en kort Grab-tur."
+    credit="David McKelvey / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Hoa_Lo_Prison_(Maison_Centrale),_Hanoi_(6923115824).jpg"
+    ratio="16 / 9"
+  />
+
+  <h3>Imperial Citadel of Thang Long</h3>
+  <p>Citadellet passer især godt til dig, der interesserer dig for historie og arkæologi. Området er større end mange forventer, så sæt mere tid af end til et hurtigt fotostop.</p>
+
+  <h3>Ho Chi Minh-mausoleet og Ba Dinh</h3>
+  <p>Ba Dinh giver mening som en samlet halvdag med mausoleumsområdet, One Pillar Pagoda og eventuelt citadellet. Åbning og adgang til selve mausoleet kan ændre sig efter dag og sæson, så tjek aktuelle oplysninger, før du tager af sted.</p>
+  <SectionMedia
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%2C%20Vietnam%2C%20Ba%20Dinh%20Square%20and%20Ho%20Chi%20Minh%20Mausoleum.jpg?width=1400"
+    alt="Ba Dinh-pladsen og Ho Chi Minh-mausoleet i Hanoi"
+    caption="Ba Dinh ligger vest for Old Quarter og er lettest at samle i én rute."
+    credit="Jorge Láscar / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Hanoi,_Vietnam,_Ba_Dinh_Square_and_Ho_Chi_Minh_Mausoleum.jpg"
+    ratio="3 / 2"
+  />
+
+  <h2 id="train-street">Hvad med Train Street?</h2>
+  <p>Train Street er interessant nok til at have sin egen praktiske guide. Adgang, kontrol og togtider er ikke noget, vi ville behandle som faste oplysninger. Planlæg derfor ikke hele dagen omkring et klokkeslæt, du har set i en gammel blog.</p>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/train-street/">Train Street i Hanoi <span>Se områderne, sikkerhed, adgang og hvordan vi ville planlægge besøget.</span></a>
+  </div>
+
+  <h2 id="rute">En realistisk rute på én dag</h2>
+  <p><strong>Morgen:</strong> start omkring Hoan Kiem, gå gennem Old Quarter og spis morgenmad undervejs. Hvis du vil ind på et museum, er formiddagen et godt tidspunkt.</p>
+  <p><strong>Midt på dagen:</strong> vælg enten Hoa Lo eller Litteraturtemplet. Tag Grab mellem områderne, hvis varmen eller trafikken gør gåturen mindre attraktiv.</p>
+  <p><strong>Sen eftermiddag:</strong> tag tilbage mod søen, hold en kaffepause og gå en ny runde i Old Quarter, når byen ændrer tempo.</p>
+  <div class="callout"><strong>Det vi ikke ville gøre:</strong> Old Quarter, mausoleet, Litteraturtemplet, Hoa Lo, et museum, Train Street og West Lake på samme dag. Det kan teknisk lade sig gøre, men du ender med at bruge meget af dagen på transport og checklister.</div>
+
+  <div id="kort">
+    <PlaceMap
+      places={places}
+      title="De vigtigste stop på ét kort"
+      description="Kortet viser, hvorfor centrum er let at gå, mens Ba Dinh og Litteraturtemplet er nemmere at samle som en separat del af dagen."
+    />
+  </div>
+
+  <h2>Læs videre om Hanoi</h2>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">3 dage i Hanoi <span>En dag-for-dag plan uden at presse for meget ind.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Retter vi ville prioritere, og hvordan du planlægger måltiderne.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Sammenlign Old Quarter, Hoan Kiem, Ba Dinh og Tay Ho.</span></a>
+  </div>
+</ArticleLayout>
