@@ -2,12 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const plans = [
-  { days:'10 dage', route:'Hanoi → Ninh Binh → Hoi An → Ho Chi Minh City', text:'På 10 dage ville vi skære Ha Long Bay eller Sydvietnam fra i stedet for at presse alt ind.', href:'', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1200' },
+  { days:'10 dage', route:'Hanoi → Ninh Binh → Hoi An → Ho Chi Minh City', text:'Fire stop er nok. En fokuseret rute til dig der vil opleve nord, central og syd uden at skifte hotel hele tiden.', href:'/rejseplaner/vietnam-10-dage/', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1200' },
   { days:'14 dage', route:'Hanoi → Ninh Binh → Ha Long Bay → Hoi An → Ho Chi Minh City', text:'Den rute vi ville vælge første gang, hvis du gerne vil have både nord, midt og syd med.', href:'/rejseplaner/vietnam-2-uger/', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Trang%20An%2C%20Ninh%20Binh.jpg?width=1200' },
-  { days:'3 uger', route:'Nord → Central → Syd + evt. strand', text:'Her er der bedre plads til en ekstra overnatning i Ninh Binh, Hue, Mekong eller Phu Quoc.', href:'', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20Quoc%20Beach.jpg?width=1200' },
+  { days:'3 uger', route:'Hanoi → Ninh Binh → Ha Long → Hoi An → Saigon → Mekong → Phu Quoc', text:'Tre uger giver plads til både oplevelser og fem rolige stranddage til sidst.', href:'/rejseplaner/vietnam-3-uger/', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20Quoc%20Beach.jpg?width=1200' },
 ];
 ---
-<BaseLayout title="Vietnam rejseplaner - 10 dage, 2 uger og 3 uger | RejsTilVietnam.dk" description="Forslag til Vietnam-ruter for 10 dage, 2 uger og 3 uger med fokus på realistisk transport og færre hotelskift.">
+<BaseLayout title="Vietnam rejseplaner - 10 dage, 2 uger og 3 uger | RejsTilVietnam.dk" description="Konkrete Vietnam-ruter for 10 dage, 2 uger og 3 uger med realistisk transport, færre hotelskift og plads til at opleve stederne.">
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Rejseplaner</p>
@@ -17,23 +17,23 @@ const plans = [
   </section>
   <section class="section section--tight">
     <div class="container grid grid--3">
-      {plans.map((plan) => (
-        <article class={`card plan ${!plan.href ? 'plan--soon' : ''}`}>
+      {plans.map((plan, i) => (
+        <a class={`card plan ${i === 1 ? 'plan--featured' : ''}`} href={plan.href}>
           <div class="plan-image"><img src={plan.image} alt={plan.route} loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
           <div class="plan-copy">
             <span>{plan.days}</span>
             <h3>{plan.route}</h3>
             <p>{plan.text}</p>
-            {plan.href ? <a href={plan.href}>Se hele planen →</a> : <small>Detaljeret plan kommer senere</small>}
+            <b>Se hele planen →</b>
           </div>
-        </article>
+        </a>
       ))}
     </div>
   </section>
   <section class="section section--tight">
-    <div class="container notice"><strong>Hvis det er første gang:</strong> Start med 14-dages planen. Selv hvis du ender med en anden rute, er den et godt udgangspunkt for at se, hvor meget tid transport mellem nord, midt og syd faktisk tager.</div>
+    <div class="container notice"><strong>Hvis det er første gang:</strong> Start med 14-dages planen. Gå ned til 10 dage ved at fjerne et stop - eller op til 3 uger ved at tilføje mere ro, ikke bare flere byer.</div>
   </section>
 </BaseLayout>
 <style>
-.plan{overflow:hidden}.plan-image{aspect-ratio:16/10;overflow:hidden;background:#e9eee9}.plan-image img{width:100%;height:100%;object-fit:cover}.plan-copy{padding:26px}.plan-copy>span{font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--coral)}.plan h3{margin:10px 0;font-size:1.45rem}.plan p{color:var(--muted)}.plan a{display:inline-block;margin-top:20px;font-weight:800;color:var(--green-700)}.plan small{display:inline-block;margin-top:20px;color:#87908b;font-weight:700}.plan--soon{background:rgba(255,255,255,.5)}
+.plan{overflow:hidden;transition:transform .2s ease,border-color .2s ease}.plan:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)}.plan-image{aspect-ratio:16/10;overflow:hidden;background:#e9eee9}.plan-image img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.plan:hover .plan-image img{transform:scale(1.025)}.plan-copy{padding:26px}.plan-copy>span{font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--coral)}.plan h3{margin:10px 0;font-size:1.45rem}.plan p{color:var(--muted)}.plan b{display:inline-block;margin-top:20px;color:var(--green-700)}.plan--featured{box-shadow:var(--shadow)}
 </style>
