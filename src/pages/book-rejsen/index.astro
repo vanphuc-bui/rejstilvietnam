@@ -2,20 +2,20 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const bookingOptions = [
-  { icon:'🏨', title:'Hoteller', text:'Find områder og hoteller, der passer til din rute og dit budget. Vi bygger hotelguides ud destination for destination.', href:'/destinationer/' },
+  { icon:'🏨', title:'Hoteller', text:'Start med området - derefter hotellet. Vores første konkrete shortlist er til Hanoi.', href:'/destinationer/hanoi/bedste-hoteller/' },
   { icon:'🛶', title:'Ture & oplevelser', text:'Sammenlign ture, cruises og dagsture, hvor det giver mening at booke på forhånd.', href:'/ture/' },
-  { icon:'✈️', title:'Fly', text:'Internationale og indenrigsfly bliver senere samlet her med fokus på realistiske forbindelser og bagageregler.', href:'' },
-  { icon:'📱', title:'eSIM & internet', text:'En praktisk guide til data i Vietnam kommer her, så du kan vælge mellem lokal SIM og eSIM.', href:'' },
-  { icon:'🛡️', title:'Rejseforsikring', text:'Vi tilføjer senere en uafhængig guide til, hvad du bør kontrollere før du vælger forsikring.', href:'' },
-  { icon:'🧳', title:'Pakkerejser', text:'Til dig der hellere vil have hoteller, transport og oplevelser planlagt samlet af et rejsebureau.', href:'#pakkerejser' },
+  { icon:'✈️', title:'Fly', text:'Internationale og indenrigsfly bliver samlet her med fokus på realistiske forbindelser og bagageregler.', href:'' },
+  { icon:'📱', title:'eSIM & internet', text:'Sammenlign Airalo, Holafly og Nomad og vælg efter dataforbrug - ikke bare ordet unlimited.', href:'/rejseguide/esim-vietnam/' },
+  { icon:'🛡️', title:'Rejseforsikring', text:'Vi tilføjer en uafhængig guide til, hvad du bør kontrollere før du vælger forsikring.', href:'' },
+  { icon:'🧳', title:'Pakkerejser', text:'Sammenlign skræddersyet privat rejse, aktiv rejse og grupperejse med dansk rejseleder.', href:'/book-rejsen/pakkerejser/' },
 ];
 ---
-<BaseLayout title="Book din rejse til Vietnam | Hoteller, ture og pakkerejser | RejsTilVietnam.dk" description="Saml booking til Vietnam ét sted: hoteller, ture, fly, eSIM, rejseforsikring og pakkerejser med tydelig markering af eventuelle annoncelinks.">
+<BaseLayout title="Book din rejse til Vietnam | Hoteller, eSIM, ture og pakkerejser | RejsTilVietnam.dk" description="Saml booking til Vietnam ét sted: hotelguides, ture, eSIM, fly, rejseforsikring og sammenligning af pakkerejser med tydelig markering af annoncelinks.">
   <section class="page-hero booking-hero">
     <div class="container">
       <p class="eyebrow">Book rejsen</p>
       <h1>Når ruten er på plads, kan du begynde at booke.</h1>
-      <p class="lead">Vi samler de dele af Vietnam-rejsen, hvor det kan betale sig at sammenligne mulighederne. Du bestemmer selv, om du vil booke alt separat eller få en rejse planlagt for dig.</p>
+      <p class="lead">Vi samler de dele af Vietnam-rejsen, hvor det kan betale sig at sammenligne mulighederne. Du bestemmer selv, om du vil booke separat eller få en rejse planlagt for dig.</p>
     </div>
   </section>
 
@@ -27,7 +27,7 @@ const bookingOptions = [
             <span class="booking-icon">{item.icon}</span>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
-            <b>{item.href.startsWith('#') ? 'Se muligheder →' : 'Læs mere →'}</b>
+            <b>Se guide →</b>
           </a>
         ) : (
           <article class="card booking-card booking-card--soon">
@@ -41,19 +41,19 @@ const bookingOptions = [
     </div>
   </section>
 
-  <section class="section package-section" id="pakkerejser">
+  <section class="section package-section">
     <div class="container package-grid">
       <div>
         <p class="eyebrow">Pakkerejser</p>
         <h2>Vil du helst have andre til at planlægge rejsen?</h2>
-        <p class="lead">Hvis du ikke selv vil koordinere hoteller, transport og større oplevelser, kan en skræddersyet pakkerejse være et bedre valg. Vi arbejder på at sammenligne relevante danske Vietnam-specialister på prisniveau, rejsetype og hvad der faktisk er inkluderet.</p>
-        <p class="muted">Når vi indgår kommercielle partnerskaber, bliver links og samarbejder markeret tydeligt. Vores mål er stadig at sammenligne mulighederne uafhængigt.</p>
+        <p class="lead">Vi har nu lavet en enkel sammenligning af tre forskellige modeller: privat skræddersyet rejse, aktiv rejse og klassisk grupperejse med dansk rejseleder.</p>
+        <p class="muted">Det gør det lettere at vælge rejsetype før du begynder at sammenligne priser.</p>
       </div>
       <aside class="card package-card">
-        <span>Kommer næste</span>
-        <h3>Sammenlign Vietnam-rejsebureauer</h3>
-        <p>Individuel eller gruppe · dansk rejseleder · familie · luksus · aktive rejser · prisniveau.</p>
-        <a href="/om/#affiliate">Sådan fungerer affiliate på siden →</a>
+        <span>Ny guide</span>
+        <h3>Pakkerejser til Vietnam</h3>
+        <p>Vietnam Rejser · Topas · Stjernegaard - sammenlignet efter rejseform, ikke reklameplacering.</p>
+        <a href="/book-rejsen/pakkerejser/">Se sammenligningen →</a>
       </aside>
     </div>
   </section>
