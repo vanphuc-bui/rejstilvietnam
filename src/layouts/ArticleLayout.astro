@@ -14,6 +14,7 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const isHanoiChild = Astro.url.pathname.startsWith('/destinationer/hanoi/') && Astro.url.pathname !== '/destinationer/hanoi/';
 ---
 <BaseLayout title={title} description={description}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
@@ -51,11 +52,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 
   <section class="section section--tight">
     <div class="container article-shell">
+      {toc.length > 0 && (
+        <nav class="mobile-toc card" aria-label="Indholdsfortegnelse">
+          {isHanoiChild && <a class="mobile-hub-back" href="/destinationer/hanoi/">← Hanoi rejseguide</a>}
+          <p class="sidebar-label">På denne side</p>
+          <div class="toc">{toc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}</div>
+        </nav>
+      )}
+
       <article class="prose">
         <slot />
       </article>
 
       <aside class="card sidebar article-sidebar">
+        {isHanoiChild && <a class="hub-back" href="/destinationer/hanoi/">← Hanoi rejseguide</a>}
         {toc.length > 0 && (
           <>
             <p class="sidebar-label">På denne side</p>
@@ -67,7 +77,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 
         {sources.length > 0 && (
           <div class="sidebar-sources">
-            <p class="sidebar-label">Officielle kilder</p>
+            <p class="sidebar-label">Kilder</p>
             {sources.map((source) => (
               <a href={source.href} target="_blank" rel="noopener">{source.label} ↗</a>
             ))}
@@ -92,5 +102,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 .toc a, .sidebar-sources a { color: #405048; font-size: .92rem; line-height: 1.35; }
 .toc a:hover, .sidebar-sources a:hover { color: var(--green-700); }
 .sidebar-sources { padding-top: 20px; border-top: 1px solid var(--border); }
+.hub-back, .mobile-hub-back { color: var(--green-700); font-weight: 800; font-size: .9rem; }
+.mobile-toc { display: none; padding: 20px; }
+.mobile-toc .mobile-hub-back { display: inline-block; margin-bottom: 16px; }
+@media (max-width: 900px) {
+  .mobile-toc { display: block; }
+  .article-sidebar .toc, .article-sidebar > .sidebar-label, .article-sidebar .hub-back { display: none; }
+}
 @media (max-width: 640px) { .article-hero-media :global(.media-frame) { aspect-ratio: 4 / 3; } }
 </style>
