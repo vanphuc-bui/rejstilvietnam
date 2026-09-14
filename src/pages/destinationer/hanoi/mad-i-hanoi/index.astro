@@ -1,0 +1,131 @@
+---
+import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+import FoodGrid from '../../../../components/FoodGrid.astro';
+import SectionMedia from '../../../../components/SectionMedia.astro';
+
+const toc = [
+  { id: 'prioriter', label: 'Det ville vi smage først' },
+  { id: 'retter', label: '5 retter og drikke' },
+  { id: 'spise', label: 'Sådan vælger du spisested' },
+  { id: 'dag', label: 'En enkel maddag' },
+  { id: 'mave', label: 'Mave og hygiejne' },
+];
+
+const sources = [
+  { label: 'Vietnam Tourism - Hanoi', href: 'https://vietnam.travel/places-to-go/northern-vietnam/ha-noi' },
+  { label: 'Vietnam Tourism - Vietnamese food', href: 'https://vietnam.travel/things-to-do/vietnamese-food-20-dishes-you-must-try' },
+];
+
+const food = [
+  {
+    name: 'Phở',
+    when: 'Morgen / frokost',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pho%20Ha%20Noi.jpg?width=1200',
+    alt: 'En skål phở i Hanoi',
+    text: 'Den klassiske nudelsuppe er et nemt første måltid. I Hanoi er stilen ofte mere enkel og mindre sød end mange sydvietnamesiske versioner.',
+    tip: 'Prøv den om morgenen, når mange lokale steder har høj udskiftning.',
+    credit: 'snips / Wikimedia Commons',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Pho_Ha_Noi.jpg',
+  },
+  {
+    name: 'Bún chả',
+    when: 'Frokost',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=1200',
+    alt: 'Bún chả med grillet svinekød, nudler og urter',
+    text: 'Grillet svinekød, risnudler, urter og en let syrlig-sød sauce. Hvis vi kun måtte vælge én frokostret i Hanoi, ville den ligge meget højt.',
+    tip: 'Mange specialsteder er bedst omkring frokost og har et kort menukort.',
+    credit: 'Valentin Orange / Wikimedia Commons',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Bun-cha-hanoi.jpg',
+  },
+  {
+    name: 'Bánh cuốn',
+    when: 'Morgen / let frokost',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Banh-cuon-hanoi.jpg?width=1200',
+    alt: 'Bánh cuốn, tynde dampede risruller',
+    text: 'Bløde dampede risruller med fyld, urter og fiskesauce. God på en dag, hvor du ikke har lyst til endnu en stor nudelsuppe.',
+    tip: 'En mild ret og derfor også et godt sted at starte, hvis du ikke er vant til stærke smage.',
+    credit: 'Valentin Orange / Wikimedia Commons',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Banh-cuon-hanoi.jpg',
+  },
+  {
+    name: 'Chả cá',
+    when: 'Aftensmad',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ch%E1%BA%A3%20c%C3%A1%20t%E1%BA%A1i%20Ph%E1%BB%91%20ch%E1%BA%A3%20c%C3%A1%20H%C3%A0%20N%E1%BB%99i.jpg?width=1200',
+    alt: 'Chả cá med fisk, dild og krydderurter',
+    text: 'Fisk med gurkemeje, dild og krydderurter, ofte færdigtilberedt ved bordet. Den giver en helt anden smag end phở og bún chả.',
+    tip: 'Gør den til et rigtigt aftensmåltid i stedet for endnu et stop på en lang food crawl.',
+    credit: 'Phương Huy / Wikimedia Commons',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Ch%E1%BA%A3_c%C3%A1_t%E1%BA%A1i_Ph%E1%BB%91_ch%E1%BA%A3_c%C3%A1_H%C3%A0_N%E1%BB%99i.jpg',
+  },
+  {
+    name: 'Cà phê trứng',
+    when: 'Kaffepause',
+    image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Egg%20coffee%20in%20Hanoi.jpg?width=1000',
+    alt: 'Æggekaffe i Hanoi',
+    text: 'Æggekaffe er sød og cremet - tættere på dessert end en almindelig sort kaffe. Den er værd at prøve, men ikke nødvendigvis som din eneste kaffe hver dag.',
+    tip: 'Er I to og usikre på sødmen, så del den første kop.',
+    credit: 'Fabrizio Berloco / Wikimedia Commons',
+    creditUrl: 'https://commons.wikimedia.org/wiki/File:Egg_coffee_in_Hanoi.jpg',
+  },
+];
+---
+<ArticleLayout
+  title="Mad i Hanoi 2026 | Phở, bún chả og street food"
+  description="Dansk madguide til Hanoi med de retter vi ville prioritere, billeder, praktiske råd om street food og et enkelt forslag til en maddag."
+  eyebrow="Hanoi · Mad"
+  heading="Mad i Hanoi: begynd med fem ting, ikke halvtreds"
+  intro="Hanoi har så meget mad, at en lang liste hurtigt bliver ubrugelig. På en første rejse ville vi hellere spise fem klassiske ting godt end forsøge at smage alt på to døgn."
+  updated="15. september 2026"
+  toc={toc}
+  sources={sources}
+>
+  <SectionMedia
+    slot="heroMedia"
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=1800"
+    alt="Bún chả serveret i Hanoi"
+    caption="Bún chả er en af de retter, vi især ville gemme plads til i Hanoi."
+    credit="Valentin Orange / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Bun-cha-hanoi.jpg"
+    ratio="16 / 7"
+  />
+
+  <h2 id="prioriter">Hvis du kun har 2-3 dage</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Morgen</span><b>Phở eller bánh cuốn</b></div>
+    <div class="fact"><span>Frokost</span><b>Bún chả</b></div>
+    <div class="fact"><span>Kaffepause</span><b>Cà phê trứng</b></div>
+  </div>
+  <p>Til aftensmad ville vi vælge chả cá én af dagene og bruge den anden aften på det, du selv får øje på undervejs. På den måde bliver maden en del af rejsen i stedet for en checkliste.</p>
+
+  <h2 id="retter">Fem ting at kende</h2>
+  <FoodGrid items={food} />
+
+  <h2 id="spise">Sådan ville vi vælge et spisested</h2>
+  <p>Et lille sted med et kort menukort er ikke et dårligt tegn. Tværtimod er mange steder kendt for én eller to retter. Kig efter høj udskiftning, mad der bliver lavet løbende, og lokale gæster.</p>
+  <p>Vi ville være mere forsigtige med et næsten tomt sted med et meget langt menukort og billeder af 80 forskellige retter. Det gælder især, hvis råvarer ser ud til at have stået længe fremme.</p>
+  <div class="callout"><strong>Pris er ikke det samme som kvalitet:</strong> En dyr restaurant kan være rar og komfortabel, men du behøver ikke spise dyrt for at spise godt i Hanoi. Brug restaurantbesøg til de måltider, hvor aircondition, ro eller længere middag betyder noget for dig.</div>
+
+  <h3>Old Quarter</h3>
+  <p>Det er lettest på en kort førstegangsrejse, fordi du kan gå mellem mange små spisesteder, caféer og dessertsteder. Ulempen er, at de mest turistede gader også har mange middelmådige steder. Gå gerne en eller to gader væk fra de mest åbenlyse barområder.</p>
+
+  <h3>Food tour eller på egen hånd?</h3>
+  <p>Du behøver ikke en food tour for at spise godt. På egen hånd er billigere og giver mere frihed. En guidet tur kan derimod være nyttig den første aften, hvis du er usikker på bestilling, små lokale steder eller vil smage mange ting i små portioner. Vi tilføjer først konkrete bookinglinks senere.</p>
+
+  <h2 id="dag">En enkel maddag i Hanoi</h2>
+  <p><strong>08:00:</strong> phở eller bánh cuốn tæt på hotellet. Derefter kaffe.</p>
+  <p><strong>12:00:</strong> bún chả. Hold frokosten forholdsvis enkel, hvis du vil spise snacks senere.</p>
+  <p><strong>15:00:</strong> æggekaffe eller almindelig vietnamesisk kaffe. Det passer fint ind efter et museum eller en gåtur omkring Hoan Kiem.</p>
+  <p><strong>19:00:</strong> chả cá eller et andet sted, du har gemt under dagens gåtur.</p>
+  <p>Se vores <a href="/destinationer/hanoi/3-dage-i-hanoi/">3-dages Hanoi-plan</a>, hvis du vil kombinere måltiderne med seværdigheder uden at zigzagge gennem byen.</p>
+
+  <h2 id="mave">Mave, vand og hygiejne</h2>
+  <p>Drik flaskevand eller filtreret vand, og brug almindelig sund fornuft omkring mad, der har stået længe i varmen. Et travlt sted med hurtig udskiftning er ofte et bedre valg end et tomt sted, hvor du ikke ved, hvor længe ingredienserne har stået fremme.</p>
+  <p>Hvis du har en følsom mave, så begynd roligt. Du behøver ikke prøve rå grøntsager, isterninger, stærk mad og fem nye retter på samme måltid bare fordi du er på ferie.</p>
+
+  <h2>Læs videre</h2>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/sevaerdigheder/">Seværdigheder i Hanoi <span>Planlæg byen omkring områder i stedet for en lang checkliste.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">3 dage i Hanoi <span>Se hvor måltiderne passer naturligt ind i dagene.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Et centralt område gør det lettere at gå til meget af maden.</span></a>
+  </div>
+</ArticleLayout>
