@@ -1,15 +1,91 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import HotelMap from '../../../../components/HotelMap.astro';
 
 const hotels = [
-  { tag:'Bedst samlet', name:'Peridot Grand Luxury Boutique Hotel', area:'Old Quarter', why:'God hvis du vil bo centralt uden at give afkald på pool, rooftop og en mere rolig hoteloplevelse.', fit:'Par · første gang · komfort', query:'Peridot+Grand+Luxury+Boutique+Hotel+Hanoi' },
-  { tag:'Boutique', name:'La Siesta Classic Ma May', area:'Old Quarter', why:'Meget central placering og et godt valg, hvis du vil kunne gå til mad, caféer og seværdigheder.', fit:'Par · byliv · kort ophold', query:'La+Siesta+Classic+Ma+May+Hanoi' },
-  { tag:'God værdi', name:'Salute Premium Hotel & Spa', area:'Old Quarter', why:'Et stærkt mellemklassevalg, hvis beliggenhed og komfort betyder mere end store resortfaciliteter.', fit:'Par · venner · value', query:'Salute+Premium+Hotel+Spa+Hanoi' },
-  { tag:'Familie', name:'Hanoi Emerald Waters Hotel Valley', area:'Hoan Kiem', why:'Praktisk base med nem adgang til søen og Old Quarter. Relevant hvis I vil have central beliggenhed uden at bo midt i den mest hektiske del.', fit:'Familier · første gang', query:'Hanoi+Emerald+Waters+Hotel+Valley' },
-  { tag:'Luksus', name:'Capella Hanoi', area:'French Quarter', why:'Til dig der prioriterer design, service og ro højere end at bo midt i Old Quarters mest travle gader.', fit:'Luksus · par · special occasion', query:'Capella+Hanoi' },
+  {
+    tag:'Bedst samlet',
+    name:'Peridot Grand Luxury Boutique Hotel',
+    area:'Old Quarter',
+    address:'33 Duong Thanh, Hoan Kiem, Hanoi',
+    why:'God hvis du vil bo centralt uden at give afkald på pool, rooftop og en mere rolig hoteloplevelse.',
+    fit:'Par · første gang · komfort',
+    price:'$$$',
+    query:'Peridot+Grand+Luxury+Boutique+Hotel+Hanoi',
+    image:'https://content.skyscnr.com/available/2306043177/2306043177_WxH.jpg',
+    imageAlt:'Rooftop ved Peridot Grand Luxury Boutique Hotel i Hanoi',
+    imageSource:'Skyscanner',
+    imageSourceHref:'https://www.skyscanner.ca/hotels/vietnam/hanoi-hotels/peridot-grand-luxury-boutique-hotel/ht-204266570',
+    lat:21.033037,
+    lng:105.846306,
+  },
+  {
+    tag:'Boutique',
+    name:'La Siesta Classic Ma May',
+    area:'Old Quarter',
+    address:'94 Ma May, Hoan Kiem, Hanoi',
+    why:'Meget central placering og et godt valg, hvis du vil kunne gå til mad, caféer og seværdigheder.',
+    fit:'Par · byliv · kort ophold',
+    price:'$$$',
+    query:'La+Siesta+Classic+Ma+May+Hanoi',
+    image:'https://photos.hotelbeds.com/giata/original/37/372732/372732a_hb_a_010.jpg',
+    imageAlt:'Indgangen til La Siesta Classic Ma May i Hanoi',
+    imageSource:'Hotelbeds',
+    imageSourceHref:'https://stworld.jp/area/vietnam/hotel/hanoi/21990',
+    lat:21.03428,
+    lng:105.85332,
+  },
+  {
+    tag:'God værdi',
+    name:'Salute Premium Hotel & Spa',
+    area:'Old Quarter',
+    address:'5-7 Cua Dong, Hoan Kiem, Hanoi',
+    why:'Et stærkt mellemklassevalg, hvis beliggenhed og komfort betyder mere end store resortfaciliteter.',
+    fit:'Par · venner · value',
+    price:'$$',
+    query:'Salute+Premium+Hotel+Spa+Hanoi',
+    image:'https://www.hanoisalutehotel.com/files/images/banner/5O4A0377-copy.jpg',
+    imageAlt:'Værelse på Salute Premium Hotel & Spa i Hanoi',
+    imageSource:'Hotellets officielle side',
+    imageSourceHref:'https://www.hanoisalutehotel.com/',
+    lat:21.0351,
+    lng:105.8475,
+  },
+  {
+    tag:'Familie',
+    name:'Hanoi Emerald Waters Hotel Valley',
+    area:'Hoan Kiem',
+    address:'22 Lo Su, Hoan Kiem, Hanoi',
+    why:'Praktisk base med nem adgang til søen og Old Quarter. Relevant hvis I vil have central beliggenhed uden at bo midt i den mest hektiske del.',
+    fit:'Familier · første gang',
+    price:'$$',
+    query:'Hanoi+Emerald+Waters+Hotel+Valley',
+    image:'https://www.hanoihotelgroup.com/images/hotel/room/hanoi-emerald-waters-hotel-valley-family-suite.jpeg',
+    imageAlt:'Familieværelse på Hanoi Emerald Waters Hotel Valley',
+    imageSource:'Hanoi Hotel Group',
+    imageSourceHref:'https://www.hanoihotelgroup.com/family-suite-room31.html',
+    lat:21.031349,
+    lng:105.855393,
+  },
+  {
+    tag:'Luksus',
+    name:'Capella Hanoi',
+    area:'French Quarter',
+    address:'11 Le Phung Hieu, Hoan Kiem, Hanoi',
+    why:'Til dig der prioriterer design, service og ro højere end at bo midt i Old Quarters mest travle gader.',
+    fit:'Luksus · par · special occasion',
+    price:'$$$$',
+    query:'Capella+Hanoi',
+    image:'https://capellahotels.com/assets/img/site_images/hanoi/hanoi-home01a.jpg',
+    imageAlt:'Capella Hanoi set udefra',
+    imageSource:'Capella Hotels',
+    imageSourceHref:'https://capellahotels.com/en/capella-hanoi',
+    lat:21.02573,
+    lng:105.85681,
+  },
 ];
 ---
-<BaseLayout title="Bedste hoteller i Hanoi 2026 | 5 gode valg | RejsTilVietnam.dk" description="Vores korte guide til de bedste hoteller i Hanoi: centrale boutiquehoteller, familievenlige valg og luksus - med fokus på område, komfort og hvem hotellet passer til.">
+<BaseLayout title="Bedste hoteller i Hanoi 2026 | 5 gode valg + kort | RejsTilVietnam.dk" description="Vores korte guide til de bedste hoteller i Hanoi med billeder, område, prisniveau og interaktivt kort - fra Old Quarter til French Quarter.">
   <section class="hotel-hero">
     <div class="container hero-grid">
       <div>
@@ -37,16 +113,37 @@ const hotels = [
       <div class="hotel-list">
         {hotels.map((hotel, i) => (
           <article class="hotel-card">
-            <div class="hotel-number">0{i+1}</div>
+            <div class="hotel-image-wrap">
+              <img src={hotel.image} alt={hotel.imageAlt} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
+              <span class="hotel-rank">0{i+1}</span>
+              <a class="photo-source" href={hotel.imageSourceHref} target="_blank" rel="noopener nofollow">Foto: {hotel.imageSource} ↗</a>
+            </div>
             <div class="hotel-main">
               <div class="hotel-meta"><span>{hotel.tag}</span><small>{hotel.area}</small></div>
               <h3>{hotel.name}</h3>
               <p>{hotel.why}</p>
-              <div class="fit">Passer godt til: <b>{hotel.fit}</b></div>
+              <div class="hotel-detail-row"><span>Passer godt til</span><b>{hotel.fit}</b></div>
+              <div class="hotel-detail-row"><span>Adresse</span><b>{hotel.address}</b></div>
             </div>
-            <div class="hotel-action"><a class="btn btn--outline" href={`https://www.booking.com/searchresults.html?ss=${hotel.query}`} target="_blank" rel="noopener nofollow">Se aktuelle priser ↗</a><small>Eksternt link · ikke annoncelink endnu</small></div>
+            <div class="hotel-action">
+              <div class="price-level"><span>Prisniveau</span><b>{hotel.price}</b></div>
+              <a class="btn btn--primary" href={`https://www.booking.com/searchresults.html?ss=${hotel.query}`} target="_blank" rel="noopener nofollow">Se aktuelle priser ↗</a>
+              <small>Eksternt link · ikke annoncelink endnu</small>
+            </div>
           </article>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section compare-section">
+    <div class="container">
+      <div class="section-head"><div><p class="eyebrow">Sammenlign</p><h2>De 5 valg på 20 sekunder.</h2></div><p>Hvis du allerede ved, hvilken type ophold du vil have, er denne oversigt nok til at indsnævre feltet.</p></div>
+      <div class="table-wrap card">
+        <table class="hotel-table">
+          <thead><tr><th>Hotel</th><th>Område</th><th>Bedst til</th><th>Pris</th></tr></thead>
+          <tbody>{hotels.map((hotel, i) => <tr><td><b>{i+1}. {hotel.name}</b></td><td>{hotel.area}</td><td>{hotel.fit}</td><td><strong>{hotel.price}</strong></td></tr>)}</tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -62,10 +159,14 @@ const hotels = [
   <section class="section section--tight">
     <div class="container next-card"><div><p class="eyebrow">Næste valg</p><h2>Er du stadig i tvivl om området?</h2><p>Læs områdeguiden først. Den gør hotelvalget meget nemmere.</p></div><a class="btn btn--primary" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? →</a></div>
   </section>
+
+  <section class="section map-section">
+    <div class="container"><HotelMap hotels={hotels} /></div>
+  </section>
 </BaseLayout>
 
 <style>
-.hotel-hero{padding:76px 0 56px;background:linear-gradient(180deg,#f4ecdc 0%,var(--cream) 100%)}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}.hotel-hero h1{font-size:clamp(2.8rem,6vw,5.3rem)}.hotel-hero .lead{margin-top:20px}.hero-actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.hero-photo{overflow:hidden;border-radius:32px;box-shadow:var(--shadow);aspect-ratio:4/3}.hero-photo img{width:100%;height:100%;object-fit:cover}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.quick-grid>div{padding:20px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.7)}.quick-grid span{display:block;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;font-weight:800}.quick-grid b{display:block;margin-top:5px;color:var(--green-950)}.hotels-section{background:#f5efe2}.hotel-list{display:grid;gap:14px}.hotel-card{display:grid;grid-template-columns:72px 1fr 220px;gap:22px;align-items:center;padding:24px;background:#fffdf8;border:1px solid var(--border);border-radius:24px}.hotel-number{font:700 1.35rem Georgia,serif;color:var(--coral)}.hotel-meta{display:flex;gap:10px;align-items:center}.hotel-meta span{padding:5px 9px;border-radius:999px;background:var(--green-100);color:var(--green-800);font-size:.74rem;font-weight:850}.hotel-meta small{color:var(--muted);font-weight:700}.hotel-main h3{margin-top:8px;font-size:1.55rem}.hotel-main p{margin-top:8px;color:var(--muted)}.fit{margin-top:12px;font-size:.9rem;color:var(--muted)}.hotel-action{text-align:right}.hotel-action .btn{width:100%}.hotel-action small{display:block;margin-top:8px;color:#87908b;font-size:.72rem}.decision-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:20px;align-items:stretch}.decision-card{padding:26px;border-radius:22px;background:var(--green-950);color:white}.decision-card b{font-size:1.18rem}.decision-card p{margin-top:8px;color:rgba(255,255,255,.72)}.next-card{padding:34px;border-radius:28px;background:var(--sand);display:flex;justify-content:space-between;gap:28px;align-items:center}.next-card p:not(.eyebrow){margin-top:10px;color:#48554f}
-@media(max-width:900px){.hero-grid,.decision-grid{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}.hotel-card{grid-template-columns:54px 1fr}.hotel-action{grid-column:2;text-align:left;max-width:260px}}
-@media(max-width:640px){.quick-grid{grid-template-columns:1fr}.hotel-card{grid-template-columns:1fr}.hotel-number{display:none}.hotel-action{grid-column:auto;max-width:none}.next-card{align-items:flex-start;flex-direction:column}.hero-actions{flex-direction:column}}
+.hotel-hero{padding:76px 0 56px;background:linear-gradient(180deg,#f4ecdc 0%,var(--cream) 100%)}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}.hotel-hero h1{font-size:clamp(2.8rem,6vw,5.3rem)}.hotel-hero .lead{margin-top:20px}.hero-actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.hero-photo{overflow:hidden;border-radius:32px;box-shadow:var(--shadow);aspect-ratio:4/3}.hero-photo img{width:100%;height:100%;object-fit:cover}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.quick-grid>div{padding:20px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.7)}.quick-grid span{display:block;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;font-weight:800}.quick-grid b{display:block;margin-top:5px;color:var(--green-950)}.hotels-section{background:#f5efe2}.hotel-list{display:grid;gap:18px}.hotel-card{display:grid;grid-template-columns:250px minmax(0,1fr) 210px;gap:24px;align-items:stretch;background:#fffdf8;border:1px solid var(--border);border-radius:26px;overflow:hidden}.hotel-image-wrap{position:relative;min-height:230px;background:#e9eee9;overflow:hidden}.hotel-image-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.hotel-card:hover .hotel-image-wrap img{transform:scale(1.025)}.hotel-rank{position:absolute;left:14px;top:14px;display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:rgba(12,47,37,.92);color:white;font:700 .95rem Georgia,serif;backdrop-filter:blur(8px)}.photo-source{position:absolute;left:10px;bottom:10px;padding:5px 8px;border-radius:999px;background:rgba(0,0,0,.58);color:white;font-size:.66rem;backdrop-filter:blur(8px)}.hotel-main{padding:26px 0}.hotel-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.hotel-meta span{padding:5px 9px;border-radius:999px;background:var(--green-100);color:var(--green-800);font-size:.74rem;font-weight:850}.hotel-meta small{color:var(--muted);font-weight:700}.hotel-main h3{margin-top:10px;font-size:1.6rem}.hotel-main>p{margin-top:10px;color:var(--muted)}.hotel-detail-row{display:grid;grid-template-columns:110px 1fr;gap:10px;margin-top:14px;font-size:.87rem}.hotel-detail-row span{color:var(--muted)}.hotel-detail-row b{color:var(--green-950)}.hotel-action{padding:26px 24px 26px 0;display:flex;flex-direction:column;justify-content:center}.price-level{margin-bottom:18px}.price-level span{display:block;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800}.price-level b{display:block;margin-top:3px;color:var(--green-950);font-size:1.25rem;letter-spacing:.12em}.hotel-action .btn{width:100%;text-align:center}.hotel-action small{display:block;margin-top:9px;color:#87908b;font-size:.72rem;text-align:center}.compare-section{background:rgba(255,255,255,.34)}.table-wrap{overflow:hidden}.hotel-table{width:100%;border-collapse:collapse;background:#fffdf8}.hotel-table th,.hotel-table td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}.hotel-table th{background:var(--green-100);color:var(--green-950);font-size:.78rem;text-transform:uppercase;letter-spacing:.07em}.hotel-table td{color:#46534d}.hotel-table tr:last-child td{border-bottom:0}.decision-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:20px;align-items:stretch}.decision-card{padding:26px;border-radius:22px;background:var(--green-950);color:white}.decision-card b{font-size:1.18rem}.decision-card p{margin-top:8px;color:rgba(255,255,255,.72)}.next-card{padding:34px;border-radius:28px;background:var(--sand);display:flex;justify-content:space-between;gap:28px;align-items:center}.next-card p:not(.eyebrow){margin-top:10px;color:#48554f}.map-section{padding-top:28px}
+@media(max-width:1000px){.hotel-card{grid-template-columns:210px 1fr}.hotel-action{grid-column:2;padding:0 24px 24px 0;max-width:260px}.hero-grid,.decision-grid{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.table-wrap{overflow-x:auto}.hotel-table{min-width:720px}.hotel-card{grid-template-columns:1fr}.hotel-image-wrap{min-height:240px;aspect-ratio:16/10}.hotel-main{padding:0 22px}.hotel-action{grid-column:auto;padding:0 22px 24px;max-width:none}.hotel-detail-row{grid-template-columns:1fr}.quick-grid{grid-template-columns:1fr}.next-card{align-items:flex-start;flex-direction:column}.hero-actions{flex-direction:column}}
 </style>
