@@ -1,0 +1,79 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import AffiliateCard from '../../../components/AffiliateCard.astro';
+
+const toc = [
+  { id: 'dagstur', label: 'Dagstur eller overnatning?' },
+  { id: 'steder', label: 'Hvad skal du se?' },
+  { id: 'tur', label: 'Hvad skal en god tur indeholde?' },
+  { id: 'vejret', label: 'Bedste rejsetid' },
+  { id: 'tips', label: 'Praktiske tips' },
+];
+const sources = [
+  { label: 'Vietnam Tourism – Ninh Binh', href: 'https://www.vietnam.travel/places-to-go/northern-vietnam/ninh-binh' },
+];
+---
+<ArticleLayout
+  title="Ninh Binh fra Hanoi 2026 | Dagstur eller overnatning?"
+  description="Guide til Ninh Binh fra Hanoi: dagstur vs. overnatning, Trang An, Tam Coc, Hang Mua, bedste rejsetid og hvad du skal tjekke før booking."
+  eyebrow="Ture & oplevelser"
+  heading="Ninh Binh fra Hanoi: dagstur eller overnatning?"
+  intro="Ninh Binh er en af de nemmeste måder at få natur ind i en Hanoi-rejse. Dagstur fungerer fint, men én overnatning ændrer tempoet markant."
+  toc={toc}
+  sources={sources}
+>
+  <h2 id="dagstur">Dagstur eller overnatning?</h2>
+  <table>
+    <thead><tr><th>Valg</th><th>Passer bedst til</th><th>Ulempe</th></tr></thead>
+    <tbody>
+      <tr><td>Dagstur fra Hanoi</td><td>Kort rejse, samme hotel, enkel logistik</td><td>Stramt program og mange timer i bil/bus</td></tr>
+      <tr><td>1 overnatning</td><td>Roligere tempo, cykling, tidlig morgen/sen eftermiddag</td><td>Ekstra hotelskift</td></tr>
+      <tr><td>2 nætter</td><td>Natur, fotografi og mere lokal stemning</td><td>Kræver mere tid i en kort rundrejse</td></tr>
+    </tbody>
+  </table>
+  <p>På en 14-dages førstegangsrejse er en organiseret dagstur et fint kompromis. Har du tre uger, ville vi oftere lægge mindst én nat i området.</p>
+  <AffiliateCard
+    title="Ninh Binh – heldagstur fra Hanoi"
+    text="Når affiliate-linket er klar, vælger vi en tur med bådtur, tydelig transport og et realistisk antal stop frem for den længste mulige seværdighedsliste."
+    label="Nem fra Hanoi"
+  />
+
+  <h2 id="steder">Hvad skal du se?</h2>
+  <h3>Trang An</h3>
+  <p>Trang An er kendt for bådture gennem floder, kalkstensklipper og grotter. Det er en af de oplevelser, der giver mest mening at prioritere, hvis du kun har én dag.</p>
+  <h3>Tam Coc</h3>
+  <p>Tam Coc er et andet populært bådområde og fungerer godt sammen med cykling og Bich Dong. Du behøver ikke nødvendigvis både Trang An og Tam Coc på samme korte dagstur.</p>
+  <h3>Hang Mua</h3>
+  <p>Hang Mua er kendt for udsigten efter en stejl trappe op ad bjergsiden. Vietnam Tourism beskriver 500 trin til udsigtspunktet, så regn med varme og trapper – især midt på dagen.</p>
+  <h3>Hoa Lu</h3>
+  <p>Den tidligere hovedstad giver historisk kontekst til landskabet og bliver ofte kombineret med en bådtur på organiserede ture.</p>
+
+  <h2 id="tur">Hvad skal en god dagstur indeholde?</h2>
+  <p>Vi ville hellere vælge en tur med <strong>2–3 velvalgte stop</strong> end en tur, der lover alt på én dag.</p>
+  <ul>
+    <li>Afhentning i Hanoi med tydeligt pickup-område.</li>
+    <li>Én ordentlig bådoplevelse: Trang An eller Tam Coc.</li>
+    <li>Enten Hang Mua, Hoa Lu eller cykling som ekstra hovedaktivitet.</li>
+    <li>Tydelig information om frokost og eventuelle entréer.</li>
+    <li>Seneste anmeldelser, der kommenterer tempo og gruppestørrelse.</li>
+  </ul>
+
+  <h2 id="vejret">Bedste rejsetid til Ninh Binh</h2>
+  <p>Vietnam Tourism fremhæver marts til maj og september til november som perioder med særligt behagelige temperaturer. Oktober kan give flotte rismarker, mens den varme sommerperiode også kan byde på pludselige regnbyger.</p>
+  <p>Vejret ændrer oplevelsen meget, fordi en stor del af dagen foregår udendørs og på vandet. Tjek vejrudsigten tæt på afrejse og tag sol- eller regnbeskyttelse med efter sæson.</p>
+
+  <h2 id="tips">Praktiske tips</h2>
+  <ul>
+    <li>Tag vand og let tøj med – især hvis Hang Mua er på programmet.</li>
+    <li>Undgå at pakke dagen med både Trang An, Tam Coc, Hang Mua, Hoa Lu og flere templer, hvis du selv planlægger.</li>
+    <li>Hvis du overnatter, er Tam Coc-området et praktisk udgangspunkt for restauranter, cykler og videre transport.</li>
+    <li>På en dagstur: tjek den reelle hjemkomsttid til Hanoi, hvis du har aftenplaner.</li>
+  </ul>
+
+  <h2>Fortsæt rejsen</h2>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/">Hanoi rejseguide <span>Planlæg byen omkring Ninh Binh-dagen.</span></a>
+    <a class="link-card" href="/ture/halong-bay-cruise/">Ha Long Bay cruise <span>Sammenlign de to klassiske naturstop fra Hanoi.</span></a>
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvor Ninh Binh passer ind i hele ruten.</span></a>
+  </div>
+</ArticleLayout>
