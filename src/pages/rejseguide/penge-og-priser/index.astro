@@ -1,0 +1,67 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const toc = [
+  { id: 'budget', label: 'Hvad styrer budgettet?' },
+  { id: 'niveauer', label: 'Tre budgetniveauer' },
+  { id: 'betaling', label: 'Kort, kontanter og hæveautomater' },
+  { id: 'drikkepenge', label: 'Drikkepenge' },
+  { id: 'spar', label: 'Hvor giver det mening at spare?' },
+];
+---
+<ArticleLayout
+  title="Priser i Vietnam 2026 | Budget, kontanter og betaling"
+  description="Hvad koster en rejse til Vietnam? Få et realistisk overblik over budget, hoteller, mad, transport, ture, kontanter, kort og drikkepenge uden forældede faste valutakurser."
+  eyebrow="Penge & priser"
+  heading="Hvad koster en rejse til Vietnam?"
+  intro="Vietnam kan være meget billigt – og overraskende dyrt, hvis du vælger gode hoteller, cruises og mange organiserede ture. Byg budgettet efter din rejsestil i stedet for ét tilfældigt dagsbeløb."
+  toc={toc}
+>
+  <div class="notice"><strong>Hvorfor viser vi ikke en fast DKK/VND-kurs?</strong> Valutakurser ændrer sig. Tjek den aktuelle kurs i din bank eller en valutatjeneste lige før rejsen, og brug priserne på denne side som struktur – ikke som live tilbud.</div>
+
+  <h2 id="budget">Det er især fem ting, der styrer budgettet</h2>
+  <ol>
+    <li><strong>Fly fra Danmark:</strong> ofte den største enkeltpost.</li>
+    <li><strong>Hotelniveau:</strong> Vietnam har alt fra simple guesthouses til internationale luksushoteller.</li>
+    <li><strong>Indenrigstransport:</strong> flere fly og private transfers gør ruten dyrere, men sparer tid.</li>
+    <li><strong>Organiserede ture:</strong> Ha Long Bay cruise og private ture fylder mere i budgettet end almindelige by-dage.</li>
+    <li><strong>Rejsetempo:</strong> mange stop betyder flere transferdage, billetter og check-ins.</li>
+  </ol>
+
+  <h2 id="niveauer">Tre budgetniveauer</h2>
+  <table>
+    <thead><tr><th>Stil</th><th>Hotel</th><th>Mad</th><th>Transport & ture</th></tr></thead>
+    <tbody>
+      <tr><td>Budget</td><td>Hostel / enkelt guesthouse</td><td>Lokale spisesteder og street food</td><td>Bus, tog og få betalte ture</td></tr>
+      <tr><td>Komfort</td><td>Gode 3–4★ hoteller</td><td>Blanding af lokale steder, caféer og restauranter</td><td>Indenrigsfly, Grab og udvalgte ture</td></tr>
+      <tr><td>Premium</td><td>4–5★ / boutique / resort</td><td>Fine dining blandet med lokale oplevelser</td><td>Private transfers, bedre cruises og private ture</td></tr>
+    </tbody>
+  </table>
+  <p>For danske rejsende er <strong>komfortniveauet</strong> ofte det mest interessante: du kan bo godt og spise rigtig godt uden at planlægge rejsen som en backpacker-tur.</p>
+
+  <h3>Lav budgettet i lag</h3>
+  <p>Start med fly + hoteller. Læg derefter indenrigsfly og større ture ind. Til sidst sætter du et dagligt beløb af til mad, lokal transport, kaffe og småting.</p>
+  <div class="callout"><strong>God metode:</strong> Ha Long Bay cruise, fly og hoteller bookes som faste poster. Mad, Grab og små oplevelser lægges i en daglig pulje.</div>
+
+  <h2 id="betaling">Kort, kontanter og hæveautomater</h2>
+  <p>Kort fungerer bredt på hoteller, større restauranter og moderne butikker, men kontanter er stadig nyttige på markeder, små lokale spisesteder og ved mindre køb.</p>
+  <p>Vi ville rejse med mindst to betalingskort opbevaret forskellige steder. Hæv moderate beløb frem for hele rejsens kontantbudget på én gang, og vær opmærksom på både lokal ATM-gebyr og din egen banks valutagebyr.</p>
+  <p>Hvis en terminal eller hæveautomat tilbyder at omregne beløbet direkte til DKK, så sammenlign vilkårene med din banks egen valutakonvertering, før du accepterer.</p>
+
+  <h2 id="drikkepenge">Drikkepenge</h2>
+  <p>Drikkepenge er ikke bygget ind i hverdagen på samme måde som i nogle andre rejsemarkeder. På turistture, private chauffører og guider er det dog almindeligt, at tilfredse gæster giver et frivilligt beløb.</p>
+  <p>Giv efter service og situation frem for at følge én fast procent til alt.</p>
+
+  <h2 id="spar">Hvor giver det mening at spare?</h2>
+  <ul>
+    <li><strong>Spar på:</strong> dyre hotelmorgenmåltider, hvis du alligevel vil spise lokalt; unødvendige private transfers på korte bystrækninger.</li>
+    <li><strong>Brug lidt mere på:</strong> et godt placeret hotel, hvis opholdet er kort; en ordentlig kahyt i Ha Long Bay; fly på meget lange stræk.</li>
+    <li><strong>Undgå falske besparelser:</strong> en ekstremt billig tur er ikke billig, hvis den koster en hel feriedag i dårlig logistik.</li>
+  </ul>
+
+  <h2>Byg budgettet sammen med ruten</h2>
+  <div class="link-list">
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvilke dage der typisk kræver fly, cruise eller organiseret tur.</span></a>
+    <a class="link-card" href="/rejseguide/transport/">Transport i Vietnam <span>Vælg mellem fly, tog og bus efter tid og pris.</span></a>
+  </div>
+</ArticleLayout>
