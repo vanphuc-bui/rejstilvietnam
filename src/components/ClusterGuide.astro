@@ -1,0 +1,87 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import SectionMedia from './SectionMedia.astro';
+import PlaceMap from './PlaceMap.astro';
+import VideoEmbed from './VideoEmbed.astro';
+
+const { page } = Astro.props;
+const toc = (page.sections ?? []).map((section, i) => ({ id: section.id ?? `section-${i+1}`, label: section.toc ?? section.heading }));
+---
+<ArticleLayout
+  title={page.title}
+  description={page.description}
+  eyebrow={page.eyebrow}
+  heading={page.heading}
+  intro={page.intro}
+  updated={page.updated ?? '15. september 2026'}
+  toc={toc}
+  sources={page.sources ?? []}
+>
+  {page.hero && (
+    <SectionMedia
+      slot="heroMedia"
+      src={page.hero.src}
+      alt={page.hero.alt}
+      caption={page.hero.caption}
+      credit={page.hero.credit}
+      creditUrl={page.hero.creditUrl}
+      ratio={page.hero.ratio ?? '16 / 7'}
+      position={page.hero.position ?? 'center'}
+    />
+  )}
+
+  {page.quickFacts?.length > 0 && (
+    <div class="fact-grid">
+      {page.quickFacts.map((fact) => <div class="fact"><span>{fact.label}</span><b>{fact.value}</b></div>)}
+    </div>
+  )}
+
+  {page.sections?.map((section, index) => (
+    <>
+      <h2 id={section.id ?? `section-${index+1}`}>{section.heading}</h2>
+      {section.lead && <p><strong>{section.lead}</strong></p>}
+      {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+      {section.subsections?.map((sub) => (
+        <>
+          <h3>{sub.heading}</h3>
+          {sub.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+          {sub.bullets?.length > 0 && <ul>{sub.bullets.map((item) => <li>{item}</li>)}</ul>}
+        </>
+      ))}
+      {section.bullets?.length > 0 && <ul>{section.bullets.map((item) => <li>{item}</li>)}</ul>}
+      {section.callout && <div class="callout"><strong>{section.callout.title}</strong>{section.callout.text}</div>}
+      {section.image && (
+        <SectionMedia
+          src={section.image.src}
+          alt={section.image.alt}
+          caption={section.image.caption}
+          credit={section.image.credit}
+          creditUrl={section.image.creditUrl}
+          ratio={section.image.ratio ?? '16 / 9'}
+          position={section.image.position ?? 'center'}
+        />
+      )}
+    </>
+  ))}
+
+  {page.mapPlaces?.length > 0 && (
+    <PlaceMap
+      places={page.mapPlaces}
+      title={page.mapTitle ?? `${page.destinationName} på kortet`}
+      description={page.mapDescription ?? 'Kortet viser de steder, der er vigtigst for denne guide.'}
+    />
+  )}
+
+  {page.video && (
+    <VideoEmbed youtubeId={page.video.youtubeId} title={page.video.title} caption={page.video.caption} />
+  )}
+
+  {page.related?.length > 0 && (
+    <>
+      <h2>Læs videre</h2>
+      <div class="link-list">
+        {page.related.map((item) => <a class="link-card" href={item.href}>{item.title}<span>{item.text}</span></a>)}
+      </div>
+    </>
+  )}
+</ArticleLayout>
