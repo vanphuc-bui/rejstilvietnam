@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionMedia from '../../components/SectionMedia.astro';
 
 const topics = [
   { icon:'☀️', title:'Bedste rejsetid', text:'Se hvornår nord, midt og syd passer bedst - og hvordan du justerer ruten, hvis feriedatoerne allerede er faste.', href:'/rejseguide/bedste-rejsetid/' },
@@ -18,6 +19,13 @@ const topics = [
       <p class="lead">Før du booker ture og hoteller, er det bedre at få styr på årstid, rute, transport og hvor mange hotelskift du faktisk gider have.</p>
     </div>
   </section>
+
+  <section class="section section--tight visual-intro">
+    <div class="container">
+      <SectionMedia src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1800&q=86" alt="Grønt landskab i Vietnam" caption="Vietnam er langt fra nord til syd. Rejsetid og transport bør derfor planlægges sammen - ikke som to separate ting." ratio="16 / 6" />
+    </div>
+  </section>
+
   <section class="section section--tight">
     <div class="container grid grid--3">
       {topics.map((topic) => (
@@ -46,3 +54,4 @@ const topics = [
     </div>
   </section>
 </BaseLayout>
+<style>.visual-intro{padding-top:0}.visual-intro :global(.section-media){margin-top:0}</style>
