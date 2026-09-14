@@ -1,0 +1,72 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import AffiliateCard from '../../../components/AffiliateCard.astro';
+
+const toc = [
+  { id: 'overblik', label: 'Hoi An i korte træk' },
+  { id: 'oplevelser', label: 'Det skal du opleve' },
+  { id: 'mad', label: 'Mad og madlavning' },
+  { id: 'strand', label: 'Strand og cykling' },
+  { id: 'vejret', label: 'Bedste rejsetid' },
+  { id: 'dage', label: 'Hvor mange dage?' },
+];
+const sources = [
+  { label: 'Vietnam Tourism – Hoi An highlights', href: 'https://www.vietnam.travel/things-to-do/7-things-to-do-hoi-an' },
+  { label: 'Vietnam Tourism – Weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
+];
+---
+<ArticleLayout
+  title="Hoi An rejseguide 2026 | Mad, strand og bedste rejsetid"
+  description="Dansk guide til Hoi An: hvad du skal opleve, hvor mange dage du bør bruge, bedste rejsetid, strand, cykling, mad og oplevelser omkring den gamle by."
+  eyebrow="Centralvietnam"
+  heading="Hoi An: langsommere tempo, bedre aftener"
+  intro="Hoi An fungerer bedst, når du ikke prøver at se byen på et par timer. Kombinér den gamle by, maden, landskabet og stranden – og behold tid til bare at gå rundt efter mørkets frembrud."
+  toc={toc}
+  sources={sources}
+>
+  <h2 id="overblik">Hoi An i korte træk</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>3–5 dage</b></div>
+    <div class="fact"><span>Bedst kendt for</span><b>Gamle by, lanterner og mad</b></div>
+    <div class="fact"><span>Kombinér med</span><b>Da Nang og strand</b></div>
+  </div>
+  <p>Hoi An er et af de nemmeste steder i Vietnam at sænke tempoet. Den gamle by er kompakt, men området omkring byen giver rejsen mere variation med rismarker, små landsbyer, floder og strand.</p>
+
+  <h2 id="oplevelser">Det skal du opleve i Hoi An</h2>
+  <h3>Den gamle by</h3>
+  <p>Start til fods. De karakteristiske gule facader, gamle handelshuse, små gårdrum og lanterner gør området mest stemningsfuldt tidligt om morgenen og igen omkring solnedgang.</p>
+  <h3>Aften ved floden</h3>
+  <p>Hoi An bliver markant mere levende om aftenen. Gå langs Thu Bon-floden, tag små sidegader væk fra den største menneskemængde, og brug aftenen på mad frem for at forsøge at nå flere attraktioner.</p>
+  <h3>My Son eller en dagstur i området</h3>
+  <p>Hvis du vil have historie og kultur uden for byen, kan My Son Sanctuary være et oplagt supplement. Det fungerer godt som en halv- eller heldagstur afhængigt af resten af din plan.</p>
+
+  <h2 id="mad">Mad og madlavning</h2>
+  <p>Hoi An er særligt stærk, hvis mad er en vigtig del af rejsen. Kig efter lokale retter som <strong>cao lầu</strong>, <strong>white rose dumplings</strong> og <strong>mì Quảng</strong>.</p>
+  <AffiliateCard
+    title="Madlavningskursus i Hoi An"
+    text="En god aktivitet, hvis du gerne vil kombinere marked, lokale råvarer og et måltid, du selv er med til at lave."
+    label="God oplevelse"
+  />
+
+  <h2 id="strand">Strand, cykling og landskab</h2>
+  <p>Hoi An er mere end den gamle by. Lej en cykel eller tag en kort tur ud gennem landsbyerne og rismarkerne. An Bang-området er et naturligt valg, hvis du vil have strand ind i programmet uden at skifte hotel.</p>
+  <p>Det er netop kombinationen af kultur og afslapning, der gør Hoi An let at holde af: én dag kan være sightseeing, den næste næsten uden planer.</p>
+
+  <h2 id="vejret">Bedste rejsetid til Hoi An</h2>
+  <p>Vietnam Tourism beskriver typisk <strong>februar til august</strong> som den mere solrige periode i Hoi An. Marts og april er særligt gode, fordi dagene ofte er varme uden at være på sommerens højeste niveau.</p>
+  <p>Fra september til januar er vejret generelt mere ustadigt. Især september til november kan give kraftig regn og lokale oversvømmelser.</p>
+  <div class="callout"><strong>Hvis strand er vigtig:</strong> planlæg helst Hoi An i foråret eller den tidlige sommer frem for sent på efteråret.</div>
+
+  <h2 id="dage">Hvor mange dage i Hoi An?</h2>
+  <ul>
+    <li><strong>2 dage:</strong> nok til den gamle by og ét ekstra område.</li>
+    <li><strong>3–4 dage:</strong> vores foretrukne tempo med plads til strand, cykling eller madkursus.</li>
+    <li><strong>5+ dage:</strong> godt hvis Hoi An også skal være rejsens afslappende stop.</li>
+  </ul>
+
+  <h2>Fortsæt planlægningen</h2>
+  <div class="link-list">
+    <a class="link-card" href="/rejseguide/bedste-rejsetid/">Bedste rejsetid til Vietnam <span>Se hvordan Centralvietnam passer med resten af ruten.</span></a>
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se vores forslag til at kombinere Hanoi, Hoi An og Ho Chi Minh City.</span></a>
+  </div>
+</ArticleLayout>
