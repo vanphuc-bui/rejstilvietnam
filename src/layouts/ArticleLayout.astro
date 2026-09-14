@@ -42,6 +42,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
     </div>
   </section>
 
+  {Astro.slots.has('heroMedia') && (
+    <div class="container article-hero-media">
+      <slot name="heroMedia" />
+    </div>
+  )}
+
   <section class="section section--tight">
     <div class="container article-shell">
       <article class="prose">
@@ -76,10 +82,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 .article-hero h1 { max-width: 980px; }
 .article-hero .lead { margin-top: 22px; }
 .article-meta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; color: var(--muted); font-size: .88rem; }
+.article-hero-media { margin-top: 4px; }
+.article-hero-media :global(.section-media) { margin-top: 0; }
+.article-hero-media :global(.media-frame) { aspect-ratio: 16 / 7; }
 .article-sidebar { display: grid; gap: 24px; }
 .sidebar-label { font-size: .75rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--green-700); margin-bottom: 10px; }
 .toc, .sidebar-sources { display: grid; gap: 9px; }
 .toc a, .sidebar-sources a { color: #405048; font-size: .92rem; line-height: 1.35; }
 .toc a:hover, .sidebar-sources a:hover { color: var(--green-700); }
 .sidebar-sources { padding-top: 20px; border-top: 1px solid var(--border); }
+@media (max-width: 640px) { .article-hero-media :global(.media-frame) { aspect-ratio: 4 / 3; } }
 </style>
