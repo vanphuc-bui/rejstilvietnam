@@ -40,9 +40,40 @@ const clusterSets = {
   'da-nang': daNangPages,
   'nha-trang': nhaTrangPages,
 };
+const hubMeta = {
+  'hoi-an': {
+    title:'Hoi An rejseguide 2026 | Seværdigheder, hotel, strand og mad',
+    heading:'Hoi An rejseguide: planlæg den gamle by, stranden og dagene imellem',
+    intro:'Brug Hoi An-hubben til at vælge område, hotel, seværdigheder, mad, strand og transport fra Da Nang. Hver guide løser ét konkret spørgsmål, så du kan planlægge uden at læse den samme information flere gange.',
+  },
+  'ho-chi-minh-city': {
+    title:'Ho Chi Minh City rejseguide 2026 | Seværdigheder, hotel, mad og dagsture',
+    heading:'Ho Chi Minh City rejseguide: planlæg storbyen i logiske bidder',
+    intro:'Her samler vi guider til seværdigheder, tre dage i byen, områder, hoteller, mad, Cu Chi, Mekong, lufthavn og vejret. Målet er at holde transporten nede og gøre hvert valg tydeligt.',
+  },
+  'phu-quoc': {
+    title:'Phu Quoc rejseguide 2026 | Strande, hoteller, vejr og oplevelser',
+    heading:'Phu Quoc rejseguide: vælg kyst, hotel og sæson før du booker',
+    intro:'Phu Quoc er stor nok til, at område og sæson ændrer hele ferien. Hubben samler strandguide, hotelområder, hoteller, oplevelser, fire-dages plan, vejr og transport.',
+  },
+  'da-nang': {
+    title:'Da Nang rejseguide 2026 | Strand, seværdigheder, hoteller og Hoi An',
+    heading:'Da Nang rejseguide: strandby, bjerge og base for Centralvietnam',
+    intro:'Brug hubben til at vælge område, hotel, strand og seværdigheder samt planlægge Ba Na Hills og turen mellem Da Nang og Hoi An.',
+  },
+  'nha-trang': {
+    title:'Nha Trang rejseguide 2026 | Strand, hoteller og oplevelser',
+    heading:'Nha Trang rejseguide: planlæg bystrand, hotelområde og oplevelser',
+    intro:'Nha Trang kombinerer rigtig by med strand. Hubben samler de vigtigste valg om seværdigheder, område, hoteller, strande og en tre-dages rejseplan.',
+  },
+};
 const hubMatch = Astro.url.pathname.match(/^\/destinationer\/([^/]+)\/$/);
 const hubSlug = hubMatch?.[1] ?? null;
 const currentCluster = hubSlug ? clusterSets[hubSlug] : null;
+const currentHubMeta = hubSlug ? hubMeta[hubSlug] : null;
+const finalTitle = currentHubMeta?.title ?? title;
+const finalHeading = currentHubMeta?.heading ?? heading;
+const finalIntro = currentHubMeta?.intro ?? intro;
 const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, page]) => ({
   href: `/destinationer/${hubSlug}/${guide}/`,
   label: page.eyebrow?.split('·').pop()?.trim() ?? 'Guide',
@@ -50,11 +81,11 @@ const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, pa
   text: page.intro,
 })) : [];
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={finalTitle} description={description}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: heading,
+    headline: finalHeading,
     description,
     mainEntityOfPage: canonical,
     inLanguage: 'da-DK',
@@ -69,8 +100,8 @@ const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, pa
   <section class="page-hero article-hero">
     <div class="container">
       <p class="eyebrow">{eyebrow}</p>
-      <h1>{heading}</h1>
-      <p class="lead">{intro}</p>
+      <h1>{finalHeading}</h1>
+      <p class="lead">{finalIntro}</p>
       <div class="article-meta">
         <span>Opdateret {updated}</span>
         <span>Guide på dansk</span>
