@@ -2,17 +2,17 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const plans = [
-  { days:'10 dage', route:'Hanoi → Ninh Binh → Hoi An → Ho Chi Minh City', text:'Til dig der vil se meget, men stadig have tid til at opleve hvert stop.', href:'' },
-  { days:'14 dage', route:'Hanoi → Ninh Binh → Ha Long Bay → Hoi An → Ho Chi Minh City', text:'Vores foretrukne balance til en første rejse gennem Vietnam.', href:'/rejseplaner/vietnam-2-uger/' },
-  { days:'3 uger', route:'Nord → Central → Syd + strand', text:'Mere luft i planen og mulighed for Sapa, Hue, Mekong eller Phu Quoc.', href:'' },
+  { days:'10 dage', route:'Hanoi → Ninh Binh → Hoi An → Ho Chi Minh City', text:'På 10 dage ville vi skære Ha Long Bay eller Sydvietnam fra i stedet for at presse alt ind.', href:'' },
+  { days:'14 dage', route:'Hanoi → Ninh Binh → Ha Long Bay → Hoi An → Ho Chi Minh City', text:'Den rute vi ville vælge første gang, hvis du gerne vil have både nord, midt og syd med.', href:'/rejseplaner/vietnam-2-uger/' },
+  { days:'3 uger', route:'Nord → Central → Syd + evt. strand', text:'Her er der bedre plads til en ekstra overnatning i Ninh Binh, Hue, Mekong eller Phu Quoc.', href:'' },
 ];
 ---
-<BaseLayout title="Vietnam rejseplaner – 10 dage, 2 uger og 3 uger | RejsTilVietnam.dk" description="Forslag til Vietnam rejseplaner for 10 dage, 2 uger og 3 uger, lavet til danske rejsende.">
+<BaseLayout title="Vietnam rejseplaner - 10 dage, 2 uger og 3 uger | RejsTilVietnam.dk" description="Forslag til Vietnam-ruter for 10 dage, 2 uger og 3 uger med fokus på realistisk transport og færre hotelskift.">
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Rejseplaner</p>
-      <h1>Se mere. Skynd dig mindre.</h1>
-      <p class="lead">En god Vietnam-rute handler lige så meget om, hvad du springer over, som hvad du tager med.</p>
+      <h1>Hvor meget kan du nå uden at skynde dig?</h1>
+      <p class="lead">Vi bygger ruter efter reel transporttid og antal hotelskift - ikke efter hvor mange steder der kan stå på en liste.</p>
     </div>
   </section>
   <section class="section section--tight">
@@ -22,13 +22,13 @@ const plans = [
           <span>{plan.days}</span>
           <h3>{plan.route}</h3>
           <p>{plan.text}</p>
-          {plan.href ? <a href={plan.href}>Se hele planen →</a> : <small>Detaljeret plan kommer snart</small>}
+          {plan.href ? <a href={plan.href}>Se hele planen →</a> : <small>Detaljeret plan kommer senere</small>}
         </article>
       ))}
     </div>
   </section>
   <section class="section section--tight">
-    <div class="container notice"><strong>Start med 14 dage?</strong> Det er den første rute, vi har bygget helt ud, fordi den passer godt til en klassisk førstegangsrejse og giver naturlige steder til både destination- og tour-guides.</div>
+    <div class="container notice"><strong>Hvis det er første gang:</strong> Start med 14-dages planen. Selv hvis du ender med en anden rute, er den et godt udgangspunkt for at se, hvor meget tid transport mellem nord, midt og syd faktisk tager.</div>
   </section>
 </BaseLayout>
 <style>
