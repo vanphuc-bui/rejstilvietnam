@@ -2,9 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const plans = [
-  { days:'10 dage', route:'Hanoi → Ninh Binh → Hoi An → Ho Chi Minh City', text:'På 10 dage ville vi skære Ha Long Bay eller Sydvietnam fra i stedet for at presse alt ind.', href:'' },
-  { days:'14 dage', route:'Hanoi → Ninh Binh → Ha Long Bay → Hoi An → Ho Chi Minh City', text:'Den rute vi ville vælge første gang, hvis du gerne vil have både nord, midt og syd med.', href:'/rejseplaner/vietnam-2-uger/' },
-  { days:'3 uger', route:'Nord → Central → Syd + evt. strand', text:'Her er der bedre plads til en ekstra overnatning i Ninh Binh, Hue, Mekong eller Phu Quoc.', href:'' },
+  { days:'10 dage', route:'Hanoi → Ninh Binh → Hoi An → Ho Chi Minh City', text:'På 10 dage ville vi skære Ha Long Bay eller Sydvietnam fra i stedet for at presse alt ind.', href:'', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1200' },
+  { days:'14 dage', route:'Hanoi → Ninh Binh → Ha Long Bay → Hoi An → Ho Chi Minh City', text:'Den rute vi ville vælge første gang, hvis du gerne vil have både nord, midt og syd med.', href:'/rejseplaner/vietnam-2-uger/', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Trang%20An%2C%20Ninh%20Binh.jpg?width=1200' },
+  { days:'3 uger', route:'Nord → Central → Syd + evt. strand', text:'Her er der bedre plads til en ekstra overnatning i Ninh Binh, Hue, Mekong eller Phu Quoc.', href:'', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20Quoc%20Beach.jpg?width=1200' },
 ];
 ---
 <BaseLayout title="Vietnam rejseplaner - 10 dage, 2 uger og 3 uger | RejsTilVietnam.dk" description="Forslag til Vietnam-ruter for 10 dage, 2 uger og 3 uger med fokus på realistisk transport og færre hotelskift.">
@@ -19,10 +19,13 @@ const plans = [
     <div class="container grid grid--3">
       {plans.map((plan) => (
         <article class={`card plan ${!plan.href ? 'plan--soon' : ''}`}>
-          <span>{plan.days}</span>
-          <h3>{plan.route}</h3>
-          <p>{plan.text}</p>
-          {plan.href ? <a href={plan.href}>Se hele planen →</a> : <small>Detaljeret plan kommer senere</small>}
+          <div class="plan-image"><img src={plan.image} alt={plan.route} loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
+          <div class="plan-copy">
+            <span>{plan.days}</span>
+            <h3>{plan.route}</h3>
+            <p>{plan.text}</p>
+            {plan.href ? <a href={plan.href}>Se hele planen →</a> : <small>Detaljeret plan kommer senere</small>}
+          </div>
         </article>
       ))}
     </div>
@@ -32,5 +35,5 @@ const plans = [
   </section>
 </BaseLayout>
 <style>
-.plan{padding:28px}.plan>span{font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--coral)}.plan h3{margin:10px 0;font-size:1.45rem}.plan p{color:var(--muted)}.plan a{display:inline-block;margin-top:20px;font-weight:800;color:var(--green-700)}.plan small{display:inline-block;margin-top:20px;color:#87908b;font-weight:700}.plan--soon{background:rgba(255,255,255,.5)}
+.plan{overflow:hidden}.plan-image{aspect-ratio:16/10;overflow:hidden;background:#e9eee9}.plan-image img{width:100%;height:100%;object-fit:cover}.plan-copy{padding:26px}.plan-copy>span{font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--coral)}.plan h3{margin:10px 0;font-size:1.45rem}.plan p{color:var(--muted)}.plan a{display:inline-block;margin-top:20px;font-weight:800;color:var(--green-700)}.plan small{display:inline-block;margin-top:20px;color:#87908b;font-weight:700}.plan--soon{background:rgba(255,255,255,.5)}
 </style>
