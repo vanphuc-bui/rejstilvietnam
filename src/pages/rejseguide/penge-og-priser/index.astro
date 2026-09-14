@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
 
 const toc = [
   { id: 'budget', label: 'Hvad styrer budgettet?' },
@@ -9,64 +10,38 @@ const toc = [
   { id: 'spar', label: 'Hvor giver det mening at spare?' },
 ];
 ---
-<ArticleLayout
-  title="Priser i Vietnam 2026 | Budget, kontanter og betaling"
-  description="Hvad koster en rejse til Vietnam? Få et praktisk overblik over budget, hoteller, mad, transport, kontanter, kort og drikkepenge."
-  eyebrow="Penge & priser"
-  heading="Hvad koster en rejse til Vietnam?"
-  intro="Vietnam kan være billigt, men det afhænger meget af hotel, indenrigsfly og hvor mange ture du booker. Det giver mere mening at dele budgettet op end at bruge ét tilfældigt dagsbeløb."
-  toc={toc}
->
+<ArticleLayout title="Priser i Vietnam 2026 | Budget, kontanter og betaling" description="Hvad koster en rejse til Vietnam? Få et praktisk og visuelt overblik over budget, hoteller, mad, transport, kontanter, kort og drikkepenge." eyebrow="Penge & priser" heading="Hvad koster en rejse til Vietnam?" intro="Vietnam kan være billigt, men det afhænger meget af hotel, indenrigsfly og hvor mange ture du booker. Det giver mere mening at dele budgettet op end at bruge ét tilfældigt dagsbeløb." toc={toc}>
+  <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Thanh%20Market%2C%20Saigon%20%2816099297403%29.jpg?width=1800" alt="Marked i Ho Chi Minh City" caption="Vietnam er en blanding af moderne kortbetaling og små steder, hvor kontanter stadig er den nemmeste løsning. Budgettet afhænger derfor også af, hvordan du rejser." credit="Keith Yahl / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Ben_Thanh_Market,_Saigon_(16099297403).jpg" ratio="16 / 7" />
+
   <div class="notice"><strong>Vi bruger ikke en fast DKK/VND-kurs på siden.</strong> Kursen ændrer sig. Tjek den aktuelle kurs i din bank eller en valutatjeneste tæt på rejsen.</div>
 
   <h2 id="budget">Det er især fem ting, der styrer budgettet</h2>
-  <ol>
-    <li><strong>Fly fra Danmark:</strong> ofte den største enkeltpost.</li>
-    <li><strong>Hotel:</strong> forskellen mellem et enkelt hotel og et godt 4-stjernet hotel kan være stor, men standarden er ofte god for pengene.</li>
-    <li><strong>Indenrigstransport:</strong> fly og private transfers koster mere end bus og tog, men kan spare en hel feriedag.</li>
-    <li><strong>Ture:</strong> et Ha Long Bay cruise eller en privat tur fylder langt mere i budgettet end en almindelig dag i Hanoi.</li>
-    <li><strong>Antal stop:</strong> hver ny by giver ekstra transport, taxi og ofte en halv dag, der ikke bruges på ferie.</li>
-  </ol>
+  <ol><li><strong>Fly fra Danmark:</strong> ofte den største enkeltpost.</li><li><strong>Hotel:</strong> forskellen mellem et enkelt hotel og et godt 4-stjernet hotel kan være stor, men standarden er ofte god for pengene.</li><li><strong>Indenrigstransport:</strong> fly og private transfers koster mere end bus og tog, men kan spare en hel feriedag.</li><li><strong>Ture:</strong> et Ha Long Bay cruise eller en privat tur fylder langt mere i budgettet end en almindelig dag i Hanoi.</li><li><strong>Antal stop:</strong> hver ny by giver ekstra transport, taxi og ofte en halv dag, der ikke bruges på ferie.</li></ol>
 
   <h2 id="niveauer">Tre budgetniveauer</h2>
-  <table>
-    <thead><tr><th>Stil</th><th>Hotel</th><th>Mad</th><th>Transport og ture</th></tr></thead>
-    <tbody>
-      <tr><td>Budget</td><td>Hostel eller enkelt guesthouse</td><td>Lokale spisesteder og street food</td><td>Bus, tog og få organiserede ture</td></tr>
-      <tr><td>Komfort</td><td>Gode 3-4-stjernede hoteller</td><td>Lokale steder blandet med caféer og restauranter</td><td>Indenrigsfly, Grab/taxi og udvalgte ture</td></tr>
-      <tr><td>Premium</td><td>4-5-stjernet, boutique eller resort</td><td>Restaurantniveau efter lyst</td><td>Private transfers, bedre cruises og private ture</td></tr>
-    </tbody>
-  </table>
+  <table><thead><tr><th>Stil</th><th>Hotel</th><th>Mad</th><th>Transport og ture</th></tr></thead><tbody><tr><td>Budget</td><td>Hostel eller enkelt guesthouse</td><td>Lokale spisesteder og street food</td><td>Bus, tog og få organiserede ture</td></tr><tr><td>Komfort</td><td>Gode 3-4-stjernede hoteller</td><td>Lokale steder blandet med caféer og restauranter</td><td>Indenrigsfly, Grab/taxi og udvalgte ture</td></tr><tr><td>Premium</td><td>4-5-stjernet, boutique eller resort</td><td>Restaurantniveau efter lyst</td><td>Private transfers, bedre cruises og private ture</td></tr></tbody></table>
   <p>For mange danske rejsende synes vi, at <strong>komfortniveauet</strong> giver bedst mening. Du behøver ikke rejse som backpacker for at holde prisen nede, og det kan være værd at betale lidt mere for et hotel med god beliggenhed.</p>
 
   <h3>Lav budgettet i denne rækkefølge</h3>
   <p>Start med fly og hoteller. Læg derefter de store poster ind: indenrigsfly, Ha Long Bay, private transfers og andre ture. Til sidst sætter du penge af til mad, Grab/taxi, kaffe og småting.</p>
-  <div class="callout"><strong>Det fungerer bedre end et fast dagsbudget.</strong> En dag i Hanoi kan være billig, mens en cruisedag i Ha Long Bay kan koste mange gange mere. Hvis du blander alt sammen i ét dagsbeløb, bliver budgettet mindre brugbart.</div>
+  <div class="callout"><strong>Det fungerer bedre end et fast dagsbudget.</strong> En dag i Hanoi kan være billig, mens en cruisedag i Ha Long Bay kan koste mange gange mere.</div>
 
   <h2 id="betaling">Kort, kontanter og hæveautomater</h2>
   <p>Vi ville tage mindst to betalingskort med og opbevare dem forskellige steder. Kort fungerer fint på mange hoteller, større restauranter og butikker, men kontanter er stadig praktiske på markeder, små spisesteder og ved mindre køb.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Thanh%20Market%20Ho%20Chi%20Minh%20City.jpg?width=1400" alt="Inde i Ben Thanh Market" caption="På markeder og små lokale steder er kontanter stadig ofte den enkleste løsning. Du behøver dog ikke gå rundt med hele feriebudgettet i lommen." credit="Wikivoyage / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Ben_Thanh_Market_Ho_Chi_Minh_City.jpg" ratio="16 / 9" />
   <p>Du behøver ikke veksle et stort beløb hjemmefra. Ved ankomst ville vi have eller hæve nok kontanter til de første småudgifter og derefter hæve efter behov.</p>
   <p>Hæveautomater kan have både lokal gebyrgrænse og beløbsgrænse. Hvis du skal bruge flere kontanter, er det ofte bedre at hæve et fornuftigt beløb ad gangen end mange små beløb.</p>
-  <div class="callout"><strong>Hvis terminalen spørger om DKK eller VND:</strong> Vi ville normalt vælge betaling i <strong>VND</strong> og lade vores egen bank eller kortudsteder stå for valutakonverteringen. Hvis du vælger DKK i terminalen, bruges der ofte en særskilt omregning, som kan være dårligere.</div>
-  <p>Et fysisk kort er stadig rart at have, også selv om du normalt betaler med telefon i Danmark. Ikke alle terminaler eller hæveautomater fungerer lige godt med kontaktløs betaling.</p>
+  <div class="callout"><strong>Hvis terminalen spørger om DKK eller VND:</strong> Vi ville normalt vælge betaling i <strong>VND</strong> og lade vores egen bank eller kortudsteder stå for valutakonverteringen.</div>
+  <p>Et fysisk kort er stadig rart at have, også selv om du normalt betaler med telefon i Danmark.</p>
 
   <h2 id="drikkepenge">Drikkepenge</h2>
   <p>Drikkepenge fungerer ikke helt som i USA. På almindelige lokale spisesteder ville vi ikke føle os forpligtet til at lægge en fast procent oveni.</p>
-  <p>På private ture, hos guider og chauffører er det mere almindeligt at give noget ekstra, hvis servicen har været god. Brug situationen og serviceniveauet som pejlemærke i stedet for en fast regel.</p>
+  <p>På private ture, hos guider og chauffører er det mere almindeligt at give noget ekstra, hvis servicen har været god.</p>
 
   <h2 id="spar">Hvor giver det mening at spare?</h2>
-  <ul>
-    <li><strong>Spar gerne på:</strong> dyre hotelmorgenmåltider, hvis du alligevel vil spise lokalt, og private biler til meget korte ture i byen.</li>
-    <li><strong>Betal gerne lidt mere for:</strong> et centralt hotel på et kort ophold, en ordentlig kahyt i Ha Long Bay og fly på meget lange strækninger.</li>
-    <li><strong>Pas på falske besparelser:</strong> et hotel 30 minutter uden for centrum er ikke nødvendigvis billigt, hvis du bruger Grab frem og tilbage flere gange om dagen.</li>
-    <li><strong>Se på totalprisen:</strong> en billig tur kan ende dyrere, hvis transfer, entréer eller måltider ligger oveni.</li>
-  </ul>
-
+  <ul><li><strong>Spar gerne på:</strong> dyre hotelmorgenmåltider, hvis du alligevel vil spise lokalt, og private biler til meget korte ture i byen.</li><li><strong>Betal gerne lidt mere for:</strong> et centralt hotel på et kort ophold, en ordentlig kahyt i Ha Long Bay og fly på meget lange strækninger.</li><li><strong>Pas på falske besparelser:</strong> et hotel 30 minutter uden for centrum er ikke nødvendigvis billigt, hvis du bruger Grab frem og tilbage flere gange om dagen.</li><li><strong>Se på totalprisen:</strong> en billig tur kan ende dyrere, hvis transfer, entréer eller måltider ligger oveni.</li></ul>
   <p>Hvis vi skulle prioritere på en første rejse, ville vi hellere bo godt placeret i Hanoi og Hoi An og spare på hotellets luksusniveau end at bo flot langt væk fra det, vi faktisk vil se.</p>
 
   <h2>Byg budgettet sammen med ruten</h2>
-  <div class="link-list">
-    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvilke dage der typisk kræver fly, cruise eller organiseret tur.</span></a>
-    <a class="link-card" href="/rejseguide/transport/">Transport i Vietnam <span>Se hvornår vi ville vælge fly, tog, Grab eller taxi.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvilke dage der typisk kræver fly, cruise eller organiseret tur.</span></a><a class="link-card" href="/rejseguide/transport/">Transport i Vietnam <span>Se hvornår vi ville vælge fly, tog, Grab eller taxi.</span></a></div>
 </ArticleLayout>
