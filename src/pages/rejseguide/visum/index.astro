@@ -1,0 +1,68 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+
+const toc = [
+  { id: 'kort-svar', label: 'Kort svar' },
+  { id: '45-dage', label: 'Visumfri i op til 45 dage' },
+  { id: 'pas', label: 'Krav til pas' },
+  { id: 'sgn', label: 'Ankomst til Ho Chi Minh City' },
+  { id: 'laengere-ophold', label: 'Hvis du vil blive længere' },
+  { id: 'tjekliste', label: 'Tjekliste før afrejse' },
+];
+const sources = [
+  { label: 'Udenrigsministeriet – Vietnam pas og visum', href: 'https://um.dk/rejse-og-ophold/rejse-til-udlandet/pas-og-visum/vietnam' },
+  { label: 'Vietnam Tourism – Visa requirements', href: 'https://www.vietnam.travel/plan-your-trip/visa-requirements' },
+];
+---
+<ArticleLayout
+  title="Visum til Vietnam for danskere 2026 | RejsTilVietnam.dk"
+  description="Aktuel guide til visum og indrejse i Vietnam for danske statsborgere: 45 dages visumfri indrejse, paskrav, e-visum og nye regler ved ankomst til Ho Chi Minh City."
+  eyebrow="Visum & indrejse"
+  heading="Visum til Vietnam for danskere"
+  intro="Den korte version: danske statsborgere kan aktuelt rejse visumfrit til Vietnam i op til 45 dage. Her er det vigtigste, du skal have styr på før afrejse."
+  toc={toc}
+  sources={sources}
+>
+  <div class="notice"><strong>Regler kan ændres med kort varsel.</strong> Denne side er opdateret 14. september 2026. Tjek altid Udenrigsministeriet og Vietnams officielle information kort før afrejse.</div>
+
+  <h2 id="kort-svar">Kort svar</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Dansk pas</span><b>Visumfri op til 45 dage</b></div>
+    <div class="fact"><span>Pas</span><b>Mindst 6 måneders gyldighed ved indrejse</b></div>
+    <div class="fact"><span>E-visum</span><b>Op til 90 dage, flere indrejser</b></div>
+  </div>
+  <p>For de fleste almindelige ferierejser på to eller tre uger betyder det, at du ikke behøver at søge visum på forhånd. Du skal stadig opfylde indrejsekravene og have et gyldigt pas.</p>
+
+  <h2 id="45-dage">Danskere kan rejse visumfrit i op til 45 dage</h2>
+  <p>Vietnam giver aktuelt danske statsborgere visumfri indrejse i op til 45 dage. Både indrejsedagen og udrejsedagen tæller med i perioden.</p>
+  <p>Planlægger du en almindelig ferie på 10, 14 eller 21 dage, er visum derfor normalt ikke noget, du behøver at søge om på forhånd.</p>
+  <div class="callout"><strong>Vigtigt</strong> Udenrigsministeriet oplyser også, at du skal kunne vise en returbillet eller billet videre ud af Vietnam ved indrejse. Hvis du ikke kan det, kan du være nødt til at have søgt visum på forhånd.</div>
+
+  <h2 id="pas">Krav til dit pas</h2>
+  <p>Dit pas skal ifølge Udenrigsministeriets aktuelle information være gyldigt i mindst seks måneder ved indrejse. Passet må heller ikke være beskadiget.</p>
+  <p>Har du dansk flygtninge- eller fremmedpas, gælder der andre regler. I den situation bør du kontakte Vietnams ambassade før rejsen.</p>
+
+  <h2 id="sgn">Flyver du til Ho Chi Minh City (SGN)?</h2>
+  <p>Fra 15. april 2026 gælder der en ekstra indrejseprocedure for danske statsborgere, der ankommer til Tan Son Nhat International Airport i Ho Chi Minh City.</p>
+  <p>Udenrigsministeriet oplyser, at du skal udfylde en digital <strong>Pre-arrival Information (PAI)</strong>-formular tre dage før ankomst. Efter udfyldelse modtager du en QR-kode, som skal gemmes til indrejsen.</p>
+  <div class="notice">Denne regel er særlig vigtig, fordi den er nyere end mange ældre Vietnam-guides på nettet.</div>
+
+  <h2 id="laengere-ophold">Hvis du vil blive længere end 45 dage</h2>
+  <p>Vietnam tilbyder e-visum med ophold på op til 90 dage og mulighed for flere indrejser. Skal du opholde dig i Vietnam længere end 90 dage, anbefaler Udenrigsministeriet, at du kontakter Vietnams ambassade i København.</p>
+  <p>Brug kun officielle myndighedssider, når du søger e-visum. Der findes mange private sider, der ligner officielle visumsider og tager ekstra gebyrer.</p>
+
+  <h2 id="tjekliste">Tjekliste før afrejse</h2>
+  <ul>
+    <li>Kontrollér at dit pas har mindst seks måneders gyldighed ved indrejse.</li>
+    <li>Hav returbillet eller billet videre ud af Vietnam klar.</li>
+    <li>Skal du være væk i mere end 45 dage, så undersøg e-visum i god tid.</li>
+    <li>Flyver du til SGN, så tjek den aktuelle PAI-procedure før afrejse.</li>
+    <li>Tjek reglerne igen få dage før rejsen hos Udenrigsministeriet.</li>
+  </ul>
+
+  <h2>Planlæg resten af rejsen</h2>
+  <div class="link-list">
+    <a class="link-card" href="/rejseguide/bedste-rejsetid/">Hvornår er det bedst at rejse til Vietnam? <span>Se vejret i nord, midt og syd måned for måned.</span></a>
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Et konkret forslag til din første rundrejse.</span></a>
+  </div>
+</ArticleLayout>
