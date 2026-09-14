@@ -35,6 +35,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
       inLanguage: 'da-DK',
       description,
     })}></script>
+    <slot name="head" />
   </head>
   <body>
     <Header />
