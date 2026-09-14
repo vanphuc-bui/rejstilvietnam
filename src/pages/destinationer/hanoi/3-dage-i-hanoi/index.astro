@@ -1,0 +1,108 @@
+---
+import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+import SectionMedia from '../../../../components/SectionMedia.astro';
+
+const toc = [
+  { id: 'overblik', label: 'Planen i korte træk' },
+  { id: 'dag1', label: 'Dag 1: Old Quarter' },
+  { id: 'dag2', label: 'Dag 2: historie' },
+  { id: 'dag3', label: 'Dag 3: vælg efter interesse' },
+  { id: 'kortere', label: 'Hvis du kun har 2 dage' },
+  { id: 'mere', label: 'Hvis du har 4-5 dage' },
+];
+
+const sources = [
+  { label: 'Vietnam Tourism - Hanoi', href: 'https://vietnam.travel/places-to-go/northern-vietnam/ha-noi' },
+  { label: 'Vietnam Tourism - Hanoi attractions', href: 'https://vietnam.travel/things-to-do/11-must-see-attractions-ha-noi' },
+];
+---
+<ArticleLayout
+  title="3 dage i Hanoi 2026 | Rejseplan dag for dag"
+  description="Et realistisk forslag til 3 dage i Hanoi med Old Quarter, Hoan Kiem, historie, mad og valgfri Train Street - uden at presse for meget ind."
+  eyebrow="Hanoi · Rejseplan"
+  heading="3 dage i Hanoi: en plan med plads til selve byen"
+  intro="Tre dage er nok til en god første oplevelse af Hanoi, hvis du ikke prøver at se alt. Vi ville holde den første dag meget central, bruge dag to på historie og lade dag tre afhænge af, hvad du faktisk har lyst til efter de første to dage."
+  updated="15. september 2026"
+  toc={toc}
+  sources={sources}
+>
+  <SectionMedia
+    slot="heroMedia"
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1800"
+    alt="Gadeliv i Hanois Old Quarter"
+    caption="Første dag fungerer bedst, hvis du bliver i centrum og lader byen komme til dig."
+    credit="Richard Mortel / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg"
+    ratio="16 / 7"
+  />
+
+  <h2 id="overblik">Planen i korte træk</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Dag 1</span><b>Old Quarter + Hoan Kiem + mad</b></div>
+    <div class="fact"><span>Dag 2</span><b>Litteraturtemplet + historie</b></div>
+    <div class="fact"><span>Dag 3</span><b>Train Street, West Lake eller rolig bydag</b></div>
+  </div>
+  <p>Planen er lavet til en førstegangsrejse, hvor du bor centralt omkring Old Quarter eller Hoan Kiem. Hvis du bor i Tay Ho, skal du regne med lidt mere transport hver dag.</p>
+  <div class="callout"><strong>Ankomst om aftenen?</strong> Tæl ikke ankomstdagen som en rigtig sightseeingdag. Check ind, spis tæt på hotellet og begynd planen næste morgen.</div>
+
+  <h2 id="dag1">Dag 1: Old Quarter og Hoan Kiem</h2>
+  <h3>Morgen: gå før byen bliver varm</h3>
+  <p>Start omkring Hoan Kiem-søen og gå derefter ind i Old Quarter. Du behøver ikke følge en fast rute gennem alle de gamle handelsgader. Vælg et område på kortet, gå langsomt og stop, når du ser et sted med morgenmad eller kaffe.</p>
+  <p>Hvis du vil begynde med noget meget Hanoi-agtigt, så spis phở eller bánh cuốn til morgenmad. Se vores <a href="/destinationer/hanoi/mad-i-hanoi/">madguide til Hanoi</a>, hvis du vil planlægge retterne på forhånd.</p>
+
+  <h3>Eftermiddag: ét konkret stop</h3>
+  <p>Efter frokost ville vi vælge <strong>Hoa Lo Prison</strong> eller et andet enkelt museum frem for at køre rundt mellem flere seværdigheder. Det giver dagen lidt struktur, men du har stadig tid til at vende tilbage til hotellet, hvis flyrejsen sidder i kroppen.</p>
+
+  <h3>Aften: tilbage til centrum</h3>
+  <p>Gå omkring søen igen og spis i eller omkring Old Quarter. Stemningen er anderledes end om morgenen, og du slipper for at bruge aftenen i en bil på tværs af byen.</p>
+  <SectionMedia
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoan%20Kiem%20Lake%20photo.jpg?width=1400"
+    alt="Hoan Kiem-søen i Hanoi"
+    caption="Hoan Kiem er et naturligt udgangspunkt både morgen og aften."
+    credit="Tranhuutukkt / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Hoan_Kiem_Lake_photo.jpg"
+    ratio="16 / 9"
+  />
+
+  <h2 id="dag2">Dag 2: historie vest for centrum</h2>
+  <h3>Morgen: Litteraturtemplet</h3>
+  <p>Tag en kort Grab eller taxi til Litteraturtemplet. Det er et overskueligt sted at begynde, og formiddagen er som regel bedre end den varmeste del af dagen.</p>
+
+  <h3>Sen formiddag: vælg Ba Dinh eller citadellet</h3>
+  <p>Hvis du er interesseret i Vietnams moderne historie, fortsæt mod Ba Dinh og Ho Chi Minh-mausoleumsområdet. Hvis arkitektur og ældre historie interesserer dig mere, ville vi prioritere Imperial Citadel of Thang Long.</p>
+  <p>Prøv ikke nødvendigvis at nå begge dele plus flere museer. Hanoi bliver mere interessant, når du har tid til at læse og kigge frem for kun at tage et billede ved indgangen.</p>
+  <SectionMedia
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%20-%20Temple%20of%20Literature.jpg?width=1400"
+    alt="Litteraturtemplet i Hanoi"
+    caption="Dag to samler de historiske stop, der ligger vest for Old Quarter."
+    credit="P. Hughes / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Hanoi_-_Temple_of_Literature.jpg"
+    ratio="4 / 3"
+  />
+
+  <h3>Aften: street food eller et roligt måltid</h3>
+  <p>Hvis du har lyst til at prøve mange små retter, er anden aften et godt tidspunkt til en street-food-rute. Hvis du allerede er mæt af indtryk, vælg i stedet ét sted med bún chả eller chả cá og gør aftenen enkel.</p>
+
+  <h2 id="dag3">Dag 3: vælg efter interesse</h2>
+  <p>På tredjedagen ville vi ikke bruge samme plan til alle. Efter to dage ved du bedre, om du vil have mere by, mere historie eller bare en roligere dag.</p>
+
+  <h3>Valg A: Train Street + caféer</h3>
+  <p>Train Street kan passe ind om formiddagen eller senere på dagen, men adgang og togtider ændrer sig. Læs vores <a href="/destinationer/hanoi/train-street/">aktuelle Train Street-guide</a> og tjek forholdene samme dag.</p>
+
+  <h3>Valg B: West Lake og Tran Quoc-pagoden</h3>
+  <p>Hvis du trænger til mere luft og færre smalle gader, så tag til Tay Ho/West Lake. Det er især et godt valg, hvis du overvejer at bo der på et længere ophold.</p>
+
+  <h3>Valg C: en langsom dag i centrum</h3>
+  <p>Det er også helt legitimt at bruge tredje dag på caféer, et ekstra museum, shopping og mad. Det giver ofte mere mening end at tilføje endnu en attraktion kun for at kunne sige, at du har været der.</p>
+
+  <h2 id="kortere">Hvis du kun har 2 dage</h2>
+  <p>Behold dag 1 næsten uændret. På dag 2 ville vi vælge Litteraturtemplet plus enten Ba Dinh eller Hoa Lo. Train Street er kun værd at presse ind, hvis det faktisk står højt på din ønskeliste.</p>
+
+  <h2 id="mere">Hvis du har 4-5 dage</h2>
+  <p>Så ville vi normalt ikke bruge alle dagene inde i Hanoi. Brug byen som base og tilføj <a href="/destinationer/hanoi/ninh-binh-fra-hanoi/">Ninh Binh</a> eller <a href="/destinationer/hanoi/ha-long-bay-fra-hanoi/">Ha Long Bay</a>. Begge giver en markant anden oplevelse end endnu en dag med storby.</p>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/sevaerdigheder/">Seværdigheder i Hanoi <span>Vælg de steder, der passer bedst til din rejse.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Vælg område, før du vælger hotel.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/bedste-hoteller/">Bedste hoteller i Hanoi <span>Vores korte shortlist til forskellige typer ophold.</span></a>
+  </div>
+</ArticleLayout>
