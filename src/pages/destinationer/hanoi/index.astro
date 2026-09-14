@@ -1,0 +1,80 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import AffiliateCard from '../../../components/AffiliateCard.astro';
+
+const toc = [
+  { id: 'overblik', label: 'Hanoi i korte træk' },
+  { id: 'oplevelser', label: 'Det skal du opleve' },
+  { id: 'mad', label: 'Mad i Hanoi' },
+  { id: 'dage', label: 'Hvor mange dage?' },
+  { id: 'vejret', label: 'Bedste rejsetid' },
+  { id: 'dagsture', label: 'Dagsture fra Hanoi' },
+];
+const sources = [
+  { label: 'Vietnam Tourism – Hanoi', href: 'https://vietnam.travel/places-to-go/northern-vietnam/ha-noi' },
+  { label: 'Vietnam Tourism – Weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
+];
+---
+<ArticleLayout
+  title="Hanoi rejseguide 2026 | Seværdigheder, mad og dagsture"
+  description="Dansk rejseguide til Hanoi: hvor mange dage du bør bruge, hvad du skal opleve, hvad du skal spise, bedste rejsetid og gode dagsture til Ninh Binh og Ha Long Bay."
+  eyebrow="Nordvietnam"
+  heading="Hanoi: den bedste start på Vietnam"
+  intro="Hanoi er kaotisk, hyggelig og fuld af små øjeblikke, der ikke kan planlægges. Brug byen som mere end et transportstop – og giv den tid nok til at lande."
+  toc={toc}
+  sources={sources}
+>
+  <h2 id="overblik">Hanoi i korte træk</h2>
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>2–4 dage</b></div>
+    <div class="fact"><span>Bedst kendt for</span><b>Old Quarter, kaffe og street food</b></div>
+    <div class="fact"><span>God base for</span><b>Ninh Binh og Ha Long Bay</b></div>
+  </div>
+  <p>Hanoi er Vietnams hovedstad og et oplagt første stop, hvis du vil rejse gennem landet fra nord mod syd. Byen kombinerer gamle kvarterer, søer, templer, fransk-inspireret arkitektur, moderne caféer og en madscene, der fungerer fra morgen til sen aften.</p>
+
+  <h2 id="oplevelser">Det skal du opleve i Hanoi</h2>
+  <h3>Old Quarter</h3>
+  <p>Start i det gamle kvarter. Her er Hanoi mest intenst: smalle gader, scootere, gadekøkkener, små butikker og caféer side om side. Det er et område, der fungerer bedst til fods i små bidder frem for som én lang sightseeing-rute.</p>
+  <h3>Hoan Kiem-søen</h3>
+  <p>Søen ligger centralt og er god som orienteringspunkt. Tidlig morgen og sen eftermiddag er særligt gode tidspunkter at gå en tur rundt om vandet og se byen i et roligere tempo.</p>
+  <h3>Litteraturtemplet og byens historiske lag</h3>
+  <p>Vil du have mere historie ind i rejsen, så kombiner Old Quarter med Litteraturtemplet og nogle af byens museer eller historiske områder. Pointen er ikke at nå alt, men at få kontrast til de mere moderne kvarterer.</p>
+
+  <h2 id="mad">Mad i Hanoi</h2>
+  <p>Hanoi er et af de steder, hvor vi klart ville planlægge mindst ét måltid som en oplevelse i sig selv. Kig efter <strong>phở</strong>, <strong>bún chả</strong>, <strong>bánh cuốn</strong> og vietnamesisk kaffe – men brug også tid på bare at vælge steder, hvor der er travlt med lokale gæster.</p>
+  <AffiliateCard
+    title="Street food-tur i Hanoi"
+    text="En guidet madtur er en nem måde at få styr på retter, bestilling og små lokale steder på den første aften."
+    label="God første aften"
+  />
+
+  <h2 id="dage">Hvor mange dage skal man bruge i Hanoi?</h2>
+  <p><strong>Tre nætter</strong> er et rigtig godt udgangspunkt for de fleste førstegangsrejsende. Det giver tid til at opleve byen uden at gøre hvert døgn til en tjekliste.</p>
+  <ul>
+    <li><strong>1 dag:</strong> kun hvis Hanoi er transit.</li>
+    <li><strong>2 dage:</strong> nok til Old Quarter, mad og et par hovedseværdigheder.</li>
+    <li><strong>3–4 dage:</strong> bedre tempo og plads til caféer, museer og kvarterer uden for den mest turistede kerne.</li>
+  </ul>
+
+  <h2 id="vejret">Bedste rejsetid til Hanoi</h2>
+  <p>Vietnam Tourism fremhæver typisk april til juni samt september til december som gode perioder. September og oktober er særligt attraktive, fordi temperaturen normalt er mere behagelig efter den varmeste sommerperiode.</p>
+  <p>December til marts kan føles overraskende køligt og diset, mens juni til august typisk er varmt, fugtigt og mere regnfuldt.</p>
+
+  <h2 id="dagsture">De bedste dagsture fra Hanoi</h2>
+  <h3>Ninh Binh</h3>
+  <p>Ninh Binh er et af de stærkeste valg, hvis du kun har plads til én naturdag fra Hanoi. Kalkstensklipper, floder og rismarker giver en helt anden følelse end hovedstaden.</p>
+  <AffiliateCard
+    title="Ninh Binh – heldagstur fra Hanoi"
+    text="Praktisk hvis du vil opleve området uden selv at koordinere transport mellem Hanoi, bådtur og seværdigheder."
+    label="Populær dagstur"
+  />
+  <h3>Ha Long Bay</h3>
+  <p>Ha Long Bay kan besøges som dagstur, men hvis din tidsplan tillader det, giver en overnatning på vandet en mere rolig oplevelse. Vi laver en separat cruise-guide, så du lettere kan skelne mellem de mange niveauer og ruter.</p>
+
+  <h2>Fortsæt planlægningen</h2>
+  <div class="link-list">
+    <a class="link-card" href="/ture/ninh-binh-fra-hanoi/">Ninh Binh fra Hanoi <span>Dagstur eller overnatning? Se vores guide.</span></a>
+    <a class="link-card" href="/ture/halong-bay-cruise/">Ha Long Bay cruise <span>Sådan vælger du mellem dagstur, 1 nat og 2 nætter.</span></a>
+    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvor Hanoi passer ind i en klassisk rundrejse.</span></a>
+  </div>
+</ArticleLayout>
