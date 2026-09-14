@@ -1,6 +1,7 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
 
 const toc = [
   { id: 'kort-svar', label: 'Kort svar' },
@@ -16,21 +17,11 @@ const sources = [
   { label: 'Grab Vietnam - transport', href: 'https://www.grab.com/vn/en/transport/car/' },
 ];
 ---
-<ArticleLayout
-  title="Transport i Vietnam 2026 | Fly, tog, bus, taxi og Grab"
-  description="Praktisk guide til transport i Vietnam for danskere: hvornår fly, tog og bus giver mening, og hvornår taxi eller Grab er nemmest."
-  eyebrow="Praktisk guide"
-  heading="Transport i Vietnam - sådan ville vi gøre"
-  intro="Du behøver ikke vælge én transportform til hele rejsen. På en almindelig rundrejse giver det mest mening at kombinere fly på de lange stræk, bus eller tog på enkelte ruter og taxi eller Grab i byerne."
-  toc={toc}
-  sources={sources}
->
+<ArticleLayout title="Transport i Vietnam 2026 | Fly, tog, bus, taxi og Grab" description="Praktisk guide til transport i Vietnam for danskere med billeder: hvornår fly, tog og bus giver mening, og hvornår taxi eller Grab er nemmest." eyebrow="Praktisk guide" heading="Transport i Vietnam - sådan ville vi gøre" intro="Du behøver ikke vælge én transportform til hele rejsen. På en almindelig rundrejse giver det mest mening at kombinere fly på de lange stræk, bus eller tog på enkelte ruter og taxi eller Grab i byerne." toc={toc} sources={sources}>
+  <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/VIETNAM%20RAILWAYS%20SE8%20DANANG%20TO%20HA%20NOI%20NIGHT%20SLEEPER%20TRAIN%20VIETNAM%20JAN%202012%20%287048874399%29.jpg?width=1800" alt="Vietnam Railways nattog" caption="Tog kan være en del af oplevelsen, men vi ville kun vælge det på strækninger, hvor rejsetiden giver mening i forhold til ferien." credit="Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:VIETNAM_RAILWAYS_SE8_DANANG_TO_HA_NOI_NIGHT_SLEEPER_TRAIN_VIETNAM_JAN_2012_(7048874399).jpg" ratio="16 / 7" />
+
   <h2 id="kort-svar">Kort svar</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>Lange stræk</span><b>Fly, hvis tiden er vigtig</b></div>
-    <div class="fact"><span>Kortere stræk</span><b>Tog eller limousinebus</b></div>
-    <div class="fact"><span>I byerne</span><b>Grab eller almindelig taxi</b></div>
-  </div>
+  <div class="fact-grid"><div class="fact"><span>Lange stræk</span><b>Fly, hvis tiden er vigtig</b></div><div class="fact"><span>Kortere stræk</span><b>Tog eller limousinebus</b></div><div class="fact"><span>I byerne</span><b>Grab eller almindelig taxi</b></div></div>
   <p>Hvis du har to uger i Vietnam, ville vi ikke bruge flere hele dage på at køre fra nord til syd bare for at spare lidt på transporten. Brug de langsomme løsninger dér, hvor turen i sig selv er interessant. Flyv, når afstanden ellers tager det meste af en feriedag.</p>
 
   <h2 id="fly">Indenrigsfly - når du skal langt</h2>
@@ -40,6 +31,7 @@ const sources = [
 
   <h2 id="tog">Tog - når selve turen gerne må tage tid</h2>
   <p>Toget kan være en god oplevelse på udvalgte strækninger, men vi ville ikke automatisk vælge tog bare fordi det lyder mere lokalt. Hanoi til Ho Chi Minh City tager omkring 30 timer, så det er meget tid at bruge på transport på en kort ferie.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Passenger%20on%20TN1%20hard%20sleeper.jpg?width=1400" alt="Hard sleeper i et vietnamesisk nattog" caption="En hard-sleeper kupé giver et mere realistisk billede af nattog end flotte reklamefotos. Betal gerne lidt mere for en ordentlig køje, hvis du skal sove undervejs." credit="anjči / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Passenger_on_TN1_hard_sleeper.jpg" ratio="16 / 9" />
   <p>Hvis du tager nattog, så betal hellere lidt ekstra for en ordentlig køje. Den billigste plads er ikke nødvendigvis billig, hvis du ankommer træt og mister det meste af næste dag.</p>
 
   <h2 id="bus">Bus og limousine</h2>
@@ -48,37 +40,22 @@ const sources = [
   <p>Hvis du rejser med små børn, meget bagage eller bare vil undgå flere stop undervejs, kan en privat transfer være pengene værd på de kortere strækninger.</p>
 
   <h2 id="taxi-grab">Taxi eller Grab?</h2>
-  <p>Begge dele fungerer fint. Hvis du er vant til at bruge apps, er Grab normalt den nemmeste løsning i de større byer. Du indtaster destinationen, ser bilen og nummerpladen i appen og får en pris eller prisindikation før turen. Grab er meget udbredt i Vietnam, og selskabet udvidede i 2026 sine tjenester til hele landet, men de konkrete biltyper kan variere fra sted til sted.</p>
+  <p>Begge dele fungerer fint. Hvis du er vant til at bruge apps, er Grab normalt den nemmeste løsning i de større byer. Du indtaster destinationen, ser bilen og nummerpladen i appen og får en pris eller prisindikation før turen.</p>
   <p>En almindelig taxi er stadig et godt valg. Vi ville uden problemer tage en taxi, hvis hotellet bestiller den, eller hvis vi står i lufthavnen efter en lang flyvetur med flere kufferter. Det er ofte nemmere end at finde det rigtige pickup-område til en app-bil.</p>
   <div class="callout"><strong>Sådan ville vi vælge:</strong> Grab til almindelige byture, hvis du er komfortabel med smartphone og mobildata. Taxi eller bestilt transfer ved sen ankomst, meget bagage eller hvis du bare vil direkte videre uden at rode med en app.</div>
-  <p>GrabBike kan være hurtigt og billigt, især i tæt trafik, men vi ville ikke anbefale det som første transport efter ankomst eller med bagage. Hvis du ikke er vant til scootertrafik, er en bil den mere afslappede start.</p>
+  <p>GrabBike kan være hurtigt og billigt, især i tæt trafik, men vi ville ikke anbefale det som første transport efter ankomst eller med bagage.</p>
 
   <h2 id="byer">Transport i Hanoi og Ho Chi Minh City</h2>
   <p>Til korte ture i Hanoi og Ho Chi Minh City bruger vi helst Grab eller taxi. På meget korte afstande kan du gå, men 1-2 kilometer på kortet kan føles længere i varme, regn eller tæt trafik.</p>
-  <p>Hvis du bruger Grab, så kontrollér nummerpladen før du sætter dig ind. Ved store indkøbscentre, stationer og lufthavne kan afhentningsstedet ligge et andet sted end dér, hvor du står. Kig på kortet i appen i stedet for bare at vente ved hovedindgangen.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Nguyen%20Hue%20Street.jpg?width=1500" alt="Trafik og byliv i Ho Chi Minh City" caption="I storbyerne er afstand ikke det samme som rejsetid. Trafik, varme og pickup-steder betyder ofte mere end antallet af kilometer." credit="Rondano / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Nguyen_Hue_Street.jpg" ratio="16 / 9" />
+  <p>Hvis du bruger Grab, så kontrollér nummerpladen før du sætter dig ind. Ved store indkøbscentre, stationer og lufthavne kan afhentningsstedet ligge et andet sted end dér, hvor du står.</p>
   <p>I mindre byer og på øer kan udbuddet af biler være mere begrænset. Her er hotellets reception ofte den nemmeste løsning, hvis du skal tidligt til lufthavnen eller videre med færge.</p>
-  <AffiliateCard
-    title="Privat lufthavnstransfer"
-    text="Mest relevant ved sen ankomst, med børn eller hvis du har flere kufferter og gerne vil have en chauffør, der venter ved ankomst."
-    label="Praktisk ved ankomst"
-  />
+  <AffiliateCard title="Privat lufthavnstransfer" text="Mest relevant ved sen ankomst, med børn eller hvis du har flere kufferter og gerne vil have en chauffør, der venter ved ankomst." label="Praktisk ved ankomst" />
 
   <h2 id="rute">Hvad ville vi vælge på en 14-dages rundrejse?</h2>
-  <table>
-    <thead><tr><th>Strækning</th><th>Vores valg</th><th>Hvorfor</th></tr></thead>
-    <tbody>
-      <tr><td>Hanoi → Ninh Binh</td><td>Limousinebus eller organiseret dagstur</td><td>Kort nok til landtransport og ingen lufthavnslogistik</td></tr>
-      <tr><td>Hanoi → Ha Long Bay</td><td>Cruise-transfer</td><td>Det er nemmest at lade cruiseselskabet koordinere transporten</td></tr>
-      <tr><td>Hanoi → Da Nang / Hoi An</td><td>Indenrigsfly</td><td>Sparer en stor del af en feriedag</td></tr>
-      <tr><td>Da Nang → Hoi An</td><td>Taxi eller Grab</td><td>Kort og enkelt dør til dør</td></tr>
-      <tr><td>Hoi An / Da Nang → Ho Chi Minh City</td><td>Indenrigsfly</td><td>Den mest praktiske løsning på en 2-ugers tur</td></tr>
-    </tbody>
-  </table>
+  <table><thead><tr><th>Strækning</th><th>Vores valg</th><th>Hvorfor</th></tr></thead><tbody><tr><td>Hanoi → Ninh Binh</td><td>Limousinebus eller organiseret dagstur</td><td>Kort nok til landtransport og ingen lufthavnslogistik</td></tr><tr><td>Hanoi → Ha Long Bay</td><td>Cruise-transfer</td><td>Det er nemmest at lade cruiseselskabet koordinere transporten</td></tr><tr><td>Hanoi → Da Nang / Hoi An</td><td>Indenrigsfly</td><td>Sparer en stor del af en feriedag</td></tr><tr><td>Da Nang → Hoi An</td><td>Taxi eller Grab</td><td>Kort og enkelt dør til dør</td></tr><tr><td>Hoi An / Da Nang → Ho Chi Minh City</td><td>Indenrigsfly</td><td>Den mest praktiske løsning på en 2-ugers tur</td></tr></tbody></table>
   <p>Det er ikke den billigste kombination, men det er omtrent sådan, vi selv ville gøre på en ferie, hvor tiden er mere værd end at spare de sidste kroner på hver transport.</p>
 
   <h2>Planlæg ruten</h2>
-  <div class="link-list">
-    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se transporten placeret i en konkret dag-for-dag-rute.</span></a>
-    <a class="link-card" href="/destinationer/hanoi/">Hanoi <span>Sådan bruger du hovedstaden som base i nord.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se transporten placeret i en konkret dag-for-dag-rute.</span></a><a class="link-card" href="/destinationer/hanoi/">Hanoi <span>Sådan bruger du hovedstaden som base i nord.</span></a></div>
 </ArticleLayout>
