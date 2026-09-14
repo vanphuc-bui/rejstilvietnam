@@ -1,16 +1,16 @@
 ---
 const { title, text, price = 'Pris vises hos partneren', href = '', partner = 'Viator', label = 'Populært valg' } = Astro.props;
-const isReady = href && href !== '#';
+const isReady = Boolean(href && href !== '#');
 ---
-<div class="affiliate-card">
-  <div><span class="badge">{label}</span><h3>{title}</h3><p>{text}</p><small>{price}</small></div>
-  <div class="action">
-    <span class="disclosure">{isReady ? 'Annoncelink' : 'Affiliate-link kommer snart'}</span>
-    {isReady
-      ? <a href={href} rel="sponsored noopener" target="_blank">Se hos {partner} →</a>
-      : <span class="pending">Se turen snart</span>}
+{isReady && (
+  <div class="affiliate-card">
+    <div><span class="badge">{label}</span><h3>{title}</h3><p>{text}</p><small>{price}</small></div>
+    <div class="action">
+      <span class="disclosure">Annoncelink</span>
+      <a href={href} rel="sponsored noopener" target="_blank">Se hos {partner} →</a>
+    </div>
   </div>
-</div>
+)}
 <style>
 .affiliate-card { display: flex; justify-content: space-between; gap: 24px; padding: 24px; border: 1px solid var(--border); border-radius: 22px; background: white; margin: 26px 0; }
 .badge { display: inline-block; padding: 5px 9px; border-radius: 999px; background: var(--green-100); color: var(--green-700); font-size: .72rem; font-weight: 850; text-transform: uppercase; letter-spacing: .06em; }
@@ -19,8 +19,6 @@ p { color: var(--muted); margin: 7px 0; }
 small { color: #7a857f; }
 .action { min-width: 180px; display: flex; flex-direction: column; align-items: end; justify-content: center; gap: 7px; }
 .disclosure { font-size: .72rem; color: #7b857f; }
-.action a, .pending { padding: 11px 15px; border-radius: 999px; font-weight: 800; font-size: .9rem; }
-.action a { background: var(--green-950); color: white; }
-.pending { background: #edf0ed; color: #778079; cursor: default; }
-@media (max-width: 620px) { .affiliate-card { flex-direction: column; } .action { align-items: stretch; } .action a, .pending { text-align: center; } }
+.action a { padding: 11px 15px; border-radius: 999px; font-weight: 800; font-size: .9rem; background: var(--green-950); color: white; }
+@media (max-width: 620px) { .affiliate-card { flex-direction: column; } .action { align-items: stretch; } .action a { text-align: center; } }
 </style>
