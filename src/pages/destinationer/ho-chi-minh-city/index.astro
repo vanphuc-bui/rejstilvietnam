@@ -1,12 +1,15 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import FoodGrid from '../../../components/FoodGrid.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
 
 const toc = [
   { id: 'overblik', label: 'Byen i korte træk' },
   { id: 'bo', label: 'Hvor skal man bo?' },
   { id: 'oplevelser', label: 'Hvad er værd at se?' },
-  { id: 'mad', label: 'Mad og kaffe' },
+  { id: 'mad', label: 'Mad du bør prøve' },
   { id: 'transport', label: 'Transport i byen' },
   { id: 'dagsture', label: 'Mekong eller Cu Chi?' },
   { id: 'ankomst', label: 'Ankomst via SGN' },
@@ -15,22 +18,16 @@ const sources = [
   { label: 'Vietnam Tourism - Ho Chi Minh City', href: 'https://beta-v2.vietnam.travel/places-to-go/southern-vietnam/ho-chi-minh-city' },
   { label: 'Udenrigsministeriet - Vietnam pas og visum', href: 'https://um.dk/rejse-og-ophold/rejse-til-udlandet/pas-og-visum/vietnam' },
 ];
+const food = [
+  { name:'Cơm tấm', when:'Frokost / aften', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Com-Tam-2008.jpg?width=1200', alt:'Cơm tấm med grillet svinekød og spejlæg', text:'Broken rice med grillet svinekød, ofte serveret med æg, grønt og fiskesauce. Det er en meget typisk Saigon-ret.', tip:'God som et enkelt hovedmåltid. Vi ville prøve den på et sted, der har høj udskiftning og ikke alt for stort menukort.', credit:'Kham Tran / Wikimedia Commons', creditUrl:'https://commons.wikimedia.org/wiki/File:Com-Tam-2008.jpg' },
+  { name:'Bánh mì', when:'Morgen / let frokost', image:'https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh%20m%C3%AC.jpg?width=1200', alt:'Vietnamesisk bánh mì sandwich', text:'Sprød baguette med pâté, kød, syltede grøntsager og urter. I Ho Chi Minh City finder du mange varianter og meget hurtig servering.', tip:'Perfekt når du ikke vil bruge en time på frokost. Køb den et travlt sted og spis den frisk.', credit:'Stu Spivack / Wikimedia Commons', creditUrl:'https://commons.wikimedia.org/wiki/File:B%C3%A1nh_m%C3%AC.jpg' },
+];
 ---
-<ArticleLayout
-  title="Ho Chi Minh City rejseguide 2026 | Hotelområde, mad og transport"
-  description="Dansk guide til Ho Chi Minh City med praktiske råd om hotelområde, transport, mad, Mekong, Cu Chi og ankomst via Tan Son Nhat."
-  eyebrow="Sydvietnam"
-  heading="Ho Chi Minh City: sådan ville vi bruge 3 dage"
-  intro="Ho Chi Minh City er stor, varm og travl. Den bliver meget lettere at håndtere, hvis du bor centralt og ikke prøver at krydse byen flere gange om dagen."
-  toc={toc}
-  sources={sources}
->
+<ArticleLayout title="Ho Chi Minh City rejseguide 2026 | Hotelområde, mad og transport" description="Dansk guide til Ho Chi Minh City med billeder, video og praktiske råd om hotelområde, mad, transport, Mekong, Cu Chi og ankomst via Tan Son Nhat." eyebrow="Sydvietnam" heading="Ho Chi Minh City: sådan ville vi bruge 3 dage" intro="Ho Chi Minh City er stor, varm og travl. Den bliver meget lettere at håndtere, hvis du bor centralt og ikke prøver at krydse byen flere gange om dagen." toc={toc} sources={sources}>
+  <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/Nguyen%20Hue%20Street.jpg?width=1800" alt="Nguyen Hue i Ho Chi Minh City" caption="Nguyen Hue viser den moderne side af byen. Få gader væk skifter gadebilledet hurtigt til mindre butikker, caféer og tæt trafik." credit="Rondano / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Nguyen_Hue_Street.jpg" ratio="16 / 7" />
+
   <h2 id="overblik">Byen i korte træk</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>Godt til</span><b>3 nætter</b></div>
-    <div class="fact"><span>Første gang</span><b>District 1 eller kanten af District 3</b></div>
-    <div class="fact"><span>Nem transport</span><b>Grab, taxi og gang lokalt</b></div>
-  </div>
+  <div class="fact-grid"><div class="fact"><span>Godt til</span><b>3 nætter</b></div><div class="fact"><span>Første gang</span><b>District 1 eller kanten af District 3</b></div><div class="fact"><span>Nem transport</span><b>Grab, taxi og gang lokalt</b></div></div>
   <p>Ho Chi Minh City - stadig ofte kaldt Saigon - er et godt sidste stop på en rundrejse. Du får storby, historie, mad og nem adgang til internationale fly.</p>
 
   <h2 id="bo">Hvor skal man bo?</h2>
@@ -40,16 +37,16 @@ const sources = [
 
   <h2 id="oplevelser">Hvad er værd at se?</h2>
   <p>War Remnants Museum giver historisk kontekst og er efter vores mening mere værdifuldt end at bruge hele dagen på fotostop. Kombinér det med Central Post Office, Dong Khoi-området og en rolig tur gennem centrum.</p>
-  <p>Ben Thanh er centralt og let at kigge forbi, men vi ville ikke planlægge en halv dag alene omkring markedet. Byen er mere interessant, når du også spiser og går lidt væk fra de mest oplagte turistgader.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Thanh%20Market.jpg?width=1500" alt="Ben Thanh Market i Ho Chi Minh City" caption="Ben Thanh er nemt at kigge forbi, men vi ville ikke sætte en halv dag af til markedet alene." credit="Jean-Marie Hullot / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Ben_Thanh_Market.jpg" ratio="16 / 9" />
+  <p>Ben Thanh er centralt og let at kigge forbi, men byen er mere interessant, når du også spiser og går lidt væk fra de mest oplagte turistgader.</p>
 
-  <h2 id="mad">Mad og kaffe</h2>
-  <p>Ho Chi Minh City har alt fra små lokale steder til moderne restauranter. Cơm tấm, bánh mì, supper og vietnamesisk kaffe er nemme ting at starte med.</p>
+  <VideoEmbed youtubeId="UUN5nrrFc_Q" title="4K walking tour i Ho Chi Minh City" caption="Videoen viser den tætte trafik og gadelivet bedre end stillbilleder. Det er nyttigt, hvis du vil vide, hvordan byen faktisk føles at gå rundt i." />
+
+  <h2 id="mad">Mad du bør prøve</h2>
+  <p>Ho Chi Minh City har alt fra små lokale steder til moderne restauranter. Hvis du kun har få dage, ville vi i hvert fald prøve <strong>cơm tấm</strong> og <strong>bánh mì</strong> i stedet for at spise alle måltider på hotel eller internationale restauranter.</p>
+  <FoodGrid items={food} />
   <p>Vi ville hellere spise flere små måltider end at booke tre tunge restaurantmåltider om dagen. Det giver mere plads til at prøve noget spontant.</p>
-  <AffiliateCard
-    title="Food tour i Ho Chi Minh City"
-    text="Kan være god, hvis turen bevæger sig ud af det mest turistede centrum og har en lille gruppe. Tjek transportform og antal stop før booking."
-    label="God første eller anden aften"
-  />
+  <AffiliateCard title="Food tour i Ho Chi Minh City" text="Kan være god, hvis turen bevæger sig ud af det mest turistede centrum og har en lille gruppe. Tjek transportform og antal stop før booking." label="God første eller anden aften" />
 
   <h2 id="transport">Transport i byen</h2>
   <p>Hvis du er vant til apps, er Grab meget praktisk. Du kan se destination og pris på forhånd, og det er nemt at bruge mellem kvarterer.</p>
@@ -68,9 +65,5 @@ const sources = [
   <div class="notice">Tjek altid den aktuelle PAI-procedure og øvrige indrejseregler hos Udenrigsministeriet før afrejse.</div>
 
   <h2>Fortsæt planlægningen</h2>
-  <div class="link-list">
-    <a class="link-card" href="/rejseguide/visum/">Visum og indrejse <span>Se de aktuelle regler for danske statsborgere.</span></a>
-    <a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvor mange dage vi ville bruge i byen.</span></a>
-    <a class="link-card" href="/destinationer/phu-quoc/">Phu Quoc <span>Se om du hellere vil slutte rejsen med strand.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/rejseguide/visum/">Visum og indrejse <span>Se de aktuelle regler for danske statsborgere.</span></a><a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvor mange dage vi ville bruge i byen.</span></a><a class="link-card" href="/destinationer/phu-quoc/">Phu Quoc <span>Se om du hellere vil slutte rejsen med strand.</span></a></div>
 </ArticleLayout>
