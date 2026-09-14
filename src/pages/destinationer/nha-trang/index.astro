@@ -1,0 +1,64 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import AffiliateCard from '../../../components/AffiliateCard.astro';
+
+const toc = [
+  { id: 'overblik', label: 'Nha Trang i korte træk' },
+  { id: 'bo', label: 'Hvor skal man bo?' },
+  { id: 'strand', label: 'Strand og bugt' },
+  { id: 'oplevelser', label: 'Oplevelser' },
+  { id: 'mad', label: 'Mad og seafood' },
+  { id: 'transport', label: 'Transport' },
+  { id: 'vejret', label: 'Bedste rejsetid' },
+  { id: 'dage', label: 'Hvor mange dage?' },
+];
+
+const sources = [
+  { label: 'Vietnam Tourism - Nha Trang', href: 'https://vietnam.travel/vi/node/220' },
+  { label: 'Wikimedia Commons - Nha Trang', href: 'https://commons.wikimedia.org/wiki/Nha_Trang' },
+];
+---
+<ArticleLayout title="Nha Trang rejseguide 2026 | Strand, hotelområde og oplevelser" description="Dansk guide til Nha Trang med praktiske råd om strand, hotelområde, Po Nagar, øture, transport og hvor mange dage du bør bruge." eyebrow="Sydcentral Vietnam" heading="Nha Trang: strandby med mere end bare resort" intro="Nha Trang er et godt valg, hvis du vil kombinere en rigtig by med strand, seafood og korte ture ud i bugten. Det er især oplagt, hvis du vil have strand uden at være afhængig af et isoleret resort." toc={toc} sources={sources}>
+  <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/Nha%20trang%20beach.jpg?width=1800" alt="Stranden i Nha Trang" caption="Nha Trang har en lang bystrand, så du kan kombinere caféer, restauranter og strand uden lange transfers." credit="Jeong seolah / Wikimedia Commons (CC0)" creditUrl="https://commons.wikimedia.org/wiki/File:Nha_trang_beach.jpg" ratio="16 / 7" />
+
+  <h2 id="overblik">Nha Trang i korte træk</h2>
+  <div class="fact-grid"><div class="fact"><span>Godt til</span><b>3-5 nætter</b></div><div class="fact"><span>Første gang</span><b>Bo tæt på Tran Phu</b></div><div class="fact"><span>God kombination</span><b>By + strand + øtur</b></div></div>
+  <p>Nha Trang er mere urban end mange andre stranddestinationer i Vietnam. Det betyder, at du kan bo tæt på havet og samtidig have restauranter, caféer og almindeligt byliv lige omkring dig.</p>
+
+  <h2 id="bo">Hvor skal man bo?</h2>
+  <p>På et første besøg ville vi kigge efter hotel i gåafstand til <strong>Tran Phu-stranden</strong>, men ikke nødvendigvis på den mest trafikerede del af hovedvejen. Det giver en god balance mellem strand, restauranter og nem transport.</p>
+  <p>Hvis du primært vil have resort og ro, kan områder længere fra centrum være bedre. Til gengæld bliver spontane middage og byture mindre praktiske.</p>
+  <div class="callout"><strong>Vores regel:</strong> Kig på kortet før du booker. I en strandby er 1-2 kilometer ikke altid en behagelig gåtur midt på dagen.</div>
+
+  <h2 id="strand">Strand og Nha Trang-bugten</h2>
+  <p>Bystranden er let at bruge tidligt om morgenen og sidst på eftermiddagen. Midt på dagen ville vi ofte kombinere strand med café, spa eller et længere frokoststop.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/View%20of%20Nha%20Trang%20city.jpg?width=1600" alt="Udsigt over Nha Trang og kysten" caption="Nha Trang er en rigtig by langs kysten, ikke kun en række resorts. Det er en stor del af forskellen fra mere isolerede strandstop." credit="Baoothersks / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:View_of_Nha_Trang_city.jpg" ratio="16 / 9" />
+
+  <h2 id="oplevelser">Oplevelser</h2>
+  <h3>Po Nagar</h3>
+  <p>Po Nagar-tårnene ligger tæt nok på centrum til at fungere som et enkelt halvdagsstop. Det er et godt sted at få lidt historisk kontekst mellem stranddagene.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Po%20Nagar%2001.jpg?width=1500" alt="Po Nagar-tårnene i Nha Trang" caption="Po Nagar er et af de nemmeste kulturstop at kombinere med et ophold i Nha Trang." credit="Christophe95 / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Po_Nagar_01.jpg" ratio="16 / 9" />
+
+  <h3>Øtur og snorkling</h3>
+  <p>En bådtur giver mest mening, hvis du faktisk vil være på vandet, snorkle eller besøge øer. Sammenlign gruppestørrelse, stop og transport før booking i stedet for kun at vælge den billigste tur.</p>
+  <AffiliateCard title="Øtur fra Nha Trang" text="Relevant hvis du vil samle bådtransport, snorkling og flere stop på én dag. Tjek den konkrete rute og hvad der er inkluderet før booking." label="Dagstur" />
+
+  <h3>Hòn Chồng</h3>
+  <p>Hòn Chồng kan bruges som et kort stop, især hvis du alligevel bevæger dig nord for centrum. Det er ikke et sted, vi ville planlægge en hel dag omkring.</p>
+
+  <h2 id="mad">Mad og seafood</h2>
+  <p>Nha Trang er et oplagt sted at spise fisk og skaldyr. Kig efter steder med høj udskiftning af gæster og tydelige priser. Du finder også regionale specialiteter som bánh căn og bún cá.</p>
+
+  <h2 id="transport">Transport</h2>
+  <p>I centrum kan du gå en del, men Grab eller taxi er praktisk, når varmen er høj eller du skal nord/syd langs kysten. Cam Ranh-lufthavnen ligger uden for byen, så regn med transfer mellem lufthavn og hotel.</p>
+
+  <h2 id="vejret">Bedste rejsetid</h2>
+  <p>Vejret på Vietnams sydcentrale kyst følger ikke helt samme mønster som Hanoi eller Ho Chi Minh City. Hvis strand er hovedformålet, så tjek den konkrete periode før du låser hele ruten.</p>
+
+  <h2 id="dage">Hvor mange dage?</h2>
+  <p><strong>3-4 nætter</strong> er et godt udgangspunkt på en rundrejse. Det giver plads til strand, et par lokale oplevelser og eventuelt en bådtur uden at opholdet bliver for presset.</p>
+
+  <h2>Fortsæt planlægningen</h2>
+  <div class="link-list"><a class="link-card" href="/destinationer/da-nang/">Da Nang <span>Sammenlign Nha Trang med en større strandby længere mod nord.</span></a><a class="link-card" href="/destinationer/phu-quoc/">Phu Quoc <span>Se om en øferie passer bedre til afslutningen på rejsen.</span></a></div>
+</ArticleLayout>
