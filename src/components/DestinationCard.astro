@@ -1,0 +1,18 @@
+---
+const { name, kicker, description, href, image } = Astro.props;
+---
+<a class="destination" href={href} style={`--bg: url('${image}')`}>
+  <div class="overlay"></div>
+  <div class="content"><span>{kicker}</span><h3>{name}</h3><p>{description}</p><b>Udforsk →</b></div>
+</a>
+<style>
+.destination { position: relative; min-height: 360px; overflow: hidden; border-radius: 28px; background-image: var(--bg); background-size: cover; background-position: center; box-shadow: var(--shadow); }
+.destination::before { content: ""; position: absolute; inset: 0; background-image: var(--bg); background-size: cover; background-position: center; transition: transform .55s ease; }
+.destination:hover::before { transform: scale(1.045); }
+.overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 25%, rgba(6,31,23,.88) 100%); }
+.content { position: absolute; left: 24px; right: 24px; bottom: 24px; color: white; }
+.content span { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; opacity: .85; }
+.content h3 { color: white; font-size: 2rem; margin: 5px 0 7px; }
+.content p { opacity: .86; font-size: .94rem; }
+.content b { display: inline-block; margin-top: 14px; font-size: .9rem; }
+</style>
