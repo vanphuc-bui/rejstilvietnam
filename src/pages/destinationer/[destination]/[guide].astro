@@ -1,0 +1,28 @@
+---
+import ClusterGuide from '../../../components/ClusterGuide.astro';
+import { hoiAnPages } from '../../../data/hoiAnCluster.js';
+import { hoChiMinhPages } from '../../../data/hoChiMinhCluster.js';
+import { phuQuocPages } from '../../../data/phuQuocCluster.js';
+import { daNangPages } from '../../../data/daNangCluster.js';
+import { nhaTrangPages } from '../../../data/nhaTrangCluster.js';
+
+const clusters = {
+  'hoi-an': hoiAnPages,
+  'ho-chi-minh-city': hoChiMinhPages,
+  'phu-quoc': phuQuocPages,
+  'da-nang': daNangPages,
+  'nha-trang': nhaTrangPages,
+};
+
+export function getStaticPaths() {
+  return Object.entries(clusters).flatMap(([destination, pages]) =>
+    Object.entries(pages).map(([guide, page]) => ({
+      params: { destination, guide },
+      props: { page },
+    }))
+  );
+}
+
+const { page } = Astro.props;
+---
+<ClusterGuide page={page} />
