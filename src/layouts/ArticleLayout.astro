@@ -1,0 +1,86 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const {
+  title,
+  description,
+  eyebrow = 'Rejseguide',
+  heading,
+  intro,
+  updated = '14. september 2026',
+  toc = [],
+  sources = [],
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+---
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: heading,
+    description,
+    mainEntityOfPage: canonical,
+    inLanguage: 'da-DK',
+    dateModified: '2026-09-14',
+    publisher: {
+      '@type': 'Organization',
+      name: 'RejsTilVietnam.dk',
+      url: Astro.site ?? Astro.url.origin,
+    },
+  })}></script>
+
+  <section class="page-hero article-hero">
+    <div class="container">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{heading}</h1>
+      <p class="lead">{intro}</p>
+      <div class="article-meta">
+        <span>Opdateret {updated}</span>
+        <span>·</span>
+        <span>Dansk Vietnam-guide</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container article-shell">
+      <article class="prose">
+        <slot />
+      </article>
+
+      <aside class="card sidebar article-sidebar">
+        {toc.length > 0 && (
+          <>
+            <p class="sidebar-label">På denne side</p>
+            <nav class="toc" aria-label="Indholdsfortegnelse">
+              {toc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
+            </nav>
+          </>
+        )}
+
+        {sources.length > 0 && (
+          <div class="sidebar-sources">
+            <p class="sidebar-label">Officielle kilder</p>
+            {sources.map((source) => (
+              <a href={source.href} target="_blank" rel="noopener">{source.label} ↗</a>
+            ))}
+          </div>
+        )}
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.article-hero { padding-bottom: 34px; }
+.article-hero h1 { max-width: 980px; }
+.article-hero .lead { margin-top: 22px; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; color: var(--muted); font-size: .88rem; }
+.article-sidebar { display: grid; gap: 24px; }
+.sidebar-label { font-size: .75rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--green-700); margin-bottom: 10px; }
+.toc, .sidebar-sources { display: grid; gap: 9px; }
+.toc a, .sidebar-sources a { color: #405048; font-size: .92rem; line-height: 1.35; }
+.toc a:hover, .sidebar-sources a:hover { color: var(--green-700); }
+.sidebar-sources { padding-top: 20px; border-top: 1px solid var(--border); }
+</style>
