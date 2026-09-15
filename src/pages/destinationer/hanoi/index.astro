@@ -5,9 +5,9 @@ import VideoEmbed from '../../../components/VideoEmbed.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
 
 const toc = [
-  { id: 'start', label: 'Start her' },
   { id: 'tal', label: 'Hanoi 2026 i tal' },
   { id: 'plan', label: 'Planlæg dagene' },
+  { id: 'start', label: 'Vælg guide' },
   { id: 'bo', label: 'Hvor skal man bo?' },
   { id: 'se', label: 'Seværdigheder' },
   { id: 'mad', label: 'Mad i Hanoi' },
@@ -61,10 +61,6 @@ const hubCards = [
 >
   <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1800" alt="Gadeliv i Hanois Old Quarter" caption="Hanoi giver mere mening som områder og dage end som én lang liste over seværdigheder." credit="Richard Mortel / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg" ratio="16 / 7" />
 
-  <h2 id="start">Start her: vælg det spørgsmål du prøver at løse</h2>
-  <p>Hvis du allerede har booket fly, behøver du ikke læse alt fra toppen. Gå direkte til den guide, der svarer på dit næste valg. Hver side har ét tydeligt formål, så hotel, områder, seværdigheder og ture ikke gentager hinanden.</p>
-  <div class="hub-grid">{hubCards.map((card) => <a class="hub-card" href={card.href}><span>{card.label}</span><h3>{card.title}</h3><p>{card.text}</p><b>Åbn guiden →</b></a>)}</div>
-
   <h2 id="tal">Hanoi 2026 i tal</h2>
   <p>De fleste priser i Vietnam vises i VND. For at gøre planlægningen lettere viser vi også afrundede DKK-beløb. På opdateringsdatoen svarer <strong>100.000 VND til cirka 25 DKK</strong>.</p>
   <PracticalTable title="Seks tal der gør budgettet lettere" columns={snapshotColumns} rows={snapshotRows} note="DKK er afrundet efter kursen 15. september 2026. Officielle priser er mærket som sådan i de detaljerede guider; hotel-, mad- og turpriser er markedspejlemærker og skal kontrolleres på din konkrete dato." />
@@ -74,6 +70,10 @@ const hubCards = [
   <p>Til en første rejse ville vi normalt planlægge <strong>tre nætter</strong> i Hanoi. Det giver tid til at lande efter flyrejsen, se centrum, spise godt og tage en historisk halvdag uden at alle timer bliver booket.</p>
   <p>Hvis du har fire eller fem dage i området, ville vi ikke nødvendigvis bruge alle dagene inde i byen. Ninh Binh giver natur og landskab, mens Ha Long Bay giver en helt anden oplevelse på vandet.</p>
   <div class="link-list"><a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">Se vores 3-dages plan <span>Dag 1 i centrum, dag 2 med historie og en fleksibel dag 3 - inklusive entrébudget.</span></a></div>
+
+  <h2 id="start">Vælg den Hanoi-guide du har brug for</h2>
+  <p>Herfra kan du gå direkte til det næste valg i planlægningen. Hver guide har ét tydeligt formål, så hotel, områder, seværdigheder og ture ikke gentager hinanden.</p>
+  <div class="hub-grid">{hubCards.map((card) => <a class="hub-card" href={card.href}><span>{card.label}</span><h3>{card.title}</h3><p>{card.text}</p><b>Åbn guiden →</b></a>)}</div>
 
   <h2 id="bo">Hvor skal man bo?</h2>
   <p>På en kort førstegangsrejse ville vi bo omkring <strong>Old Quarter eller Hoan Kiem</strong>. Du kan gå til meget, der er mad overalt, og mange pickups til udflugter starter centralt.</p>
