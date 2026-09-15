@@ -12,6 +12,30 @@ const toc = (page.sections ?? []).map((section, i) => ({ id: section.id ?? `sect
 const cleanDescription = (page.description ?? '').replace(/\s*[-–—]\s*Ingen affiliate-links endnu\.?/i, '').trim();
 const publicParagraphs = (items = []) => items.filter((item) => !/affiliate/i.test(item));
 
+const nhaTrangWaterSports = {
+  src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tr%C3%B2%20ch%C6%A1i%20bi%E1%BB%83n%20%E1%BB%9F%20%C4%91%E1%BA%A3o%20H%C3%B2n%20T%E1%BA%B1m.jpg?width=1400',
+  alt: 'Vandsport på Hòn Tằm i Nha Trang-bugten',
+  caption: 'Vandsport på Hòn Tằm i Nha Trang-bugten.',
+  credit: 'Phạm Thúy An / Wikimedia Commons',
+  creditUrl: 'https://commons.wikimedia.org/wiki/File:Tr%C3%B2_ch%C6%A1i_bi%E1%BB%83n_%E1%BB%9F_%C4%91%E1%BA%A3o_H%C3%B2n_T%E1%BA%B1m.jpg',
+};
+
+const effectiveActivityCards = (page.activityCards ?? []).map((item) => {
+  if (page.destinationName !== 'Nha Trang') return item;
+  if (!/jetski|parasailing/i.test(`${item.title ?? ''} ${item.text ?? ''}`)) return item;
+  return {
+    ...item,
+    kicker: 'Nha Trang Bay',
+    title: 'Jetski og parasailing',
+    image: nhaTrangWaterSports,
+  };
+});
+const effectiveGallery = (page.gallery ?? []).map((item) => {
+  if (page.destinationName !== 'Nha Trang') return item;
+  if (!/PattayaPatrol|ikke fra Vietnam|Thailand/i.test(`${item.credit ?? ''} ${item.caption ?? ''}`)) return item;
+  return nhaTrangWaterSports;
+});
+
 const autoVisual = getDestinationVisual(page);
 const visualAlreadyUsed = !!autoVisual && (page.sections ?? []).some((section) => section.image?.src === autoVisual.src);
 const visualToRender = visualAlreadyUsed ? null : autoVisual;
@@ -48,17 +72,17 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
     </div>
   )}
 
-  {page.activityCards?.length > 0 && (
+  {effectiveActivityCards.length > 0 && (
     <ActivityCardGrid
-      items={page.activityCards}
+      items={effectiveActivityCards}
       title={page.activityTitle ?? 'Vælg aktivitet efter den type dag, du vil have'}
       intro={page.activityIntro ?? ''}
     />
   )}
 
-  {page.gallery?.length > 0 && (
+  {effectiveGallery.length > 0 && (
     <ImageGallery
-      items={page.gallery}
+      items={effectiveGallery}
       title={page.galleryTitle ?? 'Se området og aktiviteterne før du vælger'}
       intro={page.galleryIntro ?? 'Klik på billederne for at åbne dem i stort format.'}
     />
