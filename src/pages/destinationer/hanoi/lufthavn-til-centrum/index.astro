@@ -1,6 +1,8 @@
 ---
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
+import PracticalTable from '../../../../components/PracticalTable.astro';
+import CommercialCta from '../../../../components/CommercialCta.astro';
 
 const toc = [
   { id: 'valg', label: 'Hvilken transport skal du vælge?' },
@@ -11,16 +13,30 @@ const toc = [
 ];
 
 const sources = [
-  { label: 'Bus 86 - route information', href: 'https://busnoibai.com/en/buyt86/routes' },
+  { label: 'Hanoi Transport Corporation - Bus 86', href: 'https://busnoibai.com/en/tuyen-86-diem-don-tra' },
+  { label: 'Noi Bai airport taxi - reference fares', href: 'https://taxinoibai.hanoi.vn/' },
   { label: 'Noi Bai International Airport', href: 'https://noibaiairport.vn/' },
+];
+
+const transportColumns = [
+  { key: 'option', label: 'Løsning' },
+  { key: 'time', label: 'Tid' },
+  { key: 'price', label: 'Pris' },
+  { key: 'best', label: 'Bedst til' },
+];
+const transportRows = [
+  { option: 'Bus 86', time: 'Ca. 60 min til Hanoi Railway Station + sidste stykke', price: '50.000 VND ≈ 12-13 DKK pr. person', best: 'Solo, let bagage og ankomst mens bussen kører' },
+  { option: 'Lufthavnstaxi', time: 'Typisk ca. 45-60 min afhængigt af trafik', price: 'Fra ca. 250.000-270.000 VND ≈ 62-67 DKK for en 4-personers bil', best: '2-3 personer, kufferter og dør-til-dør' },
+  { option: 'Grab', time: 'Typisk ca. 45-60 min afhængigt af trafik', price: 'Dynamisk pris i appen', best: 'Dig der allerede bruger app-baseret transport' },
+  { option: 'Hotel/private transfer', time: 'Typisk ca. 45-60 min', price: 'Afhænger af hotel og udbyder', best: 'Sen ankomst, børn eller maksimal enkelhed' },
 ];
 ---
 <ArticleLayout
   title="Hanoi lufthavn til centrum 2026 | Bus 86, Grab eller taxi?"
-  description="Sådan kommer du fra Noi Bai lufthavn til Hanoi centrum og Old Quarter. Sammenlign Bus 86, Grab og taxi efter bagage, ankomsttid og komfort."
+  description="Sådan kommer du fra Noi Bai lufthavn til Hanoi centrum og Old Quarter. Sammenlign Bus 86, Grab og taxi med 2026-priser i VND og DKK."
   eyebrow="Hanoi · Transport"
   heading="Fra Hanoi lufthavn til centrum: vælg efter bagage og tidspunkt"
-  intro="Der er ikke én transportløsning, der er bedst for alle. Med let bagage og dagslys er lufthavnsbussen attraktiv. Efter en lang flyrejse med kufferter ville vi ofte betale mere for en bil direkte til hotellet."
+  intro="Med let bagage er Bus 86 den klare budgetløsning. Er I to eller flere, har store kufferter eller lander sent, ville vi normalt vælge Grab, officiel taxi eller en forudbestilt bil direkte til hotellet."
   updated="15. september 2026"
   toc={toc}
   sources={sources}
@@ -36,32 +52,45 @@ const sources = [
   />
 
   <h2 id="valg">Hvilken løsning ville vi vælge?</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>Nemmest</span><b>Grab / bestilt bil</b></div>
-    <div class="fact"><span>Billigst</span><b>Bus 86</b></div>
-    <div class="fact"><span>Meget bagage</span><b>Bil direkte til hotellet</b></div>
-  </div>
+  <PracticalTable
+    title="Transport fra Noi Bai til centrum"
+    intro="Priserne nedenfor er beslutningshjælp, ikke en garanti. Trafik, tidspunkt og app-priser kan ændre den endelige pris."
+    columns={transportColumns}
+    rows={transportRows}
+    note="DKK-beløb er afrundet med ca. 100.000 VND = 25 DKK den 15. september 2026. Bus 86 og taxipriser er kontrolleret mod aktuelle operatørkilder."
+  />
   <p>Hvis du lander midt på dagen, rejser alene og har én rygsæk eller en lille kuffert, er Bus 86 værd at overveje. Hvis I er to eller flere, har store kufferter, børn eller lander sent, bliver forskellen i pris pr. person mindre, og en bil er ofte den mere behagelige start.</p>
 
   <h2 id="grab">Grab og almindelig taxi</h2>
-  <p>Grab er praktisk, fordi destination og pris vises i appen. Sørg for, at du har internetadgang, og kontrollér nummerpladen, før du sætter dig ind.</p>
-  <p>En almindelig taxi er også fin, især fra en officiel taxikø eller hvis hotellet har arrangeret afhentning. Vi ville undgå tilfældige personer i ankomsthallen, der tilbyder en bil uden tydelig pris eller firma.</p>
+  <p>Grab er praktisk, fordi destination og pris vises i appen. Sørg for, at du har internetadgang, og kontrollér nummerpladen, før du sætter dig ind. Prisen er dynamisk, så vi ville sammenligne appens tilbud med en officiel lufthavnstaxi frem for at antage, at Grab altid er billigst.</p>
+  <p>Som pejlemærke annoncerer en lufthavnstaxitjeneste ved Noi Bai i september 2026 cirka <strong>250.000-270.000 VND</strong> for en firepersoners bil fra lufthavnen ind til Hanoi. Det svarer til omtrent <strong>62-67 DKK</strong>. Nattegebyrer og destination kan ændre beløbet.</p>
   <div class="callout"><strong>Efter en lang flyrejse:</strong> Hvis du ankommer træt med to store kufferter, er dør-til-dør-transport en af de ting, hvor vi ofte ville vælge komfort frem for den laveste pris.</div>
 
+  <CommercialCta
+    eyebrow="Transfer"
+    title="Vil du have bilen aftalt før landing?"
+    text="Forudbestilt transfer giver især mening ved sen ankomst, med børn eller hvis du ikke vil sammenligne taxi og app-priser i ankomsthallen."
+    primaryHref="https://www.getyourguide.com/s/?q=Hanoi%20airport%20transfer"
+    primaryLabel="Se transfermuligheder →"
+    provider="GetYourGuide"
+    secondaryHref="/destinationer/hanoi/hvor-skal-man-bo/"
+    secondaryLabel="Vælg område i Hanoi først"
+  />
+
   <h2 id="bus86">Bus 86 til centrum</h2>
-  <p>Bus 86 forbinder lufthavnen med det centrale Hanoi og bruges meget af rejsende, der skal mod Old Quarter og Hanoi Railway Station. Rute, stoppesteder, pris og køreplan kan ændre sig, så tjek den aktuelle ruteinformation på rejsedagen.</p>
-  <p>Fordelen er prisen. Ulempen er, at du stadig skal fra busstoppet til hotellet, og den sidste gåtur kan føles længere end forventet med bagage i Hanois trafik.</p>
+  <p>Bus 86 forbinder Noi Bai med det centrale Hanoi og Hanoi Railway Station. Hanoi Transport Corporation oplyser en referencepris på <strong>50.000 VND</strong> pr. vej, cirka <strong>12-13 DKK</strong>, en estimeret køretid på cirka <strong>60 minutter</strong> og normalt omkring <strong>45 minutter mellem afgange</strong>.</p>
+  <p>Den offentliggjorte driftstid er omtrent fra 05:15 fra Hanoi Railway Station og til omkring 22-tiden fra lufthavnen. Køreplanen kan ændre sig, så tjek operatørens side samme dag - især ved sen ankomst.</p>
   <h3>Bus 86 giver mest mening hvis</h3>
   <ul>
     <li>du ankommer, mens bussen kører,</li>
     <li>du har let bagage,</li>
     <li>dit hotel ligger tæt på et centralt stop,</li>
-    <li>du ikke har noget imod at gå den sidste del.</li>
+    <li>du ikke har noget imod at gå eller tage en kort Grab den sidste del.</li>
   </ul>
 
   <h2 id="terminaler">T1 eller T2?</h2>
   <p><strong>T2</strong> bruges til internationale fly, mens <strong>T1</strong> bruges til indenrigsfly. Hvis du skifter mellem en international og en indenrigsafgang, så kontrollér terminalen i god tid - de er ikke samme bygning.</p>
-  <p>Bus- og pickupsteder kan flyttes i forbindelse med ændringer ved terminalerne. Brug derfor skiltene ved ankomst og den aktuelle transportudbyders information frem for et screenshot fra en gammel guide.</p>
+  <p>Bus 86 stopper ved begge terminaler. Pickupsteder kan flyttes i forbindelse med ændringer ved lufthavnen, så brug skiltene ved ankomst og operatørens aktuelle information frem for et screenshot fra en gammel guide.</p>
 
   <h2 id="sen">Hvis du lander sent</h2>
   <p>Ved sen ankomst ville vi planlægge bil eller hoteltransfer på forhånd. Du slipper for at undersøge busstoppesteder og køreplan med bagage efter en lang rejse, og hotellet ved præcis, hvornår de kan forvente dig.</p>
