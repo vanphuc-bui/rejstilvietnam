@@ -1,14 +1,16 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PracticalTable from '../../../../components/PracticalTable.astro';
+import PlaceMap from '../../../../components/PlaceMap.astro';
 
 const areas = [
   {
     name:'Old Quarter',
     label:'Bedst første gang',
-    time:'0-15 min til de fleste centrale stop',
+    time:'0-15 min til mange centrale stop',
     vibe:'Livligt · mad · gåafstand',
     good:'Førstegangsbesøg, korte ophold og dig der vil ud af hotellet til fods.',
-    watch:'Kan være støjende, især omkring Ta Hien og de mest travle gader.',
+    watch:'Kan være støjende, især omkring Ta Hien, Hang Buom og de mest travle gader.',
     image:'https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1200',
     imageAlt:'Gadeliv i Hanois Old Quarter',
     credit:'Richard Mortel / Wikimedia Commons',
@@ -20,7 +22,7 @@ const areas = [
     time:'5-20 min til Old Quarter',
     vibe:'Mere ro · brede gader · centralt',
     good:'Par, familier og dig der vil bo centralt uden at være midt i mylderet.',
-    watch:'Typisk lidt mindre street-life lige uden for døren.',
+    watch:'Typisk dyrere i den klassiske luksusdel af French Quarter.',
     image:'https://commons.wikimedia.org/wiki/Special:FilePath/French%20quarter%2C%20Hanoi%20%284855953547%29.jpg?width=1200',
     imageAlt:'Gade i French Quarter i Hanoi',
     credit:'Caitriana Nicholson / Wikimedia Commons',
@@ -29,7 +31,7 @@ const areas = [
   {
     name:'Ba Dinh',
     label:'Bedst til historie',
-    time:'10-20 min i taxi til Old Quarter',
+    time:'10-20 min i bil til Old Quarter',
     vibe:'Roligere · grønne områder · monumenter',
     good:'Dig der prioriterer Ho Chi Minh-komplekset, museer og lidt mere plads.',
     watch:'Mindre oplagt hvis du vil gå til aftensmad i Old Quarter hver aften.',
@@ -41,7 +43,7 @@ const areas = [
   {
     name:'Tay Ho',
     label:'Bedst til længere ophold',
-    time:'15-30 min i taxi til centrum',
+    time:'15-30 min i bil til centrum',
     vibe:'Sø · caféer · internationalt',
     good:'Længere ophold, større værelser, lejligheder og et roligere tempo.',
     watch:'For langt væk til vores førstevalg på kun 2-3 dage i Hanoi.',
@@ -51,21 +53,66 @@ const areas = [
     creditUrl:'https://commons.wikimedia.org/wiki/File:West_Lake_Hanoi.jpg',
   },
 ];
+
+const areaColumns = [
+  { key:'area', label:'Område' },
+  { key:'best', label:'Bedst til' },
+  { key:'walk', label:'Til fods' },
+  { key:'noise', label:'Støj' },
+  { key:'verdict', label:'Vores dom' },
+];
+const areaRows = [
+  { area:'Old Quarter', best:'Første besøg · 2-4 nætter · mad', walk:'Meget stærkt', noise:'Høj på de travleste gader', verdict:'Bedste standardvalg, hvis du vælger gaden med omtanke' },
+  { area:'Hoan Kiem / French Quarter', best:'Par · familie · roligere centralt', walk:'Stærkt', noise:'Lavere end Old Quarter', verdict:'Bedste balance mellem centrum og ro' },
+  { area:'Ba Dinh', best:'Historie · ro · lidt mere plads', walk:'Middel', noise:'Lavere', verdict:'Godt valg hvis Ba Dinh er en stor del af planen' },
+  { area:'Tay Ho', best:'1+ uge · lejlighed · caféer', walk:'Svagt til klassiske seværdigheder', noise:'Ofte lavere', verdict:'Bedre at bo end at besøge på et længere ophold' },
+];
+
+const priceColumns = [
+  { key:'tier', label:'Hoteltype' },
+  { key:'vnd', label:'Old Quarter 2026' },
+  { key:'dkk', label:'Ca. DKK / nat' },
+  { key:'expect', label:'Hvad du typisk får' },
+];
+const priceRows = [
+  { tier:'Budget privat værelse', vnd:'400.000-700.000 VND', dkk:'100-175 DKK', expect:'Enkelt værelse; kvalitet og støjisolering varierer meget' },
+  { tier:'Mellemklasse', vnd:'800.000-1.500.000 VND', dkk:'200-375 DKK', expect:'Ofte 3-stjernet/boutique, morgenmad og central beliggenhed' },
+  { tier:'Boutique / bedre 4-stjernet', vnd:'1.500.000-3.000.000+ VND', dkk:'375-750+ DKK', expect:'Bedre værelse, service og ofte pool/rooftop eller designprofil' },
+];
+
+const areaPlaces = [
+  { name:'Old Quarter', detail:'Bedst til første korte ophold og gåafstand', lat:21.0352, lng:105.8502 },
+  { name:'Hoan Kiem / French Quarter', detail:'Roligere centralt alternativ', lat:21.0258, lng:105.8560 },
+  { name:'Ba Dinh', detail:'Historie, monumenter og roligere gader', lat:21.0368, lng:105.8346 },
+  { name:'Tay Ho / West Lake', detail:'Bedst til længere ophold', lat:21.0645, lng:105.8192 },
+];
 ---
-<BaseLayout title="Hvor skal man bo i Hanoi? 4 bedste områder | RejsTilVietnam.dk" description="Old Quarter, Hoan Kiem, Ba Dinh eller Tay Ho? Se hvilket område i Hanoi der passer bedst til første besøg, familier, ro og længere ophold.">
+<BaseLayout
+  title="Hvor skal man bo i Hanoi? 4 bedste områder | RejsTilVietnam.dk"
+  description="Old Quarter, Hoan Kiem, Ba Dinh eller Tay Ho? Sammenlign gåafstand, støj, hotelpriser i VND/DKK og se områderne på kort."
+  pageType="article"
+  headline="Hvor skal man bo i Hanoi?"
+  dateModified="2026-09-15"
+>
   <section class="area-hero">
     <div class="container">
       <a class="hub-back" href="/destinationer/hanoi/">← Hanoi rejseguide</a>
       <p class="eyebrow">Områder i Hanoi</p>
       <h1>Hvor skal man bo i Hanoi?</h1>
       <p class="lead">Vælg området før hotellet. Hvis du kun har 2-4 dage i Hanoi, kan en forkert beliggenhed koste mere tid end et billigere hotel sparer dig penge.</p>
-      <div class="answer"><span>Vores korte svar</span><b>Første gang? Start med Old Quarter eller Hoan Kiem.</b></div>
+      <div class="answer"><span>Kort svar</span><b>Første gang? Vælg Old Quarter eller Hoan Kiem/French Quarter.</b><p>Old Quarter vinder på gåafstand og mad. Hoan Kiem/French Quarter er vores valg, hvis du vil være centralt men sove lidt roligere.</p></div>
+      <div class="article-meta"><span>Af <a href="/om/">RejsTilVietnam.dk</a></span><span>Opdateret 15. september 2026</span></div>
     </div>
   </section>
 
   <section class="section section--tight">
-    <div class="container compare-strip">
-      <div><span>Mest praktisk</span><b>Old Quarter</b></div><div><span>Bedste balance</span><b>Hoan Kiem</b></div><div><span>Mest ro centralt</span><b>Ba Dinh</b></div><div><span>Bedst til 1+ uge</span><b>Tay Ho</b></div>
+    <div class="container compare-strip"><div><span>Mest praktisk</span><b>Old Quarter</b></div><div><span>Bedste balance</span><b>Hoan Kiem</b></div><div><span>Mest ro centralt</span><b>Ba Dinh</b></div><div><span>Bedst til 1+ uge</span><b>Tay Ho</b></div></div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container narrow-data">
+      <PracticalTable title="Hanoi-områder på 30 sekunder" intro="Brug denne sammenligning til at vælge base før du begynder at sammenligne enkelte hoteller." columns={areaColumns} rows={areaRows} note="Køretider afhænger af trafikken. Weekendens gågader omkring Hoan Kiem kan også gøre pickup mindre direkte, så tjek hotellets præcise adgang hvis du ankommer i bil." />
+      <PlaceMap places={areaPlaces} title="De fire områder på kortet" description="Kortet gør forskellen tydelig: Old Quarter og Hoan Kiem ligger ved de klassiske første-dags stop, mens Tay Ho er en separat base mod nordvest." />
     </div>
   </section>
 
@@ -73,39 +120,29 @@ const areas = [
     <div class="container area-list">
       {areas.map((area, i) => (
         <article class="area-card">
-          <div class="area-image">
-            <img src={area.image} alt={area.imageAlt} loading="lazy" decoding="async" referrerpolicy="no-referrer" />
-            <a class="photo-source" href={area.creditUrl} target="_blank" rel="noopener noreferrer">Foto: {area.credit} ↗</a>
-          </div>
-          <div class="area-copy">
-            <div class="area-head"><span>0{i+1}</span><small>{area.label}</small></div>
-            <h2>{area.name}</h2>
-            <div class="area-tags"><span>{area.vibe}</span><span>{area.time}</span></div>
-            <div class="area-points"><p><b>God til:</b> {area.good}</p><p><b>Vær opmærksom på:</b> {area.watch}</p></div>
-          </div>
+          <div class="area-image"><img src={area.image} alt={area.imageAlt} loading="lazy" decoding="async" referrerpolicy="no-referrer" /><a class="photo-source" href={area.creditUrl} target="_blank" rel="noopener noreferrer">Foto: {area.credit} ↗</a></div>
+          <div class="area-copy"><div class="area-head"><span>0{i+1}</span><small>{area.label}</small></div><h2>{area.name}</h2><div class="area-tags"><span>{area.vibe}</span><span>{area.time}</span></div><div class="area-points"><p><b>God til:</b> {area.good}</p><p><b>Vær opmærksom på:</b> {area.watch}</p></div></div>
         </article>
       ))}
     </div>
   </section>
 
-  <section class="section choice-section">
-    <div class="container">
-      <div class="section-head"><div><p class="eyebrow">Beslutning på 30 sekunder</p><h2>Hvilken type rejsende er du?</h2></div></div>
-      <div class="grid grid--3">
-        <div class="card choice"><span>👟</span><h3>“Jeg vil gå til det meste”</h3><p>Vælg <b>Old Quarter</b>. Det er den letteste base til den første Hanoi-rejse.</p></div>
-        <div class="card choice"><span>😴</span><h3>“Jeg vil gerne sove lidt roligere”</h3><p>Vælg <b>Hoan Kiem / French Quarter</b> og gå ind til Old Quarter, når du vil have mere liv.</p></div>
-        <div class="card choice"><span>☕</span><h3>“Jeg bliver længere i Hanoi”</h3><p>Overvej <b>Tay Ho</b>, især hvis større værelse, caféer og sømiljø betyder mere end gåafstand til seværdigheder.</p></div>
-      </div>
+  <section class="section section--tight">
+    <div class="container narrow-data">
+      <div class="section-head"><div><p class="eyebrow">Budget</p><h2>Hvad koster et hotel i centrum?</h2></div><p>Som reference bruger vi 2026-priser fra Old Quarter, hvor udbuddet er størst. French Quarter er ofte dyrere i luksussegmentet; dato og hotel betyder mere end en lille forskel mellem kvarterer.</p></div>
+      <PracticalTable title="Hotelpriser som pejlemærke" columns={priceColumns} rows={priceRows} note="Prisintervallerne er markedspejlemærker for Old Quarter i 2026, ikke faste priser. DKK er afrundet med ca. 100.000 VND = 25 DKK den 15. september 2026. Tết, helligdage og populære weekender kan løfte priserne markant." />
     </div>
   </section>
 
-  <section class="section section--tight">
-    <div class="container hotel-cta"><div><p class="eyebrow">Næste skridt</p><h2>Nu kan du vælge hotel.</h2><p>Vi har skåret listen ned til fem hoteller, der giver mening til forskellige budgetter og rejsetyper.</p></div><div class="cta-actions"><a class="btn btn--primary" href="/destinationer/hanoi/bedste-hoteller/">Se bedste hoteller i Hanoi →</a><a class="text-link" href="/destinationer/hanoi/">Tilbage til Hanoi-guiden</a></div></div>
-  </section>
+  <section class="section choice-section"><div class="container"><div class="section-head"><div><p class="eyebrow">Beslutning på 30 sekunder</p><h2>Hvilken type rejsende er du?</h2></div></div><div class="grid grid--3"><div class="card choice"><span>👟</span><h3>“Jeg vil gå til det meste”</h3><p>Vælg <b>Old Quarter</b>. Bed om et værelse væk fra gaden, hvis du sover let.</p></div><div class="card choice"><span>😴</span><h3>“Jeg vil gerne sove lidt roligere”</h3><p>Vælg <b>Hoan Kiem / French Quarter</b> og gå ind til Old Quarter, når du vil have mere liv.</p></div><div class="card choice"><span>☕</span><h3>“Jeg bliver længere i Hanoi”</h3><p>Overvej <b>Tay Ho</b>, især hvis større værelse, caféer og sømiljø betyder mere end gåafstand til seværdigheder.</p></div></div></div></section>
+
+  <section class="section section--tight"><div class="container hotel-cta"><div><p class="eyebrow">Næste skridt</p><h2>Nu kan du vælge hotel.</h2><p>Vi har skåret listen ned til fem konkrete hoteller og viser dem på kort, så du kan sammenligne base før pris.</p></div><div class="cta-actions"><a class="btn btn--primary" href="/destinationer/hanoi/bedste-hoteller/">Se bedste hoteller i Hanoi →</a><a class="text-link" href="/destinationer/hanoi/">Tilbage til Hanoi-guiden</a></div></div></section>
+
+  <section class="section sources-section"><div class="container sources-card"><p class="eyebrow">Kilder og prisgrundlag</p><a href="https://vietnam.travel/places-to-go/northern-vietnam/ha-noi" target="_blank" rel="noopener noreferrer">Vietnam Tourism - Hanoi ↗</a><a href="https://pholio.click/questions/hanoi/hotel-cost-hanoi-old-quarter-2026/" target="_blank" rel="noopener noreferrer">Pholio - Hanoi Old Quarter hotel costs 2026 ↗</a><a href="https://daytripsvietnam.com/guides/where-to-stay-hanoi-2026/" target="_blank" rel="noopener noreferrer">2026 neighbourhood cross-check ↗</a></div></section>
 </BaseLayout>
 
 <style>
-.area-hero{padding:84px 0 56px;background:linear-gradient(135deg,#eef4ef,#f6ecda)}.hub-back{display:inline-block;margin-bottom:18px;color:var(--green-700);font-weight:800}.area-hero h1{font-size:clamp(3rem,7vw,5.6rem);max-width:850px}.area-hero .lead{margin-top:20px}.answer{display:inline-flex;flex-direction:column;margin-top:28px;padding:16px 20px;border-radius:18px;background:var(--green-950);color:white}.answer span{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#f0cf95;font-weight:850}.answer b{margin-top:3px}.compare-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.compare-strip>div{padding:18px;border-radius:18px;background:rgba(255,255,255,.75);border:1px solid var(--border)}.compare-strip span{display:block;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase}.compare-strip b{display:block;margin-top:4px}.areas-section{background:#f5efe2}.area-list{display:grid;gap:28px}.area-card{display:grid;grid-template-columns:.85fr 1.15fr;background:#fffdf8;border:1px solid var(--border);border-radius:30px;overflow:hidden}.area-card:nth-child(even){grid-template-columns:1.15fr .85fr}.area-card:nth-child(even) .area-image{order:2}.area-image{position:relative;min-height:330px;background:#e9eee9}.area-image img{width:100%;height:100%;object-fit:cover}.photo-source{position:absolute;left:12px;bottom:12px;padding:6px 9px;border-radius:999px;background:rgba(0,0,0,.62);color:white;font-size:.66rem;line-height:1.2;backdrop-filter:blur(8px)}.area-copy{padding:38px}.area-head{display:flex;justify-content:space-between;align-items:center}.area-head>span{font:700 1.2rem Georgia,serif;color:var(--coral)}.area-head small{padding:6px 10px;border-radius:999px;background:var(--green-100);color:var(--green-800);font-weight:800}.area-copy h2{font-size:clamp(2rem,4vw,3.1rem);margin-top:10px}.area-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.area-tags span{padding:6px 10px;border-radius:999px;border:1px solid var(--border);font-size:.8rem;color:var(--muted);font-weight:700}.area-points{margin-top:22px;display:grid;gap:10px;color:#44514b}.choice{padding:26px}.choice>span{font-size:1.7rem}.choice h3{margin-top:12px}.choice p{margin-top:9px;color:var(--muted)}.hotel-cta{padding:36px;border-radius:30px;background:var(--sand);display:flex;align-items:center;justify-content:space-between;gap:30px}.hotel-cta p:not(.eyebrow){margin-top:10px;color:#48554f;max-width:650px}.cta-actions{display:flex;flex-direction:column;align-items:center;gap:12px}.text-link{color:var(--green-700);font-size:.88rem;font-weight:800}
+.area-hero{padding:84px 0 56px;background:linear-gradient(135deg,#eef4ef,#f6ecda)}.hub-back{display:inline-block;margin-bottom:18px;color:var(--green-700);font-weight:800}.area-hero h1{font-size:clamp(3rem,7vw,5.6rem);max-width:850px}.area-hero .lead{margin-top:20px}.answer{max-width:760px;margin-top:28px;padding:18px 20px;border-radius:18px;background:var(--green-950);color:white}.answer span{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#f0cf95;font-weight:850}.answer b{display:block;margin-top:3px}.answer p{margin-top:7px;color:rgba(255,255,255,.78);line-height:1.55}.article-meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:.86rem}.article-meta a{color:var(--green-700);font-weight:800}.compare-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.compare-strip>div{padding:18px;border-radius:18px;background:rgba(255,255,255,.75);border:1px solid var(--border)}.compare-strip span{display:block;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase}.compare-strip b{display:block;margin-top:4px}.narrow-data{max-width:1100px}.areas-section{background:#f5efe2}.area-list{display:grid;gap:28px}.area-card{display:grid;grid-template-columns:.85fr 1.15fr;background:#fffdf8;border:1px solid var(--border);border-radius:30px;overflow:hidden}.area-card:nth-child(even){grid-template-columns:1.15fr .85fr}.area-card:nth-child(even) .area-image{order:2}.area-image{position:relative;min-height:330px;background:#e9eee9}.area-image img{width:100%;height:100%;object-fit:cover}.photo-source{position:absolute;left:12px;bottom:12px;padding:6px 9px;border-radius:999px;background:rgba(0,0,0,.62);color:white;font-size:.66rem;line-height:1.2;backdrop-filter:blur(8px)}.area-copy{padding:38px}.area-head{display:flex;justify-content:space-between;align-items:center}.area-head>span{font:700 1.2rem Georgia,serif;color:var(--coral)}.area-head small{padding:6px 10px;border-radius:999px;background:var(--green-100);color:var(--green-800);font-weight:800}.area-copy h2{font-size:clamp(2rem,4vw,3.1rem);margin-top:10px}.area-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.area-tags span{padding:6px 10px;border-radius:999px;border:1px solid var(--border);font-size:.8rem;color:var(--muted);font-weight:700}.area-points{margin-top:22px;display:grid;gap:10px;color:#44514b}.choice{padding:26px}.choice>span{font-size:1.7rem}.choice h3{margin-top:12px}.choice p{margin-top:9px;color:var(--muted)}.hotel-cta{padding:36px;border-radius:30px;background:var(--sand);display:flex;align-items:center;justify-content:space-between;gap:30px}.hotel-cta p:not(.eyebrow){margin-top:10px;color:#48554f;max-width:650px}.cta-actions{display:flex;flex-direction:column;align-items:center;gap:12px}.text-link{color:var(--green-700);font-size:.88rem;font-weight:800}.sources-section{padding-top:10px}.sources-card{max-width:1100px;padding:24px;border-top:1px solid var(--border);display:flex;gap:14px;flex-wrap:wrap}.sources-card .eyebrow{width:100%}.sources-card a{color:var(--green-700);font-size:.84rem;font-weight:750}
 @media(max-width:800px){.compare-strip{grid-template-columns:repeat(2,1fr)}.area-card,.area-card:nth-child(even){grid-template-columns:1fr}.area-card:nth-child(even) .area-image{order:0}.area-image{min-height:250px}.hotel-cta{align-items:flex-start;flex-direction:column}.cta-actions{align-items:flex-start}}
 @media(max-width:520px){.compare-strip{grid-template-columns:1fr}.area-copy{padding:26px}}
 </style>
