@@ -19,9 +19,9 @@ const {
   dateModified = '2026-09-15',
   toc = [],
   sources = [],
+  authorName = 'RejsTilVietnam.dk',
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 const destinationMatch = Astro.url.pathname.match(/^\/destinationer\/([^/]+)\/.+/);
 const destinationSlug = destinationMatch?.[1] ?? null;
 const destinationNames = {
@@ -84,28 +84,24 @@ const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, pa
 })) : [];
 const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
 ---
-<BaseLayout title={finalTitle} description={description}>
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: finalHeading,
-    description,
-    mainEntityOfPage: canonical,
-    inLanguage: 'da-DK',
-    dateModified,
-    publisher: {
-      '@type': 'Organization',
-      name: 'RejsTilVietnam.dk',
-      url: Astro.site ?? Astro.url.origin,
-    },
-  })}></script>
-
+<BaseLayout
+  title={finalTitle}
+  description={description}
+  pageType="article"
+  headline={finalHeading}
+  dateModified={dateModified}
+  authorName={authorName}
+>
   <section class="page-hero article-hero">
     <div class="container">
       <p class="eyebrow">{eyebrow}</p>
       <h1>{finalHeading}</h1>
-      <p class="lead">{finalIntro}</p>
+      <div class="quick-answer" aria-label="Kort svar">
+        <span>Kort svar</span>
+        <p>{finalIntro}</p>
+      </div>
       <div class="article-meta">
+        <span>Af <a href="/om/">{authorName}</a></span>
         <span>Opdateret {updated}</span>
         <span>Guide på dansk</span>
       </div>
@@ -148,7 +144,7 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
         <slot />
       </article>
 
-      <aside class="card sidebar article-sidebar">
+      <aside class="card sidebar article-sidebar" aria-label="Guideinformation">
         {hubHref && <a class="hub-back" href={hubHref}>← {hubLabel}</a>}
         {toc.length > 0 && (
           <>
@@ -163,7 +159,7 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
           <div class="sidebar-sources">
             <p class="sidebar-label">Kilder</p>
             {sources.map((source) => (
-              <a href={source.href} target="_blank" rel="noopener">{source.label} ↗</a>
+              <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>
             ))}
           </div>
         )}
@@ -175,8 +171,11 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
 <style>
 .article-hero { padding-bottom: 34px; }
 .article-hero h1 { max-width: 980px; }
-.article-hero .lead { margin-top: 22px; }
-.article-meta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 18px; color: var(--muted); font-size: .88rem; }
+.quick-answer { max-width: 860px; margin-top: 24px; padding: 18px 20px; border: 1px solid rgba(28,106,77,.18); border-left: 4px solid var(--green-700); border-radius: 18px; background: rgba(255,255,255,.66); }
+.quick-answer > span { display: block; margin-bottom: 6px; color: var(--green-700); font-size: .72rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+.quick-answer p { margin: 0; color: #31423a; font-size: clamp(1.02rem,1.5vw,1.16rem); line-height: 1.65; }
+.article-meta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; color: var(--muted); font-size: .88rem; }
+.article-meta a { color: var(--green-700); font-weight: 750; }
 .article-hero-media { margin-top: 4px; }
 .article-hero-media :global(.section-media) { margin-top: 0; }
 .article-hero-media :global(.media-frame) { aspect-ratio: 16 / 7; }
