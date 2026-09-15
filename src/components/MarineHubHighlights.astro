@@ -1,0 +1,56 @@
+---
+import ActivityCardGrid from './ActivityCardGrid.astro';
+import ImageGallery from './ImageGallery.astro';
+
+const { destination } = Astro.props;
+
+const genericWaterSports = {
+  src:'https://commons.wikimedia.org/wiki/Special:FilePath/DFC%201455%20A%20person%20zipping%20across%20the%20ocean%20on%20a%20jet%20ski%20with%20boats%20and%20a%20parasail%20dotting%20the%20horizon%20on%20a%20sunny%20day.jpg?width=1200',
+  alt:'Illustration af jetski og parasailing',
+  caption:'Illustrationsfoto af jetski og parasailing. Billedet er ikke fra Vietnam.',
+  credit:'PattayaPatrol / Wikimedia Commons',
+  creditUrl:'https://commons.wikimedia.org/wiki/File:DFC_1455_A_person_zipping_across_the_ocean_on_a_jet_ski_with_boats_and_a_parasail_dotting_the_horizon_on_a_sunny_day.jpg',
+};
+
+const phu = {
+  title:'Phu Quoc er også en aktivitetsø',
+  intro:'Brug sydøen til øhop, snorkling og Hon Thom, og hold de kortere vandsportsaktiviteter tæt på din strandbase.',
+  activities:[
+    { title:'Øhop + snorkling', kicker:'An Thoi', text:'Speedboat, småøer og snorkelstop syd for Phu Quoc.', bestFor:'Havdag', duration:'½-1 dag', intensity:'Mellem', image:{src:'https://commons.wikimedia.org/wiki/Special:FilePath/An%20Thoi%20fishing%20harbour%20Sunset%20Town%20Sun%20World%20Phu%20Quoc%20Vietnam.jpg?width=1200',alt:'Både i An Thoi på Phu Quoc'}, href:'/destinationer/phu-quoc/o-hop-og-snorkling/' },
+    { title:'Hon Thom + kabelbane', kicker:'Sydøen', text:'En visuel aktivitetsdag med kabelbane, strand og mulighed for vandpark.', bestFor:'Familier', duration:'½-1 dag', intensity:'Let', image:{src:'https://commons.wikimedia.org/wiki/Special:FilePath/Cap-treo-hon-thom-4.jpg?width=1200',alt:'Hon Thom kabelbane på Phu Quoc'}, href:'/destinationer/phu-quoc/vandsport-og-aktiviteter/' },
+    { title:'Jetski + parasailing', kicker:'Illustration', text:'Korte adrenalinaktiviteter ved turiststrande og resorts; tjek altid sikkerhedsprocedure.', bestFor:'Kort aktivitet', duration:'10-30 min', intensity:'Højere', image:genericWaterSports, href:'/destinationer/phu-quoc/vandsport-og-aktiviteter/' },
+  ],
+  gallery:[
+    {src:'https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20Quoc%2C%20Viet%20Nam.jpg?width=1400',alt:'Phu Quoc kyst',caption:'Kyst og hav på Phu Quoc.',credit:'Trantuonglam / Wikimedia Commons',creditUrl:'https://commons.wikimedia.org/wiki/File:Phu_Quoc,_Viet_Nam.jpg'},
+    {src:'https://commons.wikimedia.org/wiki/Special:FilePath/An%20Thoi%20fishing%20harbour%20Sunset%20Town%20Sun%20World%20Phu%20Quoc%20Vietnam.jpg?width=1400',alt:'An Thoi havn',caption:'An Thoi er base for mange sydlige bådture.',credit:'Vivu Vietnam / Wikimedia Commons',creditUrl:'https://commons.wikimedia.org/wiki/File:An_Thoi_fishing_harbour_Sunset_Town_Sun_World_Phu_Quoc_Vietnam.jpg'},
+    {src:'https://commons.wikimedia.org/wiki/Special:FilePath/Cap-treo-hon-thom-4.jpg?width=1400',alt:'Hon Thom kabelbane',caption:'Hon Thom-kabelbanen over havet.',credit:'Vivu Vietnam / Wikimedia Commons',creditUrl:'https://commons.wikimedia.org/wiki/File:Cap-treo-hon-thom-4.jpg'},
+    genericWaterSports,
+  ],
+};
+
+const nha = {
+  title:'Nha Trang er stærk på havaktiviteter',
+  intro:'Her er det naturligt at kombinere bystrand med Hon Mun, øture, snorkling og dykning - uden at flytte hotel.',
+  activities:[
+    { title:'Øtur + snorkling', kicker:'Nha Trang Bay', text:'Båd eller speedboat ud i bugten med Hon Mun som et af de vigtigste navne at kende.', bestFor:'Førstegangsbesøg', duration:'½-1 dag', intensity:'Mellem', image:{src:'https://commons.wikimedia.org/wiki/Special:FilePath/Nha%20Trang%20Bay%20and%20Vinwonders.%20Nha%20Trang%2C%20Vietnam.%20June%202025.jpg?width=1200',alt:'Nha Trang Bay'}, href:'/destinationer/nha-trang/o-ture-og-snorkling/' },
+    { title:'Scuba diving', kicker:'Undervand', text:'Intro dive eller certificerede dyk med fokus på udstyr, instruktør og aktuelle site-forhold.', bestFor:'Undervandsfokus', duration:'½-1 dag', intensity:'Mellem-høj', image:{src:'https://commons.wikimedia.org/wiki/Special:FilePath/Vietnam%20Nha%20Trang%20Scuba%20Diving%202009%20-%204163163783.jpg?width=1200',alt:'Scuba diving i Nha Trang'}, href:'/destinationer/nha-trang/vandsport-og-dykning/' },
+    { title:'Jetski + parasailing', kicker:'Illustration', text:'Korte strandaktiviteter når hav og vind er egnede.', bestFor:'Adrenalin', duration:'10-30 min', intensity:'Højere', image:genericWaterSports, href:'/destinationer/nha-trang/vandsport-og-dykning/' },
+  ],
+  gallery:[
+    {src:'https://commons.wikimedia.org/wiki/Special:FilePath/Nha%20Trang%20Bay%20and%20Vinwonders.%20Nha%20Trang%2C%20Vietnam.%20June%202025.jpg?width=1400',alt:'Nha Trang Bay',caption:'Nha Trang Bay set fra Hon Tre.',credit:'Wikimedia Commons',creditUrl:'https://commons.wikimedia.org/wiki/File:Nha_Trang_Bay_and_Vinwonders._Nha_Trang,_Vietnam._June_2025.jpg'},
+    {src:'https://commons.wikimedia.org/wiki/Special:FilePath/Vietnam%20Nha%20Trang%20Scuba%20Diving%202009%20-%204163163783.jpg?width=1400',alt:'Scuba diving i Nha Trang',caption:'Scuba diving i Nha Trang.',credit:'Ilse Reijs & Jan-Noud Hutten / Wikimedia Commons',creditUrl:'https://commons.wikimedia.org/wiki/File:Vietnam_Nha_Trang_Scuba_Diving_2009_-_4163163783.jpg'},
+    {src:'https://commons.wikimedia.org/wiki/Special:FilePath/Sea%20anemone%2C%20Nha%20Trang.jpg?width=1200',alt:'Søanemone i Nha Trang',caption:'Marine liv fotograferet i Nha Trang.',credit:'TANAKA Juuyoh / Wikimedia Commons',creditUrl:'https://commons.wikimedia.org/wiki/File:Sea_anemone,_Nha_Trang.jpg'},
+    {src:'https://commons.wikimedia.org/wiki/Special:FilePath/Boat%20at%20Vinpearl%20Nha%20Trang%20(49370118718).jpg?width=1200',alt:'Båd i Nha Trang Bay',caption:'Turistbåd i Nha Trang-bugten.',credit:'Martin Lewison / Wikimedia Commons',creditUrl:'https://commons.wikimedia.org/wiki/File:Boat_at_Vinpearl_Nha_Trang_(49370118718).jpg'},
+  ],
+};
+
+const data = destination === 'phu-quoc' ? phu : destination === 'nha-trang' ? nha : null;
+---
+{data && (
+  <div class="marine-hub-highlight">
+    <ActivityCardGrid items={data.activities} title={data.title} intro={data.intro} />
+    <ImageGallery items={data.gallery} title={destination === 'phu-quoc' ? 'Phu Quoc: se havoplevelserne' : 'Nha Trang: se bugten og undervandslivet'} intro="Klik på et billede for at åbne det i større format." />
+  </div>
+)}
+
+<style>.marine-hub-highlight{margin:12px 0 28px}</style>
