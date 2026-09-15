@@ -8,32 +8,43 @@ const {
   description = 'Dansk guide til Vietnam med rejsemål, rejseplaner, praktiske råd, oplevelser og hjælp til booking.',
   image = '/favicon.svg',
 } = Astro.props;
+
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const isHomepage = Astro.url.pathname === '/';
+const finalTitle = isHomepage
+  ? 'Rejse til Vietnam 2026 – dansk guide og rejseplaner'
+  : title;
+const finalDescription = isHomepage
+  ? 'Planlæg din rejse til Vietnam med danske guider til Hanoi, Hoi An, Da Nang, Ho Chi Minh City og Phu Quoc samt visum, vejr og rejseplaner.'
+  : description;
 ---
 <!doctype html>
 <html lang="da">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+    <meta name="description" content={finalDescription} />
     <meta name="theme-color" content="#0c2f25" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="da_DK" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="RejsTilVietnam.dk" />
+    <meta property="og:title" content={finalTitle} />
+    <meta property="og:description" content={finalDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(image, Astro.site ?? Astro.url.origin)} />
     <meta name="twitter:card" content="summary_large_image" />
-    <title>{title}</title>
+    <title>{finalTitle}</title>
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'RejsTilVietnam.dk',
+      alternateName: ['Rejs Til Vietnam', 'RejsTilVietnam'],
       url: Astro.site ?? Astro.url.origin,
       inLanguage: 'da-DK',
-      description,
+      description: 'Dansk guide til rejser i Vietnam med rejsemål, rejseplaner, visum, vejr, transport, hoteller og oplevelser.',
     })}></script>
     <slot name="head" />
   </head>
