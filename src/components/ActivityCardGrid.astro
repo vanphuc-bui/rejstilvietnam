@@ -1,14 +1,15 @@
 ---
 const {
   items = [],
-  title = 'Vælg aktivitet efter den type dag, du vil have',
+  title = 'Oplevelser på vandet',
   intro = '',
+  eyebrow = 'Overblik',
 } = Astro.props;
 ---
 {items.length > 0 && (
   <section class="activity-section">
     <div class="activity-head">
-      <p class="eyebrow">Aktiviteter</p>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
       <h2>{title}</h2>
       {intro && <p>{intro}</p>}
     </div>
