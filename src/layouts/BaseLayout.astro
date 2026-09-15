@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 const {
   title = 'RejsTilVietnam.dk - Din danske guide til Vietnam',
   description = 'Dansk guide til Vietnam med rejsemål, rejseplaner, praktiske råd, oplevelser og hjælp til booking.',
-  image = '/favicon.svg',
+  image = '/brand-icon-192.png',
   pageType = 'website',
   headline,
   dateModified,
@@ -23,6 +23,7 @@ const finalDescription = isHomepage
   ? 'Planlæg din rejse til Vietnam med danske guider til Hanoi, Hoi An, Da Nang, Ho Chi Minh City og Phu Quoc samt visum, vejr og rejseplaner.'
   : description;
 const finalImage = new URL(image, siteRoot);
+const brandIcon = new URL('/brand-icon-192.png', siteRoot);
 
 const breadcrumbLabels = {
   destinationer: 'Destinationer',
@@ -77,16 +78,24 @@ const structuredData = {
     {
       '@type': 'Organization',
       '@id': organizationId,
-      name: 'RejsTilVietnam.dk',
+      name: 'RejsTilVietnam',
+      alternateName: ['RejsTilVietnam.dk', 'Rejs Til Vietnam'],
       url: siteRoot.toString(),
-      logo: finalImage.toString(),
+      logo: {
+        '@type': 'ImageObject',
+        url: brandIcon.toString(),
+        contentUrl: brandIcon.toString(),
+        width: 192,
+        height: 192,
+      },
+      image: brandIcon.toString(),
       description: 'Dansk guide til rejser i Vietnam med rejsemål, rejseplaner, visum, vejr, transport, hoteller og oplevelser.',
     },
     {
       '@type': 'WebSite',
       '@id': websiteId,
-      name: 'RejsTilVietnam.dk',
-      alternateName: ['Rejs Til Vietnam', 'RejsTilVietnam'],
+      name: 'RejsTilVietnam',
+      alternateName: ['RejsTilVietnam.dk', 'rejstilvietnam.dk', 'Rejs Til Vietnam'],
       url: siteRoot.toString(),
       inLanguage: 'da-DK',
       publisher: { '@id': organizationId },
@@ -122,14 +131,15 @@ const structuredData = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={finalDescription} />
     <meta name="author" content={authorName} />
+    <meta name="application-name" content="RejsTilVietnam" />
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-    <meta name="theme-color" content="#0c2f25" />
-    <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#0f5132" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/brand-icon-192.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/brand-icon-192.png" />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content={isArticle ? 'article' : 'website'} />
     <meta property="og:locale" content="da_DK" />
-    <meta property="og:site_name" content="RejsTilVietnam.dk" />
+    <meta property="og:site_name" content="RejsTilVietnam" />
     <meta property="og:title" content={finalTitle} />
     <meta property="og:description" content={finalDescription} />
     <meta property="og:url" content={canonical} />
