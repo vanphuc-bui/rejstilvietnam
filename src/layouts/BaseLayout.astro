@@ -7,9 +7,14 @@ const {
   title = 'RejsTilVietnam.dk - Din danske guide til Vietnam',
   description = 'Dansk guide til Vietnam med rejsemål, rejseplaner, praktiske råd, oplevelser og hjælp til booking.',
   image = '/favicon.svg',
+  pageType = 'website',
+  headline,
+  dateModified,
+  authorName = 'RejsTilVietnam.dk',
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const siteRoot = new URL('/', Astro.site ?? Astro.url.origin);
+const canonical = new URL(Astro.url.pathname, siteRoot);
 const isHomepage = Astro.url.pathname === '/';
 const finalTitle = isHomepage
   ? 'Rejse til Vietnam 2026: dansk guide og rejseplaner'
@@ -17,6 +22,98 @@ const finalTitle = isHomepage
 const finalDescription = isHomepage
   ? 'Planlæg din rejse til Vietnam med danske guider til Hanoi, Hoi An, Da Nang, Ho Chi Minh City og Phu Quoc samt visum, vejr og rejseplaner.'
   : description;
+const finalImage = new URL(image, siteRoot);
+
+const breadcrumbLabels = {
+  destinationer: 'Destinationer',
+  hanoi: 'Hanoi',
+  'hoi-an': 'Hoi An',
+  'da-nang': 'Da Nang',
+  'ho-chi-minh-city': 'Ho Chi Minh City',
+  'phu-quoc': 'Phu Quoc',
+  'nha-trang': 'Nha Trang',
+  'bedste-hoteller': 'Bedste hoteller',
+  'hvor-skal-man-bo': 'Hvor skal man bo',
+  sevaerdigheder: 'Seværdigheder',
+  '3-dage-i-hanoi': '3 dage i Hanoi',
+  'lufthavn-til-centrum': 'Lufthavn til centrum',
+  'mad-i-hanoi': 'Mad i Hanoi',
+  'ninh-binh-fra-hanoi': 'Ninh Binh fra Hanoi',
+  'ha-long-bay-fra-hanoi': 'Ha Long Bay fra Hanoi',
+  'train-street': 'Train Street',
+  rejseguide: 'Rejseguide',
+  rejseplaner: 'Rejseplaner',
+  ture: 'Ture',
+  'book-rejsen': 'Book rejsen',
+  om: 'Om os',
+};
+const humanizeSegment = (segment) => breadcrumbLabels[segment] ?? segment
+  .split('-')
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(' ');
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbItems = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Forside',
+    item: siteRoot.toString(),
+  },
+  ...pathSegments.map((segment, index) => ({
+    '@type': 'ListItem',
+    position: index + 2,
+    name: humanizeSegment(segment),
+    item: new URL(`/${pathSegments.slice(0, index + 1).join('/')}/`, siteRoot).toString(),
+  })),
+];
+
+const inferredArticle = /^\/destinationer\/[^/]+\/[^/]+\/?$/.test(Astro.url.pathname);
+const isArticle = pageType === 'article' || inferredArticle;
+const organizationId = new URL('/#organization', siteRoot).toString();
+const websiteId = new URL('/#website', siteRoot).toString();
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': organizationId,
+      name: 'RejsTilVietnam.dk',
+      url: siteRoot.toString(),
+      logo: finalImage.toString(),
+      description: 'Dansk guide til rejser i Vietnam med rejsemål, rejseplaner, visum, vejr, transport, hoteller og oplevelser.',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      name: 'RejsTilVietnam.dk',
+      alternateName: ['Rejs Til Vietnam', 'RejsTilVietnam'],
+      url: siteRoot.toString(),
+      inLanguage: 'da-DK',
+      publisher: { '@id': organizationId },
+      description: 'Dansk guide til rejser i Vietnam med rejsemål, rejseplaner, visum, vejr, transport, hoteller og oplevelser.',
+    },
+    ...(pathSegments.length > 0 ? [{
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbItems,
+    }] : []),
+    ...(isArticle ? [{
+      '@type': 'Article',
+      headline: headline ?? finalTitle,
+      description: finalDescription,
+      mainEntityOfPage: canonical.toString(),
+      url: canonical.toString(),
+      inLanguage: 'da-DK',
+      ...(dateModified ? { dateModified } : {}),
+      author: {
+        '@type': 'Organization',
+        name: authorName,
+        url: siteRoot.toString(),
+      },
+      publisher: { '@id': organizationId },
+      isPartOf: { '@id': websiteId },
+    }] : []),
+  ],
+};
 ---
 <!doctype html>
 <html lang="da">
@@ -24,28 +121,26 @@ const finalDescription = isHomepage
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={finalDescription} />
+    <meta name="author" content={authorName} />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <meta name="theme-color" content="#0c2f25" />
     <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={isArticle ? 'article' : 'website'} />
     <meta property="og:locale" content="da_DK" />
     <meta property="og:site_name" content="RejsTilVietnam.dk" />
     <meta property="og:title" content={finalTitle} />
     <meta property="og:description" content={finalDescription} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL(image, Astro.site ?? Astro.url.origin)} />
+    <meta property="og:image" content={finalImage} />
+    <meta property="og:image:alt" content={finalTitle} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={finalTitle} />
+    <meta name="twitter:description" content={finalDescription} />
+    <meta name="twitter:image" content={finalImage} />
     <title>{finalTitle}</title>
-    <script type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: 'RejsTilVietnam.dk',
-      alternateName: ['Rejs Til Vietnam', 'RejsTilVietnam'],
-      url: Astro.site ?? Astro.url.origin,
-      inLanguage: 'da-DK',
-      description: 'Dansk guide til rejser i Vietnam med rejsemål, rejseplaner, visum, vejr, transport, hoteller og oplevelser.',
-    })}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
     <slot name="head" />
   </head>
   <body>
