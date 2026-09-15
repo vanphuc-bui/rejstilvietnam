@@ -1,6 +1,8 @@
 ---
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
+import PracticalTable from '../../../../components/PracticalTable.astro';
+import CommercialCta from '../../../../components/CommercialCta.astro';
 
 const toc = [
   { id: 'dagstur', label: 'Dagstur eller overnatning?' },
@@ -11,17 +13,31 @@ const toc = [
 ];
 
 const sources = [
-  { label: 'Vietnam Tourism - Ninh Binh', href: 'https://vietnam.travel/node/196' },
-  { label: 'Vietnam Tourism - day trips from Hanoi', href: 'https://vietnam.travel/node/1170' },
+  { label: 'Vietnam Tourism - Ninh Binh', href: 'https://www.vietnam.travel/vi/places-to-go/northern-vietnam/ninh-binh' },
+  { label: 'Vietnam Tourism - day trips from Hanoi', href: 'https://www.vietnam.travel/vi/things-to-do/5-day-trip-destinations-hanoi' },
   { label: 'UNESCO - Trang An Landscape Complex', href: 'https://whc.unesco.org/en/list/1438/' },
+  { label: 'Vietnam Airlines - Hanoi to Ninh Binh transport', href: 'https://www.vietnamairlines.com/kh/en/useful-information/travel-guide/hanoi-to-ninh-binh' },
+];
+
+const transportColumns = [
+  { key: 'option', label: 'Transport' },
+  { key: 'time', label: 'Typisk tid' },
+  { key: 'price', label: 'Ca. pris' },
+  { key: 'best', label: 'Bedst til' },
+];
+const transportRows = [
+  { option: 'Limousine / shuttle', time: 'Ca. 1,5-2 timer', price: '180.000-350.000 VND ≈ 45-87 DKK pr. person', best: 'De fleste rejsende og overnatning i Tam Coc/Ninh Binh' },
+  { option: 'Tog', time: 'Ca. 2-2,5 timer + lokal transfer', price: 'Ca. 105.000-160.000 VND ≈ 26-40 DKK + transport videre', best: 'Dig der gerne vil tage toget og ikke har travlt' },
+  { option: 'Privat bil', time: 'Ca. 1,5-2 timer dør-til-dør', price: 'Fra ca. 1,2 mio. VND ≈ 300 DKK pr. bil', best: 'Familier, 3-4 personer eller fleksibel afgang' },
+  { option: 'Organiseret dagstur', time: 'En hel dag fra Hanoi', price: 'Varierer efter rute og inkluderede stop', best: 'Kun én ledig dag og mindst mulig logistik' },
 ];
 ---
 <ArticleLayout
   title="Ninh Binh fra Hanoi 2026 | Dagstur eller overnatning?"
-  description="Guide til Ninh Binh fra Hanoi: vælg mellem dagstur og overnatning, se Trang An, Hang Mua og Hoa Lu, og få en realistisk plan for dagen."
+  description="Guide til Ninh Binh fra Hanoi med transporttid og pris i VND/DKK. Sammenlign dagstur og overnatning, Trang An, Hang Mua, tog, shuttle og privat bil."
   eyebrow="Fra Hanoi · Ninh Binh"
   heading="Ninh Binh fra Hanoi: dagstur er mulig, men en nat er bedre hvis du har tid"
-  intro="Ninh Binh ligger tæt nok på Hanoi til en lang dagstur, men landskabet fortjener mere end et hurtigt fotostop. Hvis din rejseplan kan bære det, ville vi normalt tage mindst én nat."
+  intro="Har du kun én ledig dag, fungerer en organiseret dagstur. Har du plads til én nat, ville vi normalt overnatte omkring Tam Coc og give Trang An og Hang Mua mere luft i planen."
   updated="15. september 2026"
   toc={toc}
   sources={sources}
@@ -40,17 +56,28 @@ const sources = [
   <div class="fact-grid">
     <div class="fact"><span>Har du kun 1 dag?</span><b>Dagstur fungerer</b></div>
     <div class="fact"><span>Har du 2 dage?</span><b>Overnat i Tam Coc/området</b></div>
-    <div class="fact"><span>Prioritér</span><b>Trang An + Hang Mua</b></div>
+    <div class="fact"><span>Fra Hanoi</span><b>Ca. 2-2,5 timer er et realistisk pejlemærke</b></div>
   </div>
-  <p>En organiseret dagstur fra Hanoi er den nemme løsning, hvis din samlede Vietnamrejse er kort. Du bliver hentet om morgenen og er tilbage i byen om aftenen. Ulempen er, at dagen bliver lang og typisk følger en fast rækkefølge.</p>
-  <p>Med én overnatning kan du se området tidligt eller sent på dagen, hvor dagsgæsterne er færre, og du undgår at bruge flere timer af samme dag på transport frem og tilbage.</p>
+  <p>Vietnam Tourism beskriver Ninh Binh som cirka to en halv times kørsel sydvest for Hanoi. Med nyere ekspresvej og en direkte shuttle kan selve køreturen være nærmere 1,5-2 timer, men hotel-pickup, trafik og stop gør det klogt at budgettere mere tid.</p>
+  <p>En organiseret dagstur er den nemme løsning, hvis din samlede Vietnamrejse er kort. Ulempen er en lang dag med fast rækkefølge. Med én overnatning kan du se området tidligt eller sent, når dagsgæsterne fylder mindre.</p>
+
+  <CommercialCta
+    eyebrow="Dagstur"
+    title="Kun én dag til Ninh Binh?"
+    text="Sammenlign ture efter hvilke stop der faktisk er med. Vi ville prioritere Trang An og Hang Mua frem for en plan med flest mulige korte stop."
+    primaryHref="https://www.getyourguide.com/s/?q=Ninh%20Binh%20from%20Hanoi"
+    primaryLabel="Sammenlign Ninh Binh-ture →"
+    provider="GetYourGuide"
+    secondaryHref="/destinationer/hanoi/3-dage-i-hanoi/"
+    secondaryLabel="Se først om turen passer i din Hanoi-plan"
+  />
 
   <h2 id="se">Hvad ville vi prioritere?</h2>
   <h3>Trang An</h3>
   <p>Bådturen gennem floder, kalkstensklipper og grotter er hovedgrunden til, at vi ville tage til Ninh Binh. Trang An Landscape Complex er UNESCO-listet og kombinerer natur med kulturhistoriske steder.</p>
 
   <h3>Hang Mua</h3>
-  <p>Hang Mua er udsigtspunktet, du ofte ser på billeder fra Ninh Binh. Turen op ad de mange trin er fysisk mere krævende end bådturen, især i varme og høj luftfugtighed. Tag vand med og undgå om muligt den varmeste del af dagen.</p>
+  <p>Hang Mua er udsigtspunktet, du ofte ser på billeder fra Ninh Binh. Vietnam Tourism beskriver opstigningen som cirka 500 trin. Den føles markant hårdere i varme og høj luftfugtighed, så tag vand med og undgå om muligt den varmeste del af dagen.</p>
   <SectionMedia
     src="https://commons.wikimedia.org/wiki/Special:FilePath/View%20from%20Hang%20Mua.jpg?width=1600"
     alt="Udsigt over Ninh Binh fra Hang Mua"
@@ -64,10 +91,16 @@ const sources = [
   <p>Hoa Lu giver mest mening, hvis historie interesserer dig. Tam Coc er et godt sted at bo og har også bådture, men på en kort første rejse ville vi ikke nødvendigvis tage både Trang An- og Tam Coc-bådtur. Vælg én og brug tiden bedre.</p>
 
   <h2 id="transport">Transport fra Hanoi</h2>
-  <p>Du kan komme til Ninh Binh med tog, bus/minivan, privat bil eller en organiseret dagstur. Hvilket valg der er bedst afhænger mere af din plan end af en lille prisforskel.</p>
-  <p><strong>Dagstur:</strong> organiseret transport er nemmest, fordi Trang An, Hang Mua og Hoa Lu ikke ligger samlet omkring én station.</p>
-  <p><strong>Overnatning:</strong> tog eller minivan giver mere frihed. Tjek dog hvor dit hotel faktisk ligger - “Ninh Binh” kan betyde byen, Tam Coc eller et sted ude i landskabet.</p>
-  <div class="callout"><strong>Med børn eller meget bagage:</strong> Dør-til-dør minivan eller privat bil kan være værd at betale for. Det gør den sidste del mellem station og hotel meget enklere.</div>
+  <PracticalTable
+    title="Hanoi → Ninh Binh: hvad koster transporten?"
+    intro="De konkrete priser varierer med operatør og dato. Tabellen er lavet til at vælge transporttype, ikke til at love en bestemt billetpris."
+    columns={transportColumns}
+    rows={transportRows}
+    note="DKK-beløb er afrundet med ca. 100.000 VND = 25 DKK den 15. september 2026. Shuttle-priser er kontrolleret mod Vietnam Airlines' rejseguide; togpriser er et aktuelt 2026-markedsspænd og bør altid genkontrolleres på din dato."
+  />
+  <p><strong>Overnatning:</strong> limousine/shuttle er ofte den nemmeste balance mellem pris og dør-til-dør. Toget er hyggeligt, men Ninh Binh station er ikke det samme som Trang An eller dit hotel i Tam Coc.</p>
+  <p><strong>Dagstur:</strong> organiseret transport er praktisk, fordi Trang An, Hang Mua og Hoa Lu ikke ligger samlet omkring én station. Hvis I er tre-fire personer, kan en privat bil også begynde at give mening pr. person.</p>
+  <div class="callout"><strong>Med børn eller meget bagage:</strong> Dør-til-dør shuttle eller privat bil kan være værd at betale for. Det gør den sidste del mellem station og hotel meget enklere.</div>
 
   <h2 id="plan">Sådan ville vi bygge en dagstur</h2>
   <p><strong>Tidlig morgen:</strong> afgang fra Hanoi.</p>
