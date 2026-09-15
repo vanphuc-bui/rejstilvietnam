@@ -2,6 +2,8 @@
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../../components/VideoEmbed.astro';
+import PlaceMap from '../../../../components/PlaceMap.astro';
+import PracticalTable from '../../../../components/PracticalTable.astro';
 
 const toc = [
   { id: 'kort', label: 'Det vigtigste først' },
@@ -12,77 +14,65 @@ const toc = [
 ];
 
 const sources = [
-  { label: 'Check Point Travel - Train Street i Hanoi', href: 'https://www.cpt.dk/artikler/train-street/' },
+  { label: 'Vietnam National Authority of Tourism - railway cafe street safety update, Jan 2026', href: 'https://vietnamtourism.vn/en/index.php/news/items/18875' },
   { label: 'Vietnam Railways', href: 'https://dsvn.vn/' },
+  { label: 'First-hand 2026 access report - Spicy Lotus', href: 'https://www.spicy-lotus.com/blogs/journal/hanoi-train-street-guide' },
+];
+
+const sectionColumns = [
+  { key: 'section', label: 'Område' },
+  { key: 'feel', label: 'Karakter' },
+  { key: 'access', label: 'Adgang' },
+  { key: 'best', label: 'Bedst hvis' },
+];
+const sectionRows = [
+  { section: 'Trần Phú / Phùng Hưng', feel: 'Den mest kendte, caféer og mange besøgende', access: 'Kan være afspærret eller styret; praksis skifter', best: 'Du bor centralt og vil kombinere med Old Quarter' },
+  { section: 'Lê Duẩn / syd for stationen', feel: 'Mindre iscenesat og tæt på Hanoi Railway Station', access: 'Kan også ændre sig; aktiv jernbane', best: 'Du er allerede omkring stationen eller Văn Miếu' },
+];
+const trainPlaces = [
+  { name: 'Train Street - Trần Phú / Phùng Hưng', detail: 'Den centrale og mest fotograferede del', lat: 21.0301, lng: 105.8441 },
+  { name: 'Train Street - Lê Duẩn', detail: 'Sydlig del tæt på Hanoi Railway Station', lat: 21.0248, lng: 105.8412 },
+  { name: 'Hanoi Railway Station', detail: 'Praktisk pejlemærke mellem områderne', lat: 21.0240, lng: 105.8410 },
 ];
 ---
 <ArticleLayout
   title="Train Street Hanoi 2026 | Adgang, sikkerhed og praktiske råd"
-  description="Praktisk dansk guide til Hanoi Train Street med billeder og video. Læs om områderne, skiftende adgang, sikkerhed og hvordan vi ville planlægge besøget."
+  description="Praktisk dansk guide til Hanoi Train Street med kort, aktuelle 2026-adgangsforhold, sikkerhed, områder og råd om togtider."
   eyebrow="Hanoi · Train Street"
   heading="Train Street i Hanoi: se toget uden at bygge hele dagen omkring det"
-  intro="Train Street er fotogen, men den er også en aktiv jernbane. Adgang og kontrol kan ændre sig, og gamle togtider på blogs er ikke noget, vi ville planlægge en hel dag efter."
+  intro="Train Street er stadig en aktiv jernbane med skiftende adgang og sikkerhedskontrol. Vi ville kun planlægge besøget som et fleksibelt stop, tjekke forholdene samme dag og aldrig regne gamle togtider som en garanti."
   updated="15. september 2026"
   toc={toc}
   sources={sources}
 >
-  <SectionMedia
-    slot="heroMedia"
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Train%20street%20in%20Hanoi.jpg?width=1600"
-    alt="Train Street i Hanoi med jernbanespor mellem husene"
-    caption="Train Street er en fungerende jernbane, ikke en lukket turistattraktion."
-    credit="Kris Martyn / Wikimedia Commons"
-    creditUrl="https://commons.wikimedia.org/wiki/File:Train_street_in_Hanoi.jpg"
-    ratio="16 / 7"
-    position="center 55%"
-  />
+  <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/Train%20street%20in%20Hanoi.jpg?width=1600" alt="Train Street i Hanoi med jernbanespor mellem husene" caption="Train Street er en fungerende jernbane, ikke en lukket turistattraktion." credit="Kris Martyn / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Train_street_in_Hanoi.jpg" ratio="16 / 7" position="center 55%" />
 
   <h2 id="kort">Det vigtigste først</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>Planlægning</span><b>Tjek adgang samme dag</b></div>
-    <div class="fact"><span>Togtid</span><b>Behandl ikke gamle tider som faste</b></div>
-    <div class="fact"><span>Sikkerhed</span><b>Følg personale og hold afstand</b></div>
-  </div>
-  <p>Der er flere strækninger i Hanoi, hvor jernbanen løber tæt mellem boliger og caféer. Den mest kendte del ligger tæt på centrum, men praksis for adgang har ændret sig flere gange af sikkerhedshensyn.</p>
+  <div class="fact-grid"><div class="fact"><span>Planlægning</span><b>Tjek adgang samme dag</b></div><div class="fact"><span>Togtid</span><b>Behandl ikke gamle tider som faste</b></div><div class="fact"><span>Sikkerhed</span><b>Følg afspærring og lokale anvisninger</b></div></div>
+  <p>Hanoi-myndighederne har i flere år forsøgt at håndtere sikkerhedsproblemerne omkring caféerne langs jernbanen. I januar 2026 beskrev Vietnam National Authority of Tourism fortsatte sikkerhedsproblemer og et forslag om at omlægge togtrafik væk fra dele af strækningen. Det er netop derfor, vi ikke skriver “Train Street er åben” som en permanent sandhed.</p>
   <p>Hvis Train Street er vigtig for dig, så læg besøget på en dag, hvor du i forvejen er i centrum. Så gør det mindre, hvis adgang eller togpassage ikke passer med din oprindelige plan.</p>
 
   <h2 id="omraader">Hvor ligger Train Street?</h2>
-  <p>Den nordlige, meget fotograferede del ligger omkring <strong>Trần Phú / Phùng Hưng</strong>, tæt på Old Quarter. Der findes også en sydligere strækning omkring <strong>Lê Duẩn</strong> nær Hanoi Railway Station.</p>
-  <p>De to steder giver ikke helt samme oplevelse. Den nordlige del er mere kendt blandt turister og caféer. Den sydlige del kan føles mindre iscenesat, men adgangsforhold kan stadig ændre sig.</p>
-  <div class="callout"><strong>Vores valg:</strong> Bor du i Old Quarter og er det første gang, ville vi starte med den centrale/nordlige del, fordi den er lettest at kombinere med resten af dagen. Vi ville ikke krydse byen kun for at jagte et bestemt foto.</div>
+  <PracticalTable title="De to områder du typisk hører om" intro="Train Street er ikke én enkelt indgang. Oplevelsen og håndhævelsen kan være forskellig på de centrale og sydlige strækninger." columns={sectionColumns} rows={sectionRows} note="Der er ingen officiel turistbillet til selve jernbanen. Nogle caféer kræver naturligvis, at du køber en drik; priser og adgangspraksis ændrer sig, så behandl ikke cafébetaling som en officiel entré." />
+  <PlaceMap places={trainPlaces} title="Train Street på kortet" description="Kortet viser den centrale del ved Trần Phú/Phùng Hưng og den sydlige del ved Lê Duẩn. Begge ligger på aktiv jernbane." />
+  <div class="callout"><strong>Vores valg:</strong> Bor du i Old Quarter og er det første gang, ville vi kun prøve den centrale del, hvis den kan besøges lovligt og roligt den dag. Ellers ville vi fortsætte planen i stedet for at jage en anden indgang.</div>
 
   <h2 id="adgang">Adgang og sikkerhed</h2>
   <p>Train Street er ikke et sted, hvor du bør regne med fri adgang til skinnerne. Afspærring, politi og adgang via caféer kan ændre sig. Hvis en lokal medarbejder eller myndighed beder dig stoppe eller flytte dig, så gør det.</p>
   <p>Stå ikke på skinnerne, når et tog nærmer sig, og forsøg ikke at få et sidste billede tættere på toget. Afstanden mellem toget, husene og caféerne er meget lille.</p>
-  <SectionMedia
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%20train%20street.jpg?width=1200"
-    alt="Café ved Hanoi Train Street"
-    caption="Caféer ligger meget tæt på sporet. Følg deres anvisninger, når et tog nærmer sig."
-    credit="Francesco Galzerano / Wikimedia Commons"
-    creditUrl="https://commons.wikimedia.org/wiki/File:Hanoi_train_street.jpg"
-    ratio="3 / 4"
-  />
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%20train%20street.jpg?width=1200" alt="Café ved Hanoi Train Street" caption="Caféer ligger meget tæt på sporet. Følg anvisningerne og hold dig helt væk fra skinnen, når et tog nærmer sig." credit="Francesco Galzerano / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Hanoi_train_street.jpg" ratio="3 / 4" />
 
   <h2 id="togtider">Hvornår kommer toget?</h2>
   <p>Togtider varierer efter rute, dag og ændringer i den nationale køreplan. Derfor skriver vi bevidst ikke én fast liste her, som hurtigt kan blive forkert.</p>
-  <p>Tjek samme dag hos en café med legitim adgang, dit hotel eller den aktuelle togplan. Hvis du ser en tid i en gammel TikTok- eller blogpost, så brug den kun som et hint - ikke som en garanti.</p>
-
-  <VideoEmbed
-    youtubeId="yMRbcbe5GJY"
-    title="Hanoi Train Street guide 2026"
-    caption="En nyere video fra 2026 kan give et bedre visuelt indtryk af adgang og selve området. Regler kan stadig ændre sig efter videoens optagelse."
-  />
+  <p>Tjek samme dag hos Vietnam Railways og lokalt på stedet. Hvis du ser en tid i en gammel TikTok- eller blogpost, så brug den kun som et hint - ikke som en garanti.</p>
+  <VideoEmbed youtubeId="yMRbcbe5GJY" title="Hanoi Train Street guide 2026" caption="En nyere video fra 2026 kan give et visuelt indtryk af området. Adgangsregler kan stadig ændre sig efter optagelsen." />
 
   <h2 id="besog">Sådan ville vi planlægge besøget</h2>
   <p><strong>1.</strong> Læg Train Street sammen med Litteraturtemplet, Old Quarter eller en kaffepause - ikke som dagens eneste aktivitet.</p>
   <p><strong>2.</strong> Tjek adgang og forventet togpassage samme dag.</p>
-  <p><strong>3.</strong> Kom lidt før, så du ikke skynder dig ind på sporet, når toget allerede nærmer sig.</p>
+  <p><strong>3.</strong> Gå kun ind, hvor adgang er tilladt, og følg lokale anvisninger.</p>
   <p><strong>4.</strong> Hvis adgangen er lukket, så fortsæt dagen. Hanoi har rigeligt andet at se.</p>
 
   <h2>Hvad passer godt sammen med Train Street?</h2>
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/sevaerdigheder/">Seværdigheder i Hanoi <span>Se hvordan Train Street passer sammen med resten af byen.</span></a>
-    <a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">3 dage i Hanoi <span>Vi placerer Train Street som et valgfrit stop på dag tre.</span></a>
-    <a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Kombinér besøget med frokost eller kaffe i centrum.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/sevaerdigheder/">Seværdigheder i Hanoi <span>Se hvordan Train Street passer sammen med resten af byen.</span></a><a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">3 dage i Hanoi <span>Vi placerer Train Street som et valgfrit stop på dag tre.</span></a><a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Kombinér besøget med frokost eller kaffe i centrum.</span></a></div>
 </ArticleLayout>
