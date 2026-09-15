@@ -3,11 +3,21 @@ import ArticleLayout from '../layouts/ArticleLayout.astro';
 import SectionMedia from './SectionMedia.astro';
 import PlaceMap from './PlaceMap.astro';
 import VideoEmbed from './VideoEmbed.astro';
+import { getDestinationVisual, getDestinationVideo } from '../data/destinationVisuals.js';
 
 const { page } = Astro.props;
 const toc = (page.sections ?? []).map((section, i) => ({ id: section.id ?? `section-${i+1}`, label: section.toc ?? section.heading }));
 const cleanDescription = (page.description ?? '').replace(/\s*[-–—]\s*Ingen affiliate-links endnu\.?/i, '').trim();
 const publicParagraphs = (items = []) => items.filter((item) => !/affiliate/i.test(item));
+
+const autoVisual = getDestinationVisual(page);
+const visualAlreadyUsed = !!autoVisual && (page.sections ?? []).some((section) => section.image?.src === autoVisual.src);
+const visualToRender = visualAlreadyUsed ? null : autoVisual;
+const longSubsectionIndex = (page.sections ?? []).findIndex((section) => (section.subsections?.length ?? 0) >= 4);
+const titleText = `${page.title ?? ''} ${page.heading ?? ''}`.toLowerCase();
+const earlyMap = (page.mapPlaces?.length ?? 0) > 0 && /hotel|hvor skal man bo|område|strand/.test(titleText);
+const autoVideo = getDestinationVideo(page);
+const showAutoVideo = !page.video && !!autoVideo && /3 dage|4 dage|seværdigheder|oplevelser|strande/.test(titleText);
 ---
 <ArticleLayout
   title={page.title}
@@ -36,18 +46,48 @@ const publicParagraphs = (items = []) => items.filter((item) => !/affiliate/i.te
     </div>
   )}
 
+  {earlyMap && (
+    <PlaceMap
+      places={page.mapPlaces}
+      title={page.mapTitle ?? `${page.destinationName} på kortet`}
+      description={page.mapDescription ?? 'Se placeringerne på kortet før du vælger område, hotel eller strand.'}
+    />
+  )}
+
   {page.sections?.map((section, index) => (
     <>
       <h2 id={section.id ?? `section-${index+1}`}>{section.heading}</h2>
       {section.lead && <p><strong>{section.lead}</strong></p>}
       {publicParagraphs(section.paragraphs).map((paragraph) => <p>{paragraph}</p>)}
-      {section.subsections?.map((sub) => (
-        <>
-          <h3>{sub.heading}</h3>
-          {publicParagraphs(sub.paragraphs).map((paragraph) => <p>{paragraph}</p>)}
-          {sub.bullets?.length > 0 && <ul>{sub.bullets.map((item) => <li>{item}</li>)}</ul>}
-        </>
-      ))}
+
+      {section.subsections?.length > 0 && (
+        <div class="subsection-stack">
+          {section.subsections.map((sub, subIndex) => (
+            <>
+              <div class="subsection-card">
+                <div class="subsection-number">{String(subIndex + 1).padStart(2, '0')}</div>
+                <div>
+                  <h3>{sub.heading}</h3>
+                  {publicParagraphs(sub.paragraphs).map((paragraph) => <p>{paragraph}</p>)}
+                  {sub.bullets?.length > 0 && <ul>{sub.bullets.map((item) => <li>{item}</li>)}</ul>}
+                </div>
+              </div>
+              {visualToRender && index === longSubsectionIndex && subIndex === 1 && (
+                <SectionMedia
+                  src={visualToRender.src}
+                  alt={visualToRender.alt}
+                  caption={visualToRender.caption}
+                  credit={visualToRender.credit}
+                  creditUrl={visualToRender.creditUrl}
+                  ratio={visualToRender.ratio ?? '16 / 9'}
+                  position={visualToRender.position ?? 'center'}
+                />
+              )}
+            </>
+          ))}
+        </div>
+      )}
+
       {section.bullets?.length > 0 && <ul>{section.bullets.map((item) => <li>{item}</li>)}</ul>}
       {section.callout && <div class="callout"><strong>{section.callout.title}</strong>{section.callout.text}</div>}
       {section.image && (
@@ -61,10 +101,30 @@ const publicParagraphs = (items = []) => items.filter((item) => !/affiliate/i.te
           position={section.image.position ?? 'center'}
         />
       )}
+
+      {visualToRender && longSubsectionIndex < 0 && index === 1 && (
+        <SectionMedia
+          src={visualToRender.src}
+          alt={visualToRender.alt}
+          caption={visualToRender.caption}
+          credit={visualToRender.credit}
+          creditUrl={visualToRender.creditUrl}
+          ratio={visualToRender.ratio ?? '16 / 9'}
+          position={visualToRender.position ?? 'center'}
+        />
+      )}
     </>
   ))}
 
-  {page.mapPlaces?.length > 0 && (
+  {showAutoVideo && (
+    <VideoEmbed
+      youtubeId={autoVideo.youtubeId}
+      title={autoVideo.title}
+      caption={autoVideo.caption}
+    />
+  )}
+
+  {!earlyMap && page.mapPlaces?.length > 0 && (
     <PlaceMap
       places={page.mapPlaces}
       title={page.mapTitle ?? `${page.destinationName} på kortet`}
@@ -85,3 +145,8 @@ const publicParagraphs = (items = []) => items.filter((item) => !/affiliate/i.te
     </>
   )}
 </ArticleLayout>
+
+<style>
+.subsection-stack{display:grid;gap:14px;margin:20px 0 30px}.subsection-card{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:20px 22px;border:1px solid var(--border);border-radius:20px;background:rgba(255,255,255,.64);box-shadow:0 8px 24px rgba(16,55,41,.045)}.subsection-number{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:var(--green-950);color:#fff;font-size:.77rem;font-weight:900;letter-spacing:.04em}.subsection-card h3{margin:2px 0 8px;font-size:1.23rem}.subsection-card p{margin:0!important;color:var(--muted)!important}.subsection-card p+p{margin-top:8px!important}.subsection-card ul{margin:10px 0 0}
+@media(max-width:640px){.subsection-card{grid-template-columns:38px 1fr;padding:17px 16px;gap:12px}.subsection-number{width:34px;height:34px;border-radius:10px}.subsection-card h3{font-size:1.08rem}}
+</style>
