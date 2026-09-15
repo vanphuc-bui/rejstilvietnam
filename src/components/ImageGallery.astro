@@ -1,8 +1,9 @@
 ---
 const {
   items = [],
-  title = 'Billeder fra oplevelsen',
+  title = 'Se området i billeder',
   intro = 'Klik på et billede for at se det større.',
+  eyebrow = 'Visuelt overblik',
 } = Astro.props;
 
 const galleryId = `gallery-${Math.random().toString(36).slice(2, 9)}`;
@@ -17,7 +18,7 @@ const galleryItems = items.map((item) => ({
 {items.length > 0 && (
   <section class="media-gallery" aria-labelledby={`${galleryId}-title`}>
     <div class="gallery-head">
-      <p class="eyebrow">Galleri</p>
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
       <h2 id={`${galleryId}-title`}>{title}</h2>
       {intro && <p>{intro}</p>}
     </div>
