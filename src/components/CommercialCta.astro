@@ -1,0 +1,32 @@
+---
+const {
+  eyebrow = 'Booking',
+  title,
+  text,
+  primaryHref,
+  primaryLabel,
+  provider = '',
+  affiliate = false,
+  secondaryHref = '',
+  secondaryLabel = '',
+} = Astro.props;
+
+const external = primaryHref?.startsWith('http');
+const rel = external ? (affiliate ? 'sponsored noopener noreferrer' : 'noopener noreferrer nofollow') : undefined;
+---
+<aside class="commercial-cta" aria-label={title}>
+  <div>
+    <p class="commercial-eyebrow">{eyebrow}</p>
+    <h3>{title}</h3>
+    <p>{text}</p>
+    {provider && <small>{affiliate ? `Annoncelink via ${provider}.` : `Eksternt link til ${provider}.`}</small>}
+  </div>
+  <div class="commercial-actions">
+    <a class="btn btn--primary" href={primaryHref} target={external ? '_blank' : undefined} rel={rel}>{primaryLabel}</a>
+    {secondaryHref && secondaryLabel && <a class="commercial-secondary" href={secondaryHref}>{secondaryLabel}</a>}
+  </div>
+</aside>
+
+<style>
+.commercial-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;margin:30px 0;padding:26px 28px;border:1px solid rgba(28,106,77,.18);border-radius:24px;background:linear-gradient(135deg,var(--sand),#fffdf8)}.commercial-cta>div:first-child{max-width:690px}.commercial-eyebrow{margin:0!important;color:var(--green-700)!important;font-size:.72rem!important;font-weight:850;letter-spacing:.1em;text-transform:uppercase}.commercial-cta h3{margin-top:6px}.commercial-cta p:not(.commercial-eyebrow){margin:8px 0 0!important;color:#48554f}.commercial-cta small{display:block;margin-top:9px;color:#7b8580;font-size:.75rem}.commercial-actions{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:190px}.commercial-actions .btn{text-align:center;width:100%}.commercial-secondary{color:var(--green-700);font-size:.84rem;font-weight:800}@media(max-width:720px){.commercial-cta{align-items:flex-start;flex-direction:column}.commercial-actions{width:100%;align-items:flex-start}.commercial-actions .btn{width:auto}}
+</style>
