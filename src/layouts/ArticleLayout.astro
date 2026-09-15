@@ -1,11 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import HubGrid from '../components/HubGrid.astro';
+import MarineHubHighlights from '../components/MarineHubHighlights.astro';
 import { hoiAnPages } from '../data/hoiAnCluster.js';
 import { hoChiMinhPages } from '../data/hoChiMinhCluster.js';
 import { phuQuocPages } from '../data/phuQuocCluster.js';
 import { daNangPages } from '../data/daNangCluster.js';
 import { nhaTrangPages } from '../data/nhaTrangCluster.js';
+import { enhanceMarineCluster } from '../data/marineActivityCluster.js';
 
 const {
   title,
@@ -36,9 +38,9 @@ const hubLabel = destinationSlug ? `${destinationNames[destinationSlug] ?? desti
 const clusterSets = {
   'hoi-an': hoiAnPages,
   'ho-chi-minh-city': hoChiMinhPages,
-  'phu-quoc': phuQuocPages,
+  'phu-quoc': enhanceMarineCluster(phuQuocPages, 'phu-quoc'),
   'da-nang': daNangPages,
-  'nha-trang': nhaTrangPages,
+  'nha-trang': enhanceMarineCluster(nhaTrangPages, 'nha-trang'),
 };
 const hubMeta = {
   'hoi-an': {
@@ -52,9 +54,9 @@ const hubMeta = {
     intro:'Her samler vi guider til seværdigheder, tre dage i byen, områder, hoteller, mad, Cu Chi, Mekong, lufthavn og vejret. Målet er at holde transporten nede og gøre hvert valg tydeligt.',
   },
   'phu-quoc': {
-    title:'Phu Quoc rejseguide 2026 | Strande, hoteller, vejr og oplevelser',
-    heading:'Phu Quoc rejseguide: vælg kyst, hotel og sæson før du booker',
-    intro:'Phu Quoc er stor nok til, at område og sæson ændrer hele ferien. Hubben samler strandguide, hotelområder, hoteller, oplevelser, fire-dages plan, vejr og transport.',
+    title:'Phu Quoc rejseguide 2026 | Strande, hoteller, snorkling og oplevelser',
+    heading:'Phu Quoc rejseguide: vælg kyst, hotel og havoplevelser før du booker',
+    intro:'Phu Quoc er stor nok til, at område og sæson ændrer hele ferien. Hubben samler strandguide, hotelområder, hoteller, øhop, snorkling, vandsport, fire-dages plan, vejr og transport.',
   },
   'da-nang': {
     title:'Da Nang rejseguide 2026 | Strand, seværdigheder, hoteller og Hoi An',
@@ -62,9 +64,9 @@ const hubMeta = {
     intro:'Brug hubben til at vælge område, hotel, strand og seværdigheder samt planlægge Ba Na Hills og turen mellem Da Nang og Hoi An.',
   },
   'nha-trang': {
-    title:'Nha Trang rejseguide 2026 | Strand, hoteller og oplevelser',
-    heading:'Nha Trang rejseguide: planlæg bystrand, hotelområde og oplevelser',
-    intro:'Nha Trang kombinerer rigtig by med strand. Hubben samler de vigtigste valg om seværdigheder, område, hoteller, strande og en tre-dages rejseplan.',
+    title:'Nha Trang rejseguide 2026 | Strand, snorkling, dykning og hoteller',
+    heading:'Nha Trang rejseguide: planlæg bystrand, øture og undervandsoplevelser',
+    intro:'Nha Trang kombinerer rigtig by med strand og en stærk havprofil. Hubben samler seværdigheder, område, hoteller, strande, øture, snorkling, dykning, vandsport og en tre-dages rejseplan.',
   },
 };
 const hubMatch = Astro.url.pathname.match(/^\/destinationer\/([^/]+)\/$/);
@@ -80,6 +82,7 @@ const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, pa
   title: page.heading,
   text: page.intro,
 })) : [];
+const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
 ---
 <BaseLayout title={finalTitle} description={description}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
@@ -122,6 +125,12 @@ const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, pa
         title={`Planlæg ${destinationNames[hubSlug] ?? hubSlug}`}
         intro="Vælg den guide, der matcher dit næste spørgsmål. Hver side har ét tydeligt søgeformål, så hotel, områder, oplevelser og transport ikke konkurrerer med hinanden."
       />
+    </div>
+  )}
+
+  {showMarineHighlights && (
+    <div class="container marine-hub-wrap">
+      <MarineHubHighlights destination={hubSlug} />
     </div>
   )}
 
@@ -172,6 +181,7 @@ const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, pa
 .article-hero-media :global(.section-media) { margin-top: 0; }
 .article-hero-media :global(.media-frame) { aspect-ratio: 16 / 7; }
 .auto-hub-grid { margin-top: 28px; }
+.marine-hub-wrap { margin-top: -8px; }
 .article-sidebar { display: grid; gap: 24px; }
 .sidebar-label { font-size: .75rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--green-700); margin-bottom: 10px; }
 .toc, .sidebar-sources { display: grid; gap: 9px; }
