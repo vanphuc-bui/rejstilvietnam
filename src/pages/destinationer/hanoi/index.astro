@@ -2,9 +2,11 @@
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
 
 const toc = [
   { id: 'start', label: 'Start her' },
+  { id: 'tal', label: 'Hanoi 2026 i tal' },
   { id: 'plan', label: 'Planlæg dagene' },
   { id: 'bo', label: 'Hvor skal man bo?' },
   { id: 'se', label: 'Seværdigheder' },
@@ -16,129 +18,87 @@ const toc = [
 const sources = [
   { label: 'Vietnam Tourism - Hanoi', href: 'https://vietnam.travel/places-to-go/northern-vietnam/ha-noi' },
   { label: 'Vietnam Tourism - Hanoi attractions', href: 'https://vietnam.travel/things-to-do/11-must-see-attractions-ha-noi' },
-  { label: 'Vietnam Tourism - weather and climate', href: 'https://vietnam.travel/things-to-do/weather-and-climate-vietnam/' },
+  { label: 'Hanoi Transport Corporation - Bus 86', href: 'https://busnoibai.com/en/tuyen-86-diem-don-tra' },
+  { label: 'Văn Miếu - official visitor information', href: 'https://www.vanmieu.gov.vn/en/introduction/visitor-information' },
+];
+
+const snapshotColumns = [
+  { key:'item', label:'Praktisk valg' },
+  { key:'vnd', label:'2026-pejlemærke' },
+  { key:'dkk', label:'Ca. DKK' },
+  { key:'detail', label:'Hvad det betyder' },
+];
+const snapshotRows = [
+  { item:'Bus 86 fra lufthavnen', vnd:'50.000 VND', dkk:'12-13 DKK', detail:'Ca. 60 min til Hanoi Railway Station + sidste stykke til hotellet' },
+  { item:'Klassisk street-food måltid', vnd:'40.000-80.000 VND', dkk:'10-20 DKK', detail:'Typisk niveau for phở eller bún chả' },
+  { item:'Litteraturtemplet', vnd:'70.000 VND', dkk:'17-18 DKK', detail:'Officiel voksenbillet' },
+  { item:'Mellemklassehotel i Old Quarter', vnd:'800.000-1.500.000 VND', dkk:'200-375 DKK / nat', detail:'2026-markedspejlemærke; dato betyder meget' },
+  { item:'Shuttle Hanoi → Ninh Binh', vnd:'180.000-350.000 VND', dkk:'45-87 DKK', detail:'Typisk pr. person; ca. 1,5-2 timer i selve transporten' },
+  { item:'Ha Long dagstur', vnd:'Ca. 1,25-2,4 mio. VND', dkk:'310-600 DKK', detail:'Aktuelle eksempler; indhold og transfer varierer' },
 ];
 
 const hubCards = [
   { href: '/destinationer/hanoi/sevaerdigheder/', label: 'Seværdigheder', title: 'Hvad skal man se i Hanoi?', text: 'Old Quarter, Hoan Kiem, Litteraturtemplet, Hoa Lo, Ba Dinh og de stop vi faktisk ville prioritere.' },
-  { href: '/destinationer/hanoi/3-dage-i-hanoi/', label: 'Rejseplan', title: '3 dage i Hanoi', text: 'En dag-for-dag plan, der ikke forsøger at presse hele byen ind på 48 timer.' },
-  { href: '/destinationer/hanoi/hvor-skal-man-bo/', label: 'Områder', title: 'Hvor skal man bo?', text: 'Sammenlign Old Quarter, Hoan Kiem, French Quarter, Ba Dinh og Tay Ho før du vælger hotel.' },
-  { href: '/destinationer/hanoi/bedste-hoteller/', label: 'Hoteller', title: 'Bedste hoteller i Hanoi', text: 'En kort, visuel shortlist med område, type og kort - uden at vælge ud fra stjerner alene.' },
-  { href: '/destinationer/hanoi/mad-i-hanoi/', label: 'Mad', title: 'Hvad skal man spise?', text: 'Phở, bún chả, bánh cuốn, chả cá og æggekaffe - med billeder og en enkel maddag.' },
-  { href: '/destinationer/hanoi/train-street/', label: 'Praktisk guide', title: 'Train Street', text: 'Hvor den ligger, hvordan adgang kan ændre sig, og hvorfor gamle togtider ikke bør styre hele dagen.' },
-  { href: '/destinationer/hanoi/lufthavn-til-centrum/', label: 'Transport', title: 'Lufthavn til centrum', text: 'Bus 86, Grab eller taxi - vælg efter bagage, tidspunkt og hvor dit hotel ligger.' },
-  { href: '/destinationer/hanoi/ninh-binh-fra-hanoi/', label: 'Dagstur', title: 'Ninh Binh fra Hanoi', text: 'Dagstur eller overnatning? Trang An, Hang Mua og hvordan vi ville bruge tiden.' },
-  { href: '/destinationer/hanoi/ha-long-bay-fra-hanoi/', label: 'Cruise', title: 'Ha Long Bay fra Hanoi', text: 'Sammenlign dagstur, én nat på vandet og de forskellige bugter før du vælger cruise.' },
+  { href: '/destinationer/hanoi/3-dage-i-hanoi/', label: 'Rejseplan', title: '3 dage i Hanoi', text: 'En dag-for-dag plan med entrébudget, der ikke forsøger at presse hele byen ind på 48 timer.' },
+  { href: '/destinationer/hanoi/hvor-skal-man-bo/', label: 'Områder', title: 'Hvor skal man bo?', text: 'Sammenlign Old Quarter, Hoan Kiem, French Quarter, Ba Dinh og Tay Ho med kort, støj og prisniveau.' },
+  { href: '/destinationer/hanoi/bedste-hoteller/', label: 'Hoteller', title: 'Bedste hoteller i Hanoi', text: 'En visuel shortlist med område, prisniveau og kort - uden at vælge ud fra stjerner alene.' },
+  { href: '/destinationer/hanoi/mad-i-hanoi/', label: 'Mad', title: 'Hvad skal man spise?', text: 'Phở, bún chả, bánh cuốn, chả cá og æggekaffe med realistiske 2026-priser i VND og DKK.' },
+  { href: '/destinationer/hanoi/train-street/', label: 'Praktisk guide', title: 'Train Street', text: 'Kort, skiftende adgang, sikkerhed og hvorfor gamle togtider ikke bør styre hele dagen.' },
+  { href: '/destinationer/hanoi/lufthavn-til-centrum/', label: 'Transport', title: 'Lufthavn til centrum', text: 'Bus 86, Grab eller taxi med pris, tidsforbrug og valg efter bagage og ankomsttid.' },
+  { href: '/destinationer/hanoi/ninh-binh-fra-hanoi/', label: 'Dagstur', title: 'Ninh Binh fra Hanoi', text: 'Dagstur eller overnatning? Se Trang An, Hang Mua samt transporttid og pris.' },
+  { href: '/destinationer/hanoi/ha-long-bay-fra-hanoi/', label: 'Cruise', title: 'Ha Long Bay fra Hanoi', text: 'Sammenlign dagstur og 2D/1N på tid, pris, transfer, rute og kahyt.' },
 ];
 ---
 <ArticleLayout
-  title="Hanoi rejseguide 2026 | Seværdigheder, 3 dage, hoteller og mad"
-  description="Dansk Hanoi-rejseguide med visuelle guider til seværdigheder, 3-dages rejseplan, områder, hoteller, mad, Train Street, lufthavn og ture til Ninh Binh og Ha Long Bay."
+  title="Hanoi rejseguide 2026 | Seværdigheder, 3 dage, hoteller og priser"
+  description="Dansk Hanoi-rejseguide med 2026-priser i DKK/VND, seværdigheder, 3-dages plan, områder, hoteller, mad, lufthavn, Ninh Binh og Ha Long Bay."
   eyebrow="Nordvietnam · Hanoi"
   heading="Hanoi rejseguide: planlæg byen uden at drukne i lister"
-  intro="Hanoi er lettere at forstå, når du deler rejsen op i konkrete valg: hvor du skal bo, hvad du faktisk vil se, hvad du vil spise, og om du vil bruge byen som base for Ninh Binh eller Ha Long Bay. Denne side samler alle vores Hanoi-guider ét sted."
+  intro="Til en første rejse ville vi bruge cirka tre nætter i Hanoi, bo omkring Old Quarter eller Hoan Kiem og planlægge byen som konkrete valg: base, seværdigheder, mad og eventuelle ture til Ninh Binh eller Ha Long Bay."
   updated="15. september 2026"
   toc={toc}
   sources={sources}
 >
-  <SectionMedia
-    slot="heroMedia"
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1800"
-    alt="Gadeliv i Hanois Old Quarter"
-    caption="Hanoi giver mere mening som områder og dage end som én lang liste over seværdigheder."
-    credit="Richard Mortel / Wikimedia Commons"
-    creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg"
-    ratio="16 / 7"
-  />
+  <SectionMedia slot="heroMedia" src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%2812%29%20%2838441027296%29.jpg?width=1800" alt="Gadeliv i Hanois Old Quarter" caption="Hanoi giver mere mening som områder og dage end som én lang liste over seværdigheder." credit="Richard Mortel / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(12)_(38441027296).jpg" ratio="16 / 7" />
 
   <h2 id="start">Start her: vælg det spørgsmål du prøver at løse</h2>
-  <p>Hvis du allerede har booket fly, behøver du ikke læse alt fra toppen. Gå direkte til den guide, der svarer på dit næste valg.</p>
+  <p>Hvis du allerede har booket fly, behøver du ikke læse alt fra toppen. Gå direkte til den guide, der svarer på dit næste valg. Hver side har ét tydeligt formål, så hotel, områder, seværdigheder og ture ikke gentager hinanden.</p>
+  <div class="hub-grid">{hubCards.map((card) => <a class="hub-card" href={card.href}><span>{card.label}</span><h3>{card.title}</h3><p>{card.text}</p><b>Åbn guiden →</b></a>)}</div>
 
-  <div class="hub-grid">
-    {hubCards.map((card) => (
-      <a class="hub-card" href={card.href}>
-        <span>{card.label}</span>
-        <h3>{card.title}</h3>
-        <p>{card.text}</p>
-        <b>Åbn guiden →</b>
-      </a>
-    ))}
-  </div>
+  <h2 id="tal">Hanoi 2026 i tal</h2>
+  <p>De fleste priser i Vietnam vises i VND. For at gøre planlægningen lettere viser vi også afrundede DKK-beløb. På opdateringsdatoen svarer <strong>100.000 VND til cirka 25 DKK</strong>.</p>
+  <PracticalTable title="Seks tal der gør budgettet lettere" columns={snapshotColumns} rows={snapshotRows} note="DKK er afrundet efter kursen 15. september 2026. Officielle priser er mærket som sådan i de detaljerede guider; hotel-, mad- og turpriser er markedspejlemærker og skal kontrolleres på din konkrete dato." />
 
   <h2 id="plan">Hvor mange dage i Hanoi?</h2>
-  <div class="fact-grid">
-    <div class="fact"><span>2 dage</span><b>Centrum + lidt historie</b></div>
-    <div class="fact"><span>3 dage</span><b>Vores udgangspunkt</b></div>
-    <div class="fact"><span>4-5 dage</span><b>Tilføj Ninh Binh eller Ha Long</b></div>
-  </div>
+  <div class="fact-grid"><div class="fact"><span>2 dage</span><b>Centrum + lidt historie</b></div><div class="fact"><span>3 dage</span><b>Vores udgangspunkt</b></div><div class="fact"><span>4-5 dage</span><b>Tilføj Ninh Binh eller Ha Long</b></div></div>
   <p>Til en første rejse ville vi normalt planlægge <strong>tre nætter</strong> i Hanoi. Det giver tid til at lande efter flyrejsen, se centrum, spise godt og tage en historisk halvdag uden at alle timer bliver booket.</p>
   <p>Hvis du har fire eller fem dage i området, ville vi ikke nødvendigvis bruge alle dagene inde i byen. Ninh Binh giver natur og landskab, mens Ha Long Bay giver en helt anden oplevelse på vandet.</p>
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">Se vores 3-dages plan <span>Dag 1 i centrum, dag 2 med historie og en fleksibel dag 3.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">Se vores 3-dages plan <span>Dag 1 i centrum, dag 2 med historie og en fleksibel dag 3 - inklusive entrébudget.</span></a></div>
 
   <h2 id="bo">Hvor skal man bo?</h2>
   <p>På en kort førstegangsrejse ville vi bo omkring <strong>Old Quarter eller Hoan Kiem</strong>. Du kan gå til meget, der er mad overalt, og mange pickups til udflugter starter centralt.</p>
-  <p>Tay Ho er roligere og fungerer bedre på et længere ophold. Ba Dinh er interessant for historie og mere lokalt byliv. French Quarter er centralt, men mere roligt og ofte dyrere.</p>
-  <SectionMedia
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoan%20Kiem%20Lake%20photo.jpg?width=1400"
-    alt="Hoan Kiem-søen i centrum af Hanoi"
-    caption="For en kort første rejse er området omkring Hoan Kiem et meget praktisk udgangspunkt."
-    credit="Tranhuutukkt / Wikimedia Commons"
-    creditUrl="https://commons.wikimedia.org/wiki/File:Hoan_Kiem_Lake_photo.jpg"
-    ratio="16 / 9"
-  />
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Vælg område efter støj, gåafstand, pris og rejsetype.</span></a>
-    <a class="link-card" href="/destinationer/hanoi/bedste-hoteller/">Bedste hoteller i Hanoi <span>Se hotelvalg og placeringer på et interaktivt kort.</span></a>
-  </div>
+  <p>Tay Ho er roligere og fungerer bedre på et længere ophold. Ba Dinh er interessant for historie. French Quarter er centralt og roligere, men luksussegmentet kan være markant dyrere.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoan%20Kiem%20Lake%20photo.jpg?width=1400" alt="Hoan Kiem-søen i centrum af Hanoi" caption="For en kort første rejse er området omkring Hoan Kiem et meget praktisk udgangspunkt." credit="Tranhuutukkt / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Hoan_Kiem_Lake_photo.jpg" ratio="16 / 9" />
+  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Vælg område efter støj, gåafstand, pris og rejsetype - med kort.</span></a><a class="link-card" href="/destinationer/hanoi/bedste-hoteller/">Bedste hoteller i Hanoi <span>Se hotelvalg, prisniveau og placeringer på et interaktivt kort.</span></a></div>
 
   <h2 id="se">Hvad skal man se?</h2>
   <p>Vi ville ikke forsøge at nå 15 seværdigheder. Begynd med Old Quarter og Hoan Kiem, og vælg derefter et par steder efter interesse: Litteraturtemplet, Hoa Lo Prison, Imperial Citadel eller Ba Dinh-området.</p>
-  <p>Train Street er interessant, men adgang og togtider ændrer sig. Derfor har den sin egen praktiske guide i stedet for en fast “kom kl. 15:30”-anbefaling.</p>
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/sevaerdigheder/">Seværdigheder i Hanoi <span>Prioriterede stop, forslag til én dag og interaktivt kort.</span></a>
-    <a class="link-card" href="/destinationer/hanoi/train-street/">Train Street i Hanoi <span>Adgang, sikkerhed, områder og nyere video.</span></a>
-  </div>
-
-  <VideoEmbed
-    youtubeId="xId3cHWsta4"
-    title="4K walking tour i Hanoi Old Quarter"
-    caption="En walking-video gør det nemmere at forstå trafik, fortove og afstanden mellem stederne end stillbilleder alene. Videoen er fra en ekstern YouTube-kanal."
-  />
+  <p>Som pejlemærke koster Litteraturtemplet 70.000 VND, Hoa Lo 50.000 VND og Thang Long-citadellet 100.000 VND for en voksen. Det betyder, at entré sjældent er den dyre del af en Hanoi-dag.</p>
+  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/sevaerdigheder/">Seværdigheder i Hanoi <span>Prioriterede stop, officielle entrépriser, forslag til én dag og interaktivt kort.</span></a><a class="link-card" href="/destinationer/hanoi/train-street/">Train Street i Hanoi <span>Adgang, sikkerhed, to områder og kort.</span></a></div>
+  <VideoEmbed youtubeId="xId3cHWsta4" title="4K walking tour i Hanoi Old Quarter" caption="En walking-video gør det nemmere at forstå trafik, fortove og afstanden mellem stederne end stillbilleder alene. Videoen er fra en ekstern YouTube-kanal." />
 
   <h2 id="mad">Mad i Hanoi</h2>
-  <p>Hvis du kun har få dage, ville vi begynde med phở, bún chả, bánh cuốn, chả cá og én æggekaffe. Du behøver ikke finde “den bedste” version af hver ret før afrejse. Et travlt specialsted med få retter er ofte et bedre udgangspunkt end et langt menukort.</p>
-  <SectionMedia
-    src="https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=1400"
-    alt="Bún chả med grillet svinekød og nudler"
-    caption="Bún chả er en ret, vi især ville gemme en frokost til i Hanoi."
-    credit="Valentin Orange / Wikimedia Commons"
-    creditUrl="https://commons.wikimedia.org/wiki/File:Bun-cha-hanoi.jpg"
-    ratio="4 / 3"
-  />
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Se retterne med billeder og en enkel plan for en maddag.</span></a>
-  </div>
+  <p>Hvis du kun har få dage, ville vi begynde med phở, bún chả, bánh cuốn, chả cá og én æggekaffe. Et almindeligt street-food måltid som phở eller bún chả ligger ofte omkring <strong>40.000-80.000 VND</strong>, cirka <strong>10-20 DKK</strong>.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=1400" alt="Bún chả med grillet svinekød og nudler" caption="Bún chả er en ret, vi især ville gemme en frokost til i Hanoi." credit="Valentin Orange / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Bun-cha-hanoi.jpg" ratio="4 / 3" />
+  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Se fem klassiske retter, 2026-priser og en enkel plan for en maddag.</span></a></div>
 
   <h2 id="praktisk">Praktisk: fra lufthavnen og rundt i byen</h2>
-  <p>Noi Bai-lufthavnen ligger uden for centrum. Med let bagage kan Bus 86 være en god budgetløsning. Efter en lang flyrejse, med børn eller store kufferter ville vi ofte vælge Grab, officiel taxi eller en bil arrangeret af hotellet.</p>
+  <p>Noi Bai-lufthavnen ligger uden for centrum. Bus 86 koster aktuelt 50.000 VND, cirka 12-13 DKK, og operatøren angiver omkring 60 minutter til Hanoi Railway Station. Med kufferter, børn eller sen ankomst ville vi ofte vælge Grab, officiel taxi eller en bil arrangeret på forhånd.</p>
   <p>Inde i centrum går vi gerne korte afstande. Til Ba Dinh, Litteraturtemplet eller West Lake er Grab/taxi ofte mere praktisk end at gå langt i varme og tæt trafik.</p>
-  <div class="link-list">
-    <a class="link-card" href="/destinationer/hanoi/lufthavn-til-centrum/">Hanoi lufthavn til centrum <span>Sammenlign Bus 86, Grab og taxi efter din situation.</span></a>
-  </div>
+  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/lufthavn-til-centrum/">Hanoi lufthavn til centrum <span>Sammenlign Bus 86, Grab, taxi og transfer med pris og tid.</span></a></div>
 
   <h2 id="videre">Videre fra Hanoi</h2>
-  <div class="trip-grid">
-    <a href="/destinationer/hanoi/ninh-binh-fra-hanoi/" class="trip-card">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Trang%20An%2C%20Ninh%20Binh.jpg?width=900" alt="Trang An i Ninh Binh" loading="lazy" referrerpolicy="no-referrer" />
-      <div><span>Natur · Bådtur</span><h3>Ninh Binh</h3><p>Dagstur er mulig. Én nat er bedre, hvis du har plads i rejseplanen.</p></div>
-    </a>
-    <a href="/destinationer/hanoi/ha-long-bay-fra-hanoi/" class="trip-card">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/HALONG%20BAY%20.jpg?width=900" alt="Ha Long Bay" loading="lazy" referrerpolicy="no-referrer" />
-      <div><span>Cruise · Kalkstensøer</span><h3>Ha Long Bay</h3><p>Vælg mellem en lang dagstur og et roligere cruise med overnatning.</p></div>
-    </a>
-  </div>
+  <div class="trip-grid"><a href="/destinationer/hanoi/ninh-binh-fra-hanoi/" class="trip-card"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Trang%20An%2C%20Ninh%20Binh.jpg?width=900" alt="Trang An i Ninh Binh" loading="lazy" referrerpolicy="no-referrer" /><div><span>Natur · Bådtur</span><h3>Ninh Binh</h3><p>Dagstur er mulig. Én nat er bedre, hvis du har plads. Shuttle typisk 180.000-350.000 VND pr. person.</p></div></a><a href="/destinationer/hanoi/ha-long-bay-fra-hanoi/" class="trip-card"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/HALONG%20BAY%20.jpg?width=900" alt="Ha Long Bay" loading="lazy" referrerpolicy="no-referrer" /><div><span>Cruise · Kalkstensøer</span><h3>Ha Long Bay</h3><p>Vælg mellem en lang dagstur og 2D/1N. Vi sammenligner pris, transfer, rute og kahyt.</p></div></a></div>
 </ArticleLayout>
 
 <style>
