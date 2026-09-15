@@ -1,16 +1,55 @@
 ---
 const {
   items = [],
-  title = 'Oplevelser på vandet',
+  title,
   intro = '',
-  eyebrow = 'Overblik',
+  eyebrow,
 } = Astro.props;
+
+const path = Astro.url.pathname;
+const parts = path.split('/').filter(Boolean);
+const destinationIndex = parts.indexOf('destinationer');
+const destinationSlug = destinationIndex >= 0 ? parts[destinationIndex + 1] : '';
+const guideSlug = destinationIndex >= 0 ? (parts[destinationIndex + 2] ?? '') : '';
+const isMarine = destinationSlug === 'phu-quoc' || destinationSlug === 'nha-trang';
+
+// Do not repeat the same activity grid on every related article. Beach, area and
+// itinerary pages keep their own visual language (map/gallery/timeline) and link
+// to the dedicated activity guides instead.
+const suppressOn = new Set([
+  'bedste-strande',
+  'hvor-skal-man-bo',
+  '3-dage-i-nha-trang',
+  '4-dage-i-phu-quoc',
+  'o-hop-og-snorkling',
+  'o-ture-og-snorkling',
+]);
+const shouldRender = items.length > 0 && !(isMarine && suppressOn.has(guideSlug));
+
+let contextualEyebrow = eyebrow;
+let contextualTitle = title;
+if (!contextualEyebrow) {
+  if (guideSlug === 'vandsport-og-dykning') contextualEyebrow = 'Vælg niveau';
+  else if (guideSlug === 'vandsport-og-aktiviteter') contextualEyebrow = 'På vandet';
+  else if (guideSlug === 'sevaerdigheder' && destinationSlug === 'nha-trang') contextualEyebrow = 'Bugt & hav';
+  else if (guideSlug === 'sevaerdigheder' && destinationSlug === 'phu-quoc') contextualEyebrow = 'Havoplevelser';
+  else if (!guideSlug && destinationSlug === 'nha-trang') contextualEyebrow = 'Bugt & undervand';
+  else if (!guideSlug && destinationSlug === 'phu-quoc') contextualEyebrow = 'Havoplevelser';
+  else contextualEyebrow = 'Overblik';
+}
+if (!contextualTitle) {
+  if (guideSlug === 'vandsport-og-dykning') contextualTitle = 'Fra snorkling til scuba: vælg efter niveau og havforhold';
+  else if (guideSlug === 'vandsport-og-aktiviteter') contextualTitle = 'Fra Hon Thom til jetski: vælg efter tempo';
+  else if (guideSlug === 'sevaerdigheder' && destinationSlug === 'nha-trang') contextualTitle = 'Når du vil ud på vandet';
+  else if (guideSlug === 'sevaerdigheder' && destinationSlug === 'phu-quoc') contextualTitle = 'Tre oplevelser der supplerer stranddagene';
+  else contextualTitle = 'Oplevelser på vandet';
+}
 ---
-{items.length > 0 && (
+{shouldRender && (
   <section class="activity-section">
     <div class="activity-head">
-      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-      <h2>{title}</h2>
+      {contextualEyebrow && <p class="eyebrow">{contextualEyebrow}</p>}
+      <h2>{contextualTitle}</h2>
       {intro && <p>{intro}</p>}
     </div>
     <div class="activity-grid">
