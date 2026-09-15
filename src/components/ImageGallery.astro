@@ -3,8 +3,26 @@ const {
   items = [],
   title = 'Se området i billeder',
   intro = 'Klik på et billede for at se det større.',
-  eyebrow = 'Visuelt overblik',
+  eyebrow,
 } = Astro.props;
+
+const path = Astro.url.pathname;
+const parts = path.split('/').filter(Boolean);
+const destinationIndex = parts.indexOf('destinationer');
+const destinationSlug = destinationIndex >= 0 ? parts[destinationIndex + 1] : '';
+const guideSlug = destinationIndex >= 0 ? (parts[destinationIndex + 2] ?? '') : '';
+let contextualEyebrow = eyebrow;
+if (!contextualEyebrow) {
+  if (guideSlug === 'bedste-strande') contextualEyebrow = 'Strandene';
+  else if (guideSlug === 'hvor-skal-man-bo') contextualEyebrow = 'Områderne';
+  else if (guideSlug === 'sevaerdigheder') contextualEyebrow = 'Se med egne øjne';
+  else if (guideSlug === '3-dage-i-nha-trang' || guideSlug === '4-dage-i-phu-quoc') contextualEyebrow = 'Undervejs';
+  else if (/o-hop|o-ture|snorkling/.test(guideSlug)) contextualEyebrow = 'På vandet';
+  else if (/vandsport|dykning/.test(guideSlug)) contextualEyebrow = 'I bevægelse';
+  else if (!guideSlug && destinationSlug === 'phu-quoc') contextualEyebrow = 'Øen i billeder';
+  else if (!guideSlug && destinationSlug === 'nha-trang') contextualEyebrow = 'Bugten i billeder';
+  else contextualEyebrow = 'Visuelt overblik';
+}
 
 const galleryId = `gallery-${Math.random().toString(36).slice(2, 9)}`;
 const galleryItems = items.map((item) => ({
@@ -18,7 +36,7 @@ const galleryItems = items.map((item) => ({
 {items.length > 0 && (
   <section class="media-gallery" aria-labelledby={`${galleryId}-title`}>
     <div class="gallery-head">
-      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      {contextualEyebrow && <p class="eyebrow">{contextualEyebrow}</p>}
       <h2 id={`${galleryId}-title`}>{title}</h2>
       {intro && <p>{intro}</p>}
     </div>
