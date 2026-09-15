@@ -5,14 +5,15 @@ import { hoChiMinhPages } from '../../../data/hoChiMinhCluster.js';
 import { phuQuocPages } from '../../../data/phuQuocCluster.js';
 import { daNangPages } from '../../../data/daNangCluster.js';
 import { nhaTrangPages } from '../../../data/nhaTrangCluster.js';
+import { enhanceMarineCluster } from '../../../data/marineActivityCluster.js';
 
 export function getStaticPaths() {
   const clusters = {
     'hoi-an': hoiAnPages,
     'ho-chi-minh-city': hoChiMinhPages,
-    'phu-quoc': phuQuocPages,
+    'phu-quoc': enhanceMarineCluster(phuQuocPages, 'phu-quoc'),
     'da-nang': daNangPages,
-    'nha-trang': nhaTrangPages,
+    'nha-trang': enhanceMarineCluster(nhaTrangPages, 'nha-trang'),
   };
 
   return Object.entries(clusters).flatMap(([destination, pages]) =>
