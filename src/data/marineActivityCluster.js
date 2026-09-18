@@ -172,6 +172,7 @@ export const phuQuocMarinePages = {
     hero: phuAnThoi,
     sources: phuSources,
     quickFacts: [
+    commercialCta:{eyebrow:'Øhop & snorkling',title:'Sammenlign bådture fra An Thoi',text:'Vælg efter bådtype, gruppestørrelse, snorkelstop og reel tid i vandet. Havforhold betyder mere end antallet af øer på programmet.',href:'https://gyg.me/fk3cvTkN',label:'Se snorkel- og øture →',provider:'GetYourGuide'},
       { label: 'Udgangspunkt', value: 'An Thoi' },
       { label: 'Mest fleksibelt', value: 'Speedboat' },
       { label: 'Vigtigt', value: 'Tjek havforhold samme dag' },
