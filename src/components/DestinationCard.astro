@@ -1,7 +1,8 @@
 ---
 const { name, kicker, description, href, image } = Astro.props;
+const hasImage = Boolean(image);
 ---
-<a class="destination" href={href} style={`--bg: url('${image}')`}>
+<a class:list={{ destination:true, 'destination--plain':!hasImage }} href={href} style={hasImage ? `--bg: url('${image}')` : undefined}>
   <div class="overlay"></div>
   <div class="content"><span>{kicker}</span><h3>{name}</h3><p>{description}</p><b>Udforsk →</b></div>
 </a>
@@ -9,6 +10,7 @@ const { name, kicker, description, href, image } = Astro.props;
 .destination { position: relative; min-height: 360px; overflow: hidden; border-radius: 28px; background-image: var(--bg); background-size: cover; background-position: center; box-shadow: var(--shadow); }
 .destination::before { content: ""; position: absolute; inset: 0; background-image: var(--bg); background-size: cover; background-position: center; transition: transform .55s ease; }
 .destination:hover::before { transform: scale(1.045); }
+.destination--plain{background:linear-gradient(145deg,#143b2f,#2f6c55 55%,#d6a65d)}.destination--plain::before{background:radial-gradient(circle at 78% 20%,rgba(255,255,255,.18),transparent 34%),linear-gradient(145deg,rgba(255,255,255,.05),transparent)}.destination--plain:hover::before{transform:scale(1.02)}
 .overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 25%, rgba(6,31,23,.88) 100%); }
 .content { position: absolute; left: 24px; right: 24px; bottom: 24px; color: white; }
 .content span { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; opacity: .85; }
