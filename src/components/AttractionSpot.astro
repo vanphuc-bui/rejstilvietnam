@@ -159,9 +159,13 @@ const {
   .attraction-visual :global(figcaption span){max-width:none}
 }
 @media(max-width:560px){
-  .attraction-spot{border-radius:22px;margin:28px 0 42px}
-  .attraction-body{padding:20px}
-  .attraction-facts{grid-template-columns:1fr}
-  .attraction-copy h3{font-size:2rem}
+  .attraction-spot{border-radius:20px;margin:26px 0 38px}
+  .attraction-visual :global(.media-frame){aspect-ratio:16 / 10}
+  .attraction-visual :global(figcaption){padding:8px 12px 9px;font-size:.69rem}
+  .attraction-body{padding:19px}
+  .attraction-facts{grid-template-columns:1fr;gap:8px}
+  .attraction-facts div{padding:12px 13px}
+  .attraction-copy h3{font-size:1.9rem}
+  .attraction-copy>p:not(.attraction-kicker){font-size:.96rem!important;line-height:1.6!important}
 }
 </style>
