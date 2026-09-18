@@ -138,6 +138,7 @@ export const hoChiMinhPages = {
     eyebrow:'Fra Ho Chi Minh City · Mekong', heading:'Mekongdeltaet fra Ho Chi Minh City: dagstur er let, én nat giver mere mening',
     intro:'Mekongdeltaet er enormt. En dagstur viser kun en lille smule, så det vigtigste er at vælge forventning og rute rigtigt.', hero, sources,
     quickFacts:[{label:'Nem dagstur',value:'Ben Tre / My Tho'},{label:'Mere dybde',value:'1 nat i deltaet'},{label:'Flydende markeder',value:'Kræver tidlig start'}],
+    commercialCta:{eyebrow:'Dagstur',title:'Sammenlign Mekong-ture før du booker',text:'Se efter rute, gruppestørrelse, bådtid og antal salgsstop. En kortere, tydelig rute er ofte bedre end flest mulige stop.',href:'https://gyg.me/s0aFRCaH',label:'Se Mekong-ture →',provider:'GetYourGuide'},
     sections:[
       {id:'dagstur',heading:'Dagstur: hvad får du realistisk?',paragraphs:['Standardture går ofte mod My Tho eller Ben Tre og kombinerer båd, små kanaler, landsbybesøg og frokost. Det er en introduktion - ikke “hele Mekongdeltaet”.','Læs ruten nøje. For mange korte salgsstop kan gøre turen mere kommerciel end interessant.']},
       {id:'overnatning',heading:'Hvorfor én nat kan være bedre',paragraphs:['Med en overnatning kan du komme længere væk fra Ho Chi Minh City og opleve tidlige morgener, markeder eller flodliv uden at skulle vende tilbage samme aften.','Can Tho er en klassisk base, men vælg efter den konkrete rute og transport videre på din Vietnamrejse.']},
