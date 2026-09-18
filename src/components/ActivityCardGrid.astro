@@ -58,8 +58,8 @@ if (!contextualTitle) {
         <article class="activity-card">
           {showImages && (
             <div class="activity-image">
-              <span class="activity-fallback">Billede midlertidigt utilgængeligt</span>
-              <img src={item.image?.src} alt={item.image?.alt ?? item.title} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'" />
+              <span class="activity-fallback">Vietnam</span>
+              <img src={item.image?.src} alt={item.image?.alt ?? item.title} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="window.__rtvImageFallback?.(this)" />
               {item.kicker && <span class="activity-kicker">{item.kicker}</span>}
             </div>
           )}
