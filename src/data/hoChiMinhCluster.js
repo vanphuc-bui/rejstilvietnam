@@ -122,7 +122,20 @@ export const hoChiMinhPages = {
     eyebrow:'Fra Ho Chi Minh City · Cu Chi', heading:'Cu Chi-tunnelerne fra Ho Chi Minh City: vælg område og tempo før turen',
     intro:'Cu Chi er en af de mest søgte dagsture fra byen. Oplevelsen bliver bedre, hvis du ved, at der findes forskellige besøgsområder og at transporten fylder en mærkbar del af dagen.', hero, sources:[...sources,{label:'Tripadvisor Danmark - Cu Chi Tunnels',href:'https://www.tripadvisor.dk/Attraction_Review-g293925-d2005896-Reviews-Cu_Chi_Tunnels-Ho_Chi_Minh_City.html'}],
     quickFacts:[{label:'Nem løsning',value:'Guidet halvdag'},{label:'Mere ro',value:'Overvej Ben Duoc'},{label:'Fra centrum',value:'Regn med vejtid'}],
-    commercialCta:{eyebrow:'Guidet tur',title:'Vil du besøge Cu Chi uden at planlægge transporten selv?',text:'Sammenlign ture efter Ben Dinh/Ben Duoc, gruppestørrelse, pickup og hvor meget tid der faktisk bruges ved tunnelerne.',href:'https://gyg.me/MRjWVwG3',label:'Se Cu Chi-ture →',provider:'GetYourGuide'},
+    affiliateActivity:{
+      title:'En konkret Cu Chi-tur, hvis du vil have transport og guide samlet',
+      intro:'På denne side handler valget især om Ben Dinh/Ben Duoc, gruppestørrelse og hvor meget tid turen faktisk bruger ved tunnelerne.',
+      item:{
+        title:'Cu Chi-tunnelerne fra Ho Chi Minh City',
+        text:'En enkel løsning til den klassiske udflugt fra byen. Sammenlign pickup, gruppestørrelse og om turen er halv- eller heldag, før du booker.',
+        href:'https://gyg.me/MRjWVwG3',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Cu%20Chi%20Tunnel%20Vietnam%20%2838647687955%29.jpg?width=1200',
+        alt:'Indgang ved Cu Chi-tunnelerne nær Ho Chi Minh City',
+        badge:'Historie',
+        highlights:['Guide','Transport','Halv-/heldag','Flere ruter'],
+        cta:'Se tur og aktuel pris',
+      },
+    },
     sections:[
       {id:'hvad',heading:'Hvad er Cu Chi?',paragraphs:['Tunnelsystemet blev brugt under krigene i Vietnam og viser underjordiske passager, skjulesteder og militær logistik. Besøget kombinerer historisk formidling med rekonstruerede eller tilpassede dele af tunneloplevelsen.','Det er værd at komme med en guide, der kan forklare konteksten frem for kun at fokusere på at kravle i tunneler.']},
       {id:'ben-dinh',heading:'Ben Dinh eller Ben Duoc?',paragraphs:['Ben Dinh bruges af mange standardture og er praktisk på en halvdag. Ben Duoc ligger længere væk og kan føles mere omfattende og mindre komprimeret.','Vælg ikke kun ud fra transporttid. Læs den konkrete turrute og hvor længe gruppen faktisk er på stedet.']},
@@ -138,7 +151,20 @@ export const hoChiMinhPages = {
     eyebrow:'Fra Ho Chi Minh City · Mekong', heading:'Mekongdeltaet fra Ho Chi Minh City: dagstur er let, én nat giver mere mening',
     intro:'Mekongdeltaet er enormt. En dagstur viser kun en lille smule, så det vigtigste er at vælge forventning og rute rigtigt.', hero, sources,
     quickFacts:[{label:'Nem dagstur',value:'Ben Tre / My Tho'},{label:'Mere dybde',value:'1 nat i deltaet'},{label:'Flydende markeder',value:'Kræver tidlig start'}],
-    commercialCta:{eyebrow:'Dagstur',title:'Sammenlign Mekong-ture før du booker',text:'Se efter rute, gruppestørrelse, bådtid og antal salgsstop. En kortere, tydelig rute er ofte bedre end flest mulige stop.',href:'https://gyg.me/s0aFRCaH',label:'Se Mekong-ture →',provider:'GetYourGuide'},
+    affiliateActivity:{
+      title:'En Mekong-dagstur giver mest mening, når ruten er tydelig',
+      intro:'Se efter reel bådtid, gruppestørrelse og antallet af kommercielle stop. Færre, bedre stop er ofte et bedre køb end en meget lang liste.',
+      item:{
+        title:'Mekongdeltaet fra Ho Chi Minh City',
+        text:'En heldag væk fra storbyen med flodlandskab og bådoplevelser. Brug linket til at sammenligne ruter mod Ben Tre/My Tho og hvad der faktisk er inkluderet.',
+        href:'https://gyg.me/s0aFRCaH',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Vietnam%2C%20Phong%20Dien%2C%20Mekong%20Delta.jpg?width=1200',
+        alt:'Båd på en kanal i Mekongdeltaet',
+        badge:'Flod & landskab',
+        highlights:['Heldag','Bådtur','Ben Tre / My Tho','Pickup muligt'],
+        cta:'Se tur og aktuel pris',
+      },
+    },
     sections:[
       {id:'dagstur',heading:'Dagstur: hvad får du realistisk?',paragraphs:['Standardture går ofte mod My Tho eller Ben Tre og kombinerer båd, små kanaler, landsbybesøg og frokost. Det er en introduktion - ikke “hele Mekongdeltaet”.','Læs ruten nøje. For mange korte salgsstop kan gøre turen mere kommerciel end interessant.']},
       {id:'overnatning',heading:'Hvorfor én nat kan være bedre',paragraphs:['Med en overnatning kan du komme længere væk fra Ho Chi Minh City og opleve tidlige morgener, markeder eller flodliv uden at skulle vende tilbage samme aften.','Can Tho er en klassisk base, men vælg efter den konkrete rute og transport videre på din Vietnamrejse.']},
