@@ -3,6 +3,7 @@ import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
+import AffiliateActivityGrid from '../../../components/AffiliateActivityGrid.astro';
 
 const toc = [
   { id: 'tal', label: 'Hanoi 2026 i tal' },
@@ -98,7 +99,37 @@ const hubCards = [
   <div class="link-list"><a class="link-card" href="/destinationer/hanoi/lufthavn-til-centrum/">Hanoi lufthavn til centrum <span>Sammenlign Bus 86, Grab, taxi og transfer med pris og tid.</span></a></div>
 
   <h2 id="videre">Videre fra Hanoi</h2>
-  <div class="trip-grid"><a href="/destinationer/hanoi/ninh-binh-fra-hanoi/" class="trip-card"><div class="trip-visual">🛶</div><div><span>Natur · Bådtur</span><h3>Ninh Binh</h3><p>Dagstur er mulig. Én nat er bedre, hvis du har plads. Shuttle typisk 180.000-350.000 VND pr. person.</p></div></a><a href="/destinationer/hanoi/ha-long-bay-fra-hanoi/" class="trip-card"><div class="trip-visual">⛴️</div><div><span>Cruise · Kalkstensøer</span><h3>Ha Long Bay</h3><p>Vælg mellem en lang dagstur og 2D/1N. Vi sammenligner pris, transfer, rute og kahyt.</p></div></a></div>
+  <p>Hvis du vil bruge én dag uden for Hanoi, er Ninh Binh og Ha Long Bay de to mest oplagte valg. Her er to bookbare muligheder, så du kan sammenligne oplevelsen med vores mere detaljerede guider.</p>
+  <AffiliateActivityGrid
+    title="To populære dagsture fra Hanoi"
+    intro="Vi viser kun ture, der passer direkte til guiden. Tjek altid den konkrete dato, pickup og afbestillingsvilkår før booking."
+    items={[
+      {
+        title:'Ha Long Bay dagstur fra Hanoi',
+        text:'Cruise med frokost, kajak og mulighed for badning. Den viste tur er et stærkt value-valg, hvis du vil opleve Ha Long uden en overnatning.',
+        href:'https://gyg.me/pLtQdBLX',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/HALONG%20BAY%20.jpg?width=1200',
+        alt:'Kalkstensøer og cruisebåd i Ha Long Bay',
+        badge:'Top rated',
+        oldPrice:'287 kr',
+        price:'Fra 255 kr / person',
+        priceNote:'Eksempelpris vist 18.09.2026',
+        highlights:['1 dag','Frokost','Kajak','Gratis afbestilling'],
+        cta:'Se tur og pris',
+      },
+      {
+        title:'Ninh Binh fra Hanoi',
+        text:'En nem heldag hvis du vil kombinere kalkstenslandskab, bådtur og klassiske stop uden selv at koordinere transporten fra Hanoi.',
+        href:'https://gyg.me/Ceo7B7AO',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Trang%20An%2C%20Ninh%20Binh.jpg?width=1200',
+        alt:'Bådrute mellem kalkstensklipper i Trang An, Ninh Binh',
+        badge:'Naturdag',
+        highlights:['Heldag','Trang An','Transport fra Hanoi','Flere ruter'],
+        cta:'Se Ninh Binh-ture',
+      },
+    ]}
+  />
+  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/ha-long-bay-fra-hanoi/">Læs vores Ha Long Bay-guide <span>Dagstur eller 2D/1N? Sammenlign tid, transfer, rute og kahyt.</span></a><a class="link-card" href="/destinationer/hanoi/ninh-binh-fra-hanoi/">Læs vores Ninh Binh-guide <span>Se om en dagstur er nok, eller om én nat passer bedre.</span></a></div>
 </ArticleLayout>
 
 <style>
