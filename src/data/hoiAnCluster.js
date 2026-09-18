@@ -140,7 +140,20 @@ export const hoiAnPages = {
     intro:'Hoi An er et af de steder, hvor vi ville planlægge nogle måltider bevidst. Cao lầu, mì Quảng og white rose giver mere mening her end endnu en international café.',
     hero, sources,
     quickFacts:[{label:'Must try',value:'Cao lầu'},{label:'Regional ret',value:'Mì Quảng'},{label:'Let snack',value:'White rose'}],
-    commercialCta:{eyebrow:'Madlavningskursus',title:'Vil du prøve et madlavningskursus i Hoi An?',text:'Sammenlign kurser efter gruppestørrelse, hvor meget du selv laver, markedsbesøg og hvor stor en del af dagen der går til transport.',href:'https://gyg.me/5zfSljI8',label:'Se madlavningskurser →',provider:'GetYourGuide'},
+    affiliateActivity:{
+      title:'Madlavningskursus giver mest mening, hvis du faktisk får lov at lave maden',
+      intro:'Sammenlign især gruppestørrelse, markedsbesøg og hvor meget af programmet der er reel madlavning frem for transport og demonstration.',
+      item:{
+        title:'Hoi An cooking class',
+        text:'En halv dags madoplevelse passer godt ind mellem Old Town, caféer og strand. Vælg et kursus, hvor lokale råvarer og praktisk madlavning fylder mest.',
+        href:'https://gyg.me/5zfSljI8',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Cao%20l%E1%BA%A7u%20H%E1%BB%99i%20An.jpg?width=1200',
+        alt:'Cao lau serveret i Hoi An',
+        badge:'Madoplevelse',
+        highlights:['Lokal mad','Halvdag','Små grupper muligt','Marked på nogle ture'],
+        cta:'Se kursus og aktuel pris',
+      },
+    },
     sections:[
       {id:'retter',heading:'Fire ting vi ville prioritere',subsections:[
         {heading:'Cao lầu',paragraphs:['Tykke nudler, svinekød, urter og sprøde elementer. Vælg gerne et sted, der specialiserer sig i retten frem for en meget lang turistmenu.']},
