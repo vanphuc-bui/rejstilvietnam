@@ -151,12 +151,6 @@ const structuredData = {
     <meta name="twitter:image" content={finalImage} />
     <title>{finalTitle}</title>
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
-    <slot name="head" />
-  </head>
-  <body>
-    <Header />
-    <main><slot /></main>
-    <Footer />
     <script is:inline>
       (() => {
         const fallback = (img) => {
@@ -197,5 +191,12 @@ const structuredData = {
         }, true);
       })();
     </script>
+    <slot name="head" />
+  </head>
+  <body>
+    <Header />
+    <main><slot /></main>
+    <Footer />
+
   </body>
 </html>
