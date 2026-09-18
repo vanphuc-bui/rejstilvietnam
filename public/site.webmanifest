@@ -1,0 +1,15 @@
+{
+  "name": "RejsTilVietnam",
+  "short_name": "RejsTilVietnam",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf8f0",
+  "theme_color": "#0f5132",
+  "icons": [
+    {
+      "src": "/brand-icon-192.png?v=4",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
