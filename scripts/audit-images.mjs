@@ -23,6 +23,7 @@ function extractImageUrls(source) {
     /\bsrc\s*=\s*["'](https:\/\/[^"']+)["']/g,
     /\bsrc\s*:\s*["'](https:\/\/[^"']+)["']/g,
     /\bimage\s*:\s*["'](https:\/\/[^"']+)["']/g,
+    /url\(\s*["']?(https:\/\/[^"')]+)["']?\s*\)/g,
   ];
   for (const pattern of patterns) {
     for (const match of source.matchAll(pattern)) urls.push(match[1]);
