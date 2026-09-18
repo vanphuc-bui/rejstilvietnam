@@ -3,6 +3,7 @@ import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
+import AffiliateActivityGrid from '../../../components/AffiliateActivityGrid.astro';
 
 const toc = [
   { id: 'overblik', label: 'Da Nang i korte træk' },
@@ -45,6 +46,25 @@ const sources = [{ label: 'Vietnam Tourism - Da Nang', href: 'https://www.vietna
   <h3>Hai Van Pass</h3>
   <p>Passet nord for byen er flot, men turen giver mest mening, hvis vejret er klart. Med chauffør kan du koncentrere dig om udsigten i stedet for trafikken.</p>
   <AffiliateCard title="Privat tur omkring Da Nang" text="Relevant hvis du vil kombinere Marble Mountains, Son Tra eller Hai Van Pass uden selv at planlægge transporten. Sammenlign den konkrete rute før booking." label="Fleksibel dagstur" />
+
+  <h3>Ba Na Hills og Golden Bridge</h3>
+  <p>Ba Na Hills er en separat heldagsoplevelse med kabelbane, Golden Bridge og temapark. Hvis Golden Bridge står højt på listen, giver det mening at booke transport og adgang som én samlet dag.</p>
+  <AffiliateActivityGrid
+    title="Ba Na Hills fra Da Nang"
+    intro="Tjek om entré og kabelbane er inkluderet i den viste pris, og hvor tidligt pickup foregår."
+    items={[
+      {
+        title:'Ba Na Hills & Golden Bridge',
+        text:'En enkel løsning hvis du vil have transporten fra Da Nang planlagt og bruge dagen på Golden Bridge, kabelbane og resten af komplekset.',
+        href:'https://gyg.me/kjVBYhr2',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Golden%20Bridge%20above%20the%20clouds%20Ba%20Na%20Hills%20Da%20Nang%20Vietnam.jpg?width=1200',
+        alt:'Golden Bridge ved Ba Na Hills over Da Nang',
+        badge:'Heldag',
+        highlights:['Golden Bridge','Kabelbane','Pickup-muligheder','Temapark'],
+        cta:'Se Ba Na Hills-ture',
+      },
+    ]}
+  />
 
   <h2 id="hoian">Skal du bo i Da Nang eller Hoi An?</h2>
   <table><thead><tr><th>Da Nang passer bedre hvis...</th><th>Hoi An passer bedre hvis...</th></tr></thead><tbody><tr><td>Strand, større hoteller og nem lufthavn er vigtigt</td><td>Du vil kunne gå til gammel by, små gader og restauranter</td></tr><tr><td>Du vil have en rigtig storby omkring dig</td><td>Du vil have et roligere stop på rundrejsen</td></tr><tr><td>Du rejser med meget bagage og vil minimere transfers</td><td>Du kun har få dage og stemningen er vigtigere end strandhotel</td></tr></tbody></table>
