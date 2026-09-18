@@ -2,6 +2,8 @@
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
 import CommercialCta from '../../../../components/CommercialCta.astro';
+import SectionMedia from '../../../../components/SectionMedia.astro';
+import { hubVisuals } from '../../../../data/hubVisuals.js';
 
 const toc = [
   { id: 'overblik', label: 'Planen i korte træk' },
@@ -42,6 +44,7 @@ const dayRows = [
   toc={toc}
   sources={sources}
 >
+  <SectionMedia slot="heroMedia" {...hubVisuals.hanoiThreeDaysHero} loading="eager" fetchpriority="high" />
 
   <h2 id="overblik">Planen i korte træk</h2>
   <div class="fact-grid"><div class="fact"><span>Dag 1</span><b>Old Quarter + Hoan Kiem + mad</b></div><div class="fact"><span>Dag 2</span><b>Litteraturtemplet + historie</b></div><div class="fact"><span>Dag 3</span><b>Train Street, West Lake eller rolig bydag</b></div></div>
@@ -52,6 +55,12 @@ const dayRows = [
   <PracticalTable title="Så meget behøver du faktisk at booke" intro="Vi har bevidst holdt planen fri for betalte aktiviteter hvert eneste tidsrum. Det gør den nemmere at ændre efter vejr og energi." columns={dayColumns} rows={dayRows} note="DKK-beløb er afrundet med ca. 100.000 VND = 25 DKK den 15. september 2026. Billetterne til Văn Miếu, Hoa Lo og Thang Long-citadellet er kontrolleret mod deres officielle sider." />
 
   <h2 id="dag1">Dag 1: Old Quarter og Hoan Kiem</h2>
+  <SectionMedia
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%20Old%20Quarter%20%2848256298071%29.jpg?width=1400"
+    alt="Gadeliv i Hanois Old Quarter"
+    caption="Dag 1 fungerer bedst til fods omkring Hoan Kiem og Old Quarter, hvor mad, kaffe og gadeliv ligger tæt."
+    ratio="16 / 9"
+  />
   <h3>Morgen: gå før byen bliver varm</h3>
   <p>Start omkring Hoan Kiem-søen og gå derefter ind i Old Quarter. Du behøver ikke følge en fast rute gennem alle de gamle handelsgader. Vælg et område på kortet, gå langsomt og stop, når du ser et sted med morgenmad eller kaffe.</p>
   <p>Hvis du vil begynde med noget meget Hanoi-agtigt, så spis phở eller bánh cuốn til morgenmad. Se vores <a href="/destinationer/hanoi/mad-i-hanoi/">madguide til Hanoi</a> for retter og realistiske priser.</p>
@@ -61,6 +70,7 @@ const dayRows = [
   <p>Gå omkring søen igen og spis i eller omkring Old Quarter. Stemningen er anderledes end om morgenen, og du slipper for at bruge aftenen i en bil på tværs af byen.</p>
 
   <h2 id="dag2">Dag 2: historie vest for centrum</h2>
+  <SectionMedia {...hubVisuals.hanoiThreeDaysHistory} />
   <h3>Morgen: Litteraturtemplet</h3>
   <p>Tag en kort Grab eller taxi til Litteraturtemplet. Den officielle standardbillet er 70.000 VND, cirka 17-18 DKK. Det er et overskueligt sted at begynde, og formiddagen er som regel bedre end den varmeste del af dagen.</p>
   <h3>Sen formiddag: vælg Ba Dinh eller citadellet</h3>
