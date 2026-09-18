@@ -1,0 +1,101 @@
+---
+const {
+  title = 'Populære ture',
+  intro = '',
+  items = [],
+} = Astro.props;
+
+function sizedUrl(input, width) {
+  if (!input || !input.startsWith('http')) return null;
+  try {
+    const url = new URL(input);
+    if (url.hostname === 'commons.wikimedia.org' && url.pathname.includes('/wiki/Special:FilePath/')) {
+      url.searchParams.set('width', String(width));
+      return url.toString();
+    }
+    if (url.hostname === 'images.unsplash.com') {
+      url.searchParams.set('auto', 'format');
+      url.searchParams.set('fit', url.searchParams.get('fit') ?? 'crop');
+      url.searchParams.set('w', String(width));
+      url.searchParams.set('q', url.searchParams.get('q') ?? '82');
+      return url.toString();
+    }
+  } catch {}
+  return null;
+}
+---
+<section class="affiliate-activity-section" aria-label={title}>
+  <div class="affiliate-head">
+    <div>
+      <p class="affiliate-kicker">Bookbare oplevelser</p>
+      <h3>{title}</h3>
+    </div>
+    {intro && <p>{intro}</p>}
+  </div>
+
+  <div class:list={['affiliate-grid', items.length === 1 && 'affiliate-grid--single']}>
+    {items.map((item) => {
+      const srcset = [480, 800, 1200]
+        .map((width) => {
+          const url = sizedUrl(item.image, width);
+          return url ? `${url} ${width}w` : null;
+        })
+        .filter(Boolean)
+        .join(', ');
+      return (
+        <article class="affiliate-activity-card">
+          <a class="affiliate-media" href={item.href} target="_blank" rel="sponsored noopener noreferrer" aria-label={`${item.title} – se hos GetYourGuide`}>
+            <div class="affiliate-media-fallback" aria-hidden="true">Vietnam</div>
+            <img
+              src={item.image}
+              srcset={srcset || undefined}
+              sizes={srcset ? '(max-width: 700px) calc(100vw - 48px), 520px' : undefined}
+              alt={item.alt ?? item.title}
+              loading="lazy"
+              decoding="async"
+              referrerpolicy="no-referrer"
+              onerror="window.__rtvImageFallback?.(this)"
+            />
+            {item.badge && <span class="affiliate-badge">{item.badge}</span>}
+          </a>
+
+          <div class="affiliate-card-body">
+            <div class="affiliate-copy">
+              <h4>{item.title}</h4>
+              <p>{item.text}</p>
+            </div>
+
+            {item.highlights?.length > 0 && (
+              <div class="affiliate-highlights" aria-label="Turens højdepunkter">
+                {item.highlights.map((highlight) => <span>{highlight}</span>)}
+              </div>
+            )}
+
+            <div class="affiliate-card-footer">
+              <div class="affiliate-price-wrap">
+                {item.oldPrice && <span class="affiliate-old-price">{item.oldPrice}</span>}
+                <strong class:list={['affiliate-price', !item.price && 'affiliate-price--soft']}>
+                  {item.price ?? 'Se aktuel pris'}
+                </strong>
+                {item.priceNote && <small>{item.priceNote}</small>}
+              </div>
+              <a class="affiliate-button" href={item.href} target="_blank" rel="sponsored noopener noreferrer">
+                {item.cta ?? 'Se tur og pris'} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            <div class="affiliate-disclosure">
+              <span>Annoncelink via GetYourGuide.</span>
+              <span>Pris og ledighed kan ændre sig.</span>
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+.affiliate-activity-section{margin:30px 0 38px}.affiliate-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:16px}.affiliate-head>div{max-width:520px}.affiliate-head>p{max-width:430px;margin:0!important;color:var(--muted)!important;font-size:.94rem}.affiliate-kicker{margin:0 0 4px!important;color:var(--green-700)!important;font-size:.72rem!important;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.affiliate-head h3{margin:0;font-size:clamp(1.55rem,3vw,2rem)}.affiliate-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.affiliate-grid--single{grid-template-columns:minmax(0,760px)}.affiliate-activity-card{overflow:hidden;border:1px solid rgba(28,106,77,.16);border-radius:24px;background:#fffdf8;box-shadow:0 12px 34px rgba(16,55,41,.07)}.affiliate-media{position:relative;display:block;height:220px;overflow:hidden;background:#e6ece7}.affiliate-media img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;transition:transform .28s ease}.affiliate-media:hover img{transform:scale(1.025)}.affiliate-media-fallback{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(145deg,#dfe9e3,#f2eadb);color:var(--green-700);font-size:.8rem;font-weight:850}.affiliate-badge{position:absolute;z-index:2;top:14px;left:14px;padding:7px 10px;border-radius:999px;background:rgba(7,47,36,.92);color:#fff;font-size:.69rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 5px 18px rgba(0,0,0,.15)}.affiliate-card-body{display:grid;gap:14px;padding:20px}.affiliate-copy h4{margin:0;font-size:1.28rem;line-height:1.22}.affiliate-copy p{margin:8px 0 0!important;color:var(--muted)!important;font-size:.94rem;line-height:1.55}.affiliate-highlights{display:flex;flex-wrap:wrap;gap:7px}.affiliate-highlights span{padding:6px 9px;border:1px solid rgba(28,106,77,.14);border-radius:999px;background:#f5f0e5;color:#405048;font-size:.75rem;font-weight:750}.affiliate-card-footer{display:flex;align-items:end;justify-content:space-between;gap:16px;padding-top:3px}.affiliate-price-wrap{display:flex;flex-direction:column;align-items:flex-start;min-width:0}.affiliate-old-price{color:#8a938e;font-size:.75rem;text-decoration:line-through}.affiliate-price{color:var(--green-950);font-size:1.28rem;line-height:1.1}.affiliate-price--soft{font-size:1.05rem}.affiliate-price-wrap small{margin-top:4px;color:#7a857f;font-size:.7rem;line-height:1.3}.affiliate-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:11px 15px;border-radius:999px;background:var(--green-950);color:#fff!important;font-size:.86rem;font-weight:850;text-decoration:none!important;white-space:nowrap}.affiliate-button:hover{transform:translateY(-1px)}.affiliate-disclosure{display:flex;justify-content:space-between;gap:12px;padding-top:11px;border-top:1px solid var(--border);color:#7b8580;font-size:.69rem;line-height:1.35}
+@media(max-width:760px){.affiliate-head{align-items:flex-start;flex-direction:column;gap:7px}.affiliate-grid,.affiliate-grid--single{grid-template-columns:1fr}.affiliate-media{height:190px}.affiliate-card-footer{align-items:stretch;flex-direction:column;gap:12px}.affiliate-button{width:100%}.affiliate-disclosure{flex-direction:column;gap:2px}.affiliate-card-body{padding:17px}.affiliate-copy h4{font-size:1.18rem}}
+</style>
