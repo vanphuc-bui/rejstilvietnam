@@ -6,7 +6,7 @@ export const hubVisuals = {
     ratio: '16 / 7',
   },
   itinerariesHero: {
-    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Vietnam%20landscape.jpg?width=1800',
+    src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Vietnam%20BenTre%20Landscape.jpg?width=1800',
     alt: 'Landskab i Vietnam',
     caption: 'Vietnam er langt fra nord til syd. En god rejseplan handler derfor lige så meget om transport som om seværdigheder.',
     ratio: '16 / 7',
@@ -57,7 +57,7 @@ export const hubVisuals = {
   },
   tours: {
     halong: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ha%20Long%20Bay%20Vietnam%20%2848731261248%29.jpg?width=1200',
+      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ha%20Long%20bay.jpg?width=1200',
       alt: 'Cruise og kalkstensøer i Ha Long Bay',
     },
     ninhBinh: {
@@ -65,7 +65,7 @@ export const hubVisuals = {
       alt: 'Både ved Tam Coc i Ninh Binh',
     },
     streetFood: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%20street%20food.jpg?width=1200',
+      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=1200',
       alt: 'Street food i Hanoi',
     },
   },
