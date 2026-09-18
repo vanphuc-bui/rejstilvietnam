@@ -4,6 +4,7 @@ const {
   title,
   intro = '',
   eyebrow,
+  showImages = true,
 } = Astro.props;
 
 const path = Astro.url.pathname;
@@ -55,11 +56,14 @@ if (!contextualTitle) {
     <div class="activity-grid">
       {items.map((item) => (
         <article class="activity-card">
-          <div class="activity-image">
-            <span class="activity-fallback">Billede midlertidigt utilgængeligt</span>
-            <img src={item.image?.src} alt={item.image?.alt ?? item.title} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'" />
-            {item.kicker && <span class="activity-kicker">{item.kicker}</span>}
-          </div>
+          {showImages && (
+            <div class="activity-image">
+              <span class="activity-fallback">Billede midlertidigt utilgængeligt</span>
+              <img src={item.image?.src} alt={item.image?.alt ?? item.title} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'" />
+              {item.kicker && <span class="activity-kicker">{item.kicker}</span>}
+            </div>
+          )}
+          {!showImages && item.kicker && <span class="activity-kicker activity-kicker--inline">{item.kicker}</span>}
           <div class="activity-copy">
             <h3>{item.title}</h3>
             <p>{item.text}</p>
@@ -80,7 +84,7 @@ if (!contextualTitle) {
 )}
 
 <style>
-.activity-section{margin:42px 0}.activity-head{margin-bottom:20px}.activity-head h2{font-size:clamp(1.8rem,4vw,2.55rem);margin:0}.activity-head>p:not(.eyebrow){margin-top:9px;max-width:760px;color:var(--muted)}.activity-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.activity-card{overflow:hidden;border:1px solid var(--border);border-radius:22px;background:#fffdf8;box-shadow:0 10px 30px rgba(16,55,41,.055)}.activity-image{position:relative;height:220px;background:#e9eee9;overflow:hidden}.activity-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}.activity-card:hover .activity-image img{transform:scale(1.025)}.activity-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:18px;color:var(--green-700);font-size:.76rem;font-weight:800;background:linear-gradient(145deg,#dfe9e3,#f2eadb)}.activity-kicker{position:absolute;z-index:2;left:14px;top:14px;padding:7px 10px;border-radius:999px;background:rgba(255,253,248,.94);color:var(--green-950);font-size:.68rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 6px 16px rgba(0,0,0,.12)}.activity-copy{padding:20px}.activity-copy h3{font-size:1.35rem;margin:0}.activity-copy>p{margin-top:9px!important;color:var(--muted)!important}.activity-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0 0}.activity-meta div{padding:10px;border-radius:13px;background:#f5f1e7}.activity-meta dt{font-size:.64rem;text-transform:uppercase;letter-spacing:.07em;font-weight:850;color:var(--green-700)}.activity-meta dd{margin:3px 0 0;font-size:.79rem;font-weight:750;color:#33463e}.activity-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.activity-tags span{padding:6px 9px;border-radius:999px;background:#e8f0eb;color:var(--green-700);font-size:.69rem;font-weight:800}.activity-link{display:inline-block;margin-top:16px;color:var(--green-700);font-weight:850}
+.activity-section{margin:42px 0}.activity-head{margin-bottom:20px}.activity-head h2{font-size:clamp(1.8rem,4vw,2.55rem);margin:0}.activity-head>p:not(.eyebrow){margin-top:9px;max-width:760px;color:var(--muted)}.activity-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.activity-card{overflow:hidden;border:1px solid var(--border);border-radius:22px;background:#fffdf8;box-shadow:0 10px 30px rgba(16,55,41,.055)}.activity-image{position:relative;height:220px;background:#e9eee9;overflow:hidden}.activity-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}.activity-card:hover .activity-image img{transform:scale(1.025)}.activity-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:18px;color:var(--green-700);font-size:.76rem;font-weight:800;background:linear-gradient(145deg,#dfe9e3,#f2eadb)}.activity-kicker{position:absolute;z-index:2;left:14px;top:14px;padding:7px 10px;border-radius:999px;background:rgba(255,253,248,.94);color:var(--green-950);font-size:.68rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 6px 16px rgba(0,0,0,.12)}.activity-kicker--inline{position:static;display:inline-block;margin:18px 20px 0;background:#e8f0eb;box-shadow:none}.activity-copy{padding:20px}.activity-copy h3{font-size:1.35rem;margin:0}.activity-copy>p{margin-top:9px!important;color:var(--muted)!important}.activity-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0 0}.activity-meta div{padding:10px;border-radius:13px;background:#f5f1e7}.activity-meta dt{font-size:.64rem;text-transform:uppercase;letter-spacing:.07em;font-weight:850;color:var(--green-700)}.activity-meta dd{margin:3px 0 0;font-size:.79rem;font-weight:750;color:#33463e}.activity-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}.activity-tags span{padding:6px 9px;border-radius:999px;background:#e8f0eb;color:var(--green-700);font-size:.69rem;font-weight:800}.activity-link{display:inline-block;margin-top:16px;color:var(--green-700);font-weight:850}
 @media(max-width:760px){.activity-grid{grid-template-columns:1fr}.activity-image{height:210px}}
 @media(max-width:480px){.activity-image{height:190px}.activity-copy{padding:17px}.activity-meta{grid-template-columns:1fr 1fr}.activity-meta div:last-child:nth-child(odd){grid-column:span 2}}
 </style>
