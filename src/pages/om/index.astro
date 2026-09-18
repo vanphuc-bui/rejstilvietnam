@@ -1,11 +1,329 @@
 ---
-import GuideCover from '../../components/GuideCover.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const peopleStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Om RejsTilVietnam.dk',
+  url: new URL('/om/', Astro.site ?? Astro.url.origin).toString(),
+  inLanguage: 'da-DK',
+  about: [
+    {
+      '@type': 'Person',
+      name: 'Van-Phuc Bui',
+      url: 'https://vanphucbui.com/',
+      jobTitle: 'Medstifter og ansvarlig for research og udvikling',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'RejsTilVietnam.dk',
+      },
+    },
+    {
+      '@type': 'Person',
+      name: 'Lê Thảo Như',
+      jobTitle: 'Medstifter og rejsefaglig redaktør',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'RejsTilVietnam.dk',
+      },
+    },
+  ],
+};
 ---
-<BaseLayout title="Om RejsTilVietnam.dk" description="Om RejsTilVietnam.dk, hvordan guiderne skrives, og hvordan affiliate-links fungerer.">
-<section class="page-hero"><div class="container"><p class="eyebrow">Om siden</p><h1>Praktiske råd til danskere, der skal til Vietnam.</h1><p class="lead">RejsTilVietnam.dk er en uafhængig rejseguide. Siden sælger ikke selv rejser og tager ikke imod betaling for bookinger.</p></div></section>
-<div class="container guide-cover-wrap"><GuideCover destination="RejsTilVietnam" title="Om RejsTilVietnam.dk" eyebrow="Om siden" /></div>
-<section class="section section--tight"><div class="container article-shell"><article class="prose"><h2>Hvad vi prøver at gøre</h2><p>Målet er at svare på de spørgsmål, der faktisk opstår, når man planlægger Vietnam: Hvor mange steder kan man nå på to uger? Skal man bo i Da Nang eller Hoi An? Er Grab nemmere end taxi? Er en dagstur til Ha Long Bay nok?</p><p>Vi prøver derfor ikke bare at beskrive seværdigheder. Når det giver mening, skriver vi også hvad vi selv ville vælge, hvornår et andet valg kan være bedre, og hvilke praktiske ulemper der følger med.</p><h2 id="affiliate">Affiliate og reklame</h2><p>Nogle links vil være affiliate-links til eksterne bookingplatforme som Viator eller TourRadar. Hvis du booker gennem et sådant link, kan RejsTilVietnam.dk modtage provision.</p><p>Kommercielle links markeres tydeligt med <strong>“Annoncelink”</strong>. Booking, betaling, ændringer, afbestilling og kundeservice foregår hos den eksterne partner - ikke hos RejsTilVietnam.dk.</p><p>Et affiliate-program skal ikke være grunden til, at en tur bliver anbefalet. Hvis en aktivitet er lettere eller billigere at arrangere selv, skal guiden også sige det.</p><h2>Oplysninger der kan ændre sig</h2><p>Visumregler, transport, priser og andre praktiske forhold kan ændre sig. På sider med tidsfølsomme oplysninger linker vi så vidt muligt til officielle kilder. Tjek dem altid igen tæt på din afrejse.</p><h2 id="kontakt">Kontakt</h2><p>Kontaktinformation tilføjes inden den endelige lancering af siden.</p></article><aside class="card sidebar"><h3>Redaktionelt princip</h3><p style="margin-top:12px;color:var(--muted)">Et godt råd skal hjælpe dig med at vælge. Det skal ikke bare fylde en side med generelle beskrivelser.</p></aside></div></section>
+
+<BaseLayout
+  title="Om os - menneskene bag RejsTilVietnam.dk"
+  description="Mød Van-Phuc Bui og Lê Thảo Như, som står bag RejsTilVietnam.dk og kombinerer mange års erfaring fra Vietnam, rejsebranchen og livet i Danmark."
+  image="/images/om/van-phuc-thao-nhu-danmark.webp"
+  authorName="Van-Phuc Bui og Lê Thảo Như"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(peopleStructuredData)}></script>
+
+  <section class="about-hero">
+    <div class="container about-hero__grid">
+      <div class="about-hero__copy">
+        <p class="eyebrow">Menneskene bag siden</p>
+        <h1>Vi hjælper danskere med at opleve Vietnam bedre.</h1>
+        <p class="lead">
+          RejsTilVietnam.dk drives af os, Van-Phuc Bui og Lê Thảo Như. Vi har boet i Vietnam i mange år,
+          bor nu i Danmark og har både boet og rejst i flere lande. Derfor kender vi ikke kun Vietnam
+          indefra - vi forstår også de spørgsmål og forventninger, danske rejsende typisk har.
+        </p>
+        <div class="about-hero__facts" aria-label="Vores baggrund">
+          <span>Lokalkendskab til Vietnam</span>
+          <span>Rejsefaglig erfaring</span>
+          <span>Dansk perspektiv</span>
+        </div>
+      </div>
+
+      <figure class="about-portrait about-portrait--hero">
+        <img
+          src="/images/om/van-phuc-thao-nhu-danmark.webp"
+          width="1200"
+          height="1600"
+          alt="Van-Phuc Bui og Lê Thảo Như sammen i Danmark"
+          fetchpriority="high"
+        />
+        <figcaption>
+          <strong>Van-Phuc & Thảo Như</strong>
+          <span>Vietnam i bagagen, Danmark som hjem</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container story-grid">
+      <div>
+        <p class="eyebrow">Vores perspektiv</p>
+        <h2>Vi ved, hvad der kan føles anderledes.</h2>
+      </div>
+      <div class="story-copy">
+        <p>
+          Når man selv har levet længe i Vietnam, tænker man ikke altid over de ting, som en førstegangsrejsende
+          har brug for at få forklaret. Vores erfaring fra andre lande og hverdagen i Danmark hjælper os med at
+          se Vietnam med begge blik.
+        </p>
+        <p>
+          Derfor skriver vi ikke kun om, hvad der er værd at se. Vi forklarer også, hvordan transport fungerer,
+          hvad noget realistisk koster, hvor meget man kan nå, hvad der er nemt med børn eller bagage, og hvornår
+          en billig løsning i praksis bliver for besværlig.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section people-section">
+    <div class="container">
+      <div class="section-head people-head">
+        <div>
+          <p class="eyebrow">Hvem står bag?</p>
+          <h2>To forskellige fagligheder, én fælles guide.</h2>
+        </div>
+        <p>Vi deler ansvaret for siden og gennemgår indholdet ud fra både praktisk, lokal og rejsefaglig erfaring.</p>
+      </div>
+
+      <div class="people-grid">
+        <article class="person-card">
+          <div class="person-card__top">
+            <span class="person-monogram" aria-hidden="true">VP</span>
+            <span class="person-role">Research · struktur · udvikling</span>
+          </div>
+          <h3>Van-Phuc Bui</h3>
+          <p class="person-title">Medstifter og ansvarlig for research og udvikling</p>
+          <p>
+            Van-Phuc har boet mange år i Vietnam og bor i dag i Danmark. Han står især for research,
+            opbygning af guiderne, teknisk udvikling og for at gøre komplekse oplysninger overskuelige,
+            så læseren lettere kan træffe et valg.
+          </p>
+          <a class="person-link" href="https://vanphucbui.com/" target="_blank" rel="noopener">
+            Se Van-Phucs personlige hjemmeside <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+
+        <article class="person-card person-card--accent">
+          <div class="person-card__top">
+            <span class="person-monogram" aria-hidden="true">TN</span>
+            <span class="person-role">Turisme · lokalkendskab · redaktion</span>
+          </div>
+          <h3>Lê Thảo Như</h3>
+          <p class="person-title">Medstifter og rejsefaglig redaktør</p>
+          <p>
+            Thảo Như er uddannet inden for turisme i Vietnam og har flere års professionel erfaring fra
+            rejsebranchen. Hun flyttede til Danmark for fire år siden og bidrager med både faglig viden,
+            lokale perspektiver og forståelse for det, danske rejsende gerne vil vide på forhånd.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section expertise-section">
+    <div class="container expertise-grid">
+      <figure class="about-portrait about-portrait--travel">
+        <img
+          src="/images/om/thao-nhu-phu-quoc.webp"
+          width="1100"
+          height="1409"
+          loading="lazy"
+          alt="Lê Thảo Như ved Vietnams kyst"
+        />
+        <figcaption>Thảo Như på en rejse langs Vietnams kyst</figcaption>
+      </figure>
+
+      <div class="expertise-copy">
+        <p class="eyebrow">Erfaring, der kan bruges</p>
+        <h2>Fra rejsebranchen i Vietnam til hverdagen i Danmark.</h2>
+        <p>
+          Thảo Nhưs uddannelse og arbejdserfaring betyder, at vores guider ikke alene bygger på personlige
+          rejseoplevelser. Hun kan vurdere råd med et fagligt blik og opdage, når noget lyder godt på papiret,
+          men ikke er særligt praktisk for den rejsende.
+        </p>
+        <p>
+          Samtidig har vi gennem flere år i udlandet lært, hvilke forskelle der typisk skaber usikkerhed:
+          transport uden faste køreplaner, kontant betaling, lokale standarder, tempoet på en rejse og hvor
+          meget information man har brug for før en booking. Det er den afstand mellem kulturerne, vi prøver
+          at gøre mindre.
+        </p>
+        <blockquote>
+          Et godt rejseråd skal ikke bare beskrive Vietnam. Det skal gøre det lettere at vælge rigtigt i en
+          situation, man endnu ikke selv kender.
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section editorial-section">
+    <div class="container">
+      <div class="section-head editorial-head">
+        <div>
+          <p class="eyebrow">Sådan arbejder vi</p>
+          <h2>Praktiske guider frem for generelle rejsetekster.</h2>
+        </div>
+      </div>
+
+      <div class="editorial-grid">
+        <article><span>01</span><h3>Vi starter med valget</h3><p>Hver guide skal hjælpe med et konkret spørgsmål: hvor man bør bo, hvad man kan nå, eller hvilken løsning der passer bedst.</p></article>
+        <article><span>02</span><h3>Vi bruger begge perspektiver</h3><p>Lokalkendskab bliver holdt op mod de behov, en dansk rejsende har for tydelig planlægning, priser og praktiske detaljer.</p></article>
+        <article><span>03</span><h3>Vi fortæller om ulemperne</h3><p>En billig eller populær løsning er ikke altid den rigtige. Vi prøver også at forklare, hvornår et andet valg er bedre.</p></article>
+        <article><span>04</span><h3>Vi holder informationen ved lige</h3><p>Priser, visumregler og transport kan ændre sig. Tidsfølsomme oplysninger kontrolleres og kobles så vidt muligt til officielle kilder.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section transparency-section" id="affiliate">
+    <div class="container transparency-grid">
+      <div>
+        <p class="eyebrow">Åbenhed</p>
+        <h2>Affiliate-links ændrer ikke, hvad vi anbefaler.</h2>
+      </div>
+      <div class="transparency-copy">
+        <p>
+          Nogle links på siden er affiliate-links til eksterne bookingplatforme. Hvis du booker gennem et
+          sådant link, kan RejsTilVietnam.dk modtage provision, uden at det koster dig ekstra.
+        </p>
+        <p>
+          Kommercielle links markeres tydeligt med <strong>“Annoncelink”</strong>. Booking, betaling, ændringer,
+          afbestilling og kundeservice foregår hos den eksterne partner. Hvis en oplevelse er lettere eller
+          billigere at arrangere selv, skal vores guide også sige det.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="kontakt">
+    <div class="container contact-card">
+      <div>
+        <p class="eyebrow">Kontakt og samarbejde</p>
+        <h2>Har du en rettelse, en god idé eller et forslag til samarbejde?</h2>
+        <p>Vi vil gerne høre fra læsere, rejsemedier og relevante samarbejdspartnere.</p>
+      </div>
+      <a class="btn btn--light" href="https://vanphucbui.com/" target="_blank" rel="noopener">Kontakt Van-Phuc <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
 </BaseLayout>
 
-<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
+<style>
+  .about-hero { padding: 66px 0 72px; overflow: hidden; }
+  .about-hero__grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(340px, .72fr); gap: 72px; align-items: center; }
+  .about-hero__copy h1 { max-width: 800px; font-size: clamp(3rem, 7vw, 6rem); }
+  .about-hero__copy .lead { margin-top: 26px; max-width: 760px; }
+  .about-hero__facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .about-hero__facts span { padding: 9px 13px; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,.62); color: var(--green-800); font-size: .86rem; font-weight: 750; }
+
+  .about-portrait { margin: 0; position: relative; }
+  .about-portrait img { width: 100%; height: 100%; object-fit: cover; }
+  .about-portrait--hero { aspect-ratio: 3 / 4; max-height: 660px; border-radius: 34px 34px 120px 34px; overflow: hidden; box-shadow: var(--shadow); transform: rotate(1.1deg); background: var(--green-100); }
+  .about-portrait--hero::before { content: ""; position: absolute; inset: 16px; border: 1px solid rgba(255,255,255,.62); border-radius: 22px 22px 104px 22px; z-index: 1; pointer-events: none; }
+  .about-portrait--hero figcaption { position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 2; padding: 15px 18px; border-radius: 18px; background: rgba(12,47,37,.88); color: white; backdrop-filter: blur(10px); }
+  .about-portrait--hero figcaption strong, .about-portrait--hero figcaption span { display: block; }
+  .about-portrait--hero figcaption span { margin-top: 2px; color: rgba(255,255,255,.76); font-size: .88rem; }
+
+  .story-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; padding-top: 10px; }
+  .story-grid h2 { max-width: 470px; }
+  .story-copy { padding-top: 8px; }
+  .story-copy p { color: #35423c; font-size: 1.08rem; margin-bottom: 20px; }
+
+  .people-section { background: var(--green-100); }
+  .people-head h2 { max-width: 760px; }
+  .people-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .person-card { padding: 34px; border: 1px solid var(--border); border-radius: 28px; background: rgba(255,255,255,.82); box-shadow: 0 10px 32px rgba(16,55,41,.05); }
+  .person-card--accent { background: var(--green-950); color: rgba(255,255,255,.82); }
+  .person-card__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+  .person-monogram { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 18px; background: var(--sand); color: var(--green-950); font-weight: 900; letter-spacing: -.04em; }
+  .person-role { color: var(--muted); font-size: .77rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; text-align: right; }
+  .person-card--accent .person-role { color: rgba(255,255,255,.58); }
+  .person-card h3 { font-size: clamp(1.7rem, 3vw, 2.25rem); }
+  .person-card--accent h3 { color: white; }
+  .person-title { margin-top: 6px; color: var(--green-700); font-weight: 800; }
+  .person-card--accent .person-title { color: #b8dec9; }
+  .person-card > p:last-of-type { margin-top: 20px; color: #46534d; }
+  .person-card--accent > p:last-of-type { color: rgba(255,255,255,.76); }
+  .person-link { display: inline-flex; gap: 7px; margin-top: 24px; color: var(--green-700); font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+
+  .expertise-grid { display: grid; grid-template-columns: minmax(300px, .78fr) minmax(0, 1.22fr); gap: 76px; align-items: center; }
+  .about-portrait--travel { aspect-ratio: 4 / 5; border-radius: 120px 30px 30px 30px; overflow: hidden; background: var(--green-100); }
+  .about-portrait--travel figcaption { position: absolute; left: 20px; bottom: 18px; padding: 9px 13px; border-radius: 999px; background: rgba(255,255,255,.9); color: var(--green-950); font-size: .82rem; font-weight: 750; }
+  .expertise-copy h2 { max-width: 720px; }
+  .expertise-copy > p { margin-top: 20px; color: #35423c; }
+  .expertise-copy blockquote { margin: 30px 0 0; padding: 24px 26px; border-left: 4px solid var(--coral); border-radius: 0 20px 20px 0; background: white; color: var(--green-950); font-size: 1.12rem; font-weight: 700; }
+
+  .editorial-section { padding-top: 54px; }
+  .editorial-head { margin-bottom: 28px; }
+  .editorial-head h2 { max-width: 820px; }
+  .editorial-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--border); }
+  .editorial-grid article { padding: 28px 24px 8px 0; }
+  .editorial-grid article + article { padding-left: 24px; border-left: 1px solid var(--border); }
+  .editorial-grid span { color: var(--coral); font-size: .8rem; font-weight: 900; letter-spacing: .08em; }
+  .editorial-grid h3 { margin-top: 14px; }
+  .editorial-grid p { margin-top: 10px; color: var(--muted); font-size: .95rem; }
+
+  .transparency-section { padding-top: 40px; }
+  .transparency-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; padding: 42px; border: 1px solid rgba(217,91,73,.24); border-radius: 30px; background: #fff3e9; }
+  .transparency-grid h2 { font-size: clamp(2rem, 4vw, 3.2rem); }
+  .transparency-copy p { color: #4d4a43; margin-bottom: 18px; }
+
+  .contact-section { padding-top: 36px; }
+  .contact-card { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 44px; border-radius: 32px; background: var(--green-950); color: white; }
+  .contact-card h2 { max-width: 760px; color: white; font-size: clamp(2rem, 4vw, 3.2rem); }
+  .contact-card p:not(.eyebrow) { margin-top: 14px; color: rgba(255,255,255,.7); }
+  .contact-card .eyebrow { color: #b8dec9; }
+  .contact-card .btn { flex: 0 0 auto; }
+
+  @media (max-width: 980px) {
+    .about-hero__grid { gap: 38px; }
+    .editorial-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .editorial-grid article:nth-child(3) { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); }
+    .editorial-grid article:nth-child(4) { border-top: 1px solid var(--border); }
+  }
+
+  @media (max-width: 760px) {
+    .about-hero { padding: 42px 0 48px; }
+    .about-hero__grid, .story-grid, .expertise-grid, .transparency-grid { grid-template-columns: 1fr; }
+    .about-hero__grid { gap: 34px; }
+    .about-hero__copy h1 { font-size: clamp(2.55rem, 13vw, 4.1rem); line-height: 1.02; }
+    .about-portrait--hero { width: min(100%, 460px); max-height: none; justify-self: center; border-radius: 28px 28px 90px 28px; transform: none; }
+    .about-portrait--hero::before { border-radius: 18px 18px 74px 18px; }
+    .story-grid { gap: 22px; }
+    .story-copy p { font-size: 1rem; }
+    .people-grid { grid-template-columns: 1fr; }
+    .expertise-grid { gap: 34px; }
+    .about-portrait--travel { width: min(100%, 500px); justify-self: center; border-radius: 74px 24px 24px 24px; }
+    .transparency-grid { gap: 24px; padding: 28px; }
+    .contact-card { align-items: flex-start; flex-direction: column; padding: 30px 26px; }
+    .contact-card .btn { width: 100%; }
+  }
+
+  @media (max-width: 540px) {
+    .about-hero__facts { gap: 8px; }
+    .about-hero__facts span { width: 100%; text-align: center; }
+    .about-portrait--hero figcaption { left: 14px; right: 14px; bottom: 14px; }
+    .person-card { padding: 25px 22px; border-radius: 22px; }
+    .person-card__top { align-items: flex-start; margin-bottom: 22px; }
+    .person-role { max-width: 190px; }
+    .editorial-grid { grid-template-columns: 1fr; }
+    .editorial-grid article { padding: 24px 0; border-top: 1px solid var(--border); }
+    .editorial-grid article + article { padding-left: 0; border-left: 0; }
+    .editorial-grid article:first-child { border-top: 0; }
+  }
+</style>
