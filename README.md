@@ -15,6 +15,29 @@ npm run dev
 npm run build
 ```
 
+The production build is blocked when it finds broken internal links, missing local assets,
+invalid canonicals or structured data, orphan pages, inaccessible H1/alt markup, or a required
+visitor journey that no longer works.
+
+## Visitor-agent QA
+
+The repository includes 24 ethical visitor profiles in `qa/visitor-personas.json`. They model
+common Danish travel intents (first trip, family, budget, Hanoi hotels, Hoi An food, Phu Quoc
+beaches, tours and more) without sending fake traffic to Google.
+
+```bash
+npm run audit:site
+npm run preview -- --host 127.0.0.1
+npm run audit:browser
+```
+
+- `audit:site` checks every generated page, the full internal-link graph, SEO/indexing markup,
+  image/accessibility basics, affiliate-link safety and whether each profile can reach its goal.
+- `audit:browser` opens every route at mobile, tablet and desktop sizes and checks rendered images,
+  horizontal overflow, page errors and touch-target/readability warnings.
+- GitHub Actions runs the full browser audit on each push/PR and every Monday. JSON reports are
+  attached to the workflow as `site-quality-report`.
+
 ## Cloudflare Workers
 
 The repository includes `wrangler.jsonc` for a static Astro deployment.
