@@ -39,7 +39,7 @@ const booking = [
 ---
 <BaseLayout title="Rejs til Vietnam - dansk guide til rejseplaner, steder og booking | RejsTilVietnam.dk" description="Planlæg din rejse til Vietnam med danske guider til rejsemål, 10-21 dages rejseplaner, visum, vejr, transport, oplevelser, hoteller og pakkerejser.">
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg"><img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=2000&q=88" alt="Grønt landskab i Vietnam" decoding="async" fetchpriority="high" onerror="window.__rtvImageFallback?.(this)" /><span></span></div>
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="eyebrow hero-eye">Vietnam for danskere</p>
@@ -115,7 +115,7 @@ const booking = [
 </BaseLayout>
 <style>
 .hero { position: relative; min-height: 720px; overflow: hidden; background: var(--green-950); color: white; }
-.hero-bg { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,28,21,.94) 0%, rgba(5,28,21,.72) 44%, rgba(5,28,21,.18) 74%), url('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=2000&q=88') center/cover; }
+.hero-bg{position:absolute;inset:0;overflow:hidden;background:#123a2e}.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-bg span{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,28,21,.94) 0%,rgba(5,28,21,.72) 44%,rgba(5,28,21,.18) 74%)}
 .hero-inner { min-height: 720px; position: relative; display: flex; align-items: center; justify-content: space-between; padding-top: 48px; padding-bottom: 48px; }
 .hero-copy { max-width: 760px; }
 .hero-eye { color: #f6d99c; }
