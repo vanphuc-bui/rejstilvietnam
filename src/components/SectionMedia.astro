@@ -7,12 +7,54 @@ const {
   creditUrl,
   ratio = '16 / 10',
   position = 'center',
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  sizes = '(max-width: 760px) calc(100vw - 32px), 760px',
 } = Astro.props;
+
+const responsiveWidths = [480, 800, 1200, 1600];
+
+function sizedUrl(input, width) {
+  if (!input || !input.startsWith('http')) return null;
+  try {
+    const url = new URL(input);
+    if (url.hostname === 'commons.wikimedia.org' && url.pathname.includes('/wiki/Special:FilePath/')) {
+      url.searchParams.set('width', String(width));
+      return url.toString();
+    }
+    if (url.hostname === 'images.unsplash.com') {
+      url.searchParams.set('auto', 'format');
+      url.searchParams.set('fit', url.searchParams.get('fit') ?? 'crop');
+      url.searchParams.set('w', String(width));
+      url.searchParams.set('q', url.searchParams.get('q') ?? '82');
+      return url.toString();
+    }
+  } catch {}
+  return null;
+}
+
+const srcsetItems = responsiveWidths
+  .map((width) => {
+    const url = sizedUrl(src, width);
+    return url ? `${url} ${width}w` : null;
+  })
+  .filter(Boolean);
+const srcset = srcsetItems.length ? srcsetItems.join(', ') : undefined;
 ---
 <figure class="section-media">
   <div class="media-frame" style={`--ratio:${ratio};--position:${position}`}>
     <div class="media-fallback" aria-hidden="true"><span>Vietnam</span></div>
-    <img src={src} alt={alt} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="window.__rtvImageFallback?.(this)" />
+    <img
+      src={src}
+      srcset={srcset}
+      sizes={srcset ? sizes : undefined}
+      alt={alt}
+      loading={loading}
+      fetchpriority={fetchpriority}
+      decoding="async"
+      referrerpolicy="no-referrer"
+      onerror="window.__rtvImageFallback?.(this)"
+    />
   </div>
   {(caption || credit) && (
     <figcaption>
