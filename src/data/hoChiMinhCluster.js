@@ -1,9 +1,9 @@
 const hero = {
   src:'https://commons.wikimedia.org/wiki/Special:FilePath/Motorcycles%20in%20Ho%20Chi%20Minh%20city.jpg?width=1800',
-  alt:'Nguyen Hue-gågaden i Ho Chi Minh City',
+  alt:'Motorcykeltrafik i Ho Chi Minh City',
   caption:'Ho Chi Minh City er nemmest at planlægge i kvarterer. Centrum kan gås i bidder, mens længere ture kræver Grab eller taxi.',
-  credit:'Rondano / Wikimedia Commons',
-  creditUrl:'https://commons.wikimedia.org/wiki/File:Nguyen_Hue_Street.jpg',
+  credit:'Nam-ho Park / Wikimedia Commons',
+  creditUrl:'https://commons.wikimedia.org/wiki/File:Motorcycles_in_Ho_Chi_Minh_city.jpg',
 };
 const marketImage = {
   src:'https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Thanh%20Market.jpg?width=1500',
