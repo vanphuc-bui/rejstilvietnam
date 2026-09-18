@@ -6,6 +6,7 @@ import ActivityCardGrid from './ActivityCardGrid.astro';
 import GuideCover from './GuideCover.astro';
 import SectionMedia from './SectionMedia.astro';
 import VisualHighlights from './VisualHighlights.astro';
+import CommercialCta from './CommercialCta.astro';
 import { getGuideVisuals } from '../data/guideVisuals.js';
 import { getDestinationVideo } from '../data/destinationVisuals.js';
 
@@ -74,6 +75,18 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
     <div class="fact-grid">
       {page.quickFacts.map((fact) => <div class="fact"><span>{fact.label}</span><b>{fact.value}</b></div>)}
     </div>
+  )}
+
+  {page.commercialCta && (
+    <CommercialCta
+      eyebrow={page.commercialCta.eyebrow}
+      title={page.commercialCta.title}
+      text={page.commercialCta.text}
+      primaryHref={page.commercialCta.href}
+      primaryLabel={page.commercialCta.label}
+      provider={page.commercialCta.provider ?? 'GetYourGuide'}
+      affiliate={true}
+    />
   )}
 
   {visualPack?.highlights?.length > 0 && (
