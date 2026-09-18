@@ -1,0 +1,46 @@
+---
+const {
+  destination = 'Vietnam',
+  title = 'Rejseguide',
+  eyebrow = 'Guide',
+} = Astro.props;
+
+const text = `${title} ${eyebrow}`.toLowerCase();
+let symbol = '🧭';
+if (/hotel|bo|område/.test(text)) symbol = '🏨';
+else if (/mad|food/.test(text)) symbol = '🍜';
+else if (/strand|snork|dyk|vand|øhop|o-ture/.test(text)) symbol = '🌊';
+else if (/lufthavn|transport|tog|bus/.test(text)) symbol = '🚆';
+else if (/dag|rejseplan/.test(text)) symbol = '🗺️';
+else if (/seværd|oplevels/.test(text)) symbol = '📍';
+else if (/vejr|rejsetid/.test(text)) symbol = '☀️';
+else if (/ba na|bjerg|mountain/.test(text)) symbol = '⛰️';
+---
+<figure class="guide-cover" aria-label={`${destination}: ${title}`}>
+  <div class="cover-art" aria-hidden="true">
+    <span class="orb"></span>
+    <span class="ridge ridge--back"></span>
+    <span class="ridge ridge--front"></span>
+    <span class="river"></span>
+    <span class="symbol">{symbol}</span>
+  </div>
+  <div class="cover-copy">
+    <span>{destination}</span>
+    <strong>{title}</strong>
+  </div>
+</figure>
+
+<style>
+.guide-cover{position:relative;aspect-ratio:16/7;margin:0;overflow:hidden;border-radius:28px;background:linear-gradient(140deg,#123a2e 0%,#2d6a53 57%,#d2aa68 100%);box-shadow:0 16px 42px rgba(16,55,41,.13);border:1px solid rgba(18,58,46,.08)}
+.cover-art{position:absolute;inset:0;overflow:hidden}
+.orb{position:absolute;right:11%;top:12%;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(255,244,205,.56),rgba(243,203,129,.16) 58%,transparent 60%)}
+.ridge{position:absolute;left:-4%;right:-4%;bottom:17%;height:58%;clip-path:polygon(0 100%,12% 70%,25% 42%,35% 69%,49% 24%,61% 57%,74% 35%,88% 73%,100% 52%,100% 100%);background:rgba(5,40,30,.32)}
+.ridge--back{bottom:27%;opacity:.42;transform:scale(1.04)}
+.ridge--front{bottom:12%;background:rgba(5,35,27,.48)}
+.river{position:absolute;left:-10%;right:-10%;bottom:-13%;height:42%;border-radius:50% 50% 0 0/38% 38% 0 0;background:linear-gradient(180deg,rgba(93,159,143,.52),rgba(14,56,44,.9));transform:rotate(-2deg)}
+.symbol{position:absolute;right:9%;bottom:12%;font-size:clamp(3.8rem,8vw,7.3rem);filter:drop-shadow(0 10px 22px rgba(0,0,0,.18))}
+.cover-copy{position:absolute;left:clamp(24px,5vw,62px);bottom:clamp(24px,5vw,50px);z-index:3;max-width:62%;color:white;text-shadow:0 2px 14px rgba(0,0,0,.22)}
+.cover-copy span{display:block;font-size:.72rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;opacity:.8}
+.cover-copy strong{display:block;margin-top:7px;font:700 clamp(1.7rem,4vw,3.2rem)/1.05 Georgia,serif;color:white}
+@media(max-width:640px){.guide-cover{aspect-ratio:4/3;border-radius:20px}.cover-copy{max-width:72%;left:22px;bottom:22px}.symbol{font-size:4.2rem;right:6%;bottom:8%}.orb{width:105px;height:105px}}
+</style>
