@@ -3,6 +3,7 @@ import ArticleLayout from '../layouts/ArticleLayout.astro';
 import PlaceMap from './PlaceMap.astro';
 import VideoEmbed from './VideoEmbed.astro';
 import ActivityCardGrid from './ActivityCardGrid.astro';
+import GuideCover from './GuideCover.astro';
 import { getDestinationVideo } from '../data/destinationVisuals.js';
 
 const { page } = Astro.props;
@@ -43,6 +44,13 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
   toc={toc}
   sources={page.sources ?? []}
 >
+  <GuideCover
+    slot="heroMedia"
+    destination={page.destinationName}
+    title={page.heading ?? page.title}
+    eyebrow={page.eyebrow}
+  />
+
   {page.quickFacts?.length > 0 && (
     <div class="fact-grid">
       {page.quickFacts.map((fact) => <div class="fact"><span>{fact.label}</span><b>{fact.value}</b></div>)}
