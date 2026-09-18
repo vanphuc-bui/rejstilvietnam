@@ -1,0 +1,27 @@
+---
+import SectionMedia from './SectionMedia.astro';
+const { items = [], title = 'Se det i billeder', intro = '' } = Astro.props;
+---
+{items.length > 0 && (
+  <section class="visual-highlights">
+    <div class="visual-head">
+      <p class="eyebrow">Visuelt overblik</p>
+      <h2>{title}</h2>
+      {intro && <p>{intro}</p>}
+    </div>
+    <div class="visual-grid">
+      {items.map((item) => (
+        <div class="visual-item">
+          <SectionMedia {...item} ratio={item.ratio ?? '4 / 3'} sizes="(max-width: 760px) calc(100vw - 32px), 360px" />
+        </div>
+      ))}
+    </div>
+  </section>
+)}
+<style>
+.visual-highlights{margin:38px 0 44px;content-visibility:auto;contain-intrinsic-size:620px}
+.visual-head{margin-bottom:16px}.visual-head h2{margin:0;font-size:clamp(1.8rem,4vw,2.45rem)}.visual-head>p:not(.eyebrow){margin-top:8px;color:var(--muted);max-width:760px}
+.visual-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.visual-item :global(.section-media){margin:0}.visual-item :global(.media-frame){border-radius:18px}.visual-item :global(figcaption){font-size:.72rem;display:block}.visual-item :global(figcaption a){display:inline-block;margin-top:4px}
+@media(max-width:780px){.visual-grid{grid-template-columns:1fr}.visual-item :global(.media-frame){aspect-ratio:16/10!important}}
+</style>
