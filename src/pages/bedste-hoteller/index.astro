@@ -6,7 +6,7 @@ const destinations = [
     city:'Hanoi',
     region:'Nordvietnam',
     text:'Start med området, og se derefter vores shortlist af hoteller til første rejse.',
-    image:'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=82',
+
     href:'/destinationer/hanoi/bedste-hoteller/',
     areaHref:'/destinationer/hanoi/hvor-skal-man-bo/'
   },
@@ -14,21 +14,21 @@ const destinations = [
     city:'Hoi An',
     region:'Centralvietnam',
     text:'Hotelguide kommer næste: gammel by, strand eller roligere områder uden for centrum.',
-    image:'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1200&q=82',
+
     href:''
   },
   {
     city:'Ho Chi Minh City',
     region:'Sydvietnam',
     text:'Vi bygger en enkel guide til District 1 og alternativer, når du vil bo lidt roligere.',
-    image:'https://images.unsplash.com/photo-1583417319070-4a69db38a482?auto=format&fit=crop&w=1200&q=82',
+
     href:''
   },
   {
     city:'Phu Quoc',
     region:'Sydvietnam',
     text:'Her betyder beliggenhed meget mere end i storbyerne. Strand og transfer skal tænkes sammen.',
-    image:'https://images.unsplash.com/photo-1570366583862-f91883984fde?auto=format&fit=crop&w=1200&q=82',
+
     href:''
   }
 ];
@@ -48,7 +48,7 @@ const destinations = [
         {destinations.map((item) => (
           item.href ? (
             <article class="card hotel-card">
-              <a class="hotel-image" href={item.href}><img src={item.image} alt={`Hoteller i ${item.city}`} loading="lazy" decoding="async" /></a>
+              <a class="hotel-image hotel-image--graphic" href={item.href}><span>🏨</span><strong>{item.city}</strong></a>
               <div class="hotel-copy">
                 <span>{item.region}</span>
                 <h2>{item.city}</h2>
@@ -61,7 +61,7 @@ const destinations = [
             </article>
           ) : (
             <article class="card hotel-card hotel-card--soon">
-              <div class="hotel-image"><img src={item.image} alt={`Hoteller i ${item.city}`} loading="lazy" decoding="async" /></div>
+              <div class="hotel-image hotel-image--graphic"><span>🏨</span><strong>{item.city}</strong></div>
               <div class="hotel-copy">
                 <span>{item.region}</span>
                 <h2>{item.city}</h2>
@@ -82,6 +82,6 @@ const destinations = [
 
 <style>
 .hotel-hero{background:linear-gradient(180deg,#f7f0e3 0%,rgba(247,240,227,.18) 100%)}
-.hotel-grid{align-items:stretch}.hotel-card{overflow:hidden}.hotel-image{display:block;aspect-ratio:16/8;overflow:hidden;background:#e9eee9}.hotel-image img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.hotel-card:not(.hotel-card--soon):hover .hotel-image img{transform:scale(1.025)}.hotel-copy{padding:26px}.hotel-copy>span{font-size:.76rem;font-weight:850;text-transform:uppercase;letter-spacing:.1em;color:var(--coral)}.hotel-copy h2{font-size:2rem;margin-top:7px}.hotel-copy p{margin-top:10px;color:var(--muted)}.hotel-actions{display:flex;align-items:center;gap:18px;margin-top:22px;flex-wrap:wrap}.hotel-actions .btn{min-height:44px}.area-link{font-weight:800;color:var(--green-700)}.hotel-card small{display:inline-block;margin-top:20px;color:#87908b;font-weight:750}.hotel-card--soon{opacity:.82}.hotel-tip{padding-top:0}
+.hotel-grid{align-items:stretch}.hotel-card{overflow:hidden}.hotel-image{display:block;aspect-ratio:16/8;overflow:hidden;background:#e9eee9}.hotel-image--graphic{display:grid;place-items:center;align-content:center;gap:8px;background:linear-gradient(145deg,#e4efe9,#f4ead8);color:var(--green-950)}.hotel-image--graphic span{font-size:2.2rem}.hotel-image--graphic strong{font-size:1rem}.hotel-card:not(.hotel-card--soon):hover .hotel-image--graphic{background:linear-gradient(145deg,#dcebe4,#f0e0c2)}.hotel-copy{padding:26px}.hotel-copy>span{font-size:.76rem;font-weight:850;text-transform:uppercase;letter-spacing:.1em;color:var(--coral)}.hotel-copy h2{font-size:2rem;margin-top:7px}.hotel-copy p{margin-top:10px;color:var(--muted)}.hotel-actions{display:flex;align-items:center;gap:18px;margin-top:22px;flex-wrap:wrap}.hotel-actions .btn{min-height:44px}.area-link{font-weight:800;color:var(--green-700)}.hotel-card small{display:inline-block;margin-top:20px;color:#87908b;font-weight:750}.hotel-card--soon{opacity:.82}.hotel-tip{padding-top:0}
 @media(max-width:640px){.hotel-actions{align-items:stretch;flex-direction:column}.area-link{text-align:center}}
 </style>
