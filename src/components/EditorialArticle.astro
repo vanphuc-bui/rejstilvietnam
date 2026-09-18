@@ -86,7 +86,7 @@ const faqSchema = faq.length > 0 ? {
     </section>
   )}
 
-  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>}
 </ArticleLayout>
 
 <style>
