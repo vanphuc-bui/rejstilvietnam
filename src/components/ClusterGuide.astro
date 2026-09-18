@@ -4,9 +4,17 @@ import PlaceMap from './PlaceMap.astro';
 import VideoEmbed from './VideoEmbed.astro';
 import ActivityCardGrid from './ActivityCardGrid.astro';
 import GuideCover from './GuideCover.astro';
+import SectionMedia from './SectionMedia.astro';
+import VisualHighlights from './VisualHighlights.astro';
+import { getGuideVisuals } from '../data/guideVisuals.js';
 import { getDestinationVideo } from '../data/destinationVisuals.js';
 
 const { page } = Astro.props;
+const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const destinationIndex = pathParts.indexOf('destinationer');
+const destinationSlug = destinationIndex >= 0 ? pathParts[destinationIndex + 1] : '';
+const guideSlug = destinationIndex >= 0 ? pathParts[destinationIndex + 2] : '';
+const visualPack = getGuideVisuals(destinationSlug, guideSlug);
 const toc = (page.sections ?? []).map((section, i) => ({ id: section.id ?? `section-${i+1}`, label: section.toc ?? section.heading }));
 const cleanDescription = (page.description ?? '').replace(/\s*[-–—]\s*Ingen affiliate-links endnu\.?/i, '').trim();
 const publicParagraphs = (items = []) => items.filter((item) => !/affiliate/i.test(item));
@@ -44,17 +52,36 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
   toc={toc}
   sources={page.sources ?? []}
 >
-  <GuideCover
-    slot="heroMedia"
-    destination={page.destinationName}
-    title={page.heading ?? page.title}
-    eyebrow={page.eyebrow}
-  />
+  {visualPack?.hero ? (
+    <SectionMedia
+      slot="heroMedia"
+      {...visualPack.hero}
+      ratio="16 / 7"
+      loading="eager"
+      fetchpriority="high"
+      sizes="(max-width: 900px) calc(100vw - 32px), 1160px"
+    />
+  ) : (
+    <GuideCover
+      slot="heroMedia"
+      destination={page.destinationName}
+      title={page.heading ?? page.title}
+      eyebrow={page.eyebrow}
+    />
+  )}
 
   {page.quickFacts?.length > 0 && (
     <div class="fact-grid">
       {page.quickFacts.map((fact) => <div class="fact"><span>{fact.label}</span><b>{fact.value}</b></div>)}
     </div>
+  )}
+
+  {visualPack?.highlights?.length > 0 && (
+    <VisualHighlights
+      items={visualPack.highlights}
+      title={visualPack.highlightsTitle ?? 'Se guiden i billeder'}
+      intro={visualPack.highlightsIntro ?? ''}
+    />
   )}
 
   {effectiveActivityCards.length > 0 && (
