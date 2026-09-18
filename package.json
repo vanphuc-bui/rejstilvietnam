@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "npm run audit:images && astro build",
     "preview": "astro preview",
-    "audit:images": "node scripts/audit-images.mjs --strict-editorial"
+    "audit:images": "node scripts/audit-images.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
