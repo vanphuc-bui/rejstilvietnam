@@ -2,19 +2,44 @@
 const { name, kicker, description, href, image } = Astro.props;
 const hasImage = Boolean(image);
 ---
-<a class:list={{ destination:true, 'destination--plain':!hasImage }} href={href} style={hasImage ? `--bg: url('${image}')` : undefined}>
+<a class:list={{ destination:true, 'destination--plain':!hasImage }} href={href}>
+  <div class="visual" aria-hidden="true">
+    <div class="fallback-art">
+      <span class="sun"></span>
+      <span class="mountain mountain--one"></span>
+      <span class="mountain mountain--two"></span>
+      <span class="water"></span>
+    </div>
+    {hasImage && (
+      <img
+        src={image}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        referrerpolicy="no-referrer"
+        onerror="this.style.display='none'"
+      />
+    )}
+  </div>
   <div class="overlay"></div>
   <div class="content"><span>{kicker}</span><h3>{name}</h3><p>{description}</p><b>Udforsk →</b></div>
 </a>
 <style>
-.destination { position: relative; min-height: 360px; overflow: hidden; border-radius: 28px; background-image: var(--bg); background-size: cover; background-position: center; box-shadow: var(--shadow); }
-.destination::before { content: ""; position: absolute; inset: 0; background-image: var(--bg); background-size: cover; background-position: center; transition: transform .55s ease; }
-.destination:hover::before { transform: scale(1.045); }
-.destination--plain{background:linear-gradient(145deg,#143b2f,#2f6c55 55%,#d6a65d)}.destination--plain::before{background:radial-gradient(circle at 78% 20%,rgba(255,255,255,.18),transparent 34%),linear-gradient(145deg,rgba(255,255,255,.05),transparent)}.destination--plain:hover::before{transform:scale(1.02)}
-.overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 25%, rgba(6,31,23,.88) 100%); }
-.content { position: absolute; left: 24px; right: 24px; bottom: 24px; color: white; }
-.content span { font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; opacity: .85; }
-.content h3 { color: white; font-size: 2rem; margin: 5px 0 7px; }
-.content p { opacity: .86; font-size: .94rem; }
-.content b { display: inline-block; margin-top: 14px; font-size: .9rem; }
+.destination{position:relative;min-height:360px;overflow:hidden;border-radius:28px;background:#173d31;box-shadow:var(--shadow);isolation:isolate}
+.visual,.overlay{position:absolute;inset:0}
+.visual{overflow:hidden;background:linear-gradient(145deg,#174235,#3c765f 58%,#d5b06f)}
+.visual img{position:absolute;z-index:2;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .55s ease}
+.destination:hover .visual img{transform:scale(1.045)}
+.fallback-art{position:absolute;inset:0;overflow:hidden}
+.sun{position:absolute;width:94px;height:94px;border-radius:50%;right:12%;top:13%;background:rgba(250,226,169,.3);filter:blur(1px)}
+.mountain{position:absolute;bottom:22%;width:75%;height:47%;background:rgba(5,37,28,.34);clip-path:polygon(0 100%,24% 40%,38% 65%,58% 20%,78% 57%,100% 100%)}
+.mountain--one{left:-7%}.mountain--two{right:-22%;bottom:18%;transform:scale(.85);opacity:.6}
+.water{position:absolute;left:0;right:0;bottom:0;height:31%;background:linear-gradient(180deg,rgba(64,127,111,.42),rgba(10,47,37,.78))}
+.overlay{z-index:3;background:linear-gradient(180deg,rgba(5,28,21,.02) 20%,rgba(6,31,23,.9) 100%)}
+.content{position:absolute;z-index:4;left:24px;right:24px;bottom:24px;color:white}
+.content span{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.88}
+.content h3{color:white;font-size:2rem;margin:5px 0 7px}
+.content p{opacity:.88;font-size:.94rem}
+.content b{display:inline-block;margin-top:14px;font-size:.9rem}
+@media(max-width:640px){.destination{min-height:330px;border-radius:22px}.content{left:20px;right:20px;bottom:20px}.content h3{font-size:1.75rem}}
 </style>
