@@ -8,7 +8,7 @@ import SectionMedia from './SectionMedia.astro';
 import VisualHighlights from './VisualHighlights.astro';
 import AffiliateActivityGrid from './AffiliateActivityGrid.astro';
 import { getGuideVisuals } from '../data/guideVisuals.js';
-import { getDestinationVideo } from '../data/destinationVisuals.js';
+import { getDestinationVisual, getDestinationVideo } from '../data/destinationVisuals.js';
 
 const { page } = Astro.props;
 const pathParts = Astro.url.pathname.split('/').filter(Boolean);
@@ -16,6 +16,7 @@ const destinationIndex = pathParts.indexOf('destinationer');
 const destinationSlug = destinationIndex >= 0 ? pathParts[destinationIndex + 1] : '';
 const guideSlug = destinationIndex >= 0 ? pathParts[destinationIndex + 2] : '';
 const visualPack = getGuideVisuals(destinationSlug, guideSlug);
+const heroMedia = visualPack?.hero ?? page.hero ?? getDestinationVisual(page);
 const toc = (page.sections ?? []).map((section, i) => ({ id: section.id ?? `section-${i+1}`, label: section.toc ?? section.heading }));
 const cleanDescription = (page.description ?? '').replace(/\s*[-–—]\s*Ingen affiliate-links endnu\.?/i, '').trim();
 const publicParagraphs = (items = []) => items.filter((item) => !/affiliate/i.test(item));
@@ -53,10 +54,10 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
   toc={toc}
   sources={page.sources ?? []}
 >
-  {visualPack?.hero ? (
+  {heroMedia ? (
     <SectionMedia
       slot="heroMedia"
-      {...visualPack.hero}
+      {...heroMedia}
       ratio="16 / 7"
       loading="eager"
       fetchpriority="high"
@@ -93,12 +94,20 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
     />
   )}
 
+  {!visualPack?.highlights?.length && page.gallery?.length > 0 && (
+    <VisualHighlights
+      items={page.gallery}
+      title={page.galleryTitle ?? 'Se guiden i billeder'}
+      intro={page.galleryIntro ?? ''}
+    />
+  )}
+
   {effectiveActivityCards.length > 0 && (
     <ActivityCardGrid
       items={effectiveActivityCards}
       title={page.activityTitle ?? 'Vælg aktivitet efter den type dag, du vil have'}
       intro={page.activityIntro ?? ''}
-      showImages={false}
+      showImages={effectiveActivityCards.some((item) => Boolean(item.image?.src))}
     />
   )}
 
@@ -136,6 +145,14 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
       {section.lead && <p><strong>{section.lead}</strong></p>}
       {publicParagraphs(section.paragraphs).map((paragraph) => <p>{paragraph}</p>)}
 
+      {section.image && (
+        <SectionMedia
+          {...section.image}
+          ratio={section.image.ratio ?? '16 / 9'}
+          sizes="(max-width: 760px) calc(100vw - 32px), 760px"
+        />
+      )}
+
       {section.subsections?.length > 0 && (
         <div class="subsection-stack">
           {section.subsections.map((sub, subIndex) => (
@@ -145,6 +162,13 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
                 <div>
                   <h3>{sub.heading}</h3>
                   {publicParagraphs(sub.paragraphs).map((paragraph) => <p>{paragraph}</p>)}
+                  {sub.image && (
+                    <SectionMedia
+                      {...sub.image}
+                      ratio={sub.image.ratio ?? '4 / 3'}
+                      sizes="(max-width: 760px) calc(100vw - 64px), 560px"
+                    />
+                  )}
                   {sub.bullets?.length > 0 && <ul>{sub.bullets.map((item) => <li>{item}</li>)}</ul>}
                 </div>
               </div>
