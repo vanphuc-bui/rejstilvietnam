@@ -1,11 +1,9 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
-import SectionMedia from './SectionMedia.astro';
 import PlaceMap from './PlaceMap.astro';
 import VideoEmbed from './VideoEmbed.astro';
-import ImageGallery from './ImageGallery.astro';
 import ActivityCardGrid from './ActivityCardGrid.astro';
-import { getDestinationVisual, getDestinationVideo } from '../data/destinationVisuals.js';
+import { getDestinationVideo } from '../data/destinationVisuals.js';
 
 const { page } = Astro.props;
 const toc = (page.sections ?? []).map((section, i) => ({ id: section.id ?? `section-${i+1}`, label: section.toc ?? section.heading }));
@@ -30,16 +28,6 @@ const effectiveActivityCards = (page.activityCards ?? []).map((item) => {
     image: nhaTrangWaterSports,
   };
 });
-const effectiveGallery = (page.gallery ?? []).map((item) => {
-  if (page.destinationName !== 'Nha Trang') return item;
-  if (!/PattayaPatrol|ikke fra Vietnam|Thailand/i.test(`${item.credit ?? ''} ${item.caption ?? ''}`)) return item;
-  return nhaTrangWaterSports;
-});
-
-const autoVisual = getDestinationVisual(page);
-const visualAlreadyUsed = !!autoVisual && (page.sections ?? []).some((section) => section.image?.src === autoVisual.src);
-const visualToRender = visualAlreadyUsed ? null : autoVisual;
-const longSubsectionIndex = (page.sections ?? []).findIndex((section) => (section.subsections?.length ?? 0) >= 4);
 const titleText = `${page.title ?? ''} ${page.heading ?? ''}`.toLowerCase();
 const earlyMap = (page.mapPlaces?.length ?? 0) > 0 && /hotel|hvor skal man bo|område|strand|snork|dykning|øhop|vandsport/.test(titleText);
 const autoVideo = getDestinationVideo(page);
@@ -55,17 +43,6 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
   toc={toc}
   sources={page.sources ?? []}
 >
-  <SectionMedia
-    slot="heroMedia"
-    src={page.hero.src}
-    alt={page.hero.alt}
-    caption={page.hero.caption}
-    credit={page.hero.credit}
-    creditUrl={page.hero.creditUrl}
-    ratio={page.hero.ratio ?? '16 / 7'}
-    position={page.hero.position ?? 'center'}
-  />
-
   {page.quickFacts?.length > 0 && (
     <div class="fact-grid">
       {page.quickFacts.map((fact) => <div class="fact"><span>{fact.label}</span><b>{fact.value}</b></div>)}
@@ -77,14 +54,7 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
       items={effectiveActivityCards}
       title={page.activityTitle ?? 'Vælg aktivitet efter den type dag, du vil have'}
       intro={page.activityIntro ?? ''}
-    />
-  )}
-
-  {effectiveGallery.length > 0 && (
-    <ImageGallery
-      items={effectiveGallery}
-      title={page.galleryTitle ?? 'Se området og aktiviteterne før du vælger'}
-      intro={page.galleryIntro ?? 'Klik på billederne for at åbne dem i stort format.'}
+      showImages={false}
     />
   )}
 
@@ -134,17 +104,6 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
                   {sub.bullets?.length > 0 && <ul>{sub.bullets.map((item) => <li>{item}</li>)}</ul>}
                 </div>
               </div>
-              {visualToRender && index === longSubsectionIndex && subIndex === 1 && (
-                <SectionMedia
-                  src={visualToRender.src}
-                  alt={visualToRender.alt}
-                  caption={visualToRender.caption}
-                  credit={visualToRender.credit}
-                  creditUrl={visualToRender.creditUrl}
-                  ratio={visualToRender.ratio ?? '16 / 9'}
-                  position={visualToRender.position ?? 'center'}
-                />
-              )}
             </>
           ))}
         </div>
@@ -152,29 +111,6 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
 
       {section.bullets?.length > 0 && <ul>{section.bullets.map((item) => <li>{item}</li>)}</ul>}
       {section.callout && <div class="callout"><strong>{section.callout.title}</strong>{section.callout.text}</div>}
-      {section.image && (
-        <SectionMedia
-          src={section.image.src}
-          alt={section.image.alt}
-          caption={section.image.caption}
-          credit={section.image.credit}
-          creditUrl={section.image.creditUrl}
-          ratio={section.image.ratio ?? '16 / 9'}
-          position={section.image.position ?? 'center'}
-        />
-      )}
-
-      {visualToRender && longSubsectionIndex < 0 && index === 1 && (
-        <SectionMedia
-          src={visualToRender.src}
-          alt={visualToRender.alt}
-          caption={visualToRender.caption}
-          credit={visualToRender.credit}
-          creditUrl={visualToRender.creditUrl}
-          ratio={visualToRender.ratio ?? '16 / 9'}
-          position={visualToRender.position ?? 'center'}
-        />
-      )}
     </>
   ))}
 
