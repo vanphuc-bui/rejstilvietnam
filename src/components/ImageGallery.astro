@@ -58,7 +58,7 @@ const galleryItems = items.map((item) => ({
       <button class="gallery-close" type="button" aria-label="Luk galleri">×</button>
       <button class="gallery-nav gallery-nav--prev" type="button" aria-label="Forrige billede">‹</button>
       <figure>
-        <div class="gallery-dialog-frame"><img src="" alt="" /></div>
+        <div class="gallery-dialog-frame"><img src="" alt="" onerror="window.__rtvImageFallback?.(this)" /></div>
         <figcaption>
           <span class="gallery-dialog-caption"></span>
           <a class="gallery-dialog-credit" href="#" target="_blank" rel="noopener noreferrer"></a>
