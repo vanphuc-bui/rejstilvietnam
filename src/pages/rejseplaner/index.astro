@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionMedia from '../../components/SectionMedia.astro';
+import { hubVisuals } from '../../data/hubVisuals.js';
 
 const plans = [
-  { days:'10 dage', route:'Hanoi → Ninh Binh → Hoi An → Ho Chi Minh City', text:'Fire stop er nok. En fokuseret rute til dig der vil opleve nord, central og syd uden at skifte hotel hele tiden.', href:'/rejseplaner/vietnam-10-dage/' },
-  { days:'14 dage', route:'Hanoi → Ninh Binh → Ha Long Bay → Hoi An → Ho Chi Minh City', text:'Den rute vi ville vælge første gang, hvis du gerne vil have både nord, midt og syd med.', href:'/rejseplaner/vietnam-2-uger/' },
-  { days:'3 uger', route:'Hanoi → Ninh Binh → Ha Long → Hoi An → Saigon → Mekong → Phu Quoc', text:'Tre uger giver plads til både oplevelser og fem rolige stranddage til sidst.', href:'/rejseplaner/vietnam-3-uger/' },
+  { days:'10 dage', route:'Hanoi → Ninh Binh → Hoi An → Ho Chi Minh City', text:'Fire stop er nok. En fokuseret rute til dig der vil opleve nord, central og syd uden at skifte hotel hele tiden.', href:'/rejseplaner/vietnam-10-dage/', image:hubVisuals.plans.tenDays },
+  { days:'14 dage', route:'Hanoi → Ninh Binh → Ha Long Bay → Hoi An → Ho Chi Minh City', text:'Den rute vi ville vælge første gang, hvis du gerne vil have både nord, midt og syd med.', href:'/rejseplaner/vietnam-2-uger/', image:hubVisuals.plans.fourteenDays },
+  { days:'3 uger', route:'Hanoi → Ninh Binh → Ha Long → Hoi An → Saigon → Mekong → Phu Quoc', text:'Tre uger giver plads til både oplevelser og fem rolige stranddage til sidst.', href:'/rejseplaner/vietnam-3-uger/', image:hubVisuals.plans.threeWeeks },
 ];
 ---
 <BaseLayout title="Vietnam rejseplaner - 10 dage, 2 uger og 3 uger | RejsTilVietnam.dk" description="Konkrete Vietnam-ruter for 10 dage, 2 uger og 3 uger med realistisk transport, færre hotelskift og plads til at opleve stederne.">
@@ -15,11 +17,12 @@ const plans = [
       <p class="lead">Vi bygger ruter efter reel transporttid og antal hotelskift - ikke efter hvor mange steder der kan stå på en liste.</p>
     </div>
   </section>
+  <div class="container hub-hero-media"><SectionMedia {...hubVisuals.itinerariesHero} loading="eager" fetchpriority="high" /></div>
   <section class="section section--tight">
     <div class="container grid grid--3">
       {plans.map((plan, i) => (
         <a class={`card plan ${i === 1 ? 'plan--featured' : ''}`} href={plan.href}>
-          <div class="plan-image plan-image--graphic"><span>{plan.days}</span><small>Rejseplan</small></div>
+          <div class="plan-image"><img src={plan.image.src} alt={plan.image.alt} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="window.__rtvImageFallback?.(this)" /><span class="plan-badge">{plan.days}</span></div>
           <div class="plan-copy">
             <span>{plan.days}</span>
             <h3>{plan.route}</h3>
@@ -35,5 +38,7 @@ const plans = [
   </section>
 </BaseLayout>
 <style>
-.plan{overflow:hidden;transition:transform .2s ease,border-color .2s ease}.plan:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)}.plan-image{aspect-ratio:16/10;overflow:hidden;background:#e9eee9}.plan-image--graphic{display:grid;place-items:center;align-content:center;gap:8px;background:linear-gradient(145deg,#173d31,#2f6c55);color:#fff}.plan-image--graphic span{font-size:2rem;font-weight:900}.plan-image--graphic small{font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.75}.plan-copy{padding:26px}.plan-copy>span{font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--coral)}.plan h3{margin:10px 0;font-size:1.45rem}.plan p{color:var(--muted)}.plan b{display:inline-block;margin-top:20px;color:var(--green-700)}.plan--featured{box-shadow:var(--shadow)}
+.plan{overflow:hidden;transition:transform .2s ease,border-color .2s ease}.plan:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)}.plan-image{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e9eee9}.plan-image img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}.plan:hover .plan-image img{transform:scale(1.025)}.plan-badge{position:absolute;left:14px;top:14px;padding:7px 10px;border-radius:999px;background:rgba(8,47,36,.9);color:white;font-size:.72rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase}.plan-copy{padding:26px}.plan-copy>span{font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em;color:var(--coral)}.plan h3{margin:10px 0;font-size:1.45rem}.plan p{color:var(--muted)}.plan b{display:inline-block;margin-top:20px;color:var(--green-700)}.plan--featured{box-shadow:var(--shadow)}
 </style>
+
+<style>.hub-hero-media{margin-top:8px}.hub-hero-media :global(.section-media){margin-top:0}</style>
