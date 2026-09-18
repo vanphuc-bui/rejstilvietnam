@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { hoiAnPages } from '../../data/hoiAnCluster.js';
+import { hoChiMinhPages } from '../../data/hoChiMinhCluster.js';
+import { phuQuocPages } from '../../data/phuQuocCluster.js';
+import { daNangPages } from '../../data/daNangCluster.js';
+import { nhaTrangPages } from '../../data/nhaTrangCluster.js';
+import { enhanceMarineCluster } from '../../data/marineActivityCluster.js';
+
+const groups = [
+  {
+    title:'Hanoi',
+    links:[
+      ['/destinationer/hanoi/','Hanoi rejseguide'],
+      ['/destinationer/hanoi/sevaerdigheder/','Seværdigheder i Hanoi'],
+      ['/destinationer/hanoi/3-dage-i-hanoi/','3 dage i Hanoi'],
+      ['/destinationer/hanoi/hvor-mange-dage/','Hvor mange dage i Hanoi?'],
+      ['/destinationer/hanoi/hvor-skal-man-bo/','Hvor skal man bo i Hanoi?'],
+      ['/destinationer/hanoi/bedste-hoteller/','Bedste hoteller i Hanoi'],
+      ['/destinationer/hanoi/mad-i-hanoi/','Mad i Hanoi'],
+      ['/destinationer/hanoi/train-street/','Train Street'],
+      ['/destinationer/hanoi/lufthavn-til-centrum/','Hanoi lufthavn til centrum'],
+      ['/destinationer/hanoi/ninh-binh-fra-hanoi/','Ninh Binh fra Hanoi'],
+      ['/destinationer/hanoi/ha-long-bay-fra-hanoi/','Ha Long Bay fra Hanoi'],
+    ]
+  },
+  ...[
+    ['Hoi An','hoi-an',hoiAnPages],
+    ['Ho Chi Minh City','ho-chi-minh-city',hoChiMinhPages],
+    ['Da Nang','da-nang',daNangPages],
+    ['Nha Trang','nha-trang',enhanceMarineCluster(nhaTrangPages,'nha-trang')],
+    ['Phu Quoc','phu-quoc',enhanceMarineCluster(phuQuocPages,'phu-quoc')],
+  ].map(([title,slug,pages]) => ({
+    title,
+    links:[
+      [`/destinationer/${slug}/`,`${title} rejseguide`],
+      ...Object.entries(pages).map(([guide,data]) => [`/destinationer/${slug}/${guide}/`,data.heading ?? data.title ?? guide])
+    ]
+  })),
+  {
+    title:'Planlæg rejsen',
+    links:[
+      ['/rejseguide/','Rejseguide'],
+      ['/rejseguide/rejser-til-vietnam-2026/','Rejser til Vietnam 2026'],
+      ['/rejseguide/vietnam-rejsevejledning/','Vietnam rejsevejledning'],
+      ['/rejseguide/bedste-rejsetid/','Bedste rejsetid til Vietnam'],
+      ['/rejseguide/visum/','Visum til Vietnam'],
+      ['/rejseguide/transport/','Transport i Vietnam'],
+      ['/rejseguide/penge-og-priser/','Penge og priser'],
+      ['/rejseguide/esim-vietnam/','eSIM i Vietnam'],
+      ['/rejseguide/vietnam-med-boern/','Vietnam med børn'],
+      ['/rejseguide/billige-rejser-til-vietnam/','Billige rejser til Vietnam'],
+    ]
+  },
+  {
+    title:'Rejseplaner & ture',
+    links:[
+      ['/rejseplaner/','Rejseplaner'],
+      ['/rejseplaner/vietnam-10-dage/','Vietnam på 10 dage'],
+      ['/rejseplaner/vietnam-2-uger/','Vietnam på 2 uger'],
+      ['/rejseplaner/vietnam-3-uger/','Vietnam på 3 uger'],
+      ['/ture/','Oplevelser og ture'],
+      ['/ture/halong-bay-cruise/','Ha Long Bay cruise'],
+      ['/ture/ninh-binh-fra-hanoi/','Ninh Binh fra Hanoi'],
+      ['/bedste-hoteller/','Bedste hoteller i Vietnam'],
+      ['/book-rejsen/','Book rejsen'],
+      ['/book-rejsen/pakkerejser/','Pakkerejser til Vietnam'],
+    ]
+  }
+];
+---
+<BaseLayout
+  title="Alle guider til Vietnam | RejsTilVietnam.dk"
+  description="Samlet oversigt over alle danske rejseguider, destinationer, rejseplaner og praktiske artikler på RejsTilVietnam.dk."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Alle guider</p>
+      <h1>Find alle vores Vietnam-guider</h1>
+      <p class="lead">En samlet, enkel oversigt over destinationer, praktiske guider og rejseplaner. Den gør det også lettere at finde relaterede sider uden at gå tilbage til forsiden.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container guide-index">
+      {groups.map((group) => (
+        <section class="guide-group">
+          <h2>{group.title}</h2>
+          <div class="guide-links">
+            {group.links.map(([href,label]) => <a href={href}>{label}<span>→</span></a>)}
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.guide-index{display:grid;gap:32px}
+.guide-group{padding:26px;border:1px solid var(--border);border-radius:24px;background:#fffdf8}
+.guide-group h2{margin:0 0 16px;font-size:clamp(1.6rem,3vw,2.2rem)}
+.guide-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
+.guide-links a{display:flex;justify-content:space-between;gap:12px;padding:11px 12px;border-radius:12px;color:var(--green-950);font-weight:750;background:#f7f3e9}
+.guide-links a:hover{background:var(--green-100);color:var(--green-700)}
+.guide-links span{color:var(--green-700)}
+@media(max-width:700px){.guide-links{grid-template-columns:1fr}.guide-group{padding:20px}}
+</style>
