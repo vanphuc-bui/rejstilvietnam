@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve('src/pages');
-const strictEditorial = process.argv.includes('--strict-editorial');
 
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -13,23 +12,34 @@ function walk(dir) {
 }
 
 function normalizeImage(url) {
-  const noQuery = url.split('?')[0];
+  const noHash = url.split('#')[0];
+  const noQuery = noHash.split('?')[0];
   try { return decodeURIComponent(noQuery); } catch { return noQuery; }
 }
 
-const imagePattern = /https:\/\/(?:images\.unsplash\.com\/[^'"\s)]+|commons\.wikimedia\.org\/wiki\/Special:FilePath\/[^'"\s)]+)/g;
+function extractImageUrls(source) {
+  const urls = [];
+  const patterns = [
+    /\bsrc\s*=\s*["'](https:\/\/[^"']+)["']/g,
+    /\bsrc\s*:\s*["'](https:\/\/[^"']+)["']/g,
+    /\bimage\s*:\s*["'](https:\/\/[^"']+)["']/g,
+  ];
+  for (const pattern of patterns) {
+    for (const match of source.matchAll(pattern)) urls.push(match[1]);
+  }
+  return urls;
+}
+
 const uses = new Map();
 
 for (const file of walk(root)) {
   const source = fs.readFileSync(file, 'utf8');
-  const editorial = source.includes("import EditorialArticle") || source.includes('import EditorialArticle');
   const rel = path.relative(process.cwd(), file).replaceAll('\\', '/');
 
-  for (const match of source.matchAll(imagePattern)) {
-    const raw = match[0];
+  for (const raw of extractImageUrls(source)) {
     const key = normalizeImage(raw);
     const arr = uses.get(key) ?? [];
-    arr.push({ file: rel, editorial, raw });
+    arr.push({ file: rel, raw });
     uses.set(key, arr);
   }
 }
@@ -44,26 +54,15 @@ const duplicates = [...uses.entries()]
   .sort((a, b) => b.entries.length - a.entries.length);
 
 if (duplicates.length === 0) {
-  console.log('✓ Image audit: no duplicate remote editorial images found.');
+  console.log('✓ Image audit: every remote image in src/pages is unique.');
   process.exit(0);
 }
 
-let errors = 0;
 for (const dup of duplicates) {
-  const touchesEditorial = dup.entries.some((x) => x.editorial);
-  const level = strictEditorial && touchesEditorial ? 'ERROR' : 'WARN';
-  if (level === 'ERROR') errors += 1;
-
-  console.log(`\n[${level}] Duplicate image: ${dup.image}`);
-  for (const entry of dup.entries) {
-    console.log(`  - ${entry.file}${entry.editorial ? ' [EditorialArticle]' : ''}`);
-  }
+  console.error(`\n[ERROR] Duplicate image: ${dup.image}`);
+  for (const entry of dup.entries) console.error(`  - ${entry.file}`);
 }
 
-if (errors > 0) {
-  console.error(`\nImage audit failed: ${errors} duplicate image group(s) touch EditorialArticle pages.`);
-  console.error('Choose a genuinely different photo; changing only ?width= or crop parameters is not enough.');
-  process.exit(1);
-}
-
-console.log('\nImage audit completed with legacy warnings only.');
+console.error(`\nImage audit failed: ${duplicates.length} duplicate image group(s).`);
+console.error('Use a genuinely different photo, remove the duplicate visual, or replace it with a non-photo graphic. Query/crop changes do not count as a new image.');
+process.exit(1);
