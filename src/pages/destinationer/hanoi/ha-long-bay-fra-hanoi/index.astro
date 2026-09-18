@@ -2,7 +2,7 @@
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
-import CommercialCta from '../../../../components/CommercialCta.astro';
+import AffiliateActivityGrid from '../../../../components/AffiliateActivityGrid.astro';
 
 const toc = [
   { id: 'valg', label: 'Dagstur eller cruise med nat?' },
@@ -63,18 +63,25 @@ const cruiseRows = [
   <p>En dagstur giver dig landskabet og nogle timer på vandet, men det bliver en lang dag. Aktuelle dagsture fra Hanoi ligger ofte omkring 12 timer dør-til-dør, fordi der både er pickup, motorvej, havnecheck-in, selve cruiset og returkørsel.</p>
   <p>Hvis Ha Long er en af hovedgrundene til din Vietnamrejse, ville vi vælge <strong>én overnatning</strong>. Du oplever bugten sent på dagen og tidligt om morgenen i stedet for kun i det travleste tidsrum.</p>
 
-  <CommercialCta
-    eyebrow="Cruise"
-    title="Sammenlign format før du sammenligner båd"
-    text="Filtrér først på dagstur eller 2D/1N, derefter på transfer fra Hanoi, rute, kahyt og afbestillingsvilkår. Det reducerer risikoen for at vælge efter billeder alene."
-    primaryHref="https://gyg.me/pLtQdBLX"
-    primaryLabel="Se Ha Long-ture og cruises →"
-    provider="GetYourGuide"
-    affiliate={true}
-    secondaryHref="/destinationer/hanoi/ninh-binh-fra-hanoi/"
-    secondaryLabel="Sammenlign med Ninh Binh"
+  <AffiliateActivityGrid
+    title="En konkret Ha Long-dagstur, hvis du vil holde det enkelt"
+    intro="Denne tur matcher især dig, der vil se bugten på én dag fra Hanoi. Prisen nedenfor er et aktuelt eksempel og kan ændre sig med dato og ledighed."
+    items={[
+      {
+        title:'Ha Long Bay dagstur fra Hanoi',
+        text:'Heldagstur med cruise, frokost, kajak og mulighed for badning. Et stærkt value-valg, hvis du vil opleve Ha Long uden at booke en overnatning.',
+        href:'https://gyg.me/pLtQdBLX',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/HALONG%20BAY%20.jpg?width=1200',
+        alt:'Kalkstensøer og cruisebåd i Ha Long Bay',
+        badge:'Top rated',
+        oldPrice:'287 kr',
+        price:'Fra 255 kr / person',
+        priceNote:'Eksempelpris set 18.09.2026 · tjek din dato',
+        highlights:['1 dag','Frokost','Kajak & badning','Gratis afbestilling'],
+        cta:'Se tur og aktuel pris',
+      },
+    ]}
   />
-
   <h2 id="bugter">Ha Long, Lan Ha eller Bai Tu Long?</h2>
   <h3>Ha Long Bay</h3>
   <p>Det klassiske valg og det navn de fleste søger efter. Der er mange cruiseudbydere og dermed stor forskel på både pris og kvalitet.</p>
