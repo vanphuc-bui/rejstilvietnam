@@ -40,7 +40,7 @@ const nav = [
 .desktop-nav a:hover { color: var(--green-700); }
 .nav-cta { padding: 10px 16px; border-radius: 999px; background: var(--green-950); color: white; font-size: .88rem; font-weight: 800; white-space: nowrap; }
 .mobile-menu { display: none; position: relative; }
-.mobile-menu summary { list-style: none; cursor: pointer; padding: 9px 13px; border: 1px solid var(--border); border-radius: 999px; font-size: .88rem; font-weight: 800; }
+.mobile-menu summary { list-style: none; cursor: pointer; min-width: 44px; min-height: 44px; display: grid; place-items: center; padding: 9px 13px; border: 1px solid var(--border); border-radius: 999px; font-size: .88rem; font-weight: 800; }
 .mobile-menu summary::-webkit-details-marker { display: none; }
 .mobile-panel { position: absolute; right: 0; top: 48px; min-width: 220px; padding: 10px; border: 1px solid var(--border); border-radius: 18px; background: #fffdf8; box-shadow: var(--shadow); display: grid; }
 .mobile-panel a { padding: 11px 12px; border-radius: 11px; font-weight: 700; }
@@ -52,7 +52,7 @@ const nav = [
   .brand { font-size:.92rem; gap:8px; }
   .brand-mark-wrap, .brand-mark { width:34px; height:34px; }
   .brand-mark-wrap { flex-basis:34px; }
-  .mobile-menu summary { padding:8px 11px; font-size:.82rem; }
-  .mobile-panel { width:min(290px,calc(100vw - 24px)); min-width:0; top:44px; max-height:calc(100vh - 82px); overflow:auto; }
+  .mobile-menu summary { min-height:42px; padding:7px 11px; font-size:.82rem; }
+  .mobile-panel { width:min(290px,calc(100vw - 24px)); min-width:0; top:44px; max-height:calc(100dvh - 82px); overflow:auto; overscroll-behavior:contain; }
 }
 </style>
