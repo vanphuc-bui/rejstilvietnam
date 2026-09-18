@@ -1,0 +1,129 @@
+---
+import SectionMedia from './SectionMedia.astro';
+
+const {
+  id,
+  index,
+  title,
+  kicker,
+  paragraphs = [],
+  facts = [],
+  image,
+  reverse = false,
+  href,
+  hrefLabel = 'Læs den praktiske guide →',
+} = Astro.props;
+---
+<section id={id} class:list={{ 'attraction-spot': true, 'attraction-spot--reverse': reverse }}>
+  <div class="attraction-copy">
+    <div class="attraction-number">{String(index).padStart(2, '0')}</div>
+    {kicker && <p class="attraction-kicker">{kicker}</p>}
+    <h3>{title}</h3>
+
+    {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+
+    {facts.length > 0 && (
+      <dl class="attraction-facts">
+        {facts.map((fact) => (
+          <div>
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+
+    {href && <a class="attraction-link" href={href}>{hrefLabel}</a>}
+  </div>
+
+  <div class="attraction-visual">
+    <SectionMedia
+      {...image}
+      ratio={image?.ratio ?? '4 / 3'}
+      sizes="(max-width: 820px) calc(100vw - 32px), 520px"
+    />
+  </div>
+</section>
+
+<style>
+.attraction-spot{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(360px,.92fr);
+  gap:clamp(28px,5vw,58px);
+  align-items:center;
+  margin:38px 0 56px;
+  padding:clamp(24px,4vw,38px);
+  border:1px solid var(--border);
+  border-radius:30px;
+  background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(249,246,237,.78));
+  box-shadow:0 16px 42px rgba(16,55,41,.06);
+  content-visibility:auto;
+  contain-intrinsic-size:620px;
+}
+.attraction-spot--reverse .attraction-copy{order:2}
+.attraction-spot--reverse .attraction-visual{order:1}
+.attraction-number{
+  font:700 .94rem/1 Georgia,serif;
+  color:var(--coral);
+  letter-spacing:.08em;
+  margin-bottom:16px;
+}
+.attraction-kicker{
+  margin:0 0 8px!important;
+  color:var(--green-700)!important;
+  font-size:.72rem!important;
+  font-weight:900!important;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.attraction-copy h3{
+  margin:0 0 14px;
+  font-size:clamp(1.8rem,3.8vw,2.75rem);
+  line-height:1.05;
+}
+.attraction-copy>p:not(.attraction-kicker){
+  margin:0 0 12px!important;
+  color:#425149!important;
+}
+.attraction-facts{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  margin:20px 0 0;
+}
+.attraction-facts div{
+  padding:12px 13px;
+  border-radius:14px;
+  background:#f3efe4;
+}
+.attraction-facts dt{
+  color:var(--green-700);
+  font-size:.65rem;
+  font-weight:900;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.attraction-facts dd{
+  margin:4px 0 0;
+  color:#33463e;
+  font-size:.84rem;
+  font-weight:750;
+  line-height:1.35;
+}
+.attraction-link{
+  display:inline-flex;
+  margin-top:18px;
+  color:var(--green-700);
+  font-weight:850;
+}
+.attraction-visual :global(.section-media){margin:0}
+.attraction-visual :global(.media-frame){border-radius:22px}
+@media(max-width:900px){
+  .attraction-spot,.attraction-spot--reverse{grid-template-columns:1fr}
+  .attraction-spot--reverse .attraction-copy,.attraction-spot--reverse .attraction-visual{order:initial}
+}
+@media(max-width:560px){
+  .attraction-spot{padding:18px;border-radius:22px;margin:26px 0 36px}
+  .attraction-facts{grid-template-columns:1fr}
+}
+</style>
