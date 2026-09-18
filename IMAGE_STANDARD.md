@@ -82,3 +82,13 @@ The September 2026 cleanup applies these ownership rules:
 - Index pages for destinations, hotels, itineraries and tours use graphic cards rather than repeating article photography.
 - Data-driven legacy destination subguides do not render shared cluster photos. Maps, structured cards and videos provide visual context without duplicating imagery.
 - Every production build runs the strict image audit before Astro builds.
+
+
+## Runtime image fallback
+
+All remote images are protected by the site-wide runtime fallback in `BaseLayout.astro`.
+If a remote host, hotlink rule or deleted file causes an image request to fail, the browser replaces the broken image with a branded RejsTilVietnam visual instead of leaving a grey or broken box.
+
+Destination cards use an additional built-in scenic fallback behind the photo, so their layout never appears empty while an image is loading or if the remote image fails.
+
+Data-driven destination subguides use `GuideCover.astro` as a guaranteed local hero visual. This prevents blank article headers without reusing the same remote destination photo across dozens of guides.
