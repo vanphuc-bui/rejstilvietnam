@@ -1,0 +1,58 @@
+name: Site quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visitor-agent-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.20.0
+
+      - name: Install dependencies
+        run: npm install --no-package-lock
+
+      - name: Build and run static visitor agents
+        run: npm run build
+
+      - name: Install browser for viewport QA
+        run: npx playwright install --with-deps chromium
+
+      - name: Start local preview
+        run: |
+          npm run preview -- --host 127.0.0.1 > /tmp/rejstilvietnam-preview.log 2>&1 &
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4321/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/rejstilvietnam-preview.log
+          exit 1
+
+      - name: Run mobile, tablet and desktop agents
+        run: npm run audit:browser
+
+      - name: Upload QA reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-quality-report
+          path: .site-audit/*.json
+          if-no-files-found: warn
+          retention-days: 30
