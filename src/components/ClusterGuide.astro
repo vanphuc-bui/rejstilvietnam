@@ -17,6 +17,17 @@ const destinationSlug = destinationIndex >= 0 ? pathParts[destinationIndex + 1] 
 const guideSlug = destinationIndex >= 0 ? pathParts[destinationIndex + 2] : '';
 const visualPack = getGuideVisuals(destinationSlug, guideSlug);
 const heroMedia = visualPack?.hero ?? page.hero ?? getDestinationVisual(page);
+const heroSrc = heroMedia?.src ?? '';
+const sectionImageSrcs = new Set(
+  (page.sections ?? [])
+    .flatMap((section) => [
+      section.image?.src,
+      ...(section.subsections ?? []).map((sub) => sub.image?.src),
+    ])
+    .filter(Boolean)
+);
+const galleryItems = (page.gallery ?? [])
+  .filter((item, index, items) => item?.src && item.src !== heroSrc && !sectionImageSrcs.has(item.src) && items.findIndex((candidate) => candidate?.src === item.src) === index);
 const toc = (page.sections ?? []).map((section, i) => ({ id: section.id ?? `section-${i+1}`, label: section.toc ?? section.heading }));
 const cleanDescription = (page.description ?? '').replace(/\s*[-–—]\s*Ingen affiliate-links endnu\.?/i, '').trim();
 const publicParagraphs = (items = []) => items.filter((item) => !/affiliate/i.test(item));
@@ -94,9 +105,9 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
     />
   )}
 
-  {!visualPack?.highlights?.length && page.gallery?.length > 0 && (
+  {!visualPack?.highlights?.length && galleryItems.length > 0 && (
     <VisualHighlights
-      items={page.gallery}
+      items={galleryItems}
       title={page.galleryTitle ?? 'Se guiden i billeder'}
       intro={page.galleryIntro ?? ''}
     />
@@ -145,7 +156,7 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
       {section.lead && <p><strong>{section.lead}</strong></p>}
       {publicParagraphs(section.paragraphs).map((paragraph) => <p>{paragraph}</p>)}
 
-      {section.image && (
+      {section.image && section.image.src !== heroSrc && (
         <SectionMedia
           {...section.image}
           ratio={section.image.ratio ?? '16 / 9'}
@@ -162,7 +173,7 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
                 <div>
                   <h3>{sub.heading}</h3>
                   {publicParagraphs(sub.paragraphs).map((paragraph) => <p>{paragraph}</p>)}
-                  {sub.image && (
+                  {sub.image && sub.image.src !== heroSrc && (
                     <SectionMedia
                       {...sub.image}
                       ratio={sub.image.ratio ?? '4 / 3'}
