@@ -2,9 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const guides = [
-  { kicker:'Cruise', title:'Ha Long Bay', text:'Dagstur eller 1 nat? Se hvad vi ville tjekke i rute, kahyt, transfer og nyere anmeldelser.', href:'/ture/halong-bay-cruise/', image:'https://commons.wikimedia.org/wiki/Special:FilePath/2013-10-19-IMG%200546%20%2816281009626%29.jpg?width=1200' },
-  { kicker:'Fra Hanoi', title:'Ninh Binh', text:'Dagstur eller overnatning? Se hvilke stop der er værd at prioritere, og hvad du roligt kan springe over.', href:'/ture/ninh-binh-fra-hanoi/', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Trang%20An%2C%20Ninh%20Binh.jpg?width=1200' },
-  { kicker:'Mad i Hanoi', title:'Street food', text:'Hvis du vil booke en madtur, ville vi vælge en lille gruppe og en tur, der faktisk besøger lokale spisesteder.', href:'/destinationer/hanoi/', image:'https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=1200' },
+  { kicker:'Cruise', title:'Ha Long Bay', text:'Dagstur eller 1 nat? Se hvad vi ville tjekke i rute, kahyt, transfer og nyere anmeldelser.', href:'/ture/halong-bay-cruise/' },
+  { kicker:'Fra Hanoi', title:'Ninh Binh', text:'Dagstur eller overnatning? Se hvilke stop der er værd at prioritere, og hvad du roligt kan springe over.', href:'/ture/ninh-binh-fra-hanoi/' },
+  { kicker:'Mad i Hanoi', title:'Street food', text:'Hvis du vil booke en madtur, ville vi vælge en lille gruppe og en tur, der faktisk besøger lokale spisesteder.', href:'/destinationer/hanoi/' },
 ];
 ---
 <BaseLayout title="Oplevelser og ture i Vietnam | RejsTilVietnam.dk" description="Danske guides til oplevelser i Vietnam: Ha Long Bay cruise, Ninh Binh fra Hanoi, street food og andre ture, hvor det kan betale sig at sammenligne før booking.">
@@ -20,7 +20,7 @@ const guides = [
     <div class="container grid grid--3">
       {guides.map((guide) => (
         <a class="card tour-guide" href={guide.href}>
-          <div class="tour-image"><img src={guide.image} alt={guide.title} loading="lazy" decoding="async" referrerpolicy="no-referrer" /></div>
+          <div class="tour-image tour-image--graphic"><span>{guide.kicker === "Cruise" ? "⛴️" : guide.kicker === "Fra Hanoi" ? "🛶" : "🍜"}</span></div>
           <div class="tour-copy">
             <span>{guide.kicker}</span>
             <h3>{guide.title}</h3>
@@ -53,8 +53,8 @@ const guides = [
 .tour-guide { overflow:hidden; transition: transform .2s ease, border-color .2s ease; }
 .tour-guide:hover { transform: translateY(-3px); border-color: rgba(28,106,77,.25); }
 .tour-image { aspect-ratio: 16 / 10; overflow:hidden; background:#e9eee9; }
-.tour-image img { width:100%; height:100%; object-fit:cover; transition:transform .35s ease; }
-.tour-guide:hover .tour-image img { transform:scale(1.025); }
+.tour-image--graphic{display:grid;place-items:center;background:linear-gradient(145deg,#e4efe9,#f4ead8)}
+.tour-image--graphic span{font-size:3rem}
 .tour-copy { padding:24px; }
 .tour-copy > span { color: var(--coral); font-size: .75rem; font-weight: 850; text-transform: uppercase; letter-spacing: .1em; }
 .tour-guide h3 { margin-top: 8px; font-size: 1.7rem; }
