@@ -4,6 +4,7 @@ import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import FoodGrid from '../../../components/FoodGrid.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
+import AffiliateActivityGrid from '../../../components/AffiliateActivityGrid.astro';
 
 const toc = [
   { id: 'overblik', label: 'Hoi An i korte træk' },
@@ -49,7 +50,22 @@ const food = [
   <h2 id="mad">Mad du bør prøve i Hoi An</h2>
   <p>Vi ville ikke nøjes med én restaurant med en lang "best of Hoi An"-menu. Tre retter er særligt oplagte at prøve, fordi de fortæller mere om området end endnu en international café.</p>
   <FoodGrid items={food} />
-  <AffiliateCard title="Madlavningskursus i Hoi An" text="Godt valg, hvis kurset også inkluderer marked eller lokale råvarer. Tjek gruppestørrelse og hvor meget af tiden der faktisk bruges på madlavning." label="God på en rolig dag" />
+  <AffiliateActivityGrid
+    title="Madlavningskursus i Hoi An"
+    intro="Et kursus giver mest mening, når du faktisk får hænderne i råvarerne. Sammenlign gruppestørrelse, marked, transport og hvor meget du selv laver."
+    items={[
+      {
+        title:'Hoi An cooking class',
+        text:'En bookbar madoplevelse, der passer naturligt ind på en rolig Hoi An-dag. Vi ville vælge et kursus med reel madlavning frem for for mange ekstra stop.',
+        href:'https://gyg.me/5zfSljI8',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Cao%20l%E1%BA%A7u%20H%E1%BB%99i%20An.jpg?width=1200',
+        alt:'Cao lau serveret i Hoi An',
+        badge:'Madoplevelse',
+        highlights:['Lokal mad','Små grupper muligt','Marked på nogle ture','Halvdag'],
+        cta:'Se madlavningskurser',
+      },
+    ]}
+  />
 
   <h2 id="strand">Strand, cykling og landskab</h2>
   <p>En cykeltur ud mellem rismarkerne er en god kontrast til den gamle by. Men midt på dagen kan varmen være hård, så tidlig morgen eller sen eftermiddag er mere behagelig.</p>
