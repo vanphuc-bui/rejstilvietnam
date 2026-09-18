@@ -2,6 +2,7 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
 import PlaceMap from '../../../../components/PlaceMap.astro';
+import { hubVisuals } from '../../../../data/hubVisuals.js';
 
 const areas = [
   {
@@ -11,10 +12,10 @@ const areas = [
     vibe:'Livligt · mad · gåafstand',
     good:'Førstegangsbesøg, korte ophold og dig der vil ud af hotellet til fods.',
     watch:'Kan være støjende, især omkring Ta Hien, Hang Buom og de mest travle gader.',
-    image:null,
-    imageAlt:'',
-    credit:'',
-    creditUrl:'',
+    image:hubVisuals.hotels.hanoi.src,
+    imageAlt:'Gadeliv i Hanoi Old Quarter',
+    credit:'Unsplash',
+    creditUrl:'https://unsplash.com/',
   },
   {
     name:'Hoan Kiem / French Quarter',
@@ -120,7 +121,7 @@ const areaPlaces = [
     <div class="container area-list">
       {areas.map((area, i) => (
         <article class="area-card">
-          {area.image ? <div class="area-image"><img src={area.image} alt={area.imageAlt} loading="lazy" decoding="async" referrerpolicy="no-referrer" /><a class="photo-source" href={area.creditUrl} target="_blank" rel="noopener noreferrer">Foto: {area.credit} ↗</a></div> : <div class="area-image area-image--graphic"><span>🏙️</span><strong>{area.name}</strong></div>}
+          {area.image ? <div class="area-image"><img src={area.image} alt={area.imageAlt} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="window.__rtvImageFallback?.(this)" /><a class="photo-source" href={area.creditUrl} target="_blank" rel="noopener noreferrer">Foto: {area.credit} ↗</a></div> : <div class="area-image area-image--graphic"><span>🏙️</span><strong>{area.name}</strong></div>}
           <div class="area-copy"><div class="area-head"><span>0{i+1}</span><small>{area.label}</small></div><h2>{area.name}</h2><div class="area-tags"><span>{area.vibe}</span><span>{area.time}</span></div><div class="area-points"><p><b>God til:</b> {area.good}</p><p><b>Vær opmærksom på:</b> {area.watch}</p></div></div>
         </article>
       ))}
