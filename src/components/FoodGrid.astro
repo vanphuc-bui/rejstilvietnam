@@ -6,7 +6,7 @@ const { items = [] } = Astro.props;
     <article class="food-card">
       <div class="food-image">
         <div class="food-image-fallback" aria-hidden="true"><span>{item.name}</span></div>
-        <img src={item.image} alt={item.alt ?? item.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'" />
+        <img src={item.image} alt={item.alt ?? item.name} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="window.__rtvImageFallback?.(this)" />
       </div>
       <div class="food-copy">
         <div class="food-head">
