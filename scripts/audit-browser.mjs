@@ -11,6 +11,7 @@ const baseUrl = process.env.AUDIT_BASE_URL ?? 'http://127.0.0.1:4321';
 const concurrency = Math.max(1, Number(process.env.AUDIT_CONCURRENCY ?? 6));
 
 const viewports = [
+  { name: 'mobile-small', width: 360, height: 800, isMobile: true, hasTouch: true },
   { name: 'mobile', width: 390, height: 844, isMobile: true, hasTouch: true },
   { name: 'tablet', width: 768, height: 1024, isMobile: true, hasTouch: true },
   { name: 'desktop', width: 1440, height: 900, isMobile: false, hasTouch: false },
@@ -89,6 +90,26 @@ for (const viewport of viewports) {
             .filter(visible)
             .filter((element) => Number.parseFloat(getComputedStyle(element).fontSize) < 12)
             .length;
+          const overflowElements = [...document.querySelectorAll('body *')]
+            .filter(visible)
+            .map((element) => {
+              const rect = element.getBoundingClientRect();
+              return {
+                label: `${element.tagName.toLowerCase()}${element.id ? '#' + element.id : ''}${element.classList.length ? '.' + [...element.classList].slice(0, 3).join('.') : ''}`,
+                left: Math.round(rect.left),
+                right: Math.round(rect.right),
+                width: Math.round(rect.width),
+              };
+            })
+            .filter((item) => item.left < -2 || item.right > window.innerWidth + 2)
+            .slice(0, 8);
+          const h1 = document.querySelector('h1');
+          const h1Metrics = h1 && visible(h1) ? (() => {
+            const style = getComputedStyle(h1);
+            const lineHeight = Number.parseFloat(style.lineHeight) || Number.parseFloat(style.fontSize) * 1.1;
+            const rect = h1.getBoundingClientRect();
+            return { lines: Math.round(rect.height / lineHeight), height: Math.round(rect.height) };
+          })() : null;
           return {
             documentWidth: document.documentElement.scrollWidth,
             viewportWidth: window.innerWidth,
@@ -99,11 +120,14 @@ for (const viewport of viewports) {
             missingViewportMeta: !document.querySelector('meta[name="viewport"]'),
             importantControls,
             tinyText,
+            overflowElements,
+            h1Metrics,
           };
         });
 
         if (metrics.documentWidth > metrics.viewportWidth + 2) {
-          result.errors.push(`Horizontal overflow: document ${metrics.documentWidth}px vs viewport ${metrics.viewportWidth}px.`);
+          const offenders = metrics.overflowElements.map((item) => `${item.label} [${item.left},${item.right}] w=${item.width}`).join('; ');
+          result.errors.push(`Horizontal overflow: document ${metrics.documentWidth}px vs viewport ${metrics.viewportWidth}px.${offenders ? ' Likely offenders: ' + offenders : ''}`);
         }
         if (metrics.h1Count !== 1) result.errors.push(`Expected one H1, found ${metrics.h1Count}.`);
         if (metrics.missingViewportMeta) result.errors.push('Missing viewport meta tag.');
@@ -111,8 +135,9 @@ for (const viewport of viewports) {
         if (metrics.tinyText) result.warnings.push(`${metrics.tinyText} visible text element(s) render below 12px.`);
 
         if (viewport.isMobile) {
-          const smallControls = metrics.importantControls.filter((control) => control.height < 40 || control.width < 40);
-          if (smallControls.length) result.warnings.push(`${smallControls.length} important control(s) are smaller than 40×40px.`);
+          const smallControls = metrics.importantControls.filter((control) => control.height < 42 || control.width < 42);
+          if (smallControls.length) result.warnings.push(`${smallControls.length} important control(s) are smaller than 42×42px.`);
+          if (metrics.h1Metrics?.lines > 4) result.warnings.push(`H1 wraps to about ${metrics.h1Metrics.lines} lines on ${viewport.name}.`);
         }
 
         const localFailures = failedRequests.filter((request) => request.url.startsWith(baseUrl));
