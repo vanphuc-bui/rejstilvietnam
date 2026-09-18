@@ -1,0 +1,122 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+import CommercialCta from '../../../components/CommercialCta.astro';
+
+const toc = [
+  { id:'start', label:'Start med de tre valg' },
+  { id:'rute', label:'Vælg rute' },
+  { id:'tid', label:'Hvor lang tid?' },
+  { id:'praktisk', label:'Praktisk før booking' },
+  { id:'booking', label:'Sådan ville vi booke' },
+  { id:'fejl', label:'Typiske fejl' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - officiel turistinformation', href:'https://vietnam.travel/' },
+  { label:'Udenrigsministeriet - Vietnam', href:'https://um.dk/rejse-og-ophold/rejse-til-udlandet/rejsevejledninger/vietnam' },
+  { label:'Vietnams ambassade i København - visumfritagelse', href:'https://vnembassy-copenhagen.mofa.gov.vn/web/guest/tin-chi-tiet/chi-tiet/viet-nam-39-s-visa-exemption-list-57163-172.html' },
+];
+
+const faq = [
+  { question:'Hvor mange dage bør man have til Vietnam første gang?', answer:'Vi synes 14-21 dage giver den bedste balance. Ti dage kan fungere, men så bør du vælge færre regioner og undgå at skifte hotel hele tiden.' },
+  { question:'Skal man rejse fra nord til syd eller syd til nord?', answer:'Begge dele fungerer. Vejr, flypris og den stranddel du prioriterer betyder mere end retningen. Mange starter i Hanoi og slutter i Ho Chi Minh City, fordi ruten er intuitiv.' },
+  { question:'Er 2026 et godt år at rejse til Vietnam?', answer:'Vietnam har et stort udvalg af direkte og forbindende fly, enkel indenrigstransport og gunstige visumregler for danskere. Det vigtigste er stadig at vælge rute efter sæson og egen rejsetid.' },
+];
+---
+<EditorialArticle
+  title="Rejser til Vietnam 2026 | Den komplette guide for danskere"
+  description="Planlæg rejser til Vietnam i 2026: rute, rejsetid, visum, budget, transport, hoteller og bookingrækkefølge samlet i én dansk guide."
+  eyebrow="Rejser til Vietnam · 2026"
+  heading="Rejser til Vietnam 2026: sådan bygger du en god tur fra start"
+  intro="Den største fejl er at begynde med hoteller. Start i stedet med tre valg: hvor mange dage du har, hvilken del af Vietnam der passer til vejret, og hvor mange stop du realistisk vil nå. Derefter bliver booking langt lettere."
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1800&q=86',
+    alt:'Vietnam med grønne bjerge og flodlandskab',
+    caption:'Vietnam er bedst, når ruten bygges omkring tid og geografi - ikke en liste med flest mulige seværdigheder.',
+    ratio:'16 / 7'
+  }}
+  video={{
+    youtubeId:'NgvC-Frin1Y',
+    title:'Live Fully in Vietnam - officiel Vietnam Tourism-video',
+    heading:'Få et hurtigt visuelt indtryk af landet',
+    intro:'Brug videoen som inspiration og artiklen som planlægningsværktøj.',
+    caption:'Officiel video fra Vietnam Tourism.'
+  }}
+  related={[
+    {href:'/rejseplaner/vietnam-2-uger/',title:'Vietnam på 2 uger',text:'En konkret førstegangsrejse med realistiske transportdage.'},
+    {href:'/rejseguide/bedste-rejsetid/',title:'Bedste rejsetid',text:'Se hvordan vejret ændrer sig mellem nord, midt og syd.'},
+    {href:'/rejseguide/vietnam-rejsevejledning/',title:'Vietnam rejsevejledning',text:'Få styr på sikkerhed, pas og indrejse før afrejse.'}
+  ]}
+>
+  <h2 id="start">Start med tre valg - ikke med Booking.com</h2>
+  <p>En Vietnam-rejse bliver markant lettere at planlægge, hvis du tager beslutningerne i den rigtige rækkefølge. Først <strong>antal dage</strong>, derefter <strong>regioner</strong>, og til sidst <strong>overnatning og ture</strong>.</p>
+  <div class="fact-grid">
+    <div class="fact"><span>10 dage</span><b>Vælg 2 regioner</b></div>
+    <div class="fact"><span>14 dage</span><b>Nord + midt + syd kan fungere</b></div>
+    <div class="fact"><span>3 uger</span><b>Plads til strand eller ekstra nord</b></div>
+  </div>
+  <p>Hvis du prøver at kombinere Hanoi, Sapa, Ha Long, Hue, Hoi An, Da Nang, Nha Trang, Ho Chi Minh City, Mekong og Phu Quoc på en kort ferie, ender en stor del af turen med check-out, transport og check-in.</p>
+
+  <h2 id="rute">Vælg rute efter oplevelse - og vejret</h2>
+  <p>Vietnam er langt. Vejret i Hanoi kan være helt anderledes end på Phu Quoc samme uge. Derfor ville vi vælge destinationer efter sæson frem for at kopiere en fast “klassisk rute”.</p>
+  <PracticalTable
+    title="Tre nemme måder at bygge rejsen på"
+    intro="Alle tre kan fungere godt; forskellen er tempo og type ferie."
+    columns={[{key:'type',label:'Rejsetype'},{key:'route',label:'Eksempel'},{key:'best',label:'God til'}]}
+    rows={[
+      {type:'Klassisk første tur',route:'Hanoi → Ninh Binh → Ha Long → Hoi An → HCMC',best:'14-18 dage'},
+      {type:'Nord + natur',route:'Hanoi → Ninh Binh → Ha Giang/Sapa → Ha Long',best:'10-14 dage'},
+      {type:'By + strand',route:'HCMC → Hoi An/Da Nang → Phu Quoc',best:'10-14 dage'},
+    ]}
+  />
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoi%20An%20lanterns.jpg?width=1500" alt="Lanterner i Hoi An" caption="Hoi An er let at kombinere med Da Nang, men du behøver ikke bo i begge byer på en kort rejse." ratio="16 / 9" />
+
+  <h2 id="tid">Hvor lang tid skal man bruge i Vietnam?</h2>
+  <p><strong>Ti dage</strong> er nok til en fokuseret tur. <strong>To uger</strong> er vores favorit til en førstegangsrejse, fordi du kan få flere sider af landet uden at være i transit hver anden dag. <strong>Tre uger</strong> giver plads til langsommere rejser, strand eller et ekstra område i nord.</p>
+  <p>Hvis du kun har én uge, ville vi slet ikke forsøge nord-til-syd. Vælg Hanoi med Ninh Binh/Ha Long eller Ho Chi Minh City med Mekong og eventuelt strand.</p>
+  <div class="callout"><strong>En simpel regel:</strong> Regn en flyttedag som en halv feriedag. På lange strækninger kan den koste næsten en hel dag, selv om selve flyveturen kun tager et par timer.</div>
+
+  <h2 id="praktisk">Praktisk før du booker</h2>
+  <p>Danske statsborgere er aktuelt omfattet af Vietnams visumfritagelse i op til 45 dage, når indrejsebetingelserne er opfyldt. Tjek altid reglerne igen tæt på afrejse. Læs vores <a href="/rejseguide/visum/">visumguide</a> og <a href="/rejseguide/vietnam-rejsevejledning/">rejsevejledning</a>, før du køber en dyr rejse, der ikke kan ændres.</p>
+  <p>Derudover ville vi kontrollere:</p>
+  <ul>
+    <li>om passet har tilstrækkelig gyldighed,</li>
+    <li>om rejseforsikringen dækker hele perioden og planlagte aktiviteter,</li>
+    <li>om vejret passer til de vigtigste stop,</li>
+    <li>om der er Tết eller andre store helligdage under rejsen,</li>
+    <li>om du faktisk har brug for indenrigsfly på ruten.</li>
+  </ul>
+
+  <h2 id="booking">Sådan ville vi booke i praksis</h2>
+  <ol>
+    <li><strong>Internationale fly:</strong> fastlæg ankomst- og afrejseby.</li>
+    <li><strong>De første og sidste hoteller:</strong> især hvis flytiderne er tidlige eller sene.</li>
+    <li><strong>Store transportstræk:</strong> indenrigsfly eller nattog, når datoerne er låst.</li>
+    <li><strong>Hoteller i populære områder:</strong> vælg område før hotel.</li>
+    <li><strong>Store ture:</strong> Ha Long cruise, private transfers eller særlige oplevelser.</li>
+    <li><strong>Småting:</strong> lokale ture og restauranter kan ofte vente.</li>
+  </ol>
+  <CommercialCta
+    eyebrow="Planlæg videre"
+    title="Start med en konkret 14-dages rute"
+    text="Hvis det er første gang, er en fast eksempelrute den nemmeste måde at se, hvor meget transport der faktisk er mellem stoppene."
+    primaryHref="/rejseplaner/vietnam-2-uger/"
+    primaryLabel="Se Vietnam på 2 uger →"
+    secondaryHref="/destinationer/"
+    secondaryLabel="Se alle rejsemål"
+  />
+
+  <h2 id="fejl">Fem fejl vi ville undgå</h2>
+  <ul>
+    <li><strong>For mange byer:</strong> hvert ekstra stop koster transporttid.</li>
+    <li><strong>At bo billigt, men langt væk:</strong> en lav hotelpris kan blive spist op af taxi og tid.</li>
+    <li><strong>At booke hele ferien uden fleksibilitet:</strong> især i perioder med mere ustadigt vejr.</li>
+    <li><strong>At undervurdere varme og fugt:</strong> to store sightseeingblokke om dagen er ofte nok.</li>
+    <li><strong>At vælge ruten før rejsetiden:</strong> vejret bør påvirke, hvilke regioner du prioriterer.</li>
+  </ul>
+</EditorialArticle>
