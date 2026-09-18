@@ -1,5 +1,5 @@
 const hero = {
-  src:'https://commons.wikimedia.org/wiki/Special:FilePath/Nguyen%20Hue%20Street.jpg?width=1800',
+  src:'https://commons.wikimedia.org/wiki/Special:FilePath/Motorcycles%20in%20Ho%20Chi%20Minh%20city.jpg?width=1800',
   alt:'Nguyen Hue-gågaden i Ho Chi Minh City',
   caption:'Ho Chi Minh City er nemmest at planlægge i kvarterer. Centrum kan gås i bidder, mens længere ture kræver Grab eller taxi.',
   credit:'Rondano / Wikimedia Commons',
