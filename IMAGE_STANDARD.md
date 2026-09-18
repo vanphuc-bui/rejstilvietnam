@@ -67,4 +67,18 @@ For Wikimedia images, include a caption, credit and source URL when practical. D
 
 `scripts/audit-images.mjs` normalizes Unsplash and Wikimedia image URLs (so changing only width/crop does not bypass the check).
 
-The build fails when an `EditorialArticle` page reuses an image already used on another page. Older non-template pages are reported as legacy warnings so they can be cleaned progressively without taking production offline.
+The build fails when any page under `src/pages/` reuses the same remote image, including reuse inside the same page. Changing only width, crop or query parameters does not count as a new image.
+
+Legacy data-driven destination articles deliberately use maps, timelines, comparison cards and video instead of a shared photographic hero. Shared cluster photos are not rendered on those pages; a photo should only be reintroduced when that exact page has its own unique, relevant image.
+
+
+## Site-wide cleanup completed
+
+The September 2026 cleanup applies these ownership rules:
+
+- Homepage destination thumbnails are treated as homepage-only visuals.
+- Destination hubs own their own hero/section photography.
+- Dedicated Hanoi food, Ninh Binh and Ha Long guides own their subject-specific photos; overview cards use graphic treatments instead of copying them.
+- Index pages for destinations, hotels, itineraries and tours use graphic cards rather than repeating article photography.
+- Data-driven legacy destination subguides do not render shared cluster photos. Maps, structured cards and videos provide visual context without duplicating imagery.
+- Every production build runs the strict image audit before Astro builds.
