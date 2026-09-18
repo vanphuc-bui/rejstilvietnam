@@ -1,0 +1,100 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import SectionMedia from './SectionMedia.astro';
+import VideoEmbed from './VideoEmbed.astro';
+
+const {
+  title,
+  description,
+  eyebrow = 'Rejseguide',
+  heading,
+  intro,
+  updated = '18. september 2026',
+  dateModified = '2026-09-18',
+  toc = [],
+  sources = [],
+  hero = null,
+  video = null,
+  faq = [],
+  related = [],
+  relatedTitle = 'Læs videre',
+  authorName = 'RejsTilVietnam.dk',
+} = Astro.props;
+
+const faqSchema = faq.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+} : null;
+---
+<ArticleLayout
+  title={title}
+  description={description}
+  eyebrow={eyebrow}
+  heading={heading}
+  intro={intro}
+  updated={updated}
+  dateModified={dateModified}
+  toc={toc}
+  sources={sources}
+  authorName={authorName}
+>
+  {hero && <SectionMedia slot="heroMedia" {...hero} />}
+
+  <slot />
+
+  {video && (
+    <section class="editorial-video" aria-labelledby="video-heading">
+      <h2 id="video-heading">{video.heading ?? 'Se Vietnam før du planlægger videre'}</h2>
+      {video.intro && <p>{video.intro}</p>}
+      <VideoEmbed youtubeId={video.youtubeId} title={video.title} caption={video.caption} />
+    </section>
+  )}
+
+  {faq.length > 0 && (
+    <section class="editorial-faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Ofte stillede spørgsmål</h2>
+      <div class="faq-grid">
+        {faq.map((item) => (
+          <article class="faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {related.length > 0 && (
+    <section class="editorial-related" aria-labelledby="related-heading">
+      <h2 id="related-heading">{relatedTitle}</h2>
+      <div class="link-list">
+        {related.map((item) => (
+          <a class="link-card" href={item.href}>
+            {item.title}
+            <span>{item.text}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+</ArticleLayout>
+
+<style>
+.editorial-video,
+.editorial-faq,
+.editorial-related { margin-top: 38px; }
+.faq-grid { display: grid; gap: 14px; margin-top: 18px; }
+.faq-item { padding: 20px 22px; border: 1px solid var(--border); border-radius: 20px; background: #fff; }
+.faq-item h3 { margin: 0 0 7px; font-size: 1.05rem; }
+.faq-item p { margin: 0; }
+</style>
