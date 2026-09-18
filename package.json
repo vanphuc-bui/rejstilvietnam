@@ -8,9 +8,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run audit:images && astro build",
+    "build": "npm run audit:images && astro build && npm run audit:visuals",
     "preview": "astro preview",
-    "audit:images": "node scripts/audit-images.mjs"
+    "audit:images": "node scripts/audit-images.mjs",
+    "audit:visuals": "node scripts/audit-rendered-visuals.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
