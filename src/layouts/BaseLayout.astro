@@ -157,5 +157,45 @@ const structuredData = {
     <Header />
     <main><slot /></main>
     <Footer />
+    <script is:inline>
+      (() => {
+        const fallback = (img) => {
+          if (!img || img.dataset.rtvFallback === '1') return;
+          img.dataset.rtvFallback = '1';
+          const label = (img.alt || 'Vietnam').trim().slice(0, 58) || 'Vietnam';
+          const safe = label.replace(/[&<>"']/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[ch]));
+          const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop stop-color="#123a2e"/>
+                <stop offset=".58" stop-color="#3f7860"/>
+                <stop offset="1" stop-color="#d2aa68"/>
+              </linearGradient>
+              <linearGradient id="w" x1="0" y1="0" x2="0" y2="1">
+                <stop stop-color="#6ea18f" stop-opacity=".65"/>
+                <stop offset="1" stop-color="#103f32" stop-opacity=".95"/>
+              </linearGradient>
+            </defs>
+            <rect width="1200" height="720" fill="url(#g)"/>
+            <circle cx="950" cy="150" r="92" fill="#f3d594" fill-opacity=".34"/>
+            <path d="M0 540 L150 390 L270 470 L430 300 L560 440 L735 260 L890 430 L1030 335 L1200 500 L1200 720 L0 720Z" fill="#082e24" fill-opacity=".48"/>
+            <path d="M0 555 Q260 500 490 575 T960 560 T1200 585 V720 H0Z" fill="url(#w)"/>
+            <text x="64" y="620" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" opacity=".82">REJSTILVIETNAM.DK</text>
+            <text x="64" y="664" fill="#fff" font-family="Georgia,serif" font-size="34" font-weight="700">${safe}</text>
+          </svg>`;
+          img.removeAttribute('srcset');
+          img.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+          img.style.display = '';
+        };
+        window.__rtvImageFallback = fallback;
+        document.addEventListener('error', (event) => {
+          const target = event.target;
+          if (target && target.tagName === 'IMG') {
+            fallback(target);
+            setTimeout(() => { target.style.display = ''; }, 0);
+          }
+        }, true);
+      })();
+    </script>
   </body>
 </html>
