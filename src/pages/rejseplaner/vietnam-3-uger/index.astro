@@ -1,4 +1,5 @@
 ---
+import GuideCover from '../../../components/GuideCover.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const stops = [
@@ -13,6 +14,7 @@ const stops = [
 ---
 <BaseLayout title="Vietnam på 3 uger | 21-dages rejseplan med strand | RejsTilVietnam.dk" description="Forslag til 3 uger i Vietnam: Hanoi, Ninh Binh, Ha Long Bay, Hoi An, Ho Chi Minh City, Mekong og Phu Quoc i et roligt tempo.">
   <section class="hero-3w"><div class="container hero-grid"><div><p class="eyebrow">Vietnam på 3 uger</p><h1>Nu er der plads til både oplevelser og pauser.</h1><p class="lead">Tre uger er nok til nord, central og syd - hvis du stadig holder igen med antallet af stop.</p><div class="actions"><a class="btn btn--primary" href="#rute">Se 21-dages ruten →</a><a class="btn btn--outline" href="/rejseplaner/vietnam-2-uger/">Sammenlign med 14 dage</a></div></div><div class="route-card"><span>21 dage</span><b>Hanoi</b><i>→</i><b>Ninh Binh</b><i>→</i><b>Ha Long</b><i>→</i><b>Hoi An</b><i>→</i><b>Ho Chi Minh City</b><i>→</i><b>Mekong</b><i>→</i><b>Phu Quoc</b></div></div></section>
+<div class="container guide-cover-wrap"><GuideCover destination="Vietnam" title="Vietnam på 3 uger" eyebrow="Rejseplan" /></div>
 
   <section class="section section--tight"><div class="container facts"><div><span>Tempo</span><b>Roligt til mellem</b></div><div><span>Store regioner</span><b>Nord · Central · Syd</b></div><div><span>Strand</span><b>5 dage</b></div><div><span>Bedst til</span><b>Første længere rejse</b></div></div></section>
 
@@ -28,3 +30,5 @@ const stops = [
 @media(max-width:800px){.hero-grid{grid-template-columns:1fr}.facts{grid-template-columns:repeat(2,1fr)}.end-cta{align-items:flex-start;flex-direction:column}}
 @media(max-width:640px){.route-grid,.facts{grid-template-columns:1fr}.actions{flex-direction:column}}
 </style>
+
+<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
