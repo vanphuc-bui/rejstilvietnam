@@ -1,4 +1,5 @@
 ---
+import GuideCover from '../../../components/GuideCover.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const stops = [
@@ -15,6 +16,7 @@ const stops = [
       <div class="route-summary"><span>Ruten</span><b>Hanoi</b><i>↓</i><b>Ninh Binh</b><i>↓</i><b>Hoi An</b><i>↓</i><b>Ho Chi Minh City</b></div>
     </div>
   </section>
+<div class="container guide-cover-wrap"><GuideCover destination="Vietnam" title="Vietnam på 10 dage" eyebrow="Rejseplan" /></div>
 
   <section class="section section--tight">
     <div class="container facts"><div><span>Tempo</span><b>Mellem</b></div><div><span>Hotelskift</span><b>3</b></div><div><span>Bedst til</span><b>Første rejse</b></div><div><span>Vi springer over</span><b>Sapa + Phu Quoc</b></div></div>
@@ -36,3 +38,5 @@ const stops = [
 @media(max-width:800px){.route-hero-grid,.cut-grid{grid-template-columns:1fr}.facts{grid-template-columns:repeat(2,1fr)}.booking-cta{align-items:flex-start;flex-direction:column}}
 @media(max-width:520px){.facts{grid-template-columns:1fr}.stop{grid-template-columns:48px 1fr}.hero-buttons{flex-direction:column}}
 </style>
+
+<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
