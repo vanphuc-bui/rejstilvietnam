@@ -1,0 +1,105 @@
+---
+import EditorialArticle from '../../../../components/EditorialArticle.astro';
+import SectionMedia from '../../../../components/SectionMedia.astro';
+import PracticalTable from '../../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'2-dage', label:'2 dage i Hanoi' },
+  { id:'3-dage', label:'3 dage i Hanoi' },
+  { id:'4-5-dage', label:'4-5 dage i Hanoi' },
+  { id:'dagsture', label:'Dagsture fra Hanoi' },
+  { id:'valg', label:'Sådan vælger du' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - Hanoi', href:'https://vietnam.travel/places-to-go/northern-vietnam/ha-noi' },
+  { label:'Văn Miếu - visitor information', href:'https://www.vanmieu.gov.vn/en/introduction/visitor-information' },
+  { label:'Hoa Lo Prison - official site', href:'https://hoalo.vn/EN/Home/Ve' },
+];
+
+const faq = [
+  { question:'Hvor mange dage skal man bruge i Hanoi?', answer:'Tre hele dage er et godt udgangspunkt for de fleste førstegangsrejsende. To dage kan fungere, hvis du holder dig centralt. Fire til fem dage giver bedst mening, hvis du også vil have en langsom dag eller en dagstur.' },
+  { question:'Er 2 dage nok i Hanoi?', answer:'Ja, hvis du prioriterer Old Quarter, Hoan Kiem og et par historiske stop. Du bør ikke samtidig forsøge at presse Ninh Binh eller Ha Long Bay ind som en del af de to dage.' },
+  { question:'Skal man bo i Hanoi 4-5 dage?', answer:'Det kan være en god idé, hvis Hanoi bruges som base for Ninh Binh eller Ha Long Bay. Hvis alle dagene kun skal bruges inde i byen, synes vi tre hele dage er nok for de fleste.' },
+];
+---
+<EditorialArticle
+  title="Hvor mange dage i Hanoi? 2, 3, 4 eller 5 dage forklaret"
+  description="Hvor mange dage skal man bruge i Hanoi? Se forskellen på 2, 3, 4 og 5 dage, hvad du realistisk kan nå, og hvornår en dagstur giver mening."
+  eyebrow="Hanoi · Hvor mange dage?"
+  heading="Hvor mange dage skal man bruge i Hanoi?"
+  intro="Tre hele dage er vores standardvalg til en første tur. To dage er nok til højdepunkterne, mens fire eller fem dage især giver mening, hvis du vil have mere ro eller bruge Hanoi som base for en dagstur."
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1800&q=86',
+    alt:'Gadeliv i Hanoi',
+    caption:'Hanoi belønner lidt luft i planen. Byen er bedre, når der er tid til kaffe, mad og små omveje mellem seværdighederne.',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/destinationer/hanoi/3-dage-i-hanoi/',title:'3 dage i Hanoi',text:'Se vores konkrete dag-for-dag-plan.'},
+    {href:'/destinationer/hanoi/ninh-binh-fra-hanoi/',title:'Ninh Binh fra Hanoi',text:'Se om du bør tage en dagstur eller overnatte.'},
+    {href:'/destinationer/hanoi/ha-long-bay-fra-hanoi/',title:'Ha Long Bay fra Hanoi',text:'Sammenlign dagstur med cruise og overnatning.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar: vælg 3 dage, hvis det er første gang</h2>
+  <p>Hvis du spørger os, hvor mange dage man <em>bør</em> have i Hanoi, uden andre oplysninger, er svaret <strong>3 hele dage</strong>. Det er nok til Old Quarter, Hoan Kiem, et par historiske seværdigheder, god mad og en mere fleksibel tredje dag.</p>
+  <PracticalTable
+    title="Hvor mange dage passer til din rejse?"
+    intro="Tænk i hele dage i byen - ikke ankomst om aftenen eller afrejse tidligt om morgenen."
+    columns={[{key:'days',label:'Tid'},{key:'fit',label:'Passer til'},{key:'pace',label:'Tempo'}]}
+    rows={[
+      {days:'2 dage',fit:'Kort stop eller stram rundrejse',pace:'Fokuseret'},
+      {days:'3 dage',fit:'Førstegangsbesøg',pace:'Balanceret'},
+      {days:'4 dage',fit:'Mere mad, caféer og fleksibilitet',pace:'Roligt'},
+      {days:'5 dage',fit:'Hanoi + dagstur eller buffer',pace:'Meget roligt'},
+    ]}
+  />
+  <div class="callout"><strong>Ankommer du kl. 19?</strong> Så tæller vi ikke den dag som en af de 2-3 sightseeingdage. Check ind, spis tæt på hotellet og begynd næste morgen.</div>
+
+  <h2 id="2-dage">Hvis du kun har 2 dage i Hanoi</h2>
+  <p>To dage kan sagtens fungere. Nøglen er at holde begge dage geografisk enkle.</p>
+  <h3>Dag 1: Old Quarter + Hoan Kiem</h3>
+  <p>Start tidligt omkring Hoan Kiem-søen, gå ind i Old Quarter og brug formiddagen til at orientere dig til fods. Spis lokalt, tag en kaffe og vælg ét eftermiddagsstop som Hoa Lo Prison.</p>
+  <h3>Dag 2: Litteraturtemplet + historie</h3>
+  <p>Brug anden dag vest for centrum. Litteraturtemplet er et naturligt første stop. Derefter kan du vælge Ba Dinh-området eller Imperial Citadel afhængigt af interesse.</p>
+  <p>Med kun to dage ville vi <strong>ikke</strong> bruge en hel dag på Ninh Binh eller Ha Long Bay. Gem dem til en længere rute.</p>
+
+  <h2 id="3-dage">3 dage i Hanoi: det bedste kompromis</h2>
+  <p>Tredje dag gør forskellen, fordi du ikke længere behøver at presse alt ind. Du kan vælge Train Street, West Lake, et museum, en food tour eller bare en langsom dag med caféer og shopping.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoan%20Kiem%20Lake%20photo.jpg?width=1500" alt="Hoan Kiem-søen i Hanoi" caption="Hoan Kiem fungerer som et naturligt pejlemærke, især de første dage i byen." ratio="16 / 9" />
+  <p>Vi har allerede lavet en <a href="/destinationer/hanoi/3-dage-i-hanoi/">komplet 3-dages Hanoi-plan</a>, hvor hver dag har et tydeligt område og et realistisk tempo.</p>
+
+  <h2 id="4-5-dage">4-5 dage: hvornår giver det mening?</h2>
+  <p>Fire dage er godt, hvis du kan lide storbyer, fotografering, mad eller bare ikke vil planlægge fra morgen til aften. Fem dage giver især mening, når mindst én dag bruges uden for byen.</p>
+  <p>På en længere rejse ville vi typisk bruge de ekstra dage sådan:</p>
+  <ul>
+    <li><strong>Dag 4:</strong> West Lake, caféer, ekstra museum eller en langsom mad-dag.</li>
+    <li><strong>Dag 5:</strong> Ninh Binh som dagstur eller en ekstra nat uden for Hanoi.</li>
+  </ul>
+  <div class="notice"><strong>Vi ville ikke booke fem hele sightseeingdage i Hanoi kun for at “have nok”.</strong> Hvis natur er vigtig for dig, får du ofte mere ud af at bruge 1-2 af dagene i Ninh Binh eller på et Ha Long/Lan Ha-cruise.</div>
+
+  <h2 id="dagsture">Hanoi som base for dagsture</h2>
+  <p>Hanoi er praktisk som base, men ikke alle udflugter er lige gode som dagstur.</p>
+  <table>
+    <thead><tr><th>Sted</th><th>Dagstur?</th><th>Vores vurdering</th></tr></thead>
+    <tbody>
+      <tr><td>Ninh Binh</td><td>Ja</td><td>God dagstur, men en overnatning giver mere ro.</td></tr>
+      <tr><td>Ha Long Bay</td><td>Muligt</td><td>Vi foretrækker normalt 1 nat, hvis budget og tid tillader det.</td></tr>
+      <tr><td>Mai Chau</td><td>Muligt</td><td>Bedre med overnatning, hvis du vil cykle og opleve området langsomt.</td></tr>
+    </tbody>
+  </table>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Ha%20Long%20bay.jpg?width=1500" alt="Ha Long Bay i Nordvietnam" caption="Hvis du har 4-5 dage i området, kan en del af tiden med fordel bruges uden for Hanoi." ratio="16 / 9" />
+
+  <h2 id="valg">Sådan ville vi vælge</h2>
+  <ul>
+    <li><strong>Første gang + 2 ugers Vietnam-rejse:</strong> 3 dage i Hanoi.</li>
+    <li><strong>Kun 10 dage i hele Vietnam:</strong> 2 dage i Hanoi.</li>
+    <li><strong>Mad, caféer og storby er hovedinteressen:</strong> 4 dage.</li>
+    <li><strong>Hanoi som base for Ninh Binh:</strong> 4-5 nætter i området.</li>
+    <li><strong>Jetlag efter lang flyrejse:</strong> læg en ekstra nat ind i starten frem for at booke en tur næste morgen.</li>
+  </ul>
+</EditorialArticle>
