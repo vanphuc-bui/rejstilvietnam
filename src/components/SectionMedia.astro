@@ -11,8 +11,8 @@ const {
 ---
 <figure class="section-media">
   <div class="media-frame" style={`--ratio:${ratio};--position:${position}`}>
-    <div class="media-fallback" aria-hidden="true"><span>Billede midlertidigt utilgængeligt</span></div>
-    <img src={src} alt={alt} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'" />
+    <div class="media-fallback" aria-hidden="true"><span>Vietnam</span></div>
+    <img src={src} alt={alt} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="window.__rtvImageFallback?.(this)" />
   </div>
   {(caption || credit) && (
     <figcaption>
