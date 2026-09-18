@@ -1,4 +1,5 @@
 ---
+import GuideCover from '../../components/GuideCover.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const bookingOptions = [
@@ -18,6 +19,7 @@ const bookingOptions = [
       <p class="lead">Vi samler de dele af Vietnam-rejsen, hvor det kan betale sig at sammenligne mulighederne. Du bestemmer selv, om du vil booke separat eller få en rejse planlagt for dig.</p>
     </div>
   </section>
+<div class="container guide-cover-wrap"><GuideCover destination="Vietnam" title="Book rejsen" eyebrow="Planlægning" /></div>
 
   <section class="section section--tight">
     <div class="container grid grid--3">
@@ -71,3 +73,5 @@ a.booking-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)
 .package-section{background:#f5efe2}.package-grid{display:grid;grid-template-columns:1.35fr .75fr;gap:36px;align-items:center}.package-grid .lead{margin-top:18px}.muted{margin-top:16px;color:var(--muted)}.package-card{padding:30px;background:var(--green-950);color:white}.package-card>span{color:#f0c986;font-size:.76rem;font-weight:850;text-transform:uppercase;letter-spacing:.1em}.package-card h3{color:white;margin-top:8px;font-size:1.75rem}.package-card p{margin-top:12px;color:rgba(255,255,255,.72)}.package-card a{display:inline-block;margin-top:22px;font-weight:800;color:#f4d59a}
 @media(max-width:800px){.package-grid{grid-template-columns:1fr}}
 </style>
+
+<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
