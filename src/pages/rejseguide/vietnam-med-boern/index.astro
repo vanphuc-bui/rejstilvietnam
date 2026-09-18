@@ -1,0 +1,117 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+import CommercialCta from '../../../components/CommercialCta.astro';
+
+const toc = [
+  { id:'passer-det', label:'Passer Vietnam til børn?' },
+  { id:'rute', label:'Bedste rute med børn' },
+  { id:'tempo', label:'Tempo og transport' },
+  { id:'mad', label:'Mad med børn' },
+  { id:'hotel', label:'Hotel og pool' },
+  { id:'praktisk', label:'Praktisk med børn' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - Family', href:'https://vietnam.travel/taxonomy/term/46' },
+  { label:'Vietnam Tourism - 7 places for families', href:'https://www.vietnam.travel/things-to-do/vietnam-for-families' },
+  { label:'Vietnam Tourism - family itinerary', href:'https://vietnam.travel/node/426' },
+  { label:'Udenrigsministeriet - Vietnam', href:'https://um.dk/rejse-og-ophold/rejse-til-udlandet/rejsevejledninger/vietnam' },
+];
+
+const faq = [
+  { question:'Er Vietnam godt med børn?', answer:'Ja, især hvis ruten er enkel og der er pauser mellem de store rejsedage. Hoi An, Da Nang og Phu Quoc er lette steder at kombinere oplevelser med pool og strand.' },
+  { question:'Hvor mange stop bør man have med børn på 2 uger?', answer:'Vi ville normalt holde os til 3-4 baser. Færre hotelskift giver mere ferie og mindre tid med pakning og transport.' },
+  { question:'Er Hanoi for kaotisk med små børn?', answer:'Hanoi kan føles intenst på grund af trafikken, men et centralt hotel, korte gåture og Grab/taxi mellem områder gør byen lettere. Planlæg højst én større aktivitet ad gangen.' },
+];
+---
+<EditorialArticle
+  title="Rejser til Vietnam med børn 2026 | Rute, hotel og praktiske råd"
+  description="Vietnam med børn: forslag til familievenlig rute, tempo, hoteller, mad, transport og praktiske råd til en ferie med færre stressende rejsedage."
+  eyebrow="Vietnam med børn"
+  heading="Rejser til Vietnam med børn: gør ruten enklere end du tror"
+  intro="Vietnam fungerer rigtig godt som familieferie, men ikke hvis hver anden dag er en transportdag. Vores vigtigste råd er at vælge færre baser, bo centralt og blande storby og kultur med dage, hvor pool eller strand er selve planen."
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://images.unsplash.com/photo-1767990495534-3ccd2805a953?auto=format&fit=crop&w=1800&q=86',
+    alt:'Barn på en dekoreret gade i Hanoi',
+    caption:'Med børn er den bedste Vietnam-rute sjældent den med flest stop. Luft i planen gør oplevelsen bedre for hele familien.',
+    credit:'Bernd Dittrich / Unsplash',
+    creditUrl:'https://unsplash.com/photos/a-child-walks-down-a-decorated-street-with-umbrellas-PT0uXyPsrpw',
+    ratio:'16 / 7'
+  }}
+  video={{
+    youtubeId:'NgvC-Frin1Y',
+    title:'Live Fully in Vietnam - officiel Vietnam Tourism-video',
+    heading:'Vietnam som familieferie i billeder',
+    intro:'Den officielle turistvideo viser blandingen af strand, natur og oplevelser, som gør landet let at bygge en familieferie omkring.',
+    caption:'Officiel video fra Vietnam Tourism.'
+  }}
+  related={[
+    {href:'/rejseplaner/vietnam-2-uger/',title:'Vietnam på 2 uger',text:'Brug ruten som udgangspunkt og fjern et stop, hvis børnene er små.'},
+    {href:'/destinationer/hoi-an/',title:'Hoi An',text:'En af de nemmeste baser til familieferie med cykler, strand og roligt tempo.'},
+    {href:'/destinationer/phu-quoc/',title:'Phu Quoc',text:'God afslutning, hvis pool og strand skal fylde de sidste dage.'}
+  ]}
+>
+  <h2 id="passer-det">Passer Vietnam til en rejse med børn?</h2>
+  <p>Ja. Det, der gør Vietnam familievenligt, er ikke kun attraktioner “for børn”. Det er kombinationen af korte indenrigsfly, mange hoteller med pool, billig lokal transport, stranddestinationer og mad, hvor det næsten altid er muligt at finde noget enkelt.</p>
+  <p>Vietnam Tourism fremhæver selv blandt andet Da Nang, Phu Quoc, Hanoi, Hoi An, Ha Long Bay og Mai Chau som familievenlige oplevelser. Vi ville dog ikke forsøge at nå dem alle på samme rejse.</p>
+  <div class="callout"><strong>Den vigtigste forskel fra en voksenrute:</strong> Planlæg færre skift og flere “ingenting-dage”. En pooldag midt i rejsen er ikke spildtid; den kan være grunden til, at resten af turen fungerer.</div>
+
+  <h2 id="rute">En enkel 14-dages rute med børn</h2>
+  <PracticalTable
+    title="Et familievenligt udgangspunkt"
+    intro="Ruten har færre stop end vores almindelige førstegangsplan."
+    columns={[{key:'days',label:'Dage'},{key:'place',label:'Base'},{key:'why',label:'Hvorfor'}]}
+    rows={[
+      {days:'1-4',place:'Hanoi',why:'Jetlag, Old Quarter, mad og én rolig udflugt'},
+      {days:'5-9',place:'Hoi An / Da Nang',why:'Pool, strand, cykler og korte aktiviteter'},
+      {days:'10-14',place:'Phu Quoc eller HCMC + strand',why:'Slut rejsen i lavere tempo'},
+    ]}
+  />
+  <p>Hvis børnene er større og vant til at rejse, kan du tilføje Ninh Binh eller en nat på Ha Long Bay. Med små børn ville vi hellere have en ekstra nat samme sted.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoi%20An%20lanterns.jpg?width=1500" alt="Lanterner i Hoi An" caption="Hoi An er nem at bruge som base, fordi kultur, mad, cykelture og strand ligger relativt tæt på hinanden." ratio="16 / 9" />
+
+  <h2 id="tempo">Tempo og transport: her vindes eller tabes ferien</h2>
+  <p>På en voksenrejse kan et nattog eller en lang bus være en oplevelse. Med små børn kan den samme transport være det, alle husker af de forkerte grunde. Vi ville derfor betale lidt mere for at forkorte de længste stræk.</p>
+  <ul>
+    <li><strong>I byerne:</strong> Brug Grab eller officiel taxi, når gåturen bliver for lang eller trafikken for intens.</li>
+    <li><strong>Mellem nord og midt:</strong> Fly er ofte den letteste løsning for en familie.</li>
+    <li><strong>Mellem Da Nang og Hoi An:</strong> Privat transfer eller taxi er enkelt og kort.</li>
+    <li><strong>Ha Long Bay:</strong> Vælg kun cruise, hvis kahyt, transfer og måltider passer til børnenes alder og rutine.</li>
+  </ul>
+  <p>Undgå at lægge en stor tur morgenen efter en sen indenrigsflyvning. Det er fristende på papiret, men giver meget lidt buffer.</p>
+
+  <h2 id="mad">Mad med børn</h2>
+  <p>Du behøver ikke planlægge restauranter til hvert måltid. Phở, cơm, nudler, ris, grillet kød, frisk frugt og simple æggeretter gør det relativt let at finde noget, der ikke er stærkt.</p>
+  <p>Hvis et barn er forsigtigt med ny mad, så bestil én kendt ret sammen med noget nyt til deling. På den måde bliver hvert måltid ikke en forhandling.</p>
+  <div class="notice"><strong>Street food:</strong> Vi ville vælge steder med høj omsætning, hvor maden tilberedes varm, frem for en tom bod kun fordi den ser billigere ud.</div>
+  <p>Læs også vores <a href="/destinationer/hanoi/mad-i-hanoi/">madguide til Hanoi</a>, hvis I starter i nord.</p>
+
+  <h2 id="hotel">Hotel: beliggenhed slår en ekstra stjerne</h2>
+  <p>Med børn ville vi prioritere <strong>central beliggenhed, pool, god morgenmad og familieværelse</strong> over et større resort langt væk fra alt. Hvis du skal bruge taxi frem og tilbage tre gange om dagen, bliver et “billigt” hotel hurtigt upraktisk.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20Quoc%20Beach.jpg?width=1500" alt="Strand på Phu Quoc" caption="Phu Quoc fungerer godt som afslutning på en familieferie, fordi dagsprogrammet kan være så enkelt som strand, pool og tidlig middag." ratio="16 / 9" />
+  <CommercialCta
+    eyebrow="Hotelvalg"
+    title="Vælg område før hotel"
+    text="Start med at finde den del af byen eller øen, der passer til jeres tempo. Derefter bliver det langt lettere at sammenligne hoteller."
+    primaryHref="/bedste-hoteller/"
+    primaryLabel="Se hotelguides →"
+    secondaryHref="/destinationer/"
+    secondaryLabel="Se rejsemål"
+  />
+
+  <h2 id="praktisk">Praktiske ting vi ville have styr på</h2>
+  <ul>
+    <li>Alle børn skal have deres eget gyldige rejsedokument efter de regler, der gælder for jeres situation.</li>
+    <li>Tjek visum- og pasregler tæt på afrejse; regler kan ændre sig.</li>
+    <li>Tag almindelig medicin, plaster, solbeskyttelse og eventuel receptmedicin med hjemmefra.</li>
+    <li>Book transport fra lufthavnen på forhånd, hvis I lander sent.</li>
+    <li>Planlæg udendørs aktiviteter tidligt på dagen i varme perioder.</li>
+    <li>Hav snacks og vand til længere transfers, også selv om der er planlagte stop.</li>
+  </ul>
+  <p>Hvis du er i tvivl om vaccinationer eller særlige sundhedsforhold for et barn, så brug egen læge eller en rejsemedicinsk klinik. Rådene afhænger af alder, rute og rejselængde.</p>
+</EditorialArticle>
