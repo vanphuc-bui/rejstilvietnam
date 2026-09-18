@@ -1,0 +1,261 @@
+[
+  {
+    "id": "first-trip-planner",
+    "name": "Førstegangsrejsende",
+    "device": "mobile",
+    "intent": "Få overblik over den første Vietnamrejse",
+    "entry": "/",
+    "outcomes": [
+      { "type": "route", "value": "/rejseguide/rejser-til-vietnam-2026/", "maxHops": 2, "required": true },
+      { "type": "route", "value": "/book-rejsen/", "maxHops": 2, "required": true }
+    ]
+  },
+  {
+    "id": "ten-day-planner",
+    "name": "10-dages rejsende",
+    "device": "mobile",
+    "intent": "Find en realistisk rute på 10 dage",
+    "entry": "/rejseplaner/",
+    "outcomes": [
+      { "type": "route", "value": "/rejseplaner/vietnam-10-dage/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/book-rejsen/", "maxHops": 2, "required": true }
+    ]
+  },
+  {
+    "id": "two-week-planner",
+    "name": "To-ugers rejsende",
+    "device": "desktop",
+    "intent": "Sammenlign stop på en to-ugers rejse",
+    "entry": "/rejseplaner/",
+    "outcomes": [
+      { "type": "route", "value": "/rejseplaner/vietnam-2-uger/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/hanoi/", "maxHops": 2, "required": true }
+    ]
+  },
+  {
+    "id": "three-week-planner",
+    "name": "Tre-ugers rejsende",
+    "device": "desktop",
+    "intent": "Planlæg en længere rundrejse",
+    "entry": "/rejseplaner/",
+    "outcomes": [
+      { "type": "route", "value": "/rejseplaner/vietnam-3-uger/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/book-rejsen/", "maxHops": 2, "required": true }
+    ]
+  },
+  {
+    "id": "family-traveller",
+    "name": "Familie med børn",
+    "device": "mobile",
+    "intent": "Vurdér tempo, transport og familievenlige valg",
+    "entry": "/rejseguide/",
+    "outcomes": [
+      { "type": "route", "value": "/rejseguide/vietnam-med-boern/", "maxHops": 1, "required": true }
+    ]
+  },
+  {
+    "id": "visa-checker",
+    "name": "Visum-tjekker",
+    "device": "mobile",
+    "intent": "Find visumoplysninger og officielle kilder",
+    "entry": "/rejseguide/visum/",
+    "outcomes": [
+      { "type": "external-domain", "value": "evisa.gov.vn", "maxHops": 0, "required": false }
+    ]
+  },
+  {
+    "id": "budget-traveller",
+    "name": "Prisbevidst rejsende",
+    "device": "mobile",
+    "intent": "Forstå priser og hvordan turen gøres billigere",
+    "entry": "/rejseguide/billige-rejser-til-vietnam/",
+    "outcomes": [
+      { "type": "route", "value": "/rejseguide/penge-og-priser/", "maxHops": 2, "required": true },
+      { "type": "route", "value": "/book-rejsen/", "maxHops": 2, "required": true }
+    ]
+  },
+  {
+    "id": "esim-buyer",
+    "name": "eSIM-køber",
+    "device": "mobile",
+    "intent": "Vælg dataforbindelse før afrejse",
+    "entry": "/rejseguide/esim-vietnam/",
+    "outcomes": [
+      { "type": "route", "value": "/book-rejsen/", "maxHops": 2, "required": false }
+    ]
+  },
+  {
+    "id": "weather-planner",
+    "name": "Vejr-planlægger",
+    "device": "desktop",
+    "intent": "Vælg den bedste rejsetid",
+    "entry": "/rejseguide/bedste-rejsetid/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/", "maxHops": 2, "required": true }
+    ]
+  },
+  {
+    "id": "safety-checker",
+    "name": "Sikkerhedsorienteret rejsende",
+    "device": "mobile",
+    "intent": "Find opdaterede rejseråd",
+    "entry": "/rejseguide/vietnam-rejsevejledning/",
+    "outcomes": [
+      { "type": "external-domain", "value": "um.dk", "maxHops": 0, "required": false }
+    ]
+  },
+  {
+    "id": "hanoi-first-timer",
+    "name": "Førstegangsbesøgende i Hanoi",
+    "device": "mobile",
+    "intent": "Vælg oplevelser og en enkel dagsplan",
+    "entry": "/destinationer/hanoi/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/hanoi/sevaerdigheder/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/hanoi/3-dage-i-hanoi/", "maxHops": 1, "required": true }
+    ]
+  },
+  {
+    "id": "hanoi-hotel-shopper",
+    "name": "Hotelkøber i Hanoi",
+    "device": "desktop",
+    "intent": "Vælg område, shortlist og se aktuelle priser",
+    "entry": "/destinationer/hanoi/hvor-skal-man-bo/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/hanoi/bedste-hoteller/", "maxHops": 1, "required": true },
+      { "type": "external-domain", "value": "booking.com", "maxHops": 1, "required": false }
+    ]
+  },
+  {
+    "id": "hanoi-food-lover",
+    "name": "Madinteresseret i Hanoi",
+    "device": "mobile",
+    "intent": "Find retter og eventuelt en food tour",
+    "entry": "/destinationer/hanoi/mad-i-hanoi/",
+    "outcomes": [
+      { "type": "external-domain", "value": "getyourguide.com", "maxHops": 0, "required": false },
+      { "type": "route", "value": "/destinationer/hanoi/3-dage-i-hanoi/", "maxHops": 1, "required": true }
+    ]
+  },
+  {
+    "id": "hanoi-airport-arrival",
+    "name": "Sen ankomst til Hanoi",
+    "device": "mobile",
+    "intent": "Find transport fra lufthavnen til centrum",
+    "entry": "/destinationer/hanoi/lufthavn-til-centrum/",
+    "outcomes": [
+      { "type": "external-domain", "value": "getyourguide.com", "maxHops": 0, "required": false },
+      { "type": "route", "value": "/destinationer/hanoi/hvor-skal-man-bo/", "maxHops": 1, "required": true }
+    ]
+  },
+  {
+    "id": "halong-researcher",
+    "name": "Ha Long Bay-rejsende",
+    "device": "desktop",
+    "intent": "Sammenlign dagstur med cruise",
+    "entry": "/destinationer/hanoi/ha-long-bay-fra-hanoi/",
+    "outcomes": [
+      { "type": "route", "value": "/ture/halong-bay-cruise/", "maxHops": 2, "required": true },
+      { "type": "external-domain", "value": "getyourguide.com", "maxHops": 1, "required": false }
+    ]
+  },
+  {
+    "id": "ninh-binh-day-tripper",
+    "name": "Ninh Binh-dagsturist",
+    "device": "mobile",
+    "intent": "Vælg dagstur eller overnatning",
+    "entry": "/destinationer/hanoi/ninh-binh-fra-hanoi/",
+    "outcomes": [
+      { "type": "route", "value": "/ture/ninh-binh-fra-hanoi/", "maxHops": 2, "required": true },
+      { "type": "external-domain", "value": "getyourguide.com", "maxHops": 1, "required": false }
+    ]
+  },
+  {
+    "id": "hoi-an-first-timer",
+    "name": "Førstegangsbesøgende i Hoi An",
+    "device": "mobile",
+    "intent": "Find de vigtigste oplevelser og en tre-dages plan",
+    "entry": "/destinationer/hoi-an/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/hoi-an/sevaerdigheder/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/hoi-an/3-dage-i-hoi-an/", "maxHops": 1, "required": true }
+    ]
+  },
+  {
+    "id": "hoi-an-food-lover",
+    "name": "Madinteresseret i Hoi An",
+    "device": "desktop",
+    "intent": "Find lokale retter og en cooking class",
+    "entry": "/destinationer/hoi-an/mad-i-hoi-an/",
+    "outcomes": [
+      { "type": "external-domain", "value": "getyourguide.com", "maxHops": 0, "required": false }
+    ]
+  },
+  {
+    "id": "danang-city-break",
+    "name": "Da Nang city-break",
+    "device": "mobile",
+    "intent": "Kombinér by, strand og seværdigheder",
+    "entry": "/destinationer/da-nang/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/da-nang/3-dage-i-da-nang/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/da-nang/bedste-strande/", "maxHops": 1, "required": true }
+    ]
+  },
+  {
+    "id": "bana-hills-buyer",
+    "name": "Ba Na Hills-besøgende",
+    "device": "desktop",
+    "intent": "Vurdér om turen er pengene værd og se bookingmulighed",
+    "entry": "/destinationer/da-nang/ba-na-hills/",
+    "outcomes": [
+      { "type": "external-domain", "value": "getyourguide.com", "maxHops": 0, "required": false }
+    ]
+  },
+  {
+    "id": "hcmc-first-timer",
+    "name": "Førstegangsbesøgende i Ho Chi Minh City",
+    "device": "mobile",
+    "intent": "Find oplevelser og en tre-dages plan",
+    "entry": "/destinationer/ho-chi-minh-city/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/ho-chi-minh-city/sevaerdigheder/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/ho-chi-minh-city/3-dage-i-ho-chi-minh-city/", "maxHops": 1, "required": true }
+    ]
+  },
+  {
+    "id": "hcmc-excursion-shopper",
+    "name": "Udflugtskøber fra Ho Chi Minh City",
+    "device": "desktop",
+    "intent": "Sammenlign Cu Chi og Mekong Delta",
+    "entry": "/destinationer/ho-chi-minh-city/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/ho-chi-minh-city/cu-chi-tunneler-fra-ho-chi-minh-city/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/ho-chi-minh-city/mekong-delta-fra-ho-chi-minh-city/", "maxHops": 1, "required": true },
+      { "type": "external-domain", "value": "getyourguide.com", "maxHops": 1, "required": false }
+    ]
+  },
+  {
+    "id": "phu-quoc-beach-traveller",
+    "name": "Strandrejsende på Phu Quoc",
+    "device": "mobile",
+    "intent": "Vælg strand, område og hotel",
+    "entry": "/destinationer/phu-quoc/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/phu-quoc/bedste-strande/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/phu-quoc/bedste-hoteller/", "maxHops": 1, "required": true }
+    ]
+  },
+  {
+    "id": "nha-trang-water-traveller",
+    "name": "Vandaktiv rejsende i Nha Trang",
+    "device": "desktop",
+    "intent": "Sammenlign øture, snorkling og dykning",
+    "entry": "/destinationer/nha-trang/",
+    "outcomes": [
+      { "type": "route", "value": "/destinationer/nha-trang/o-ture-og-snorkling/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/nha-trang/vandsport-og-dykning/", "maxHops": 1, "required": true },
+      { "type": "external-domain", "value": "getyourguide.com", "maxHops": 1, "required": false }
+    ]
+  }
+]
