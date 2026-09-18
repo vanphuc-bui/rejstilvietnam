@@ -44,8 +44,8 @@ const galleryItems = items.map((item) => ({
     <div class="gallery-grid" id={`${galleryId}-grid`}>
       {items.map((item, index) => (
         <button class={`gallery-tile ${index === 0 ? 'gallery-tile--lead' : ''}`} type="button" data-gallery-index={index} aria-label={`Åbn billede ${index + 1}: ${item.alt ?? ''}`}>
-          <span class="gallery-fallback">Billede midlertidigt utilgængeligt</span>
-          <img src={item.src} alt={item.alt ?? ''} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'" />
+          <span class="gallery-fallback">Vietnam</span>
+          <img src={item.src} alt={item.alt ?? ''} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="window.__rtvImageFallback?.(this)" />
           <span class="gallery-overlay">
             <b>{item.label ?? item.alt ?? `Billede ${index + 1}`}</b>
             <small>Se større ↗</small>
