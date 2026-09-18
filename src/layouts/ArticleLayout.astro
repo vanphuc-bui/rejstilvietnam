@@ -130,13 +130,18 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
     </div>
   )}
 
-  <section class="section section--tight">
+  <section class="section section--tight article-content">
     <div class="container article-shell">
       {toc.length > 0 && (
         <nav class="mobile-toc card" aria-label="Indholdsfortegnelse">
           {hubHref && <a class="mobile-hub-back" href={hubHref}>← {hubLabel}</a>}
-          <p class="sidebar-label">På denne side</p>
-          <div class="toc">{toc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}</div>
+          <details class="mobile-toc-details">
+            <summary>
+              <span>På denne side</span>
+              <span class="toc-toggle" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="toc">{toc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}</div>
+          </details>
         </nav>
       )}
 
@@ -192,11 +197,58 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
 .mobile-toc .mobile-hub-back { display: inline-block; margin-bottom: 16px; }
 @media (max-width: 900px) {
   :global(.article-shell) { gap:26px; }
-  .mobile-toc { display: block; overflow:hidden; }
-  .mobile-toc .toc { display:flex; gap:8px; overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:x proximity; padding-bottom:4px; scrollbar-width:none; }
-  .mobile-toc .toc::-webkit-scrollbar { display:none; }
-  .mobile-toc .toc a { flex:0 0 auto; scroll-snap-align:start; padding:8px 11px; border:1px solid var(--border); border-radius:999px; background:#fffdf8; white-space:nowrap; font-size:.82rem; }
-  .article-sidebar .toc, .article-sidebar > .sidebar-label, .article-sidebar .hub-back { display: none; }
+  .mobile-toc { display:block; }
+  .mobile-toc-details summary {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    min-height:44px;
+    color:var(--green-950);
+    font-size:.78rem;
+    font-weight:850;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    cursor:pointer;
+    list-style:none;
+  }
+  .mobile-toc-details summary::-webkit-details-marker { display:none; }
+  .toc-toggle {
+    display:grid;
+    place-items:center;
+    width:30px;
+    height:30px;
+    flex:0 0 30px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background:#fffdf8;
+    color:var(--green-700);
+    font-size:1.05rem;
+    line-height:1;
+    transition:transform .2s ease;
+  }
+  .mobile-toc-details[open] .toc-toggle { transform:rotate(180deg); }
+  .mobile-toc-details .toc {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    padding-top:10px;
+  }
+  .mobile-toc-details .toc a {
+    display:flex;
+    align-items:center;
+    min-width:0;
+    min-height:42px;
+    padding:9px 11px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:#fffdf8;
+    color:#405048;
+    font-size:.79rem;
+    line-height:1.25;
+    overflow-wrap:anywhere;
+  }
+  .article-sidebar .toc, .article-sidebar > .sidebar-label, .article-sidebar .hub-back { display:none; }
   .sidebar-sources a { overflow-wrap:anywhere; }
   .article-sidebar:not(:has(.sidebar-sources)) { display:none; }
 }
@@ -207,9 +259,15 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
   .quick-answer p { font-size:.98rem; line-height:1.55; }
   .article-meta { gap:8px 12px; font-size:.8rem; }
   .article-hero-media { margin-top:0; }
-  .article-hero-media :global(.media-frame) { aspect-ratio: 16 / 10; border-radius:18px; }
-  .mobile-toc { padding:15px; margin-bottom:6px; }
-  .mobile-toc .mobile-hub-back { margin-bottom:12px; }
-  .mobile-toc .sidebar-label { margin-bottom:8px; }
+  .article-hero-media :global(.media-frame) { aspect-ratio:16 / 10; border-radius:18px; }
+  .article-content { padding:34px 0 52px; }
+  .mobile-toc { padding:14px 15px; margin-bottom:0; }
+  .mobile-toc .mobile-hub-back {
+    display:inline-block;
+    margin-bottom:8px;
+    font-size:.82rem;
+  }
+  .mobile-toc-details .toc { grid-template-columns:1fr; }
+  .mobile-toc-details .toc a { min-height:40px; }
 }
 </style>
