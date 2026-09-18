@@ -2,6 +2,7 @@
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
+import { hubVisuals } from '../../../data/hubVisuals.js';
 
 const toc = [
   { id: 'ruten', label: 'Ruten i korte træk' },
@@ -14,6 +15,7 @@ const toc = [
 ];
 ---
 <ArticleLayout title="Vietnam på 2 uger | Rejseplan fra nord til syd 2026" description="Forslag til 14 dage i Vietnam med Hanoi, Ninh Binh, Ha Long Bay, Hoi An og Ho Chi Minh City. En realistisk og visuelt forklaret rute til første rejse." eyebrow="Rejseplan" heading="Vietnam på 2 uger: den rute vi ville vælge første gang" intro="To uger er nok til nord, midt og syd, men kun hvis du accepterer, at noget skal vælges fra. Vi ville hellere have fem gode stop end at flytte hotel hver anden dag." toc={toc}>
+  <SectionMedia slot="heroMedia" {...hubVisuals.twoWeeksHero} loading="eager" fetchpriority="high" />
 
   <h2 id="ruten">Ruten i korte træk</h2>
   <div class="fact-grid"><div class="fact"><span>Varighed</span><b>14 dage</b></div><div class="fact"><span>Tempo</span><b>Mellem</b></div><div class="fact"><span>Indenrigsfly</span><b>2 strækninger</b></div></div>
