@@ -4,6 +4,7 @@ import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import FoodGrid from '../../../components/FoodGrid.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
+import AffiliateActivityGrid from '../../../components/AffiliateActivityGrid.astro';
 
 const toc = [
   { id: 'overblik', label: 'Byen i korte træk' },
@@ -57,6 +58,32 @@ const food = [
   <h2 id="dagsture">Mekong eller Cu Chi?</h2>
   <p>Har du kun én ekstra dag, så vælg efter interesse. <strong>Cu Chi</strong> giver mere krigs- og historieperspektiv. <strong>Mekong</strong> giver flodliv og et roligere landskab end storbyen.</p>
   <p>Vi ville ikke forsøge at presse begge dele ind i samme dag, medmindre du bevidst ønsker en lang, organiseret dag. Især Mekong-ture varierer meget i kvalitet, så læs den konkrete rute og de seneste anmeldelser.</p>
+  <AffiliateActivityGrid
+    title="Cu Chi eller Mekong? Se de bookbare muligheder"
+    intro="Vælg én retning efter interesse. Kortene linker direkte til de GetYourGuide-søgninger, vi har valgt til denne guide."
+    items={[
+      {
+        title:'Cu Chi-tunnelerne fra Ho Chi Minh City',
+        text:'God hvis du vil have transport og historisk kontekst samlet. Sammenlign Ben Dinh/Ben Duoc, gruppestørrelse og faktisk tid ved tunnelerne.',
+        href:'https://gyg.me/MRjWVwG3',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Cu%20Chi%20Tunnel%20Vietnam%20%2838647687955%29.jpg?width=1200',
+        alt:'Indgang ved Cu Chi-tunnelerne nær Ho Chi Minh City',
+        badge:'Historie',
+        highlights:['Halv- eller heldag','Guide','Transport','Flere ruter'],
+        cta:'Se Cu Chi-ture',
+      },
+      {
+        title:'Mekongdeltaet fra Ho Chi Minh City',
+        text:'Bedst hvis du vil ud af storbyen og opleve flodlandskab. Se især efter bådtid, gruppestørrelse og hvor mange salgsstop turen har.',
+        href:'https://gyg.me/s0aFRCaH',
+        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Vietnam%2C%20Phong%20Dien%2C%20Mekong%20Delta.jpg?width=1200',
+        alt:'Båd på en kanal i Mekongdeltaet',
+        badge:'Flod & landskab',
+        highlights:['Heldag','Bådtur','Ben Tre / My Tho','Pickup muligt'],
+        cta:'Se Mekong-ture',
+      },
+    ]}
+  />
 
   <h2 id="ankomst">Ankommer du til Tan Son Nhat (SGN)?</h2>
   <p>Udenrigsministeriet oplyser, at danske statsborgere fra 15. april 2026 skal udfylde en digital <strong>Pre-arrival Information (PAI)</strong>-formular tre dage før ankomst til SGN og gemme den modtagne QR-kode.</p>
