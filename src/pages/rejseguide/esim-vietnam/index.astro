@@ -1,4 +1,5 @@
 ---
+import GuideCover from '../../../components/GuideCover.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 const providers = [
@@ -9,6 +10,7 @@ const providers = [
 ---
 <BaseLayout title="eSIM i Vietnam 2026 | Airalo, Holafly eller Nomad? | RejsTilVietnam.dk" description="Guide til eSIM i Vietnam for danskere: sammenlign Airalo, Holafly og Nomad, se hvor meget data du behøver og hvordan du installerer eSIM før rejsen.">
   <section class="esim-hero"><div class="container hero-grid"><div><p class="eyebrow">eSIM i Vietnam</p><h1>Internet fra du lander.</h1><p class="lead">Et eSIM er den nemmeste løsning for de fleste, hvis telefonen understøtter det. Køb hjemmefra, installer på Wi-Fi og aktiver data, når du ankommer.</p><div class="hero-actions"><a class="btn btn--primary" href="#sammenlign">Sammenlign eSIM →</a><a class="btn btn--outline" href="#saadan">Se opsætning</a></div></div><div class="phone-card"><div class="phone-top"><span>VIETNAM</span><i>5G</i></div><div class="signal">▂▄▆█</div><b>eSIM aktiv</b><p>Maps · Grab · beskeder · booking</p><small>Behold dit danske SIM til SMS, hvis telefonen understøtter dual SIM.</small></div></div></section>
+<div class="container guide-cover-wrap"><GuideCover destination="Vietnam" title="eSIM og internet i Vietnam" eyebrow="Praktisk guide" /></div>
 
   <section class="section section--tight"><div class="container answer-grid"><div><span>7-10 dage</span><b>5-10 GB er ofte rigeligt</b><p>Maps, Grab, chat og normal browsing.</p></div><div><span>2-3 uger</span><b>10-20 GB eller unlimited</b><p>Hvis du også streamer og uploader billeder/video.</p></div><div><span>Vores råd</span><b>Køb ikke kun på “unlimited”</b><p>Tjek netværk, hotspot og fair-use først.</p></div></div></section>
 
@@ -26,3 +28,5 @@ const providers = [
 @media(max-width:850px){.hero-grid,.setup-grid{grid-template-columns:1fr}.phone-card{justify-self:start}.provider-grid,.answer-grid{grid-template-columns:1fr}.local-sim{align-items:flex-start;flex-direction:column}}
 @media(max-width:600px){.hero-actions{flex-direction:column}.phone-card{max-width:100%}}
 </style>
+
+<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
