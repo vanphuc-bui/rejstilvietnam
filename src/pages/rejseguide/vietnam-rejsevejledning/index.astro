@@ -1,0 +1,104 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id: 'status', label: 'Aktuel rejsevejledning' },
+  { id: 'indrejse', label: 'Indrejse og visum' },
+  { id: 'sikkerhed', label: 'Sikkerhed i hverdagen' },
+  { id: 'trafik', label: 'Trafik og transport' },
+  { id: 'sundhed', label: 'Sundhed og forsikring' },
+  { id: 'checkliste', label: 'Checkliste før afrejse' },
+];
+
+const sources = [
+  { label: 'Udenrigsministeriet - Vietnam', href: 'https://um.dk/rejse-og-ophold/rejse-til-udlandet/rejsevejledninger/vietnam' },
+  { label: 'Vietnams ambassade i København - visumfritagelse', href: 'https://vnembassy-copenhagen.mofa.gov.vn/web/guest/tin-chi-tiet/chi-tiet/viet-nam-39-s-visa-exemption-list-57163-172.html' },
+  { label: 'Vietnam e-visa - officiel portal', href: 'https://evisa.gov.vn/' },
+  { label: 'Vietnam Tourism - officiel turistinformation', href: 'https://vietnam.travel/' },
+];
+
+const faq = [
+  { question: 'Er Vietnam sikkert at rejse i som dansker?', answer: 'Udenrigsministeriet skriver, at de fleste danskere ikke har problemer under besøg i Vietnam. De fremhæver især lomme- og tasketyveri samt trafikulykker som noget, man bør være opmærksom på.' },
+  { question: 'Skal danskere have visum til Vietnam i 2026?', answer: 'Danske statsborgere med almindeligt pas er omfattet af Vietnams ensidige visumfritagelse i op til 45 dage, når indrejsebetingelserne er opfyldt. Ordningen er oplyst til at gælde til 14. marts 2028.' },
+  { question: 'Hvor længe skal passet være gyldigt?', answer: 'Den vietnamesiske ambassade oplyser, at passet skal være gyldigt i mindst seks måneder fra indrejsedatoen for at bruge den aktuelle visumfritagelse.' },
+];
+---
+<EditorialArticle
+  title="Vietnam rejsevejledning 2026 | Sikkerhed, visum og indrejse"
+  description="Aktuel Vietnam rejsevejledning for danskere: sikkerhed, visumfri indrejse, pas, trafik, sundhed, forsikring og en praktisk checkliste før afrejse."
+  eyebrow="Rejsevejledning · 2026"
+  heading="Vietnam rejsevejledning: det vigtigste før du tager afsted"
+  intro="For de fleste danske rejsende er Vietnam et ukompliceret rejsemål, men der er nogle få ting, der er værd at få helt på plads: indrejse, pas, trafik, tyveri og rejseforsikring. Her samler vi de vigtigste punkter og linker videre til de officielle kilder."
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1800&q=86',
+    alt:'Grønt vietnamesisk landskab med kalkstensbjerge',
+    caption:'Brug denne side som startpunkt, men tjek altid de officielle kilder igen kort før afrejse.',
+    ratio:'16 / 7'
+  }}
+  video={{
+    youtubeId:'NgvC-Frin1Y',
+    title:'Live Fully in Vietnam - officiel Vietnam Tourism-video',
+    heading:'Et visuelt overblik over Vietnam',
+    intro:'Den officielle turistvideo er fin som inspiration. Regler om indrejse og sikkerhed bør du derimod altid kontrollere hos myndighederne.',
+    caption:'Video fra Vietnam Tourism. Praktiske regler kan ændre sig, selv om destinationerne består.'
+  }}
+  related={[
+    { href:'/rejseguide/visum/', title:'Visum til Vietnam for danskere', text:'Se indrejsekravene i mere detalje.' },
+    { href:'/rejseguide/bedste-rejsetid/', title:'Bedste rejsetid til Vietnam', text:'Match ruten med vejret i nord, midt og syd.' },
+    { href:'/rejseguide/rejser-til-vietnam-2026/', title:'Rejser til Vietnam 2026', text:'Byg hele rejsen fra rute til booking.' }
+  ]}
+>
+  <h2 id="status">Aktuel rejsevejledning i korte træk</h2>
+  <p>Udenrigsministeriets rejsevejledning for Vietnam angiver i øjeblikket kategorien <strong>“vær opmærksom” for hele landet</strong>. Det betyder ikke, at du bør undgå Vietnam. Ministeriet skriver samtidig, at de fleste danskere ikke oplever problemer under deres besøg.</p>
+  <p>De mest konkrete hverdagsrisici er langt mere jordnære end dramatiske: <strong>lomme- og tasketyveri, mobiltyveri fra forbikørende motorcykler og trafikulykker</strong>, især i de større byer.</p>
+  <div class="notice"><strong>Vigtigt:</strong> Rejsevejledninger kan ændre sig hurtigt. Brug denne guide som forklaring, men tjek Udenrigsministeriets side igen lige før afrejse og under rejsen, hvis situationen ændrer sig.</div>
+
+  <h2 id="indrejse">Indrejse og visum for danskere</h2>
+  <p>Danmark er med i Vietnams nuværende ensidige visumfritagelse. Ifølge Vietnams ambassade i København kan danske statsborgere rejse ind uden visum i <strong>op til 45 dage</strong>, hvis indrejsebetingelserne er opfyldt. Ordningen er oplyst til at løbe fra 15. marts 2025 til 14. marts 2028.</p>
+  <p>Passet skal være gyldigt i mindst <strong>seks måneder fra indrejsedatoen</strong>. Hvis du planlægger et længere ophold end 45 dage, er den officielle e-visa-portal stedet at starte. Vietnam oplyser også om e-visa med længere gyldighed for rejsende, der har behov for det.</p>
+  <div class="callout"><strong>Vores råd:</strong> Tag et screenshot og en offline kopi af pasets fotoside, rejseforsikringen og de vigtigste bookinger. Opbevar dem et andet sted end selve passet.</div>
+
+  <h2 id="sikkerhed">Sikkerhed i hverdagen</h2>
+  <p>Du behøver ikke gå rundt og være nervøs, men storbyvaner gør en forskel. I Hanoi og Ho Chi Minh City ville vi undgå at stå helt ude ved kørebanen med telefonen løst i hånden. En lille crossbody-taske, der kan lukkes, er mere praktisk end en åben tote bag.</p>
+  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Nguyen%20Hue%20Street.jpg?width=1500" alt="Byliv på Nguyen Hue i Ho Chi Minh City" caption="De mest almindelige problemer for turister er småtyveri og trafik, ikke at byen generelt er utryg." ratio="16 / 9" />
+  <ul>
+    <li>Brug hotellets safe til pas og større kontantbeløb, når det giver mening.</li>
+    <li>Hav ikke alle betalingskort i samme pung.</li>
+    <li>Bestil helst transport gennem kendte apps eller hotellet frem for at diskutere pris på gaden sent om aftenen.</li>
+    <li>Hold øje med tasken på markeder, stationer og andre steder med mange mennesker.</li>
+  </ul>
+
+  <h2 id="trafik">Trafik og transport</h2>
+  <p>Trafikken er sandsynligvis det, der føles mest fremmed for en førstegangsrejsende. Der er mange motorcykler, og færdselsmønstret er mindre intuitivt end i Danmark. Vær ekstra forsigtig, når du krydser veje, og regn ikke med, at et fodgængerfelt fungerer på samme måde som hjemme.</p>
+  <PracticalTable
+    title="Sådan ville vi bevæge os rundt"
+    intro="Det sikreste og nemmeste valg afhænger af strækningen."
+    columns={[{key:'situation',label:'Situation'},{key:'choice',label:'Vores valg'},{key:'why',label:'Hvorfor'}]}
+    rows={[
+      {situation:'Korte byture',choice:'Grab eller officiel taxi',why:'Nem pris og mindre friktion'},
+      {situation:'Mellem større byer',choice:'Fly eller tog',why:'Spar tid eller få en roligere rejsedag'},
+      {situation:'Scooter',choice:'Kun hvis du er erfaren og forsikringen dækker',why:'Trafikken kræver mere end hjemme'},
+    ]}
+  />
+
+  <h2 id="sundhed">Sundhed og rejseforsikring</h2>
+  <p>En god rejseforsikring er ikke stedet, vi ville spare. Tjek især dækning for hospitalsbehandling, hjemtransport og aktiviteter som scooterkørsel, dykning eller trekking, hvis det er relevant for din rejse.</p>
+  <p>Spis gerne street food, men vælg steder med høj omsætning og mad, der bliver lavet varm. Drik flaskevand eller sikkert filtreret vand. Hvis du bruger receptmedicin, så tag nok med hjemmefra og opbevar medicinen i original emballage.</p>
+  <p>For vaccinationer og personlig sundhedsrådgivning bør du bruge egen læge eller en rejsemedicinsk klinik, fordi anbefalinger afhænger af rute, årstid, rejselængde og din egen helbredshistorik.</p>
+
+  <h2 id="checkliste">Checkliste før afrejse</h2>
+  <ol>
+    <li>Tjek at passet har mindst seks måneders gyldighed fra indrejse.</li>
+    <li>Kontroller den aktuelle visumregel for længden af dit ophold.</li>
+    <li>Tjek Udenrigsministeriets rejsevejledning igen.</li>
+    <li>Download Rejseklar og overvej Danskerlisten.</li>
+    <li>Kontroller rejseforsikring og eventuelle aktivitetsbegrænsninger.</li>
+    <li>Tag mindst to betalingskort med.</li>
+    <li>Gem offlinekopier af pas, forsikring og første hotelbooking.</li>
+  </ol>
+</EditorialArticle>
