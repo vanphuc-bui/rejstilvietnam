@@ -261,14 +261,14 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
 }
 @media (max-width: 640px) {
   .article-hero { padding-bottom:22px; }
-  .article-hero h1 { font-size:clamp(2.15rem,10vw,3rem); line-height:1.04; }
+  .article-hero h1 { font-size:clamp(2rem,8.8vw,2.55rem); line-height:1.06; max-width:22ch; text-wrap:balance; }
   .quick-answer { margin-top:18px; padding:15px 16px; border-radius:15px; }
   .quick-answer p { font-size:.98rem; line-height:1.55; }
-  .article-meta { gap:8px 12px; font-size:.8rem; }
+  .article-meta { gap:5px 12px; font-size:.8rem; line-height:1.4; }
   .article-hero-media { margin-top:0; }
-  .article-hero-media :global(.media-frame) { aspect-ratio:16 / 10; border-radius:18px; }
+  .article-hero-media :global(.media-frame) { aspect-ratio:4 / 3 !important; border-radius:18px; }
   .article-content { padding:34px 0 52px; }
-  .mobile-toc { padding:14px 15px; margin-bottom:0; }
+  .mobile-toc { width:100%; min-width:0; padding:14px 15px; margin-bottom:0; overflow:hidden; }
   .mobile-toc .mobile-hub-back {
     display:inline-block;
     margin-bottom:8px;
