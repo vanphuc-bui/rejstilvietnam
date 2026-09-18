@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import HubGrid from '../components/HubGrid.astro';
 import MarineHubHighlights from '../components/MarineHubHighlights.astro';
+import GuideCover from '../components/GuideCover.astro';
 import { hoiAnPages } from '../data/hoiAnCluster.js';
 import { hoChiMinhPages } from '../data/hoChiMinhCluster.js';
 import { phuQuocPages } from '../data/phuQuocCluster.js';
@@ -108,11 +109,17 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
     </div>
   </section>
 
-  {Astro.slots.has('heroMedia') && (
-    <div class="container article-hero-media">
+  <div class="container article-hero-media">
+    {Astro.slots.has('heroMedia') ? (
       <slot name="heroMedia" />
-    </div>
-  )}
+    ) : (
+      <GuideCover
+        destination={destinationSlug ? (destinationNames[destinationSlug] ?? 'Vietnam') : 'Vietnam'}
+        title={finalHeading ?? finalTitle}
+        eyebrow={eyebrow}
+      />
+    )}
+  </div>
 
   {hubCards.length > 0 && (
     <div class="container auto-hub-grid">
