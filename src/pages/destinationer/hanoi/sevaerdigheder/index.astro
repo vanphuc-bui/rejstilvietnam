@@ -1,17 +1,23 @@
 ---
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
+import AttractionSpot from '../../../../components/AttractionSpot.astro';
 import PlaceMap from '../../../../components/PlaceMap.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
 
 const toc = [
   { id: 'prioriter', label: 'Hvad skal du prioritere?' },
-  { id: 'priser', label: 'Priser og tidsforbrug' },
-  { id: 'centrum', label: 'Old Quarter og Hoan Kiem' },
-  { id: 'historie', label: 'Historie og museer' },
+  { id: 'priser', label: 'Pris og tidsforbrug' },
+  { id: 'old-quarter', label: 'Old Quarter' },
+  { id: 'hoan-kiem', label: 'Hoan Kiem' },
+  { id: 'cathedral', label: 'St. Joseph’s Cathedral' },
+  { id: 'temple', label: 'Litteraturtemplet' },
+  { id: 'hoa-lo', label: 'Hoa Lo Prison' },
+  { id: 'citadel', label: 'Imperial Citadel' },
+  { id: 'ba-dinh', label: 'Ba Dinh' },
   { id: 'train-street', label: 'Train Street' },
   { id: 'rute', label: 'Forslag til 1 dag' },
-  { id: 'kort', label: 'Kort over seværdigheder' },
+  { id: 'kort', label: 'Kort' },
 ];
 
 const sources = [
@@ -24,14 +30,207 @@ const sources = [
 const attractionColumns = [
   { key: 'place', label: 'Sted' },
   { key: 'time', label: 'Sæt af' },
-  { key: 'price', label: 'Voksenpris' },
-  { key: 'why', label: 'Vælg det hvis' },
+  { key: 'price', label: 'Pris' },
+  { key: 'why', label: 'Bedst til' },
 ];
 const attractionRows = [
-  { place: 'Old Quarter + Hoan Kiem', time: '2-4 timer i roligt tempo', price: 'Gratis at gå rundt', why: 'Det er din første dag i Hanoi' },
-  { place: 'Văn Miếu / Litteraturtemplet', time: 'Ca. 60-90 min', price: '70.000 VND ≈ 17-18 DKK', why: 'Du vil have arkitektur, historie og en roligere pause fra gaderne' },
-  { place: 'Hoa Lo Prison', time: 'Ca. 60-90 min', price: '50.000 VND ≈ 12-13 DKK', why: 'Du vil forstå kolonitid og nyere krigshistorie' },
-  { place: 'Imperial Citadel of Thang Long', time: 'Ca. 1,5-2 timer', price: '100.000 VND ≈ 25 DKK', why: 'Du er mere interesseret i historie og arkæologi' },
+  { place: 'Old Quarter + Hoan Kiem', time: '2-4 timer', price: 'Gratis at gå rundt', why: 'Første møde med Hanoi' },
+  { place: 'St. Joseph’s Cathedral', time: '20-40 min', price: 'Gratis udefra', why: 'Kort stop i centrum' },
+  { place: 'Văn Miếu / Litteraturtemplet', time: '60-90 min', price: '70.000 VND ≈ 17-18 DKK', why: 'Arkitektur og klassisk historie' },
+  { place: 'Hoa Lo Prison', time: '60-90 min', price: '50.000 VND ≈ 12-13 DKK', why: 'Kolonitid og nyere historie' },
+  { place: 'Imperial Citadel of Thang Long', time: '1,5-2 timer', price: '100.000 VND ≈ 25 DKK', why: 'Historie og arkæologi' },
+  { place: 'Train Street', time: '30-60 min', price: 'Ingen fast entré', why: 'Stemning og foto' },
+];
+
+const attractions = [
+  {
+    id:'old-quarter',
+    index:1,
+    title:'Old Quarter',
+    kicker:'Stemning · gadeliv · første dag',
+    paragraphs:[
+      'Old Quarter er ikke én seværdighed, men det område der bedst forklarer, hvorfor Hanoi føles anderledes end en europæisk storby. Gå uden en alt for stram rute, kig ned ad sidegaderne og stop, når noget ser interessant ud.',
+      'Vi ville komme første gang sidst på eftermiddagen og blive til efter mørkets frembrud. Så får du både hverdagslivet, små butikker, gadekøkkener og den mere livlige aftenside.'
+    ],
+    facts:[
+      {label:'Tid',value:'1-2 timer uden madstop'},
+      {label:'Bedst',value:'Sen eftermiddag → aften'},
+      {label:'Pris',value:'Gratis'},
+      {label:'Kombinér med',value:'Hoan Kiem + middag'},
+    ],
+    image:{
+      src:'https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20Street%20Scene%20-%20Hanoi%20-%20Vietnam%20%2848256301206%29.jpg?width=1200',
+      alt:'Farverigt gadeliv i Hanois Old Quarter',
+      caption:'Old Quarter fungerer bedst som en langsom gåtur med plads til spontane stop.',
+      credit:'Adam Jones / Wikimedia Commons',
+      creditUrl:'https://commons.wikimedia.org/wiki/File:Old_Quarter_Street_Scene_-_Hanoi_-_Vietnam_(48256301206).jpg',
+      position:'center 45%'
+    }
+  },
+  {
+    id:'hoan-kiem',
+    index:2,
+    title:'Hoan Kiem-søen',
+    kicker:'Pejlemærke · morgen · aften',
+    paragraphs:[
+      'Hoan Kiem er det mest praktiske pejlemærke i centrum. Søen ligger mellem Old Quarter og det franske kvarter, og hvis du bor centralt, kommer du sandsynligvis forbi flere gange uden at planlægge det.',
+      'Tidlig morgen er rolig og lokal. Om aftenen er området mere levende. Vi ville ikke nødvendigvis sætte en hel time af til søen alene, men bruge den som den naturlige overgang mellem andre stop.'
+    ],
+    facts:[
+      {label:'Tid',value:'20-45 min'},
+      {label:'Bedst',value:'Tidlig morgen eller aften'},
+      {label:'Pris',value:'Gratis rundt om søen'},
+      {label:'Kombinér med',value:'Old Quarter + katedralen'},
+    ],
+    image:{
+      src:'https://commons.wikimedia.org/wiki/Special:FilePath/Bridge%20Illuminated%20at%20Night%20-%20Hoan%20Kiem%20Lake%20-%20Old%20Quarter%20-%20Hanoi%20-%20Vietnam%20%2848071367702%29.jpg?width=1200',
+      alt:'Den røde The Huc-bro oplyst om aftenen ved Hoan Kiem-søen',
+      caption:'Om aftenen bliver området omkring Hoan Kiem et af de mest stemningsfulde steder i centrum.',
+      credit:'Adam Jones / Wikimedia Commons',
+      creditUrl:'https://commons.wikimedia.org/wiki/File:Bridge_Illuminated_at_Night_-_Hoan_Kiem_Lake_-_Old_Quarter_-_Hanoi_-_Vietnam_(48071367702).jpg'
+    }
+  },
+  {
+    id:'cathedral',
+    index:3,
+    title:'St. Joseph’s Cathedral',
+    kicker:'Arkitektur · kort stop · caféområde',
+    paragraphs:[
+      'St. Joseph’s Cathedral ligger tæt nok på Hoan Kiem til, at vi ville behandle den som et naturligt stop på en gåtur gennem centrum – ikke som en særskilt udflugt.',
+      'Pladsen og sidegaderne omkring kirken er næsten lige så interessante som selve facaden. Det gør området oplagt til en kaffe eller et roligt stop mellem Old Quarter og Hoa Lo.'
+    ],
+    facts:[
+      {label:'Tid',value:'20-40 min'},
+      {label:'Bedst',value:'Sen eftermiddag'},
+      {label:'Pris',value:'Gratis udefra'},
+      {label:'Kombinér med',value:'Hoan Kiem + Hoa Lo'},
+    ],
+    image:{
+      src:'https://commons.wikimedia.org/wiki/Special:FilePath/Cathedral%20of%20St%20Joseph%2C%20Hanoi%2C%20Vietnam%20-%2054568827691.jpg?width=1200',
+      alt:'St. Joseph’s Cathedral i Hanoi set fra pladsen foran kirken',
+      caption:'Katedralen er et godt kort stop midt i en dag til fods gennem centrum.',
+      credit:'kitmasterbloke / Wikimedia Commons',
+      creditUrl:'https://commons.wikimedia.org/wiki/File:Cathedral_of_St_Joseph,_Hanoi,_Vietnam_-_54568827691.jpg',
+      position:'center 38%'
+    }
+  },
+  {
+    id:'temple',
+    index:4,
+    title:'Litteraturtemplet',
+    kicker:'Historie · arkitektur · roligere tempo',
+    paragraphs:[
+      'Hvis du kun vælger ét klassisk historisk sted i Hanoi, er Litteraturtemplet vores mest oplagte standardvalg. Det er overskueligt, fotogent og giver en rolig kontrast til de tætte gader i centrum.',
+      'Văn Miếus officielle side oplyser i september 2026 en standardbillet på 70.000 VND og normal dagåbning 08:00-17:00.'
+    ],
+    facts:[
+      {label:'Tid',value:'60-90 min'},
+      {label:'Pris',value:'70.000 VND ≈ 17-18 DKK'},
+      {label:'Bedst',value:'Formiddag'},
+      {label:'Kombinér med',value:'Citadellet eller Ba Dinh'},
+    ],
+    image:{
+      src:'https://commons.wikimedia.org/wiki/Special:FilePath/Temple%20of%20Literature%2C%20Hanoi%20%285679468660%29.jpg?width=1200',
+      alt:'Historisk port og gårdrum ved Litteraturtemplet i Hanoi',
+      caption:'Litteraturtemplet er let at forstå på et første besøg og kræver ikke en halv dag.',
+      credit:'Andrea Schaffer / Wikimedia Commons',
+      creditUrl:'https://commons.wikimedia.org/wiki/File:Temple_of_Literature,_Hanoi_(5679468660).jpg'
+    }
+  },
+  {
+    id:'hoa-lo',
+    index:5,
+    title:'Hoa Lo Prison',
+    kicker:'Museum · kolonihistorie · nyere historie',
+    paragraphs:[
+      'Hoa Lo er et koncentreret museumsbesøg og fungerer godt, hvis du vil have mere historisk kontekst uden at bruge en halv dag. Det ligger samtidig så centralt, at det er nemt at passe ind mellem andre stop.',
+      'Hoa Los officielle side oplyser en voksenbillet på 50.000 VND og åbning 08:00-17:00 hver dag.'
+    ],
+    facts:[
+      {label:'Tid',value:'60-90 min'},
+      {label:'Pris',value:'50.000 VND ≈ 12-13 DKK'},
+      {label:'Bedst',value:'Midt på dagen / regnvejr'},
+      {label:'Kombinér med',value:'Katedralen + Hoan Kiem'},
+    ],
+    image:{
+      src:'https://commons.wikimedia.org/wiki/Special:FilePath/Hoa%20Lo%20Prison%20%289754251106%29.jpg?width=1200',
+      alt:'Den bevarede indgang til Hoa Lo Prison i Hanoi',
+      caption:'Hoa Lo ligger centralt og er et af de letteste museumsstop at passe ind i en Hanoi-dag.',
+      credit:'Gary Todd / Wikimedia Commons',
+      creditUrl:'https://commons.wikimedia.org/wiki/File:Hoa_Lo_Prison_(9754251106).jpg'
+    }
+  },
+  {
+    id:'citadel',
+    index:6,
+    title:'Imperial Citadel of Thang Long',
+    kicker:'UNESCO · arkæologi · dybere historie',
+    paragraphs:[
+      'Citadellet er et bedre valg end endnu et hurtigt fotostop, hvis du faktisk er interesseret i Vietnams lange historie. Området er større end Litteraturtemplet, så giv besøget mere luft.',
+      'Den officielle voksenpris er 100.000 VND, cirka 25 DKK. Vi ville kombinere det med Ba Dinh eller Litteraturtemplet i samme del af dagen.'
+    ],
+    facts:[
+      {label:'Tid',value:'1,5-2 timer'},
+      {label:'Pris',value:'100.000 VND ≈ 25 DKK'},
+      {label:'Bedst',value:'Historieinteresserede'},
+      {label:'Kombinér med',value:'Ba Dinh / Litteraturtemplet'},
+    ],
+    image:{
+      src:'https://commons.wikimedia.org/wiki/Special:FilePath/Imperial%20Citadel%20of%20Thang%20Long%20%2826910835332%29.jpg?width=1200',
+      alt:'Historiske bygninger ved Imperial Citadel of Thang Long i Hanoi',
+      caption:'Citadellet fortjener mere tid end et hurtigt fotostop, især hvis historie er en vigtig del af rejsen.',
+      credit:'Bex Walton / Wikimedia Commons',
+      creditUrl:'https://commons.wikimedia.org/wiki/File:Imperial_Citadel_of_Thang_Long_(26910835332).jpg'
+    }
+  },
+  {
+    id:'ba-dinh',
+    index:7,
+    title:'Ho Chi Minh-mausoleet og Ba Dinh',
+    kicker:'Monumenter · åben plads · halvdag',
+    paragraphs:[
+      'Ba Dinh føles helt anderledes end Old Quarter. Gaderne er bredere, områderne mere monumentale, og du får mest ud af besøget ved at se mausoleumsområdet, One Pillar Pagoda og eventuelt citadellet som én samlet del af dagen.',
+      'Adgang til selve mausoleet kan ændre sig efter dag og sæson. Tjek derfor aktuelle åbningstider inden du tager af sted i stedet for at bygge hele planen på et gammelt blogindlæg.'
+    ],
+    facts:[
+      {label:'Tid',value:'1-3 timer afhængigt af stop'},
+      {label:'Bedst',value:'Tidlig formiddag'},
+      {label:'Pris',value:'Varierer efter de enkelte steder'},
+      {label:'Kombinér med',value:'Imperial Citadel'},
+    ],
+    image:{
+      src:'https://commons.wikimedia.org/wiki/Special:FilePath/Ho%20Chi%20Minh%20Mausoleum%2C%20Hanoi%20%2844478563260%29.jpg?width=1200',
+      alt:'Ho Chi Minh-mausoleet og den åbne plads i Ba Dinh, Hanoi',
+      caption:'Ba Dinh er bedst som en samlet historisk blok frem for flere separate ture frem og tilbage.',
+      credit:'Isabell Schulz / Wikimedia Commons',
+      creditUrl:'https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_Mausoleum,_Hanoi_(44478563260).jpg'
+    }
+  },
+  {
+    id:'train-street',
+    index:8,
+    title:'Train Street',
+    kicker:'Foto · café · adgang kan ændre sig',
+    paragraphs:[
+      'Train Street er visuelt speciel, men vi ville ikke bygge hele dagen omkring et bestemt togklokkeslæt. Adgang, kontrol og togpassager kan ændre sig, og gamle tider fra blogs er hurtigt forældede.',
+      'Se stedet som et kort ekstra stop og følg lokale anvisninger. Vi har en separat guide, hvor vi holder de praktiske detaljer samlet.'
+    ],
+    facts:[
+      {label:'Tid',value:'30-60 min'},
+      {label:'Bedst',value:'Som ekstra stop'},
+      {label:'Pris',value:'Ingen fast entré'},
+      {label:'Vigtigt',value:'Følg lokal adgang og sikkerhed'},
+    ],
+    image:{
+      src:'https://commons.wikimedia.org/wiki/Special:FilePath/Train%20Street%2C%20Hanoi%20%2852352080696%29.jpg?width=1200',
+      alt:'Togspor mellem huse og caféer på Train Street i Hanoi',
+      caption:'Train Street er bedst som et kort, fleksibelt stop – ikke som ankeret for hele dagen.',
+      credit:'Rod Waddington / Wikimedia Commons',
+      creditUrl:'https://commons.wikimedia.org/wiki/File:Train_Street,_Hanoi_(52352080696).jpg'
+    },
+    href:'/destinationer/hanoi/train-street/',
+    hrefLabel:'Se vores praktiske Train Street-guide →'
+  }
 ];
 
 const places = [
@@ -46,56 +245,143 @@ const places = [
 ];
 ---
 <ArticleLayout
-  title="Hanoi seværdigheder 2026 | Hvad skal man se i Hanoi?"
-  description="De vigtigste seværdigheder i Hanoi med realistisk tidsforbrug, 2026-priser i VND/DKK, billeder, kort og forslag til 1-3 dage."
+  title="Hanoi seværdigheder 2026 | De bedste oplevelser første gang"
+  description="De vigtigste seværdigheder i Hanoi med flotte billeder, realistisk tidsforbrug, 2026-priser i VND/DKK, kort og en enkel rute til første besøg."
   eyebrow="Hanoi · Seværdigheder"
-  heading="Seværdigheder i Hanoi: det ville vi prioritere"
-  intro="På en første rejse ville vi starte med Old Quarter og Hoan Kiem og derefter vælge ét eller to historiske stop. Du får mere ud af Hanoi ved at se færre steder ordentligt end ved at køre byen rundt for at krydse 15 ting af."
-  updated="15. september 2026"
+  heading="Seværdigheder i Hanoi: 8 steder vi faktisk ville prioritere"
+  intro="Hanoi bliver bedre, når du kombinerer få klassiske seværdigheder med tid til gaderne. Her får hvert vigtigt stop sit eget billede, realistisk tidsforbrug og en klar rolle i rejsen."
+  updated="18. september 2026"
+  dateModified="2026-09-18"
   toc={toc}
   sources={sources}
 >
+  <SectionMedia
+    slot="heroMedia"
+    src="https://commons.wikimedia.org/wiki/Special:FilePath/Old%20Quarter%20street%20scene%2C%20Hanoi%20%288%29%20%2837610044625%29.jpg?width=1600"
+    alt="Livligt gadeliv i Hanois Old Quarter"
+    caption="Hanoi er stærkest, når seværdighederne ikke står alene. Gader, mad, kaffe og transporten mellem stoppene er en del af oplevelsen."
+    credit="Richard Mortel / Wikimedia Commons"
+    creditUrl="https://commons.wikimedia.org/wiki/File:Old_Quarter_street_scene,_Hanoi_(8)_(37610044625).jpg"
+    ratio="16 / 7"
+    loading="eager"
+    fetchpriority="high"
+    sizes="(max-width: 900px) calc(100vw - 32px), 1160px"
+  />
 
   <h2 id="prioriter">Hvis du kun har kort tid</h2>
-  <div class="fact-grid"><div class="fact"><span>1 dag</span><b>Old Quarter + Hoan Kiem + 1 historisk stop</b></div><div class="fact"><span>2 dage</span><b>Tilføj Ba Dinh eller Hoa Lo</b></div><div class="fact"><span>3 dage</span><b>Se byen roligt og tag evt. Train Street</b></div></div>
-  <p>På en første rejse ville vi begynde med <strong>Old Quarter og Hoan Kiem</strong>. De ligger tæt på hinanden, og du får hurtigt en fornemmelse af byen uden at bruge halvdelen af dagen i trafik. Derefter vælger vi ét eller to historiske steder efter interesse.</p>
+  <div class="priority-grid">
+    <article><span>1 dag</span><b>Old Quarter + Hoan Kiem + ét historisk stop</b><p>Den mest balancerede første dag uden at zigzagge gennem byen.</p></article>
+    <article><span>2 dage</span><b>Tilføj Ba Dinh eller citadellet</b><p>Giver plads til mere historie uden at gøre dag ét tung.</p></article>
+    <article><span>3 dage</span><b>Train Street + mere ro</b><p>Brug den ekstra tid på stemning, mad og færre stop pr. dag.</p></article>
+  </div>
   <p>Hvis du allerede ved, at du har tre dage, ligger der en færdig rækkefølge i vores <a href="/destinationer/hanoi/3-dage-i-hanoi/">3-dages rejseplan for Hanoi</a>.</p>
 
-  <h2 id="priser">Priser og tidsforbrug</h2>
-  <PracticalTable title="Hvilke seværdigheder giver mest mening for tiden?" intro="Entrépriserne nedenfor er kontrolleret mod de officielle sider for Văn Miếu, Hoa Lo og Thang Long-citadellet." columns={attractionColumns} rows={attractionRows} note="DKK-beløb er afrundet med ca. 100.000 VND = 25 DKK den 15. september 2026. Tjek altid åbningstider på dagen, især ved helligdage og særlige arrangementer." />
+  <h2 id="priser">Pris og tidsforbrug på 30 sekunder</h2>
+  <PracticalTable
+    title="Hvilke seværdigheder giver mest mening for tiden?"
+    intro="Entrépriserne nedenfor er kontrolleret mod de officielle sider for Văn Miếu, Hoa Lo og Thang Long-citadellet."
+    columns={attractionColumns}
+    rows={attractionRows}
+    note="DKK-beløb er afrundet med ca. 100.000 VND = 25 DKK den 15. september 2026. Tjek altid aktuelle åbningstider på dagen."
+  />
 
-  <h2 id="centrum">Old Quarter og Hoan Kiem</h2>
-  <h3>Old Quarter</h3>
-  <p>Det gamle kvarter er bedst, når du ikke behandler det som et museum. Gå nogle gader, stop når noget ser interessant ud, og accepter at fortovet ofte også bruges til parkering, madlavning og små butikker.</p>
-  <p>Vi ville lægge den første gåtur sidst på eftermiddagen og komme tilbage efter mørkets frembrud. Så ser du både hverdagslivet og den mere livlige aftenside af området.</p>
-  <h3>Hoan Kiem-søen</h3>
-  <p>Søen fungerer som et praktisk pejlemærke mellem Old Quarter og det franske kvarter. Tidlig morgen er roligere; om aftenen er der mere aktivitet. Hvis du bor centralt, kommer du sandsynligvis forbi flere gange.</p>
-  <h3>St. Joseph’s Cathedral</h3>
-  <p>Katedralen ligger få minutters gang fra søen. Vi ville se den som et naturligt stop på en gåtur gennem centrum, ikke som en særskilt udflugt.</p>
+  <div class="visual-divider"><span>De 8 stop</span><b>Fra gadeliv til historie</b></div>
 
-  <h2 id="historie">Historie og museer</h2>
-  <h3>Litteraturtemplet</h3>
-  <p>Văn Miếus officielle side oplyser i september 2026 en standardbillet på <strong>70.000 VND</strong>, cirka <strong>17-18 DKK</strong>, og normal dagåbning 08:00-17:00. Hvis du kun vælger ét klassisk historisk sted, er det et godt bud.</p>
-  <h3>Hoa Lo Prison</h3>
-  <p>Hoa Los officielle side oplyser en voksenbillet på <strong>50.000 VND</strong>, cirka <strong>12-13 DKK</strong>, og åbning 08:00-17:00 hver dag. Det er et mere koncentreret museumsbesøg og fungerer godt, hvis du gerne vil forstå noget af byens koloniale og nyere krigshistorie.</p>
-  <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoa%20Lo%20Prison%20%28Maison%20Centrale%29%2C%20Hanoi%20%286923115824%29.jpg?width=1400" alt="Indgang ved Hoa Lo Prison i Hanoi" caption="Hoa Lo ligger centralt og kan nemt nås fra Hoan Kiem til fods eller med en kort Grab-tur." credit="David McKelvey / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Hoa_Lo_Prison_(Maison_Centrale),_Hanoi_(6923115824).jpg" ratio="16 / 9" />
-  <h3>Imperial Citadel of Thang Long</h3>
-  <p>Den officielle pris er <strong>100.000 VND</strong>, cirka <strong>25 DKK</strong>, og området er normalt åbent 08:00-17:00. Citadellet passer især godt til dig, der interesserer dig for historie og arkæologi.</p>
-  <h3>Ho Chi Minh-mausoleet og Ba Dinh</h3>
-  <p>Ba Dinh giver mening som en samlet halvdag med mausoleumsområdet, One Pillar Pagoda og eventuelt citadellet. Åbning og adgang til selve mausoleet kan ændre sig efter dag og sæson, så tjek aktuelle oplysninger, før du tager af sted.</p>
-
-  <h2 id="train-street">Hvad med Train Street?</h2>
-  <p>Train Street er interessant nok til at have sin egen praktiske guide. Adgang, kontrol og togtider er ikke noget, vi ville behandle som faste oplysninger. Planlæg derfor ikke hele dagen omkring et klokkeslæt, du har set i en gammel blog.</p>
-  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/train-street/">Train Street i Hanoi <span>Se områderne, sikkerhed, adgang og hvordan vi ville planlægge besøget.</span></a></div>
+  {attractions.map((item, index) => (
+    <AttractionSpot
+      {...item}
+      reverse={index % 2 === 1}
+    />
+  ))}
 
   <h2 id="rute">En realistisk rute på én dag</h2>
-  <p><strong>Morgen:</strong> start omkring Hoan Kiem, gå gennem Old Quarter og spis morgenmad undervejs.</p>
-  <p><strong>Midt på dagen:</strong> vælg enten Hoa Lo eller Litteraturtemplet. Tag Grab mellem områderne, hvis varmen eller trafikken gør gåturen mindre attraktiv.</p>
-  <p><strong>Sen eftermiddag:</strong> tag tilbage mod søen, hold en kaffepause og gå en ny runde i Old Quarter, når byen ændrer tempo.</p>
-  <div class="callout"><strong>Det vi ikke ville gøre:</strong> Old Quarter, mausoleet, Litteraturtemplet, Hoa Lo, et museum, Train Street og West Lake på samme dag. Det kan teknisk lade sig gøre, men du ender med at bruge meget af dagen på transport og checklister.</div>
+  <div class="day-route">
+    <article><span>08:00-10:00</span><h3>Hoan Kiem + Old Quarter</h3><p>Start mens temperaturen er lavere. Morgenmad og kaffe kan være en del af ruten.</p></article>
+    <article><span>10:30-12:00</span><h3>Litteraturtemplet</h3><p>Tag Grab mod vest og brug tiden på ét historisk stop frem for tre hurtige.</p></article>
+    <article><span>12:00-14:00</span><h3>Frokost + pause</h3><p>Hanoi er ikke bedre, fordi du står ved en attraktion midt i dagens varmeste timer.</p></article>
+    <article><span>14:30-16:00</span><h3>Hoa Lo</h3><p>Et koncentreret museumsbesøg, der er let at kombinere med centrum bagefter.</p></article>
+    <article><span>16:15 → aften</span><h3>Katedralen + Old Quarter</h3><p>Slut tæt på mad, caféer og Hoan Kiem, når byen igen bliver mere levende.</p></article>
+  </div>
+  <div class="callout"><strong>Det vi ikke ville gøre:</strong> Old Quarter, mausoleet, Litteraturtemplet, Hoa Lo, citadellet, Train Street og West Lake på samme dag. Du kan teknisk nå meget, men oplevelsen bliver dårligere.</div>
 
-  <div id="kort"><PlaceMap places={places} title="De vigtigste stop på ét kort" description="Kortet viser, hvorfor centrum er let at gå, mens Ba Dinh og Litteraturtemplet er nemmere at samle som en separat del af dagen." /></div>
+  <div id="kort">
+    <PlaceMap
+      places={places}
+      title="De vigtigste seværdigheder på ét kort"
+      description="Centrum kan samles til fods. Litteraturtemplet, citadellet og Ba Dinh fungerer bedre som en separat vestlig blok."
+    />
+  </div>
 
   <h2>Læs videre om Hanoi</h2>
-  <div class="link-list"><a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">3 dage i Hanoi <span>En dag-for-dag plan uden at presse for meget ind.</span></a><a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Retter vi ville prioritere, og hvordan du planlægger måltiderne.</span></a><a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo i Hanoi? <span>Sammenlign Old Quarter, Hoan Kiem, Ba Dinh og Tay Ho.</span></a></div>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/hanoi/3-dage-i-hanoi/">3 dage i Hanoi <span>En dag-for-dag plan uden at presse for meget ind.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Retter vi ville prioritere, og hvordan måltiderne passer ind i dagene.</span></a>
+    <a class="link-card" href="/destinationer/hanoi/hvor-skal-man-bo/">Hvor skal man bo? <span>Sammenlign Old Quarter, Hoan Kiem, Ba Dinh og Tay Ho.</span></a>
+  </div>
 </ArticleLayout>
+
+<style>
+.priority-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin:18px 0 28px;
+}
+.priority-grid article{
+  min-height:160px;
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:#fffdf8;
+  box-shadow:0 8px 26px rgba(16,55,41,.045);
+}
+.priority-grid span{
+  display:block;
+  color:var(--coral);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.priority-grid b{display:block;margin-top:8px;color:var(--green-950);line-height:1.25}
+.priority-grid p{margin:10px 0 0!important;color:var(--muted)!important;font-size:.9rem!important}
+.visual-divider{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:16px;
+  margin:44px 0 4px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--border);
+}
+.visual-divider span{
+  color:var(--green-700);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.visual-divider b{font:700 clamp(1.5rem,3vw,2rem)/1.1 Georgia,serif;color:var(--green-950)}
+.day-route{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+  margin:22px 0 26px;
+}
+.day-route article{
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:#fffdf8;
+}
+.day-route span{color:var(--coral);font-size:.7rem;font-weight:900;letter-spacing:.07em}
+.day-route h3{margin:8px 0 8px;font-size:1rem}
+.day-route p{margin:0!important;color:var(--muted)!important;font-size:.86rem!important}
+@media(max-width:1050px){.day-route{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+  .priority-grid{grid-template-columns:1fr}
+  .priority-grid article{min-height:0}
+  .visual-divider{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:540px){.day-route{grid-template-columns:1fr}}
+</style>
