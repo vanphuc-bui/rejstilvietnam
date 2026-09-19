@@ -97,7 +97,7 @@ for (const file of pages) {
   const images = count(html, /<img\b[^>]*\bsrc=(?:"[^"]+"|'[^']+')/gi);
   const contentImages = count(mainHtml, /<img\b[^>]*\bsrc=(?:"[^"]+"|'[^']+')/gi);
   const h2s = count(mainHtml, /<h2\b/gi);
-  const videos = count(mainHtml, /<iframe\b[^>]*youtube-nocookie\.com\/embed\//gi);
+  const videos = count(mainHtml, /class=(?:"[^"]*\bvideo-block\b[^"]*"|'[^']*\bvideo-block\b[^']*')/gi);
   const density = sectionVisualStats(html);
   const isEditorial = editorialRoute(route);
 
