@@ -3,6 +3,7 @@ import EditorialArticle from '../../../components/EditorialArticle.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
 import CommercialCta from '../../../components/CommercialCta.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'hvor-spare', label:'Hvor kan man spare?' },
@@ -98,6 +99,7 @@ const faq = [
     secondaryHref="/destinationer/"
     secondaryLabel="Se destinationer"
   />
+  <SectionMedia {...v.money.banknotes} />
 
   <h2 id="transport">Transport: spar selektivt</h2>
   <p>Tog og bus kan være billigere end fly, men ikke alle strækninger er gode steder at spare. Hvis en billig bus koster dig næsten en hel feriedag, kan et fly være bedre værdi.</p>
