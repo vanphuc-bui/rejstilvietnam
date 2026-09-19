@@ -209,9 +209,10 @@ for (const file of publicPages) {
   });
   // Destination cards are visual navigation. A missing photo falls back to generic artwork,
   // which is useful as a runtime safety net but should never ship as the normal state.
-  const destinationCards = [...html.matchAll(/<a\\b[^>]*class="[^"]*\\bdestination\\b[^"]*"[^>]*>([\\s\\S]*?)<\/a>/gi)];
+  const destinationCardPattern = new RegExp('<a\\b[^>]*class="[^"]*\\bdestination\\b[^"]*"[^>]*>([\\s\\S]*?)<\\/a>', 'gi');
+  const destinationCards = [...html.matchAll(destinationCardPattern)];
   destinationCards.forEach((match, index) => {
-    if (!/<img\\b/i.test(match[1])) {
+    if (!new RegExp('<img\\b', 'i').test(match[1])) {
       addIssue({ severity: 'error', category: 'images', route, message: `Destination card ${index + 1} has no real image and would render the fallback artwork.`, impact: 'high', effort: 'tiny' });
     }
   });
