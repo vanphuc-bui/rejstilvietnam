@@ -71,6 +71,33 @@ export const editorialVisuals = {
     evisa: img('Sample of Electronic Visa for the Socialist Republic of Vietnam.jpg','Eksempel på vietnamesisk e-visum','Et e-visum er et digitalt dokument. Gem en offline kopi, hvis din rejse kræver det.'),
     document: img('Vietnam-visa.jpg','Eksempel på vietnamesisk visumdokument','Visum- og indrejsedokumenter bør være nemme at åbne offline under rejsen.'),
   },
+  hanoi: {
+    lake: img('Hoan Kiem Lake photo.jpg','Hoan Kiem Lake i Hanoi','Hoan Kiem er det naturlige pejlemærke for en første dag i Hanoi.'),
+    oldQuarter: img('Hanoi Old Quarter (48256298071).jpg','Gadeliv i Hanois Old Quarter','Old Quarter fungerer bedst til fods, med plads til mad og små omveje.'),
+    temple: img('Temple of Literature Hanoi 1.jpg','Litteraturtemplet i Hanoi','Litteraturtemplet passer naturligt ind i en historiedag vest for centrum.'),
+    trainStreet: img('Train Street, Hanoi (52352080696).jpg','Train Street i Hanoi','Train Street er bedst som et kort fleksibelt stop, fordi adgang og togtider kan ændre sig.'),
+    airport: img('Noi Bai International Airport 2019.jpg','Noi Bai International Airport ved Hanoi','Lufthavnstransfer er den første logistiske beslutning efter ankomst til Hanoi.'),
+  },
+  nhaTrang: {
+    bay: img('Nha Trang Bay and Vinwonders. Nha Trang, Vietnam. June 2025.jpg','Nha Trang Bay og Hon Tre','Bugten gør det let at kombinere strandbyen med øture og aktiviteter på vandet.'),
+    market: img('Dam Market Nha Trang 1.jpg','Dam Market i Nha Trang','Markedet giver et mere lokalt indblik i byen mellem stranddagene.'),
+    pagoda: img('Long Son Pagoda 1.jpg','Long Son Pagoda i Nha Trang','Long Son Pagoda er et roligt kulturstop tæt på byen.'),
+  },
+  weather: {
+    central: img('HoiAnOldQuarter.jpg','Hoi An i Centralvietnam','Centralvietnam har et andet regn- og stormsæsonmønster end både Hanoi og Sydvietnam.'),
+    south: img('Phu Quoc sunset.jpg','Solnedgang på Phu Quoc','I syd betyder tør- og regntid mere end store temperaturskift.'),
+    rain: img('Rain in Ho Chi Minh City.jpg','Regnvejr i Ho Chi Minh City','Regntid i Sydvietnam betyder ofte kraftige byger frem for konstant heldagsregn.'),
+  },
+  money: {
+    atm: img('Máy ATM.jpg','BIDV-hæveautomat i Vietnam','Hæveautomater er lette at finde i byerne, men lokale gebyrer og beløbsgrænser varierer.'),
+    banknotes: img('Several 500,000-dong banknotes fanned out and stacked to form a circle-like shape.jpg','Vietnamesiske 500.000-dong-sedler','Store seddelbeløb kan se dramatiske ud i VND; hold fokus på totalbudget og aktuelle kurser.'),
+    market: img('Ben Thanh Market 2025.jpg','Marked i Ho Chi Minh City','Kontanter er stadig praktiske på markeder og mindre lokale spisesteder.'),
+  },
+  planning: {
+    train: img('VietnamRailway.jpg','Jernbane i Vietnam','Tog giver mening på udvalgte strækninger, men rejsetid bør sammenlignes med fly og bus.'),
+    taxi: img('Mai Linh Taxi at Tan Son Nhat.jpg','Taxi ved Tan Son Nhat-lufthavnen','Lufthavnstransfer er et godt eksempel på en lille beslutning, der bliver lettere med en klar plan.'),
+    coast: img('VN Coast Train Northbound.jpg','Tog langs Vietnams kyst','Afstandene i Vietnam betyder, at transportdagene skal regnes med som en del af rejseplanen.'),
+  },
 };
 
 export default editorialVisuals;
