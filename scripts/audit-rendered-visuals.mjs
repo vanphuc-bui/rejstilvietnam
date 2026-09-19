@@ -60,8 +60,28 @@ function wantsVideo(route) {
   );
 }
 
+function editorialContent(html) {
+  const proseStart = /<article\b[^>]*class="[^"]*\bprose\b[^"]*"[^>]*>/i.exec(html);
+  if (proseStart) {
+    const start = proseStart.index + proseStart[0].length;
+    const rest = html.slice(start);
+    const sidebarStart = /<aside\b[^>]*class="[^"]*\barticle-sidebar\b[^"]*"[^>]*>/i.exec(rest);
+    return sidebarStart ? rest.slice(0, sidebarStart.index) : rest;
+  }
+
+  const mainStart = /<main\b[^>]*>/i.exec(html);
+  if (mainStart) {
+    const start = mainStart.index + mainStart[0].length;
+    const rest = html.slice(start);
+    const footerStart = /<footer\b/i.exec(rest);
+    return footerStart ? rest.slice(0, footerStart.index) : rest;
+  }
+
+  return html;
+}
+
 function sectionVisualStats(html) {
-  const article = html.match(/<article\b[^>]*class="[^"]*\bprose\b[^"]*"[^>]*>([\s\S]*?)<\/article>/i)?.[1] ?? html;
+  const article = editorialContent(html);
   const pieces = article.split(/(?=<h2\b)/i).filter((piece) => /^<h2\b/i.test(piece.trim()));
   let maxTextOnlyRun = 0;
   let currentRun = 0;
@@ -91,9 +111,7 @@ for (const file of pages) {
 
   const route = routeFor(file);
   const html = fs.readFileSync(file, 'utf8');
-  const mainHtml = html.match(/<article\b[^>]*class="[^"]*\bprose\b[^"]*"[^>]*>([\s\S]*?)<\/article>/i)?.[1]
-    ?? html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]
-    ?? html;
+  const mainHtml = editorialContent(html);
   const images = count(html, /<img\b[^>]*\bsrc=(?:"[^"]+"|'[^']+')/gi);
   const contentImages = count(mainHtml, /<img\b[^>]*\bsrc=(?:"[^"]+"|'[^']+')/gi);
   const h2s = count(mainHtml, /<h2\b/gi);
