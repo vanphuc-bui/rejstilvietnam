@@ -3,6 +3,7 @@ import EditorialArticle from '../../../components/EditorialArticle.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
 import CommercialCta from '../../../components/CommercialCta.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'passer-det', label:'Passer Vietnam til børn?' },
@@ -84,6 +85,7 @@ const faq = [
     <li><strong>Ha Long Bay:</strong> Vælg kun cruise, hvis kahyt, transfer og måltider passer til børnenes alder og rutine.</li>
   </ul>
   <p>Undgå at lægge en stor tur morgenen efter en sen indenrigsflyvning. Det er fristende på papiret, men giver meget lidt buffer.</p>
+  <SectionMedia {...v.family.beach} />
 
   <h2 id="mad">Mad med børn</h2>
   <p>Du behøver ikke planlægge restauranter til hvert måltid. Phở, cơm, nudler, ris, grillet kød, frisk frugt og simple æggeretter gør det relativt let at finde noget, der ikke er stærkt.</p>
