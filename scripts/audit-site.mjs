@@ -192,6 +192,15 @@ for (const file of publicPages) {
     }
   }
 
+  const shouldHaveEditorialVisual =
+    /^\/destinationer\/[^/]+\//.test(route) ||
+    /^\/rejseguide\/[^/]+\//.test(route) ||
+    /^\/rejseplaner\/[^/]+\//.test(route) ||
+    /^\/ture\/[^/]+\//.test(route);
+  if (shouldHaveEditorialVisual && images.length === 0) {
+    addIssue({ severity: 'error', category: 'images', route, message: 'Editorial guide has no image at all.', impact: 'high', effort: 'small' });
+  }
+
   images.forEach((image, index) => {
     if (!('alt' in image)) addIssue({ severity: 'error', category: 'accessibility', route, message: `Image ${index + 1} is missing an alt attribute.`, impact: 'medium', effort: 'tiny' });
     if (image.src?.startsWith('/') && !resolveDistPath(image.src)) {
