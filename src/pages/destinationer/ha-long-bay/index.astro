@@ -2,6 +2,8 @@
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
 import CommercialCta from '../../../components/CommercialCta.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -33,6 +35,13 @@ const faq = [
   toc={toc}
   sources={sources}
   faq={faq}
+  video={{
+    heading:'Se Ha Long Bay fra vandet',
+    intro:'Kalkstensøernes skala og forskellen mellem cruise, grotter og mindre både fungerer bedst i bevægelse.',
+    youtubeId:'a-mq7CkKww8',
+    title:'Ha Long Bay i 4K',
+    caption:'Videoen viser flere typer stop i bugten; den konkrete cruise-rute skal stadig tjekkes ved booking.'
+  }}
   hero={{
     src:'https://commons.wikimedia.org/wiki/Special:FilePath/Ha%20Long%20Bay.jpg?width=1800',
     alt:'Kalkstensøer i Ha Long Bay set fra vandet',
@@ -68,6 +77,7 @@ const faq = [
     ]}
   />
   <p>Vietnam Tourism beskriver Ha Long Bay som et landskab med kalkstenskarst, øer, grotter og flydende samfund. Det er den samlede sejlads gennem landskabet, der er hovedoplevelsen. Derfor ville vi hellere vælge et godt én-nats cruise end det billigste program med flest stop.</p>
+  <SectionMedia {...v.haLong.cruise} />
 
   <h2 id="cruise">Sådan ville vi vælge cruise</h2>
   <p>Sammenlign først <strong>afgangshavn, sejlrute, kahyt, måltider, transfer og gruppestørrelse</strong>. Et flot bådbillede fortæller meget lidt om, hvor stor en del af dagen der reelt bruges på transfer eller ventetid.</p>
@@ -86,10 +96,12 @@ const faq = [
   <h2 id="vejr">Vejr kan ændre dagen</h2>
   <p>Dis, regn, vind og myndighedsbeslutninger kan ændre sejlruter eller afgang. Det betyder ikke nødvendigvis, at turen bliver dårlig, men en stram plan uden buffer gør dig mere sårbar.</p>
   <p>Hvis du flyver videre samme aften, som cruiset returnerer, ville vi lægge rigelig margin ind. En nat i Hanoi bagefter er den mindre stressende løsning.</p>
+  <SectionMedia {...v.haLong.kayak} />
 
   <h2 id="transport">Fra Hanoi til Ha Long Bay</h2>
   <p>Mange cruises inkluderer eller tilbyder transfer fra Hanoi. Hvis du booker transport separat, så tjek præcis hvilken havn og terminal båden bruger. "Ha Long" er ikke ét enkelt pickup-punkt.</p>
   <p>På en dagstur er kvaliteten af transporten ekstra vigtig, fordi flere timer foregår på vej. På et cruise med overnatning fylder transferen relativt mindre i den samlede oplevelse.</p>
+  <SectionMedia {...v.haLong.cave} />
 
   <h2 id="pakning">Hvad skal du have med på båden?</h2>
   <p>Tag en lille taske med det nødvendige i stedet for at slæbe hele kufferten ind og ud af kahytten: let skiftetøj, solbeskyttelse, medicin, oplader/powerbank, badetøj og et ekstra lag til kølig eller blæsende aften.</p>
