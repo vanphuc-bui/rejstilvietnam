@@ -1,6 +1,8 @@
 ---
 import GuideCover from '../../../components/GuideCover.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const providers = [
   { label:'Nemt valg', name:'Airalo', mode:'Fast data + unlimited muligheder', fit:'God hvis du vil vælge mellem flere datamængder og styre alt i en app.', watch:'Tjek gyldighed, fair-use og om den konkrete plan er data-only.', href:'https://www.airalo.com/da/Vietnam-esim' },
@@ -15,10 +17,13 @@ const providers = [
   <section class="section section--tight"><div class="container answer-grid"><div><span>7-10 dage</span><b>5-10 GB er ofte rigeligt</b><p>Maps, Grab, chat og normal browsing.</p></div><div><span>2-3 uger</span><b>10-20 GB eller unlimited</b><p>Hvis du også streamer og uploader billeder/video.</p></div><div><span>Vores råd</span><b>Køb ikke kun på “unlimited”</b><p>Tjek netværk, hotspot og fair-use først.</p></div></div></section>
 
   <section class="section compare-section" id="sammenlign"><div class="container"><div class="section-head"><div><p class="eyebrow">Sammenligning</p><h2>Tre steder vi ville prischecke.</h2></div><p>Priser og datapakker ændrer sig ofte. Derfor fokuserer vi på hvilken type bruger hver løsning passer til og sender dig videre til aktuelle planer.</p></div><div class="provider-grid">{providers.map((p)=><article class="provider card"><span>{p.label}</span><h3>{p.name}</h3><b class="mode">{p.mode}</b><p>{p.fit}</p><div class="watch"><b>Tjek før køb</b><small>{p.watch}</small></div><a class="btn btn--outline" href={p.href} target="_blank" rel="noopener nofollow">Se aktuelle planer ↗</a><small class="external">Eksternt link · ikke annoncelink endnu</small></article>)}</div></div></section>
+  <div class="container visual-break"><SectionMedia {...v.esim.simPhone} /></div>
 
   <section class="section usage-section"><div class="container"><div class="section-head"><div><p class="eyebrow">Hvor meget data?</p><h2>Vælg efter din telefonbrug.</h2></div></div><div class="usage-bars"><div><span>Maps + Grab + WhatsApp</span><b>Lavt forbrug</b><i style="--w:30%"></i></div><div><span>+ sociale medier hver dag</span><b>Mellem</b><i style="--w:58%"></i></div><div><span>+ video, hotspot, cloud upload</span><b>Højt</b><i style="--w:92%"></i></div></div></div></section>
+  <div class="container visual-break"><SectionMedia {...v.esim.nano} /></div>
 
   <section class="section setup-section" id="saadan"><div class="container setup-grid"><div><p class="eyebrow">Opsætning</p><h2>Gør det hjemme på Wi-Fi.</h2><p class="lead">Installer eSIM før afrejse, men følg udbyderens aktiveringsregel - nogle planer starter først ved netværksforbindelse, andre kan have en anden gyldighedslogik.</p></div><ol><li><b>01</b><span>Tjek at telefonen er eSIM-kompatibel og ikke operatørlåst.</span></li><li><b>02</b><span>Køb planen og installer eSIM via app eller QR-kode på stabil Wi-Fi.</span></li><li><b>03</b><span>Navngiv den “Vietnam”, så du ikke blander den sammen med dit danske SIM.</span></li><li><b>04</b><span>Ved ankomst: vælg Vietnam-eSIM til mobildata og følg instruktionen om data roaming.</span></li><li><b>05</b><span>Slå data roaming fra på dit danske SIM, hvis du vil undgå uventet roaming.</span></li></ol></div></section>
+  <div class="container visual-break"><SectionMedia {...v.esim.card} /></div>
 
   <section class="section section--tight"><div class="container local-sim"><div><p class="eyebrow">eSIM eller lokalt SIM?</p><h2>eSIM vinder på bekvemmelighed.</h2><p>Et lokalt fysisk SIM kan stadig være attraktivt, hvis du vil have lokal tale/SMS eller finder en god officiel operatørpakke. Til en normal 1-3 ugers ferie ville vi dog vælge eSIM for at være online allerede i lufthavnen.</p></div><a class="btn btn--primary" href="/rejseguide/transport/">Næste: transport i Vietnam →</a></div></section>
 </BaseLayout>
@@ -29,4 +34,4 @@ const providers = [
 @media(max-width:600px){.hero-actions{flex-direction:column}.phone-card{max-width:100%}}
 </style>
 
-<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
+<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}.visual-break{margin-top:22px;margin-bottom:8px}.visual-break :global(.section-media){margin-bottom:0}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}.visual-break{margin-top:14px}}</style>
