@@ -1,21 +1,26 @@
+const W = 'https://commons.wikimedia.org/wiki/Special:FilePath/';
+
+const media = (file, alt, caption, extra = {}) => ({
+  src: `${W}${encodeURIComponent(file).replace(/%2F/g,'/')}?width=1500`,
+  alt,
+  caption,
+  credit: extra.credit ?? 'Wikimedia Commons',
+  creditUrl: extra.creditUrl ?? `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file).replace(/%2F/g,'/')}`,
+  ratio: extra.ratio ?? '16 / 9',
+  position: extra.position ?? 'center',
+});
+
 export const destinationVisuals = {
   'Hoi An': {
-    default: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/An%20Bang%20Beach%20%2846353448872%29.jpg?width=1500',
-      alt: 'An Bang Beach ved Hoi An',
-      caption: 'Hoi An handler ikke kun om Old Town. Strand, rismarker og korte afstande er en stor del af, hvordan området fungerer i praksis.',
-      credit: 'Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/Category:An_Bang_Beach',
-      ratio: '16 / 9',
-    },
-    food: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Cao%20l%E1%BA%A7u%20H%E1%BB%99i%20An.jpg?width=1400',
-      alt: 'Cao lau i Hoi An',
-      caption: 'Cao lầu er en af de retter, der gør Hoi An til mere end bare en fotogen gammel by.',
-      credit: 'Prenn / Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:Cao_l%E1%BA%A7u_H%E1%BB%99i_An.jpg',
-      ratio: '4 / 3',
-    },
+    default: media('An Bang Beach (46353448872).jpg','An Bang Beach ved Hoi An','Hoi An handler ikke kun om Old Town. Strand, rismarker og korte afstande er en stor del af, hvordan området fungerer i praksis.'),
+    food: media('Cao lầu Hội An.jpg','Cao lau i Hoi An','Cao lầu er en af de retter, der gør Hoi An til mere end bare en fotogen gammel by.'),
+    sectionPool: [
+      media('Japanese Covered Bridge (Cau Chua Pagoda), Hoi An, Vietnam (7090643937).jpg','Japanese Covered Bridge i Hoi An','Den japanske bro er et naturligt pejlemærke i den gamle by.'),
+      media('Thu Bon river, Hoi An.jpg','Thu Bon-floden i Hoi An','Thu Bon-floden binder Old Town, aftenture og flere af byens rolige områder sammen.'),
+      media('Hoi An market.jpg','Marked i Hoi An','Markedet viser den mere hverdagslige side af Hoi An mellem restauranter og den gamle by.'),
+      media('An Bang Beach (46353448872).jpg','An Bang Beach','An Bang er den nemmeste strand at kombinere med et ophold i Hoi An.'),
+      media('Cao Lau Hoi An.JPG','Cao lầu i Hoi An','Regional mad er en vigtig del af Hoi An-oplevelsen.'),
+    ],
     video: {
       youtubeId: 'U0qPJRrEfbg',
       title: '4K walking tour i Hoi An',
@@ -23,22 +28,17 @@ export const destinationVisuals = {
     },
   },
   'Ho Chi Minh City': {
-    default: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Ben%20Thanh%20Market.jpg?width=1500',
-      alt: 'Ben Thanh Market i Ho Chi Minh City',
-      caption: 'Ho Chi Minh City skifter hurtigt mellem markeder, boulevarder og tæt gadeliv. Derfor betyder område og rute meget.',
-      credit: 'Jean-Marie Hullot / Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:Ben_Thanh_Market.jpg',
-      ratio: '16 / 9',
-    },
-    food: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Com-Tam-2008.jpg?width=1400',
-      alt: 'Com tam med grillet svinekød i Ho Chi Minh City',
-      caption: 'Cơm tấm er et godt eksempel på den type hverdagsmad, der gør byen værd at udforske uden for hotelrestauranterne.',
-      credit: 'Kham Tran / Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:Com-Tam-2008.jpg',
-      ratio: '4 / 3',
-    },
+    default: media('Ben Thanh Market.jpg','Ben Thanh Market i Ho Chi Minh City','Ho Chi Minh City skifter hurtigt mellem markeder, boulevarder og tæt gadeliv. Derfor betyder område og rute meget.'),
+    food: media('Com-Tam-2008.jpg','Com tam med grillet svinekød i Ho Chi Minh City','Cơm tấm er et godt eksempel på den type hverdagsmad, der gør byen værd at udforske uden for hotelrestauranterne.'),
+    sectionPool: [
+      media('Central Post Office, Ho Chi Minh City.jpg','Central Post Office i Ho Chi Minh City','Den centrale postbygning ligger i et område med flere af byens klassiske stop.'),
+      media('Saigon Skyline.jpg','Ho Chi Minh City skyline','Byens størrelse og tæthed er en vigtig del af oplevelsen.'),
+      media('Ben Thanh Market 2025.jpg','Ben Thanh Market','Markedet er et nyttigt pejlemærke i District 1.'),
+      media('Com-Tam-2008.jpg','Cơm tấm','Cơm tấm er en klassisk Saigon-ret.'),
+      media('Cu Chi Tunnel Vietnam (38647687955).jpg','Cu Chi-tunnellerne','Cu Chi er en af de mest populære historiske udflugter fra byen.'),
+      media('Vietnam, Phong Dien, Mekong Delta.jpg','Mekongdeltaet','Mekongdeltaet giver en tydelig kontrast til storbytempoet.'),
+      media('Tan Son Nhat International Airport.jpg','Tan Son Nhat International Airport','Lufthavnen ligger tæt på centrum i kilometer, men trafikken kan gøre transferen længere.'),
+    ],
     video: {
       youtubeId: 'UUN5nrrFc_Q',
       title: '4K walking tour i Ho Chi Minh City',
@@ -46,14 +46,16 @@ export const destinationVisuals = {
     },
   },
   'Phu Quoc': {
-    default: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20quoc%20beach.JPG?width=1500',
-      alt: 'Strand og hav på Phu Quoc',
-      caption: 'På Phu Quoc betyder den konkrete kyst og afstanden til Duong Dong ofte mere end resortets stjerner.',
-      credit: 'Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:Phu_quoc_beach.JPG',
-      ratio: '16 / 9',
-    },
+    default: media('Phu quoc beach.JPG','Strand og hav på Phu Quoc','På Phu Quoc betyder den konkrete kyst og afstanden til Duong Dong ofte mere end resortets stjerner.'),
+    beach: media('Bai Sao, Phú Quốc, Vietnam (3870300491).jpg','Bai Sao på Phu Quoc','Bai Sao er den klassiske postkortstrand, men de forskellige kyster passer til forskellige ophold.'),
+    sectionPool: [
+      media('Phu quoc beach.JPG','Strand på Phu Quoc','En rolig stranddag er stadig en vigtig del af Phu Quoc.'),
+      media('Bai Sao, Phú Quốc, Vietnam (3870300491).jpg','Bai Sao','Bai Sao er en af øens mest kendte strande.'),
+      media('Cap-treo-hon-thom-4.jpg','Hon Thom-kabelbanen','Sydøen kombinerer kabelbane, bådture og strand.'),
+      media('An Thoi fishing harbour Sunset Town Sun World Phu Quoc Vietnam.jpg','An Thoi på Phu Quoc','An Thoi er den praktiske base for mange ture til sydøerne.'),
+      media('Phu Quoc International Airport.JPG','Phu Quoc International Airport','Lufthavn og hotelområde bør tænkes sammen på en relativt stor ø.'),
+      media('Phu Quoc sunset.jpg','Solnedgang på Phu Quoc','Vestkysten er særlig populær omkring solnedgang.'),
+    ],
     video: {
       youtubeId: 'RYzanH3WTps',
       title: '4K flycam over Phu Quoc',
@@ -61,22 +63,16 @@ export const destinationVisuals = {
     },
   },
   'Da Nang': {
-    default: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Marble%20Mountains%2C%20Vietnam.jpg?width=1500',
-      alt: 'Marble Mountains ved Da Nang',
-      caption: 'Da Nang kombinerer strand og storby med naturstop som Marble Mountains, så dagene bliver mere visuelle end en ren byguide.',
-      credit: 'Bernard Gagnon / Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:Marble_Mountains,_Vietnam.jpg',
-      ratio: '16 / 9',
-    },
-    beach: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/My%20Khe%20Beach%2C%20Da%20Nang%2C%20Vietnam.jpg?width=1500',
-      alt: 'My Khe Beach i Da Nang',
-      caption: 'My Khe er bred og let at bruge uden resort. Tidlig morgen og sen eftermiddag er de bedste tidspunkter.',
-      credit: 'Ray in Manila / Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:My_Khe_Beach,_Da_Nang,_Vietnam.jpg',
-      ratio: '16 / 9',
-    },
+    default: media('Marble Mountains, Vietnam.jpg','Marble Mountains ved Da Nang','Da Nang kombinerer strand og storby med naturstop som Marble Mountains.'),
+    beach: media('My Khe Beach, Da Nang, Vietnam.jpg','My Khe Beach i Da Nang','My Khe er bred og let at bruge uden resort. Tidlig morgen og sen eftermiddag er de bedste tidspunkter.'),
+    sectionPool: [
+      media('Da Nang - Dragon Bridge.jpg','Dragon Bridge i Da Nang','Dragon Bridge og Han-floden giver Da Nang en tydelig moderne byidentitet.'),
+      media('My Khe Beach 1.jpg','My Khe Beach','My Khe er den mest praktiske bystrand for de fleste førstegangsrejsende.'),
+      media('Marble Mountains, Vietnam.jpg','Marble Mountains','Marble Mountains ligger naturligt mellem Da Nang og Hoi An.'),
+      media('Han River Bridge.jpg','Han River Bridge','Han-floden er et nyttigt pejlemærke mellem strand- og byområder.'),
+      media('Golden Bridge above the clouds Ba Na Hills Da Nang Vietnam.jpg','Golden Bridge ved Ba Na Hills','Golden Bridge er det visuelle højdepunkt ved Ba Na Hills.'),
+      media('Mì Quảng, Da Nang, Vietnam.jpg','Mì Quảng','Da Nang og Quang Nam har en stærk regional madprofil.'),
+    ],
     video: {
       youtubeId: 'DBXPmt-EdZM',
       title: '4K walking tour i Da Nang',
@@ -84,32 +80,55 @@ export const destinationVisuals = {
     },
   },
   'Nha Trang': {
-    default: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/Po%20Nagar%2001.jpg?width=1500',
-      alt: 'Po Nagar Cham Towers i Nha Trang',
-      caption: 'Po Nagar viser den kulturhistoriske side af Nha Trang, som let overses, hvis man kun ser destinationen som strand.',
-      credit: 'Christophe95 / Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:Po_Nagar_01.jpg',
-      ratio: '16 / 9',
-    },
-    beach: {
-      src: 'https://commons.wikimedia.org/wiki/Special:FilePath/View%20of%20Nha%20Trang%20city.jpg?width=1600',
-      alt: 'Udsigt over Nha Trang by og kyst',
-      caption: 'Nha Trang er en rigtig by langs kysten, ikke kun en række resorts. Det er vigtigt, når du vælger hotelområde.',
-      credit: 'Baoothersks / Wikimedia Commons',
-      creditUrl: 'https://commons.wikimedia.org/wiki/File:View_of_Nha_Trang_city.jpg',
-      ratio: '16 / 9',
+    default: media('Po Nagar 01.jpg','Po Nagar Cham Towers i Nha Trang','Po Nagar viser den kulturhistoriske side af Nha Trang, som let overses, hvis man kun ser destinationen som strand.'),
+    beach: media('View of Nha Trang city.jpg','Udsigt over Nha Trang by og kyst','Nha Trang er en rigtig by langs kysten, ikke kun en række resorts.'),
+    sectionPool: [
+      media('04052023 Ponagar Hindu temples complex, Nha Trang Vietnam - 27.jpg','Po Nagar-templerne','Po Nagar er det stærkeste historiske stop i Nha Trang.'),
+      media('Nha Trang Bay and Vinwonders. Nha Trang, Vietnam. June 2025.jpg','Nha Trang Bay','Bugten gør øture og havaktiviteter nemme at kombinere med et byophold.'),
+      media('Long Son Pagoda 1.jpg','Long Son Pagoda','Long Son Pagoda giver et roligere kulturstop væk fra stranden.'),
+      media('Dam Market Nha Trang 1.jpg','Dam Market','Markedet giver et mere lokalt indblik i byen.'),
+      media('Vietnam Nha Trang Scuba Diving 2009 - 4163163783.jpg','Dykning i Nha Trang','Nha Trang har en lang dykkertradition og flere marine aktiviteter.'),
+      media('View of Nha Trang city.jpg','Nha Trang by og kyst','Bystrand og byliv ligger tættere på hinanden end ved mange resortdestinationer.'),
+    ],
+    video: {
+      youtubeId: 'rsai-wskWsc',
+      title: 'Nha Trang i 4K',
+      caption: 'Videoen viser bystrand, bugt og byliv i bevægelse og gør det lettere at forstå destinationens skala.',
     },
   },
 };
 
+function hash(value = '') {
+  return [...value].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+}
+
 export function getDestinationVisual(page) {
-  const media = destinationVisuals[page.destinationName];
-  if (!media) return null;
+  const mediaSet = destinationVisuals[page.destinationName];
+  if (!mediaSet) return null;
   const text = `${page.title ?? ''} ${page.heading ?? ''} ${page.eyebrow ?? ''}`.toLowerCase();
-  if (/mad|food/.test(text) && media.food) return media.food;
-  if (/strand|beach/.test(text) && media.beach) return media.beach;
-  return media.default ?? null;
+  if (/mad|food/.test(text) && mediaSet.food) return mediaSet.food;
+  if (/strand|beach/.test(text) && mediaSet.beach) return mediaSet.beach;
+  return mediaSet.default ?? null;
+}
+
+export function getDestinationSectionVisual(page, section, index = 0, guideSlug = '', avoidSrc = '') {
+  const mediaSet = destinationVisuals[page.destinationName];
+  if (!mediaSet) return null;
+  const text = `${page.title ?? ''} ${page.heading ?? ''} ${section?.heading ?? ''}`.toLowerCase();
+  let candidate = null;
+  if (/mad|food|restaurant|spis/.test(text) && mediaSet.food) candidate = mediaSet.food;
+  else if (/strand|beach|kyst/.test(text) && mediaSet.beach) candidate = mediaSet.beach;
+
+  const pool = mediaSet.sectionPool ?? [];
+  if (!candidate && pool.length) {
+    const offset = hash(guideSlug) % pool.length;
+    candidate = pool[(offset + index) % pool.length];
+  }
+  if (candidate?.src === avoidSrc && pool.length > 1) {
+    const currentIndex = Math.max(0, pool.findIndex((item) => item.src === candidate.src));
+    candidate = pool[(currentIndex + 1) % pool.length];
+  }
+  return candidate;
 }
 
 export function getDestinationVideo(page) {
