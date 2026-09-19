@@ -1,0 +1,86 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'hvorfor', label:'Er Sapa noget for dig?' },
+  { id:'trekking', label:'Trekking og landsbyer' },
+  { id:'fansipan', label:'Fansipan' },
+  { id:'transport', label:'Fra Hanoi' },
+  { id:'rejsetid', label:'Vejr og rejsetid' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - Sapa', href:'https://www.vietnam.travel/places-to-go/northern-vietnam/sapa' },
+];
+
+const faq = [
+  { question:'Hvor mange nætter skal man bruge i Sapa?', answer:'2-3 nætter er et godt udgangspunkt. Det giver én rigtig trekkingdag og tid til Fansipan eller en roligere dag, uden at transporten fra Hanoi fylder en uforholdsmæssig stor del af turen.' },
+  { question:'Er Sapa værd at besøge uden trekking?', answer:'Ja, især hvis du vil se bjerglandskabet og tage kabelbanen mod Fansipan. Men hvis du hverken vil gå ture eller bruge tid i bjergene, ville vi prioritere et andet stop på en kort Vietnam-rejse.' },
+];
+---
+<EditorialArticle
+  title="Sapa rejseguide 2026 | Trekking, Fansipan og transport fra Hanoi"
+  description="Dansk guide til Sapa med trekking, Fansipan, overnatning, vejret, transport fra Hanoi og råd om hvor mange dage der giver mening."
+  eyebrow="Nordvietnam"
+  heading="Sapa: vælg bjergene for landskabet, ikke for en tæt seværdighedsliste"
+  intro="Sapa er et godt stop, hvis du vil have risterrasser, bjergluft og en rigtig gådag mellem Vietnams storbyer. Transporten tager tid, så opholdet bør være langt nok til, at du ikke bare ankommer og vender om igen."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Rice%20terraces%20in%20Sapa%2C%20Vietnam.jpg?width=1800',
+    alt:'Grønne risterrasser på bjergskråninger ved Sapa',
+    caption:'Sapas styrke er landskabet. Planlæg færre aktiviteter og giv plads til vejrskift undervejs.',
+    credit:'Eerin25 / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Rice_terraces_in_Sapa,_Vietnam.jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/destinationer/hanoi/',title:'Hanoi rejseguide',text:'Planlæg basen før og efter turen til bjergene.'},
+    {href:'/destinationer/ninh-binh/',title:'Ninh Binh',text:'Sammenlign et lettere naturstop tættere på Hanoi.'},
+    {href:'/rejseplaner/vietnam-3-uger/',title:'Vietnam på 3 uger',text:'Se hvornår der er plads til et bjergstop uden at presse ruten.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>Vi ville sætte <strong>2-3 nætter</strong> af til Sapa. Brug én dag på trekking, og vælg derefter mellem Fansipan, en kortere gåtur eller bare en rolig dag afhængigt af vejret.</p>
+  <p>Sapa passer bedst ind i en rejse på mindst to uger. På en 10-dages tur ville vi kun tage dertil, hvis bjergene er et af hovedformålene med rejsen.</p>
+
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>2-3 nætter</b></div>
+    <div class="fact"><span>Hovedoplevelse</span><b>Trekking</b></div>
+    <div class="fact"><span>Højeste punkt</span><b>Fansipan 3.143 m</b></div>
+  </div>
+
+  <h2 id="hvorfor">Er Sapa noget for dig?</h2>
+  <p>Vietnam Tourism beskriver Sapa som en bjergby over en dyb dal med risterrasser, floder og Fansipan over byen. Det er præcis derfor, vi ville tage dertil. Ikke fordi centrum i sig selv kræver flere dage.</p>
+  <p>Hvis du helst vil have nem logistik, caféer og korte udflugter, er Ninh Binh et lettere naturstop fra Hanoi. Hvis du derimod gerne vil gå flere timer og opleve store højdeforskelle, giver Sapa noget helt andet.</p>
+
+  <h2 id="trekking">Trekking og landsbyer</h2>
+  <PracticalTable
+    title="Vælg tur efter benene - ikke efter flest kilometer"
+    columns={[{key:'type',label:'Turtype'},{key:'best',label:'Passer bedst til'},{key:'note',label:'Vores råd'}]}
+    rows={[
+      {type:'Kort dalvandring',best:'Første dag eller familier',note:'God hvis vejret er ustabilt'},
+      {type:'Heldagstrekking',best:'Aktive rejsende',note:'Vælg guide og rute efter sæson og underlag'},
+      {type:'Homestay med trekking',best:'2-3 dages ophold',note:'Bedre hvis du vil længere væk fra byens centrum'},
+    ]}
+  />
+  <p>Vådt underlag kan ændre en let rute markant. Gode sko med greb er vigtigere end at have et helt sæt teknisk vandreudstyr til en almindelig dagstur.</p>
+  <div class="callout"><strong>Om lokale landsbybesøg:</strong> Vælg en guide eller operatør, der forklarer ruten, gruppestørrelsen og hvordan lokale værter bliver betalt. Det gør det lettere at vælge noget, der føles ordentligt for begge sider.</div>
+
+  <h2 id="fansipan">Fansipan: flot, men ikke en garanti for udsigt</h2>
+  <p>Fansipan er regionens højeste bjerg, og kabelbanen gør toppen tilgængelig uden en flerdages vandretur. Vietnam Tourism oplyser højden til 3.143 meter.</p>
+  <p>Vi ville ikke låse Fansipan til et bestemt tidspunkt flere dage i forvejen, hvis vejrudsigten er usikker. Skyer kan dække udsigten hurtigt. Hvis du har to hele dage i området, så læg den mest vejrfølsomme aktivitet på den klareste dag.</p>
+
+  <h2 id="transport">Fra Hanoi til Sapa</h2>
+  <p>Der er to oplagte måder: direkte bus/limousine-van til Sapa eller nattog til Lao Cai efterfulgt af vejtransport op i bjergene. Bussen er enklere dør til dør. Toget kan være interessant, hvis du gerne vil spare en hotelnat og synes, at nattog er en del af oplevelsen.</p>
+  <p>Hvis du bliver køresyg på snoede bjergveje, er det værd at tage med i valget. Transportformen er ikke bare et spørgsmål om pris.</p>
+
+  <h2 id="rejsetid">Vejr og bedste rejsetid</h2>
+  <p>Sapa kan være kølig, diset og våd på tidspunkter, hvor Hanoi stadig føles varmt. Vietnam Tourism fremhæver blandt andet april-maj og september-oktober som gode perioder, men vejret i bjergene kan stadig skifte hurtigt.</p>
+  <p>Pak et let varmt lag og regnbeskyttelse selv på en ellers varm Vietnam-rejse. Tjek vores <a href="/rejseguide/pakkeliste-vietnam/">pakkeliste til Vietnam</a>, når du kombinerer flere klimazoner på samme tur.</p>
+</EditorialArticle>

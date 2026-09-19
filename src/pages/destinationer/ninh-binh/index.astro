@@ -1,0 +1,89 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'bo', label:'Hvor skal man bo?' },
+  { id:'oplevelser', label:'Det skal du opleve' },
+  { id:'dage', label:'Hvor mange dage?' },
+  { id:'transport', label:'Fra Hanoi' },
+  { id:'rejsetid', label:'Bedste rejsetid' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - Ninh Binh', href:'https://www.vietnam.travel/vi/places-to-go/northern-vietnam/ninh-binh' },
+  { label:'Vietnam Tourism - A perfect day in Ninh Binh', href:'https://www.vietnam.travel/things-to-do/perfect-day-ninh-binh' },
+];
+
+const faq = [
+  { question:'Hvor mange dage skal man bruge i Ninh Binh?', answer:'Vi ville bruge 2-3 nætter, hvis Ninh Binh er en del af en rundrejse. En dagstur fra Hanoi kan fungere, men en overnatning giver langt mere ro omkring Trang An, Tam Coc og Hang Mua.' },
+  { question:'Skal man bo i Ninh Binh by eller Tam Coc?', answer:'Til de fleste førstegangsrejsende ville vi vælge Tam Coc-området. Det er lettere at kombinere med cykel, restauranter og de klassiske landskaber uden at være afhængig af taxi til alt.' },
+];
+---
+<EditorialArticle
+  title="Ninh Binh rejseguide 2026 | Tam Coc, Trang An og Hang Mua"
+  description="Dansk rejseguide til Ninh Binh med råd om Tam Coc, Trang An, Hang Mua, hotelområde, transport fra Hanoi og hvor mange dage du bør bruge."
+  eyebrow="Nordvietnam"
+  heading="Ninh Binh: bo 2-3 nætter i stedet for kun at tage en dagstur"
+  intro="Ninh Binh er et af de nemmeste naturstop at kombinere med Hanoi. Kalkstensklipper, rismarker og floder ligger tæt nok på hinanden til, at du kan opleve meget uden at pakke hver dag."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/TamCoc.jpg?width=1800',
+    alt:'Flod mellem kalkstensbjerge og rismarker ved Tam Coc i Ninh Binh',
+    caption:'Ninh Binh fungerer bedst i et roligt tempo. En bådtur og en udsigtstur samme dag er rigeligt for de fleste.',
+    credit:'Doron / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:TamCoc.jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/destinationer/hanoi/ninh-binh-fra-hanoi/',title:'Ninh Binh fra Hanoi',text:'Sammenlign dagstur med overnatning og se den praktiske transport.'},
+    {href:'/destinationer/hanoi/',title:'Hanoi rejseguide',text:'Planlæg dagene før eller efter Ninh Binh.'},
+    {href:'/rejseplaner/vietnam-2-uger/',title:'Vietnam på 2 uger',text:'Se hvor Ninh Binh passer ind i en rundrejse.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>Hvis du har plads i ruten, ville vi vælge <strong>2-3 nætter i Ninh Binh</strong> frem for en presset dagstur. Bo omkring Tam Coc, vælg enten Trang An eller Tam Coc som bådtur, og tag Hang Mua tidligt eller sent på dagen.</p>
+  <p>En dagstur fra Hanoi giver stadig mening, hvis du kun har 7-10 dage i Vietnam. Men på en to- eller treugers rejse er overnatning normalt den bedre balance.</p>
+
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>2-3 nætter</b></div>
+    <div class="fact"><span>Bedste base førstegang</span><b>Tam Coc</b></div>
+    <div class="fact"><span>Klassisk kombination</span><b>Bådtur + Hang Mua</b></div>
+  </div>
+
+  <h2 id="bo">Hvor skal man bo i Ninh Binh?</h2>
+  <p><strong>Tam Coc</strong> er det mest praktiske valg for de fleste. Der er restauranter, små hoteller, cykeludlejning og nem adgang til flere af områdets oplevelser. Du behøver derfor ikke planlægge hver eneste korte strækning med chauffør.</p>
+  <p>Ninh Binh by er mere lokal og har bedre transportforbindelser, men den ligger mindre praktisk i forhold til de landskaber, de fleste kommer for. Hvis du kun skal videre med tog næste morgen, kan byen være praktisk. Til selve opholdet ville vi stadig vælge Tam Coc eller et roligt sted mellem Tam Coc og Trang An.</p>
+
+  <h2 id="oplevelser">Det skal du opleve</h2>
+  <PracticalTable
+    title="Tre oplevelser er nok til et godt første besøg"
+    intro="Du behøver ikke presse alle templer, grotter og bådruter ind på samme tur."
+    columns={[{key:'place',label:'Sted'},{key:'time',label:'Tid'},{key:'why',label:'Hvorfor'}]}
+    rows={[
+      {place:'Trang An eller Tam Coc',time:'2-3 timer',why:'Bådtur gennem kalkstenslandskabet'},
+      {place:'Hang Mua',time:'1,5-2 timer',why:'Udsigt over floden og rismarkerne'},
+      {place:'Hoa Lu eller Bich Dong',time:'1-2 timer',why:'Historie og kultur mellem naturdagene'},
+    ]}
+  />
+  <p>Vietnam Tourism fremhæver bådturene gennem det UNESCO-beskyttede landskab og udsigten fra Hang Mua som centrale oplevelser. Vores råd er stadig at vælge færre stop. To bådture efter hinanden kan hurtigt føles mere ens, end de ser ud på en lang liste.</p>
+  <div class="callout"><strong>Trang An eller Tam Coc?</strong> Hvis det er første gang, ville vi vælge én af dem ud fra hotelplacering, dagens vejr og hvor travlt der er. Trang An har flere ruter gennem grotter og kalkstenslandskab, mens Tam Coc er meget nemt, hvis du allerede bor i byen.</div>
+
+  <h2 id="dage">Forslag til 2 hele dage</h2>
+  <p><strong>Dag 1:</strong> Ankom fra Hanoi, check ind og brug eftermiddagen på cykel eller en rolig tur omkring Tam Coc. Gem den store udsigt til næste morgen.</p>
+  <p><strong>Dag 2:</strong> Start ved Hang Mua før den værste varme. Hold en lang frokostpause og tag derefter en bådtur ved Trang An eller Tam Coc.</p>
+  <p>Har du en tredje nat, kan du lægge Hoa Lu, Bich Dong eller en længere cykeltur ind uden at gøre programmet tæt.</p>
+
+  <h2 id="transport">Sådan kommer du fra Hanoi</h2>
+  <p>Ninh Binh ligger tæt nok på Hanoi til, at bus, limousine-van, tog og privat transfer alle er realistiske. Til to personer ville vi først sammenligne en god limousine-van med toget. Med børn eller meget bagage kan en privat transfer være pengene værd, fordi du går direkte fra hotel til hotel.</p>
+  <p>Hvis Ninh Binh kun skal være en dagstur, så vælg en tur med få hovedstop frem for et program, der lover fem-seks attraktioner på samme dag.</p>
+
+  <h2 id="rejsetid">Hvornår er Ninh Binh bedst?</h2>
+  <p>Vejr, vandstand og rismarkernes farve ændrer oplevelsen gennem året. Der findes ikke én dato, der garanterer grønt landskab og klart vejr. Hvis resten af Nordvietnam er vigtigere end et bestemt foto fra Ninh Binh, ville vi vælge rejsedato efter hele ruten og ikke efter én mark.</p>
+  <p>Læs vores <a href="/rejseguide/bedste-rejsetid/">guide til bedste rejsetid i Vietnam</a>, hvis Ninh Binh skal kombineres med Hanoi, Sapa eller Ha Long Bay.</p>
+</EditorialArticle>

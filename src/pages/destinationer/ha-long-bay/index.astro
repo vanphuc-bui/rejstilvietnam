@@ -1,0 +1,97 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+import CommercialCta from '../../../components/CommercialCta.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'dag-eller-nat', label:'Dagstur eller overnatning?' },
+  { id:'cruise', label:'Sådan vælger vi cruise' },
+  { id:'vejr', label:'Vejr og ændringer' },
+  { id:'transport', label:'Fra Hanoi' },
+  { id:'pakning', label:'Hvad skal du have med?' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - What to do in Ha Long Bay', href:'https://vietnam.travel/node/1368' },
+  { label:'UNESCO - Ha Long Bay - Cat Ba Archipelago', href:'https://whc.unesco.org/en/list/672/' },
+];
+
+const faq = [
+  { question:'Er Ha Long Bay bedst som dagstur eller med overnatning?', answer:'Hvis bugten er en vigtig del af din rejse, ville vi vælge én nat på båd. En dagstur er bedre, hvis du har få dage eller ikke ønsker endnu et hotelskift.' },
+  { question:'Hvor mange nætter skal man bruge i Ha Long Bay?', answer:'Én nat er nok for de fleste førstegangsrejsende. To nætter giver mere tid på vandet, men vi ville kun betale for det, hvis cruise-ruten faktisk tilbyder mere end den samme hovedoplevelse i langsommere tempo.' },
+];
+---
+<EditorialArticle
+  title="Ha Long Bay rejseguide 2026 | Dagstur eller cruise med overnatning?"
+  description="Dansk guide til Ha Long Bay med valg mellem dagstur og cruise, transport fra Hanoi, vejr, pakkeliste og hvad du bør tjekke før booking."
+  eyebrow="Nordvietnam"
+  heading="Ha Long Bay: én nat på vandet er nok for de fleste"
+  intro="Ha Long Bay er et af Vietnams mest kendte landskaber. Den vigtigste beslutning er ikke, hvor mange attraktioner du kan nå, men om du vil opleve bugten på en lang dagstur eller sove på båden."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Ha%20Long%20Bay.jpg?width=1800',
+    alt:'Kalkstensøer i Ha Long Bay set fra vandet',
+    caption:'Ha Long Bay handler mere om tiden på vandet end om en lang liste af enkelte stop.',
+    credit:'Ondřej Žváček / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Ha_Long_Bay.jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/ture/halong-bay-cruise/',title:'Ha Long Bay cruise',text:'Gå videre til vores konkrete guide til valg af cruise.'},
+    {href:'/destinationer/hanoi/ha-long-bay-fra-hanoi/',title:'Ha Long Bay fra Hanoi',text:'Se transport og tidsforbrug fra byen.'},
+    {href:'/destinationer/ninh-binh/',title:'Ninh Binh',text:'Sammenlign bugten med et naturstop på land.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>Hvis Ha Long Bay er en af de oplevelser, du virkelig gerne vil have med, ville vi vælge <strong>et cruise med én overnatning</strong>. Du får både eftermiddag, aften og morgen på vandet uden at betale for en lang ekstra dag.</p>
+  <p>En dagstur er stadig et fornuftigt valg fra Hanoi, hvis din rejse er kort. Vi ville ikke tilføje en overnatning bare for at kunne sige, at vi har gjort det.</p>
+
+  <div class="fact-grid">
+    <div class="fact"><span>Første besøg</span><b>1 nat</b></div>
+    <div class="fact"><span>Kort rute</span><b>Dagstur</b></div>
+    <div class="fact"><span>Vigtigst før booking</span><b>Rute + kahyt + transfer</b></div>
+  </div>
+
+  <h2 id="dag-eller-nat">Dagstur eller cruise med overnatning?</h2>
+  <PracticalTable
+    title="Vælg efter din rejse - ikke efter den længste pakke"
+    columns={[{key:'type',label:'Valg'},{key:'best',label:'Bedst til'},{key:'tradeoff',label:'Ulempe'}]}
+    rows={[
+      {type:'Dagstur',best:'10-dages rute og lille budget',tradeoff:'Lang dag med meget transport'},
+      {type:'1 nat',best:'De fleste førstegangsrejsende',tradeoff:'Dyrere og ekstra bagagehåndtering'},
+      {type:'2 nætter',best:'Hvis ro og tid på vandet er et hovedmål',tradeoff:'Kræver en bedre rute for at retfærdiggøre tiden'},
+    ]}
+  />
+  <p>Vietnam Tourism beskriver Ha Long Bay som et landskab med kalkstenskarst, øer, grotter og flydende samfund. Det er den samlede sejlads gennem landskabet, der er hovedoplevelsen. Derfor ville vi hellere vælge et godt én-nats cruise end det billigste program med flest stop.</p>
+
+  <h2 id="cruise">Sådan ville vi vælge cruise</h2>
+  <p>Sammenlign først <strong>afgangshavn, sejlrute, kahyt, måltider, transfer og gruppestørrelse</strong>. Et flot bådbillede fortæller meget lidt om, hvor stor en del af dagen der reelt bruges på transfer eller ventetid.</p>
+  <p>Hvis Lan Ha Bay eller Bai Tu Long indgår i ruten, så vurder det ud fra det konkrete program frem for en simpel påstand om, at ét område altid er "bedre". Ruter, adgang og crowding kan ændre sig.</p>
+
+  <CommercialCta
+    eyebrow="Næste skridt"
+    title="Sammenlign cruise efter rute og tidsforbrug"
+    text="Vores cruise-guide forklarer, hvilke detaljer vi ville kontrollere, før vi betaler."
+    primaryHref="/ture/halong-bay-cruise/"
+    primaryLabel="Se cruise-guiden →"
+    secondaryHref="/destinationer/hanoi/ha-long-bay-fra-hanoi/"
+    secondaryLabel="Se transport fra Hanoi"
+  />
+
+  <h2 id="vejr">Vejr kan ændre dagen</h2>
+  <p>Dis, regn, vind og myndighedsbeslutninger kan ændre sejlruter eller afgang. Det betyder ikke nødvendigvis, at turen bliver dårlig, men en stram plan uden buffer gør dig mere sårbar.</p>
+  <p>Hvis du flyver videre samme aften, som cruiset returnerer, ville vi lægge rigelig margin ind. En nat i Hanoi bagefter er den mindre stressende løsning.</p>
+
+  <h2 id="transport">Fra Hanoi til Ha Long Bay</h2>
+  <p>Mange cruises inkluderer eller tilbyder transfer fra Hanoi. Hvis du booker transport separat, så tjek præcis hvilken havn og terminal båden bruger. "Ha Long" er ikke ét enkelt pickup-punkt.</p>
+  <p>På en dagstur er kvaliteten af transporten ekstra vigtig, fordi flere timer foregår på vej. På et cruise med overnatning fylder transferen relativt mindre i den samlede oplevelse.</p>
+
+  <h2 id="pakning">Hvad skal du have med på båden?</h2>
+  <p>Tag en lille taske med det nødvendige i stedet for at slæbe hele kufferten ind og ud af kahytten: let skiftetøj, solbeskyttelse, medicin, oplader/powerbank, badetøj og et ekstra lag til kølig eller blæsende aften.</p>
+  <p>Bliver du let søsyg, så planlæg det før afgang og spørg læge eller apotek om, hvad der er passende for dig. Se også vores <a href="/rejseguide/pakkeliste-vietnam/">pakkeliste til Vietnam</a>.</p>
+</EditorialArticle>

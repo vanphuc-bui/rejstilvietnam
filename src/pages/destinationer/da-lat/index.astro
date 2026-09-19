@@ -1,0 +1,86 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'hvorfor', label:'Hvorfor Da Lat?' },
+  { id:'byen', label:'By, sø og kaffe' },
+  { id:'natur', label:'Natur og vandfald' },
+  { id:'transport', label:'Sådan kommer du dertil' },
+  { id:'dage', label:'Hvor mange dage?' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - Da Lat', href:'https://www.vietnam.travel/places-to-go/central-vietnam/dalat' },
+];
+
+const faq = [
+  { question:'Hvor mange dage skal man bruge i Da Lat?', answer:'2-3 nætter passer godt på en rundrejse. Det giver en dag i byen og en dag til kaffe, natur eller vandfald uden at gøre højlandet til endnu et hurtigt stop.' },
+  { question:'Er Da Lat et strandsted?', answer:'Nej. Da Lat ligger i Central Highlands og er kendt for køligere klima, søer, fyrreskov, kaffe og udendørsoplevelser. Vælg Nha Trang eller Phu Quoc, hvis strand er hovedformålet.' },
+];
+---
+<EditorialArticle
+  title="Da Lat rejseguide 2026 | Kaffe, køligt klima og højland"
+  description="Dansk guide til Da Lat med kaffe, Xuan Huong Lake, marked, vandfald, transport og råd om hvor mange dage du bør bruge i Vietnams højland."
+  eyebrow="Central Highlands"
+  heading="Da Lat: et køligere stop mellem strand og storby"
+  intro="Da Lat er interessant netop fordi byen ikke ligner de klassiske stop langs kysten. Her får du højland, kaffe, fyrreskov og et klima, der kan føles overraskende køligt efter Ho Chi Minh City eller Nha Trang."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Da%20Lat%20-%20Viet%20Nam.jpg?width=1800',
+    alt:'Bylandskab og grønne bakker i Da Lat i Vietnams højland',
+    caption:'Da Lat er et godt temposkifte på en længere rejse, især hvis du vil have kaffe, natur og køligere aftener.',
+    credit:'Tuong Lam Photos / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Da_Lat_-_Viet_Nam.jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/destinationer/nha-trang/',title:'Nha Trang',text:'Kombinér højlandet med strand og byliv ved kysten.'},
+    {href:'/destinationer/ho-chi-minh-city/',title:'Ho Chi Minh City',text:'Se storbybasen syd for Da Lat.'},
+    {href:'/rejseplaner/vietnam-3-uger/',title:'Vietnam på 3 uger',text:'Da Lat passer bedst, når ruten har luft til et ekstra stop.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>Vi ville bruge <strong>2-3 nætter i Da Lat</strong> på en længere rundrejse. Brug én dag i og omkring centrum og én dag på kaffe, landskab eller et vandfald.</p>
+  <p>På en 10-dages førstegangsrejse ville vi normalt prioritere Hanoi, Hoi An eller Ho Chi Minh City før Da Lat. Byen bliver mere interessant, når du har tid til kontrasten.</p>
+
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>2-3 nætter</b></div>
+    <div class="fact"><span>Kendt for</span><b>Kaffe + højland</b></div>
+    <div class="fact"><span>God kombination</span><b>Nha Trang eller HCMC</b></div>
+  </div>
+
+  <h2 id="hvorfor">Hvorfor tage til Da Lat?</h2>
+  <p>Vietnam Tourism beskriver Da Lat som et køligere højlandsstop med søer, europæisk inspireret arkitektur og natur i bakkerne omkring byen. For os er det vigtigste, at Da Lat giver en pause fra tropisk strand og storby.</p>
+  <p>Hvis du primært vil se de mest kendte Vietnam-højdepunkter på kort tid, kan du springe byen over. Hvis kaffe, lokalt landbrug, kølige morgener og landskab interesserer dig, er det netop et godt ekstra stop.</p>
+
+  <h2 id="byen">Byen, Xuan Huong Lake og kaffekulturen</h2>
+  <p>Xuan Huong Lake ligger centralt og fungerer som et naturligt pejlemærke. Markedet og centrum er lette at kombinere med caféer og en langsom eftermiddag.</p>
+  <p>Da Lat ligger i et af Vietnams vigtigste kaffeområder. Du behøver ikke booke en stor "coffee tour" for at få noget ud af det, men en gård eller roastery med tydelig forklaring på bønner og produktion kan være mere interessant end endnu en fotocafé.</p>
+
+  <h2 id="natur">Natur og vandfald</h2>
+  <PracticalTable
+    title="Sådan ville vi fordele oplevelserne"
+    columns={[{key:'type',label:'Type'},{key:'time',label:'Tid'},{key:'note',label:'Vores råd'}]}
+    rows={[
+      {type:'Centrum + sø + marked',time:'½-1 dag',note:'Gør det i roligt tempo til fods og med korte taxiture'},
+      {type:'Kaffe og landbrug',time:'½ dag',note:'Vælg et sted med reel produktion og forklaring'},
+      {type:'Vandfald/natur',time:'½-1 dag',note:'Tjek afstand og køretid før du kombinerer flere stop'},
+    ]}
+  />
+  <p>De mest fotogene steder ligger ikke nødvendigvis tæt på hinanden. En chauffør til en halv eller hel dag kan være en bedre løsning end at jagte separate Grab-ture uden for byen.</p>
+
+  <h2 id="transport">Sådan kommer du til Da Lat</h2>
+  <p>Da Lat kan nås med fly og bus fra flere større byer. Lufthavnen ligger uden for centrum, så regn med transfer den sidste del. Fra Nha Trang er vejtransport en oplagt måde at kombinere kyst og højland, men ruten har sving og højdeforskelle.</p>
+  <div class="callout"><strong>Hvis du bliver køresyg:</strong> Vælg transport og tidspunkt med det i tankerne. En smuk bjergvej er ikke en bonus, hvis du bruger hele turen på at have det dårligt.</div>
+
+  <h2 id="dage">Forslag til 3 nætter</h2>
+  <p><strong>Ankomstdag:</strong> Check ind, gå omkring søen og spis i centrum.</p>
+  <p><strong>Hel dag 1:</strong> Marked, byens arkitektur og god tid på en café eller et roastery.</p>
+  <p><strong>Hel dag 2:</strong> Vælg én naturretning med vandfald, landskab eller kaffeproduktion. Undgå at fylde dagen med fem stop, der hver ligger langt fra hinanden.</p>
+</EditorialArticle>
