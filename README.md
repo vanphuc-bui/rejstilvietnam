@@ -65,5 +65,6 @@ Before adding or substantially changing travel content, read these three files:
 - `STYLE_GUIDE.md` — writing, tone and editorial structure
 - `IMAGE_STANDARD.md` — image sourcing, attribution and uniqueness
 - `EDITORIAL_VISUAL_STANDARD.md` — visual density, section imagery, video, maps and QA expectations
+- `DESTINATION_CLUSTER_STANDARD.md` — required destination pillar + subguide architecture and internal-linking standard
 
 The production build enforces key visual rules. Do not merge a content change while Site quality CI is red.
