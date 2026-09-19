@@ -61,6 +61,11 @@ export const editorialVisuals = {
     market: img('Ben Thanh Market.jpg','Marked i Ho Chi Minh City','Markeder fungerer bedst med rolig tone og tydelige aftaler om pris før køb.'),
     food: img('Com-Tam-2008.jpg','Vietnamesisk måltid','Mange måltider deles, og bordskik forstås bedst ved at se, hvordan værten og de andre gæster gør.'),
   },
+  esim: {
+    simPhone: img('SIMmobilephone.jpg','SIM-kort ved siden af en mobiltelefon','eSIM fjerner det fysiske kort, men det praktiske valg handler stadig om kompatibilitet, data og netværk.'),
+    nano: img('Nano SIM card and tray.jpg','Nano-SIM og SIM-skuffe','Et fysisk SIM kræver adgang til SIM-skuffen, mens eSIM kan installeres digitalt på kompatible telefoner.'),
+    card: img('Multi-size T-Mobile SIM card.jpg','SIM-kort i flere størrelser','SIM-formatet er mindre vigtigt på en ferie, hvis telefonen allerede understøtter eSIM.'),
+  },
 };
 
 export default editorialVisuals;
