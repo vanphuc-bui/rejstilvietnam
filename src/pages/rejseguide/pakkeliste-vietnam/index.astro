@@ -1,0 +1,110 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'dokumenter', label:'Dokumenter og penge' },
+  { id:'toej', label:'Tøj efter rute' },
+  { id:'elektronik', label:'Elektronik' },
+  { id:'sundhed', label:'Sundhed og småting' },
+  { id:'haandbagage', label:'Håndbagage' },
+  { id:'lad-hjemme', label:'Det kan blive hjemme' },
+];
+
+const sources = [
+  { label:'Udenrigsministeriet - Tjekliste før rejsen', href:'https://um.dk/rejse-og-ophold/foer-rejsen/tjekliste-foer-rejsen' },
+  { label:'Udenrigsministeriet - Vietnam rejsevejledning', href:'https://um.dk/rejse-og-ophold/rejse-til-udlandet/rejsevejledninger/vietnam' },
+];
+
+const faq = [
+  { question:'Skal man have varmt tøj med til Vietnam?', answer:'Ja, hvis du skal til Nordvietnam eller højlandet i en køligere periode. Et let varmt lag fylder lidt og er langt mere nyttigt end kun at pakke sommertøj til en rejse gennem flere klimazoner.' },
+  { question:'Skal man tage håndklæde med?', answer:'Ikke til en almindelig hotelrejse. Et lille hurtigtørrende håndklæde kan være praktisk til strand, trekking eller enklere overnatning, men et stort badehåndklæde fylder unødigt meget.' },
+];
+---
+<EditorialArticle
+  title="Pakkeliste til Vietnam 2026 | Det ville vi tage med - og lade blive hjemme"
+  description="Praktisk pakkeliste til Vietnam for danske rejsende: dokumenter, tøj, elektronik, medicin, håndbagage og hvad du ikke behøver slæbe med."
+  eyebrow="Før afrejse"
+  heading="Pakkeliste til Vietnam: tag mindre med, men pak de rigtige ting"
+  intro="Vietnam kræver sjældent specialudstyr på en almindelig rundrejse. Det svære er, at Hanoi, Sapa, Hoi An og Phu Quoc ikke nødvendigvis har samme vejr, så en god pakkeliste skal passe til din rute - ikke bare til landet."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Travel%20luggage.png?width=1800',
+    alt:'Åben rejsekuffert med tøj og rejseudstyr pakket til ferie',
+    caption:'Den bedste Vietnam-pakkeliste er kort nok til, at du stadig har plads til at flytte dig mellem flere stop.',
+    credit:'safaritravelplus / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Travel_luggage.png',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/rejseguide/esim-vietnam/',title:'eSIM i Vietnam',text:'Få internet på plads før afrejse.'},
+    {href:'/rejseguide/visum/',title:'Visum og indrejse',text:'Tjek pas og indrejseregler før du pakker dokumentmappen.'},
+    {href:'/rejseguide/bedste-rejsetid/',title:'Bedste rejsetid',text:'Se hvilket klima din konkrete rute skal pakkes til.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>Til en almindelig Vietnam-rejse ville vi pakke <strong>let, hurtigtørrende tøj, ét varmt lag, let regnbeskyttelse, gode sko, solbeskyttelse, personlig medicin, powerbank og en universaladapter</strong>. Dokumenter og et ekstra betalingskort er vigtigere end et ekstra par sko.</p>
+  <p>Hvis du flytter hotel 4-5 gange, mærker du hver overflødig kilo. Pak til cirka en uge og få vasket tøj undervejs i stedet for at pakke til hele ferien.</p>
+
+  <h2 id="dokumenter">Dokumenter og penge: det vigtigste først</h2>
+  <PracticalTable
+    title="Det vi ville have både digitalt og fysisk"
+    columns={[{key:'item',label:'Ting'},{key:'where',label:'Hvor'},{key:'why',label:'Hvorfor'}]}
+    rows={[
+      {item:'Pas + kopi',where:'Original på dig, kopi separat',why:'Nem backup hvis noget bliver væk'},
+      {item:'Forsikringsoplysninger',where:'Telefon + offline kopi',why:'Hurtig adgang ved sygdom eller skade'},
+      {item:'2 betalingskort',where:'Opbevaret hver for sig',why:'Backup hvis et kort bliver spærret eller mistet'},
+      {item:'Billetter og første hotel',where:'Offline på telefonen',why:'Praktisk ved ankomst uden data'},
+    ]}
+  />
+  <p>Udenrigsministeriet anbefaler blandt andet kopier af vigtige dokumenter og et ekstra betalingskort. Vi ville også gemme forsikringsselskabets alarmnummer offline.</p>
+
+  <h2 id="toej">Tøj efter rute - ikke efter Instagram</h2>
+  <p>Til storby og kyst fungerer let tøj, der tørrer hurtigt. Men Sapa, Da Lat og Hanoi i køligere perioder kan kræve et ekstra lag. I templer og mere formelle steder er det praktisk at have tøj, der dækker skuldre og knæ.</p>
+  <ul>
+    <li>4-6 lette T-shirts/skjorter.</li>
+    <li>2-3 shorts eller lette bukser/nederdele.</li>
+    <li>Ét par lange, lette bukser.</li>
+    <li>En tynd trøje eller let jakke.</li>
+    <li>Let regnjakke eller kompakt paraply.</li>
+    <li>Badetøj, hvis ruten har strand eller pool.</li>
+    <li>Behagelige sko, du allerede har gået i.</li>
+    <li>Sandaler eller lette sko til varme dage.</li>
+  </ul>
+  <div class="callout"><strong>Vores regel:</strong> Hvis et stykke tøj kun passer til ét bestemt foto eller én middag, ville vi normalt lade det blive hjemme.</div>
+
+  <h2 id="elektronik">Elektronik</h2>
+  <p>Telefonen løser kort, booking, oversættelse, Grab og betaling mange steder. Derfor ville vi prioritere strøm og backup frem for meget kameraudstyr.</p>
+  <ul>
+    <li>Telefon + oplader.</li>
+    <li>Powerbank, pakket efter flyselskabets regler.</li>
+    <li>Universaladapter, så du ikke er afhængig af hvilken stikkontakt hotellet har.</li>
+    <li>eSIM installeret før afrejse eller plan for lokal SIM.</li>
+    <li>Et kort opladerkabel i håndbagagen.</li>
+  </ul>
+  <p>Læs vores <a href="/rejseguide/esim-vietnam/">eSIM-guide til Vietnam</a>, hvis du vil være online allerede i lufthavnen.</p>
+
+  <h2 id="sundhed">Sundhed og småting</h2>
+  <p>Tag din egen faste medicin med i tilstrækkelig mængde og undersøg reglerne, hvis medicinen kræver dokumentation. Til almindelige småting ville vi have plaster, håndsprit, solcreme og et myggemiddel, der passer til den rejsende.</p>
+  <p>Vaccinationer afhænger af rute, varighed og personlige forhold. Brug vores <a href="/rejseguide/vaccinationer-vietnam/">vaccinationsguide</a> som vej ind til SSI's aktuelle anbefalinger frem for en gammel pakkeliste fra et forum.</p>
+
+  <h2 id="haandbagage">Det ville vi have i håndbagagen</h2>
+  <p>Pas, telefon, medicin, oplader, powerbank, ét let skift, tandbørste og de vigtigste dokumenter. Hvis den indcheckede bagage bliver forsinket, kan du stadig klare det første døgn.</p>
+  <p>Tjek altid flyselskabets aktuelle regler for vægt, væsker og batterier. De kan variere mellem internationale og indenrigsfly.</p>
+
+  <h2 id="lad-hjemme">Det kan ofte blive hjemme</h2>
+  <ul>
+    <li>Store flasker shampoo og shower gel.</li>
+    <li>Flere par tunge sko.</li>
+    <li>Et stort rejsehåndklæde til almindelige hotelophold.</li>
+    <li>For meget kontant valuta hjemmefra.</li>
+    <li>En laptop, hvis du reelt ikke skal arbejde.</li>
+    <li>14 komplette sæt tøj til en 14-dages rejse.</li>
+  </ul>
+  <p>Jo mere du bevæger dig mellem byer, jo mere værdifuld bliver en mindre taske. Vietnam er et nemt land at købe almindelige toiletsager, tøj og småting i, hvis du mangler noget undervejs.</p>
+</EditorialArticle>
