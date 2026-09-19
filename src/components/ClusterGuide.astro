@@ -16,7 +16,8 @@ const destinationIndex = pathParts.indexOf('destinationer');
 const destinationSlug = destinationIndex >= 0 ? pathParts[destinationIndex + 1] : '';
 const guideSlug = destinationIndex >= 0 ? pathParts[destinationIndex + 2] : '';
 const visualPack = getGuideVisuals(destinationSlug, guideSlug);
-const heroMedia = visualPack?.hero ?? page.hero ?? getDestinationVisual(page);
+const autoHeroMedia = getDestinationSectionVisual(page, { heading: page.heading ?? page.title }, 0, guideSlug, '') ?? getDestinationVisual(page);
+const heroMedia = visualPack?.hero ?? autoHeroMedia ?? page.hero ?? getDestinationVisual(page);
 const heroSrc = heroMedia?.src ?? '';
 const sectionImageSrcs = new Set(
   (page.sections ?? [])
