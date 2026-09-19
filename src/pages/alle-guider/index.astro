@@ -5,6 +5,11 @@ import { hoChiMinhPages } from '../../data/hoChiMinhCluster.js';
 import { phuQuocPages } from '../../data/phuQuocCluster.js';
 import { daNangPages } from '../../data/daNangCluster.js';
 import { nhaTrangPages } from '../../data/nhaTrangCluster.js';
+import { huePages } from '../../data/hueCluster.js';
+import { ninhBinhPages } from '../../data/ninhBinhCluster.js';
+import { sapaPages } from '../../data/sapaCluster.js';
+import { haLongBayPages } from '../../data/haLongBayCluster.js';
+import { daLatPages } from '../../data/daLatCluster.js';
 import { enhanceMarineCluster } from '../../data/marineActivityCluster.js';
 
 const groups = [
@@ -24,17 +29,12 @@ const groups = [
       ['/destinationer/hanoi/ha-long-bay-fra-hanoi/','Ha Long Bay fra Hanoi'],
     ]
   },
-  {
-    title:'Flere rejsemål',
-    links:[
-      ['/destinationer/ninh-binh/','Ninh Binh rejseguide'],
-      ['/destinationer/sapa/','Sapa rejseguide'],
-      ['/destinationer/ha-long-bay/','Ha Long Bay rejseguide'],
-      ['/destinationer/hue/','Hue rejseguide'],
-      ['/destinationer/da-lat/','Da Lat rejseguide'],
-    ]
-  },
   ...[
+    ['Ninh Binh','ninh-binh',ninhBinhPages],
+    ['Sapa','sapa',sapaPages],
+    ['Ha Long Bay','ha-long-bay',haLongBayPages],
+    ['Hue','hue',huePages],
+    ['Da Lat','da-lat',daLatPages],
     ['Hoi An','hoi-an',hoiAnPages],
     ['Ho Chi Minh City','ho-chi-minh-city',hoChiMinhPages],
     ['Da Nang','da-nang',daNangPages],
