@@ -1,0 +1,85 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'citadel', label:'Citadellet' },
+  { id:'grave', label:'Kejsergravene' },
+  { id:'mad', label:'Mad i Hue' },
+  { id:'transport', label:'Hue i ruten' },
+  { id:'dage', label:'2 dage i Hue' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - Hue', href:'https://vietnam.travel/node/101' },
+];
+
+const faq = [
+  { question:'Hvor mange dage skal man bruge i Hue?', answer:'To nætter er nok for de fleste førstegangsbesøg. Det giver tid til Citadellet, en eller to kejsergrave og et roligt måltid uden at gøre Hue til et logistisk mellemstop.' },
+  { question:'Hue eller Hoi An?', answer:'Hue er stærkest på kejserhistorie, templer og regional mad. Hoi An er lettere til gåture, strand og et langsommere ferieophold. På en rejse på mindst to uger fungerer de godt sammen.' },
+];
+---
+<EditorialArticle
+  title="Hue rejseguide 2026 | Citadellet, kejsergrave og mad"
+  description="Dansk guide til Hue med Citadellet, kejsergravene, mad, transport fra Da Nang og Hoi An samt forslag til to dage i byen."
+  eyebrow="Centralvietnam"
+  heading="Hue: giv den gamle kejserby to nætter på vejen gennem Centralvietnam"
+  intro="Hue giver en anden type oplevelse end Hoi An og Da Nang. Her er historien ikke bare en kulisse omkring caféer og strand, men selve grunden til at stoppe."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Citadel%20of%20Hue.jpg?width=1800',
+    alt:'Port og bygninger i det kejserlige citadel i Hue',
+    caption:'Citadellet er Hues naturlige startpunkt. Sæt god tid af i stedet for at kombinere det med for mange grave samme dag.',
+    credit:'qiv / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Citadel_of_Hue.jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/destinationer/da-nang/',title:'Da Nang',text:'Se den moderne strandby syd for Hue.'},
+    {href:'/destinationer/hoi-an/',title:'Hoi An',text:'Kombinér Hue med den gamle handelsby længere sydpå.'},
+    {href:'/rejseplaner/vietnam-2-uger/',title:'Vietnam på 2 uger',text:'Se om Hue passer ind uden for mange hotelskift.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p><strong>To nætter</strong> er et godt udgangspunkt i Hue. Brug den første store blok på Citadellet, og vælg én eller to kejsergrave næste dag. Resten af tiden bør gå til mad, floden og byen.</p>
+  <p>Hvis du kun har ti dage i Vietnam, kan Hue være det stop, vi ville skære væk for at holde ruten rolig. På to-tre uger giver byen langt mere mening.</p>
+
+  <div class="fact-grid">
+    <div class="fact"><span>Godt til</span><b>2 nætter</b></div>
+    <div class="fact"><span>Hovedoplevelse</span><b>Citadellet</b></div>
+    <div class="fact"><span>God kombination</span><b>Da Nang + Hoi An</b></div>
+  </div>
+
+  <h2 id="citadel">Start med Citadellet</h2>
+  <p>Hue var hovedstad under Nguyen-dynastiet, og Vietnam Tourism fremhæver Citadellet som stedet, hvor man bedst får greb om den kejserlige arv. Området er stort nok til, at vi ikke ville planlægge en anden stor attraktion lige bagefter.</p>
+  <p>Kom tidligt, især i varme måneder. Tag vand med, og giv dig selv lov til at springe enkelte bygninger over. Det er bedre at forstå hovedlinjerne end at forsøge at fotografere alt.</p>
+
+  <h2 id="grave">Kejsergravene: vælg 1-2, ikke alle</h2>
+  <PracticalTable
+    title="Tre klassiske grave - tre forskellige udtryk"
+    columns={[{key:'place',label:'Grav'},{key:'feel',label:'Karakter'},{key:'choice',label:'Hvis du skal vælge'}]}
+    rows={[
+      {place:'Minh Mang',feel:'Symmetrisk og landskabelig',choice:'Godt førstevalg for helhedsoplevelsen'},
+      {place:'Khai Dinh',feel:'Kompakt og dekorativ',choice:'God hvis du har mindre tid'},
+      {place:'Tu Duc',feel:'Rolig park og pavilloner',choice:'God til et langsommere besøg'},
+    ]}
+  />
+  <p>De ligger uden for centrum, så transporten er en del af dagen. En chauffør i nogle timer kan være mere praktisk end at bestille flere separate ture. Aftal pris og stop på forhånd.</p>
+
+  <h2 id="mad">Mad i Hue er en grund til at blive til aftensmad</h2>
+  <p>Hue er kendt for retter som bún bò Huế, bánh bèo og bánh khoái. Vietnam Tourism fremhæver også Dong Ba Market som et godt sted at forstå byens madkultur.</p>
+  <p>Vi ville ikke kun spise på hotellet her. Find mindst ét lokalt måltid, hvor restauranten har få tydelige specialiteter. Det er ofte lettere end at vælge fra en menu på ti sider.</p>
+
+  <h2 id="transport">Sådan passer Hue ind mellem Hanoi og Hoi An</h2>
+  <p>Hue ligger naturligt mellem Nord- og Centralvietnam. Hvis du kommer fra Hanoi, kan tog eller fly være relevant. Fra Da Nang eller Hoi An er vejtransport enkel nok til, at Hue kan blive næste base uden en flydag.</p>
+  <div class="callout"><strong>Vores rutevalg:</strong> Hanoi → Hue → Hoi An fungerer godt, hvis du har mindst to uger og er interesseret i historie. Hvis strand og ro betyder mere, ville vi flyve til Da Nang og bruge de ekstra nætter omkring Hoi An.</div>
+
+  <h2 id="dage">Forslag til 2 dage i Hue</h2>
+  <p><strong>Dag 1:</strong> Citadellet om morgenen, lang frokost, derefter Dong Ba-området eller en rolig tur langs Perfume River.</p>
+  <p><strong>Dag 2:</strong> Vælg to kejsergrave og eventuelt Thien Mu-pagoden. Slut med et måltid med lokale Hue-retter i stedet for endnu en attraktion.</p>
+</EditorialArticle>
