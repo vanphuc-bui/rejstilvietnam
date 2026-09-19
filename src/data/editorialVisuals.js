@@ -66,6 +66,11 @@ export const editorialVisuals = {
     nano: img('Nano SIM card and tray.jpg','Nano-SIM og SIM-skuffe','Et fysisk SIM kræver adgang til SIM-skuffen, mens eSIM kan installeres digitalt på kompatible telefoner.'),
     card: img('Multi-size T-Mobile SIM card.jpg','SIM-kort i flere størrelser','SIM-formatet er mindre vigtigt på en ferie, hvis telefonen allerede understøtter eSIM.'),
   },
+  visa: {
+    tourist: img('Vietnam tourist visa.jpg','Vietnam-visum i et pas','Ved længere ophold er e-visum eller anden visumtype relevant; brug altid de officielle myndighedssider til den aktuelle ansøgning.'),
+    evisa: img('Sample of Electronic Visa for the Socialist Republic of Vietnam.jpg','Eksempel på vietnamesisk e-visum','Et e-visum er et digitalt dokument. Gem en offline kopi, hvis din rejse kræver det.'),
+    document: img('Vietnam-visa.jpg','Eksempel på vietnamesisk visumdokument','Visum- og indrejsedokumenter bør være nemme at åbne offline under rejsen.'),
+  },
 };
 
 export default editorialVisuals;
