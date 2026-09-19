@@ -3,6 +3,7 @@ import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
 import AttractionSpot from '../../../../components/AttractionSpot.astro';
 import PlaceMap from '../../../../components/PlaceMap.astro';
+import VideoEmbed from '../../../../components/VideoEmbed.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
 
 const toc = [
@@ -296,6 +297,7 @@ const places = [
       reverse={index % 2 === 1}
     />
   ))}
+  <VideoEmbed youtubeId="1I4gT8grCuA" title="Hanoi walking tour 2026 i 4K" caption="Videoen giver et realistisk indtryk af Hoan Kiem, West Lake og gadelivet mellem de klassiske seværdigheder." />
 
   <h2 id="rute">En realistisk rute på én dag</h2>
   <div class="day-route">
