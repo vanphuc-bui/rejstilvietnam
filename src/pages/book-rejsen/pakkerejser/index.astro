@@ -1,6 +1,8 @@
 ---
 import GuideCover from '../../../components/GuideCover.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const agencies = [
   { label:'Skræddersyet & privat', name:'Vietnam Rejser', best:'Dig der vil rejse privat med egen chauffør/guide og have ruten tilpasset.', model:'Individuel / skræddersyet', note:'De fleste rejser kan ændres efter ønsker, tempo og budget. Internationale fly prissættes separat på flere pakkeforslag.', href:'https://vietnam-rejser.dk/individuelle-rejser/' },
@@ -11,10 +13,13 @@ const agencies = [
 <BaseLayout title="Pakkerejser til Vietnam | Sammenlign 3 typer rejsebureau | RejsTilVietnam.dk" description="Sammenlign pakkerejser og rejsebureauer til Vietnam: skræddersyet privat rejse, aktiv rejse eller grupperejse med dansk rejseleder.">
   <section class="package-hero"><div class="container hero-grid"><div><p class="eyebrow">Pakkerejser til Vietnam</p><h1>Vælg rejsetype før rejsebureau.</h1><p class="lead">Det vigtigste er ikke, hvilket logo du kender. Det er om du vil rejse <strong>privat, aktivt eller i gruppe</strong>.</p><div class="hero-actions"><a class="btn btn--primary" href="#sammenlign">Sammenlign muligheder →</a><a class="btn btn--outline" href="/rejseplaner/">Se vores rejseplaner først</a></div></div><div class="choice-box"><span>3 spørgsmål</span><b>Vil du rejse privat?</b><b>Vil du have dansk rejseleder?</b><b>Vil du selv bestemme tempoet?</b></div></div></section>
 <div class="container guide-cover-wrap"><GuideCover destination="Vietnam" title="Pakkerejser til Vietnam" eyebrow="Booking" /></div>
+<div class="container package-media"><SectionMedia {...v.planning.coast} /></div>
 
   <section class="section section--tight"><div class="container type-grid"><div><span>🙋</span><b>Privat</b><p>Du og dit eget selskab. Mere fleksibilitet.</p></div><div><span>🥾</span><b>Aktiv</b><p>Natur, cykling, trekking og tydeligt tema.</p></div><div><span>🚌</span><b>Gruppe</b><p>Fast program og ofte dansk rejseleder.</p></div></div></section>
 
   <section class="section compare-section" id="sammenlign"><div class="container"><div class="section-head"><div><p class="eyebrow">Tre forskellige modeller</p><h2>De løser ikke det samme problem.</h2></div><p>Vi viser dem side om side, fordi “bedst” afhænger af, hvordan du helst vil rejse.</p></div><div class="agency-list">{agencies.map((a,i)=><article class="agency"><div class="agency-num">0{i+1}</div><div class="agency-copy"><span>{a.label}</span><h3>{a.name}</h3><p class="best"><b>Bedst til:</b> {a.best}</p><div class="agency-facts"><div><small>Model</small><b>{a.model}</b></div><div><small>Vores vurdering</small><p>{a.note}</p></div></div></div><div class="agency-action"><a class="btn btn--outline" href={a.href} target="_blank" rel="noopener nofollow">Besøg bureau ↗</a><small>Eksternt link · ikke annoncelink endnu</small></div></article>)}</div></div></section>
+
+  <div class="container package-media"><SectionMedia {...v.family.beach} /></div>
 
   <section class="section decision-section"><div class="container"><div class="section-head"><div><p class="eyebrow">Hurtigt valg</p><h2>Hvad ville vi vælge hvornår?</h2></div></div><div class="grid grid--3"><div class="card decision"><span>01</span><h3>“Planlæg det for os”</h3><p>Start med et <b>skræddersyet privat tilbud</b>, hvis I er familie, par eller venner og gerne vil bestemme tempo og hotelniveau selv.</p></div><div class="card decision"><span>02</span><h3>“Vi vil have guide og gruppe”</h3><p>Se på <b>grupperejser med dansk rejseleder</b>, hvis tryghed, faste afgange og social rejseform betyder mest.</p></div><div class="card decision"><span>03</span><h3>“Vi vil opleve mere aktivt”</h3><p>Se efter en <b>aktiv rejseprofil</b>, hvis trekking, cykling og natur er vigtigere end klassisk sightseeing.</p></div></div></div></section>
 
@@ -29,4 +34,4 @@ const agencies = [
 @media(max-width:600px){.agency{grid-template-columns:1fr}.agency-num{display:none}.agency-action{grid-column:auto;max-width:none}.agency-facts,.check-list{grid-template-columns:1fr}.hero-actions{flex-direction:column}}
 </style>
 
-<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
+<style>.package-media{margin-top:20px}.package-media :global(.section-media){margin-bottom:0}.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
