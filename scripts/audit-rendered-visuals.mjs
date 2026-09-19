@@ -91,9 +91,13 @@ for (const file of pages) {
 
   const route = routeFor(file);
   const html = fs.readFileSync(file, 'utf8');
+  const mainHtml = html.match(/<article\b[^>]*class="[^"]*\bprose\b[^"]*"[^>]*>([\s\S]*?)<\/article>/i)?.[1]
+    ?? html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]
+    ?? html;
   const images = count(html, /<img\b[^>]*\bsrc=(?:"[^"]+"|'[^']+')/gi);
-  const h2s = count(html, /<h2\b/gi);
-  const videos = count(html, /<iframe\b[^>]*youtube-nocookie\.com\/embed\//gi);
+  const contentImages = count(mainHtml, /<img\b[^>]*\bsrc=(?:"[^"]+"|'[^']+')/gi);
+  const h2s = count(mainHtml, /<h2\b/gi);
+  const videos = count(mainHtml, /<iframe\b[^>]*youtube-nocookie\.com\/embed\//gi);
   const density = sectionVisualStats(html);
   const isEditorial = editorialRoute(route);
 
@@ -101,12 +105,12 @@ for (const file of pages) {
     errors.push({ route, message: 'Travel page renders without any image.' });
   }
 
-  if (isEditorial && h2s >= 4 && images < 3) {
-    errors.push({ route, message: `Only ${images} rendered image(s) for ${h2s} H2 sections; minimum is 3.` });
+  if (isEditorial && h2s >= 4 && contentImages < 2) {
+    errors.push({ route, message: `Only ${contentImages} in-content image(s) for ${h2s} H2 sections; minimum is 2 outside the global shell/hero.` });
   }
 
-  if (isEditorial && h2s >= 7 && images < 4) {
-    errors.push({ route, message: `Only ${images} rendered image(s) for a long ${h2s}-section guide; minimum is 4.` });
+  if (isEditorial && h2s >= 7 && contentImages < 3) {
+    errors.push({ route, message: `Only ${contentImages} in-content image(s) for a long ${h2s}-section guide; minimum is 3 outside the global shell/hero.` });
   }
 
   if (isEditorial && density.maxTextOnlyRun > 2) {
@@ -117,7 +121,7 @@ for (const file of pages) {
     warnings.push({ route, message: 'This visual page family has no embedded video yet.' });
   }
 
-  stats.push({ route, h2s, images, videos, ...density });
+  stats.push({ route, h2s, images, contentImages, videos, ...density });
 }
 
 fs.mkdirSync(reportDir, { recursive: true });
