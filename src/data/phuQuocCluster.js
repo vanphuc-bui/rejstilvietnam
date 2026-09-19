@@ -139,4 +139,19 @@ export const phuQuocPages = {
     ],
     related:[{href:'/destinationer/phu-quoc/hvor-skal-man-bo/',title:'Hvor skal man bo?',text:'Transport og område hænger direkte sammen.'},{href:'/destinationer/phu-quoc/4-dage-i-phu-quoc/',title:'4 dage på øen',text:'Se hvordan vi grupperer geografien.'},...relatedBase],
   },
+  'mad-i-phu-quoc': {
+    destinationName:'Phu Quoc', title:'Mad på Phu Quoc 2026 | Seafood, fiskesauce og natmarked',
+    description:'Guide til mad på Phu Quoc: seafood, fiskesauce, peber, Duong Dong Night Market og hvad du bør bestille og tjekke før du vælger restaurant.',
+    eyebrow:'Phu Quoc · Mad', heading:'Mad på Phu Quoc: seafood er oplagt, men pris pr. vægt skal være tydelig',
+    intro:'Phu Quoc er bedst kendt for seafood, fiskesauce og peber. Vi ville spise mindst ét måltid væk fra resortet og bruge natmarkedet som en smagstur - ikke som det eneste sted at spise.', hero, sources,
+    quickFacts:[{label:'Seafood',value:'Tjek pris pr. vægt'},{label:'Lokalt produkt',value:'Fiskesauce'},{label:'Aftenstop',value:'Duong Dong Night Market'}],
+    sections:[
+      {id:'seafood',heading:'Seafood: spørg pris og vægt før bestilling',paragraphs:['Fisk, krabber, blæksprutte og skaldyr er en oplagt del af øen. På steder med levende tanke eller pris pr. kilo bør du få vægt og pris bekræftet før tilberedning.','Et travlt sted med tydelige priser er ofte lettere end en restaurant, der primært sælger udsigt.']},
+      {id:'night-market',heading:'Duong Dong Night Market',paragraphs:['Markedet er godt til at se mange snacks og seafoodmuligheder samlet. Det kan være turistet, så brug det som en oplevelse og sammenlign priser frem for automatisk at spise hele aftenen samme sted.','Kom sulten, men bestil små portioner først.']},
+      {id:'fish-sauce',heading:'Fiskesauce og peber',paragraphs:['Phu Quoc har lang tradition for fiskesauce og peber. Et kort producent- eller farmstop kan give mening, hvis du alligevel udforsker øen.','Vi ville undgå en hel dags “produkt-tour” med mange salgsstop.']},
+      {id:'resort',heading:'Resortmad vs at spise ude',paragraphs:['På isolerede resorts kan du være afhængig af hotellets restauranter. Det er ikke nødvendigvis et problem, men det bør indgå i totalbudgettet.','Hvis du gerne vil spise lokalt hver aften, er Long Beach / Duong Dong eller Ong Lang ofte lettere baser.']},
+    ],
+    related:[{href:'/destinationer/phu-quoc/hvor-skal-man-bo/',title:'Hvor skal man bo?',text:'Se hvilke områder der gør det nemt at spise ude.'},{href:'/destinationer/phu-quoc/4-dage-i-phu-quoc/',title:'4 dage på Phu Quoc',text:'Sæt mad og natmarked ind uden at ofre stranddagene.'},...relatedBase],
+  },
+
 };
