@@ -1,0 +1,99 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'nord', label:'Nordvietnam' },
+  { id:'midt', label:'Centralvietnam' },
+  { id:'syd', label:'Sydvietnam' },
+  { id:'street-food', label:'Sådan vælger vi street food' },
+  { id:'bestil', label:'Sådan bestiller du' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - Beginner’s guide to Vietnamese street food', href:'https://www.vietnam.travel/things-to-do/beginners-guide-vietnamese-street-food' },
+];
+
+const faq = [
+  { question:'Er vietnamesisk mad stærk?', answer:'Ikke nødvendigvis. Chili og stærke saucer står ofte ved siden af, så mange retter kan spises mildt. Spørg hvis du er i tvivl, især ved regionale specialiteter.' },
+  { question:'Kan vegetarer spise godt i Vietnam?', answer:'Ja, men fiskesauce og bouillon kan gemme sig i retter, der ser vegetariske ud. Ordet “ăn chay” er nyttigt, og restauranter der tydeligt serverer vegetarisk mad gør bestillingen lettere.' },
+];
+---
+<EditorialArticle
+  title="Mad i Vietnam 2026 | 15 retter vi ville starte med"
+  description="Dansk guide til vietnamesisk mad: 15 retter fra nord, midt og syd, street food, bestilling og konkrete råd til at spise godt på rejsen."
+  eyebrow="Mad i Vietnam"
+  heading="Mad i Vietnam: 15 retter vi ville starte med"
+  intro="Det giver ikke meget mening at tale om vietnamesisk mad som én menu. Hanoi, Hue, Hoi An og Ho Chi Minh City har forskellige specialiteter, og noget af det bedste ved en rundrejse er netop at spise forskelligt undervejs."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Vietnamese%20Pho.jpg?width=1800',
+    alt:'Skål med vietnamesisk pho, urter og lime',
+    caption:'Phở er et godt sted at begynde, men en rundrejse gennem Vietnam giver langt mere end én nudelsuppe.',
+    credit:'Nowforever / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Vietnamese_Pho.jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/destinationer/hanoi/mad-i-hanoi/',title:'Mad i Hanoi',text:'Gå i dybden med bún chả, phở og nordvietnamesiske retter.'},
+    {href:'/destinationer/hoi-an/mad-i-hoi-an/',title:'Mad i Hoi An',text:'Se cao lầu, mì Quảng og lokale specialiteter.'},
+    {href:'/destinationer/ho-chi-minh-city/mad-i-ho-chi-minh-city/',title:'Mad i Ho Chi Minh City',text:'Street food, cơm tấm og sydvietnamesiske smage.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>På en første rejse ville vi prøve <strong>phở, bún chả, bánh mì, bánh cuốn, bún bò Huế, bánh bèo, cao lầu, mì Quảng, bánh xèo, cơm tấm, hủ tiếu og frisk seafood</strong> - og derefter følge de retter, du ser lokale steder specialisere sig i.</p>
+  <p>Det bedste trick er ikke at finde restauranten med længst menu. Vietnam Tourism peger selv på små steder, der serverer få retter igen og igen. Høj omsætning og mange lokale gæster er ofte mere nyttigt end et stort skilt på engelsk.</p>
+
+  <h2 id="nord">Nordvietnam: renere, mere afdæmpede smage</h2>
+  <PracticalTable
+    title="Retter vi ville starte med i Hanoi og nord"
+    columns={[{key:'dish',label:'Ret'},{key:'what',label:'Hvad er det?'},{key:'where',label:'Godt sted at prøve'}]}
+    rows={[
+      {dish:'Phở',what:'Nudelsuppe med okse eller kylling',where:'Hanoi, gerne til morgenmad'},
+      {dish:'Bún chả',what:'Grillet svinekød, risnudler, urter og dip',where:'Hanoi'},
+      {dish:'Bánh cuốn',what:'Tynde dampede risruller med fyld',where:'Hanoi og Nordvietnam'},
+      {dish:'Chả cá',what:'Fisk med urter, nudler og krydderier',where:'Hanoi'},
+      {dish:'Xôi',what:'Klæberis med sødt eller salt tilbehør',where:'Markeder og morgensteder'},
+    ]}
+  />
+
+  <h2 id="midt">Centralvietnam: små retter og stærkere krydring</h2>
+  <p>Hue og området omkring Da Nang/Hoi An har nogle af de retter, der tydeligst ændrer en rejse fra "vietnamesisk mad" til regional mad.</p>
+  <ul>
+    <li><strong>Bún bò Huế:</strong> aromatisk nudelsuppe fra Hue.</li>
+    <li><strong>Bánh bèo:</strong> små dampede riskager, ofte serveret som flere små portioner.</li>
+    <li><strong>Cao lầu:</strong> Hoi An-nudler med svinekød, grønt og sprøde elementer.</li>
+    <li><strong>Mì Quảng:</strong> nudler fra Quang Nam/Da Nang-området med relativt lidt bouillon.</li>
+    <li><strong>Bánh xèo:</strong> sprød pandekage med fyld, urter og dip.</li>
+  </ul>
+  <p>Hvis du allerede skal til Hoi An, så læs vores <a href="/destinationer/hoi-an/mad-i-hoi-an/">madguide til Hoi An</a> i stedet for at prøve at nå alle retterne på én aften.</p>
+
+  <h2 id="syd">Sydvietnam: sødere toner og stor variation</h2>
+  <ul>
+    <li><strong>Cơm tấm:</strong> brudte riskorn med typisk grillet svinekød og tilbehør.</li>
+    <li><strong>Hủ tiếu:</strong> nudelret med flere lokale varianter.</li>
+    <li><strong>Bánh mì:</strong> baguette med fyld - enkel, billig og praktisk på en rejsedag.</li>
+    <li><strong>Gỏi cuốn:</strong> friske ruller med urter, nudler og forskelligt fyld.</li>
+    <li><strong>Seafood:</strong> især oplagt ved kysten og på øer, hvor du bør tjekke pris pr. vægt før bestilling.</li>
+  </ul>
+
+  <h2 id="street-food">Sådan vælger vi street food</h2>
+  <p>Vietnam Tourism anbefaler blandt andet at kigge efter friske råvarer, travle steder og lokale kunder. Det er også den måde, vi selv ville vælge på. En bod, der sælger to retter til en konstant strøm af gæster, er ofte lettere at vurdere end et tomt sted med 80 retter.</p>
+  <div class="callout"><strong>Vores enkle regel:</strong> Spis der, hvor maden bliver lavet løbende og serveret varm. Hvis du er usikker på en ret, så se hvad nabobordet bestiller.</div>
+  <p>Hygiejne kan aldrig vurderes perfekt fra fortovet. Hvis du har særlige helbredsforhold, er gravid eller rejser med små børn, kan det være fornuftigt at være mere konservativ med råvarer og steder med lav omsætning.</p>
+
+  <h2 id="bestil">Sådan gør du bestillingen lettere</h2>
+  <p>Et billede i menuen, en oversættelsesapp eller bare at pege på en ret ved nabobordet løser meget. På små steder betaler man ofte efter måltidet.</p>
+  <ul>
+    <li><strong>ăn chay:</strong> vegetarisk mad.</li>
+    <li><strong>không thịt:</strong> uden kød - men spørg særskilt, hvis fiskesauce/bouillon også skal undgås.</li>
+    <li><strong>ngon quá:</strong> meget lækkert.</li>
+    <li><strong>tính tiền:</strong> regningen, tak.</li>
+  </ul>
+  <p>Du behøver ikke kunne vietnamesisk for at spise godt, men et par ord gør små lokale steder mindre intimiderende.</p>
+</EditorialArticle>
