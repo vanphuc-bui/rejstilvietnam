@@ -1,6 +1,8 @@
 ---
 import GuideCover from '../../components/GuideCover.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionMedia from '../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../data/editorialVisuals.js';
 
 const bookingOptions = [
   { icon:'🏨', title:'Hoteller', text:'Start med området - derefter hotellet. Se hotelguides efter destination.', href:'/bedste-hoteller/' },
@@ -20,6 +22,7 @@ const bookingOptions = [
     </div>
   </section>
 <div class="container guide-cover-wrap"><GuideCover destination="Vietnam" title="Book rejsen" eyebrow="Planlægning" /></div>
+<div class="container booking-media"><SectionMedia {...v.planning.coast} /></div>
 
   <section class="section section--tight">
     <div class="container grid grid--3">
@@ -42,6 +45,8 @@ const bookingOptions = [
       ))}
     </div>
   </section>
+
+  <div class="container booking-media"><SectionMedia {...v.planning.taxi} /></div>
 
   <section class="section package-section">
     <div class="container package-grid">
@@ -74,4 +79,4 @@ a.booking-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)
 @media(max-width:800px){.package-grid{grid-template-columns:1fr}}
 </style>
 
-<style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
+<style>.booking-media{margin-top:20px}.booking-media :global(.section-media){margin-bottom:0}.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>
