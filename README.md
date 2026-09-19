@@ -57,3 +57,13 @@ When `rejstilvietnam.dk` is connected:
 ## Affiliate links
 
 `src/components/AffiliateCard.astro` is prepared for Viator/TourRadar links and renders the Danish disclosure label `Annoncelink`. Replace placeholder `href="#"` values only after affiliate accounts are active.
+
+## Editorial standards for agents
+
+Before adding or substantially changing travel content, read these three files:
+
+- `STYLE_GUIDE.md` — writing, tone and editorial structure
+- `IMAGE_STANDARD.md` — image sourcing, attribution and uniqueness
+- `EDITORIAL_VISUAL_STANDARD.md` — visual density, section imagery, video, maps and QA expectations
+
+The production build enforces key visual rules. Do not merge a content change while Site quality CI is red.
