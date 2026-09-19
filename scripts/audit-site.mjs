@@ -192,12 +192,31 @@ for (const file of publicPages) {
     }
   }
 
+  const shouldHaveEditorialVisual =
+    /^\/destinationer\/[^/]+\//.test(route) ||
+    /^\/rejseguide\/[^/]+\//.test(route) ||
+    /^\/rejseplaner\/[^/]+\//.test(route) ||
+    /^\/ture\/[^/]+\//.test(route);
+  if (shouldHaveEditorialVisual && images.length === 0) {
+    addIssue({ severity: 'error', category: 'images', route, message: 'Editorial guide has no image at all.', impact: 'high', effort: 'small' });
+  }
+
   images.forEach((image, index) => {
     if (!('alt' in image)) addIssue({ severity: 'error', category: 'accessibility', route, message: `Image ${index + 1} is missing an alt attribute.`, impact: 'medium', effort: 'tiny' });
     if (image.src?.startsWith('/') && !resolveDistPath(image.src)) {
       addIssue({ severity: 'error', category: 'images', route, message: `Missing local image: ${image.src}`, impact: 'high', effort: 'tiny' });
     }
   });
+  // Destination cards are visual navigation. A missing photo falls back to generic artwork,
+  // which is useful as a runtime safety net but should never ship as the normal state.
+  const destinationCardPattern = new RegExp('<a\\b[^>]*class="[^"]*\\bdestination\\b[^"]*"[^>]*>([\\s\\S]*?)<\\/a>', 'gi');
+  const destinationCards = [...html.matchAll(destinationCardPattern)];
+  destinationCards.forEach((match, index) => {
+    if (!new RegExp('<img\\b', 'i').test(match[1])) {
+      addIssue({ severity: 'error', category: 'images', route, message: `Destination card ${index + 1} has no real image and would render the fallback artwork.`, impact: 'high', effort: 'tiny' });
+    }
+  });
+
   const eagerRemoteImages = images.filter((image, index) => index > 0 && /^https:\/\//i.test(image.src ?? '') && image.loading !== 'lazy');
   if (eagerRemoteImages.length > 3) {
     addIssue({ category: 'performance', route, message: `${eagerRemoteImages.length} non-hero remote images are loaded eagerly; consider lazy-loading below-the-fold media.`, impact: 'low', effort: 'small' });
