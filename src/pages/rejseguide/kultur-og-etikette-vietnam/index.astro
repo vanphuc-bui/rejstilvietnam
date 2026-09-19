@@ -1,0 +1,91 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'tone', label:'Ro og respekt' },
+  { id:'tempel', label:'Templer og hjem' },
+  { id:'mad', label:'Ved bordet' },
+  { id:'foto', label:'Foto og mennesker' },
+  { id:'tip', label:'Drikkepenge og prutten om pris' },
+  { id:'ord', label:'Nyttige ord' },
+];
+
+const sources = [
+  { label:'Vietnam Tourism - Vietnamese etiquette for travellers', href:'https://vietnam.travel/node/615' },
+  { label:'Vietnam Tourism - Beginner’s guide to Vietnamese street food', href:'https://www.vietnam.travel/things-to-do/beginners-guide-vietnamese-street-food' },
+];
+
+const faq = [
+  { question:'Skal man give drikkepenge i Vietnam?', answer:'Drikkepenge er ikke en generel pligt. Vietnam Tourism beskriver det som mere almindeligt til guider og spa end på restauranter. Giv tip, hvis du ønsker det og servicen fortjener det, men du behøver ikke kopiere amerikanske procentsatser.' },
+  { question:'Hvordan skal man klæde sig i templer i Vietnam?', answer:'Vælg beskedent tøj, der dækker mere end strandtøj, og følg lokale skilte om sko og hovedbeklædning. Vietnam Tourism anbefaler beskeden påklædning og at respektere reglerne ved templer og private hjem.' },
+];
+---
+<EditorialArticle
+  title="Kultur og etikette i Vietnam 2026 | Små ting der gør rejsen lettere"
+  description="Dansk guide til kultur og etikette i Vietnam: templer, bordskik, billeder, drikkepenge, prutten om pris og enkle vietnamesiske ord til rejsen."
+  eyebrow="Kultur og hverdagsliv"
+  heading="Kultur og etikette i Vietnam: vær rolig, nysgerrig og respektfuld"
+  intro="Du behøver ikke kende alle vietnamesiske skikke for at rejse godt i landet. De fleste situationer bliver nemmere, hvis du undgår at gøre en uenighed offentlig, klæder dig passende i templer og spørger før du fotograferer mennesker tæt på."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Chinatown%20Temple%20-%20Ao%20dai.jpg?width=1800',
+    alt:'Person i traditionel vietnamesisk ao dai ved et tempel i Cholon',
+    caption:'Lokale normer er ikke et regelsæt, du skal være nervøs for. Et roligt tempo og respekt for stedet løser det meste.',
+    credit:'Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Chinatown_Temple_-_Ao_dai.jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/rejseguide/mad-i-vietnam/',title:'Mad i Vietnam',text:'Se retter, street food og hvordan små lokale spisesteder fungerer.'},
+    {href:'/destinationer/hanoi/',title:'Hanoi',text:'Brug rådene i en af landets mest intense storbyer.'},
+    {href:'/destinationer/hue/',title:'Hue',text:'Templer, kejserhistorie og et roligere tempo.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>De vigtigste vaner er enkle: <strong>hold en rolig tone, undgå at ydmyge nogen offentligt, klæd dig mere beskedent i templer, tag sko af når stedet kræver det, og spørg før portrætfotos</strong>. Resten lærer du hurtigt ved at se, hvad folk omkring dig gør.</p>
+  <p>Du kommer til at lave små fejl. Et smil og et "cảm ơn" kommer som regel længere end at prøve at huske 40 regler fra en guide.</p>
+
+  <h2 id="tone">Ro og "at bevare ansigt"</h2>
+  <p>Vietnam Tourism fremhæver idéen om at "save face": højlydte skænderier, offentlig kritik og situationer, hvor en anden person bliver gjort til grin, bør undgås. Det er et godt råd i alt fra hotelreception til marked.</p>
+  <div class="callout"><strong>Hvis noget går galt:</strong> Forklar problemet konkret og roligt. Vis booking, billede eller kvittering, og spørg hvad løsningen kan være. Det er normalt mere effektivt end at hæve stemmen.</div>
+
+  <h2 id="tempel">Templer, pagoder og private hjem</h2>
+  <p>Brug ikke strandtøj i et tempel. Dæk skuldre og knæ, og følg skilte eller lokale om sko og hat. I private hjem er det almindeligt at tage skoene af ved indgangen.</p>
+  <p>Der kan være familiealtre i hjem og butikker. Lad dem være i fred, og undgå at træde over lave altre eller genstande, der tydeligt har religiøs betydning.</p>
+
+  <h2 id="mad">Ved bordet</h2>
+  <p>Vietnamesiske måltider deles ofte mellem flere personer. Retterne står i midten, mens hver person har sin egen lille skål. Hvis en vært lægger mad i din skål, er det som regel gæstfrihed, ikke et tegn på at du spiser for lidt.</p>
+  <PracticalTable
+    title="Tre situationer der er gode at kende"
+    columns={[{key:'situation',label:'Situation'},{key:'what',label:'Hvad vi ville gøre'}]}
+    rows={[
+      {situation:'Delt måltid',what:'Tag små portioner og prøv flere retter'},
+      {situation:'Street food',what:'Bestil først, sæt dig og betal typisk bagefter'},
+      {situation:'Du er mæt',what:'Sig høfligt nej tak igen - værten kan tilbyde mere flere gange'},
+    ]}
+  />
+
+  <h2 id="foto">Spørg før du tager billeder af mennesker</h2>
+  <p>Vietnam Tourism anbefaler at spørge før du fotograferer mennesker. Det gælder især portrætter, private hjem, religiøse situationer og arbejde tæt på personen.</p>
+  <p>Et bybillede med mange mennesker i baggrunden er noget andet end at stikke et kamera tæt på en sælger, et barn eller en munk. Hvis nogen siger nej eller vender sig væk, så læg kameraet ned.</p>
+
+  <h2 id="tip">Drikkepenge og prutten om pris</h2>
+  <p>Drikkepenge er ikke obligatoriske overalt. Ifølge Vietnam Tourism er tip mere almindeligt til guider og spa end på almindelige restauranter. Hvis servicen er god, kan du naturligvis give noget ekstra.</p>
+  <p>På markeder kan der være plads til at forhandle pris. Gør det med et smil, og stop hvis forskellen bliver uvæsentlig for dig. På butikker med faste priser, caféer og moderne restauranter prutter man normalt ikke om regningen.</p>
+
+  <h2 id="ord">Fem ord og sætninger der faktisk er nyttige</h2>
+  <ul>
+    <li><strong>Xin chào:</strong> hej.</li>
+    <li><strong>Cảm ơn:</strong> tak.</li>
+    <li><strong>Em ơi / Anh ơi / Chị ơi:</strong> en almindelig måde at få en persons opmærksomhed på, afhængigt af alder og relation.</li>
+    <li><strong>Ngon quá:</strong> meget lækkert.</li>
+    <li><strong>Tính tiền:</strong> regningen, tak.</li>
+  </ul>
+  <p>Udtalen er sværere end stavningen antyder, så brug ordene som en venlig gestus og supplér med et smil eller en oversættelsesapp.</p>
+</EditorialArticle>
