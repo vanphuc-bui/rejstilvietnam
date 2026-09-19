@@ -198,6 +198,15 @@ for (const file of publicPages) {
       addIssue({ severity: 'error', category: 'images', route, message: `Missing local image: ${image.src}`, impact: 'high', effort: 'tiny' });
     }
   });
+  // Destination cards are visual navigation. A missing photo falls back to generic artwork,
+  // which is useful as a runtime safety net but should never ship as the normal state.
+  const destinationCards = [...html.matchAll(/<a\\b[^>]*class="[^"]*\\bdestination\\b[^"]*"[^>]*>([\\s\\S]*?)<\\/a>/gi)];
+  destinationCards.forEach((match, index) => {
+    if (!/<img\\b/i.test(match[1])) {
+      addIssue({ severity: 'error', category: 'images', route, message: `Destination card ${index + 1} has no real image and would render the fallback artwork.`, impact: 'high', effort: 'tiny' });
+    }
+  });
+
   const eagerRemoteImages = images.filter((image, index) => index > 0 && /^https:\/\//i.test(image.src ?? '') && image.loading !== 'lazy');
   if (eagerRemoteImages.length > 3) {
     addIssue({ category: 'performance', route, message: `${eagerRemoteImages.length} non-hero remote images are loaded eagerly; consider lazy-loading below-the-fold media.`, impact: 'low', effort: 'small' });
