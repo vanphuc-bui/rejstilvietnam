@@ -5,7 +5,7 @@ This is the visual checklist for every new page and every major update.
 ## 1. Uniqueness
 
 - Every article must have its own hero image. A hero image is never reused on another page.
-- Editorial section images should also be unique site-wide.
+- Editorial section images should be unique whenever practical. A specific landmark/food/transport photo may be reused across closely related guides only when it is genuinely the clearest illustration; do not create obvious repetition across adjacent pages.
 - Do not reuse a destination hub hero as the hero of a child article.
 - Do not reuse the same photo with another crop, width or query string and treat it as a new image.
 - Listing-card thumbnails are allowed to be simpler, but when a suitable alternative exists they should also be unique.
@@ -53,7 +53,7 @@ For Wikimedia images, include a caption, credit and source URL when practical. D
 ## 6. Article checklist before publishing
 
 - [ ] Hero is not used anywhere else on the site
-- [ ] Section images are not used on another editorial page
+- [ ] Section images are unique where practical, and any reuse is editorially justified rather than decorative
 - [ ] At least 2 visual types are present on a long guide
 - [ ] Every image matches the exact section
 - [ ] Alt text is descriptive
@@ -80,7 +80,7 @@ The September 2026 cleanup applies these ownership rules:
 - Destination hubs own their own hero/section photography.
 - Dedicated Hanoi food, Ninh Binh and Ha Long guides own their subject-specific photos; overview cards use graphic treatments instead of copying them.
 - Index pages for destinations, hotels, itineraries and tours use graphic cards rather than repeating article photography.
-- Data-driven legacy destination subguides do not render shared cluster photos. Maps, structured cards and videos provide visual context without duplicating imagery.
+- Data-driven destination subguides may use curated section imagery from the destination visual library when it improves the reading flow. Avoid obvious repetition, and combine photography with maps, cards, tables and video.
 - Every production build runs the strict image audit before Astro builds.
 
 
@@ -91,4 +91,9 @@ If a remote host, hotlink rule or deleted file causes an image request to fail, 
 
 Destination cards use an additional built-in scenic fallback behind the photo, so their layout never appears empty while an image is loading or if the remote image fails.
 
-Data-driven destination subguides use `GuideCover.astro` as a guaranteed local hero visual. This prevents blank article headers without reusing the same remote destination photo across dozens of guides.
+Data-driven destination subguides retain `GuideCover.astro` as the guaranteed local fallback, while curated photographic hero/section media can be added when the page has an appropriate visual. See `EDITORIAL_VISUAL_STANDARD.md` for density and video rules.
+
+
+## Related standard
+
+For section-level visual density, videos, maps and page rhythm, also read `EDITORIAL_VISUAL_STANDARD.md`.
