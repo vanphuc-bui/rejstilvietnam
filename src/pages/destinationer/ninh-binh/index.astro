@@ -1,6 +1,8 @@
 ---
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -32,6 +34,13 @@ const faq = [
   toc={toc}
   sources={sources}
   faq={faq}
+  video={{
+    heading:'Se Ninh Binh i bevægelse',
+    intro:'Bådturene og udsigten fra Hang Mua er lettere at forstå i video end på et enkelt foto.',
+    youtubeId:'_N-seP6smqk',
+    title:'Ninh Binh i 4K: Tam Coc, Hang Mua og Hoa Lu',
+    caption:'Videoen viser landskabets skala og forskellen mellem udsigtspunkt, bådtur og historiske stop.'
+  }}
   hero={{
     src:'https://commons.wikimedia.org/wiki/Special:FilePath/TamCoc.jpg?width=1800',
     alt:'Flod mellem kalkstensbjerge og rismarker ved Tam Coc i Ninh Binh',
@@ -59,6 +68,7 @@ const faq = [
   <h2 id="bo">Hvor skal man bo i Ninh Binh?</h2>
   <p><strong>Tam Coc</strong> er det mest praktiske valg for de fleste. Der er restauranter, små hoteller, cykeludlejning og nem adgang til flere af områdets oplevelser. Du behøver derfor ikke planlægge hver eneste korte strækning med chauffør.</p>
   <p>Ninh Binh by er mere lokal og har bedre transportforbindelser, men den ligger mindre praktisk i forhold til de landskaber, de fleste kommer for. Hvis du kun skal videre med tog næste morgen, kan byen være praktisk. Til selve opholdet ville vi stadig vælge Tam Coc eller et roligt sted mellem Tam Coc og Trang An.</p>
+  <SectionMedia {...v.ninhBinh.stay} />
 
   <h2 id="oplevelser">Det skal du opleve</h2>
   <PracticalTable
@@ -73,6 +83,7 @@ const faq = [
   />
   <p>Vietnam Tourism fremhæver bådturene gennem det UNESCO-beskyttede landskab og udsigten fra Hang Mua som centrale oplevelser. Vores råd er stadig at vælge færre stop. To bådture efter hinanden kan hurtigt føles mere ens, end de ser ud på en lang liste.</p>
   <div class="callout"><strong>Trang An eller Tam Coc?</strong> Hvis det er første gang, ville vi vælge én af dem ud fra hotelplacering, dagens vejr og hvor travlt der er. Trang An har flere ruter gennem grotter og kalkstenslandskab, mens Tam Coc er meget nemt, hvis du allerede bor i byen.</div>
+  <SectionMedia {...v.ninhBinh.sights} />
 
   <h2 id="dage">Forslag til 2 hele dage</h2>
   <p><strong>Dag 1:</strong> Ankom fra Hanoi, check ind og brug eftermiddagen på cykel eller en rolig tur omkring Tam Coc. Gem den store udsigt til næste morgen.</p>
@@ -82,6 +93,7 @@ const faq = [
   <h2 id="transport">Sådan kommer du fra Hanoi</h2>
   <p>Ninh Binh ligger tæt nok på Hanoi til, at bus, limousine-van, tog og privat transfer alle er realistiske. Til to personer ville vi først sammenligne en god limousine-van med toget. Med børn eller meget bagage kan en privat transfer være pengene værd, fordi du går direkte fra hotel til hotel.</p>
   <p>Hvis Ninh Binh kun skal være en dagstur, så vælg en tur med få hovedstop frem for et program, der lover fem-seks attraktioner på samme dag.</p>
+  <SectionMedia {...v.ninhBinh.route} />
 
   <h2 id="rejsetid">Hvornår er Ninh Binh bedst?</h2>
   <p>Vejr, vandstand og rismarkernes farve ændrer oplevelsen gennem året. Der findes ikke én dato, der garanterer grønt landskab og klart vejr. Hvis resten af Nordvietnam er vigtigere end et bestemt foto fra Ninh Binh, ville vi vælge rejsedato efter hele ruten og ikke efter én mark.</p>
