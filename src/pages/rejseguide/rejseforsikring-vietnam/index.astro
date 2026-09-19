@@ -2,6 +2,8 @@
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
 import CommercialCta from '../../../components/CommercialCta.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -63,11 +65,13 @@ const faq = [
       {item:'Rejselængde',question:'Dækker policen hele turen - også hvis den er over fx 30/60 dage?'},
     ]}
   />
+  <SectionMedia {...v.insurance.scooter} />
 
   <h2 id="aktiviteter">Motorcykel, scooter, dykning og vandsport</h2>
   <p>Det her er et af de vigtigste Vietnam-punkter. Udenrigsministeriet anbefaler, at du specifikt sikrer dig dækning til aktiviteter som dykning og leje af bil, motorcykel, båd eller vandscooter. Lokale udlejere har ifølge rejsevejledningen sjældent en skades- eller ansvarsforsikring, du kan regne med.</p>
   <div class="callout"><strong>Scooter er ikke bare "lokal transport".</strong> Tjek krav til kørekort, hjelm, motorstørrelse og forsikringsvilkår. Hvis du ikke opfylder betingelserne, kan en skade få helt andre økonomiske konsekvenser.</div>
   <p>Det samme gælder dykning, trekking og andre aktiviteter, hvor selskabet kan have særlige betingelser eller tilvalg.</p>
+  <SectionMedia {...v.insurance.diving} />
 
   <h2 id="afbestilling">Afbestilling, bagage og forsinkelse</h2>
   <p>Afbestilling er ikke nødvendigvis automatisk en del af alle rejseforsikringer. Tjek også beløbsgrænser for bagage, elektronik og forsinkelser. Hvis du har dyre kameraer eller computer med, er standardgrænsen ikke altid høj nok.</p>
@@ -76,6 +80,7 @@ const faq = [
   <h2 id="kort">Har du allerede rejseforsikring via et betalingskort?</h2>
   <p>Muligvis. Men kortforsikringer kan have betingelser om, at en bestemt del af rejsen er betalt med kortet, og dækningen kan være forskellig for familie, rejsetid og aktiviteter.</p>
   <p>Forbrug.dk anbefaler generelt at læse forsikringsbetingelserne grundigt, fordi dækning varierer mellem selskaber. Vi ville downloade de konkrete vilkår og ikke nøjes med teksten "rejseforsikring inkluderet" i bankappen.</p>
+  <SectionMedia {...v.insurance.luggage} />
 
   <h2 id="checkliste">Vores checkliste før afrejse</h2>
   <ul>

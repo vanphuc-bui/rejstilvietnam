@@ -3,6 +3,7 @@ import EditorialArticle from '../../../components/EditorialArticle.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
 import CommercialCta from '../../../components/CommercialCta.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'start', label:'Start med de tre valg' },
@@ -82,6 +83,7 @@ const faq = [
   <p><strong>Ti dage</strong> er nok til en fokuseret tur. <strong>To uger</strong> er vores favorit til en førstegangsrejse, fordi du kan få flere sider af landet uden at være i transit hver anden dag. <strong>Tre uger</strong> giver plads til langsommere rejser, strand eller et ekstra område i nord.</p>
   <p>Hvis du kun har én uge, ville vi slet ikke forsøge nord-til-syd. Vælg Hanoi med Ninh Binh/Ha Long eller Ho Chi Minh City med Mekong og eventuelt strand.</p>
   <div class="callout"><strong>En simpel regel:</strong> Regn en flyttedag som en halv feriedag. På lange strækninger kan den koste næsten en hel dag, selv om selve flyveturen kun tager et par timer.</div>
+  <SectionMedia {...v.planning.coast} />
 
   <h2 id="praktisk">Praktisk før du booker</h2>
   <p>Danske statsborgere er aktuelt omfattet af Vietnams visumfritagelse i op til 45 dage, når indrejsebetingelserne er opfyldt. Tjek altid reglerne igen tæt på afrejse. Læs vores <a href="/rejseguide/visum/">visumguide</a> og <a href="/rejseguide/vietnam-rejsevejledning/">rejsevejledning</a>, før du køber en dyr rejse, der ikke kan ændres.</p>
@@ -112,6 +114,7 @@ const faq = [
     secondaryHref="/destinationer/"
     secondaryLabel="Se alle rejsemål"
   />
+  <SectionMedia {...v.planning.taxi} />
 
   <h2 id="fejl">Fem fejl vi ville undgå</h2>
   <ul>

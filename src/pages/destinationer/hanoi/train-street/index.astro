@@ -4,6 +4,7 @@ import SectionMedia from '../../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../../components/VideoEmbed.astro';
 import PlaceMap from '../../../../components/PlaceMap.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
+import { editorialVisuals as v } from '../../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'kort', label: 'Det vigtigste først' },
@@ -61,11 +62,13 @@ const trainPlaces = [
   <p>Train Street er ikke et sted, hvor du bør regne med fri adgang til skinnerne. Afspærring, politi og adgang via caféer kan ændre sig. Hvis en lokal medarbejder eller myndighed beder dig stoppe eller flytte dig, så gør det.</p>
   <p>Stå ikke på skinnerne, når et tog nærmer sig, og forsøg ikke at få et sidste billede tættere på toget. Afstanden mellem toget, husene og caféerne er meget lille.</p>
   <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Hanoi%20train%20street.jpg?width=1200" alt="Café ved Hanoi Train Street" caption="Caféer ligger meget tæt på sporet. Følg anvisningerne og hold dig helt væk fra skinnen, når et tog nærmer sig." credit="Francesco Galzerano / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Hanoi_train_street.jpg" ratio="3 / 4" />
+  <SectionMedia {...v.planning.train} />
 
   <h2 id="togtider">Hvornår kommer toget?</h2>
   <p>Togtider varierer efter rute, dag og ændringer i den nationale køreplan. Derfor skriver vi bevidst ikke én fast liste her, som hurtigt kan blive forkert.</p>
   <p>Tjek samme dag hos Vietnam Railways og lokalt på stedet. Hvis du ser en tid i en gammel TikTok- eller blogpost, så brug den kun som et hint - ikke som en garanti.</p>
   <VideoEmbed youtubeId="yMRbcbe5GJY" title="Hanoi Train Street guide 2026" caption="En nyere video fra 2026 kan give et visuelt indtryk af området. Adgangsregler kan stadig ændre sig efter optagelsen." />
+  <SectionMedia {...v.hanoi.lake} />
 
   <h2 id="besog">Sådan ville vi planlægge besøget</h2>
   <p><strong>1.</strong> Læg Train Street sammen med Litteraturtemplet, Old Quarter eller en kaffepause - ikke som dagens eneste aktivitet.</p>

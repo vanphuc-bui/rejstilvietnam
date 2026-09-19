@@ -1,6 +1,8 @@
 ---
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -63,6 +65,7 @@ const faq = [
     ]}
   />
   <p>Udenrigsministeriet anbefaler blandt andet kopier af vigtige dokumenter og et ekstra betalingskort. Vi ville også gemme forsikringsselskabets alarmnummer offline.</p>
+  <SectionMedia {...v.packing.suitcase} />
 
   <h2 id="toej">Tøj efter rute - ikke efter Instagram</h2>
   <p>Til storby og kyst fungerer let tøj, der tørrer hurtigt. Men Sapa, Da Lat og Hanoi i køligere perioder kan kræve et ekstra lag. I templer og mere formelle steder er det praktisk at have tøj, der dækker skuldre og knæ.</p>
@@ -88,6 +91,7 @@ const faq = [
     <li>Et kort opladerkabel i håndbagagen.</li>
   </ul>
   <p>Læs vores <a href="/rejseguide/esim-vietnam/">eSIM-guide til Vietnam</a>, hvis du vil være online allerede i lufthavnen.</p>
+  <SectionMedia {...v.packing.luggage} />
 
   <h2 id="sundhed">Sundhed og småting</h2>
   <p>Tag din egen faste medicin med i tilstrækkelig mængde og undersøg reglerne, hvis medicinen kræver dokumentation. Til almindelige småting ville vi have plaster, håndsprit, solcreme og et myggemiddel, der passer til den rejsende.</p>
@@ -96,6 +100,7 @@ const faq = [
   <h2 id="haandbagage">Det ville vi have i håndbagagen</h2>
   <p>Pas, telefon, medicin, oplader, powerbank, ét let skift, tandbørste og de vigtigste dokumenter. Hvis den indcheckede bagage bliver forsinket, kan du stadig klare det første døgn.</p>
   <p>Tjek altid flyselskabets aktuelle regler for vægt, væsker og batterier. De kan variere mellem internationale og indenrigsfly.</p>
+  <SectionMedia {...v.packing.handLuggage} />
 
   <h2 id="lad-hjemme">Det kan ofte blive hjemme</h2>
   <ul>

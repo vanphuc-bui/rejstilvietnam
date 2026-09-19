@@ -5,6 +5,7 @@ import SectionMedia from '../../../components/SectionMedia.astro';
 import FoodGrid from '../../../components/FoodGrid.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
 import AffiliateActivityGrid from '../../../components/AffiliateActivityGrid.astro';
+import { destinationVisuals } from '../../../data/destinationVisuals.js';
 
 const toc = [
   { id: 'overblik', label: 'Hoi An i korte træk' },
@@ -46,6 +47,7 @@ const food = [
 
   <h3>My Son</h3>
   <p>My Son er et fint valg, hvis du gerne vil have mere historie og kultur ind i opholdet. Tag helst af sted tidligt på dagen. Varmen kan gøre en sen formiddagstur mere trættende end selve besøget.</p>
+  <SectionMedia {...destinationVisuals['Hoi An'].food} />
 
   <h2 id="mad">Mad du bør prøve i Hoi An</h2>
   <p>Vi ville ikke nøjes med én restaurant med en lang "best of Hoi An"-menu. Tre retter er særligt oplagte at prøve, fordi de fortæller mere om området end endnu en international café.</p>

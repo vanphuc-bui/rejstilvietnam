@@ -1,6 +1,8 @@
 ---
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -31,6 +33,13 @@ const faq = [
   toc={toc}
   sources={sources}
   faq={faq}
+  video={{
+    heading:'Se vietnamesisk street food i praksis',
+    intro:'Madkulturen giver mere mening, når du ser tempoet ved de små spisesteder og hvordan retterne faktisk serveres.',
+    youtubeId:'hfeBfXzsyto',
+    title:'Vietnamesisk street food i Hanoi',
+    caption:'Videoen er lang, men giver et konkret indtryk af madmiljøet. Brug vores egne guides til den praktiske planlægning.'
+  }}
   hero={{
     src:'https://commons.wikimedia.org/wiki/Special:FilePath/Vietnamese%20Pho.jpg?width=1800',
     alt:'Skål med vietnamesisk pho, urter og lime',
@@ -61,6 +70,7 @@ const faq = [
       {dish:'Xôi',what:'Klæberis med sødt eller salt tilbehør',where:'Markeder og morgensteder'},
     ]}
   />
+  <SectionMedia {...v.food.north} />
 
   <h2 id="midt">Centralvietnam: små retter og stærkere krydring</h2>
   <p>Hue og området omkring Da Nang/Hoi An har nogle af de retter, der tydeligst ændrer en rejse fra "vietnamesisk mad" til regional mad.</p>
@@ -72,6 +82,7 @@ const faq = [
     <li><strong>Bánh xèo:</strong> sprød pandekage med fyld, urter og dip.</li>
   </ul>
   <p>Hvis du allerede skal til Hoi An, så læs vores <a href="/destinationer/hoi-an/mad-i-hoi-an/">madguide til Hoi An</a> i stedet for at prøve at nå alle retterne på én aften.</p>
+  <SectionMedia {...v.food.central} />
 
   <h2 id="syd">Sydvietnam: sødere toner og stor variation</h2>
   <ul>
@@ -81,6 +92,7 @@ const faq = [
     <li><strong>Gỏi cuốn:</strong> friske ruller med urter, nudler og forskelligt fyld.</li>
     <li><strong>Seafood:</strong> især oplagt ved kysten og på øer, hvor du bør tjekke pris pr. vægt før bestilling.</li>
   </ul>
+  <SectionMedia {...v.food.south} />
 
   <h2 id="street-food">Sådan vælger vi street food</h2>
   <p>Vietnam Tourism anbefaler blandt andet at kigge efter friske råvarer, travle steder og lokale kunder. Det er også den måde, vi selv ville vælge på. En bod, der sælger to retter til en konstant strøm af gæster, er ofte lettere at vurdere end et tomt sted med 80 retter.</p>

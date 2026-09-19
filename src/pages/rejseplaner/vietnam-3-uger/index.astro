@@ -1,6 +1,9 @@
 ---
 import GuideCover from '../../../components/GuideCover.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
+import { hubVisuals } from '../../../data/hubVisuals.js';
 
 const stops = [
   { day:'Dag 1-3', place:'Hanoi', text:'Land roligt, udforsk Old Quarter, Hoan Kiem og et par historiske stop.', link:'/destinationer/hanoi/' },
@@ -19,6 +22,11 @@ const stops = [
   <section class="section section--tight"><div class="container facts"><div><span>Tempo</span><b>Roligt til mellem</b></div><div><span>Store regioner</span><b>Nord · Central · Syd</b></div><div><span>Strand</span><b>5 dage</b></div><div><span>Bedst til</span><b>Første længere rejse</b></div></div></section>
 
   <section class="section route-section" id="rute"><div class="container"><div class="section-head"><div><p class="eyebrow">Ruten</p><h2>21 dage uden at jagte en checkliste.</h2></div><p>Flyt gerne én eller to dage mellem stop. Strukturen er vigtigere end den præcise kalender.</p></div><div class="route-grid">{stops.map((stop, i) => <article class="stop-card"><div class="num">0{i+1}</div><small>{stop.day}</small><h3>{stop.place}</h3><p>{stop.text}</p><a href={stop.link}>Se guide →</a></article>)}</div></div></section>
+  <div class="container route-visuals">
+    <SectionMedia src={hubVisuals.itinerariesHero.src} alt={hubVisuals.itinerariesHero.alt} caption="Tre uger giver plads til langsommere landskabsdage mellem storbyerne." />
+    <SectionMedia src={hubVisuals.plans.threeWeeks.src} alt={hubVisuals.plans.threeWeeks.alt} caption="Den lange rute slutter med stranddage, så de sidste dage ikke bliver endnu en transportetape." />
+  </div>
+  <div class="container route-video"><VideoEmbed youtubeId="NgvC-Frin1Y" title="Vietnam fra nord til syd" caption="Videoen giver et visuelt tværsnit af landet; ruten på siden hjælper med at omsætte inspirationen til 21 realistiske dage." /></div>
 
   <section class="section swap-section"><div class="container"><div class="section-head"><div><p class="eyebrow">Tilpas ruten</p><h2>Byt efter det, du faktisk glæder dig til.</h2></div></div><div class="grid grid--3"><div class="card swap"><span>⛰️</span><h3>Vil du hellere have bjerge?</h3><p>Byt Phu Quoc eller to Hoi An-dage ud med Sapa. Gør det kun, hvis trekking og bjerglandskab er en hovedgrund til rejsen.</p></div><div class="card swap"><span>🏖️</span><h3>Vil du have mere strand?</h3><p>Behold Phu Quoc og skær Mekong væk. Det giver 6-7 rolige dage til sidst.</p></div><div class="card swap"><span>🚆</span><h3>Vil du have mindre fly?</h3><p>Overvej Hue mellem nord og Hoi An, men pas på at du ikke bare tilføjer endnu et hotelskift.</p></div></div></div></section>
 
@@ -29,6 +37,7 @@ const stops = [
 .hero-3w{padding:84px 0 62px;background:linear-gradient(135deg,#edf3ed,#f7ead4)}.hero-grid{display:grid;grid-template-columns:1.1fr .75fr;gap:50px;align-items:center}.hero-3w h1{font-size:clamp(3rem,7vw,5.6rem)}.hero-3w .lead{margin-top:20px}.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.route-card{padding:28px;border-radius:28px;background:var(--green-950);color:white;display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:var(--shadow)}.route-card>span{width:100%;color:#f0cb90;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;font-weight:850;margin-bottom:4px}.route-card b{font-size:1.05rem}.route-card i{font-style:normal;color:#f0cb90}.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.facts>div{padding:18px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.7)}.facts span{display:block;color:var(--muted);font-size:.76rem;text-transform:uppercase;font-weight:800}.facts b{display:block;margin-top:4px}.route-section{background:#f5efe2}.route-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.stop-card{position:relative;padding:28px;background:#fffdf8;border:1px solid var(--border);border-radius:24px}.num{position:absolute;right:22px;top:20px;font:700 1.2rem Georgia,serif;color:#d6a85f}.stop-card small{color:var(--coral);font-weight:850;text-transform:uppercase;letter-spacing:.08em}.stop-card h3{font-size:1.8rem;margin-top:6px}.stop-card p{margin-top:9px;color:var(--muted)}.stop-card a{display:inline-block;margin-top:16px;color:var(--green-700);font-weight:850}.swap-section{background:rgba(255,255,255,.32)}.swap{padding:26px}.swap>span{font-size:1.8rem}.swap h3{margin-top:12px}.swap p{margin-top:9px;color:var(--muted)}.end-cta{padding:36px;border-radius:30px;background:var(--sand);display:flex;align-items:center;justify-content:space-between;gap:30px}.end-cta p:not(.eyebrow){margin-top:10px;color:#48554f}
 @media(max-width:800px){.hero-grid{grid-template-columns:1fr}.facts{grid-template-columns:repeat(2,1fr)}.end-cta{align-items:flex-start;flex-direction:column}}
 @media(max-width:640px){.route-grid,.facts{grid-template-columns:1fr}.actions{flex-direction:column}}
+.route-visuals{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.route-visuals :global(.section-media){margin:0}.route-video{margin-top:28px}@media(max-width:720px){.route-visuals{grid-template-columns:1fr}}
 </style>
 
 <style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>

@@ -1,6 +1,7 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'budget', label: 'Hvad styrer budgettet?' },
@@ -25,6 +26,7 @@ const toc = [
   <h3>Lav budgettet i denne rækkefølge</h3>
   <p>Start med fly og hoteller. Læg derefter de store poster ind: indenrigsfly, Ha Long Bay, private transfers og andre ture. Til sidst sætter du penge af til mad, Grab/taxi, kaffe og småting.</p>
   <div class="callout"><strong>Det fungerer bedre end et fast dagsbudget.</strong> En dag i Hanoi kan være billig, mens en cruisedag i Ha Long Bay kan koste mange gange mere.</div>
+  <SectionMedia {...v.money.banknotes} />
 
   <h2 id="betaling">Kort, kontanter og hæveautomater</h2>
   <p>Vi ville tage mindst to betalingskort med og opbevare dem forskellige steder. Kort fungerer fint på mange hoteller, større restauranter og butikker, men kontanter er stadig praktiske på markeder, små spisesteder og ved mindre køb.</p>
@@ -37,6 +39,7 @@ const toc = [
   <h2 id="drikkepenge">Drikkepenge</h2>
   <p>Drikkepenge fungerer ikke helt som i USA. På almindelige lokale spisesteder ville vi ikke føle os forpligtet til at lægge en fast procent oveni.</p>
   <p>På private ture, hos guider og chauffører er det mere almindeligt at give noget ekstra, hvis servicen har været god.</p>
+  <SectionMedia {...v.money.atm} />
 
   <h2 id="spar">Hvor giver det mening at spare?</h2>
   <ul><li><strong>Spar gerne på:</strong> dyre hotelmorgenmåltider, hvis du alligevel vil spise lokalt, og private biler til meget korte ture i byen.</li><li><strong>Betal gerne lidt mere for:</strong> et centralt hotel på et kort ophold, en ordentlig kahyt i Ha Long Bay og fly på meget lange strækninger.</li><li><strong>Pas på falske besparelser:</strong> et hotel 30 minutter uden for centrum er ikke nødvendigvis billigt, hvis du bruger Grab frem og tilbage flere gange om dagen.</li><li><strong>Se på totalprisen:</strong> en billig tur kan ende dyrere, hvis transfer, entréer eller måltider ligger oveni.</li></ul>

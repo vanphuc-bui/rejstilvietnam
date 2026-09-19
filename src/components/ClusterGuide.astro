@@ -8,7 +8,7 @@ import SectionMedia from './SectionMedia.astro';
 import VisualHighlights from './VisualHighlights.astro';
 import AffiliateActivityGrid from './AffiliateActivityGrid.astro';
 import { getGuideVisuals } from '../data/guideVisuals.js';
-import { getDestinationVisual, getDestinationVideo } from '../data/destinationVisuals.js';
+import { getDestinationVisual, getDestinationVideo, getDestinationSectionVisual } from '../data/destinationVisuals.js';
 
 const { page } = Astro.props;
 const pathParts = Astro.url.pathname.split('/').filter(Boolean);
@@ -53,7 +53,7 @@ const effectiveActivityCards = (page.activityCards ?? []).map((item) => {
 const titleText = `${page.title ?? ''} ${page.heading ?? ''}`.toLowerCase();
 const earlyMap = (page.mapPlaces?.length ?? 0) > 0 && /hotel|hvor skal man bo|område|strand|snork|dykning|øhop|vandsport/.test(titleText);
 const autoVideo = getDestinationVideo(page);
-const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 dage|4 dage|seværdigheder|oplevelser|strande/.test(titleText);
+const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 dage|4 dage|seværdigheder|oplevelser|strande|mad/.test(titleText);
 ---
 <ArticleLayout
   title={page.title}
@@ -150,16 +150,22 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
     </section>
   )}
 
-  {page.sections?.map((section, index) => (
+  {page.sections?.map((section, index) => {
+    const contextualImage = section.image ?? (
+      index % 2 === 0
+        ? getDestinationSectionVisual(page, section, index, guideSlug, heroSrc)
+        : null
+    );
+    return (
     <>
       <h2 id={section.id ?? `section-${index+1}`}>{section.heading}</h2>
       {section.lead && <p><strong>{section.lead}</strong></p>}
       {publicParagraphs(section.paragraphs).map((paragraph) => <p>{paragraph}</p>)}
 
-      {section.image && section.image.src !== heroSrc && (
+      {contextualImage && contextualImage.src !== heroSrc && (
         <SectionMedia
-          {...section.image}
-          ratio={section.image.ratio ?? '16 / 9'}
+          {...contextualImage}
+          ratio={contextualImage.ratio ?? '16 / 9'}
           sizes="(max-width: 760px) calc(100vw - 32px), 760px"
         />
       )}
@@ -191,7 +197,8 @@ const showAutoVideo = !page.video && !page.videos?.length && !!autoVideo && /3 d
       {section.bullets?.length > 0 && <ul>{section.bullets.map((item) => <li>{item}</li>)}</ul>}
       {section.callout && <div class="callout"><strong>{section.callout.title}</strong>{section.callout.text}</div>}
     </>
-  ))}
+    );
+  })}
 
   {page.sampleDay?.length > 0 && (
     <section class="day-plan">

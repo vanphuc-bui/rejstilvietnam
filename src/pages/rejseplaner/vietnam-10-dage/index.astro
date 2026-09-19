@@ -1,6 +1,9 @@
 ---
 import GuideCover from '../../../components/GuideCover.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
+import { hubVisuals } from '../../../data/hubVisuals.js';
 
 const stops = [
   { day:'Dag 1-3', place:'Hanoi', nights:'3 dage', text:'Land, få rytmen efter flyveturen og brug dagene på Old Quarter, Hoan Kiem, mad og et par historiske stop.', link:'/destinationer/hanoi/', tip:'Bo centralt - på en kort rejse er transporttid dyr.' },
@@ -27,6 +30,11 @@ const stops = [
       <div class="timeline">{stops.map((stop, i) => <article class="stop"><div class="stop-line"><span>{i+1}</span></div><div class="stop-copy"><small>{stop.day} · {stop.nights}</small><h3>{stop.place}</h3><p>{stop.text}</p><div class="tip"><b>Vores valg:</b> {stop.tip}</div><a href={stop.link}>Se guide til {stop.place} →</a></div></article>)}</div>
     </div>
   </section>
+  <div class="container route-visuals">
+    <SectionMedia src={hubVisuals.tours.ninhBinh.src} alt={hubVisuals.tours.ninhBinh.alt} caption="Ninh Binh giver naturkontrast uden at kræve endnu en lang indenrigsflyvning." />
+    <SectionMedia src={hubVisuals.hotels.hoiAn.src} alt={hubVisuals.hotels.hoiAn.alt} caption="Hoi An er det langsommere midtpunkt i 10-dages ruten og giver plads til både gammel by og strand." />
+  </div>
+  <div class="container route-video"><VideoEmbed youtubeId="NgvC-Frin1Y" title="Vietnam i levende billeder" caption="Den officielle Vietnam Tourism-video giver et hurtigt visuelt indtryk af landet; brug rejseplanen her til den praktiske rækkefølge." /></div>
 
   <section class="section cut-section"><div class="container cut-grid"><div><p class="eyebrow">Hvad ville vi skære væk?</p><h2>Det svære er at sige nej.</h2></div><div class="card cut-card"><b>Drop Ha Long Bay</b><p>Hvis Hoi An og Ho Chi Minh City er vigtigere. Du sparer endnu et transportled og en overnatning.</p></div><div class="card cut-card"><b>Drop Ho Chi Minh City</b><p>Hvis du hellere vil have Ha Long Bay. Så kan du holde hele turen i nord + central Vietnam og flyve hjem via Da Nang/Hanoi.</p></div></div></section>
 
@@ -37,6 +45,7 @@ const stops = [
 .route-hero{padding:84px 0 62px;background:linear-gradient(135deg,#eef4ef,#f4e8d2)}.route-hero-grid{display:grid;grid-template-columns:1.2fr .65fr;gap:54px;align-items:center}.route-hero h1{font-size:clamp(3.2rem,8vw,6rem)}.route-hero .lead{margin-top:20px}.hero-buttons{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.route-summary{padding:30px;border-radius:28px;background:var(--green-950);color:white;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}.route-summary>span{color:#f0cc91;font-size:.75rem;font-weight:850;text-transform:uppercase;letter-spacing:.1em}.route-summary b{font-size:1.25rem}.route-summary i{color:#f0cc91;font-style:normal}.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.facts>div{padding:18px;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.7)}.facts span{display:block;color:var(--muted);font-size:.76rem;text-transform:uppercase;font-weight:800}.facts b{display:block;margin-top:4px}.route-section{background:#f5efe2}.timeline{max-width:880px;margin:0 auto;display:grid;gap:0}.stop{display:grid;grid-template-columns:72px 1fr;gap:18px}.stop-line{position:relative;display:flex;justify-content:center}.stop-line:after{content:"";position:absolute;top:44px;bottom:-8px;width:2px;background:rgba(28,106,77,.2)}.stop:last-child .stop-line:after{display:none}.stop-line span{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:var(--green-950);color:white;font-weight:900;z-index:1}.stop-copy{padding:0 0 42px}.stop-copy small{color:var(--coral);font-weight:850;text-transform:uppercase;letter-spacing:.08em}.stop-copy h3{font-size:2rem;margin-top:5px}.stop-copy>p{margin-top:10px;color:#44514b}.tip{margin-top:14px;padding:14px 16px;border-radius:14px;background:#fffdf8;border:1px solid var(--border);color:#48554f}.stop-copy>a{display:inline-block;margin-top:14px;color:var(--green-700);font-weight:850}.cut-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:20px;align-items:stretch}.cut-card{padding:26px}.cut-card b{font-size:1.2rem;color:var(--green-950)}.cut-card p{margin-top:8px;color:var(--muted)}.booking-cta{padding:36px;border-radius:30px;background:var(--sand);display:flex;align-items:center;justify-content:space-between;gap:30px}.booking-cta p:not(.eyebrow){margin-top:10px;color:#48554f}
 @media(max-width:800px){.route-hero-grid,.cut-grid{grid-template-columns:1fr}.facts{grid-template-columns:repeat(2,1fr)}.booking-cta{align-items:flex-start;flex-direction:column}}
 @media(max-width:520px){.facts{grid-template-columns:1fr}.stop{grid-template-columns:48px 1fr}.hero-buttons{flex-direction:column}}
+.route-visuals{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.route-visuals :global(.section-media){margin:0}.route-video{margin-top:28px}@media(max-width:720px){.route-visuals{grid-template-columns:1fr}}
 </style>
 
 <style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>

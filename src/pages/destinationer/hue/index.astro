@@ -1,6 +1,8 @@
 ---
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -31,6 +33,13 @@ const faq = [
   toc={toc}
   sources={sources}
   faq={faq}
+  video={{
+    heading:'Se Hue fra luften',
+    intro:'Citadellet, Perfume River og byens grønne flader er lettere at sætte i perspektiv fra oven.',
+    youtubeId:'ZcBnZfWMa-I',
+    title:'Hue i 4K fra luften',
+    caption:'Videoen viser forholdet mellem kejserbyen, floden og resten af Hue.'
+  }}
   hero={{
     src:'https://commons.wikimedia.org/wiki/Special:FilePath/Citadel%20of%20Hue.jpg?width=1800',
     alt:'Port og bygninger i det kejserlige citadel i Hue',
@@ -58,6 +67,7 @@ const faq = [
   <h2 id="citadel">Start med Citadellet</h2>
   <p>Hue var hovedstad under Nguyen-dynastiet, og Vietnam Tourism fremhæver Citadellet som stedet, hvor man bedst får greb om den kejserlige arv. Området er stort nok til, at vi ikke ville planlægge en anden stor attraktion lige bagefter.</p>
   <p>Kom tidligt, især i varme måneder. Tag vand med, og giv dig selv lov til at springe enkelte bygninger over. Det er bedre at forstå hovedlinjerne end at forsøge at fotografere alt.</p>
+  <SectionMedia {...v.hue.citadel} />
 
   <h2 id="grave">Kejsergravene: vælg 1-2, ikke alle</h2>
   <PracticalTable
@@ -70,6 +80,7 @@ const faq = [
     ]}
   />
   <p>De ligger uden for centrum, så transporten er en del af dagen. En chauffør i nogle timer kan være mere praktisk end at bestille flere separate ture. Aftal pris og stop på forhånd.</p>
+  <SectionMedia {...v.hue.tomb} />
 
   <h2 id="mad">Mad i Hue er en grund til at blive til aftensmad</h2>
   <p>Hue er kendt for retter som bún bò Huế, bánh bèo og bánh khoái. Vietnam Tourism fremhæver også Dong Ba Market som et godt sted at forstå byens madkultur.</p>
@@ -78,6 +89,7 @@ const faq = [
   <h2 id="transport">Sådan passer Hue ind mellem Hanoi og Hoi An</h2>
   <p>Hue ligger naturligt mellem Nord- og Centralvietnam. Hvis du kommer fra Hanoi, kan tog eller fly være relevant. Fra Da Nang eller Hoi An er vejtransport enkel nok til, at Hue kan blive næste base uden en flydag.</p>
   <div class="callout"><strong>Vores rutevalg:</strong> Hanoi → Hue → Hoi An fungerer godt, hvis du har mindst to uger og er interesseret i historie. Hvis strand og ro betyder mere, ville vi flyve til Da Nang og bruge de ekstra nætter omkring Hoi An.</div>
+  <SectionMedia {...v.hue.river} />
 
   <h2 id="dage">Forslag til 2 dage i Hue</h2>
   <p><strong>Dag 1:</strong> Citadellet om morgenen, lang frokost, derefter Dong Ba-området eller en rolig tur langs Perfume River.</p>

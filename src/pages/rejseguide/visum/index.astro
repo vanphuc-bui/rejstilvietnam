@@ -1,6 +1,7 @@
 ---
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'kort-svar', label: 'Kort svar' },
@@ -28,6 +29,7 @@ const sources = [
   <p>Vietnam giver aktuelt danske statsborgere visumfri indrejse i op til 45 dage. Både indrejsedagen og udrejsedagen tæller med.</p>
   <p>Til en ferie på 10, 14 eller 21 dage ville vi derfor ikke bruge tid eller penge på et e-visum, medmindre der er noget særligt ved din rejse.</p>
   <div class="callout"><strong>Hav din udrejse klar.</strong> Udenrigsministeriet oplyser, at du skal kunne vise en returbillet eller billet videre ud af Vietnam. Gem reservationen på telefonen, men det er også fint at have en PDF, der kan åbnes uden internet.</div>
+  <SectionMedia {...v.visa.tourist} />
 
   <h2 id="pas">Krav til dit pas</h2>
   <p>Dit pas skal ifølge Udenrigsministeriets aktuelle information være gyldigt i mindst seks måneder ved indrejse. Passet må heller ikke være beskadiget.</p>
@@ -38,11 +40,13 @@ const sources = [
   <p>Fra 15. april 2026 gælder der en ekstra indrejseprocedure for danske statsborgere, der ankommer til Tan Son Nhat International Airport i Ho Chi Minh City.</p>
   <p>Udenrigsministeriet oplyser, at du skal udfylde en digital <strong>Pre-arrival Information (PAI)</strong>-formular tre dage før ankomst. Efter udfyldelse får du en QR-kode.</p>
   <div class="callout"><strong>Praktisk:</strong> Tag et screenshot af QR-koden og gem det lokalt på telefonen. Så er du ikke afhængig af lufthavnens wifi eller mobildata ved paskontrollen.</div>
+  <SectionMedia {...v.visa.evisa} />
 
   <h2 id="laengere-ophold">Hvis du vil blive længere end 45 dage</h2>
   <p>Vietnam tilbyder e-visum med ophold på op til 90 dage og mulighed for flere indrejser. Skal du opholde dig i landet længere end det, anbefaler Udenrigsministeriet, at du kontakter Vietnams ambassade i København.</p>
   <p>Brug den officielle e-visumside. Der findes mange private sider, som ligner en myndighedsside, men som blot tager et ekstra servicegebyr.</p>
   <div class="callout"><strong>Hvis du rejser ind og ud af Vietnam flere gange:</strong> Tjek dit konkrete visum eller din visumfri status nøje. En rejse til for eksempel Cambodia midt i ferien ændrer indrejsemønstret, og det er ikke et sted, hvor vi ville gætte os frem.</div>
+  <SectionMedia {...v.visa.document} />
 
   <h2 id="tjekliste">Tjekliste før afrejse</h2>
   <ul><li>Kontrollér passets gyldighed, før du booker eller senest i god tid før afrejse.</li><li>Gem returbillet eller billet videre ud af Vietnam på telefonen.</li><li>Skal du være væk i mere end 45 dage, så undersøg e-visum på den officielle side.</li><li>Flyver du til SGN, så udfyld PAI efter de aktuelle regler og gem QR-koden offline.</li><li>Tjek Udenrigsministeriets side igen få dage før afrejse.</li></ul>

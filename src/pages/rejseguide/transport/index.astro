@@ -2,6 +2,7 @@
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'kort-svar', label: 'Kort svar' },
@@ -33,6 +34,7 @@ const sources = [
   <p>Toget kan være en god oplevelse på udvalgte strækninger, men vi ville ikke automatisk vælge tog bare fordi det lyder mere lokalt. Hanoi til Ho Chi Minh City tager omkring 30 timer, så det er meget tid at bruge på transport på en kort ferie.</p>
   <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Passenger%20on%20TN1%20hard%20sleeper.jpg?width=1400" alt="Hard sleeper i et vietnamesisk nattog" caption="En hard-sleeper kupé giver et mere realistisk billede af nattog end flotte reklamefotos. Betal gerne lidt mere for en ordentlig køje, hvis du skal sove undervejs." credit="anjči / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Passenger_on_TN1_hard_sleeper.jpg" ratio="16 / 9" />
   <p>Hvis du tager nattog, så betal hellere lidt ekstra for en ordentlig køje. Den billigste plads er ikke nødvendigvis billig, hvis du ankommer træt og mister det meste af næste dag.</p>
+  <SectionMedia {...v.planning.train} />
 
   <h2 id="bus">Bus og limousine</h2>
   <p>På kortere regionale ruter er bus eller en mindre limousine van ofte mere praktisk end både fly og tog. Det gælder blandt andet Hanoi til Ninh Binh.</p>

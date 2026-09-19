@@ -3,6 +3,8 @@ import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
 import CommercialCta from '../../../../components/CommercialCta.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
+import VideoEmbed from '../../../../components/VideoEmbed.astro';
+import { editorialVisuals as v } from '../../../../data/editorialVisuals.js';
 import { hubVisuals } from '../../../../data/hubVisuals.js';
 
 const toc = [
@@ -85,6 +87,8 @@ const dayRows = [
   <h3>Valg A: Train Street + caféer</h3><p>Train Street kan passe ind om formiddagen eller senere på dagen, men adgang og togtider ændrer sig. Læs vores <a href="/destinationer/hanoi/train-street/">aktuelle Train Street-guide</a> og tjek forholdene samme dag.</p>
   <h3>Valg B: West Lake og Tran Quoc-pagoden</h3><p>Hvis du trænger til mere luft og færre smalle gader, så tag til Tay Ho/West Lake. Det er især et godt valg, hvis du overvejer at bo der på et længere ophold.</p>
   <h3>Valg C: en langsom dag i centrum</h3><p>Det er også helt legitimt at bruge tredje dag på caféer, et ekstra museum, shopping og mad. Det giver ofte mere mening end at tilføje endnu en attraktion kun for at kunne sige, at du har været der.</p>
+  <SectionMedia {...v.hanoi.trainStreet} />
+  <VideoEmbed youtubeId="1I4gT8grCuA" title="Hanoi walking tour 2026 i 4K" caption="Videoen viser Hoan Kiem, West Lake og byens tempo og er nyttig, når du vurderer hvor tæt tre dage skal planlægges." />
 
   <h2 id="kortere">Hvis du kun har 2 dage</h2>
   <p>Behold dag 1 næsten uændret. På dag 2 ville vi vælge Litteraturtemplet plus enten Ba Dinh eller Hoa Lo. Train Street er kun værd at presse ind, hvis det faktisk står højt på din ønskeliste.</p>

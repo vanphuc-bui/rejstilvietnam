@@ -1,6 +1,8 @@
 ---
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -64,10 +66,12 @@ const faq = [
     ]}
   />
   <p>Det er netop derfor, vi ikke kopierer én fast "Vietnam-vaccinationspakke". Det, der er relevant for to uger i Hanoi, Hoi An og Phu Quoc, er ikke nødvendigvis det samme som for flere måneders trekking og landsbyophold.</p>
+  <SectionMedia {...v.health.clinic} />
 
   <h2 id="kort-tur">Hvad viser SSI for almindelig turistrejse?</h2>
   <p>På SSI's aktuelle Vietnam-side indgår blandt andet <strong>stivkrampe, difteri og hepatitis A</strong> i informationen for korte turistophold. Om du konkret mangler en vaccine eller booster afhænger af, hvad du allerede har fået.</p>
   <p>Det rigtige næste skridt er derfor at finde dine tidligere vaccinationer og sammenholde dem med SSI's aktuelle anbefaling - ikke automatisk at bestille alle vacciner, du ser nævnt online.</p>
+  <SectionMedia {...v.health.luggage} />
 
   <h2 id="saerlige">Særlige risici kan ændre planen</h2>
   <p>SSI har særskilte afsnit for situationer som tæt kontakt til lokale dyr, længere ophold i landområder, seksuel kontakt og familiebesøg i oprindelseslandet. Det er vigtig information, fordi en almindelig to-ugers turist ikke nødvendigvis har samme risikoprofil som en person, der bor lokalt i flere måneder.</p>
@@ -76,6 +80,7 @@ const faq = [
   <h2 id="myg">Myg og malaria</h2>
   <p>SSI beskriver samlet en lav malariarisiko i Vietnam og nævner områder, hvor der normalt ikke er risiko, blandt andet større byer, Red River-deltaet, Mekong-deltaet og flade kystområder i Centralvietnam. Risikoen er geografisk, så en generel sætning om "malaria i Vietnam" er for upræcis.</p>
   <p>SSI anbefaler beskyttelse mod myggestik og har et aktuelt risikokort. Tjek kortet efter din faktiske rute, især hvis du skal til landområder eller opholde dig meget udendørs.</p>
+  <SectionMedia {...v.health.mosquito} />
 
   <h2 id="boern">Børn, graviditet og andre individuelle forhold</h2>
   <p>Børn følger ikke nødvendigvis voksnes vaccinationsplan, og SSI har særskilt information om rejsevaccination af børn. Graviditet, immunsuppression, allergier og kroniske sygdomme kan også ændre, hvad der er relevant eller muligt.</p>

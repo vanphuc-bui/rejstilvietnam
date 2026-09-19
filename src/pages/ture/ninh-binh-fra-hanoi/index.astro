@@ -4,6 +4,7 @@ import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
 import { hubVisuals } from '../../../data/hubVisuals.js';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'dagstur', label: 'Dagstur eller overnatning?' },
@@ -44,6 +45,7 @@ const sources = [{ label: 'Vietnam Tourism - Ninh Binh', href: 'https://www.viet
   <p>Vi ville kigge efter et program, der ser realistisk ud. Hvis en tur lover Trang An, Tam Coc, Hang Mua, Hoa Lu, cykling og flere templer på én dag, ville vi være skeptiske.</p>
   <ul><li>Én bådtur - Trang An eller Tam Coc.</li><li>Højst 1-2 andre hovedstop.</li><li>Tydelig pickup-zone i Hanoi.</li><li>Frokost og entréer beskrevet klart.</li><li>Nyere anmeldelser, der nævner tempo og gruppestørrelse.</li></ul>
   <div class="callout"><strong>Det vigtigste er tempoet.</strong> En billig tur med seks stop kan være dårligere værdi end en lidt dyrere tur, hvor du faktisk får tid til at opleve tre steder.</div>
+  <SectionMedia {...v.ninhBinh.stay} />
 
   <h2 id="transport">Transport og tempo</h2>
   <p>På en organiseret tur er transporten den nemme del. Hvis du rejser selv, fungerer bus og limousine van godt mellem Hanoi og Ninh Binh/Tam Coc.</p>

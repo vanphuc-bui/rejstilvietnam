@@ -2,6 +2,8 @@
 import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
+import VideoEmbed from '../../../components/VideoEmbed.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'overblik', label: 'Nha Trang i korte træk' },
@@ -45,15 +47,19 @@ const sources = [
 
   <h3>Hòn Chồng</h3>
   <p>Hòn Chồng kan bruges som et kort stop, især hvis du alligevel bevæger dig nord for centrum. Det er ikke et sted, vi ville planlægge en hel dag omkring.</p>
+  <SectionMedia {...v.nhaTrang.bay} />
 
   <h2 id="mad">Mad og seafood</h2>
   <p>Nha Trang er et oplagt sted at spise fisk og skaldyr. Kig efter steder med høj udskiftning af gæster og tydelige priser. Du finder også regionale specialiteter som bánh căn og bún cá.</p>
 
   <h2 id="transport">Transport</h2>
   <p>I centrum kan du gå en del, men Grab eller taxi er praktisk, når varmen er høj eller du skal nord/syd langs kysten. Cam Ranh-lufthavnen ligger uden for byen, så regn med transfer mellem lufthavn og hotel.</p>
+  <SectionMedia {...v.nhaTrang.market} />
 
   <h2 id="vejret">Bedste rejsetid</h2>
   <p>Vejret på Vietnams sydcentrale kyst følger ikke helt samme mønster som Hanoi eller Ho Chi Minh City. Hvis strand er hovedformålet, så tjek den konkrete periode før du låser hele ruten.</p>
+  <SectionMedia {...v.nhaTrang.pagoda} />
+  <VideoEmbed youtubeId="rsai-wskWsc" title="Nha Trang i 4K" caption="Videoen viser bystrand, bugt og byliv og gør destinationens skala lettere at forstå end et enkelt foto." />
 
   <h2 id="dage">Hvor mange dage?</h2>
   <p><strong>3-4 nætter</strong> er et godt udgangspunkt på en rundrejse. Det giver plads til strand, et par lokale oplevelser og eventuelt en bådtur uden at opholdet bliver for presset.</p>

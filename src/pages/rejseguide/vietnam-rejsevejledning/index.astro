@@ -2,6 +2,7 @@
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'status', label: 'Aktuel rejsevejledning' },
@@ -76,6 +77,7 @@ const faq = [
     <li>Bestil helst transport gennem kendte apps eller hotellet frem for at diskutere pris på gaden sent om aftenen.</li>
     <li>Hold øje med tasken på markeder, stationer og andre steder med mange mennesker.</li>
   </ul>
+  <SectionMedia {...v.planning.train} />
 
   <h2 id="trafik">Trafik og transport</h2>
   <p>Trafikken er sandsynligvis det, der føles mest fremmed for en førstegangsrejsende. Der er mange motorcykler, og færdselsmønstret er mindre intuitivt end i Danmark. Vær ekstra forsigtig, når du krydser veje, og regn ikke med, at et fodgængerfelt fungerer på samme måde som hjemme.</p>
@@ -94,6 +96,7 @@ const faq = [
   <p>En god rejseforsikring er ikke stedet, vi ville spare. Tjek især dækning for hospitalsbehandling, hjemtransport og aktiviteter som scooterkørsel, dykning eller trekking, hvis det er relevant for din rejse.</p>
   <p>Spis gerne street food, men vælg steder med høj omsætning og mad, der bliver lavet varm. Drik flaskevand eller sikkert filtreret vand. Hvis du bruger receptmedicin, så tag nok med hjemmefra og opbevar medicinen i original emballage.</p>
   <p>For vaccinationer og personlig sundhedsrådgivning bør du bruge egen læge eller en rejsemedicinsk klinik, fordi anbefalinger afhænger af rute, årstid, rejselængde og din egen helbredshistorik.</p>
+  <SectionMedia {...v.health.clinic} />
 
   <h2 id="checkliste">Checkliste før afrejse</h2>
   <ol>

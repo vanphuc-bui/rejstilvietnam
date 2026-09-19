@@ -1,6 +1,8 @@
 ---
 import EditorialArticle from '../../../components/EditorialArticle.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
+import SectionMedia from '../../../components/SectionMedia.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -31,6 +33,13 @@ const faq = [
   toc={toc}
   sources={sources}
   faq={faq}
+  video={{
+    heading:'Se Da Lat i gåtempo',
+    intro:'En walking-video gør det lettere at forstå det køligere byliv omkring søen, centrum og markedet.',
+    youtubeId:'J4NmD2ae9dw',
+    title:'Walking tour i Da Lat i 4K',
+    caption:'Videoen giver et praktisk indtryk af afstande, byliv og stemning omkring Xuan Huong Lake.'
+  }}
   hero={{
     src:'https://commons.wikimedia.org/wiki/Special:FilePath/Da%20Lat%20-%20Viet%20Nam.jpg?width=1800',
     alt:'Bylandskab og grønne bakker i Da Lat i Vietnams højland',
@@ -58,10 +67,12 @@ const faq = [
   <h2 id="hvorfor">Hvorfor tage til Da Lat?</h2>
   <p>Vietnam Tourism beskriver Da Lat som et køligere højlandsstop med søer, europæisk inspireret arkitektur og natur i bakkerne omkring byen. For os er det vigtigste, at Da Lat giver en pause fra tropisk strand og storby.</p>
   <p>Hvis du primært vil se de mest kendte Vietnam-højdepunkter på kort tid, kan du springe byen over. Hvis kaffe, lokalt landbrug, kølige morgener og landskab interesserer dig, er det netop et godt ekstra stop.</p>
+  <SectionMedia {...v.daLat.lake} />
 
   <h2 id="byen">Byen, Xuan Huong Lake og kaffekulturen</h2>
   <p>Xuan Huong Lake ligger centralt og fungerer som et naturligt pejlemærke. Markedet og centrum er lette at kombinere med caféer og en langsom eftermiddag.</p>
   <p>Da Lat ligger i et af Vietnams vigtigste kaffeområder. Du behøver ikke booke en stor "coffee tour" for at få noget ud af det, men en gård eller roastery med tydelig forklaring på bønner og produktion kan være mere interessant end endnu en fotocafé.</p>
+  <SectionMedia {...v.daLat.market} />
 
   <h2 id="natur">Natur og vandfald</h2>
   <PracticalTable
@@ -78,6 +89,7 @@ const faq = [
   <h2 id="transport">Sådan kommer du til Da Lat</h2>
   <p>Da Lat kan nås med fly og bus fra flere større byer. Lufthavnen ligger uden for centrum, så regn med transfer den sidste del. Fra Nha Trang er vejtransport en oplagt måde at kombinere kyst og højland, men ruten har sving og højdeforskelle.</p>
   <div class="callout"><strong>Hvis du bliver køresyg:</strong> Vælg transport og tidspunkt med det i tankerne. En smuk bjergvej er ikke en bonus, hvis du bruger hele turen på at have det dårligt.</div>
+  <SectionMedia {...v.daLat.rail} />
 
   <h2 id="dage">Forslag til 3 nætter</h2>
   <p><strong>Ankomstdag:</strong> Check ind, gå omkring søen og spis i centrum.</p>

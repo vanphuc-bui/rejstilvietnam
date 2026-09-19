@@ -2,6 +2,7 @@
 import EditorialArticle from '../../../../components/EditorialArticle.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
+import { editorialVisuals as v } from '../../../../data/editorialVisuals.js';
 
 const toc = [
   { id:'kort-svar', label:'Kort svar' },
@@ -83,6 +84,7 @@ const faq = [
     <li><strong>Dag 5:</strong> Ninh Binh som dagstur eller en ekstra nat uden for Hanoi.</li>
   </ul>
   <div class="notice"><strong>Vi ville ikke booke fem hele sightseeingdage i Hanoi kun for at “have nok”.</strong> Hvis natur er vigtig for dig, får du ofte mere ud af at bruge 1-2 af dagene i Ninh Binh eller på et Ha Long/Lan Ha-cruise.</div>
+  <SectionMedia {...v.hanoi.lake} />
 
   <h2 id="dagsture">Hanoi som base for dagsture</h2>
   <p>Hanoi er praktisk som base, men ikke alle udflugter er lige gode som dagstur.</p>

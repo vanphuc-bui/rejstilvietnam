@@ -4,6 +4,7 @@ import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
 import PracticalTable from '../../../components/PracticalTable.astro';
 import AffiliateActivityGrid from '../../../components/AffiliateActivityGrid.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'tal', label: 'Hanoi 2026 i tal' },
@@ -92,6 +93,7 @@ const hubCards = [
   <h2 id="mad">Mad i Hanoi</h2>
   <p>Hvis du kun har få dage, ville vi begynde med phở, bún chả, bánh cuốn, chả cá og én æggekaffe. Et almindeligt street-food måltid som phở eller bún chả ligger ofte omkring <strong>40.000-80.000 VND</strong>, cirka <strong>10-20 DKK</strong>.</p>
   <div class="link-list"><a class="link-card" href="/destinationer/hanoi/mad-i-hanoi/">Mad i Hanoi <span>Se fem klassiske retter, 2026-priser og en enkel plan for en maddag.</span></a></div>
+  <SectionMedia {...v.hanoi.oldQuarter} />
 
   <h2 id="praktisk">Praktisk: fra lufthavnen og rundt i byen</h2>
   <p>Noi Bai-lufthavnen ligger uden for centrum. Bus 86 koster aktuelt 50.000 VND, cirka 12-13 DKK, og operatøren angiver omkring 60 minutter til Hanoi Railway Station. Med kufferter, børn eller sen ankomst ville vi ofte vælge Grab, officiel taxi eller en bil arrangeret på forhånd.</p>

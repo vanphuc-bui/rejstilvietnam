@@ -4,6 +4,7 @@ import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
 import AffiliateActivityGrid from '../../../components/AffiliateActivityGrid.astro';
+import { destinationVisuals } from '../../../data/destinationVisuals.js';
 
 const toc = [
   { id: 'overblik', label: 'Phu Quoc i korte træk' },
@@ -30,6 +31,7 @@ const sources = [
   <p>Hvis du gerne vil have restauranter og lidt liv i nærheden, ville vi kigge omkring <strong>Long Beach / Duong Dong</strong>. Det er ikke nødvendigvis øens mest idylliske område, men det er praktisk.</p>
   <p>Hvis du primært vil være på resortet, kan et mere afsides hotel mod nord eller syd være bedre. Her skal du bare regne med, at spontane restaurantbesøg og ture til andre dele af øen kræver mere transport.</p>
   <div class="callout"><strong>Vores råd:</strong> På et ophold på 3-4 nætter ville vi ikke vælge et isoleret resort alene fordi værelset ser bedre ud på billeder. Kig på kortet og se, hvad der faktisk ligger i nærheden.</div>
+  <SectionMedia {...destinationVisuals['Phu Quoc'].beach} />
 
   <h2 id="strande">Strande og områder</h2>
   <h3>Long Beach</h3>
@@ -65,6 +67,7 @@ const sources = [
   <h2 id="vejret">Bedste rejsetid til Phu Quoc</h2>
   <p>Vietnam Tourism beskriver oktober til juni som den mere solrige periode. Den tørreste del af året ligger typisk omkring vinteren og det tidlige forår.</p>
   <p>Juli til september er mere usikkert til båd og strand. Hvis du rejser der i den periode, ville vi vælge et godt hotel med pool og undgå at forudbetale for mange vejrafhængige aktiviteter.</p>
+  <SectionMedia {...destinationVisuals['Phu Quoc'].sectionPool[2]} />
 
   <h2 id="dage">Hvor mange dage?</h2>
   <ul><li><strong>2 nætter:</strong> efter vores mening for kort, medmindre flytiderne passer perfekt.</li><li><strong>3-4 nætter:</strong> godt til et strandstop sidst på en rundrejse.</li><li><strong>5+ nætter:</strong> giver mening, hvis Phu Quoc er en stor del af selve ferien.</li></ul>
