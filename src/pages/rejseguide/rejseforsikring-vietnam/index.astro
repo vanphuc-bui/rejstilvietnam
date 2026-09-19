@@ -1,0 +1,100 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+import CommercialCta from '../../../components/CommercialCta.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'sygdom', label:'Sygdom og hjemtransport' },
+  { id:'aktiviteter', label:'Motorcykel, dykning og aktiviteter' },
+  { id:'afbestilling', label:'Afbestilling og bagage' },
+  { id:'kort', label:'Forsikring via betalingskort' },
+  { id:'checkliste', label:'Vores checkliste' },
+];
+
+const sources = [
+  { label:'Udenrigsministeriet - Vietnam rejsevejledning', href:'https://um.dk/rejse-og-ophold/rejse-til-udlandet/rejsevejledninger/vietnam' },
+  { label:'Forbrug.dk - Rejseforsikringer', href:'https://forbrug.dk/emner/ferie-rejser-og-transport/rejseforsikringer' },
+];
+
+const faq = [
+  { question:'Dækker det blå EU-sygesikringskort i Vietnam?', answer:'Nej. Udenrigsministeriet oplyser, at danskere i Vietnam hverken er dækket af det gule sundhedskort eller det blå EU-sygesikringskort.' },
+  { question:'Er rejseforsikring lovpligtig til Vietnam?', answer:'Vores fokus er ikke et lovkrav, men din økonomiske risiko. Udenrigsministeriet opfordrer danske rejsende til at tegne privat rejseforsikring og sikre, at den dækker deres behov og planlagte aktiviteter.' },
+];
+---
+<EditorialArticle
+  title="Rejseforsikring til Vietnam 2026 | Det ville vi tjekke før afrejse"
+  description="Dansk guide til rejseforsikring for Vietnam: sygdom, hjemtransport, motorcykel, dykning, bagage, afbestilling og hvad du bør kontrollere i vilkårene."
+  eyebrow="Før afrejse"
+  heading="Rejseforsikring til Vietnam: tjek aktiviteterne, ikke kun prisen"
+  intro="Det blå EU-sygesikringskort dækker ikke i Vietnam. Derfor er den vigtige opgave at finde ud af, om din private rejseforsikring faktisk dækker rejsens længde, destinationer og de aktiviteter, du planlægger."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Passport%20and%20AirFrance%20Boarding%20Pass%20%2853928563481%29.jpg?width=1800',
+    alt:'Pas og boardingkort lagt sammen før en flyrejse',
+    caption:'Gem policen og alarmnummeret offline. Det er mere nyttigt i en nødsituation end at skulle lede i gamle mails.',
+    credit:'Tony Webster / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Passport_and_AirFrance_Boarding_Pass_(53928563481).jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/rejseguide/vietnam-rejsevejledning/',title:'Vietnam rejsevejledning',text:'Læs de praktiske sikkerhedsråd før afrejse.'},
+    {href:'/rejseguide/vaccinationer-vietnam/',title:'Vaccinationer til Vietnam',text:'Brug SSI og din konkrete rute til sundhedsforberedelsen.'},
+    {href:'/rejseguide/pakkeliste-vietnam/',title:'Pakkeliste',text:'Gem dokumenter, kort og forsikringsoplysninger de rigtige steder.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>Udenrigsministeriet opfordrer til privat rejseforsikring før Vietnam og gør opmærksom på, at <strong>hverken det gule sundhedskort eller det blå EU-sygesikringskort dækker danskere i Vietnam</strong>. Vi ville derfor kontrollere sygdomsbehandling, hjemtransport, rejselængde og aktiviteter før betaling.</p>
+  <p>Den billigste police er ikke billig, hvis den aktivitet, du faktisk laver, er undtaget.</p>
+
+  <h2 id="sygdom">Sygdom, behandling og hjemtransport</h2>
+  <p>Udenrigsministeriet skriver, at offentlig lægehjælp kan være af lavere standard, især uden for større byer, mens der findes gode privathospitaler i større byer. Det gør det vigtigt at forstå, hvor forsikringen vil sende dig, og hvordan betalingsgaranti håndteres.</p>
+  <PracticalTable
+    title="Fire punkter vi ville finde i vilkårene"
+    columns={[{key:'item',label:'Dækning'},{key:'question',label:'Spørgsmålet vi ville stille'}]}
+    rows={[
+      {item:'Akut sygdom/skade',question:'Dækker den nødvendig privat behandling i Vietnam?'},
+      {item:'Hjemtransport',question:'Hvornår og hvordan dækkes medicinsk hjemtransport?'},
+      {item:'Alarmcentral',question:'Kan den kontaktes 24/7 fra Vietnam?'},
+      {item:'Rejselængde',question:'Dækker policen hele turen - også hvis den er over fx 30/60 dage?'},
+    ]}
+  />
+
+  <h2 id="aktiviteter">Motorcykel, scooter, dykning og vandsport</h2>
+  <p>Det her er et af de vigtigste Vietnam-punkter. Udenrigsministeriet anbefaler, at du specifikt sikrer dig dækning til aktiviteter som dykning og leje af bil, motorcykel, båd eller vandscooter. Lokale udlejere har ifølge rejsevejledningen sjældent en skades- eller ansvarsforsikring, du kan regne med.</p>
+  <div class="callout"><strong>Scooter er ikke bare "lokal transport".</strong> Tjek krav til kørekort, hjelm, motorstørrelse og forsikringsvilkår. Hvis du ikke opfylder betingelserne, kan en skade få helt andre økonomiske konsekvenser.</div>
+  <p>Det samme gælder dykning, trekking og andre aktiviteter, hvor selskabet kan have særlige betingelser eller tilvalg.</p>
+
+  <h2 id="afbestilling">Afbestilling, bagage og forsinkelse</h2>
+  <p>Afbestilling er ikke nødvendigvis automatisk en del af alle rejseforsikringer. Tjek også beløbsgrænser for bagage, elektronik og forsinkelser. Hvis du har dyre kameraer eller computer med, er standardgrænsen ikke altid høj nok.</p>
+  <p>Gem kvitteringer, politirapport eller dokumentation fra flyselskab, hvis du får brug for at anmelde en skade. Ring til selskabet tidligt ved større hændelser i stedet for først at kontakte dem, når du er hjemme.</p>
+
+  <h2 id="kort">Har du allerede rejseforsikring via et betalingskort?</h2>
+  <p>Muligvis. Men kortforsikringer kan have betingelser om, at en bestemt del af rejsen er betalt med kortet, og dækningen kan være forskellig for familie, rejsetid og aktiviteter.</p>
+  <p>Forbrug.dk anbefaler generelt at læse forsikringsbetingelserne grundigt, fordi dækning varierer mellem selskaber. Vi ville downloade de konkrete vilkår og ikke nøjes med teksten "rejseforsikring inkluderet" i bankappen.</p>
+
+  <h2 id="checkliste">Vores checkliste før afrejse</h2>
+  <ul>
+    <li>Vietnam/hele verden er omfattet af geografisk dækning.</li>
+    <li>Hele rejsens længde er dækket.</li>
+    <li>Sygdom, akut behandling og hjemtransport er omfattet.</li>
+    <li>Planlagte aktiviteter er dækket.</li>
+    <li>Eventuelle eksisterende sygdomme er afklaret med selskabet.</li>
+    <li>Afbestilling er med, hvis du har brug for den.</li>
+    <li>Alarmnummer og policenummer ligger offline på telefonen.</li>
+  </ul>
+
+  <CommercialCta
+    eyebrow="Før du rejser"
+    title="Saml resten af de praktiske ting samme sted"
+    text="Når forsikringen er på plads, så gå videre til pas, visum, sikkerhed og dokumenter."
+    primaryHref="/rejseguide/vietnam-rejsevejledning/"
+    primaryLabel="Se rejsevejledningen →"
+    secondaryHref="/rejseguide/visum/"
+    secondaryLabel="Tjek visum og indrejse"
+  />
+</EditorialArticle>
