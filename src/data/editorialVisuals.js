@@ -50,6 +50,7 @@ export const editorialVisuals = {
   health: {
     mosquito: img('Traveller in a Mosquito Net.jpg','Rejsende under myggenet','Myggestik forebygges bedst med praktiske forholdsregler, og rute betyder mere end en generel landeliste.'),
     luggage: img('Luggage at airport.jpg','Bagage i en lufthavn','Forsikring, dokumenter og bagagegrænser bør være afklaret før afrejse.'),
+    clinic: img('PCP Vaccination Clinic.jpg','Vaccinationsklinik','Rejsevaccination bør vurderes efter rute, rejselængde og den enkelte rejsendes tidligere vaccinationer.'),
   },
   insurance: {
     luggage: img('Luggage at airport.jpg','Bagage i en lufthavn','Bagage, forsinkelse og dokumentation er en praktisk del af en rejseforsikring.'),
@@ -97,6 +98,11 @@ export const editorialVisuals = {
     train: img('VietnamRailway.jpg','Jernbane i Vietnam','Tog giver mening på udvalgte strækninger, men rejsetid bør sammenlignes med fly og bus.'),
     taxi: img('Mai Linh Taxi at Tan Son Nhat.jpg','Taxi ved Tan Son Nhat-lufthavnen','Lufthavnstransfer er et godt eksempel på en lille beslutning, der bliver lettere med en klar plan.'),
     coast: img('VN Coast Train Northbound.jpg','Tog langs Vietnams kyst','Afstandene i Vietnam betyder, at transportdagene skal regnes med som en del af rejseplanen.'),
+  },
+  family: {
+    beach: img('An Bang Beach (46353448872).jpg','Familier på en bred strand ved Hoi An','En god familierute har pauser, pool eller strand mellem de mere intensive storbydage.'),
+    train: img('Train interior Vietnam.jpg','Togrejse i Vietnam','Med børn er transporttid og antal hotelskift ofte vigtigere end at nå flest destinationer.'),
+    food: img('Vietnamese Pho.jpg','Skål med vietnamesisk phở','Enkle nudel- og risretter gør det ofte lettere at finde noget, børn kan begynde med.'),
   },
 };
 
