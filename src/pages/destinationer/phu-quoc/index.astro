@@ -4,6 +4,7 @@ import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
 import AffiliateActivityGrid from '../../../components/AffiliateActivityGrid.astro';
+import { destinationVisuals } from '../../../data/destinationVisuals.js';
 
 const toc = [
   { id: 'overblik', label: 'Phu Quoc i korte træk' },
@@ -30,6 +31,7 @@ const sources = [
   <p>Hvis du gerne vil have restauranter og lidt liv i nærheden, ville vi kigge omkring <strong>Long Beach / Duong Dong</strong>. Det er ikke nødvendigvis øens mest idylliske område, men det er praktisk.</p>
   <p>Hvis du primært vil være på resortet, kan et mere afsides hotel mod nord eller syd være bedre. Her skal du bare regne med, at spontane restaurantbesøg og ture til andre dele af øen kræver mere transport.</p>
   <div class="callout"><strong>Vores råd:</strong> På et ophold på 3-4 nætter ville vi ikke vælge et isoleret resort alene fordi værelset ser bedre ud på billeder. Kig på kortet og se, hvad der faktisk ligger i nærheden.</div>
+  <SectionMedia {...destinationVisuals['Phu Quoc'].beach} />
 
   <h2 id="strande">Strande og områder</h2>
   <h3>Long Beach</h3>
