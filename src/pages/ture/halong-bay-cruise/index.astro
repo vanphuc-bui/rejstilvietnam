@@ -3,6 +3,7 @@ import ArticleLayout from '../../../layouts/ArticleLayout.astro';
 import AffiliateCard from '../../../components/AffiliateCard.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
+import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
 const toc = [
   { id: 'valg', label: 'Dagstur eller overnatning?' },
@@ -30,6 +31,7 @@ const sources = [{ label: 'Vietnam Tourism - Weather and climate', href: 'https:
   <div class="callout"><strong>En enkel metode:</strong> Find først 3-4 cruises i samme prisniveau med den rigtige rute. Sammenlign derefter kahyt og nyere anmeldelser. Det er langt lettere end at bladre gennem 30 næsten ens tilbud.</div>
 
   <SectionMedia src="https://commons.wikimedia.org/wiki/Special:FilePath/Sung%20Sot%20cave%20Ha%20Long%20Bay.jpg?width=1500" alt="Sung Sot-grotten i Ha Long Bay" caption="Mange cruises har et grot- eller kajakstop. Tjek programmet, hvis du helst vil bruge mest mulig tid på selve vandet." credit="Andre Hospers / Wikimedia Commons" creditUrl="https://commons.wikimedia.org/wiki/File:Sung_Sot_cave_Ha_Long_Bay.jpg" ratio="16 / 9" />
+  <SectionMedia {...v.haLong.cruise} />
 
   <h2 id="transfer">Transfer og bagage</h2>
   <p>Mange cruises tilbyder pickup i bestemte områder af Hanoi. Hvis dit hotel ligger uden for pickup-zonen, kan du blive bedt om at møde et andet sted.</p>
@@ -40,6 +42,7 @@ const sources = [{ label: 'Vietnam Tourism - Weather and climate', href: 'https:
   <p>Vietnam Tourism fremhæver april-juni og september-november som perioder, hvor vejret ofte er behageligt i området.</p>
   <p>Om sommeren kan tropisk vejr give ændringer eller aflysninger. Om vinteren kan bugten være køligere og diset. Det er ikke nødvendigvis dårligt, men billederne bliver ikke altid blå himmel og sol.</p>
   <div class="callout"><strong>Hvis vejret er usikkert:</strong> Læs afbestillingsreglerne før du booker. Vi ville hellere vælge en lidt dyrere mulighed med rimelige vilkår end en ikke-refunderbar booking, hvis prognosen ser dårlig ud.</div>
+  <SectionMedia {...v.haLong.kayak} />
 
   <h2 id="ruter">Ha Long, Lan Ha eller Bai Tu Long?</h2>
   <p>Navnet på bugten er mindre vigtigt end den konkrete rute.</p>
