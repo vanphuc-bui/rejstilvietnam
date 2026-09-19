@@ -1,0 +1,83 @@
+---
+import EditorialArticle from '../../../components/EditorialArticle.astro';
+import PracticalTable from '../../../components/PracticalTable.astro';
+
+const toc = [
+  { id:'kort-svar', label:'Kort svar' },
+  { id:'ssi', label:'Sådan bruger du SSI' },
+  { id:'kort-tur', label:'Almindelig turistrejse' },
+  { id:'saerlige', label:'Særlige risici' },
+  { id:'myg', label:'Myg og malaria' },
+  { id:'boern', label:'Børn og individuelle forhold' },
+];
+
+const sources = [
+  { label:'Statens Serum Institut - Vietnam', href:'https://rejse.ssi.dk/rejsevaccinationslande/v/vietnam' },
+  { label:'Udenrigsministeriet - Vietnam rejsevejledning', href:'https://um.dk/rejse-og-ophold/rejse-til-udlandet/rejsevejledninger/vietnam' },
+];
+
+const faq = [
+  { question:'Hvilke vaccinationer skal man have til Vietnam?', answer:'Det afhænger af rejselængde, rejsetype, rute, alder og tidligere vaccinationer. SSI har en Vietnam-side, hvor anbefalingerne skifter med varighed og særlige risici. Brug den som udgangspunkt og få individuel rådgivning hos læge eller vaccinationsklinik.' },
+  { question:'Er der malaria i Vietnam?', answer:'SSI beskriver en lav risiko i landet samlet set og områder, hvor der normalt ikke er risiko, blandt andet større byer og flere delta- og kystområder. Den konkrete vurdering afhænger af ruten, så tjek SSI’s aktuelle kort og anbefaling før afrejse.' },
+];
+---
+<EditorialArticle
+  title="Vaccinationer til Vietnam 2026 | Sådan bruger du SSI's anbefalinger"
+  description="Guide til vaccinationer før Vietnam: hvordan du bruger SSI's aktuelle anbefalinger efter rejselængde, rute og særlige risici samt hvornår du bør søge individuel rådgivning."
+  eyebrow="Sundhed før rejsen"
+  heading="Vaccinationer til Vietnam: brug SSI efter din konkrete rute"
+  intro="En vaccinationsliste uden at kende din alder, tidligere vaccinationer, rejselængde og rute kan være misvisende. Derfor samler vi ikke et personligt vaccinationsprogram her - vi viser i stedet, hvordan du læser SSI's aktuelle Vietnam-anbefalinger."
+  updated="19. september 2026"
+  dateModified="2026-09-19"
+  toc={toc}
+  sources={sources}
+  faq={faq}
+  hero={{
+    src:'https://commons.wikimedia.org/wiki/Special:FilePath/Syringe%20and%20Vaccine%20%2814329622976%29.jpg?width=1800',
+    alt:'Vaccinehætteglas og sprøjte på en klinisk overflade',
+    caption:'Vaccinationer bør vurderes ud fra din konkrete rejse. SSI opdaterer anbefalingerne efter land, varighed og risikotype.',
+    credit:'NIAID / Wikimedia Commons',
+    creditUrl:'https://commons.wikimedia.org/wiki/File:Syringe_and_Vaccine_(14329622976).jpg',
+    ratio:'16 / 7'
+  }}
+  related={[
+    {href:'/rejseguide/rejseforsikring-vietnam/',title:'Rejseforsikring til Vietnam',text:'Tjek sygdom, hjemtransport og aktiviteter før afrejse.'},
+    {href:'/rejseguide/pakkeliste-vietnam/',title:'Pakkeliste til Vietnam',text:'Se hvad der er praktisk at have med i medicin- og dokumentdelen.'},
+    {href:'/rejseguide/vietnam-rejsevejledning/',title:'Vietnam rejsevejledning',text:'Samlet guide til sikkerhed og praktiske forhold.'}
+  ]}
+>
+  <h2 id="kort-svar">Kort svar</h2>
+  <p>Gå til <strong>SSI's Vietnam-side</strong>, vælg din rejselængde og læs både standardanbefalingerne og afsnittet om særlige risici. SSI's side var senest redigeret 29. januar 2026 og tager direkte højde for, om du rejser op til en uge, 1-4 uger, flere måneder eller på familiebesøg.</p>
+  <p>Book læge eller vaccinationsklinik i god tid, hvis du er usikker, har kronisk sygdom, rejser med børn, er gravid, skal langt ud på landet eller har en længere/anderledes rejse end almindelig turisme.</p>
+
+  <div class="notice"><strong>Dette er ikke personlig lægefaglig rådgivning.</strong> Vacciner og forebyggende medicin skal vurderes ud fra den enkelte rejsende. Brug SSI og sundhedsfaglig rådgivning til den endelige beslutning.</div>
+
+  <h2 id="ssi">Sådan bruger du SSI's Vietnam-side</h2>
+  <PracticalTable
+    title="Fire ting der ændrer anbefalingen"
+    columns={[{key:'factor',label:'Faktor'},{key:'example',label:'Eksempel'},{key:'action',label:'Hvad du gør'}]}
+    rows={[
+      {factor:'Rejselængde',example:'1 uge vs. 2 måneder',action:'Vælg korrekt kategori hos SSI'},
+      {factor:'Rejsetype',example:'Hotelrundrejse vs. lange ophold på landet',action:'Læs særlige risici'},
+      {factor:'Aktiviteter',example:'Trekking, dyrekontakt, lang tid udendørs',action:'Se de relevante risikosektioner'},
+      {factor:'Personlige forhold',example:'Barn, graviditet, kronisk sygdom',action:'Få individuel vurdering'},
+    ]}
+  />
+  <p>Det er netop derfor, vi ikke kopierer én fast "Vietnam-vaccinationspakke". Det, der er relevant for to uger i Hanoi, Hoi An og Phu Quoc, er ikke nødvendigvis det samme som for flere måneders trekking og landsbyophold.</p>
+
+  <h2 id="kort-tur">Hvad viser SSI for almindelig turistrejse?</h2>
+  <p>På SSI's aktuelle Vietnam-side indgår blandt andet <strong>stivkrampe, difteri og hepatitis A</strong> i informationen for korte turistophold. Om du konkret mangler en vaccine eller booster afhænger af, hvad du allerede har fået.</p>
+  <p>Det rigtige næste skridt er derfor at finde dine tidligere vaccinationer og sammenholde dem med SSI's aktuelle anbefaling - ikke automatisk at bestille alle vacciner, du ser nævnt online.</p>
+
+  <h2 id="saerlige">Særlige risici kan ændre planen</h2>
+  <p>SSI har særskilte afsnit for situationer som tæt kontakt til lokale dyr, længere ophold i landområder, seksuel kontakt og familiebesøg i oprindelseslandet. Det er vigtig information, fordi en almindelig to-ugers turist ikke nødvendigvis har samme risikoprofil som en person, der bor lokalt i flere måneder.</p>
+  <div class="callout"><strong>Dyrebid:</strong> Søg akut lægehjælp efter bid eller krads fra et pattedyr, der kan udgøre rabiesrisiko - også hvis du er vaccineret på forhånd. Følg SSI's aktuelle vejledning.</div>
+
+  <h2 id="myg">Myg og malaria</h2>
+  <p>SSI beskriver samlet en lav malariarisiko i Vietnam og nævner områder, hvor der normalt ikke er risiko, blandt andet større byer, Red River-deltaet, Mekong-deltaet og flade kystområder i Centralvietnam. Risikoen er geografisk, så en generel sætning om "malaria i Vietnam" er for upræcis.</p>
+  <p>SSI anbefaler beskyttelse mod myggestik og har et aktuelt risikokort. Tjek kortet efter din faktiske rute, især hvis du skal til landområder eller opholde dig meget udendørs.</p>
+
+  <h2 id="boern">Børn, graviditet og andre individuelle forhold</h2>
+  <p>Børn følger ikke nødvendigvis voksnes vaccinationsplan, og SSI har særskilt information om rejsevaccination af børn. Graviditet, immunsuppression, allergier og kroniske sygdomme kan også ændre, hvad der er relevant eller muligt.</p>
+  <p>Hvis noget af dette gælder dig eller en medrejsende, ville vi ikke bruge en almindelig rejseblog som sidste kontrol. Tag rute og rejsedatoer med til lægen eller vaccinationsklinikken.</p>
+</EditorialArticle>
