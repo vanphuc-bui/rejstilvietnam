@@ -77,7 +77,7 @@ export const editorialVisuals = {
     oldQuarter: img('Hanoi Old Quarter (48256298071).jpg','Gadeliv i Hanois Old Quarter','Old Quarter fungerer bedst til fods, med plads til mad og små omveje.'),
     temple: img('Temple of Literature Hanoi 1.jpg','Litteraturtemplet i Hanoi','Litteraturtemplet passer naturligt ind i en historiedag vest for centrum.'),
     trainStreet: img('Train Street, Hanoi (52352080696).jpg','Train Street i Hanoi','Train Street er bedst som et kort fleksibelt stop, fordi adgang og togtider kan ændre sig.'),
-    airport: img('Noi Bai International Airport 2019.jpg','Noi Bai International Airport ved Hanoi','Lufthavnstransfer er den første logistiske beslutning efter ankomst til Hanoi.'),
+    airport: img('Noi Bai International Airport Terminal, Hanoi (6914127808).jpg','Noi Bai International Airport ved Hanoi','Lufthavnstransfer er den første logistiske beslutning efter ankomst til Hanoi.'),
   },
   nhaTrang: {
     bay: img('Nha Trang Bay and Vinwonders. Nha Trang, Vietnam. June 2025.jpg','Nha Trang Bay og Hon Tre','Bugten gør det let at kombinere strandbyen med øture og aktiviteter på vandet.'),
