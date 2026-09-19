@@ -5,6 +5,11 @@ import { hoChiMinhPages } from '../../../data/hoChiMinhCluster.js';
 import { phuQuocPages } from '../../../data/phuQuocCluster.js';
 import { daNangPages } from '../../../data/daNangCluster.js';
 import { nhaTrangPages } from '../../../data/nhaTrangCluster.js';
+import { huePages } from '../../../data/hueCluster.js';
+import { ninhBinhPages } from '../../../data/ninhBinhCluster.js';
+import { sapaPages } from '../../../data/sapaCluster.js';
+import { haLongBayPages } from '../../../data/haLongBayCluster.js';
+import { daLatPages } from '../../../data/daLatCluster.js';
 import { enhanceMarineCluster } from '../../../data/marineActivityCluster.js';
 
 export function getStaticPaths() {
@@ -14,6 +19,11 @@ export function getStaticPaths() {
     'phu-quoc': enhanceMarineCluster(phuQuocPages, 'phu-quoc'),
     'da-nang': daNangPages,
     'nha-trang': enhanceMarineCluster(nhaTrangPages, 'nha-trang'),
+    'hue': huePages,
+    'ninh-binh': ninhBinhPages,
+    'sapa': sapaPages,
+    'ha-long-bay': haLongBayPages,
+    'da-lat': daLatPages,
   };
 
   return Object.entries(clusters).flatMap(([destination, pages]) =>

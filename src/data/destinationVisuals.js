@@ -11,6 +11,53 @@ const media = (file, alt, caption, extra = {}) => ({
 });
 
 export const destinationVisuals = {
+  'Ninh Binh': {
+    default: media('Ben Trang An.jpg','Bådhavn ved Trang An i Ninh Binh','Ninh Binh fungerer bedst, når du bor tæt på landskabet og ikke kun ser området fra en bus på en dagstur.'),
+    sectionPool: [
+      media('View from Hang Mua.jpg','Udsigt fra Hang Mua over Ninh Binh','Hang Mua giver det bedste overblik over flod, rismarker og kalkstenslandskab.'),
+      media('Ninh Binh-Tam Coc.jpg','Landskab ved Tam Coc','Tam Coc er både en base og en klassisk bådtur gennem kalkstenslandskabet.'),
+      media('Ben Trang An.jpg','Trang An i Ninh Binh','Trang An er et af de vigtigste bådområder og et godt pejlemærke, hvis du vil bo mere naturnært.'),
+    ],
+    video: { youtubeId:'_N-seP6smqk', title:'Ninh Binh i 4K', caption:'Videoen viser forskellen mellem bådtur, udsigtspunkt og det flade landskab mellem kalkstensklipperne.' },
+  },
+  'Sapa': {
+    default: media('Rice terraces in Sa Pa 01.jpg','Risterrasser i Sapa','Sapa giver mest mening, hvis trekking og bjerglandskab er en reel del af rejsen.'),
+    sectionPool: [
+      media('Rice terraces in Sa Pa 01.jpg','Risterrasser i Sapa','Risterrasserne er det stærkeste argument for at bruge en hel dag til fods.'),
+      media('Fansipan Cable Car and Sa Pa.jpg','Fansipan og Sapa','Fansipan kan nås med kabelbane, men udsigten afhænger meget af skyer og vejr.'),
+      media('Cable car station going Fansipan.jpg','Kabelbanestation mod Fansipan','Højdeforskelle og bjergtransport er en praktisk del af opholdet i Sapa.'),
+    ],
+    video: { youtubeId:'T9JvU5FUJzU', title:'Sapa i 4K', caption:'Videoen giver et realistisk indtryk af bjergene, risterrasserne og højdeforskellene omkring Sapa.' },
+  },
+  'Hue': {
+    default: media('Citadel of Hue.jpg','Det kejserlige citadel i Hue','Hue er først og fremmest en historisk destination, hvor Citadellet, gravene og maden fortjener tid.'),
+    food: media('Bun bo Hue.jpg','Bún bò Huế','Hue har en af Vietnams stærkeste regionale madidentiteter, og bún bò Huế er det oplagte sted at begynde.'),
+    sectionPool: [
+      media('Citadel of Hue.jpg','Citadellet i Hue','Citadellet er Hues vigtigste historiske stop og bør ikke presses ind mellem flere store seværdigheder.'),
+      media('The tomb of Emperor Khai Dinh (12060688173).jpg','Khai Dinh-kejsergraven','Khai Dinh er kompakt, detaljeret og let at kombinere med én anden grav.'),
+      media('Hue Vietnam Perfume-River-01.jpg','Perfume River i Hue','Perfume River binder Citadellet, pagoderne og den moderne by sammen.'),
+    ],
+    video: { youtubeId:'ZcBnZfWMa-I', title:'Hue fra luften i 4K', caption:'Videoen gør forholdet mellem Citadellet, floden og resten af byen lettere at forstå.' },
+  },
+  'Ha Long Bay': {
+    default: media('Halong Bay Cruise Boats 01.jpg','Cruisebåde i Ha Long Bay','Ha Long Bay handler mere om rute, tid på vandet og kahyt end om at vælge den flotteste båd i et katalog.'),
+    sectionPool: [
+      media('Halong Bay Cruise Boats 01.jpg','Cruisebåde i Ha Long Bay','Et én-nats cruise er for de fleste den bedste balance mellem oplevelse, pris og tidsforbrug.'),
+      media('Kayaking in Ha Long Bay.jpg','Kajak i Ha Long Bay','Kajak og mindre både giver en anden skala end udsigten fra et stort cruisedæk.'),
+      media('Sung Sot cave Ha Long Bay.jpg','Sung Sot Cave i Ha Long Bay','Grotter er et typisk stop, men hele sejlruten betyder mere end antallet af seværdigheder.'),
+    ],
+    video: { youtubeId:'a-mq7CkKww8', title:'Ha Long Bay i 4K', caption:'Videoen viser bugtens skala og hvorfor dagstur og overnatningscruise føles meget forskellige.' },
+  },
+  'Da Lat': {
+    default: media('Xuan Huong Lake in Da Lat (28219543381).jpg','Xuan Huong Lake i Da Lat','Da Lat er et højlandsstop med køligere klima, kaffe og natur frem for endnu en tropisk kystby.'),
+    food: media('Dalat market, Vietnam.jpg','Marked i Da Lat','Markedet viser Da Lats grøntsager, frugt, blomster og hverdagsmad bedre end en generisk restaurantliste.'),
+    sectionPool: [
+      media('Xuan Huong Lake in Da Lat (28219543381).jpg','Xuan Huong Lake','Søen er det letteste pejlemærke til at forstå Da Lat centrum.'),
+      media('Dalat market, Vietnam.jpg','Da Lat Market','Markedet er et godt stop til både mad, lokal stemning og aftentur.'),
+      media('Da Lat Railway Station-1.JPG','Da Lat Railway Station','Den gamle station er et af de tydeligste spor af byens historiske højlandsarkitektur.'),
+    ],
+    video: { youtubeId:'J4NmD2ae9dw', title:'Walking tour i Da Lat i 4K', caption:'Walking-videoen giver et bedre indtryk af centrum, søen og byens køligere tempo end et enkelt foto.' },
+  },
   'Hoi An': {
     default: media('An Bang Beach (46353448872).jpg','An Bang Beach ved Hoi An','Hoi An handler ikke kun om Old Town. Strand, rismarker og korte afstande er en stor del af, hvordan området fungerer i praksis.'),
     food: media('Cao lầu Hội An.jpg','Cao lau i Hoi An','Cao lầu er en af de retter, der gør Hoi An til mere end bare en fotogen gammel by.'),
