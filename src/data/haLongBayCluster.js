@@ -17,32 +17,6 @@ const relatedBase = [
 ];
 
 export const haLongBayPages = {
-  'dagstur-eller-overnatning': {
-    destinationName:'Ha Long Bay',
-    title:'Ha Long Bay: dagstur eller cruise med overnatning?',
-    description:'Sammenlign dagstur og cruise med 1-2 nætter i Ha Long Bay. Se hvem de forskellige muligheder passer bedst til.',
-    eyebrow:'Ha Long Bay · Cruise',
-    heading:'Dagstur eller overnatning i Ha Long Bay? Én nat er bedst for de fleste',
-    intro:'En dagstur er effektiv, men meget af dagen går til transport. Hvis bugten er en af rejsens vigtigste oplevelser, ville vi normalt vælge én nat på vandet.',
-    hero, sources,
-    quickFacts:[
-      {label:'Kort rute',value:'Dagstur'},
-      {label:'Bedste balance',value:'1 nat'},
-      {label:'Mere ro',value:'2 nætter'}
-    ],
-    sections:[
-      {id:'daytrip',heading:'Dagstur fra Hanoi',paragraphs:['Dagstur fungerer, hvis du kun har 7-10 dage i Vietnam og ikke vil skifte hotel.','Ulempen er en lang dag med transport, check-in og flere gruppebevægelser.']},
-      {id:'one-night',heading:'Cruise med én overnatning',paragraphs:['Det er vores standardvalg, fordi du får både eftermiddag, aften og morgen på vandet.','Du oplever bugten i forskellige lys uden at betale for endnu en hel nat.']},
-      {id:'two-night',heading:'To nætter',paragraphs:['To nætter kan være godt, hvis ruten faktisk går længere væk og tilbyder mere tid til kajak eller mindre besøgte områder.','Hvis programmet blot gentager samme hovedrute langsommere, er merprisen mindre interessant.']},
-      {id:'choice',heading:'Sådan ville vi vælge',paragraphs:['På en 10-dages tur: dagstur. På to uger: én nat. På tre uger og med bugten som hovedmål: overvej to nætter.','Læs den konkrete sejlrute før booking. Bådens billeder er mindre vigtige end programmet.']},
-    ],
-    related:[
-      {href:'/ture/halong-bay-cruise/',title:'Sådan vælger du cruise',text:'Se vores mere detaljerede cruise-guide.'},
-      {href:'/destinationer/ha-long-bay/transport-fra-hanoi/',title:'Transport fra Hanoi',text:'Sammenlign transfermuligheder.'},
-      ...relatedBase,
-    ],
-  },
-
   'hvor-skal-man-bo': {
     destinationName:'Ha Long Bay',
     title:'Hvor skal man bo ved Ha Long Bay? Cruise, by eller Cat Ba',
@@ -100,7 +74,7 @@ export const haLongBayPages = {
     ],
     related:[
       {href:'/destinationer/ha-long-bay/hvor-skal-man-bo/',title:'Hvor skal man bo?',text:'Se om du overhovedet har brug for et landhotel.'},
-      {href:'/destinationer/ha-long-bay/dagstur-eller-overnatning/',title:'Dagstur eller overnatning?',text:'Vælg cruiseformat først.'},
+      {href:'/destinationer/hanoi/ha-long-bay-fra-hanoi/',title:'Dagstur eller overnatning?',text:'Vælg cruiseformat først.'},
       ...relatedBase,
     ],
   },
@@ -151,7 +125,7 @@ export const haLongBayPages = {
       {id:'winter',heading:'Vinter',paragraphs:['Det kan være køligt og gråt på dækket, især morgen og aften.','Tag et ekstra lag med selv om resten af Vietnam-rejsen er varm.']},
     ],
     related:[
-      {href:'/destinationer/ha-long-bay/dagstur-eller-overnatning/',title:'Dagstur eller overnatning?',text:'Vælg format efter tid og vejrbuffer.'},
+      {href:'/destinationer/hanoi/ha-long-bay-fra-hanoi/',title:'Dagstur eller overnatning?',text:'Vælg format efter tid og vejrbuffer.'},
       {href:'/rejseguide/bedste-rejsetid/',title:'Bedste rejsetid til Vietnam',text:'Sammenlign med resten af ruten.'},
       ...relatedBase,
     ],
@@ -177,7 +151,7 @@ export const haLongBayPages = {
       {id:'return',heading:'Retur til Hanoi eller videre',paragraphs:['Hvis du skal til Ninh Binh eller lufthavnen direkte bagefter, så undersøg transfer uden at gå via Hanoi centrum.','Det kan spare flere timer og et ekstra hotelskift.']},
     ],
     related:[
-      {href:'/destinationer/ha-long-bay/dagstur-eller-overnatning/',title:'Dagstur eller cruise',text:'Vælg format før transfer.'},
+      {href:'/destinationer/hanoi/ha-long-bay-fra-hanoi/',title:'Dagstur eller cruise',text:'Vælg format før transfer.'},
       {href:'/destinationer/ha-long-bay/2-dage-i-ha-long-bay/',title:'2 dage i Ha Long Bay',text:'Se hvornår transferen typisk ligger.'},
       ...relatedBase,
     ],

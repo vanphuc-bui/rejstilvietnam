@@ -55,7 +55,7 @@ export const daNangPages = {
       {id:'dag3',heading:'Dag 3: vælg én stor udflugt',paragraphs:['Vælg Ba Na Hills, hvis Golden Bridge, kabelbane og temapark er noget, du gerne vil opleve. Vælg Hoi An, hvis kulturarv, mad og gamle gader tiltaler dig mere.','Vi ville ikke forsøge at gøre begge dele ordentligt på samme dag.']},
       {id:'kortere',heading:'Hvis du kun har to dage',paragraphs:['Behold dag 1 og brug dag 2 på enten Marble Mountains + Hoi An eller Son Tra + mere strand.','Ba Na Hills tager en stor del af et kort ophold og bør kun prioriteres, hvis det er et hovedønske.']},
     ],
-    related:[{href:'/destinationer/da-nang/sevaerdigheder/',title:'Seværdigheder i Da Nang',text:'Vælg de stop, der passer til planen.'},{href:'/destinationer/da-nang/da-nang-til-hoi-an/',title:'Da Nang til Hoi An',text:'Transport og praktisk planlægning.'},...relatedBase],
+    related:[{href:'/destinationer/da-nang/sevaerdigheder/',title:'Seværdigheder i Da Nang',text:'Vælg de stop, der passer til planen.'},{href:'/destinationer/hoi-an/da-nang-til-hoi-an/',title:'Da Nang til Hoi An',text:'Transport og praktisk planlægning.'},...relatedBase],
   },
 
   'hvor-skal-man-bo': {
@@ -140,18 +140,4 @@ export const daNangPages = {
     related:[{href:'/destinationer/da-nang/sevaerdigheder/',title:'Seværdigheder i Da Nang',text:'Sammenlign Ba Na med andre oplevelser.'},{href:'/destinationer/da-nang/3-dage-i-da-nang/',title:'3 dage i Da Nang',text:'Se om en heldag passer i planen.'},...relatedBase],
   },
 
-  'da-nang-til-hoi-an': {
-    destinationName:'Da Nang', title:'Da Nang til Hoi An 2026 | Grab, taxi og transfer',
-    description:'Sådan kommer du fra Da Nang centrum eller lufthavn til Hoi An. Guide til Grab, taxi, privat transfer og Marble Mountains-stop.',
-    eyebrow:'Da Nang · Transport', heading:'Fra Da Nang til Hoi An: tæt nok til dagstur, langt nok til at hotelvalget stadig betyder noget',
-    intro:'Hoi An ligger under en times kørsel fra mange dele af Da Nang under normale forhold. Det gør byerne lette at kombinere uden nødvendigvis at skifte hotel.', hero, sources:[{label:'Vietnam Tourism - Da Nang',href:'https://vietnam.travel/node/1843'},{label:'Vietnam Tourism - Hoi An',href:'https://vietnam.travel/node/99'}],
-    quickFacts:[{label:'Nemmest',value:'Grab / taxi'},{label:'Med bagage',value:'Privat transfer'},{label:'Godt stop',value:'Marble Mountains'}],
-    sections:[
-      {id:'daytrip',heading:'Da Nang til Hoi An som dagstur',paragraphs:['Hvis du bor i Da Nang og kun vil opleve Old Town én dag, er bil frem og tilbage enkel. Tag af sted tidligt eller senere på dagen afhængigt af om du vil have dagslys eller lanterner.','Aftal returtransport eller vær sikker på, at app-biler er tilgængelige, når du vil hjem.']},
-      {id:'airport',heading:'Fra Da Nang lufthavn direkte til Hoi An',paragraphs:['Med kufferter er taxi, Grab eller hoteltransfer det naturlige valg. På en første rejse ville vi ikke komplicere det med flere transportskift for at spare et mindre beløb.','Ved sen ankomst giver hoteltransfer ekstra tryghed.']},
-      {id:'marble',heading:'Stop ved Marble Mountains',paragraphs:['Bjerget ligger på ruten mellem byerne. Det kan være et smart stop på en hotel-skiftedag, hvis chaufføren kan opbevare bagage sikkert.','Efter en lang flyrejse ville vi springe stoppet over og komme direkte til hotellet.']},
-      {id:'stay',heading:'Skal du bo i begge byer?',paragraphs:['På et 2-3 ugers ophold kan to baser give mening, hvis du ønsker både rigtig strandby og flere rolige aftener i Hoi An.','På en 10-14 dages rundrejse ville vi oftere vælge én base og besøge den anden.']},
-    ],
-    related:[{href:'/destinationer/hoi-an/da-nang-til-hoi-an/',title:'Hoi An-versionen af transferguiden',text:'Samme rute set fra ankomsten til Hoi An.'},{href:'/destinationer/da-nang/hvor-skal-man-bo/',title:'Hvor skal man bo i Da Nang?',text:'Vælg base før du planlægger dagsture.'},...relatedBase],
-  },
 };
