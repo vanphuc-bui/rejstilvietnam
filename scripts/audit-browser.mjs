@@ -71,8 +71,12 @@ for (const viewport of viewports) {
 
       const result = { route, viewport: viewport.name, errors: [], warnings: [] };
       try {
-        const response = await page.goto(new URL(route, baseUrl).toString(), { waitUntil: 'networkidle', timeout: 30_000 });
+        const response = await page.goto(new URL(route, baseUrl).toString(), { waitUntil: 'domcontentloaded', timeout: 30_000 });
         if (!response || response.status() >= 400) result.errors.push(`HTTP ${response?.status() ?? 'no response'}`);
+        // Do not gate page readiness on third-party image hosts. Production rewrites
+        // those images through the Cloudflare same-origin proxy; local Astro preview
+        // intentionally has no Worker route.
+        await page.waitForTimeout(800);
 
         const metrics = await page.evaluate(() => {
           const visible = (element) => {
