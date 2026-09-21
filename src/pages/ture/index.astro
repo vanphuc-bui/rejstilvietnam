@@ -29,105 +29,147 @@ const featuredGuides = [
 
 const experiences = [
   {
-    category:'dagstur',
+    categories:['natur','familie'],
+    icon:'🚢',
+    destination:'Ha Long Bay',
+    destinationSlug:'ha-long-bay',
+    title:'Ha Long Bay cruise',
+    text:'Sammenlign dagstur, 1 nat og 2 nætter ud fra rute, kahyt, transfer og tempo.',
+    href:'/ture/halong-bay-cruise/',
+  },
+  {
+    categories:['natur','dagstur','aktiv','familie'],
+    icon:'🛶',
+    destination:'Ninh Binh',
+    destinationSlug:'ninh-binh',
+    title:'Ninh Binh fra Hanoi',
+    text:'Trang An, Tam Coc og Hang Mua med fokus på en realistisk dag frem for flest mulige stop.',
+    href:'/ture/ninh-binh-fra-hanoi/',
+  },
+  {
+    categories:['dagstur','familie'],
     icon:'🏔️',
     destination:'Da Nang',
+    destinationSlug:'da-nang',
     title:'Ba Na Hills',
     text:'Vurdér transport, tidspunkt og om en organiseret tur faktisk gør dagen lettere.',
     href:'/destinationer/da-nang/ba-na-hills/',
   },
   {
-    category:'kultur',
+    categories:['dagstur'],
     icon:'🕳️',
     destination:'Ho Chi Minh City',
+    destinationSlug:'ho-chi-minh-city',
     title:'Cu Chi-tunnelerne',
     text:'Sammenlign halvdag og heldag, transporttid og hvad der er inkluderet.',
     href:'/destinationer/ho-chi-minh-city/cu-chi-tunneler-fra-ho-chi-minh-city/',
   },
   {
-    category:'dagstur',
-    icon:'🛶',
+    categories:['natur','dagstur','familie'],
+    icon:'🌴',
     destination:'Ho Chi Minh City',
+    destinationSlug:'ho-chi-minh-city',
     title:'Mekong-deltaet',
     text:'Se hvornår en dagstur giver mening, og hvornår en længere rute er bedre.',
     href:'/destinationer/ho-chi-minh-city/mekong-delta-fra-ho-chi-minh-city/',
   },
   {
-    category:'vand',
+    categories:['vand','natur','familie'],
     icon:'🤿',
     destination:'Phu Quoc',
+    destinationSlug:'phu-quoc',
     title:'Øhop og snorkling',
     text:'Vælg efter bådtype, gruppestørrelse, havforhold og reel tid i vandet.',
     href:'/destinationer/phu-quoc/o-hop-og-snorkling/',
   },
   {
-    category:'vand',
+    categories:['vand','aktiv','familie'],
     icon:'🏄',
     destination:'Phu Quoc',
+    destinationSlug:'phu-quoc',
     title:'Vandsport og aktiviteter',
     text:'Jetski, parasailing, speedboat og Hon Thom samlet i én praktisk guide.',
     href:'/destinationer/phu-quoc/vandsport-og-aktiviteter/',
   },
   {
-    category:'vand',
+    categories:['vand','natur','familie'],
     icon:'🐠',
     destination:'Nha Trang',
+    destinationSlug:'nha-trang',
     title:'Øture og snorkling',
     text:'Sammenlign speedboat, turbåd, Hon Mun og hvor meget tid du faktisk får i vandet.',
     href:'/destinationer/nha-trang/o-ture-og-snorkling/',
   },
   {
-    category:'vand',
+    categories:['vand','aktiv'],
     icon:'🤿',
     destination:'Nha Trang',
+    destinationSlug:'nha-trang',
     title:'Vandsport og dykning',
     text:'Scuba, snorkling, jetski og parasailing med fokus på niveau, udstyr og sikkerhed.',
     href:'/destinationer/nha-trang/vandsport-og-dykning/',
   },
   {
-    category:'aktiv',
+    categories:['natur','aktiv'],
     icon:'🥾',
     destination:'Sapa',
+    destinationSlug:'sapa',
     title:'Trekking i Sapa',
     text:'Vælg rute efter sæson, terræn og hvor meget af dagen du vil bruge til fods.',
     href:'/destinationer/sapa/trekking-i-sapa/',
   },
   {
-    category:'mad',
+    categories:['mad','familie'],
     icon:'🍜',
     destination:'Hoi An',
+    destinationSlug:'hoi-an',
     title:'Mad i Hoi An',
     text:'Brug madguiden som udgangspunkt for marked, lokale retter og en mere smagsdrevet dag.',
     href:'/destinationer/hoi-an/mad-i-hoi-an/',
   },
   {
-    category:'mad',
+    categories:['mad'],
     icon:'☕',
     destination:'Da Lat',
+    destinationSlug:'da-lat',
     title:'Mad og kaffe',
     text:'Højlandskaffe, marked og lokale produkter som en oplevelse frem for kun et måltid.',
     href:'/destinationer/da-lat/mad-og-kaffe/',
+  },
+  {
+    categories:['mad','familie'],
+    icon:'🍲',
+    destination:'Hue',
+    destinationSlug:'hue',
+    title:'Mad i Hue',
+    text:'Kejserbyens køkken giver en tydelig kontrast til resten af Centralvietnam.',
+    href:'/destinationer/hue/mad-i-hue/',
   },
 ];
 
 const filters = [
   ['all','Alle'],
-  ['dagstur','Dagsture'],
-  ['vand','På vandet'],
-  ['aktiv','Aktiv ferie'],
-  ['kultur','Historie & kultur'],
-  ['mad','Mad & kaffe'],
+  ['natur','Natur'],
+  ['mad','Mad'],
+  ['vand','Vand'],
+  ['aktiv','Aktiv'],
+  ['dagstur','Dagstur'],
+  ['familie','Familie'],
 ];
+
+const destinations = [...new Map(
+  experiences.map((item) => [item.destinationSlug, item.destination])
+).entries()].sort((a,b) => a[1].localeCompare(b[1], 'da'));
 ---
 <BaseLayout
-  title="Oplevelser og ture i Vietnam | Dagsture, snorkling, trekking og cruise | RejsTilVietnam.dk"
-  description="Find oplevelser i Vietnam efter type og destination: Ha Long Bay cruise, Ninh Binh, Ba Na Hills, Cu Chi, Mekong, snorkling, dykning, trekking, mad og aktive ture."
+  title="Oplevelser og ture i Vietnam | Natur, mad, vand, aktiv ferie og dagsture | RejsTilVietnam.dk"
+  description="Find oplevelser i Vietnam efter destination og type: natur, mad, vand, aktiv ferie, dagsture og familieoplevelser fra Hanoi og Sapa til Phu Quoc og Nha Trang."
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Oplevelser</p>
-      <h1>Find oplevelsen efter det, du faktisk har lyst til at lave.</h1>
-      <p class="lead">Brug hubben til at gå direkte fra destination eller aktivitet til den relevante guide. Vi skelner mellem det, der er nemt at gøre selv, og det hvor transport, båd, udstyr eller lokal guide kan gøre en reel forskel.</p>
+      <h1>Find oplevelser i Vietnam.</h1>
+      <p class="lead">Vælg først destination eller aktivitetstype. Derefter går hvert kort direkte til den relevante guide, så vejen fra inspiration til sammenligning og booking bliver kortere.</p>
     </div>
   </section>
 
@@ -175,38 +217,63 @@ const filters = [
       <div class="market-head">
         <div>
           <p class="eyebrow">Find en oplevelse</p>
-          <h2>Filtrér efter aktivitet.</h2>
-          <p class="lead">Alle kort går direkte til en eksisterende guide, så du undgår et ekstra klik gennem en destination-hub.</p>
+          <h2>Destination + det du vil lave.</h2>
+          <p class="lead">Kombinér destination med Natur, Mad, Vand, Aktiv, Dagstur eller Familie. Det gør hubben nyttig både før og efter ruten er fastlagt.</p>
         </div>
-        <div class="filter-bar" role="group" aria-label="Filtrér oplevelser">
-          {filters.map(([value,label], index) => (
-            <button
-              class:list={{ 'filter-chip':true, 'is-active':index === 0 }}
-              type="button"
-              data-filter={value}
-              aria-pressed={index === 0 ? 'true' : 'false'}
-            >
-              {label}
-            </button>
-          ))}
+
+        <div class="destination-filter">
+          <label for="experience-destination">Destination</label>
+          <select id="experience-destination">
+            <option value="all">Alle destinationer</option>
+            {destinations.map(([slug,name]) => <option value={slug}>{name}</option>)}
+          </select>
         </div>
+      </div>
+
+      <div class="filter-bar" role="group" aria-label="Filtrér oplevelser efter type">
+        {filters.map(([value,label], index) => (
+          <button
+            class:list={{ 'filter-chip':true, 'is-active':index === 0 }}
+            type="button"
+            data-filter={value}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      <div class="market-meta" aria-live="polite">
+        <span id="experience-count">{experiences.length} oplevelser</span>
+        <button id="experience-reset" type="button" hidden>Nulstil</button>
       </div>
 
       <div class="experience-grid" id="experience-grid">
         {experiences.map((item) => (
-          <a class="card experience-card" href={item.href} data-category={item.category}>
+          <a
+            class="card experience-card"
+            href={item.href}
+            data-categories={item.categories.join(' ')}
+            data-destination={item.destinationSlug}
+          >
             <div class="experience-top">
               <span class="experience-icon" aria-hidden="true">{item.icon}</span>
               <span class="destination-label">{item.destination}</span>
             </div>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+            <div class="experience-tags" aria-label="Kategorier">
+              {item.categories.slice(0,3).map((category) => <span>{filters.find(([value]) => value === category)?.[1] ?? category}</span>)}
+            </div>
             <b>Se oplevelsen →</b>
           </a>
         ))}
       </div>
 
-      <p class="empty-state" id="experience-empty" hidden>Der er ingen oplevelser i denne kategori endnu.</p>
+      <div class="empty-state" id="experience-empty" hidden>
+        <strong>Ingen oplevelser matcher kombinationen endnu.</strong>
+        <p>Vælg en anden destination eller kategori.</p>
+      </div>
     </div>
   </section>
 
@@ -214,8 +281,8 @@ const filters = [
     <div class="container destination-shell">
       <div>
         <p class="eyebrow">Vælg efter sted</p>
-        <h2>Ved du allerede, hvor du skal hen?</h2>
-        <p class="lead">Gå til destinationens samlede guide for hoteller, områder, seværdigheder og flere lokale aktiviteter.</p>
+        <h2>Vil du se hele destinationen?</h2>
+        <p class="lead">Gå videre til destinationens hub for hoteller, områder, seværdigheder, mad og flere lokale aktiviteter.</p>
       </div>
       <div class="destination-links">
         <a href="/destinationer/hanoi/">Hanoi</a>
@@ -252,26 +319,56 @@ const filters = [
   <script is:inline>
     (() => {
       const buttons = [...document.querySelectorAll('[data-filter]')];
-      const cards = [...document.querySelectorAll('#experience-grid [data-category]')];
+      const cards = [...document.querySelectorAll('#experience-grid [data-categories]')];
+      const destination = document.getElementById('experience-destination');
+      const count = document.getElementById('experience-count');
+      const reset = document.getElementById('experience-reset');
       const empty = document.getElementById('experience-empty');
-      if (!buttons.length || !cards.length) return;
+      if (!buttons.length || !cards.length || !destination) return;
 
-      const apply = (filter) => {
+      let activeCategory = 'all';
+
+      const apply = () => {
+        const destinationValue = destination.value || 'all';
         let visible = 0;
+
         cards.forEach((card) => {
-          const show = filter === 'all' || card.dataset.category === filter;
+          const categories = (card.dataset.categories || '').split(/\s+/).filter(Boolean);
+          const matchesCategory = activeCategory === 'all' || categories.includes(activeCategory);
+          const matchesDestination = destinationValue === 'all' || card.dataset.destination === destinationValue;
+          const show = matchesCategory && matchesDestination;
           card.hidden = !show;
           if (show) visible += 1;
         });
+
+        if (count) count.textContent = `${visible} ${visible === 1 ? 'oplevelse' : 'oplevelser'}`;
+        if (empty) empty.hidden = visible !== 0;
+        if (reset) reset.hidden = activeCategory === 'all' && destinationValue === 'all';
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          activeCategory = button.dataset.filter || 'all';
+          buttons.forEach((item) => {
+            const active = item === button;
+            item.classList.toggle('is-active', active);
+            item.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          apply();
+        });
+      });
+
+      destination.addEventListener('change', apply);
+      reset?.addEventListener('click', () => {
+        activeCategory = 'all';
+        destination.value = 'all';
         buttons.forEach((button) => {
-          const active = button.dataset.filter === filter;
+          const active = button.dataset.filter === 'all';
           button.classList.toggle('is-active', active);
           button.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
-        if (empty) empty.hidden = visible !== 0;
-      };
-
-      buttons.forEach((button) => button.addEventListener('click', () => apply(button.dataset.filter || 'all')));
+        apply();
+      });
     })();
   </script>
 </BaseLayout>
@@ -292,14 +389,19 @@ const filters = [
 .tour-guide b{display:inline-block;margin-top:20px;color:var(--green-700)}
 
 .experience-market{background:#f5efe2}
-.market-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.8fr);gap:42px;align-items:end;margin-bottom:30px}
+.market-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.48fr);gap:42px;align-items:end}
 .market-head h2{max-width:720px}
 .market-head .lead{margin-top:14px}
-.filter-bar{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:9px}
+.destination-filter{display:grid;gap:8px}
+.destination-filter label{color:var(--green-950);font-size:.78rem;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
+.destination-filter select{min-height:50px;padding:0 42px 0 15px;border:1px solid var(--border);border-radius:15px;background:#fffdf8;color:var(--green-950);font:inherit;font-weight:750}
+.filter-bar{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
 .filter-chip{min-height:42px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.72);color:var(--green-950);font-size:.86rem;font-weight:800;cursor:pointer}
 .filter-chip:hover,.filter-chip.is-active{background:var(--green-950);color:white;border-color:var(--green-950)}
+.market-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:14px 0 20px;color:var(--muted);font-size:.84rem}
+#experience-reset{border:0;background:transparent;color:var(--green-700);font-weight:850;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .experience-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.experience-card{padding:24px;display:flex;flex-direction:column;min-height:270px;transition:transform .2s ease,border-color .2s ease}
+.experience-card{padding:24px;display:flex;flex-direction:column;min-height:290px;transition:transform .2s ease,border-color .2s ease}
 .experience-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.28)}
 .experience-card[hidden]{display:none}
 .experience-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
@@ -307,8 +409,12 @@ const filters = [
 .destination-label{color:var(--green-700);font-size:.74rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;text-align:right}
 .experience-card h3{font-size:1.48rem}
 .experience-card p{margin-top:10px;color:var(--muted)}
+.experience-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.experience-tags span{padding:5px 8px;border-radius:999px;background:#f4eee2;color:#59645e;font-size:.68rem;font-weight:800}
 .experience-card b{display:inline-block;margin-top:auto;padding-top:22px;color:var(--green-700)}
-.empty-state{padding:24px;border-radius:18px;background:white;color:var(--muted);text-align:center}
+.empty-state{padding:28px;border:1px dashed rgba(12,47,37,.22);border-radius:18px;background:white;text-align:center}
+.empty-state strong{color:var(--green-950)}
+.empty-state p{margin-top:4px;color:var(--muted)}
 
 .destination-jump{background:var(--green-950);color:white}
 .destination-shell{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:center}
@@ -321,7 +427,6 @@ const filters = [
 
 @media(max-width:900px){
   .market-head,.destination-shell{grid-template-columns:1fr}
-  .filter-bar{justify-content:flex-start}
   .experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:640px){
@@ -331,5 +436,6 @@ const filters = [
   .filter-chip{min-height:40px;padding:0 12px;font-size:.8rem}
   .experience-card{min-height:0}
   .destination-shell{gap:28px}
+  .destination-filter select{width:100%}
 }
 </style>
