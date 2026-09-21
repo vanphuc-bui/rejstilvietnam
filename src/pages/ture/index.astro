@@ -3,66 +3,333 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionMedia from '../../components/SectionMedia.astro';
 import { hubVisuals } from '../../data/hubVisuals.js';
 
-const guides = [
-  { kicker:'Aktiv ferie', title:'Løb, cykling og vandring', text:'Konkrete forslag med distance, tidsforbrug, sværhedsgrad, bedste tidspunkt og kort til startområdet.', href:'/aktiv-ferie-i-vietnam/', image:hubVisuals.tours.streetFood },
-  { kicker:'Cruise', title:'Ha Long Bay', text:'Dagstur eller 1 nat? Se hvad vi ville tjekke i rute, kahyt, transfer og nyere anmeldelser.', href:'/ture/halong-bay-cruise/', image:hubVisuals.tours.halong },
-  { kicker:'Fra Hanoi', title:'Ninh Binh', text:'Dagstur eller overnatning? Se hvilke stop der er værd at prioritere, og hvad du roligt kan springe over.', href:'/ture/ninh-binh-fra-hanoi/', image:hubVisuals.tours.ninhBinh },
+const featuredGuides = [
+  {
+    kicker:'Aktiv ferie',
+    title:'Løb, cykling og vandring',
+    text:'Konkrete forslag med distance, tidsforbrug, sværhedsgrad, bedste tidspunkt og kort til startområdet.',
+    href:'/aktiv-ferie-i-vietnam/',
+    image:hubVisuals.tours.streetFood,
+  },
+  {
+    kicker:'Cruise',
+    title:'Ha Long Bay',
+    text:'Dagstur eller 1 nat? Se hvad vi ville tjekke i rute, kahyt, transfer og nyere anmeldelser.',
+    href:'/ture/halong-bay-cruise/',
+    image:hubVisuals.tours.halong,
+  },
+  {
+    kicker:'Fra Hanoi',
+    title:'Ninh Binh',
+    text:'Dagstur eller overnatning? Se hvilke stop der er værd at prioritere, og hvad du roligt kan springe over.',
+    href:'/ture/ninh-binh-fra-hanoi/',
+    image:hubVisuals.tours.ninhBinh,
+  },
+];
+
+const experiences = [
+  {
+    category:'dagstur',
+    icon:'🏔️',
+    destination:'Da Nang',
+    title:'Ba Na Hills',
+    text:'Vurdér transport, tidspunkt og om en organiseret tur faktisk gør dagen lettere.',
+    href:'/destinationer/da-nang/ba-na-hills/',
+  },
+  {
+    category:'kultur',
+    icon:'🕳️',
+    destination:'Ho Chi Minh City',
+    title:'Cu Chi-tunnelerne',
+    text:'Sammenlign halvdag og heldag, transporttid og hvad der er inkluderet.',
+    href:'/destinationer/ho-chi-minh-city/cu-chi-tunneler-fra-ho-chi-minh-city/',
+  },
+  {
+    category:'dagstur',
+    icon:'🛶',
+    destination:'Ho Chi Minh City',
+    title:'Mekong-deltaet',
+    text:'Se hvornår en dagstur giver mening, og hvornår en længere rute er bedre.',
+    href:'/destinationer/ho-chi-minh-city/mekong-delta-fra-ho-chi-minh-city/',
+  },
+  {
+    category:'vand',
+    icon:'🤿',
+    destination:'Phu Quoc',
+    title:'Øhop og snorkling',
+    text:'Vælg efter bådtype, gruppestørrelse, havforhold og reel tid i vandet.',
+    href:'/destinationer/phu-quoc/o-hop-og-snorkling/',
+  },
+  {
+    category:'vand',
+    icon:'🏄',
+    destination:'Phu Quoc',
+    title:'Vandsport og aktiviteter',
+    text:'Jetski, parasailing, speedboat og Hon Thom samlet i én praktisk guide.',
+    href:'/destinationer/phu-quoc/vandsport-og-aktiviteter/',
+  },
+  {
+    category:'vand',
+    icon:'🐠',
+    destination:'Nha Trang',
+    title:'Øture og snorkling',
+    text:'Sammenlign speedboat, turbåd, Hon Mun og hvor meget tid du faktisk får i vandet.',
+    href:'/destinationer/nha-trang/o-ture-og-snorkling/',
+  },
+  {
+    category:'vand',
+    icon:'🤿',
+    destination:'Nha Trang',
+    title:'Vandsport og dykning',
+    text:'Scuba, snorkling, jetski og parasailing med fokus på niveau, udstyr og sikkerhed.',
+    href:'/destinationer/nha-trang/vandsport-og-dykning/',
+  },
+  {
+    category:'aktiv',
+    icon:'🥾',
+    destination:'Sapa',
+    title:'Trekking i Sapa',
+    text:'Vælg rute efter sæson, terræn og hvor meget af dagen du vil bruge til fods.',
+    href:'/destinationer/sapa/trekking-i-sapa/',
+  },
+  {
+    category:'mad',
+    icon:'🍜',
+    destination:'Hoi An',
+    title:'Mad i Hoi An',
+    text:'Brug madguiden som udgangspunkt for marked, lokale retter og en mere smagsdrevet dag.',
+    href:'/destinationer/hoi-an/mad-i-hoi-an/',
+  },
+  {
+    category:'mad',
+    icon:'☕',
+    destination:'Da Lat',
+    title:'Mad og kaffe',
+    text:'Højlandskaffe, marked og lokale produkter som en oplevelse frem for kun et måltid.',
+    href:'/destinationer/da-lat/mad-og-kaffe/',
+  },
+];
+
+const filters = [
+  ['all','Alle'],
+  ['dagstur','Dagsture'],
+  ['vand','På vandet'],
+  ['aktiv','Aktiv ferie'],
+  ['kultur','Historie & kultur'],
+  ['mad','Mad & kaffe'],
 ];
 ---
-<BaseLayout title="Oplevelser og ture i Vietnam | RejsTilVietnam.dk" description="Danske guides til oplevelser i Vietnam: Ha Long Bay cruise, Ninh Binh fra Hanoi, street food og andre ture, hvor det kan betale sig at sammenligne før booking.">
+<BaseLayout
+  title="Oplevelser og ture i Vietnam | Dagsture, snorkling, trekking og cruise | RejsTilVietnam.dk"
+  description="Find oplevelser i Vietnam efter type og destination: Ha Long Bay cruise, Ninh Binh, Ba Na Hills, Cu Chi, Mekong, snorkling, dykning, trekking, mad og aktive ture."
+>
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Oplevelser</p>
-      <h1>Hvad er værd at booke på forhånd?</h1>
-      <p class="lead">Nogle oplevelser kan du nemt planlægge selv. Andre bliver bedre med transport, udstyr eller en lokal guide. Her kan du vælge mellem aktive dage, natur og ture, der er værd at sammenligne først.</p>
+      <h1>Find oplevelsen efter det, du faktisk har lyst til at lave.</h1>
+      <p class="lead">Brug hubben til at gå direkte fra destination eller aktivitet til den relevante guide. Vi skelner mellem det, der er nemt at gøre selv, og det hvor transport, båd, udstyr eller lokal guide kan gøre en reel forskel.</p>
     </div>
   </section>
-  <div class="container hub-hero-media"><SectionMedia {...hubVisuals.toursHero} loading="eager" fetchpriority="high" /></div>
+
+  <div class="container hub-hero-media">
+    <SectionMedia {...hubVisuals.toursHero} loading="eager" fetchpriority="high" />
+  </div>
+
+  <section class="section section--tight featured-section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Godt sted at starte</p>
+          <h2>Tre oplevelser mange bygger rejsen omkring.</h2>
+        </div>
+        <p>De er populære af en grund, men den rigtige version afhænger af tempo, transport og hvor meget du vil have organiseret på forhånd.</p>
+      </div>
+
+      <div class="grid grid--3">
+        {featuredGuides.map((guide) => (
+          <a class="card tour-guide" href={guide.href}>
+            <div class="tour-image">
+              <img
+                src={guide.image.src}
+                alt={guide.image.alt}
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer"
+                onerror="window.__rtvImageFallback?.(this)"
+              />
+            </div>
+            <div class="tour-copy">
+              <span>{guide.kicker}</span>
+              <h3>{guide.title}</h3>
+              <p>{guide.text}</p>
+              <b>Læs guiden →</b>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section experience-market" id="find-oplevelse">
+    <div class="container">
+      <div class="market-head">
+        <div>
+          <p class="eyebrow">Find en oplevelse</p>
+          <h2>Filtrér efter aktivitet.</h2>
+          <p class="lead">Alle kort går direkte til en eksisterende guide, så du undgår et ekstra klik gennem en destination-hub.</p>
+        </div>
+        <div class="filter-bar" role="group" aria-label="Filtrér oplevelser">
+          {filters.map(([value,label], index) => (
+            <button
+              class:list={{ 'filter-chip':true, 'is-active':index === 0 }}
+              type="button"
+              data-filter={value}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div class="experience-grid" id="experience-grid">
+        {experiences.map((item) => (
+          <a class="card experience-card" href={item.href} data-category={item.category}>
+            <div class="experience-top">
+              <span class="experience-icon" aria-hidden="true">{item.icon}</span>
+              <span class="destination-label">{item.destination}</span>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <b>Se oplevelsen →</b>
+          </a>
+        ))}
+      </div>
+
+      <p class="empty-state" id="experience-empty" hidden>Der er ingen oplevelser i denne kategori endnu.</p>
+    </div>
+  </section>
+
+  <section class="section destination-jump">
+    <div class="container destination-shell">
+      <div>
+        <p class="eyebrow">Vælg efter sted</p>
+        <h2>Ved du allerede, hvor du skal hen?</h2>
+        <p class="lead">Gå til destinationens samlede guide for hoteller, områder, seværdigheder og flere lokale aktiviteter.</p>
+      </div>
+      <div class="destination-links">
+        <a href="/destinationer/hanoi/">Hanoi</a>
+        <a href="/destinationer/ha-long-bay/">Ha Long Bay</a>
+        <a href="/destinationer/sapa/">Sapa</a>
+        <a href="/destinationer/ninh-binh/">Ninh Binh</a>
+        <a href="/destinationer/hue/">Hue</a>
+        <a href="/destinationer/hoi-an/">Hoi An</a>
+        <a href="/destinationer/da-nang/">Da Nang</a>
+        <a href="/destinationer/da-lat/">Da Lat</a>
+        <a href="/destinationer/nha-trang/">Nha Trang</a>
+        <a href="/destinationer/ho-chi-minh-city/">Ho Chi Minh City</a>
+        <a href="/destinationer/phu-quoc/">Phu Quoc</a>
+      </div>
+    </div>
+  </section>
 
   <section class="section section--tight">
-    <div class="container grid grid--3">
-      {guides.map((guide) => (
-        <a class="card tour-guide" href={guide.href}>
-          <div class="tour-image"><img src={guide.image.src} alt={guide.image.alt} loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="window.__rtvImageFallback?.(this)" /></div>
-          <div class="tour-copy">
-            <span>{guide.kicker}</span>
-            <h3>{guide.title}</h3>
-            <p>{guide.text}</p>
-            <b>Læs guiden →</b>
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <section class="section">
     <div class="container article-shell">
       <article class="prose">
         <p class="eyebrow">Sådan vælger vi</p>
-        <h2>Vi ville ikke booke en tur bare fordi den er populær.</h2>
-        <p>En organiseret tur giver især mening, når den løser noget praktisk: transport mellem flere stop, båd, adgang eller en lokal guide, som faktisk gør oplevelsen bedre.</p>
-        <p>Til gengæld behøver du ikke en tur til alt. I Hanoi, Hoi An og Ho Chi Minh City kan meget opleves på egen hånd med gang, taxi eller Grab.</p>
-        <div class="notice"><strong>Affiliate:</strong> Når kommercielle links bliver aktive, markeres de tydeligt som <strong>Annoncelink</strong>. Booking og betaling foregår hos den eksterne platform.</div>
+        <h2>En tur skal løse et praktisk problem eller give noget, du ikke let kan gøre selv.</h2>
+        <p>En organiseret tur giver især mening, når den samler transport mellem flere stop, båd, udstyr, adgang eller en lokal guide, som faktisk forbedrer oplevelsen.</p>
+        <p>Til gengæld behøver du ikke booke en tur til alt. I Hanoi, Hoi An og Ho Chi Minh City kan meget opleves på egen hånd med gang, taxi eller Grab.</p>
+        <div class="notice"><strong>Affiliate:</strong> Kommercielle links markeres tydeligt som <strong>Annoncelink</strong>. Booking og betaling foregår hos den eksterne platform, og vores guide skal stadig fortælle det, hvis en aktivitet er lettere at arrangere selv.</div>
       </article>
       <aside class="card sidebar">
         <h3>Det ser vi på</h3>
-        <p style="margin-top:12px;color:var(--muted)">Nyere anmeldelser, gruppestørrelse, transport, konkret rute, hvad der er inkluderet og afbestillingsvilkår.</p>
+        <p style="margin-top:12px;color:var(--muted)">Nyere anmeldelser, gruppestørrelse, transport, konkret rute, hvad der er inkluderet, sikkerhed og afbestillingsvilkår.</p>
       </aside>
     </div>
   </section>
+
+  <script is:inline>
+    (() => {
+      const buttons = [...document.querySelectorAll('[data-filter]')];
+      const cards = [...document.querySelectorAll('#experience-grid [data-category]')];
+      const empty = document.getElementById('experience-empty');
+      if (!buttons.length || !cards.length) return;
+
+      const apply = (filter) => {
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = filter === 'all' || card.dataset.category === filter;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+        buttons.forEach((button) => {
+          const active = button.dataset.filter === filter;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        if (empty) empty.hidden = visible !== 0;
+      };
+
+      buttons.forEach((button) => button.addEventListener('click', () => apply(button.dataset.filter || 'all')));
+    })();
+  </script>
 </BaseLayout>
 
 <style>
-.tour-guide { overflow:hidden; transition: transform .2s ease, border-color .2s ease; }
-.tour-guide:hover { transform: translateY(-3px); border-color: rgba(28,106,77,.25); }
-.tour-image { aspect-ratio: 16 / 10; overflow:hidden; background:#e9eee9; }
+.hub-hero-media{margin-top:8px}
+.hub-hero-media :global(.section-media){margin-top:0}
+.featured-section{background:rgba(255,255,255,.28)}
+.tour-guide{overflow:hidden;transition:transform .2s ease,border-color .2s ease}
+.tour-guide:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)}
+.tour-image{aspect-ratio:16/10;overflow:hidden;background:#e9eee9}
 .tour-image img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
 .tour-guide:hover .tour-image img{transform:scale(1.025)}
-.tour-copy { padding:24px; }
-.tour-copy > span { color: var(--coral); font-size: .75rem; font-weight: 850; text-transform: uppercase; letter-spacing: .1em; }
-.tour-guide h3 { margin-top: 8px; font-size: 1.7rem; }
-.tour-guide p { margin-top: 10px; color: var(--muted); }
-.tour-guide b { display:inline-block; margin-top:20px; color:var(--green-700); }
-</style>
+.tour-copy{padding:24px}
+.tour-copy>span{color:var(--coral);font-size:.75rem;font-weight:850;text-transform:uppercase;letter-spacing:.1em}
+.tour-guide h3{margin-top:8px;font-size:1.7rem}
+.tour-guide p{margin-top:10px;color:var(--muted)}
+.tour-guide b{display:inline-block;margin-top:20px;color:var(--green-700)}
 
-<style>.hub-hero-media{margin-top:8px}.hub-hero-media :global(.section-media){margin-top:0}</style>
+.experience-market{background:#f5efe2}
+.market-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.8fr);gap:42px;align-items:end;margin-bottom:30px}
+.market-head h2{max-width:720px}
+.market-head .lead{margin-top:14px}
+.filter-bar{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:9px}
+.filter-chip{min-height:42px;padding:0 15px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.72);color:var(--green-950);font-size:.86rem;font-weight:800;cursor:pointer}
+.filter-chip:hover,.filter-chip.is-active{background:var(--green-950);color:white;border-color:var(--green-950)}
+.experience-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.experience-card{padding:24px;display:flex;flex-direction:column;min-height:270px;transition:transform .2s ease,border-color .2s ease}
+.experience-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.28)}
+.experience-card[hidden]{display:none}
+.experience-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.experience-icon{width:50px;height:50px;display:grid;place-items:center;border-radius:16px;background:var(--green-100);font-size:1.45rem}
+.destination-label{color:var(--green-700);font-size:.74rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase;text-align:right}
+.experience-card h3{font-size:1.48rem}
+.experience-card p{margin-top:10px;color:var(--muted)}
+.experience-card b{display:inline-block;margin-top:auto;padding-top:22px;color:var(--green-700)}
+.empty-state{padding:24px;border-radius:18px;background:white;color:var(--muted);text-align:center}
+
+.destination-jump{background:var(--green-950);color:white}
+.destination-shell{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:center}
+.destination-shell h2{color:white}
+.destination-shell .lead{margin-top:16px;color:rgba(255,255,255,.7)}
+.destination-shell .eyebrow{color:#b8dec9}
+.destination-links{display:flex;flex-wrap:wrap;gap:10px}
+.destination-links a{padding:10px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);font-weight:750}
+.destination-links a:hover{background:white;color:var(--green-950)}
+
+@media(max-width:900px){
+  .market-head,.destination-shell{grid-template-columns:1fr}
+  .filter-bar{justify-content:flex-start}
+  .experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:640px){
+  .hub-hero-media{margin-top:0}
+  .experience-grid{grid-template-columns:1fr}
+  .filter-bar{gap:7px}
+  .filter-chip{min-height:40px;padding:0 12px;font-size:.8rem}
+  .experience-card{min-height:0}
+  .destination-shell{gap:28px}
+}
+</style>
