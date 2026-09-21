@@ -106,7 +106,7 @@ export const editorialVisuals = {
   },
   family: {
     beach: img('An Bang Beach (46353448872).jpg','Familier på en bred strand ved Hoi An','En god familierute har pauser, pool eller strand mellem de mere intensive storbydage.'),
-    train: img('Train interior Vietnam.jpg','Togrejse i Vietnam','Med børn er transporttid og antal hotelskift ofte vigtigere end at nå flest destinationer.'),
+    train: img('VNR SE8 soft seat arrangement.jpg','Interiør i et Vietnam Railways-tog','Med børn er transporttid og antal hotelskift ofte vigtigere end at nå flest destinationer.','Dragfyre / Wikimedia Commons'),
     food: img('Vietnamese Pho.jpg','Skål med vietnamesisk phở','Enkle nudel- og risretter gør det ofte lettere at finde noget, børn kan begynde med.'),
   },
 };
