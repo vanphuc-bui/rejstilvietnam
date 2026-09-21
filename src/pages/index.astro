@@ -33,6 +33,8 @@ const practical = [
 ];
 
 const tools = [
+  ['🧭','Trip Planner','Vælg dage, måned, tempo og interesser og få en personlig Vietnam-rute.','/vaerktoejer/vietnam-trip-planner/'],
+  ['⇄','Transport Matrix','Se hvilke hop der koster en halv dag — og hvornår fly, tog eller transfer giver bedst mening.','/vaerktoejer/transport-matrix/'],
   ['🗺️','Rutekort','10, 14 eller 21 dage? Se ruterne og transporthoppene på ét skematisk kort.','/vaerktoejer/vietnam-rutekort/'],
   ['🧮','Budgetberegner','Indtast dine egne tal og få totalen i både DKK og VND.','/vaerktoejer/vietnam-budgetberegner/'],
   ['☀️','Vejrplanlægger','Vælg måned og sammenlign nord, central, syd og Phu Quoc.','/vaerktoejer/vietnam-vejrhjaelp/'],
@@ -136,10 +138,10 @@ const booking = [
   <section class="section tools-home">
     <div class="container">
       <div class="section-head">
-        <div><p class="eyebrow">Gratis værktøjer</p><h2>Gør de tre svære valg konkrete.</h2></div>
-        <p>Sammenlign rute, budget og vejrsæson i stedet for at gætte dig frem mellem mange forskellige artikler.</p>
+        <div><p class="eyebrow">Gratis værktøjer</p><h2>Gå fra idé til en rute, der faktisk hænger sammen.</h2></div>
+        <p>Byg din egen rute, se transporthoppene, sammenlign standardruter, beregn budget og kontrollér sæsonen — uden at hoppe mellem fem hjemmesider.</p>
       </div>
-      <div class="grid grid--3">
+      <div class="tools-home-grid">
         {tools.map(([icon,title,text,href]) => (
           <a class="tool-home-card" href={href}>
             <span>{icon}</span>
@@ -205,7 +207,7 @@ const booking = [
 .plan-section{background:rgba(255,255,255,.35)}
 .plan-card{padding:30px;transition:transform .2s ease,border-color .2s ease}.plan-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)}.plan-card>span{color:var(--coral);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.plan-card h3{margin-top:8px;font-size:1.7rem}.plan-card p{margin-top:10px;color:var(--muted)}.plan-card b{display:inline-block;margin-top:22px;color:var(--green-700)}.plan-card--featured{background:var(--green-950);color:white}.plan-card--featured h3{color:white}.plan-card--featured p{color:rgba(255,255,255,.72)}.plan-card--featured b{color:#f0c986}
 .practical { background: #f5efe2; }
-.tools-home{background:var(--green-950);color:white}.tools-home .section-head h2{color:white}.tools-home .section-head>p{color:rgba(255,255,255,.68)}.tools-home .eyebrow{color:#b8dec9}.tools-home .all-link a{color:#f0c986}.tool-home-card{display:flex;flex-direction:column;min-height:260px;padding:26px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(255,255,255,.08);transition:transform .2s ease,background .2s ease}.tool-home-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}.tool-home-card>span{font-size:1.7rem}.tool-home-card h3{margin-top:16px;color:white}.tool-home-card p{margin-top:9px;color:rgba(255,255,255,.7)}.tool-home-card b{margin-top:auto;padding-top:22px;color:#f0c986}
+.tools-home{background:var(--green-950);color:white}.tools-home-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}.tool-home-card{grid-column:span 2}.tool-home-card:nth-child(-n+2){grid-column:span 3}.tools-home .section-head h2{color:white}.tools-home .section-head>p{color:rgba(255,255,255,.68)}.tools-home .eyebrow{color:#b8dec9}.tools-home .all-link a{color:#f0c986}.tool-home-card{display:flex;flex-direction:column;min-height:260px;padding:26px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(255,255,255,.08);transition:transform .2s ease,background .2s ease}.tool-home-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}.tool-home-card>span{font-size:1.7rem}.tool-home-card h3{margin-top:16px;color:white}.tool-home-card p{margin-top:9px;color:rgba(255,255,255,.7)}.tool-home-card b{margin-top:auto;padding-top:22px;color:#f0c986}
 .featured-guides { background: rgba(255,255,255,.36); }
 .guide-card { padding: 28px; transition: transform .2s ease, border-color .2s ease; }
 .guide-card:hover { transform: translateY(-3px); border-color: rgba(28,106,77,.25); }
@@ -229,8 +231,9 @@ const booking = [
 .news-card h2 { color: white; font-size: clamp(2rem,4vw,3rem); }
 .news-card p:not(.eyebrow) { color: rgba(255,255,255,.72); margin-top: 12px; }
 .news-card .eyebrow { color: #f3cf8e; }
-@media(max-width:900px){ .hero-note{display:none}.story-grid,.booking-shell{grid-template-columns:1fr}.hero{min-height:650px}.hero-inner{min-height:650px}.news-card{align-items:flex-start;flex-direction:column} }
+@media(max-width:900px){ .tools-home-grid{grid-template-columns:1fr 1fr}.tool-home-card,.tool-home-card:nth-child(-n+2){grid-column:auto} .hero-note{display:none}.story-grid,.booking-shell{grid-template-columns:1fr}.hero{min-height:650px}.hero-inner{min-height:650px}.news-card{align-items:flex-start;flex-direction:column} }
 @media(max-width:640px){
+  .tools-home-grid{grid-template-columns:1fr}
   .hero,.hero-inner{min-height:520px}
   .hero-inner{padding-top:30px;padding-bottom:32px;align-items:flex-end}
   .hero-copy h1{font-size:clamp(2.25rem,9.6vw,2.85rem);line-height:1.03;text-wrap:balance}
