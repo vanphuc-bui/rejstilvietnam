@@ -13,6 +13,12 @@
       "custom_domain": true
     }
   ],
+  "analytics_engine_datasets": [
+    {
+      "binding": "AFFILIATE_ANALYTICS",
+      "dataset": "affiliate_clicks"
+    }
+  ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
