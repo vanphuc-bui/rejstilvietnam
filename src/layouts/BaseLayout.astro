@@ -247,7 +247,19 @@ const structuredData = {
           const text = alt.toLowerCase();
           if (/hanoi|ha noi/.test(text)) return 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1600&q=82';
           if (/hoi an/.test(text)) return 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1600&q=82';
+          if (/phu quoc/.test(text)) return 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1600&q=82';
           return 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1600&q=82';
+        };
+
+        const proxyImage = (value) => {
+          try {
+            const url = new URL(value, window.location.href);
+            if (url.origin === window.location.origin) return null;
+            if (!['https:'].includes(url.protocol)) return null;
+            return '/media/remote-image?url=' + encodeURIComponent(url.toString());
+          } catch {
+            return null;
+          }
         };
 
         const svgFallback = (img) => {
@@ -273,14 +285,31 @@ const structuredData = {
         const fallback = (img) => {
           if (!img) return;
           const stage = img.dataset.rtvFallbackStage || 'original';
+
           if (stage === 'original') {
-            img.dataset.rtvFallbackStage = 'photo';
+            const failedSource = img.currentSrc || img.src || '';
+            const proxied = proxyImage(failedSource);
             img.removeAttribute('srcset');
-            img.src = fallbackPhoto(img.alt || '');
-            img.style.display = '';
-            return;
+            if (proxied) {
+              img.dataset.rtvFallbackStage = 'proxy';
+              img.src = proxied;
+              img.style.display = '';
+              return;
+            }
           }
-          if (stage === 'photo') {
+
+          if (stage === 'proxy' || stage === 'original') {
+            const backup = proxyImage(fallbackPhoto(img.alt || ''));
+            if (backup) {
+              img.dataset.rtvFallbackStage = 'photo-proxy';
+              img.removeAttribute('srcset');
+              img.src = backup;
+              img.style.display = '';
+              return;
+            }
+          }
+
+          if (stage === 'photo-proxy') {
             img.dataset.rtvFallbackStage = 'svg';
             svgFallback(img);
           }
