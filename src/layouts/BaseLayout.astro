@@ -283,12 +283,19 @@ const structuredData = {
         };
 
         const fallback = (img) => {
-          if (!img) return;
+          if (!img || img.dataset.rtvFallbackLock === '1') return;
+
+          // One failed <img> can be observed both by a component onerror handler
+          // and by the delegated document error listener. Lock this event turn so
+          // the same failure cannot advance two fallback stages at once.
+          img.dataset.rtvFallbackLock = '1';
+          setTimeout(() => { delete img.dataset.rtvFallbackLock; }, 0);
+
           const stage = img.dataset.rtvFallbackStage || 'original';
           if (stage === 'original') {
             img.dataset.rtvFallbackStage = 'photo';
             img.removeAttribute('srcset');
-            img.src = fallbackPhoto(img.alt || '');
+            img.src = proxiedImage(fallbackPhoto(img.alt || ''));
             img.style.display = '';
             return;
           }
