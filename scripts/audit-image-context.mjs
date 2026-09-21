@@ -21,7 +21,7 @@ const rules = [
   {
     intent: 'transport',
     heading: /\b(transport|lufthavn|airport|tog|train|bus|taxi|transfer|færge|ferry|komme rundt)\b/i,
-    visual: /\b(transport|lufthavn|airport|tog|train|rail|jernbane|bus|taxi|transfer|bil|car|road|vej|færge|ferry|station|terminal|scooter|motorcykl|motorbike|sleeper|kupé|kupe|køje|berth)\b/i,
+    visual: /\b(transport|lufthavn|airport|tog|train|rail|jernbane|bus|taxi|transfer|bil|car|road|vej|færge|ferry|station|terminal|scooter|motorcyk(?:el|ler|list|lister)?|motorbike|sleeper|kupé|kupe|køje|berth)\b/i,
   },
   {
     intent: 'marine',
