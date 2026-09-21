@@ -45,7 +45,7 @@ export const haLongBayPages = {
 
   'hvor-skal-man-bo': {
     destinationName:'Ha Long Bay',
-    title:'Hvor skal man bo ved Ha Long Bay? Cruise, Ha Long City eller Cat Ba',
+    title:'Hvor skal man bo ved Ha Long Bay? Cruise, by eller Cat Ba',
     description:'Sammenlign cruise med overnatning, Ha Long City og Cat Ba som base til Ha Long Bay og Lan Ha Bay.',
     eyebrow:'Ha Long Bay · Områder',
     heading:'Hvor skal man bo ved Ha Long Bay? På båden, i Ha Long City eller på Cat Ba',
