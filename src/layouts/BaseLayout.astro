@@ -285,7 +285,7 @@ const structuredData = {
         const fallback = (img) => {
           if (!img || img.dataset.rtvFallbackLock === '1') return;
 
-          // One failed <img> can be observed both by a component onerror handler
+          // One failed image can be observed both by a component onerror handler
           // and by the delegated document error listener. Lock this event turn so
           // the same failure cannot advance two fallback stages at once.
           img.dataset.rtvFallbackLock = '1';
