@@ -1,0 +1,287 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { tripPlans, plannerDestinations, climateByMonth, plannerInterests, monthNames } from '../../../data/tripPlannerData.js';
+import { transportMatrix } from '../../../data/transportMatrix.js';
+
+const plannerPayload = { tripPlans, plannerDestinations, climateByMonth, transportMatrix, monthNames };
+const appStructuredData = {
+  '@context':'https://schema.org',
+  '@type':'WebApplication',
+  name:'Vietnam Trip Planner – personlig rute',
+  description:'Gratis dansk Vietnam Trip Planner, der foreslår en rute ud fra antal dage, måned, rejsetype, tempo, budget og interesser.',
+  url:new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString(),
+  applicationCategory:'TravelApplication',
+  operatingSystem:'Any',
+  inLanguage:'da-DK',
+  isAccessibleForFree:true,
+  featureList:[
+    'Personlig Vietnam-rute',
+    'Sæsonkontrol måned for måned',
+    'Transport mellem stop',
+    'Delbart rutelink',
+    'Links til destinationer og budgetværktøj',
+  ],
+};
+---
+<BaseLayout
+  title="Vietnam Trip Planner | Få en personlig rute"
+  description="Lav en personlig Vietnam-rute på 10, 14 eller 21 dage. Vælg måned, rejsetype, tempo, budget og interesser og få stop, sæsoncheck og transport."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appStructuredData)}></script>
+
+  <section class="page-hero planner-hero">
+    <div class="container planner-hero__grid">
+      <div>
+        <p class="eyebrow">Gratis Vietnam Trip Planner</p>
+        <h1>Byg en rute, der passer til <em>jeres</em> rejse.</h1>
+        <p class="lead">Vælg hvor længe du rejser, hvornår du tager af sted, hvem du rejser med og hvad der betyder mest. Plannerens job er at skære fra — ikke at presse hele Vietnam ind på én ferie.</p>
+        <div class="planner-proof">
+          <span>10 · 14 · 21 dage</span>
+          <span>Sæsoncheck</span>
+          <span>Transport mellem stop</span>
+          <span>Delbart link</span>
+        </div>
+      </div>
+      <div class="planner-hero__visual" aria-hidden="true">
+        <div class="mini-route">
+          <span><b>01</b> Hanoi</span><i>↓</i>
+          <span><b>02</b> Ninh Binh</span><i>↓</i>
+          <span><b>03</b> Hoi An</span><i>↓</i>
+          <span><b>04</b> Sydvietnam</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight planner-section">
+    <div class="container planner-layout">
+      <form class="planner-form card" id="trip-planner-form">
+        <div class="form-heading">
+          <p class="eyebrow">Dine valg</p>
+          <h2>Fortæl os hvilken ferie du vil have.</h2>
+        </div>
+
+        <div class="control-grid">
+          <label class="control"><span>Rejselængde</span><select name="days"><option value="10">10 dage</option><option value="14" selected>14 dage</option><option value="21">21 dage</option></select></label>
+          <label class="control"><span>Rejsemåned</span><select name="month">{monthNames.map((month,index)=><option value={index+1}>{month}</option>)}</select></label>
+          <label class="control"><span>Hvem rejser?</span><select name="traveler"><option value="par">Par</option><option value="familie">Familie</option><option value="solo">Solo</option></select></label>
+          <label class="control"><span>Tempo</span><select name="pace"><option value="rolig">Roligt · færre hotelskift</option><option value="balanceret" selected>Balanceret</option><option value="aktiv">Aktivt · flere oplevelser</option></select></label>
+          <label class="control"><span>Budgetniveau</span><select name="budget"><option value="1">Budget</option><option value="2" selected>Mellemklasse</option><option value="3">Komfort</option></select></label>
+        </div>
+
+        <fieldset class="interest-fieldset">
+          <legend>Hvad betyder mest?</legend>
+          <p>Vælg gerne 2–3. Plannerens anbefaling bliver bedre, hvis alt ikke er et “must”.</p>
+          <div class="interest-grid">
+            {plannerInterests.map(([value,label,icon],index)=>(
+              <label class="interest-chip">
+                <input type="checkbox" name="interest" value={value} checked={index<3}/>
+                <span aria-hidden="true">{icon}</span><b>{label}</b>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <button class="btn btn--primary planner-submit" type="submit">Lav min Vietnam-rute →</button>
+        <p class="form-note">Værktøjet bruger vores redaktionelle ruter og sæsonmønstre — ikke en generisk AI-rute og ikke live bookingpriser.</p>
+      </form>
+
+      <aside class="planner-side">
+        <div class="side-card">
+          <span>Vores princip</span>
+          <strong>Færre gode stop slår flere check-ins.</strong>
+          <p>På 14 dage vil vi normalt hellere vælge 4–5 hovedstop end 8–10 steder, selv hvis Google Maps får dem til at se tæt på hinanden.</p>
+        </div>
+        <a class="side-link" href="/vaerktoejer/transport-matrix/"><span>⇄</span><div><b>Transport Matrix</b><small>Se hvad hvert hop faktisk koster i tid.</small></div></a>
+        <a class="side-link" href="/vaerktoejer/vietnam-budgetberegner/"><span>🧮</span><div><b>Budgetberegner</b><small>Regn ruten om til DKK og VND.</small></div></a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section result-section" id="din-rute">
+    <div class="container"><div id="planner-result" class="planner-result" aria-live="polite"></div></div>
+  </section>
+
+  <section class="section section--tight planner-method">
+    <div class="container method-grid">
+      <div><p class="eyebrow">Sådan vælger værktøjet</p><h2>Ruten scorer på pasform — ikke på flest mulige seværdigheder.</h2></div>
+      <div class="method-points">
+        <div><span>01</span><p><b>Interesser:</b> strand, mad, kultur, natur og aktiv ferie vægtes mod forskellige rutetyper.</p></div>
+        <div><span>02</span><p><b>Sæson:</b> hver destination kontrolleres mod den valgte måned. Dårligere sæson trækker ruten ned.</p></div>
+        <div><span>03</span><p><b>Tempo:</b> familie/rolig profil favoriserer længere baser og færre hotelskift.</p></div>
+        <div><span>04</span><p><b>Transport:</b> forbindelser vises som reel planlægningstid, ikke kun flyvetid.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section planner-disclaimer">
+    <div class="container disclaimer-card">
+      <div><p class="eyebrow">Brug planen som første udkast</p><h2>En god rute ændrer sig stadig med jeres flydatoer.</h2></div>
+      <p>Sæsonvurderinger er mønstre, ikke en vejrudsigt. Transporttider og priser er planlægningsintervaller, ikke live fares. Når ruten ser rigtig ud, så tjek konkrete fly, tog, busser og vejr før du booker ikke-refunderbare dele.</p>
+    </div>
+  </section>
+
+  <script type="application/json" id="planner-data" set:html={JSON.stringify(plannerPayload)}></script>
+  <script is:inline>
+    (() => {
+      const payloadNode=document.getElementById('planner-data');
+      const form=document.getElementById('trip-planner-form');
+      const result=document.getElementById('planner-result');
+      if(!payloadNode||!form||!result)return;
+      const data=JSON.parse(payloadNode.textContent||'{}');
+      const {tripPlans=[],plannerDestinations={},climateByMonth={},transportMatrix=[],monthNames=[]}=data;
+      const statusLabel={good:'Stærkt sæsonmatch',mixed:'Fint med forbehold',weather:'Mere vejrafhængigt'};
+      const statusIcon={good:'✓',mixed:'~',weather:'!'};
+
+      const transportFor=(from,to)=>transportMatrix.find((item)=>(item.from===from&&item.to===to)||(item.bidirectional&&item.from===to&&item.to===from));
+      const interests=()=>[...form.querySelectorAll('input[name="interest"]:checked')].map((input)=>input.value);
+
+      const score=(plan,state)=>{
+        let value=0;
+        value+=state.interests.filter((interest)=>plan.tags.includes(interest)).length*4;
+        if(plan.travelers.includes(state.traveler))value+=5;
+        if(plan.pace.includes(state.pace))value+=4;
+        value-=Math.abs(Number(plan.budget)-state.budget)*1.4;
+        let seasonTotal=0,totalDays=0;
+        plan.stops.forEach((stop)=>{
+          const destination=plannerDestinations[stop.name];
+          const season=climateByMonth[destination?.climate]?.[state.month]||['mixed',''];
+          const weight=Number(stop.days||1);
+          totalDays+=weight;
+          seasonTotal+=(season[0]==='good'?1.2:season[0]==='mixed'?0:-2.2)*weight;
+        });
+        value+=totalDays?(seasonTotal/totalDays)*4:0;
+        if(state.traveler==='familie'&&/family/.test(plan.key))value+=6;
+        if(state.pace==='rolig'&&plan.stops.length<=4)value+=2;
+        if(state.pace==='aktiv'&&plan.tags.includes('aktiv'))value+=3;
+        return value;
+      };
+
+      const state=()=>({
+        days:Number(form.elements.namedItem('days')?.value||14),
+        month:Number(form.elements.namedItem('month')?.value||1),
+        traveler:String(form.elements.namedItem('traveler')?.value||'par'),
+        pace:String(form.elements.namedItem('pace')?.value||'balanceret'),
+        budget:Number(form.elements.namedItem('budget')?.value||2),
+        interests:interests(),
+      });
+
+      const climateFor=(plan,current)=>{
+        let strong=0,mixed=0,weather=0;
+        const notes=[];
+        plan.stops.forEach((stop)=>{
+          const destination=plannerDestinations[stop.name];
+          const season=climateByMonth[destination?.climate]?.[current.month]||['mixed','Tjek forholdene tæt på afrejse.'];
+          if(season[0]==='good')strong+=stop.days;
+          if(season[0]==='mixed')mixed+=stop.days;
+          if(season[0]==='weather')weather+=stop.days;
+          if(season[0]!=='good')notes.push({name:stop.name,status:season[0],text:season[1]});
+        });
+        return {strong,mixed,weather,notes};
+      };
+
+      const budgetUrl=(current)=>{
+        const people=current.traveler==='solo'?1:current.traveler==='familie'?4:2;
+        const presets={1:{hotel:260,food:150,local:50,oplevelser:100,transport:1200,fly:6000},2:{hotel:450,food:200,local:75,oplevelser:150,transport:1500,fly:6500},3:{hotel:850,food:325,local:120,oplevelser:250,transport:2200,fly:8000}};
+        const p=presets[current.budget]||presets[2];
+        const url=new URL('/vaerktoejer/vietnam-budgetberegner/',window.location.origin);
+        [['personer',people],['dage',current.days],['hotel',p.hotel],['mad',p.food],['lokal',p.local],['oplevelser',p.oplevelser],['transport',p.transport],['fly',p.fly],['buffer',10],['kurs',4050]].forEach(([key,value])=>url.searchParams.set(key,String(value)));
+        return url.pathname+'?'+url.searchParams.toString();
+      };
+
+      const updateUrl=(current)=>{
+        const url=new URL(window.location.href);
+        url.searchParams.set('dage',String(current.days));
+        url.searchParams.set('maaned',String(current.month));
+        url.searchParams.set('rejsende',current.traveler);
+        url.searchParams.set('tempo',current.pace);
+        url.searchParams.set('budget',String(current.budget));
+        url.searchParams.set('interesser',current.interests.join(','));
+        history.replaceState({},'',url);
+        return url;
+      };
+
+      const planHtml=(plan,current,rank=0)=>{
+        const climate=climateFor(plan,current);
+        const seasonClass=climate.weather>Math.max(2,current.days*.18)?'weather':climate.mixed>current.days*.35?'mixed':'good';
+        const monthName=monthNames[current.month-1]||'';
+        const peopleLabel=current.traveler==='familie'?'familie':current.traveler==='solo'?'solo':'par';
+        const stops=plan.stops.map((stop,index)=>{
+          const destination=plannerDestinations[stop.name]||{};
+          const season=climateByMonth[destination.climate]?.[current.month]||['mixed',''];
+          const next=plan.stops[index+1];
+          const transport=next?transportFor(stop.name,next.name):null;
+          return `<article class="route-stop">
+            <div class="route-stop__number">${String(index+1).padStart(2,'0')}</div>
+            <div class="route-stop__main">
+              <div class="route-stop__head"><div><span>${destination.region||''}</span><h3><a data-dynamic-href="${destination.href||'#'}">${stop.name}</a></h3></div><b>${stop.days} ${stop.days===1?'dag':'dage'}</b></div>
+              <p>${stop.why}</p>
+              <div class="season-chip season-chip--${season[0]}"><i>${statusIcon[season[0]]}</i>${statusLabel[season[0]]}</div>
+            </div>
+            ${next?`<div class="transport-hop"><span>${transport?.modeIcon||'⇄'}</span><div><b>${transport?.mode||'Planlæg forbindelsen'}</b><small>${transport?.duration||'Se transportmatrix for bedste kombination.'}</small></div><a href="/vaerktoejer/transport-matrix/?fra=${encodeURIComponent(stop.name)}&til=${encodeURIComponent(next.name)}">Se hop →</a></div>`:''}
+          </article>`;
+        }).join('');
+        const notes=climate.notes.length?climate.notes.slice(0,3).map((note)=>`<li><b>${note.name}:</b> ${note.text}</li>`).join(''):'<li>Ruten har et stærkt sæsonmatch på tværs af de valgte stop.</li>';
+        return `<div class="result-shell ${rank?'result-shell--alternative':''}">
+          <div class="result-top"><div><span class="result-kicker">${rank?'Alternativ '+rank:'Vores bedste match'}</span><h2>${plan.label}</h2><p>${current.days} dage · ${monthName} · ${peopleLabel} · ${plan.stops.length} baser</p></div><div class="season-score season-score--${seasonClass}"><span>Sæson</span><b>${climate.strong}/${current.days} dage</b><small>i stærkt match</small></div></div>
+          <div class="route-timeline">${stops}</div>
+          <div class="result-insights"><div><span class="insight-label">Sæsoncheck for ${monthName}</span><ul>${notes}</ul><a href="/vaerktoejer/vietnam-vejrhjaelp/?maaned=${current.month}">Se hele vejrplanlæggeren →</a></div><div><span class="insight-label">Næste skridt</span><p>Brug budgetberegneren med et startniveau, der matcher din profil. Ret derefter hotel, mad og fly efter jeres konkrete ønsker.</p><a class="btn btn--primary" data-dynamic-href="${budgetUrl(current)}">Beregn budget til denne profil →</a></div></div>
+          ${rank===0?`<div class="result-actions"><button type="button" class="btn btn--outline" id="copy-plan-link">Kopiér link til min plan</button><a class="btn btn--outline" href="/vaerktoejer/vietnam-rutekort/?rute=${current.days===21?'21':current.days===10?'10':'14'}">Sammenlign med standardruten</a><span id="copy-plan-status" aria-live="polite"></span></div>`:''}
+        </div>`;
+      };
+
+      const render=(scroll=false)=>{
+        const current=state();
+        if(!current.interests.length)current.interests=['kultur'];
+        const candidates=tripPlans.filter((plan)=>Number(plan.days)===current.days).map((plan)=>({plan,score:score(plan,current)})).sort((a,b)=>b.score-a.score);
+        const best=candidates[0]?.plan;
+        const alternatives=candidates.slice(1,3).map((item)=>item.plan);
+        if(!best){result.innerHTML='<div class="card empty-result">Vi kunne ikke finde en rute til de valgte kriterier.</div>';return;}
+        const shareUrl=updateUrl(current);
+        result.innerHTML=`${planHtml(best,current,0)}<div class="alternative-head"><p class="eyebrow">To andre måder at bruge dagene</p><h2>Hvis du vil vægte noget andet.</h2></div><div class="alternative-grid">${alternatives.map((plan,index)=>planHtml(plan,current,index+1)).join('')}</div>`;
+        result.querySelectorAll('[data-dynamic-href]').forEach((anchor)=>{
+          const href=anchor.getAttribute('data-dynamic-href');
+          if(href)anchor.setAttribute('href',href);
+        });
+        document.getElementById('copy-plan-link')?.addEventListener('click',async()=>{
+          const status=document.getElementById('copy-plan-status');
+          try{await navigator.clipboard.writeText(shareUrl.toString());if(status)status.textContent='Link kopieret.';}catch{if(status)status.textContent='Kopiér adressen fra browserens adresselinje.';}
+        });
+        if(scroll)document.getElementById('din-rute')?.scrollIntoView({behavior:'smooth',block:'start'});
+      };
+
+      const load=()=>{
+        const params=new URL(window.location.href).searchParams;
+        const set=(name,param)=>{const value=params.get(param);const field=form.elements.namedItem(name);if(value&&field)field.value=value;};
+        set('days','dage');set('month','maaned');set('traveler','rejsende');set('pace','tempo');set('budget','budget');
+        const selected=params.get('interesser');
+        if(selected){const values=new Set(selected.split(',').filter(Boolean));form.querySelectorAll('input[name="interest"]').forEach((input)=>input.checked=values.has(input.value));}
+        else{const month=form.elements.namedItem('month');if(month)month.value=String(new Date().getMonth()+1);}
+      };
+
+      form.addEventListener('submit',(event)=>{event.preventDefault();render(true);});
+      form.querySelectorAll('input[name="interest"]').forEach((input)=>input.addEventListener('change',()=>{if(form.querySelectorAll('input[name="interest"]:checked').length>3)input.checked=false;}));
+      load();render(false);
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+.planner-hero{background:linear-gradient(135deg,#e9f2ec 0%,#f8ead2 58%,#f5d9ce 100%);overflow:hidden}.planner-hero h1 em{font-family:Georgia,serif;font-weight:400;color:var(--coral)}
+.planner-hero__grid{display:grid;grid-template-columns:1.15fr .65fr;gap:60px;align-items:center}.planner-proof{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.planner-proof span{padding:8px 11px;border:1px solid rgba(12,47,37,.13);border-radius:999px;background:rgba(255,255,255,.55);font-size:.78rem;font-weight:800;color:var(--green-800)}
+.planner-hero__visual{display:grid;place-items:center;min-height:350px}.mini-route{width:min(100%,330px);display:grid;gap:8px;padding:24px;border-radius:28px;background:var(--green-950);box-shadow:var(--shadow);transform:rotate(2deg)}.mini-route span{display:flex;align-items:center;gap:14px;padding:13px 15px;border:1px solid rgba(255,255,255,.12);border-radius:15px;background:rgba(255,255,255,.07);color:white;font-weight:800}.mini-route b{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#f0c986;color:var(--green-950);font-size:.72rem}.mini-route i{text-align:center;color:#b8dec9;font-style:normal}
+.planner-section{background:#f5efe2}.planner-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px;align-items:start}.planner-form{padding:30px;background:#fffdf8}.form-heading h2{font-size:clamp(1.8rem,4vw,2.7rem)}
+.control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:24px}.control{display:grid;gap:7px}.control>span,.interest-fieldset legend{font-size:.76rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--green-800)}.control select{width:100%;min-height:50px;padding:0 13px;border:1px solid var(--border);border-radius:13px;background:white;color:var(--green-950);font:inherit;font-weight:750}
+.interest-fieldset{margin:28px 0 0;padding:0;border:0}.interest-fieldset>p{margin-top:5px;color:var(--muted);font-size:.87rem}.interest-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}.interest-chip{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:86px;padding:10px;border:1px solid var(--border);border-radius:16px;background:white;cursor:pointer;text-align:center}.interest-chip input{position:absolute;opacity:0;pointer-events:none}.interest-chip span{font-size:1.35rem}.interest-chip b{font-size:.79rem;color:var(--green-950)}.interest-chip:has(input:checked){border-color:var(--green-800);background:var(--green-100);box-shadow:inset 0 0 0 1px var(--green-800)}
+.planner-submit{margin-top:24px}.form-note{margin-top:12px;color:var(--muted);font-size:.78rem}.planner-side{display:grid;gap:12px;position:sticky;top:92px}.side-card{padding:24px;border-radius:24px;background:var(--green-950);color:white}.side-card>span{color:#f0c986;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.side-card strong{display:block;margin-top:9px;font-size:1.35rem;line-height:1.2}.side-card p{margin-top:10px;color:rgba(255,255,255,.68);font-size:.88rem}.side-link{display:flex;align-items:center;gap:12px;padding:17px;border:1px solid var(--border);border-radius:18px;background:#fffdf8}.side-link>span{font-size:1.35rem}.side-link div{display:grid}.side-link b{color:var(--green-950);font-size:.9rem}.side-link small{color:var(--muted);font-size:.76rem}
+.result-section{background:var(--cream);scroll-margin-top:70px}.planner-result{display:grid;gap:28px}.result-shell{padding:30px;border:1px solid var(--border);border-radius:30px;background:#fffdf8;box-shadow:0 16px 45px rgba(16,55,41,.07)}.result-shell--alternative{padding:22px;box-shadow:none}.result-top{display:flex;align-items:center;justify-content:space-between;gap:24px}.result-kicker{color:var(--coral);font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.result-top h2{margin-top:6px;font-size:clamp(2rem,4vw,3rem)}.result-top p{margin-top:7px;color:var(--muted)}
+.season-score{flex:0 0 155px;padding:16px;border-radius:18px;text-align:center}.season-score span,.season-score small{display:block;font-size:.7rem;font-weight:800}.season-score b{display:block;font-size:1.35rem}.season-score--good{background:#dcecdf;color:#184d34}.season-score--mixed{background:#f5e7c7;color:#765817}.season-score--weather{background:#f5d8d1;color:#8a352c}
+.route-timeline{display:grid;gap:0;margin-top:26px}.route-stop{display:grid;grid-template-columns:48px minmax(0,1fr);column-gap:15px;position:relative}.route-stop:not(:last-child)::before{content:'';position:absolute;left:23px;top:44px;bottom:-2px;width:2px;background:var(--border)}.route-stop__number{position:relative;z-index:1;display:grid;place-items:center;width:48px;height:48px;border-radius:15px;background:var(--green-950);color:#fff;font:800 .78rem Georgia,serif}.route-stop__main{padding:3px 0 18px}.route-stop__head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.route-stop__head span{color:var(--coral);font-size:.67rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.route-stop__head h3{margin-top:2px;font-size:1.45rem}.route-stop__head h3 a:hover{color:var(--green-700)}.route-stop__head>b{padding:6px 9px;border-radius:999px;background:var(--green-100);color:var(--green-800);font-size:.76rem;white-space:nowrap}.route-stop__main>p{margin-top:7px;color:var(--muted);font-size:.9rem}
+.season-chip{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 9px;border-radius:999px;font-size:.7rem;font-weight:850}.season-chip i{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;font-style:normal}.season-chip--good{background:#e3efe5;color:#185033}.season-chip--mixed{background:#f6ead0;color:#775d20}.season-chip--weather{background:#f6ddd7;color:#8a352c}
+.transport-hop{grid-column:2;display:flex;align-items:center;gap:11px;margin:-3px 0 18px;padding:12px 14px;border:1px dashed rgba(28,106,77,.2);border-radius:14px;background:#f7f4eb}.transport-hop>span{font-size:1.2rem}.transport-hop>div{display:grid;min-width:0}.transport-hop b{font-size:.82rem;color:var(--green-950)}.transport-hop small{color:var(--muted);font-size:.73rem}.transport-hop>a{margin-left:auto;color:var(--green-700);font-size:.74rem;font-weight:850;white-space:nowrap}
+.result-insights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}.result-insights>div{padding:20px;border-radius:18px;background:#f6f0e4}.insight-label{display:block;margin-bottom:9px;color:var(--green-800);font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.result-insights ul{margin:0 0 13px;padding-left:18px;color:#45534c;font-size:.86rem}.result-insights p{color:#45534c;font-size:.88rem;margin-bottom:15px}.result-insights a:not(.btn){color:var(--green-700);font-weight:850;font-size:.82rem}.result-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px}.result-actions .btn{width:auto}.result-actions span{color:var(--green-700);font-size:.78rem;font-weight:800}
+.alternative-head{margin-top:34px}.alternative-head h2{font-size:clamp(1.8rem,4vw,2.5rem)}.alternative-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.alternative-grid .result-top h2{font-size:1.55rem}.alternative-grid .season-score{flex-basis:125px}.alternative-grid .result-insights{grid-template-columns:1fr}.alternative-grid .transport-hop{align-items:flex-start;flex-wrap:wrap}.alternative-grid .transport-hop>a{width:100%;margin-left:0}
+.method-grid,.disclaimer-card{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px}.method-points{display:grid;gap:14px}.method-points>div{display:grid;grid-template-columns:36px 1fr;gap:12px}.method-points span{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:var(--green-950);color:white;font-size:.72rem;font-weight:900}.method-points p{color:#45534c}.planner-disclaimer{background:#f5efe2}.disclaimer-card{padding:34px;border-radius:28px;background:#fffdf8}.disclaimer-card>p{align-self:center;color:#46534d}.empty-result{padding:30px}
+@media(max-width:950px){.planner-hero__grid,.planner-layout,.method-grid,.disclaimer-card{grid-template-columns:1fr}.planner-hero__visual{display:none}.planner-side{position:static;grid-template-columns:1fr 1fr}.side-card{grid-column:1/-1}.interest-grid{grid-template-columns:repeat(3,1fr)}.alternative-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.planner-form,.result-shell{padding:20px;border-radius:22px}.control-grid,.result-insights{grid-template-columns:1fr}.interest-grid{grid-template-columns:repeat(2,1fr)}.planner-side{grid-template-columns:1fr}.result-top{align-items:flex-start;flex-direction:column}.season-score{width:100%;flex:auto;text-align:left}.season-score span,.season-score small{display:inline}.season-score b{display:inline;margin:0 6px;font-size:1.1rem}.route-stop{grid-template-columns:40px minmax(0,1fr);column-gap:11px}.route-stop__number{width:40px;height:40px;border-radius:12px}.route-stop:not(:last-child)::before{left:19px;top:38px}.route-stop__head{align-items:flex-start}.route-stop__head h3{font-size:1.23rem}.transport-hop{grid-column:2;align-items:flex-start;flex-wrap:wrap}.transport-hop>a{width:100%;margin-left:0}.result-actions{align-items:stretch;flex-direction:column}.result-actions .btn{width:100%}}
+</style>

@@ -24,6 +24,10 @@ const sources = [
   <h2 id="kort-svar">Kort svar</h2>
   <div class="fact-grid"><div class="fact"><span>Lange stræk</span><b>Fly, hvis tiden er vigtig</b></div><div class="fact"><span>Kortere stræk</span><b>Tog eller limousinebus</b></div><div class="fact"><span>I byerne</span><b>Grab eller almindelig taxi</b></div></div>
   <p>Hvis du har to uger i Vietnam, ville vi ikke bruge flere hele dage på at køre fra nord til syd bare for at spare lidt på transporten. Brug de langsomme løsninger dér, hvor turen i sig selv er interessant. Flyv, når afstanden ellers tager det meste af en feriedag.</p>
+  <div class="transport-tool-cta">
+    <div><span>Interaktivt værktøj</span><h3>Se transporttiden mellem jeres konkrete stop.</h3><p>Transport Matrix viser dør-til-dør-tid, planlægningspris, komfort og besvær på de vigtigste strækninger.</p></div>
+    <a class="btn btn--primary" href="/vaerktoejer/transport-matrix/">Åbn Transport Matrix →</a>
+  </div>
 
   <h2 id="fly">Indenrigsfly - når du skal langt</h2>
   <p>Fly giver især mening mellem Nordvietnam, Centralvietnam og Sydvietnam. Hanoi, Da Nang og Ho Chi Minh City er de naturlige knudepunkter på en klassisk rute.</p>
@@ -55,9 +59,17 @@ const sources = [
   <AffiliateCard title="Privat lufthavnstransfer" text="Mest relevant ved sen ankomst, med børn eller hvis du har flere kufferter og gerne vil have en chauffør, der venter ved ankomst." label="Praktisk ved ankomst" />
 
   <h2 id="rute">Hvad ville vi vælge på en 14-dages rundrejse?</h2>
+  <p><a href="/vaerktoejer/vietnam-trip-planner/"><strong>Vil du have ruten valgt ud fra måned, tempo og interesser? Åbn vores Vietnam Trip Planner →</strong></a></p>
   <table><thead><tr><th>Strækning</th><th>Vores valg</th><th>Hvorfor</th></tr></thead><tbody><tr><td>Hanoi → Ninh Binh</td><td>Limousinebus eller organiseret dagstur</td><td>Kort nok til landtransport og ingen lufthavnslogistik</td></tr><tr><td>Hanoi → Ha Long Bay</td><td>Cruise-transfer</td><td>Det er nemmest at lade cruiseselskabet koordinere transporten</td></tr><tr><td>Hanoi → Da Nang / Hoi An</td><td>Indenrigsfly</td><td>Sparer en stor del af en feriedag</td></tr><tr><td>Da Nang → Hoi An</td><td>Taxi eller Grab</td><td>Kort og enkelt dør til dør</td></tr><tr><td>Hoi An / Da Nang → Ho Chi Minh City</td><td>Indenrigsfly</td><td>Den mest praktiske løsning på en 2-ugers tur</td></tr></tbody></table>
   <p>Det er ikke den billigste kombination, men det er omtrent sådan, vi selv ville gøre på en ferie, hvor tiden er mere værd end at spare de sidste kroner på hver transport.</p>
 
   <h2>Planlæg ruten</h2>
   <div class="link-list"><a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se transporten placeret i en konkret dag-for-dag-rute.</span></a><a class="link-card" href="/destinationer/hanoi/">Hanoi <span>Sådan bruger du hovedstaden som base i nord.</span></a></div>
+  <style>
+    .transport-tool-cta{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;margin:26px 0;padding:22px;border:1px solid var(--border);border-radius:20px;background:var(--green-100)}
+    .transport-tool-cta span{color:var(--coral);font-size:.7rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+    .transport-tool-cta h3{margin-top:4px}
+    .transport-tool-cta p{margin:7px 0 0;color:var(--muted)}
+    @media(max-width:700px){.transport-tool-cta{grid-template-columns:1fr}.transport-tool-cta .btn{width:100%}}
+  </style>
 </ArticleLayout>

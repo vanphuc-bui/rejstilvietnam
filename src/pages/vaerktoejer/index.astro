@@ -3,6 +3,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const tools = [
   {
+    icon:'🧭',
+    title:'Vietnam Trip Planner',
+    text:'Vælg 10, 14 eller 21 dage, måned, rejsetype, tempo, budget og interesser. Få en personlig rute med sæsoncheck og transport mellem stop.',
+    href:'/vaerktoejer/vietnam-trip-planner/',
+    cta:'Byg min rute →',
+    featured:true,
+  },
+  {
+    icon:'⇄',
+    title:'Transport Matrix',
+    text:'Sammenlign populære strækninger på tid, transportform, planlægningspris, komfort og besvær — fra Hanoi til Phu Quoc.',
+    href:'/vaerktoejer/transport-matrix/',
+    cta:'Sammenlign transport →',
+    featured:true,
+  },
+  {
     icon:'🗺️',
     title:'Vietnam rutekort',
     text:'Sammenlign 10, 14 og 21 dage på ét skematisk kort og se, hvor mange store transporthop hver rute kræver.',
@@ -26,21 +42,21 @@ const tools = [
 ];
 ---
 <BaseLayout
-  title="Gratis Vietnam-værktøjer | Rute, budget og vejr"
-  description="Gratis danske værktøjer til Vietnam: sammenlign 10, 14 og 21 dages ruter, beregn rejsebudget i DKK/VND og vælg region efter måned."
+  title="Gratis Vietnam-værktøjer | Trip Planner, transport og budget"
+  description="Gratis danske Vietnam-værktøjer: byg en personlig rute, sammenlign transport, se 10/14/21-dages kort, beregn budget og vælg region efter måned."
 >
   <section class="page-hero tools-hero">
     <div class="container">
       <p class="eyebrow">Gratis værktøjer</p>
       <h1>Planlæg med noget, du faktisk kan bruge.</h1>
-      <p class="lead">Tre små værktøjer til de valg, der normalt tager længst tid: rute, budget og vejret mellem Vietnams regioner.</p>
+      <p class="lead">Fem gratis værktøjer til de valg, der normalt tager længst tid: personlig rute, transport, rejsetempo, budget og vejret mellem Vietnams regioner.</p>
     </div>
   </section>
 
   <section class="section section--tight">
     <div class="container tools-grid">
       {tools.map((tool) => (
-        <a class="tool-card" href={tool.href}>
+        <a class:list={{'tool-card':true,'tool-card--featured':tool.featured}} href={tool.href}>
           <span class="tool-icon" aria-hidden="true">{tool.icon}</span>
           <h2>{tool.title}</h2>
           <p>{tool.text}</p>
@@ -66,8 +82,8 @@ const tools = [
 
 <style>
 .tools-hero{background:linear-gradient(145deg,#edf4ef,#f6ead6)}
-.tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.tool-card{display:flex;flex-direction:column;min-height:330px;padding:30px;border:1px solid var(--border);border-radius:28px;background:#fffdf8;box-shadow:0 12px 34px rgba(16,55,41,.06);transition:transform .2s ease,border-color .2s ease}
+.tools-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}.tool-card{grid-column:span 2}.tool-card--featured{grid-column:span 3}
+.tool-card{display:flex;flex-direction:column;min-height:320px;padding:30px;border:1px solid var(--border);border-radius:28px;background:#fffdf8;box-shadow:0 12px 34px rgba(16,55,41,.06);transition:transform .2s ease,border-color .2s ease}
 .tool-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.26)}
 .tool-icon{width:58px;height:58px;display:grid;place-items:center;border-radius:18px;background:var(--green-100);font-size:1.65rem}
 .tool-card h2{margin-top:22px;font-size:1.75rem}
@@ -76,6 +92,6 @@ const tools = [
 .methodology{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;padding:38px;border-radius:28px;background:var(--green-950);color:white}
 .methodology h2{color:white}
 .methodology>div:last-child{display:grid;gap:14px;color:rgba(255,255,255,.76);align-content:center}
-@media(max-width:900px){.tools-grid{grid-template-columns:1fr}.tool-card{min-height:0}.methodology{grid-template-columns:1fr;gap:20px}}
+@media(max-width:900px){.tools-grid{grid-template-columns:1fr}.tool-card,.tool-card--featured{grid-column:auto;min-height:0}.methodology{grid-template-columns:1fr;gap:20px}}
 @media(max-width:640px){.tool-card{padding:24px;border-radius:22px}.methodology{padding:26px 22px;border-radius:22px}}
 </style>

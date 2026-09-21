@@ -1,0 +1,330 @@
+export const plannerDestinations = {
+  'Hanoi': {
+    href:'/destinationer/hanoi/',
+    region:'Nordvietnam',
+    climate:'north',
+    summary:'Mad, historie, søer og den bedste første base i nord.',
+  },
+  'Ninh Binh': {
+    href:'/destinationer/ninh-binh/',
+    region:'Nordvietnam',
+    climate:'north',
+    summary:'Kalkstenslandskab, bådtur og cykling uden endnu en storby.',
+  },
+  'Ha Long Bay': {
+    href:'/destinationer/ha-long-bay/',
+    region:'Nordvietnam',
+    climate:'north',
+    summary:'Cruise og karstlandskab; én nat giver mere mening end mange hurtige stop.',
+  },
+  'Sapa': {
+    href:'/destinationer/sapa/',
+    region:'Nordvietnam',
+    climate:'northMountain',
+    summary:'Trekking, bjerge og køligere luft — men ekstra transporttid.',
+  },
+  'Hoi An': {
+    href:'/destinationer/hoi-an/',
+    region:'Centralvietnam',
+    climate:'central',
+    summary:'Mad, cykling, gammel by og strand i et kompakt område.',
+  },
+  'Hue': {
+    href:'/destinationer/hue/',
+    region:'Centralvietnam',
+    climate:'central',
+    summary:'Historie, kejserby og et roligere kulturstop.',
+  },
+  'Nha Trang': {
+    href:'/destinationer/nha-trang/',
+    region:'Sydcentral Vietnam',
+    climate:'southCentral',
+    summary:'Strand, snorkling og dykning med rigtig by lige bag kysten.',
+  },
+  'Da Lat': {
+    href:'/destinationer/da-lat/',
+    region:'Det centrale højland',
+    climate:'daLat',
+    summary:'Køligere klima, natur og en god kontrast til kyst og storby.',
+  },
+  'Ho Chi Minh City': {
+    href:'/destinationer/ho-chi-minh-city/',
+    region:'Sydvietnam',
+    climate:'south',
+    summary:'Street food, storby, historie og det naturlige transportknudepunkt i syd.',
+  },
+  'Mekong Delta': {
+    href:'/destinationer/ho-chi-minh-city/mekong-delta/',
+    region:'Sydvietnam',
+    climate:'south',
+    summary:'Floder, markeder og landsbyliv; bedst når du giver området mere end et fotostop.',
+  },
+  'Phu Quoc': {
+    href:'/destinationer/phu-quoc/',
+    region:'Sydvietnam',
+    climate:'phuQuoc',
+    summary:'Strand, snorkling og rolige slutdage — stærkest i den tørre sæson.',
+  },
+};
+
+export const climateByMonth = {
+  north: {
+    1:['mixed','Køligt og ofte diset. Godt til by og mad; mindre sikkert til klassisk Ha Long-udsigt.'],
+    2:['mixed','Stadig køligt og til tider gråt, især tidligt på dagen.'],
+    3:['good','Mildere temperaturer og en stærk måned til en nordlig rundrejse.'],
+    4:['good','Varmere, ofte klart og godt til Hanoi, Ninh Binh og Ha Long.'],
+    5:['mixed','Varmt og fugtigt; kraftigere byger begynder at fylde mere.'],
+    6:['weather','Varmt, fugtigt og vådere. Naturdage kræver mere fleksibilitet.'],
+    7:['weather','Regnfuld sommer; bjerg- og bådplaner er mere vejrafhængige.'],
+    8:['weather','Fortsat varm og våd periode med risiko for kraftig regn.'],
+    9:['good','En stærk måned med køligere, tørrere og ofte klarere vejr.'],
+    10:['good','Behageligt til både by, natur og aktive dage.'],
+    11:['good','Køligt til mildt og ofte godt til en nordlig rute.'],
+    12:['mixed','Mere vinterligt, køligt og til tider diset.'],
+  },
+  northMountain: {
+    1:['weather','Koldt, dis og begrænset udsigt kan fylde i bjergene.'],
+    2:['weather','Stadig køligt og udsigtsmæssigt ustabilt.'],
+    3:['mixed','Bedre temperaturer, men bjergvejr kan stadig skifte hurtigt.'],
+    4:['good','God balance mellem temperatur, trekking og udsigt.'],
+    5:['mixed','Grønt og varmt, men vådere.'],
+    6:['weather','Regn og glatte stier gør trekking mere vejrafhængig.'],
+    7:['weather','Våd bjergsommer; planlæg med fleksibilitet.'],
+    8:['weather','Høj regnrisiko i bjergene.'],
+    9:['good','Stærk trekkingmåned med mere stabilt vejr.'],
+    10:['good','En af de bedste måneder til Sapa og nordlige bjerge.'],
+    11:['good','Klarere og køligere; godt til trekking hvis du pakker varmt.'],
+    12:['weather','Koldt og ofte tåget.'],
+  },
+  central: {
+    1:['mixed','Kan stadig være køligt og vådt i Hue/Hoi An.'],
+    2:['mixed','Overgang mod tørrere sæson.'],
+    3:['good','Stærk måned til Hoi An, Da Nang og Hue.'],
+    4:['good','Tørt, varmt og godt til kombinationen by + strand.'],
+    5:['good','Varmt og generelt stærkt til kysten.'],
+    6:['good','Solrigt og varmt; planlæg pauser midt på dagen.'],
+    7:['good','God kystmåned, men meget varm.'],
+    8:['mixed','Varmt; senere på måneden bliver vejret mere ustabilt.'],
+    9:['weather','Regn- og stormsæsonen begynder at fylde mere.'],
+    10:['weather','Højere risiko for kraftig regn og oversvømmelser.'],
+    11:['weather','Centralvietnam kan stadig være markant vådt.'],
+    12:['weather','Hoi An/Hue kan fortsat være våde og grå.'],
+  },
+  southCentral: {
+    1:['good','Tørt og godt til Nha Trang-kysten.'],
+    2:['good','Stærk strandmåned.'],
+    3:['good','Tørt, varmt og godt til aktiviteter på vandet.'],
+    4:['good','Stærk måned til Nha Trang.'],
+    5:['good','Varmt og generelt godt til kysten.'],
+    6:['good','God sommermåned til strand og vand.'],
+    7:['good','Varmt og ofte godt til kysten.'],
+    8:['good','Fortsat stærk i forhold til mange andre strandregioner.'],
+    9:['mixed','Mere skiftende vejr.'],
+    10:['weather','Regn og uroligt hav kan fylde mere.'],
+    11:['weather','Mere vejrafhængig periode.'],
+    12:['mixed','Forholdene forbedres gradvist, men kan stadig være ustabile.'],
+  },
+  south: {
+    1:['good','Tørt og varmt — stærkt til Ho Chi Minh City og Mekong.'],
+    2:['good','Tørt og varmt.'],
+    3:['good','Tørt, men varmt; start sightseeing tidligt.'],
+    4:['good','Meget varmt, men stadig relativt tørt.'],
+    5:['mixed','Regntiden begynder; ofte byger frem for heldagsregn.'],
+    6:['mixed','Varm regntid med eftermiddagsbyger.'],
+    7:['mixed','Regntid, men storby og mad fungerer stadig fint.'],
+    8:['mixed','Varmt og fugtigt med byger.'],
+    9:['mixed','Fortsat regntid.'],
+    10:['mixed','Regntiden er på vej ud.'],
+    11:['mixed','Overgang mod tør sæson.'],
+    12:['good','Tørt og varmt — meget stærkt til syd.'],
+  },
+  phuQuoc: {
+    1:['good','Klassisk tør strandmåned.'],
+    2:['good','En af de mest stabile strandmåneder.'],
+    3:['good','Solrigt og varmt.'],
+    4:['good','Fortsat stærk, men varmere.'],
+    5:['mixed','Regn og mere uroligt hav bliver mere sandsynligt.'],
+    6:['mixed','Mere regn; båd- og stranddage kræver fleksibilitet.'],
+    7:['weather','En af de vådere måneder på øen.'],
+    8:['weather','Vådt og mere usikkert til snorkling/båd.'],
+    9:['weather','Typisk blandt de mest regnfulde måneder.'],
+    10:['mixed','Overgang mod tørrere sæson.'],
+    11:['good','Tørre forhold vender normalt tilbage.'],
+    12:['good','Stærk tør strandmåned.'],
+  },
+  daLat: {
+    1:['good','Køligt, tørt og godt til natur og caféer.'],
+    2:['good','Stærk måned i højlandet.'],
+    3:['good','Tørt og mildt.'],
+    4:['mixed','Varmere og mere skiftende.'],
+    5:['mixed','Regnen begynder at fylde mere.'],
+    6:['weather','Våd periode i højlandet.'],
+    7:['weather','Regnfuldt; udendørsplaner er mere usikre.'],
+    8:['weather','Fortsat våd periode.'],
+    9:['weather','Regn kan fylde meget.'],
+    10:['weather','Stadig høj risiko for regn.'],
+    11:['mixed','Overgang mod tørrere forhold.'],
+    12:['good','Køligt og tørrere.'],
+  },
+};
+
+const stop = (name, days, why) => ({ name, days, why });
+
+export const tripPlans = [
+  {
+    key:'10-balanced', days:10, label:'Klassisk første rejse', tags:['kultur','mad','natur'], travelers:['par','solo'], pace:['balanceret'], budget:2,
+    stops:[
+      stop('Hanoi',3,'Start med mad, historie og et par rolige dage efter flyrejsen.'),
+      stop('Ninh Binh',2,'Natur og cykling uden lang omvej fra Hanoi.'),
+      stop('Hoi An',3,'Kompakt base til mad, cykling og Centralvietnam.'),
+      stop('Ho Chi Minh City',2,'Afslut med storby og nem international afrejse.'),
+    ],
+  },
+  {
+    key:'10-beach', days:10, label:'Kort rejse med strand', tags:['strand','mad'], travelers:['par','familie'], pace:['rolig','balanceret'], budget:3,
+    stops:[
+      stop('Hanoi',3,'Nordvietnamesisk mad og kultur uden at pakke for meget ind.'),
+      stop('Hoi An',3,'Gammel by, mad og mulighed for An Bang.'),
+      stop('Phu Quoc',4,'Fire rigtige stranddage i stedet for endnu en hurtig storby.'),
+    ],
+  },
+  {
+    key:'10-food', days:10, label:'Mad & byliv', tags:['mad','kultur'], travelers:['par','solo'], pace:['balanceret'], budget:2,
+    stops:[
+      stop('Hanoi',3,'Street food, kaffe og den stærkeste nordlige madbase.'),
+      stop('Hoi An',4,'Regional mad, marked og tid til madlavningskursus uden stress.'),
+      stop('Ho Chi Minh City',3,'Sydvietnamesisk mad og storbyenergi.'),
+    ],
+  },
+  {
+    key:'10-active', days:10, label:'Aktiv nord + central', tags:['aktiv','natur'], travelers:['par','solo'], pace:['aktiv'], budget:2,
+    stops:[
+      stop('Hanoi',2,'Land blødt og brug morgenen ved søerne.'),
+      stop('Sapa',3,'Trekking er turens hovedaktivitet, ikke et ekstra fotostop.'),
+      stop('Ninh Binh',2,'Flad cykling og kalkstenslandskab.'),
+      stop('Hoi An',3,'Cykling, strand og en roligere afslutning.'),
+    ],
+  },
+  {
+    key:'10-family', days:10, label:'Familie med færre skift', tags:['strand','kultur'], travelers:['familie'], pace:['rolig'], budget:3,
+    stops:[
+      stop('Hanoi',3,'Tid til jetlag, korte dage og hotel med central placering.'),
+      stop('Hoi An',4,'Pool, korte afstande, mad og mulighed for strand.'),
+      stop('Phu Quoc',3,'Slut med lette dage uden flere store udflugter.'),
+    ],
+  },
+
+  {
+    key:'14-balanced', days:14, label:'Klassisk Vietnam på 2 uger', tags:['kultur','mad','natur'], travelers:['par','solo'], pace:['balanceret'], budget:2,
+    stops:[
+      stop('Hanoi',3,'En stærk startbase med mad og historie.'),
+      stop('Ninh Binh',2,'To nætter giver naturen plads uden dagsturspres.'),
+      stop('Ha Long Bay',2,'Én cruiseovernatning plus transportdag omkring den.'),
+      stop('Hoi An',4,'Fire nætter giver både gammel by, mad, cykling og pause.'),
+      stop('Ho Chi Minh City',3,'Afslut med storby, historie og evt. Cu Chi.'),
+    ],
+  },
+  {
+    key:'14-beach', days:14, label:'Kultur + rigtig strandtid', tags:['strand','mad'], travelers:['par','familie'], pace:['rolig','balanceret'], budget:3,
+    stops:[
+      stop('Hanoi',3,'Behold én stor kulturbase i nord.'),
+      stop('Hoi An',4,'Mad, gammel by og nogle timer ved stranden.'),
+      stop('Ho Chi Minh City',2,'Kort storbystop og logistisk bro til øen.'),
+      stop('Phu Quoc',5,'Fem nætter gør stranddelen til en reel ferieblok.'),
+    ],
+  },
+  {
+    key:'14-active', days:14, label:'Trekking, natur og cykling', tags:['aktiv','natur'], travelers:['par','solo'], pace:['aktiv'], budget:2,
+    stops:[
+      stop('Hanoi',2,'Kort landing og aktiv morgen ved søerne.'),
+      stop('Sapa',3,'To fulde trekkingdage giver transporten mening.'),
+      stop('Ninh Binh',2,'Cykling og landskab i lavlandet.'),
+      stop('Hoi An',4,'Cykling, strand og recovery mellem aktive dage.'),
+      stop('Ho Chi Minh City',3,'Storbyafslutning og nem international flyvning.'),
+    ],
+  },
+  {
+    key:'14-family', days:14, label:'Familierute med få hotelskift', tags:['strand','kultur','mad'], travelers:['familie'], pace:['rolig'], budget:3,
+    stops:[
+      stop('Hanoi',3,'Tre nætter gør ankomsten mindre presset.'),
+      stop('Hoi An',4,'Familievenlig base med pool, mad og strand tæt på.'),
+      stop('Ho Chi Minh City',2,'Kort stop i syd uden at overfylde programmet.'),
+      stop('Phu Quoc',5,'Fem rolige slutnætter med strand og pool.'),
+    ],
+  },
+  {
+    key:'14-food', days:14, label:'Mad, markeder og sydlig kontrast', tags:['mad','kultur'], travelers:['par','solo'], pace:['balanceret'], budget:2,
+    stops:[
+      stop('Hanoi',3,'Street food, kaffe og nordlige klassikere.'),
+      stop('Hoi An',4,'Cao lầu, mì Quảng og madlavning med tid til at gentage favoritter.'),
+      stop('Ho Chi Minh City',4,'Stor nok blok til madområder og moderne byliv.'),
+      stop('Mekong Delta',3,'To fulde dage giver mere end en kort bådtur fra byen.'),
+    ],
+  },
+
+  {
+    key:'21-balanced', days:21, label:'Hele landet uden konstant hast', tags:['kultur','mad','natur','strand'], travelers:['par','solo'], pace:['balanceret'], budget:3,
+    stops:[
+      stop('Hanoi',3,'Land roligt og brug byen som nordlig base.'),
+      stop('Ninh Binh',2,'Natur med en hel dag uden returtransport.'),
+      stop('Ha Long Bay',2,'Cruiseblok uden at presse samme dag som næste fly.'),
+      stop('Hoi An',4,'Centralvietnam får tid nok til både kultur og strand.'),
+      stop('Ho Chi Minh City',3,'Sydlig storbybase.'),
+      stop('Mekong Delta',2,'Kort overnatning giver mere lokal rytme end en ren dagstur.'),
+      stop('Phu Quoc',5,'Afslut med fem rolige stranddage.'),
+    ],
+  },
+  {
+    key:'21-beach', days:21, label:'Kyst & strand med færre museumsdage', tags:['strand','natur'], travelers:['par','familie'], pace:['rolig'], budget:3,
+    stops:[
+      stop('Hanoi',3,'Behold en tydelig kulturstart.'),
+      stop('Hoi An',4,'By + An Bang i samme base.'),
+      stop('Nha Trang',4,'Mere vand, snorkling og dykning.'),
+      stop('Ho Chi Minh City',3,'Tre nætter giver kontrast uden at tage over.'),
+      stop('Phu Quoc',7,'En hel uge gør stranddelen værd at flyve efter.'),
+    ],
+  },
+  {
+    key:'21-active', days:21, label:'Aktiv rejse med bjerge og højland', tags:['aktiv','natur'], travelers:['par','solo'], pace:['aktiv'], budget:2,
+    stops:[
+      stop('Hanoi',2,'Kort landing før nordlige aktiviteter.'),
+      stop('Sapa',4,'Tre aktive dage gør den lange transport rimelig.'),
+      stop('Ninh Binh',2,'Cykling, Hang Mua og båd.'),
+      stop('Ha Long Bay',2,'Kajak/cruise som aktiv pause.'),
+      stop('Hoi An',4,'Cykling, strand og recovery.'),
+      stop('Da Lat',3,'Køligere højland og natur.'),
+      stop('Ho Chi Minh City',4,'Afslut med mad og storby uden mere langdistancehop.'),
+    ],
+  },
+  {
+    key:'21-family', days:21, label:'Lang familierute med lange baser', tags:['strand','mad','kultur'], travelers:['familie'], pace:['rolig'], budget:3,
+    stops:[
+      stop('Hanoi',3,'Jetlag-venlig start med korte udflugter.'),
+      stop('Ninh Binh',2,'Natur uden fly.'),
+      stop('Hoi An',5,'Lang base med pool, strand og korte aktiviteter.'),
+      stop('Ho Chi Minh City',3,'Storby med mulighed for hotelpause midt på dagen.'),
+      stop('Phu Quoc',8,'Lang slutbase uden nye hotelskift.'),
+    ],
+  },
+  {
+    key:'21-food', days:21, label:'Madrejse fra nord til syd', tags:['mad','kultur'], travelers:['par','solo'], pace:['balanceret'], budget:2,
+    stops:[
+      stop('Hanoi',4,'Tid til både klassikere og mindre madhjørner.'),
+      stop('Ninh Binh',2,'Naturpause mellem madbyerne.'),
+      stop('Hoi An',5,'Regional mad, marked og madlavning.'),
+      stop('Ho Chi Minh City',5,'Fem nætter giver plads til flere kvarterer og aftener.'),
+      stop('Mekong Delta',2,'Frugt, markeder og lokal madkultur.'),
+      stop('Phu Quoc',3,'Kort strandafslutning med seafood.'),
+    ],
+  },
+];
+
+export const plannerInterests = [
+  ['kultur','Kultur','🏛️'],
+  ['mad','Mad','🍜'],
+  ['natur','Natur','🌿'],
+  ['strand','Strand','🏝️'],
+  ['aktiv','Aktiv ferie','🥾'],
+];
+
+export const monthNames = ['Januar','Februar','Marts','April','Maj','Juni','Juli','August','September','Oktober','November','December'];

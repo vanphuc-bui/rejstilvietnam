@@ -4,19 +4,29 @@ Last reviewed: 21 September 2026
 
 This file exists so future editors/agents can promote RejsTilVietnam.dk without resorting to spam, fake traffic, link exchanges or low-quality directory submissions.
 
-## The three linkable assets
+## The linkable assets
 
-1. **Vietnam route map**
+1. **Vietnam Trip Planner**
+   - https://rejstilvietnam.dk/vaerktoejer/vietnam-trip-planner/
+   - Shareable state: days, month, traveller type, pace, budget and interests live in the URL.
+   - Best outreach intent: “what route fits us?”, family/first-trip planning, July/October itinerary, active vs beach itinerary.
+
+2. **Vietnam Transport Matrix**
+   - https://rejstilvietnam.dk/vaerktoejer/transport-matrix/
+   - Deep links: `?fra=Hanoi&til=Ninh%20Binh` etc.
+   - Best outreach intent: “how long between X and Y?”, train vs flight, realistic transfer time, itinerary feasibility.
+
+3. **Vietnam route map**
    - https://rejstilvietnam.dk/vaerktoejer/vietnam-rutekort/
    - Deep links: `?rute=10`, `?rute=14`, `?rute=21`
    - Best outreach intent: itinerary, first trip, north-to-south route, “how many stops?”
 
-2. **Vietnam budget calculator**
+4. **Vietnam budget calculator**
    - https://rejstilvietnam.dk/vaerktoejer/vietnam-budgetberegner/
    - The calculator can copy a URL containing the exact scenario (people, days, hotel, food, transport, activities, flights, buffer and planning FX rate).
    - Best outreach intent: “how much should I save?”, backpacking budget, family budget, 2/3/4-week trip.
 
-3. **Vietnam climate planner**
+5. **Vietnam climate planner**
    - https://rejstilvietnam.dk/vaerktoejer/vietnam-vejrhjaelp/
    - Deep link: `?maaned=1` through `?maaned=12`
    - Best outreach intent: school holidays, “Vietnam in July/October?”, north vs central vs south, beach weather.

@@ -71,6 +71,8 @@ const groups = [
     title:'Gratis værktøjer',
     links:[
       ['/vaerktoejer/','Vietnam-værktøjer'],
+      ['/vaerktoejer/vietnam-trip-planner/','Vietnam Trip Planner: byg en personlig rute'],
+      ['/vaerktoejer/transport-matrix/','Transport Matrix: tid, pris og transportvalg'],
       ['/vaerktoejer/vietnam-rutekort/','Vietnam rutekort: 10, 14 og 21 dage'],
       ['/vaerktoejer/vietnam-budgetberegner/','Vietnam budgetberegner i DKK og VND'],
       ['/vaerktoejer/vietnam-vejrhjaelp/','Vejrplanlægger: hvornår skal man rejse hvor?'],
@@ -104,7 +106,7 @@ function tagsFor(href, label, groupTitle) {
   if (/mad|kaffe|street food/.test(haystack)) tags.push('mad');
   if (/budget|pris|penge|dkk|vnd/.test(haystack)) tags.push('budget');
   if (/vejr|rejsetid|måned|maaned/.test(haystack)) tags.push('vejr');
-  if (/rute|rejseplan|10 dage|14 dage|21 dage/.test(haystack)) tags.push('rute');
+  if (/rute|rejseplan|trip planner|10 dage|14 dage|21 dage/.test(haystack)) tags.push('rute');
   if (/strand/.test(haystack)) tags.push('strand');
   if (/aktiv|trekking|snork|dykning|vandsport|øhop|øtur|o-hop|o-ture|kajak|cykl|vandring/.test(haystack)) tags.push('aktiv');
   if (/hotel|hvor skal man bo|hvor-skal-man-bo/.test(haystack)) tags.push('hotel');
