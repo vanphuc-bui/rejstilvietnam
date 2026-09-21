@@ -44,7 +44,7 @@ function sizedUrl(input, width) {
         .join(', ');
       return (
         <article class="affiliate-activity-card">
-          <a class="affiliate-media" href={item.href} target="_blank" rel="sponsored noopener noreferrer" aria-label={`${item.title} – se hos GetYourGuide`}>
+          <a class="affiliate-media" href={item.href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate-provider="getyourguide" data-affiliate-placement="activity-card-image" aria-label={`${item.title} – se hos GetYourGuide`}>
             <div class="affiliate-media-fallback" aria-hidden="true">Vietnam</div>
             <img
               src={item.image}
@@ -79,7 +79,7 @@ function sizedUrl(input, width) {
                 </strong>
                 {item.priceNote && <small>{item.priceNote}</small>}
               </div>
-              <a class="affiliate-button" href={item.href} target="_blank" rel="sponsored noopener noreferrer">
+              <a class="affiliate-button" href={item.href} target="_blank" rel="sponsored noopener noreferrer" data-affiliate-provider="getyourguide" data-affiliate-placement="activity-card-cta">
                 {item.cta ?? 'Se tur og pris'} <span aria-hidden="true">→</span>
               </a>
             </div>
