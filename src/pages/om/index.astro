@@ -10,8 +10,11 @@ const peopleStructuredData = {
   about: [
     {
       '@type': 'Person',
+      '@id': new URL('/om/van-phuc-bui/#person', Astro.site ?? Astro.url.origin).toString(),
       name: 'Van-Phuc Bui',
-      url: 'https://vanphucbui.com/',
+      url: new URL('/om/van-phuc-bui/', Astro.site ?? Astro.url.origin).toString(),
+      image: new URL('/images/om/van-phuc-thao-nhu-danmark.webp', Astro.site ?? Astro.url.origin).toString(),
+      sameAs: ['https://vanphucbui.com/'],
       jobTitle: 'Medstifter og ansvarlig for research og udvikling',
       worksFor: {
         '@type': 'Organization',
@@ -20,7 +23,10 @@ const peopleStructuredData = {
     },
     {
       '@type': 'Person',
-      name: 'Lê Thảo Như',
+      '@id': new URL('/om/le-huynh-nhu-thao/#person', Astro.site ?? Astro.url.origin).toString(),
+      name: 'Lê Huỳnh Như Thảo',
+      url: new URL('/om/le-huynh-nhu-thao/', Astro.site ?? Astro.url.origin).toString(),
+      image: new URL('/images/om/thao-nhu-phu-quoc.webp', Astro.site ?? Astro.url.origin).toString(),
       jobTitle: 'Medstifter og rejsefaglig redaktør',
       worksFor: {
         '@type': 'Organization',
@@ -33,9 +39,9 @@ const peopleStructuredData = {
 
 <BaseLayout
   title="Om os - menneskene bag RejsTilVietnam.dk"
-  description="Mød Van-Phuc Bui og Lê Thảo Như, som står bag RejsTilVietnam.dk og kombinerer mange års erfaring fra Vietnam, rejsebranchen og livet i Danmark."
+  description="Mød Van-Phuc Bui og Lê Huỳnh Như Thảo, som står bag RejsTilVietnam.dk og kombinerer mange års erfaring fra Vietnam, rejsebranchen og livet i Danmark."
   image="/images/om/van-phuc-thao-nhu-danmark.webp"
-  authorName="Van-Phuc Bui og Lê Thảo Như"
+  authorName="Van-Phuc Bui og Lê Huỳnh Như Thảo"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(peopleStructuredData)}></script>
 
@@ -45,7 +51,7 @@ const peopleStructuredData = {
         <p class="eyebrow">Menneskene bag siden</p>
         <h1>Vi hjælper danskere med at opleve Vietnam bedre.</h1>
         <p class="lead">
-          RejsTilVietnam.dk drives af os, Van-Phuc Bui og Lê Thảo Như. Vi har boet i Vietnam i mange år,
+          RejsTilVietnam.dk drives af os, Van-Phuc Bui og Lê Huỳnh Như Thảo. Vi har boet i Vietnam i mange år,
           bor nu i Danmark og har både boet og rejst i flere lande. Derfor kender vi ikke kun Vietnam
           indefra - vi forstår også de spørgsmål og forventninger, danske rejsende typisk har.
         </p>
@@ -61,11 +67,11 @@ const peopleStructuredData = {
           src="/images/om/van-phuc-thao-nhu-danmark.webp"
           width="1200"
           height="1600"
-          alt="Van-Phuc Bui og Lê Thảo Như sammen i Danmark"
+          alt="Van-Phuc Bui og Lê Huỳnh Như Thảo sammen i Danmark"
           fetchpriority="high"
         />
         <figcaption>
-          <strong>Van-Phuc & Thảo Như</strong>
+          <strong>Van-Phuc & Như Thảo</strong>
           <span>Vietnam i bagagen, Danmark som hjem</span>
         </figcaption>
       </figure>
@@ -116,8 +122,8 @@ const peopleStructuredData = {
             opbygning af guiderne, teknisk udvikling og for at gøre komplekse oplysninger overskuelige,
             så læseren lettere kan træffe et valg.
           </p>
-          <a class="person-link" href="https://vanphucbui.com/" target="_blank" rel="noopener">
-            Se Van-Phucs personlige hjemmeside <span aria-hidden="true">↗</span>
+          <a class="person-link" href="/om/van-phuc-bui/">
+            Se forfatterprofil og rolle <span aria-hidden="true">→</span>
           </a>
         </article>
 
@@ -126,13 +132,16 @@ const peopleStructuredData = {
             <span class="person-monogram" aria-hidden="true">TN</span>
             <span class="person-role">Turisme · lokalkendskab · redaktion</span>
           </div>
-          <h3>Lê Thảo Như</h3>
+          <h3>Lê Huỳnh Như Thảo</h3>
           <p class="person-title">Medstifter og rejsefaglig redaktør</p>
           <p>
-            Thảo Như er uddannet inden for turisme i Vietnam og har flere års professionel erfaring fra
+            Như Thảo er uddannet inden for turisme i Vietnam og har flere års professionel erfaring fra
             rejsebranchen. Hun flyttede til Danmark for fire år siden og bidrager med både faglig viden,
             lokale perspektiver og forståelse for det, danske rejsende gerne vil vide på forhånd.
           </p>
+          <a class="person-link person-link--light" href="/om/le-huynh-nhu-thao/">
+            Se reviewerprofil og faglig rolle <span aria-hidden="true">→</span>
+          </a>
         </article>
       </div>
     </div>
@@ -146,16 +155,16 @@ const peopleStructuredData = {
           width="1100"
           height="1409"
           loading="lazy"
-          alt="Lê Thảo Như ved Vietnams kyst"
+          alt="Lê Huỳnh Như Thảo ved Vietnams kyst"
         />
-        <figcaption>Thảo Như på en rejse langs Vietnams kyst</figcaption>
+        <figcaption>Như Thảo på en rejse langs Vietnams kyst</figcaption>
       </figure>
 
       <div class="expertise-copy">
         <p class="eyebrow">Erfaring, der kan bruges</p>
         <h2>Fra rejsebranchen i Vietnam til hverdagen i Danmark.</h2>
         <p>
-          Thảo Nhưs uddannelse og arbejdserfaring betyder, at vores guider ikke alene bygger på personlige
+          Như Thảos uddannelse og arbejdserfaring betyder, at vores guider ikke alene bygger på personlige
           rejseoplevelser. Hun kan vurdere råd med et fagligt blik og opdage, når noget lyder godt på papiret,
           men ikke er særligt praktisk for den rejsende.
         </p>
@@ -265,6 +274,7 @@ const peopleStructuredData = {
   .person-card > p:last-of-type { margin-top: 20px; color: #46534d; }
   .person-card--accent > p:last-of-type { color: rgba(255,255,255,.76); }
   .person-link { display: inline-flex; gap: 7px; margin-top: 24px; color: var(--green-700); font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+  .person-link--light { color:#b8dec9; }
 
   .expertise-grid { display: grid; grid-template-columns: minmax(300px, .78fr) minmax(0, 1.22fr); gap: 76px; align-items: center; }
   .about-portrait--travel { aspect-ratio: 4 / 5; border-radius: 120px 30px 30px 30px; overflow: hidden; background: var(--green-100); }

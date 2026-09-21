@@ -164,10 +164,53 @@ for (const file of publicPages) {
   if (h1s.length !== 1) addIssue({ severity: 'error', category: 'content', route, message: `Expected exactly one H1, found ${h1s.length}.`, impact: 'high' });
 
   const jsonLdBlocks = [...html.matchAll(/<script\b[^>]*type=(?:"application\/ld\+json"|'application\/ld\+json')[^>]*>([\s\S]*?)<\/script>/gi)];
+  const structuredNodes = [];
   if (jsonLdBlocks.length === 0) addIssue({ category: 'structured-data', route, message: 'No JSON-LD block found.' });
   for (const [, json] of jsonLdBlocks) {
-    try { JSON.parse(decodeEntities(json)); }
-    catch { addIssue({ severity: 'error', category: 'structured-data', route, message: 'Invalid JSON-LD.', impact: 'high' }); }
+    try {
+      const parsed = JSON.parse(decodeEntities(json));
+      if (Array.isArray(parsed?.['@graph'])) structuredNodes.push(...parsed['@graph']);
+      else structuredNodes.push(parsed);
+    } catch {
+      addIssue({ severity: 'error', category: 'structured-data', route, message: 'Invalid JSON-LD.', impact: 'high' });
+    }
+  }
+
+  const typeIncludes = (node, type) => {
+    const value = node?.['@type'];
+    return Array.isArray(value) ? value.includes(type) : value === type;
+  };
+  const articleNode = structuredNodes.find((node) => ['Article', 'BlogPosting', 'NewsArticle'].some((type) => typeIncludes(node, type)));
+  if (articleNode) {
+    if (!articleNode.datePublished) {
+      addIssue({ severity: 'error', category: 'structured-data', route, message: 'Article is missing factual datePublished metadata.', impact: 'medium', effort: 'tiny' });
+    }
+    if (!articleNode.dateModified) {
+      addIssue({ severity: 'error', category: 'structured-data', route, message: 'Article is missing factual dateModified metadata.', impact: 'medium', effort: 'tiny' });
+    }
+    if (articleNode.datePublished && articleNode.dateModified && articleNode.dateModified < articleNode.datePublished) {
+      addIssue({ severity: 'error', category: 'structured-data', route, message: 'Article dateModified is earlier than datePublished.', impact: 'medium', effort: 'tiny' });
+    }
+
+    const authorRef = articleNode.author?.['@id'];
+    const authorPerson = authorRef
+      ? structuredNodes.find((node) => node?.['@id'] === authorRef && typeIncludes(node, 'Person'))
+      : null;
+    if (!authorPerson?.name || !authorPerson?.url) {
+      addIssue({ severity: 'error', category: 'structured-data', route, message: 'Article author must resolve to a named Person with a profile URL.', impact: 'high', effort: 'small' });
+    }
+
+    const webpageRef = articleNode.mainEntityOfPage?.['@id'];
+    const webpageNode = webpageRef
+      ? structuredNodes.find((node) => node?.['@id'] === webpageRef && typeIncludes(node, 'WebPage'))
+      : structuredNodes.find((node) => typeIncludes(node, 'WebPage'));
+    const reviewerRef = webpageNode?.reviewedBy?.['@id'];
+    const reviewerPerson = reviewerRef
+      ? structuredNodes.find((node) => node?.['@id'] === reviewerRef && typeIncludes(node, 'Person'))
+      : null;
+    if (!reviewerPerson?.name || !reviewerPerson?.url) {
+      addIssue({ severity: 'error', category: 'structured-data', route, message: 'Article WebPage must resolve reviewedBy to a named Person with a profile URL.', impact: 'high', effort: 'small' });
+    }
   }
 
   for (const anchor of anchors) {

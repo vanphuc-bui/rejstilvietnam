@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { editorialPeople } from '../../../data/editorialMetadata.js';
+
+const person = editorialPeople.reviewer;
+const personUrl = new URL(person.url, Astro.site ?? Astro.url.origin).toString();
+const profileData = {
+  '@context':'https://schema.org',
+  '@type':'ProfilePage',
+  name:`${person.name} – RejsTilVietnam.dk`,
+  url:personUrl,
+  inLanguage:'da-DK',
+  mainEntity:{
+    '@type':'Person',
+    '@id':`${personUrl}#person`,
+    name:person.name,
+    url:personUrl,
+    image:new URL(person.image, Astro.site ?? Astro.url.origin).toString(),
+    jobTitle:person.jobTitle,
+    description:person.description,
+    knowsAbout:person.knowsAbout,
+    worksFor:{
+      '@type':'Organization',
+      name:'RejsTilVietnam.dk',
+      url:new URL('/', Astro.site ?? Astro.url.origin).toString(),
+    },
+  },
+};
+---
+<BaseLayout
+  title="Lê Huỳnh Như Thảo | Rejsefaglig redaktør på RejsTilVietnam.dk"
+  description="Mød Lê Huỳnh Như Thảo, medstifter og rejsefaglig redaktør på RejsTilVietnam.dk, uddannet i turisme i Vietnam og med erfaring fra rejsebranchen."
+  image={person.image}
+  authorName={person.name}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(profileData)}></script>
+
+  <section class="profile-hero">
+    <div class="container profile-grid">
+      <div>
+        <p class="eyebrow">Faglig reviewer</p>
+        <h1>Lê Huỳnh Như Thảo</h1>
+        <p class="lead">Medstifter og rejsefaglig redaktør. Uddannet inden for turisme i Vietnam og med flere års professionel erfaring fra rejsebranchen.</p>
+        <div class="profile-tags">
+          <span>Turisme</span><span>Vietnam</span><span>Lokalkendskab</span><span>Redaktionel gennemgang</span>
+        </div>
+      </div>
+      <figure class="profile-photo">
+        <img src={person.image} width="1100" height="1409" alt="Lê Huỳnh Như Thảo ved Vietnams kyst" fetchpriority="high" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container profile-copy">
+      <div><p class="eyebrow">Faglig baggrund</p><h2>Turismefaglig viden med lokalt perspektiv.</h2></div>
+      <div>
+        <p>Như Thảo er uddannet inden for turisme i Vietnam og arbejdede i flere år professionelt i rejsebranchen, før hun flyttede til Danmark.</p>
+        <p>På RejsTilVietnam.dk gennemgår hun alle rejseguider med fokus på faglig nøjagtighed, lokale forhold, praktiske valg og på om rådene giver mening for danske rejsende.</p>
+        <p>Hun bidrager især med vurdering af destinationer, hotelområder, rejsetempo, oplevelser og de små praktiske forskelle, som ofte er svære at forstå, før man selv har rejst i Vietnam.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section profile-review">
+    <div class="container profile-copy">
+      <div><p class="eyebrow">Sådan bruges reviewet</p><h2>Ikke bare et navn i schema.</h2></div>
+      <div><p>Reviewrollen betyder, at indholdet bliver læst igennem for nøjagtighed og anvendelighed, før vi behandler det som en færdig guide. Tidsfølsomme oplysninger kobles så vidt muligt til officielle eller direkte kilder.</p><p>Research og den tekniske/redaktionelle opbygning varetages af <a href="/om/van-phuc-bui/"><strong>Van-Phuc Bui</strong></a>.</p><p><a href="/om/">Læs mere om RejsTilVietnam.dk →</a></p></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.profile-hero{padding:66px 0 54px}.profile-grid{display:grid;grid-template-columns:1.05fr .7fr;gap:64px;align-items:center}.profile-hero h1{font-size:clamp(3rem,7vw,5.5rem)}.profile-hero .lead{margin-top:22px}.profile-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}.profile-tags span{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:#fffdf8;color:var(--green-800);font-size:.82rem;font-weight:750}.profile-photo{margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:100px 30px 30px 30px;box-shadow:var(--shadow)}.profile-photo img{width:100%;height:100%;object-fit:cover}.profile-copy{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}.profile-copy>div:last-child{display:grid;gap:18px;color:#35423c}.profile-copy a{color:var(--green-700);text-decoration:underline;text-underline-offset:3px}.profile-review{background:var(--green-100)}@media(max-width:760px){.profile-grid,.profile-copy{grid-template-columns:1fr;gap:28px}.profile-photo{width:min(100%,430px);justify-self:center}.profile-hero{padding:42px 0}.profile-hero h1{font-size:clamp(2.35rem,10vw,3.35rem)}}
+</style>
