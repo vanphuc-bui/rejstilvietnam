@@ -6,7 +6,7 @@
     "intent": "Få overblik over den første Vietnamrejse",
     "entry": "/",
     "outcomes": [
-      { "type": "route", "value": "/rejseguide/rejser-til-vietnam-2026/", "maxHops": 2, "required": true },
+      { "type": "route", "value": "/rejseguide/rejser-til-vietnam/", "maxHops": 2, "required": true },
       { "type": "route", "value": "/book-rejsen/", "maxHops": 2, "required": true }
     ]
   },
