@@ -245,6 +245,8 @@ const structuredData = {
       (() => {
         const proxiedImage = (src = '') => {
           if (!/^https?:\/\//i.test(src)) return src;
+          const localPreview = ['127.0.0.1', 'localhost'].includes(window.location.hostname);
+          if (localPreview) return src;
           return '/media/remote?src=' + encodeURIComponent(src);
         };
 
