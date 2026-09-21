@@ -14,7 +14,7 @@
     "audit:visuals": "node scripts/audit-rendered-visuals.mjs",
     "audit:site": "node scripts/audit-site.mjs",
     "audit:browser": "node scripts/audit-browser.mjs",
-    "audit:worker": "wrangler deploy --dry-run --outdir .wrangler-dry-run"
+    "audit:worker": "node scripts/audit-worker.mjs && wrangler deploy --dry-run --outdir .wrangler-dry-run"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
