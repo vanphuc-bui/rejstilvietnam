@@ -5,6 +5,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
 import { hubVisuals } from '../../../data/hubVisuals.js';
+import VietnamRouteMap from '../../../components/VietnamRouteMap.astro';
 
 const stops = [
   { day:'Dag 1-3', place:'Hanoi', nights:'3 dage', text:'Land, få rytmen efter flyveturen og brug dagene på Old Quarter, Hoan Kiem, mad og et par historiske stop.', link:'/destinationer/hanoi/', tip:'Bo centralt - på en kort rejse er transporttid dyr.' },
@@ -37,7 +38,7 @@ const stops = [
   </div>
   <div class="container route-video"><VideoEmbed youtubeId="NgvC-Frin1Y" title="Vietnam i levende billeder" caption="Den officielle Vietnam Tourism-video giver et hurtigt visuelt indtryk af landet; brug rejseplanen her til den praktiske rækkefølge." /></div>
 
-  <section class="section cut-section"><div class="container cut-grid"><div><p class="eyebrow">Hvad ville vi skære væk?</p><h2>Det svære er at sige nej.</h2></div><div class="card cut-card"><b>Drop Ha Long Bay</b><p>Hvis Hoi An og Ho Chi Minh City er vigtigere. Du sparer endnu et transportled og en overnatning.</p></div><div class="card cut-card"><b>Drop Ho Chi Minh City</b><p>Hvis du hellere vil have Ha Long Bay. Så kan du holde hele turen i nord + central Vietnam og flyve hjem via Da Nang/Hanoi.</p></div></div></section>
+  <section class="section cut-section"><div class="container"><div class="cut-grid"><div><p class="eyebrow">Hvad ville vi skære væk?</p><h2>Det svære er at sige nej.</h2></div><div class="card cut-card"><b>Drop Ha Long Bay</b><p>Hvis Hoi An og Ho Chi Minh City er vigtigere. Du sparer endnu et transportled og en overnatning.</p></div><div class="card cut-card"><b>Drop Ho Chi Minh City</b><p>Hvis du hellere vil have Ha Long Bay. Så kan du holde hele turen i nord + central Vietnam og flyve hjem via Da Nang/Hanoi.</p></div></div><VietnamRouteMap route="10" compact /><p class="tool-link"><a href="/vaerktoejer/vietnam-rutekort/?rute=10">Åbn rutekortet i fuld størrelse →</a></p></div></section>
 
   <section class="section section--tight"><div class="container"><ActiveTripCallout /></div></section>
 
@@ -49,6 +50,7 @@ const stops = [
 @media(max-width:800px){.route-hero-grid,.cut-grid{grid-template-columns:1fr}.facts{grid-template-columns:repeat(2,1fr)}.booking-cta{align-items:flex-start;flex-direction:column}}
 @media(max-width:520px){.facts{grid-template-columns:1fr}.stop{grid-template-columns:48px 1fr}.hero-buttons{flex-direction:column}}
 .route-visuals{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}.route-visuals :global(.section-media){margin:0}.route-video{margin-top:28px}@media(max-width:720px){.route-visuals{grid-template-columns:1fr}}
+.tool-link{text-align:center;margin-top:-8px}.tool-link a{color:var(--green-700);font-weight:850}
 </style>
 
 <style>.guide-cover-wrap{margin-top:24px;margin-bottom:22px}@media(max-width:640px){.guide-cover-wrap{margin-top:14px}}</style>

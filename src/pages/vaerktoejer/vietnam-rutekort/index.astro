@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import VietnamRouteMap from '../../../components/VietnamRouteMap.astro';
+
+const options = [
+  { key:'10', label:'10 dage', text:'4 stop · hurtigt, men realistisk', href:'/rejseplaner/vietnam-10-dage/' },
+  { key:'14', label:'14 dage', text:'5 stop · vores standard til første tur', href:'/rejseplaner/vietnam-2-uger/' },
+  { key:'21', label:'21 dage', text:'7 stop · plads til strand og langsommere tempo', href:'/rejseplaner/vietnam-3-uger/' },
+];
+
+const appStructuredData = {
+  '@context':'https://schema.org',
+  '@type':'WebApplication',
+  name:"Vietnam rutekort – 10, 14 og 21 dage",
+  description:"Gratis skematisk rutekort til at sammenligne Vietnam-rejser på 10, 14 og 21 dage.",
+  url:new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString(),
+  applicationCategory:'TravelApplication',
+  operatingSystem:'Any',
+  inLanguage:'da-DK',
+  isAccessibleForFree:true,
+};
+---
+<BaseLayout
+  title="Vietnam rutekort | 10, 14 eller 21 dage"
+  description="Sammenlign Vietnam-ruter på 10, 14 og 21 dage på ét skematisk kort. Se stop, rækkefølge og hvor meget transport hver rejseplan kræver."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appStructuredData)}></script>
+  <section class="page-hero route-tool-hero">
+    <div class="container">
+      <p class="eyebrow">Gratis rutekort</p>
+      <h1>Se forskellen på 10, 14 og 21 dage.</h1>
+      <p class="lead">Det vigtigste på en Vietnam-rundrejse er ikke at få flest stop med. Det er at se, hvor mange gange du faktisk flytter dig langt gennem landet.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="route-picker" role="group" aria-label="Vælg rutelængde">
+        {options.map((item, index) => (
+          <button
+            type="button"
+            class:list={{'route-option':true,'is-active':index === 1}}
+            data-route-option={item.key}
+            aria-pressed={index === 1 ? 'true' : 'false'}
+          >
+            <strong>{item.label}</strong>
+            <span>{item.text}</span>
+          </button>
+        ))}
+      </div>
+
+      <div class="route-panels">
+        <div data-route-panel="10" hidden>
+          <VietnamRouteMap route="10" />
+          <div class="route-summary-card">
+            <div><b>Hvem passer den til?</b><p>Dig der kun har 10 dage og hellere vil have fire gode stop end en konstant række af check-in og transport.</p></div>
+            <a class="btn btn--primary" href="/rejseplaner/vietnam-10-dage/">Se 10-dages rejseplan →</a>
+          </div>
+        </div>
+        <div data-route-panel="14">
+          <VietnamRouteMap route="14" />
+          <div class="route-summary-card">
+            <div><b>Hvem passer den til?</b><p>Førstegangsrejsende der vil opleve nord, central og syd med én klassisk naturdag og én cruiseovernatning.</p></div>
+            <a class="btn btn--primary" href="/rejseplaner/vietnam-2-uger/">Se 14-dages rejseplan →</a>
+          </div>
+        </div>
+        <div data-route-panel="21" hidden>
+          <VietnamRouteMap route="21" />
+          <div class="route-summary-card">
+            <div><b>Hvem passer den til?</b><p>Dig der vil have mere luft i programmet og slutte med flere stranddage i stedet for at presse endnu flere byer ind.</p></div>
+            <a class="btn btn--primary" href="/rejseplaner/vietnam-3-uger/">Se 21-dages rejseplan →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="share-row">
+        <button id="copy-route-link" class="btn btn--outline" type="button">Kopiér link til denne rute</button>
+        <span id="copy-route-status" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section compare-routes">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Sammenlign</p><h2>Hvad ændrer de ekstra dage?</h2></div>
+        <p>De ekstra dage bør primært købe dig færre stressede transportdage og mere tid hvert sted — ikke bare flere destinationer.</p>
+      </div>
+      <div class="compare-grid">
+        <article><span>10 dage</span><b>4 stop</b><p>Ingen Ha Long Bay i basisruten. Fokus på Hanoi, Ninh Binh, Hoi An og Ho Chi Minh City.</p></article>
+        <article><span>14 dage</span><b>5 stop</b><p>Ha Long Bay kommer med, men tempoet er stadig højt nok til, at vi ville undgå flere ekstra stop.</p></article>
+        <article><span>21 dage</span><b>7 stop</b><p>Mekong og Phu Quoc kan lægges til uden at hver anden dag bliver en transportdag.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container note-card">
+      <div>
+        <p class="eyebrow">Vigtigt</p>
+        <h2>Kortet viser rækkefølge — ikke afstand i målestok.</h2>
+      </div>
+      <p>Vietnam er langt og smalt. Derfor er et skematisk rutekort mere nyttigt til planlægning end et dekorativt kort, der får Hanoi og Ho Chi Minh City til at se tættere ud, end de føles på en reel rejse.</p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const buttons = [...document.querySelectorAll('[data-route-option]')];
+      const panels = [...document.querySelectorAll('[data-route-panel]')];
+      const copyButton = document.getElementById('copy-route-link');
+      const status = document.getElementById('copy-route-status');
+      let selected = '14';
+
+      const show = (route, updateUrl = true) => {
+        selected = ['10','14','21'].includes(route) ? route : '14';
+        buttons.forEach((button) => {
+          const active = button.dataset.routeOption === selected;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        panels.forEach((panel) => panel.hidden = panel.dataset.routePanel !== selected);
+        if (updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set('rute', selected);
+          history.replaceState({}, '', url);
+        }
+      };
+
+      buttons.forEach((button) => button.addEventListener('click', () => show(button.dataset.routeOption || '14')));
+      const initial = new URL(window.location.href).searchParams.get('rute');
+      if (initial) show(initial, false);
+
+      copyButton?.addEventListener('click', async () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('rute', selected);
+        try {
+          await navigator.clipboard.writeText(url.toString());
+          if (status) status.textContent = 'Link kopieret.';
+        } catch {
+          if (status) status.textContent = 'Kopiér adressen fra browserens adresselinje.';
+        }
+      });
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+.route-tool-hero{background:linear-gradient(145deg,#eef5f0,#f6ead7)}
+.route-picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.route-option{display:grid;gap:4px;padding:17px 18px;border:1px solid var(--border);border-radius:18px;background:#fffdf8;text-align:left;color:var(--green-950);cursor:pointer}
+.route-option strong{font-size:1.05rem}
+.route-option span{color:var(--muted);font-size:.82rem}
+.route-option.is-active{border-color:var(--green-950);background:var(--green-950);color:white}
+.route-option.is-active span{color:rgba(255,255,255,.7)}
+.route-summary-card{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:16px;padding:24px;border-radius:22px;background:var(--sand)}
+.route-summary-card p{margin-top:5px;color:#4d5852}
+.share-row{display:flex;align-items:center;gap:14px;margin-top:20px}
+.share-row span{color:var(--green-700);font-size:.85rem;font-weight:750}
+.compare-routes{background:#f5efe2}
+.compare-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.compare-grid article{padding:26px;border:1px solid var(--border);border-radius:22px;background:#fffdf8}
+.compare-grid span{color:var(--coral);font-size:.74rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.compare-grid b{display:block;margin-top:8px;color:var(--green-950);font-size:1.45rem}
+.compare-grid p{margin-top:10px;color:var(--muted)}
+.note-card{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;padding:34px;border-radius:26px;background:var(--green-100)}
+.note-card>p{align-self:center;color:#405048}
+@media(max-width:800px){.route-picker,.compare-grid,.note-card{grid-template-columns:1fr}.route-summary-card{align-items:flex-start;flex-direction:column}.route-summary-card .btn{width:100%;text-align:center}}
+@media(max-width:640px){.route-option{padding:14px}.share-row{align-items:flex-start;flex-direction:column}.share-row .btn{width:100%}}
+</style>

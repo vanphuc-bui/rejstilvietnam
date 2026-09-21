@@ -16,7 +16,7 @@ const toc = [
 ];
 const sources = [{ label: 'Vietnam Tourism - Ninh Binh', href: 'https://www.vietnam.travel/places-to-go/northern-vietnam/ninh-binh' }];
 ---
-<ArticleLayout title="Ninh Binh fra Hanoi 2026 | Dagstur eller overnatning?" description="Praktisk guide til Ninh Binh fra Hanoi med billeder og video: Trang An, Tam Coc, Hang Mua, transport og hvad du bør tjekke før booking." eyebrow="Ture & oplevelser" heading="Ninh Binh fra Hanoi: hvornår er en dagstur nok?" intro="Ninh Binh er let at nå fra Hanoi, men det er også et sted, hvor et alt for tæt program hurtigt ødelægger pointen. Vi ville vælge færre stop og mere tid ved hvert sted." toc={toc} sources={sources}>
+<ArticleLayout title="Ninh Binh dagstur fra Hanoi | Trang An og Hang Mua" description="Praktisk guide til Ninh Binh fra Hanoi med billeder og video: Trang An, Tam Coc, Hang Mua, transport og hvad du bør tjekke før booking." eyebrow="Ture & oplevelser" heading="Ninh Binh fra Hanoi: hvornår er en dagstur nok?" intro="Ninh Binh er let at nå fra Hanoi, men det er også et sted, hvor et alt for tæt program hurtigt ødelægger pointen. Vi ville vælge færre stop og mere tid ved hvert sted." toc={toc} sources={sources}>
   <SectionMedia slot="heroMedia" src={hubVisuals.tours.ninhBinh.src} alt={hubVisuals.tours.ninhBinh.alt} loading="eager" fetchpriority="high" ratio="16 / 7" />
 
   <h2 id="dagstur">Dagstur eller overnatning?</h2>
@@ -59,6 +59,18 @@ const sources = [{ label: 'Vietnam Tourism - Ninh Binh', href: 'https://www.viet
   <h2 id="tips">Praktiske tips</h2>
   <ul><li>Tag vand, solbeskyttelse og let tøj med.</li><li>Gode sko er mere nyttige end pæne sko, især hvis Hang Mua er med.</li><li>Læg ikke vigtige aftenplaner i Hanoi for tæt på forventet hjemkomst.</li><li>Hvis du overnatter, så lad være med at slæbe al bagage med, hvis dit hotel i Hanoi kan opbevare noget sikkert.</li><li>Vælg enten Trang An eller Tam Coc på en kort dag - ikke begge bare for at kunne krydse dem af.</li></ul>
 
+  <div class="day-route" aria-label="En realistisk Ninh Binh-dag">
+    <div><span>07:00</span><b>Hanoi</b><small>Afgang før trafikken bygger sig op</small></div>
+    <div><span>10:00</span><b>Trang An eller Tam Coc</b><small>Vælg én bådtur</small></div>
+    <div><span>13:00</span><b>Frokost + pause</b><small>Undgå at fylde dagen med seks korte stop</small></div>
+    <div><span>15:00</span><b>Hang Mua eller Hoa Lu</b><small>Ét sidste hovedstop</small></div>
+    <div><span>19:00</span><b>Tilbage i Hanoi</b><small>Hold aftenen fleksibel</small></div>
+  </div>
+
   <h2>Fortsæt rejsen</h2>
   <div class="link-list"><a class="link-card" href="/destinationer/hanoi/">Hanoi rejseguide <span>Se hvordan vi ville planlægge byen omkring Ninh Binh-dagen.</span></a><a class="link-card" href="/ture/halong-bay-cruise/">Ha Long Bay cruise <span>Sammenlign de to klassiske naturstop fra Hanoi.</span></a><a class="link-card" href="/rejseplaner/vietnam-2-uger/">Vietnam på 2 uger <span>Se hvorfor vi bruger Ninh Binh som dagstur på den korte rute.</span></a></div>
 </ArticleLayout>
+
+<style>
+.day-route{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:26px 0;padding:18px;border:1px solid var(--border);border-radius:20px;background:#f7f3e9}.day-route>div{padding:14px;border-radius:14px;background:#fffdf8}.day-route span{display:block;color:var(--coral);font-size:.72rem;font-weight:900}.day-route b{display:block;margin-top:5px;color:var(--green-950);font-size:.93rem}.day-route small{display:block;margin-top:5px;color:var(--muted);line-height:1.4}@media(max-width:800px){.day-route{grid-template-columns:1fr 1fr}}@media(max-width:520px){.day-route{grid-template-columns:1fr}}
+</style>

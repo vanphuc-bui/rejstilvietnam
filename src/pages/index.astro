@@ -24,6 +24,12 @@ const practical = [
   ['🚆','Transport','Læs om fly, tog, bus og transport mellem byerne.','/rejseguide/transport/'],
 ];
 
+const tools = [
+  ['🗺️','Rutekort','10, 14 eller 21 dage? Se ruterne og transporthoppene på ét skematisk kort.','/vaerktoejer/vietnam-rutekort/'],
+  ['🧮','Budgetberegner','Indtast dine egne tal og få totalen i både DKK og VND.','/vaerktoejer/vietnam-budgetberegner/'],
+  ['☀️','Vejrplanlægger','Vælg måned og sammenlign nord, central, syd og Phu Quoc.','/vaerktoejer/vietnam-vejrhjaelp/'],
+];
+
 const experiences = [
   ['Aktiv ferie','Løb, cykling og vandring','Find konkrete forslag med distance, sværhedsgrad, bedste tidspunkt og kort til startområdet.','/aktiv-ferie-i-vietnam/'],
   ['Cruise','Ha Long Bay','Dagstur eller 1 nat? Sammenlign rute, kahyt, transfer og nyere anmeldelser.','/ture/halong-bay-cruise/'],
@@ -80,6 +86,26 @@ const booking = [
     </div>
   </section>
 
+  <section class="section tools-home">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Gratis værktøjer</p><h2>Gør de tre svære valg konkrete.</h2></div>
+        <p>Sammenlign rute, budget og vejrsæson i stedet for at gætte dig frem mellem mange forskellige artikler.</p>
+      </div>
+      <div class="grid grid--3">
+        {tools.map(([icon,title,text,href]) => (
+          <a class="tool-home-card" href={href}>
+            <span>{icon}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+            <b>Åbn værktøj →</b>
+          </a>
+        ))}
+      </div>
+      <div class="all-link"><a href="/vaerktoejer/">Se alle gratis værktøjer →</a></div>
+    </div>
+  </section>
+
   <section class="section featured-guides">
     <div class="container">
       <div class="section-head"><div><p class="eyebrow">Oplevelser</p><h2>Se Vietnam i dit eget tempo.</h2></div><p>Fra morgenløb og cykling til cruise og naturdage. Vi viser både det, du kan gøre selv, og de ture hvor transport eller en lokal guide faktisk gør dagen bedre.</p></div>
@@ -132,6 +158,7 @@ const booking = [
 .plan-section{background:rgba(255,255,255,.35)}
 .plan-card{padding:30px;transition:transform .2s ease,border-color .2s ease}.plan-card:hover{transform:translateY(-3px);border-color:rgba(28,106,77,.25)}.plan-card>span{color:var(--coral);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.plan-card h3{margin-top:8px;font-size:1.7rem}.plan-card p{margin-top:10px;color:var(--muted)}.plan-card b{display:inline-block;margin-top:22px;color:var(--green-700)}.plan-card--featured{background:var(--green-950);color:white}.plan-card--featured h3{color:white}.plan-card--featured p{color:rgba(255,255,255,.72)}.plan-card--featured b{color:#f0c986}
 .practical { background: #f5efe2; }
+.tools-home{background:var(--green-950);color:white}.tools-home .section-head h2{color:white}.tools-home .section-head>p{color:rgba(255,255,255,.68)}.tools-home .eyebrow{color:#b8dec9}.tools-home .all-link a{color:#f0c986}.tool-home-card{display:flex;flex-direction:column;min-height:260px;padding:26px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(255,255,255,.08);transition:transform .2s ease,background .2s ease}.tool-home-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}.tool-home-card>span{font-size:1.7rem}.tool-home-card h3{margin-top:16px;color:white}.tool-home-card p{margin-top:9px;color:rgba(255,255,255,.7)}.tool-home-card b{margin-top:auto;padding-top:22px;color:#f0c986}
 .featured-guides { background: rgba(255,255,255,.36); }
 .guide-card { padding: 28px; transition: transform .2s ease, border-color .2s ease; }
 .guide-card:hover { transform: translateY(-3px); border-color: rgba(28,106,77,.25); }

@@ -238,7 +238,7 @@ export const phuQuocMarinePages = {
 
   'vandsport-og-aktiviteter': {
     destinationName: 'Phu Quoc',
-    title: 'Vandsport på Phu Quoc 2026 | Jetski, parasailing, Hon Thom og speedboat',
+    title: 'Vandsport på Phu Quoc | Jetski, parasailing og Hon Thom',
     description: 'Visuel guide til vandsport på Phu Quoc med jetski, parasailing, speedboat, snorkling, Hon Thom, kabelbane, billeder, kort og praktiske sikkerhedsråd.',
     eyebrow: 'Phu Quoc · Vandsport',
     heading: 'Vandsport på Phu Quoc: vælg én eller to gode aktiviteter i stedet for at fylde hele ferien',
@@ -261,10 +261,10 @@ export const phuQuocMarinePages = {
       { name: 'Bai Sao', detail: 'Stranddag i syd', lat: 10.0595, lng: 104.0366 },
     ],
     sections: [
-      { id: 'jetski', heading: 'Jetski: kort, sjovt og meget operatørafhængigt', paragraphs: ['Jetski er bedst som en kort aktivitet, ikke som grunden til at krydse hele øen. Tjek om området er afmærket, om der gives instruktion, og hvordan operatøren håndterer andre badende.', 'Forsikringsdækning og lokale regler kan variere. Hvis du er i tvivl, så vælg en etableret strand- eller resortoperatør.'] },
+      { id: 'jetski', heading: 'Jetski: kort, sjovt og meget operatørafhængigt', paragraphs: ['Jetski er bedst som en kort aktivitet, ikke som grunden til at krydse hele øen. Tjek om området er afmærket, om der gives instruktion, og hvordan operatøren håndterer andre badende.', 'Forsikringsdækning og lokale regler kan variere. Hvis du er i tvivl, så vælg en etableret strand- eller resortoperatør.'], image: genericWaterSports },
       { id: 'parasailing', heading: 'Parasailing: udsigt frem for lang aktivitet', paragraphs: ['Parasailing giver et kort adrenalinkick og udsigt over kysten, men selve flyvetiden er normalt kort. Spørg altid til vindforhold, sele, redningsvest og procedure før start.', 'Hvis vinden er ustabil, ville vi hellere flytte aktiviteten end insistere på den samme dag.'] },
       { id: 'speedboat', heading: 'Speedboat giver mest mening som del af øhop', paragraphs: ['En speedboat er ikke kun transport; den ændrer hele dagsrytmen. Du kommer hurtigere mellem øerne og kan få mere tid i vandet, men bump og bølger mærkes mere.', 'Til små børn, rygproblemer eller uroligt hav kan en større båd være mere behagelig.'], image: phuAnThoi },
-      { id: 'sea-walking', heading: 'Sea walking og andre operator-specifikke aktiviteter', paragraphs: ['Sea walking og lignende aktiviteter kan indgå i nogle sydlige pakkeløsninger. Vi ville betragte dem som operatørspecifikke tilvalg og først beslutte os, når sikkerhedsprocedure, sted og pris er tydelig.', 'Lad ikke et stort aktivitetskatalog presse dig til at købe alt på samme dag.'] },
+      { id: 'sea-walking', heading: 'Sea walking og andre operator-specifikke aktiviteter', paragraphs: ['Sea walking og lignende aktiviteter kan indgå i nogle sydlige pakkeløsninger. Vi ville betragte dem som operatørspecifikke tilvalg og først beslutte os, når sikkerhedsprocedure, sted og pris er tydelig.', 'Lad ikke et stort aktivitetskatalog presse dig til at købe alt på samme dag.'], image: phuBeach },
       { id: 'hon-thom', heading: 'Hon Thom: den nemme aktivitetsdag uden at sidde i båd hele dagen', paragraphs: ['Kabelbanen er en oplevelse i sig selv og kan kombineres med strand og vandpark. Den fungerer især godt til familier og grupper med forskellige interesser.', 'Sæt nok tid af til at nyde stedet; hvis du samtidig lægger øhop, snorkling og flere transferstop ind, bliver dagen hurtigt for pakket.'], image: phuCable },
     ],
     comparisonTitle: 'Hvilken aktivitet passer til hvem?',
@@ -345,7 +345,7 @@ export const nhaTrangMarinePages = {
 
   'vandsport-og-dykning': {
     destinationName: 'Nha Trang',
-    title: 'Vandsport og dykning i Nha Trang 2026 | Scuba, jetski og parasailing',
+    title: 'Vandsport i Nha Trang | Dykning, jetski og parasailing',
     description: 'Visuel guide til scuba diving, snorkling, jetski, parasailing og speedboat i Nha Trang med undervandsbilleder, video, kort og praktiske råd.',
     eyebrow: 'Nha Trang · Vandsport',
     heading: 'Vandsport og dykning i Nha Trang: her giver en dedikeret havdag faktisk mening',

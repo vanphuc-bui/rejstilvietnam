@@ -12,6 +12,7 @@ const watchedPrefixes = [
   'rejseguide/',
   'bedste-hoteller/',
   'book-rejsen/',
+  'vaerktoejer/',
 ];
 
 const hubRoutes = new Set([
@@ -21,6 +22,7 @@ const hubRoutes = new Set([
   '/ture/',
   '/bedste-hoteller/',
   '/book-rejsen/',
+  '/vaerktoejer/',
 ]);
 
 function walk(dir) {
@@ -88,7 +90,7 @@ function sectionVisualStats(html) {
   let visualSections = 0;
 
   for (const piece of pieces) {
-    const hasVisual = /<img\b|<iframe\b|<table\b|class="[^"]*(?:place-map|visual-highlights|activity-grid|active-grid|video-block|fact-grid|hotel-list|area-list|route-grid|timeline|comparison-grid|day-route|priority-grid|provider-grid|agency-list|check-list|food-grid|link-list)[^"]*"/i.test(piece);
+    const hasVisual = /<img\b|<iframe\b|<table\b|class="[^"]*(?:place-map|hotel-map|route-map|visual-highlights|activity-grid|active-grid|video-block|fact-grid|hotel-list|area-list|route-grid|timeline|comparison-grid|day-route|priority-grid|provider-grid|agency-list|check-list|food-grid|link-list)[^"]*"/i.test(piece);
     if (hasVisual) {
       visualSections += 1;
       currentRun = 0;

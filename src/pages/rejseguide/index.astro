@@ -22,7 +22,7 @@ const topics = [
   { icon:'🗺️', title:'Vietnam på 2 uger', text:'En konkret rute med fem stop og råd om, hvad vi ville fjerne, hvis du vil have strand eller mindre transport.', href:'/rejseplaner/vietnam-2-uger/' },
 ];
 ---
-<BaseLayout title="Planlæg din rejse til Vietnam | Visum, vejr, mad, sundhed og transport | RejsTilVietnam.dk" description="Planlæg Vietnam-rejsen trin for trin: rejsetid, visum, penge, eSIM, pakkeliste, mad, vaccinationer, rejseforsikring, transport og konkrete råd før afrejse.">
+<BaseLayout title="Planlæg Vietnam-rejsen | Visum, vejr og transport" description="Planlæg Vietnam-rejsen trin for trin: rejsetid, visum, penge, eSIM, pakkeliste, mad, vaccinationer, rejseforsikring, transport og konkrete råd før afrejse.">
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Planlæg rejsen</p>
@@ -46,6 +46,20 @@ const topics = [
       ))}
     </div>
   </section>
+  <section class="section tools-section">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Gratis værktøjer</p><h2>Test ruten, budgettet og måneden før du booker.</h2></div>
+        <p>De tre værktøjer er lavet til de valg, hvor et konkret overblik er mere nyttigt end endnu et langt afsnit tekst.</p>
+      </div>
+      <div class="grid grid--3">
+        <a class="card tool-card" href="/vaerktoejer/vietnam-rutekort/"><span>🗺️</span><h3>Vietnam rutekort</h3><p>Sammenlign 10, 14 og 21 dage og se de store transporthop på én skærm.</p><b>Åbn rutekort →</b></a>
+        <a class="card tool-card" href="/vaerktoejer/vietnam-budgetberegner/"><span>🧮</span><h3>Budgetberegner</h3><p>Regn hotel, mad, transport, ture og fly om til både DKK og VND.</p><b>Beregn budget →</b></a>
+        <a class="card tool-card" href="/vaerktoejer/vietnam-vejrhjaelp/"><span>☀️</span><h3>Vejrplanlægger</h3><p>Vælg måned og sammenlign nord, central, syd og Phu Quoc.</p><b>Vælg måned →</b></a>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container article-shell">
       <article class="prose">
@@ -63,4 +77,4 @@ const topics = [
   </section>
 </BaseLayout>
 
-<style>.hub-hero-media{margin-top:8px}.hub-hero-media :global(.section-media){margin-top:0}@media(max-width:640px){.hub-hero-media{margin-top:0}}</style>
+<style>.hub-hero-media{margin-top:8px}.hub-hero-media :global(.section-media){margin-top:0}.tools-section{background:#f5efe2}.tool-card{display:flex;flex-direction:column;padding:26px;min-height:250px}.tool-card>span{font-size:1.7rem}.tool-card h3{margin-top:14px}.tool-card p{margin-top:8px;color:var(--muted)}.tool-card b{margin-top:auto;padding-top:20px;color:var(--green-700)}@media(max-width:640px){.hub-hero-media{margin-top:0}.tool-card{min-height:0}}</style>

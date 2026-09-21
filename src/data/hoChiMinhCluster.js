@@ -146,7 +146,7 @@ export const hoChiMinhPages = {
   },
 
   'mekong-delta-fra-ho-chi-minh-city': {
-    destinationName:'Ho Chi Minh City', title:'Mekongdeltaet fra Ho Chi Minh City 2026 | Dagstur eller overnatning?',
+    destinationName:'Ho Chi Minh City', title:'Mekongdeltaet fra Ho Chi Minh City | Dagstur eller nat?',
     description:'Guide til Mekongdeltaet fra Ho Chi Minh City: My Tho, Ben Tre, Can Tho, dagstur eller overnatning og hvordan du undgår en alt for turistet tur.',
     eyebrow:'Fra Ho Chi Minh City · Mekong', heading:'Mekongdeltaet fra Ho Chi Minh City: dagstur er let, én nat giver mere mening',
     intro:'Mekongdeltaet er enormt. En dagstur viser kun en lille smule, så det vigtigste er at vælge forventning og rute rigtigt.', hero, sources,
@@ -175,7 +175,7 @@ export const hoChiMinhPages = {
   },
 
   'lufthavn-til-centrum': {
-    destinationName:'Ho Chi Minh City', title:'Ho Chi Minh City lufthavn til centrum 2026 | Grab, taxi og transfer',
+    destinationName:'Ho Chi Minh City', title:'Ho Chi Minh City lufthavn til centrum | Grab og taxi',
     description:'Sådan kommer du fra Tan Son Nhat (SGN) til District 1, District 3 og centrum. Sammenlign Grab, officiel taxi og hoteltransfer.',
     eyebrow:'Ho Chi Minh City · Transport', heading:'Fra Tan Son Nhat til centrum: planlæg efter trafik, ikke kun kilometer',
     intro:'Lufthavnen ligger tæt på centrum på kortet, men trafikken kan gøre turen langsom. En enkel dør-til-dør-løsning er ofte det værd efter en lang flyrejse.', hero, sources,

@@ -68,6 +68,15 @@ const groups = [
     ]
   },
   {
+    title:'Gratis værktøjer',
+    links:[
+      ['/vaerktoejer/','Vietnam-værktøjer'],
+      ['/vaerktoejer/vietnam-rutekort/','Vietnam rutekort: 10, 14 og 21 dage'],
+      ['/vaerktoejer/vietnam-budgetberegner/','Vietnam budgetberegner i DKK og VND'],
+      ['/vaerktoejer/vietnam-vejrhjaelp/','Vejrplanlægger: hvornår skal man rejse hvor?'],
+    ]
+  },
+  {
     title:'Rejseplaner & ture',
     links:[
       ['/aktiv-ferie-i-vietnam/','Aktiv ferie i Vietnam'],
@@ -93,6 +102,9 @@ function tagsFor(href, label, groupTitle) {
   if (/\/hoi-an\/|hoi an/.test(haystack)) tags.push('hoi-an');
   if (/\/phu-quoc\/|phu quoc/.test(haystack)) tags.push('phu-quoc');
   if (/mad|kaffe|street food/.test(haystack)) tags.push('mad');
+  if (/budget|pris|penge|dkk|vnd/.test(haystack)) tags.push('budget');
+  if (/vejr|rejsetid|måned|maaned/.test(haystack)) tags.push('vejr');
+  if (/rute|rejseplan|10 dage|14 dage|21 dage/.test(haystack)) tags.push('rute');
   if (/strand/.test(haystack)) tags.push('strand');
   if (/aktiv|trekking|snork|dykning|vandsport|øhop|øtur|o-hop|o-ture|kajak|cykl|vandring/.test(haystack)) tags.push('aktiv');
   if (/hotel|hvor skal man bo|hvor-skal-man-bo/.test(haystack)) tags.push('hotel');
@@ -123,12 +135,15 @@ const filters = [
   ['hotel','Hotel'],
   ['transport','Transport'],
   ['boern','Med børn'],
+  ['budget','Budget'],
+  ['vejr','Vejr'],
+  ['rute','Rute'],
 ];
 
 const totalGuides = searchableGroups.reduce((sum, group) => sum + group.links.length, 0);
 ---
 <BaseLayout
-  title="Alle guider til Vietnam | Søg efter destination, hotel, mad og transport | RejsTilVietnam.dk"
+  title="Alle Vietnam-guider | Søg destination og emne"
   description="Søg og filtrér alle danske Vietnam-guider efter destination og emne: Hanoi, Hoi An, Phu Quoc, mad, strand, aktiv ferie, hotel, transport og rejser med børn."
 >
   <section class="page-hero">
