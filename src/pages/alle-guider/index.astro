@@ -51,7 +51,7 @@ const groups = [
     title:'Planlæg rejsen',
     links:[
       ['/rejseguide/','Rejseguide'],
-      ['/rejseguide/rejser-til-vietnam-2026/','Rejser til Vietnam 2026'],
+      ['/rejseguide/rejser-til-vietnam/','Rejser til Vietnam'],
       ['/rejseguide/vietnam-rejsevejledning/','Vietnam rejsevejledning'],
       ['/rejseguide/bedste-rejsetid/','Bedste rejsetid til Vietnam'],
       ['/rejseguide/visum/','Visum til Vietnam'],
@@ -84,40 +84,216 @@ const groups = [
     ]
   }
 ];
+
+function tagsFor(href, label, groupTitle) {
+  const haystack = `${href} ${label} ${groupTitle}`.toLowerCase();
+  const tags = [];
+
+  if (/\/hanoi\/|\bhanoi\b/.test(haystack)) tags.push('hanoi');
+  if (/\/hoi-an\/|hoi an/.test(haystack)) tags.push('hoi-an');
+  if (/\/phu-quoc\/|phu quoc/.test(haystack)) tags.push('phu-quoc');
+  if (/mad|kaffe|street food/.test(haystack)) tags.push('mad');
+  if (/strand/.test(haystack)) tags.push('strand');
+  if (/aktiv|trekking|snork|dykning|vandsport|øhop|øtur|o-hop|o-ture|kajak|cykl|vandring/.test(haystack)) tags.push('aktiv');
+  if (/hotel|hvor skal man bo|hvor-skal-man-bo/.test(haystack)) tags.push('hotel');
+  if (/transport|lufthavn|fra hanoi|fra-hanoi|til hoi an|til-hoi-an/.test(haystack)) tags.push('transport');
+  if (/børn|boern|familie/.test(haystack)) tags.push('boern');
+
+  return [...new Set(tags)];
+}
+
+const searchableGroups = groups.map((group) => ({
+  ...group,
+  links: group.links.map(([href,label]) => ({
+    href,
+    label,
+    search: `${group.title} ${label} ${href}`,
+    tags: tagsFor(href, label, group.title),
+  })),
+}));
+
+const filters = [
+  ['all','Alle'],
+  ['hanoi','Hanoi'],
+  ['hoi-an','Hoi An'],
+  ['phu-quoc','Phu Quoc'],
+  ['mad','Mad'],
+  ['strand','Strand'],
+  ['aktiv','Aktiv ferie'],
+  ['hotel','Hotel'],
+  ['transport','Transport'],
+  ['boern','Med børn'],
+];
+
+const totalGuides = searchableGroups.reduce((sum, group) => sum + group.links.length, 0);
 ---
 <BaseLayout
-  title="Alle guider til Vietnam | RejsTilVietnam.dk"
-  description="Samlet oversigt over alle danske rejseguider, destinationer, rejseplaner og praktiske artikler på RejsTilVietnam.dk."
+  title="Alle guider til Vietnam | Søg efter destination, hotel, mad og transport | RejsTilVietnam.dk"
+  description="Søg og filtrér alle danske Vietnam-guider efter destination og emne: Hanoi, Hoi An, Phu Quoc, mad, strand, aktiv ferie, hotel, transport og rejser med børn."
 >
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Alle guider</p>
-      <h1>Find alle vores Vietnam-guider</h1>
-      <p class="lead">En samlet, enkel oversigt over destinationer, praktiske guider og rejseplaner. Den gør det også lettere at finde relaterede sider uden at gå tilbage til forsiden.</p>
+      <h1>Hvad leder du efter?</h1>
+      <p class="lead">Søg på destination, aktivitet eller praktisk emne. Du kan også bruge filtrene til hurtigt at finde fx hotel, mad, strand eller transport.</p>
     </div>
   </section>
 
-  <section class="section section--tight">
-    <div class="container guide-index">
-      {groups.map((group) => (
-        <section class="guide-group">
+  <section class="section section--tight guide-search-section">
+    <div class="container">
+      <div class="guide-search-card">
+        <label class="search-label" for="guide-search">Søg i alle guider</label>
+        <div class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="guide-search" type="search" placeholder="Søg fx Hanoi, hotel, snorkling..." autocomplete="off" />
+        </div>
+
+        <div class="guide-filter-row" role="group" aria-label="Filtrér guider">
+          {filters.map(([value,label], index) => (
+            <button
+              class:list={{ 'guide-filter':true, 'is-active':index === 0 }}
+              type="button"
+              data-guide-filter={value}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        <div class="search-meta" aria-live="polite">
+          <span id="guide-result-count">{totalGuides} guider</span>
+          <button id="guide-reset" type="button" hidden>Nulstil</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight guide-results-section">
+    <div class="container guide-index" id="guide-index">
+      {searchableGroups.map((group) => (
+        <section class="guide-group" data-guide-group>
           <h2>{group.title}</h2>
           <div class="guide-links">
-            {group.links.map(([href,label]) => <a href={href}>{label}<span>→</span></a>)}
+            {group.links.map((link) => (
+              <a
+                href={link.href}
+                data-guide-link
+                data-search={link.search}
+                data-tags={link.tags.join(' ')}
+              >
+                <span>{link.label}</span><b aria-hidden="true">→</b>
+              </a>
+            ))}
           </div>
         </section>
       ))}
+      <div class="guide-empty" id="guide-empty" hidden>
+        <strong>Ingen guider matcher endnu.</strong>
+        <p>Prøv et andet søgeord eller nulstil filteret.</p>
+      </div>
     </div>
   </section>
+
+  <script is:inline>
+    (() => {
+      const input = document.getElementById('guide-search');
+      const links = [...document.querySelectorAll('[data-guide-link]')];
+      const groups = [...document.querySelectorAll('[data-guide-group]')];
+      const filters = [...document.querySelectorAll('[data-guide-filter]')];
+      const count = document.getElementById('guide-result-count');
+      const reset = document.getElementById('guide-reset');
+      const empty = document.getElementById('guide-empty');
+      if (!input || !links.length) return;
+
+      let activeFilter = 'all';
+      const normalize = (value = '') => value
+        .toLocaleLowerCase('da')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+      const apply = () => {
+        const query = normalize(input.value.trim());
+        let visible = 0;
+
+        links.forEach((link) => {
+          const search = normalize(link.dataset.search || '');
+          const tags = (link.dataset.tags || '').split(/\s+/).filter(Boolean);
+          const matchesQuery = !query || search.includes(query);
+          const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+          const show = matchesQuery && matchesFilter;
+          link.hidden = !show;
+          if (show) visible += 1;
+        });
+
+        groups.forEach((group) => {
+          group.hidden = !group.querySelector('[data-guide-link]:not([hidden])');
+        });
+
+        if (count) count.textContent = `${visible} ${visible === 1 ? 'guide' : 'guider'}`;
+        if (empty) empty.hidden = visible !== 0;
+        if (reset) reset.hidden = !query && activeFilter === 'all';
+      };
+
+      filters.forEach((button) => {
+        button.addEventListener('click', () => {
+          activeFilter = button.dataset.guideFilter || 'all';
+          filters.forEach((item) => {
+            const active = item === button;
+            item.classList.toggle('is-active', active);
+            item.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          apply();
+        });
+      });
+
+      input.addEventListener('input', apply);
+      reset?.addEventListener('click', () => {
+        input.value = '';
+        activeFilter = 'all';
+        filters.forEach((button) => {
+          const active = button.dataset.guideFilter === 'all';
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        apply();
+        input.focus();
+      });
+    })();
+  </script>
 </BaseLayout>
 
 <style>
+.guide-search-section{padding-top:20px}
+.guide-search-card{padding:24px;border:1px solid var(--border);border-radius:26px;background:#fffdf8;box-shadow:0 12px 38px rgba(16,55,41,.06)}
+.search-label{display:block;margin-bottom:9px;color:var(--green-950);font-weight:850}
+.search-box{display:flex;align-items:center;gap:12px;padding:0 16px;border:1px solid rgba(12,47,37,.18);border-radius:18px;background:white}
+.search-box>span{font-size:1.5rem;color:var(--green-700)}
+.search-box input{width:100%;min-height:56px;border:0;outline:0;background:transparent;color:var(--green-950);font-size:1rem}
+.search-box input::placeholder{color:#8b948f}
+.guide-filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.guide-filter{min-height:40px;padding:0 13px;border:1px solid var(--border);border-radius:999px;background:#f7f3e9;color:var(--green-950);font-size:.82rem;font-weight:800;cursor:pointer}
+.guide-filter:hover,.guide-filter.is-active{border-color:var(--green-950);background:var(--green-950);color:white}
+.search-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:14px;color:var(--muted);font-size:.85rem}
+#guide-reset{border:0;background:transparent;color:var(--green-700);font-weight:850;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.guide-results-section{padding-top:10px}
 .guide-index{display:grid;gap:32px}
 .guide-group{padding:26px;border:1px solid var(--border);border-radius:24px;background:#fffdf8}
+.guide-group[hidden]{display:none}
 .guide-group h2{margin:0 0 16px;font-size:clamp(1.6rem,3vw,2.2rem)}
 .guide-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}
-.guide-links a{display:flex;justify-content:space-between;gap:12px;padding:11px 12px;border-radius:12px;color:var(--green-950);font-weight:750;background:#f7f3e9}
+.guide-links a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;color:var(--green-950);font-weight:750;background:#f7f3e9}
+.guide-links a[hidden]{display:none}
 .guide-links a:hover{background:var(--green-100);color:var(--green-700)}
-.guide-links span{color:var(--green-700)}
-@media(max-width:700px){.guide-links{grid-template-columns:1fr}.guide-group{padding:20px}}
+.guide-links b{color:var(--green-700);font-size:1rem}
+.guide-empty{padding:34px;border:1px dashed rgba(12,47,37,.22);border-radius:24px;text-align:center;background:#fffdf8}
+.guide-empty strong{color:var(--green-950);font-size:1.2rem}
+.guide-empty p{margin-top:6px;color:var(--muted)}
+@media(max-width:700px){
+  .guide-search-card{padding:18px;border-radius:20px}
+  .guide-links{grid-template-columns:1fr}
+  .guide-group{padding:20px}
+  .guide-filter-row{gap:7px}
+  .guide-filter{min-height:38px;padding:0 11px;font-size:.78rem}
+}
 </style>
