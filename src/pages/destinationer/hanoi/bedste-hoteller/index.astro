@@ -2,6 +2,12 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import HotelMap from '../../../../components/HotelMap.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
+import { editorialPeople, formatDanishEditorialDate } from '../../../../data/editorialMetadata.js';
+
+const datePublished = '2026-09-14';
+const dateModified = '2026-09-18';
+const publishedLabel = formatDanishEditorialDate(datePublished);
+const modifiedLabel = formatDanishEditorialDate(dateModified);
 
 const hotels = [
   {
@@ -104,7 +110,11 @@ const priceRows = [
   description="5 hoteller i Hanoi til forskellige rejsetyper med område, 2026-prisniveau i VND/DKK, bookinglinks og interaktivt kort."
   pageType="article"
   headline="Bedste hoteller i Hanoi: 5 steder vi ville starte med"
-  dateModified="2026-09-15"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={editorialPeople.author}
+  reviewer={editorialPeople.reviewer}
+  authorName={editorialPeople.author.name}
 >
   <section class="hotel-hero">
     <div class="container hero-grid">
@@ -113,7 +123,7 @@ const priceRows = [
         <p class="eyebrow">Hoteller i Hanoi</p>
         <h1>Bedste hoteller i Hanoi: 5 steder vi ville starte med.</h1>
         <div class="answer"><span>Kort svar</span><p>På en første rejse ville vi booke i <strong>Old Quarter eller Hoan Kiem</strong>. Vælg derefter hotel efter støj, værelset og faciliteter - ikke kun stjerner eller dagens laveste pris.</p></div>
-        <div class="article-meta"><span>Af <a href="/om/">RejsTilVietnam.dk</a></span><span>Opdateret 15. september 2026</span></div>
+        <div class="article-meta"><span>Af <a href={editorialPeople.author.url}>{editorialPeople.author.name}</a></span><span>Rejsefagligt gennemgået af <a href={editorialPeople.reviewer.url}>{editorialPeople.reviewer.name}</a></span><span>Udgivet {publishedLabel}</span><span>Opdateret {modifiedLabel}</span></div>
         <div class="hero-actions"><a class="btn btn--primary" href="#hoteller">Se de 5 hoteller</a><a class="btn btn--outline" href="/destinationer/hanoi/hvor-skal-man-bo/">Vælg område først →</a></div>
       </div>
       <div class="hero-photo hero-photo--graphic"><span>🏨</span><strong>Hanoi</strong><small>Vælg område før hotel</small></div>
