@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { editorialPeople } from '../../../data/editorialMetadata.js';
+
+const person = editorialPeople.author;
+const personUrl = new URL(person.url, Astro.site ?? Astro.url.origin).toString();
+const profileData = {
+  '@context':'https://schema.org',
+  '@type':'ProfilePage',
+  name:`${person.name} – RejsTilVietnam.dk`,
+  url:personUrl,
+  inLanguage:'da-DK',
+  mainEntity:{
+    '@type':'Person',
+    '@id':`${personUrl}#person`,
+    name:person.name,
+    url:personUrl,
+    image:new URL(person.image, Astro.site ?? Astro.url.origin).toString(),
+    jobTitle:person.jobTitle,
+    description:person.description,
+    sameAs:person.sameAs,
+    knowsAbout:person.knowsAbout,
+    worksFor:{
+      '@type':'Organization',
+      name:'RejsTilVietnam.dk',
+      url:new URL('/', Astro.site ?? Astro.url.origin).toString(),
+    },
+  },
+};
+---
+<BaseLayout
+  title="Van-Phuc Bui | Research og udvikling på RejsTilVietnam.dk"
+  description="Mød Van-Phuc Bui, medstifter af RejsTilVietnam.dk og ansvarlig for research, struktur, teknisk udvikling og redaktionel gennemgang."
+  image={person.image}
+  authorName={person.name}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(profileData)}></script>
+
+  <section class="profile-hero">
+    <div class="container profile-grid">
+      <div>
+        <p class="eyebrow">Forfatterprofil</p>
+        <h1>Van-Phuc Bui</h1>
+        <p class="lead">Medstifter af RejsTilVietnam.dk med ansvar for research, struktur, teknisk udvikling og den samlede redaktionelle gennemgang af guiderne.</p>
+        <div class="profile-tags">
+          <span>Vietnam-kendskab</span><span>Research</span><span>Rejseplanlægning</span><span>Digitale værktøjer</span>
+        </div>
+      </div>
+      <figure class="profile-photo">
+        <img src={person.image} width="1200" height="1600" alt="Van-Phuc Bui sammen med Lê Huỳnh Như Thảo i Danmark" fetchpriority="high" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container profile-copy">
+      <div>
+        <p class="eyebrow">Rolle på siden</p>
+        <h2>Fra research til færdig guide.</h2>
+      </div>
+      <div>
+        <p>Van-Phuc har boet mange år i Vietnam og bor i dag i Danmark. På RejsTilVietnam.dk arbejder han især med research, informationsstruktur, teknisk udvikling og med at gøre komplekse rejsevalg lette at sammenligne.</p>
+        <p>Han gennemgår indholdet side for side med fokus på, om råd, priser, transportvalg og planlægning er forståelige og brugbare for en dansk rejsende.</p>
+        <p>Når oplysninger er tidsfølsomme, prioriteres officielle kilder og tydelige datoer frem for generelle formuleringer.</p>
+        <a class="btn btn--outline" href="https://vanphucbui.com/" target="_blank" rel="noopener">Se personlig hjemmeside ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section profile-review">
+    <div class="container profile-copy">
+      <div><p class="eyebrow">Redaktionel proces</p><h2>Guiderne bliver også rejsefagligt gennemgået.</h2></div>
+      <div><p>Alle rejseguider gennemgås også af <a href="/om/le-huynh-nhu-thao/"><strong>Lê Huỳnh Như Thảo</strong></a>, som er uddannet inden for turisme i Vietnam og har flere års professionel erfaring fra rejsebranchen.</p><p><a href="/om/">Læs mere om hvordan vi arbejder →</a></p></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.profile-hero{padding:66px 0 54px}.profile-grid{display:grid;grid-template-columns:1.15fr .65fr;gap:64px;align-items:center}.profile-hero h1{font-size:clamp(3rem,7vw,5.7rem)}.profile-hero .lead{margin-top:22px}.profile-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}.profile-tags span{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:#fffdf8;color:var(--green-800);font-size:.82rem;font-weight:750}.profile-photo{margin:0;aspect-ratio:3/4;overflow:hidden;border-radius:30px 30px 100px 30px;box-shadow:var(--shadow)}.profile-photo img{width:100%;height:100%;object-fit:cover}.profile-copy{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}.profile-copy>div:last-child{display:grid;gap:18px;color:#35423c}.profile-copy a:not(.btn){color:var(--green-700);text-decoration:underline;text-underline-offset:3px}.profile-review{background:var(--green-100)}@media(max-width:760px){.profile-grid,.profile-copy{grid-template-columns:1fr;gap:28px}.profile-photo{width:min(100%,430px);justify-self:center}.profile-hero{padding:42px 0}.profile-hero h1{font-size:clamp(2.5rem,11vw,3.5rem)}}
+</style>
