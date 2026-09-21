@@ -126,6 +126,12 @@ for (const viewport of viewports) {
                   return true;
                 }
               }),
+            fallbackImages: [...document.images]
+              .filter((image) => image.dataset.rtvFallbackStage === 'svg')
+              .map((image) => ({
+                alt: image.alt || '',
+                src: image.currentSrc || image.src,
+              })),
             missingViewportMeta: !document.querySelector('meta[name="viewport"]'),
             importantControls,
             tinyText,
@@ -141,6 +147,10 @@ for (const viewport of viewports) {
         if (metrics.h1Count !== 1) result.errors.push(`Expected one H1, found ${metrics.h1Count}.`);
         if (metrics.missingViewportMeta) result.errors.push('Missing viewport meta tag.');
         if (metrics.brokenImages.length) result.errors.push(`${metrics.brokenImages.length} broken rendered image(s).`);
+        if (metrics.fallbackImages.length) {
+          const examples = metrics.fallbackImages.slice(0, 3).map((image) => image.alt || image.src).join(' | ');
+          result.errors.push(`${metrics.fallbackImages.length} image(s) fell through to the generic SVG fallback.${examples ? ' Examples: ' + examples : ''}`);
+        }
         if (metrics.tinyText) result.warnings.push(`${metrics.tinyText} visible text element(s) render below 12px.`);
 
         if (viewport.isMobile) {
