@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const months = [
+  ['1','Januar'],['2','Februar'],['3','Marts'],['4','April'],['5','Maj'],['6','Juni'],
+  ['7','Juli'],['8','August'],['9','September'],['10','Oktober'],['11','November'],['12','December'],
+];
+---
+<BaseLayout
+  title="Vietnam vejrplanlægger | Bedste region måned for måned"
+  description="Vælg din rejsemåned og sammenlign Nordvietnam, Centralvietnam, Sydvietnam og Phu Quoc. Sæsonoverblik baseret på Vietnam Tourism."
+>
+  <section class="page-hero weather-hero">
+    <div class="container">
+      <p class="eyebrow">Gratis vejrplanlægger</p>
+      <h1>Hvornår skal man rejse hvor i Vietnam?</h1>
+      <p class="lead">Vietnam har ikke én samlet “bedste sæson”. Vælg måned og se hvilke regioner der normalt passer bedst — og hvor du bør planlægge med mere fleksibilitet.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container planner-shell">
+      <div class="month-panel">
+        <label for="travel-month">Jeg rejser i</label>
+        <select id="travel-month">
+          {months.map(([value,label]) => <option value={value}>{label}</option>)}
+        </select>
+        <p>Dette er sæsonmønstre, ikke en vejrudsigt. Tropiske storme, kuldeperioder og lokale forskelle kan stadig ændre din konkrete uge.</p>
+      </div>
+
+      <div class="region-grid" id="region-grid" aria-live="polite">
+        <article data-region="north">
+          <div class="region-head"><span>Nord</span><b>Hanoi · Ninh Binh · Ha Long · Sapa</b></div>
+          <div class="weather-status" data-status></div>
+          <p data-summary></p>
+          <a href="/rejseguide/bedste-rejsetid/">Se den fulde vejrguide →</a>
+        </article>
+        <article data-region="central">
+          <div class="region-head"><span>Central</span><b>Hue · Da Nang · Hoi An</b></div>
+          <div class="weather-status" data-status></div>
+          <p data-summary></p>
+          <a href="/destinationer/hoi-an/">Planlæg Centralvietnam →</a>
+        </article>
+        <article data-region="south">
+          <div class="region-head"><span>Syd</span><b>Ho Chi Minh City · Mekong</b></div>
+          <div class="weather-status" data-status></div>
+          <p data-summary></p>
+          <a href="/destinationer/ho-chi-minh-city/">Planlæg Sydvietnam →</a>
+        </article>
+        <article data-region="phu-quoc">
+          <div class="region-head"><span>Ø</span><b>Phu Quoc</b></div>
+          <div class="weather-status" data-status></div>
+          <p data-summary></p>
+          <a href="/destinationer/phu-quoc/">Se Phu Quoc-guiden →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section climate-key">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Sådan læses resultatet</p><h2>Tre niveauer — ikke grøn eller rød kalender.</h2></div>
+        <p>En “mere vejrafhængig” måned kan stadig give en god rejse. Pointen er at vide, hvor du bør have fleksible planer og realistiske forventninger.</p>
+      </div>
+      <div class="legend-grid">
+        <article class="legend legend--good"><b>Stærkt match</b><p>Sæsonmønstret er normalt blandt de mere oplagte for regionen.</p></article>
+        <article class="legend legend--mixed"><b>Fint med forbehold</b><p>Rejsen kan fungere godt, men varme, regn, kulde eller overgangssæson fylder mere.</p></article>
+        <article class="legend legend--weather"><b>Mere vejrafhængigt</b><p>Planlæg med fleksibilitet, især hvis båd, strand eller bjergudsigt er hovedårsagen til rejsen.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container source-card">
+      <div>
+        <p class="eyebrow">Kilde og metode</p>
+        <h2>Bygget på officielle sæsonbeskrivelser.</h2>
+      </div>
+      <div>
+        <p>Vietnam Tourism beskriver nord som køligere om vinteren og vådere om sommeren, Centralvietnam med en senere regnsæson, Sydvietnam som varmt året rundt med regntid omkring maj–november og Phu Quoc som mest vejrafhængig i juli–september.</p>
+        <p>Vi har oversat mønstrene til en enkel måned-for-måned planlægningshjælp. Brug altid en konkret prognose tæt på afrejse.</p>
+        <a href="https://www.vietnam.travel/vi/node/646" target="_blank" rel="noopener noreferrer">Vietnam Tourism: Weather and climate in Vietnam ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const data = {
+        1:{
+          north:['mixed','Køligt til koldt og ofte diset. Godt til byliv, mindre oplagt hvis blå himmel i Ha Long er vigtig.'],
+          central:['mixed','Hue og dele af Centralvietnam kan stadig være kølige og våde. Hold planen fleksibel.'],
+          south:['good','Tør og varm periode i Ho Chi Minh City og Mekong — normalt et stærkt valg.'],
+          'phu-quoc':['good','Typisk varm, tør og solrig strandperiode.'],
+        },
+        2:{
+          north:['mixed','Stadig køligt og ofte gråt i nord; højlandet kan føles markant koldere.'],
+          central:['mixed','Overgang mod tørrere vejr, men centrale kystområder kan stadig være ustabile.'],
+          south:['good','Tørt, varmt og godt til både storby og Mekong.'],
+          'phu-quoc':['good','En af de mere stabile strandmåneder.'],
+        },
+        3:{
+          north:['mixed','Mildere end vinteren, men skyer og fugt kan stadig fylde.'],
+          central:['good','En af de stærkeste måneder til Hue, Da Nang og Hoi An.'],
+          south:['good','Tørt og varmt; planlæg sightseeing tidligt på dagen.'],
+          'phu-quoc':['good','Typisk solrigt og varmt.'],
+        },
+        4:{
+          north:['good','Varmere og ofte klarere — et stærkt kompromis til Hanoi, Ninh Binh og Ha Long.'],
+          central:['good','Tørt og solrigt i store dele af Centralvietnam.'],
+          south:['good','Tørt, men ofte meget varmt. Pauser midt på dagen hjælper.'],
+          'phu-quoc':['good','Fortsat god strandperiode, men varmen stiger.'],
+        },
+        5:{
+          north:['good','Varmt og ofte godt, men fugt og de første kraftigere byger kan begynde.'],
+          central:['good','Solrigt og varmt; strand og kyst fungerer normalt godt.'],
+          south:['mixed','Regnsæsonen begynder typisk, ofte med kraftige eftermiddagsbyger.'],
+          'phu-quoc':['mixed','Stadig brugbar, men regn og uroligt hav bliver mere sandsynligt.'],
+        },
+        6:{
+          north:['weather','Varmt, fugtigt og vådere; kraftig regn kan påvirke udflugter og udsigter.'],
+          central:['good','Typisk varmt og solrigt, men hede midt på dagen er en reel faktor.'],
+          south:['mixed','Varm regntid med hyppige byger; byen fungerer stadig fint med fleksibilitet.'],
+          'phu-quoc':['mixed','Mere regn og større usikkerhed på båd- og stranddage.'],
+        },
+        7:{
+          north:['weather','Varm, fugtig og regnfuld periode; bjerg- og bådplaner er mere vejrafhængige.'],
+          central:['good','Varm og ofte solrig kystperiode, men planlæg omkring stærk varme.'],
+          south:['mixed','Regntid; forvent byger, men ikke nødvendigvis heldagsregn.'],
+          'phu-quoc':['weather','En af de vådere og mere stormudsatte måneder på øen.'],
+        },
+        8:{
+          north:['weather','Fortsat varm og våd sommer med risiko for kraftige regnperioder.'],
+          central:['mixed','Stadig meget varmt; senere på måneden kan vejret blive mere skiftende.'],
+          south:['mixed','Regntid med varme og fugtighed.'],
+          'phu-quoc':['weather','Hav og bådture er mere vejrafhængige i denne periode.'],
+        },
+        9:{
+          north:['good','Køligere, tørrere og ofte klarere — stærk periode til nordlige ruter.'],
+          central:['weather','Den senere regn- og stormsæson begynder at fylde mere i Centralvietnam.'],
+          south:['mixed','Fortsat regntid, men rejser fungerer med fleksibel dagsplan.'],
+          'phu-quoc':['weather','Typisk blandt de mest regnfulde måneder på øen.'],
+        },
+        10:{
+          north:['good','Behagelig temperatur og ofte gode forhold til by, natur og trekking.'],
+          central:['weather','Regn og stormrisiko kan påvirke Hue, Da Nang og Hoi An markant.'],
+          south:['mixed','Regntiden er ikke helt slut, men bygerne kan være lettere at arbejde rundt om.'],
+          'phu-quoc':['mixed','Overgang mod tørrere sæson; forholdene kan forbedres, men tjek havet tæt på datoen.'],
+        },
+        11:{
+          north:['good','Køligt til mildt og ofte klart — god måned til en nordlig rundrejse.'],
+          central:['weather','Centralvietnam kan stadig have kraftig regn og oversvømmelsesrisiko.'],
+          south:['mixed','Overgang mod den tørre sæson; stadig mulighed for byger.'],
+          'phu-quoc':['good','Tørrere forhold vender typisk tilbage, og stranden bliver mere stabil.'],
+        },
+        12:{
+          north:['mixed','Køligt, diset og mere vinterligt i Hanoi og især højlandet.'],
+          central:['weather','Hue og Hoi An kan stadig være våde og overskyede.'],
+          south:['good','Tør og varm periode — stærkt valg til Ho Chi Minh City og Mekong.'],
+          'phu-quoc':['good','Klassisk tør strandmåned med varme temperaturer.'],
+        },
+      };
+
+      const labels = {
+        good:'Stærkt match',
+        mixed:'Fint med forbehold',
+        weather:'Mere vejrafhængigt',
+      };
+
+      const select = document.getElementById('travel-month');
+      const cards = [...document.querySelectorAll('[data-region]')];
+      if (!select || !cards.length) return;
+
+      const render = () => {
+        const month = data[Number(select.value)] || data[1];
+        cards.forEach((card) => {
+          const region = card.dataset.region;
+          const item = month[region];
+          if (!item) return;
+          const [status, summary] = item;
+          const statusNode = card.querySelector('[data-status]');
+          const summaryNode = card.querySelector('[data-summary]');
+          if (statusNode) {
+            statusNode.className = `weather-status weather-status--${status}`;
+            statusNode.textContent = labels[status];
+          }
+          if (summaryNode) summaryNode.textContent = summary;
+        });
+      };
+
+      const now = new Date();
+      select.value = String(now.getMonth() + 1);
+      select.addEventListener('change', render);
+      render();
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+.weather-hero{background:linear-gradient(145deg,#eef4ef,#f7ead4)}
+.planner-shell{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:start}
+.month-panel{position:sticky;top:92px;padding:24px;border:1px solid var(--border);border-radius:24px;background:var(--green-950);color:white}
+.month-panel label{display:block;color:#b8dec9;font-size:.76rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.month-panel select{width:100%;min-height:50px;margin-top:10px;padding:0 12px;border:0;border-radius:12px;background:#fffdf8;color:var(--green-950);font:inherit;font-weight:850}
+.month-panel p{margin-top:16px;color:rgba(255,255,255,.67);font-size:.82rem;line-height:1.55}
+.region-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.region-grid article{padding:24px;border:1px solid var(--border);border-radius:24px;background:#fffdf8;box-shadow:0 10px 28px rgba(16,55,41,.045)}
+.region-head{display:grid;gap:4px}
+.region-head span{color:var(--coral);font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.region-head b{color:var(--green-950);font-size:1.12rem}
+.weather-status{display:inline-flex;width:max-content;margin-top:18px;padding:7px 10px;border-radius:999px;font-size:.75rem;font-weight:900}
+.weather-status--good{background:#dcecdf;color:#184d34}
+.weather-status--mixed{background:#f5e7c7;color:#765817}
+.weather-status--weather{background:#f5d8d1;color:#8a352c}
+.region-grid article>p{margin-top:12px;color:var(--muted);min-height:74px}
+.region-grid article>a{display:inline-block;margin-top:18px;color:var(--green-700);font-weight:850}
+.climate-key{background:#f5efe2}
+.legend-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.legend{padding:22px;border-radius:20px;background:#fffdf8;border:1px solid var(--border)}
+.legend b{font-size:1.05rem;color:var(--green-950)}
+.legend p{margin-top:7px;color:var(--muted)}
+.legend--good{border-top:5px solid #79a886}.legend--mixed{border-top:5px solid #d5ae54}.legend--weather{border-top:5px solid #ce7568}
+.source-card{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;padding:34px;border-radius:26px;background:var(--green-100)}
+.source-card>div:last-child{display:grid;gap:12px;color:#435149}
+.source-card a{color:var(--green-700);font-weight:850}
+@media(max-width:900px){.planner-shell,.source-card{grid-template-columns:1fr}.month-panel{position:static}.region-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.region-grid article{padding:20px;border-radius:20px}.legend-grid{grid-template-columns:1fr}.source-card{padding:24px}}
+</style>
