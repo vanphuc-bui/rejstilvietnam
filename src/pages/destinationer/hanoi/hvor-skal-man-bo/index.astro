@@ -3,6 +3,12 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
 import PlaceMap from '../../../../components/PlaceMap.astro';
 import { hubVisuals } from '../../../../data/hubVisuals.js';
+import { editorialPeople, formatDanishEditorialDate } from '../../../../data/editorialMetadata.js';
+
+const datePublished = '2026-09-14';
+const dateModified = '2026-09-18';
+const publishedLabel = formatDanishEditorialDate(datePublished);
+const modifiedLabel = formatDanishEditorialDate(dateModified);
 
 const areas = [
   {
@@ -93,7 +99,11 @@ const areaPlaces = [
   description="Old Quarter, Hoan Kiem, Ba Dinh eller Tay Ho? Sammenlign gåafstand, støj, hotelpriser i VND/DKK og se områderne på kort."
   pageType="article"
   headline="Hvor skal man bo i Hanoi?"
-  dateModified="2026-09-15"
+  datePublished={datePublished}
+  dateModified={dateModified}
+  author={editorialPeople.author}
+  reviewer={editorialPeople.reviewer}
+  authorName={editorialPeople.author.name}
 >
   <section class="area-hero">
     <div class="container">
@@ -102,7 +112,7 @@ const areaPlaces = [
       <h1>Hvor skal man bo i Hanoi?</h1>
       <p class="lead">Vælg området før hotellet. Hvis du kun har 2-4 dage i Hanoi, kan en forkert beliggenhed koste mere tid end et billigere hotel sparer dig penge.</p>
       <div class="answer"><span>Kort svar</span><b>Første gang? Vælg Old Quarter eller Hoan Kiem/French Quarter.</b><p>Old Quarter vinder på gåafstand og mad. Hoan Kiem/French Quarter er vores valg, hvis du vil være centralt men sove lidt roligere.</p></div>
-      <div class="article-meta"><span>Af <a href="/om/">RejsTilVietnam.dk</a></span><span>Opdateret 15. september 2026</span></div>
+      <div class="article-meta"><span>Af <a href={editorialPeople.author.url}>{editorialPeople.author.name}</a></span><span>Rejsefagligt gennemgået af <a href={editorialPeople.reviewer.url}>{editorialPeople.reviewer.name}</a></span><span>Udgivet {publishedLabel}</span><span>Opdateret {modifiedLabel}</span></div>
     </div>
   </section>
 
