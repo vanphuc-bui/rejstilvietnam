@@ -10,6 +10,135 @@ const clean = (value, max = 160) => typeof value === 'string'
 const HOME_HERO_SOURCE = 'https://images.unsplash.com/photo-1528127269322-539801943592';
 const HOME_HERO_WIDTHS = new Set([480, 640, 800, 960, 1280, 1600]);
 
+
+const REMOTE_IMAGE_HOSTS = new Set([
+  'commons.wikimedia.org',
+  'upload.wikimedia.org',
+  'images.unsplash.com',
+]);
+
+function remoteImageUrl(input) {
+  if (!input || !/^https?:\/\//i.test(input)) return input;
+  try {
+    const parsed = new URL(input);
+    if (!REMOTE_IMAGE_HOSTS.has(parsed.hostname)) return input;
+    return `/media/remote?src=${encodeURIComponent(parsed.toString())}`;
+  } catch {
+    return input;
+  }
+}
+
+function rewriteSrcset(value = '') {
+  return value
+    .split(',')
+    .map((candidate) => {
+      const trimmed = candidate.trim();
+      if (!trimmed) return '';
+      const match = trimmed.match(/^(https?:\/\/\S+)(\s+.+)?$/i);
+      if (!match) return trimmed;
+      const proxied = remoteImageUrl(match[1]);
+      return `${proxied}${match[2] ?? ''}`;
+    })
+    .filter(Boolean)
+    .join(', ');
+}
+
+async function serveRemoteImage(request, ctx) {
+  const url = new URL(request.url);
+  if (url.pathname !== '/media/remote') return null;
+
+  const raw = url.searchParams.get('src');
+  if (!raw) return new Response('Missing src', { status: 400 });
+
+  let source;
+  try {
+    source = new URL(raw);
+  } catch {
+    return new Response('Invalid src', { status: 400 });
+  }
+
+  if (source.protocol !== 'https:' || !REMOTE_IMAGE_HOSTS.has(source.hostname)) {
+    return new Response('Image host not allowed', { status: 403 });
+  }
+
+  const cache = caches.default;
+  const cacheKey = new Request(url.toString(), { method: 'GET' });
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached;
+
+  let upstream;
+  try {
+    upstream = await fetch(source.toString(), {
+      redirect: 'follow',
+      headers: {
+        Accept: 'image/avif,image/webp,image/*,*/*;q=0.8',
+        'User-Agent': 'RejsTilVietnam image proxy/1.0',
+      },
+      cf: {
+        cacheEverything: true,
+        cacheTtl: 604800,
+      },
+    });
+  } catch {
+    return new Response('Image upstream unavailable', { status: 502 });
+  }
+
+  if (!upstream.ok) {
+    return new Response('Image upstream unavailable', { status: 502 });
+  }
+
+  const contentType = upstream.headers.get('Content-Type') || '';
+  if (!contentType.toLowerCase().startsWith('image/')) {
+    return new Response('Upstream did not return an image', { status: 502 });
+  }
+
+  const headers = new Headers(upstream.headers);
+  headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=604800');
+  headers.set('CDN-Cache-Control', 'public, max-age=2592000, stale-while-revalidate=604800');
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.delete('Set-Cookie');
+  headers.delete('Vary');
+
+  const response = new Response(request.method === 'HEAD' ? null : upstream.body, {
+    status: 200,
+    headers,
+  });
+
+  if (request.method === 'GET') {
+    ctx?.waitUntil(cache.put(cacheKey, response.clone()));
+  }
+  return response;
+}
+
+function rewriteExternalImages(response) {
+  if (typeof HTMLRewriter === 'undefined') return response;
+
+  class ImgHandler {
+    element(element) {
+      const src = element.getAttribute('src');
+      const srcset = element.getAttribute('srcset');
+      if (src) {
+        const proxied = remoteImageUrl(src);
+        if (proxied !== src) element.setAttribute('src', proxied);
+      }
+      if (srcset) element.setAttribute('srcset', rewriteSrcset(srcset));
+      element.removeAttribute('referrerpolicy');
+    }
+  }
+
+  class SourceHandler {
+    element(element) {
+      const srcset = element.getAttribute('srcset');
+      if (srcset) element.setAttribute('srcset', rewriteSrcset(srcset));
+    }
+  }
+
+  return new HTMLRewriter()
+    .on('img', new ImgHandler())
+    .on('source', new SourceHandler())
+    .transform(response);
+}
+
 async function serveHomeHero(request, ctx) {
   const url = new URL(request.url);
   const match = url.pathname.match(/^\/media\/home-hero-(\d+)\.webp$/);
@@ -136,6 +265,9 @@ export default {
     }
 
     if (request.method === 'GET' || request.method === 'HEAD') {
+      const remoteImageResponse = await serveRemoteImage(request, ctx);
+      if (remoteImageResponse) return remoteImageResponse;
+
       const heroResponse = await serveHomeHero(request, ctx);
       if (heroResponse) return heroResponse;
     }
@@ -147,10 +279,17 @@ export default {
     headers.set('X-Content-Type-Options', 'nosniff');
     headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
-    return new Response(response.body, {
+    const hardenedResponse = new Response(response.body, {
       status: response.status,
       statusText: response.statusText,
       headers,
     });
+
+    const contentType = headers.get('Content-Type') || '';
+    if (request.method === 'GET' && contentType.includes('text/html')) {
+      return rewriteExternalImages(hardenedResponse);
+    }
+
+    return hardenedResponse;
   },
 };

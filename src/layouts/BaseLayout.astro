@@ -243,12 +243,21 @@ const structuredData = {
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
     <script is:inline>
       (() => {
+        const proxiedImage = (src = '') => {
+          if (!/^https?:\/\//i.test(src)) return src;
+          const localPreview = ['127.0.0.1', 'localhost'].includes(window.location.hostname);
+          if (localPreview) return src;
+          return '/media/remote?src=' + encodeURIComponent(src);
+        };
+
         const fallbackPhoto = (alt = '') => {
           const text = alt.toLowerCase();
-          if (/hanoi|ha noi/.test(text)) return 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1600&q=82';
-          if (/hoi an/.test(text)) return 'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1600&q=82';
-          return 'https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1600&q=82';
+          if (/hanoi|ha noi/.test(text)) return proxiedImage('https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1600&q=82');
+          if (/hoi an/.test(text)) return proxiedImage('https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?auto=format&fit=crop&w=1600&q=82');
+          return proxiedImage('https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1600&q=82');
         };
+
+        window.__rtvImageUrl = proxiedImage;
 
         const svgFallback = (img) => {
           const label = (img.alt || 'Vietnam').trim().slice(0, 58) || 'Vietnam';
