@@ -18,9 +18,12 @@ const canonical = new URL(Astro.url.pathname, siteRoot);
 const isHomepage = Astro.url.pathname === '/';
 const currentYear = new Date().getFullYear();
 const nextYear = currentYear + 1;
+const cleanPageTitle = (value = '') => value
+  .replace(/\s*\|\s*RejsTilVietnam\.dk\s*$/i, '')
+  .trim();
 const finalTitle = isHomepage
   ? `Rejse til Vietnam ${currentYear}/${nextYear}: dansk guide og rejseplaner`
-  : title;
+  : cleanPageTitle(title);
 const finalDescription = isHomepage
   ? 'Planlæg din rejse til Vietnam med danske guider til Hanoi, Hoi An, Da Nang, Ho Chi Minh City og Phu Quoc samt visum, vejr og rejseplaner.'
   : description;
