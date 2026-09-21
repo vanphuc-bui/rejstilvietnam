@@ -211,7 +211,8 @@ for (const file of publicPages) {
 
   images.forEach((image, index) => {
     if (!('alt' in image)) addIssue({ severity: 'error', category: 'accessibility', route, message: `Image ${index + 1} is missing an alt attribute.`, impact: 'medium', effort: 'tiny' });
-    if (image.src?.startsWith('/') && !resolveDistPath(image.src)) {
+    const runtimeImage = /^\/media\/home-hero-(480|640|800|960|1280|1600)\.webp$/.test(image.src ?? '');
+    if (image.src?.startsWith('/') && !runtimeImage && !resolveDistPath(image.src)) {
       addIssue({ severity: 'error', category: 'images', route, message: `Missing local image: ${image.src}`, impact: 'high', effort: 'tiny' });
     }
   });

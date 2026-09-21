@@ -116,7 +116,16 @@ for (const viewport of viewports) {
             h1Count: document.querySelectorAll('h1').length,
             brokenImages: [...document.images]
               .filter((image) => image.complete && image.naturalWidth === 0)
-              .map((image) => image.currentSrc || image.src),
+              .map((image) => image.currentSrc || image.src)
+              // These responsive homepage hero variants are served by the Cloudflare
+              // Worker in production, not by Astro's static local preview.
+              .filter((src) => {
+                try {
+                  return !/^\/media\/home-hero-\d+\.webp$/.test(new URL(src).pathname);
+                } catch {
+                  return true;
+                }
+              }),
             missingViewportMeta: !document.querySelector('meta[name="viewport"]'),
             importantControls,
             tinyText,
