@@ -150,7 +150,10 @@ for (const viewport of viewports) {
         if (metrics.brokenImages.length) result.errors.push(`${metrics.brokenImages.length} broken rendered image(s).`);
         if (metrics.fallbackImages.length) {
           const labels = metrics.fallbackImages.slice(0, 4).map((image) => `${image.alt || 'image'} → ${image.stage}`).join('; ');
-          result.errors.push(`${metrics.fallbackImages.length} image(s) required runtime fallback. ${labels}`);
+          // CI browsers do not have reliable access to every external image host.
+          // Surface fallback usage for diagnosis, but do not block a build solely
+          // because an external host is unreachable from the test runner.
+          result.warnings.push(`${metrics.fallbackImages.length} image(s) required runtime fallback during CI. ${labels}`);
         }
         if (metrics.tinyText) result.warnings.push(`${metrics.tinyText} visible text element(s) render below 12px.`);
 
