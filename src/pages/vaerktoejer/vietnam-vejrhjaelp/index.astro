@@ -5,11 +5,24 @@ const months = [
   ['1','Januar'],['2','Februar'],['3','Marts'],['4','April'],['5','Maj'],['6','Juni'],
   ['7','Juli'],['8','August'],['9','September'],['10','Oktober'],['11','November'],['12','December'],
 ];
+
+const appStructuredData = {
+  '@context':'https://schema.org',
+  '@type':'WebApplication',
+  name:"Vietnam vejrplanlægger måned for måned",
+  description:"Gratis måned-for-måned planlægger til at sammenligne sæsonmønstre i Nordvietnam, Centralvietnam, Sydvietnam og Phu Quoc.",
+  url:new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString(),
+  applicationCategory:'TravelApplication',
+  operatingSystem:'Any',
+  inLanguage:'da-DK',
+  isAccessibleForFree:true,
+};
 ---
 <BaseLayout
   title="Vietnam vejrplanlægger | Bedste region måned for måned"
   description="Vælg din rejsemåned og sammenlign Nordvietnam, Centralvietnam, Sydvietnam og Phu Quoc. Sæsonoverblik baseret på Vietnam Tourism."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appStructuredData)}></script>
   <section class="page-hero weather-hero">
     <div class="container">
       <p class="eyebrow">Gratis vejrplanlægger</p>
