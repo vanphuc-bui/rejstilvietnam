@@ -2,14 +2,19 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { editorialPeople } from '../data/editorialMetadata.js';
 
 const {
   title = 'RejsTilVietnam.dk - Din danske guide til Vietnam',
   description = 'Dansk guide til Vietnam med rejsemål, rejseplaner, praktiske råd, oplevelser og hjælp til booking.',
-  image = '/brand-icon-192.png',
+  image,
+  articleImage,
   pageType = 'website',
   headline,
+  datePublished,
   dateModified,
+  author = editorialPeople.author,
+  reviewer = editorialPeople.reviewer,
   authorName = 'RejsTilVietnam.dk',
 } = Astro.props;
 
@@ -27,7 +32,8 @@ const finalTitle = isHomepage
 const finalDescription = isHomepage
   ? 'Planlæg din rejse til Vietnam med danske guider til Hanoi, Hoi An, Da Nang, Ho Chi Minh City og Phu Quoc samt visum, vejr og rejseplaner.'
   : description;
-const finalImage = new URL(image, siteRoot);
+const finalImage = new URL(image ?? articleImage ?? '/brand-icon-192.png', siteRoot);
+const finalArticleImage = articleImage ? new URL(articleImage, siteRoot).toString() : null;
 const brandIcon = new URL('/brand-icon-192.png', siteRoot);
 
 const breadcrumbLabels = {
@@ -82,6 +88,37 @@ const inferredArticle = /^\/destinationer\/[^/]+\/[^/]+\/?$/.test(Astro.url.path
 const isArticle = pageType === 'article' || inferredArticle;
 const organizationId = new URL('/#organization', siteRoot).toString();
 const websiteId = new URL('/#website', siteRoot).toString();
+const webpageId = `${canonical.toString()}#webpage`;
+const articleId = `${canonical.toString()}#article`;
+
+const absolutePerson = (person) => {
+  const url = new URL(person.url, siteRoot).toString();
+  return {
+    ...person,
+    url,
+    image: person.image ? new URL(person.image, siteRoot).toString() : undefined,
+    sameAs: person.sameAs ?? undefined,
+    '@id': `${url}#person`,
+  };
+};
+
+const articleAuthor = absolutePerson(author);
+const articleReviewer = absolutePerson(reviewer);
+const metaAuthorName = isArticle ? articleAuthor.name : authorName;
+
+const personNode = (person) => ({
+  '@type': 'Person',
+  '@id': person['@id'],
+  name: person.name,
+  url: person.url,
+  ...(person.image ? { image: person.image } : {}),
+  ...(person.jobTitle ? { jobTitle: person.jobTitle } : {}),
+  ...(person.description ? { description: person.description } : {}),
+  ...(person.sameAs?.length ? { sameAs: person.sameAs } : {}),
+  ...(person.knowsAbout?.length ? { knowsAbout: person.knowsAbout } : {}),
+  worksFor: { '@id': organizationId },
+});
+
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -99,6 +136,18 @@ const structuredData = {
         height: 192,
       },
       image: brandIcon.toString(),
+      founder: [
+        {
+          '@type': 'Person',
+          name: editorialPeople.author.name,
+          url: new URL(editorialPeople.author.url, siteRoot).toString(),
+        },
+        {
+          '@type': 'Person',
+          name: editorialPeople.reviewer.name,
+          url: new URL(editorialPeople.reviewer.url, siteRoot).toString(),
+        },
+      ],
       description: 'Dansk guide til rejser i Vietnam med rejsemål, rejseplaner, visum, vejr, transport, hoteller og oplevelser.',
     },
     {
@@ -115,22 +164,44 @@ const structuredData = {
       '@type': 'BreadcrumbList',
       itemListElement: breadcrumbItems,
     }] : []),
-    ...(isArticle ? [{
-      '@type': 'Article',
-      headline: headline ?? finalTitle,
-      description: finalDescription,
-      mainEntityOfPage: canonical.toString(),
-      url: canonical.toString(),
-      inLanguage: 'da-DK',
-      ...(dateModified ? { dateModified } : {}),
-      author: {
-        '@type': 'Organization',
-        name: authorName,
-        url: siteRoot.toString(),
+    ...(isArticle ? [
+      personNode(articleAuthor),
+      personNode(articleReviewer),
+      {
+        '@type': 'WebPage',
+        '@id': webpageId,
+        url: canonical.toString(),
+        name: finalTitle,
+        description: finalDescription,
+        inLanguage: 'da-DK',
+        isPartOf: { '@id': websiteId },
+        mainEntity: { '@id': articleId },
+        reviewedBy: { '@id': articleReviewer['@id'] },
+        ...(datePublished ? { datePublished } : {}),
+        ...(dateModified ? { dateModified } : {}),
+        ...(finalArticleImage ? {
+          primaryImageOfPage: {
+            '@type': 'ImageObject',
+            url: finalArticleImage,
+          },
+        } : {}),
       },
-      publisher: { '@id': organizationId },
-      isPartOf: { '@id': websiteId },
-    }] : []),
+      {
+        '@type': 'Article',
+        '@id': articleId,
+        headline: headline ?? finalTitle,
+        description: finalDescription,
+        mainEntityOfPage: { '@id': webpageId },
+        url: canonical.toString(),
+        inLanguage: 'da-DK',
+        ...(datePublished ? { datePublished } : {}),
+        ...(dateModified ? { dateModified } : {}),
+        ...(finalArticleImage ? { image: [finalArticleImage] } : {}),
+        author: { '@id': articleAuthor['@id'] },
+        publisher: { '@id': organizationId },
+        isPartOf: { '@id': websiteId },
+      },
+    ] : []),
   ],
 };
 ---
@@ -140,7 +211,7 @@ const structuredData = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={finalDescription} />
-    <meta name="author" content={authorName} />
+    <meta name="author" content={metaAuthorName} />
     <meta name="application-name" content="RejsTilVietnam" />
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <meta name="theme-color" content="#0f5132" />
