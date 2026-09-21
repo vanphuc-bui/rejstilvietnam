@@ -2,7 +2,6 @@
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import SectionMedia from '../../../../components/SectionMedia.astro';
 import PracticalTable from '../../../../components/PracticalTable.astro';
-import AffiliateActivityGrid from '../../../../components/AffiliateActivityGrid.astro';
 
 const toc = [
   { id: 'valg', label: 'Dagstur eller cruise med nat?' },
@@ -26,17 +25,16 @@ const cruiseColumns = [
   { key: 'best', label: 'Bedst til' },
 ];
 const cruiseRows = [
-  { type: 'Dagstur fra Hanoi', time: 'Typisk ca. 12 timer dør-til-dør', price: 'Aktuelle eksempler ca. 1,25-2,4 mio. VND ≈ 310-600 DKK pr. person', best: 'Kort rejse og lavere budget' },
-  { type: '2 dage / 1 nat', time: 'Afgang morgen dag 1, retur dag 2', price: 'Fra ca. 2,45-3,5 mio. VND ≈ 610-875 DKK pr. person; mere for premium/luksus', best: 'Første besøg hvor Ha Long er en hovedoplevelse' },
-  { type: 'Kun shuttle Hanoi → Ha Long', time: 'Ca. 2,5-3,5 timer én vej', price: 'Ofte ca. 250.000-400.000 VND ≈ 62-100 DKK pr. person', best: 'Hvis cruise ikke inkluderer transfer' },
-  { type: 'Privat bil', time: 'Ca. 2,5-3,5 timer én vej', price: 'Typisk klart dyrere end shuttle', best: 'Familie/grupper eller egen tidsplan' },
+  { type: 'Dagstur fra Hanoi', time: 'Typisk en lang heldag', price: 'Lavest samlet pris', best: 'Kort rejse og samme hotel i Hanoi' },
+  { type: '2 dage / 1 nat', time: 'Afgang dag 1, retur dag 2', price: 'Mellem', best: 'Bedste balance på en 2-3 ugers førstegangsrejse' },
+  { type: '3 dage / 2 nætter', time: 'To nætter på vandet', price: 'Højest', best: 'Når bugten er et hovedmål og ruten faktisk går længere ud' },
 ];
 ---
 <ArticleLayout
-  title="Ha Long Bay fra Hanoi | Dagstur eller cruise?"
-  description="Guide til Ha Long Bay fra Hanoi med 2026-priser i VND/DKK. Sammenlign dagstur og overnatningscruise, Ha Long/Lan Ha, transport og bookingvalg."
+  title="Ha Long Bay fra Hanoi | Dagstur eller 1 nat?"
+  description="Ha Long Bay fra Hanoi: sammenlign dagstur, 1 nat og 2 nætter, se hvordan valget påvirker din Hanoi-rute, og gå videre til separat transport- og cruiseguide."
   eyebrow="Fra Hanoi · Ha Long Bay"
-  heading="Ha Long Bay fra Hanoi: dagstur eller én nat på vandet?"
+  heading="Ha Long Bay fra Hanoi: dagstur eller én nat?"
   intro="Hvis Ha Long bare er én af mange oplevelser, kan en dagstur fungere. Hvis bugten er et højdepunkt på rejsen, ville vi normalt betale mere for én nat og få både sen eftermiddag og tidlig morgen på vandet."
   updated="15. september 2026"
   toc={toc}
@@ -63,25 +61,8 @@ const cruiseRows = [
   <p>En dagstur giver dig landskabet og nogle timer på vandet, men det bliver en lang dag. Aktuelle dagsture fra Hanoi ligger ofte omkring 12 timer dør-til-dør, fordi der både er pickup, motorvej, havnecheck-in, selve cruiset og returkørsel.</p>
   <p>Hvis Ha Long er en af hovedgrundene til din Vietnamrejse, ville vi vælge <strong>én overnatning</strong>. Du oplever bugten sent på dagen og tidligt om morgenen i stedet for kun i det travleste tidsrum.</p>
 
-  <AffiliateActivityGrid
-    title="En konkret Ha Long-dagstur, hvis du vil holde det enkelt"
-    intro="Denne tur matcher især dig, der vil se bugten på én dag fra Hanoi. Prisen nedenfor er et aktuelt eksempel og kan ændre sig med dato og ledighed."
-    items={[
-      {
-        title:'Ha Long Bay dagstur fra Hanoi',
-        text:'Heldagstur med cruise, frokost, kajak og mulighed for badning. Et stærkt value-valg, hvis du vil opleve Ha Long uden at booke en overnatning.',
-        href:'https://gyg.me/pLtQdBLX',
-        image:'https://commons.wikimedia.org/wiki/Special:FilePath/Asia%20cruise%20in%20Halong%20bay%20Vietnam.JPG?width=1200',
-        alt:'Cruisebåd mellem kalkstensøer i Ha Long Bay',
-        badge:'Top rated',
-        oldPrice:'287 kr',
-        price:'Fra 255 kr / person',
-        priceNote:'Eksempelpris set 18.09.2026 · tjek din dato',
-        highlights:['1 dag','Frokost','Kajak & badning','Gratis afbestilling'],
-        cta:'Se tur og aktuel pris',
-      },
-    ]}
-  />
+  <div class="callout"><strong>Har du allerede valgt dagstur eller overnatning?</strong> Gå videre til vores <a href="/ture/halong-bay-cruise/">cruise-guide</a>, hvor vi sammenligner rute, kahyt, gruppestørrelse, transfer og hvad der skal være inkluderet før booking.</div>
+
   <h2 id="bugter">Ha Long, Lan Ha eller Bai Tu Long?</h2>
   <h3>Ha Long Bay</h3>
   <p>Det klassiske valg og det navn de fleste søger efter. Der er mange cruiseudbydere og dermed stor forskel på både pris og kvalitet.</p>
@@ -101,28 +82,17 @@ const cruiseRows = [
     ratio="4 / 3"
   />
 
-  <h2 id="transport">Transport fra Hanoi</h2>
-  <p>Vietnam Tourism skriver, at de fleste besøgende vælger en samlet cruisepakke med transport tur-retur fra Hanoi. På en første rejse ville vi normalt gøre det samme, hvis pickupområdet passer til vores hotel.</p>
-  <p>Hvis du rejser uafhængigt, så regn med cirka <strong>2,5-3,5 timer på vej hver vej</strong> afhængigt af trafik og havn. Vær opmærksom på, at forskellige cruises kan sejle fra forskellige terminaler, og at Ha Long City ikke nødvendigvis er dit endelige check-in-sted.</p>
-  <div class="callout"><strong>Spørg før booking:</strong> Hvilken havn sejler båden fra, er transfer fra Hanoi inkluderet, hvor præcist foregår pickup, og er entré/aktiviteter med i prisen? “Transfer available” er ikke altid det samme som inkluderet transfer.</div>
-
-  <h2 id="vaelg">Sådan ville vi vælge cruise</h2>
-  <p><strong>1. Rute:</strong> Se først hvilken bugt og hvilke stop båden faktisk besøger.</p>
-  <p><strong>2. Tid på vandet:</strong> Et billigt tilbud er mindre attraktivt, hvis en stor del af dagen går med ventetid og transport.</p>
-  <p><strong>3. Kahyt:</strong> På en overnatning betyder vindue, balkon, støjniveau og seng mere end endnu en aktivitet i programmet.</p>
-  <p><strong>4. Måltider:</strong> Kontrollér hvad der er inkluderet og om drikkevarer koster ekstra.</p>
-  <p><strong>5. Transfer:</strong> Se om pickup fra Hanoi faktisk er inkluderet i den viste pris.</p>
-  <p><strong>6. Afbestilling:</strong> Vejr kan påvirke sejladsen. Læs reglerne for aflysning og omlægning, før du betaler.</p>
-
-  <div class="day-route" aria-label="Typisk transportforløb fra Hanoi til Ha Long Bay">
-    <div><span>1</span><b>Hanoi</b><small>Pickup ved hotel eller mødepunkt</small></div>
-    <i>→</i>
-    <div><span>2</span><b>Motorvej</b><small>Ca. 2,5–3,5 timer afhængigt af trafik og havn</small></div>
-    <i>→</i>
-    <div><span>3</span><b>Marina</b><small>Check-in og eventuel tenderbåd</small></div>
-    <i>→</i>
-    <div><span>4</span><b>Cruise</b><small>Dagstur eller overnatning på vandet</small></div>
+  <h2 id="transport">Transport fra Hanoi i korte træk</h2>
+  <p>De fleste cruises tilbyder shuttle eller pickup fra Hanoi, og det er ofte den letteste løsning. Hvis du booker transport separat, er den præcise cruisehavn vigtigere end blot destinationen “Ha Long Bay”.</p>
+  <div class="link-list">
+    <a class="link-card" href="/destinationer/ha-long-bay/transport-fra-hanoi/">Hanoi → Ha Long Bay: transport <span>Se cruise-shuttle, privat transfer, havne og hvad du skal bekræfte før afgang.</span></a>
   </div>
+
+  <h2 id="vaelg">Hvornår passer hvilken løsning bedst?</h2>
+  <p><strong>Dagstur:</strong> vælg den, hvis du vil beholde samme hotel i Hanoi og accepterer en lang transportdag.</p>
+  <p><strong>1 nat:</strong> vores normale kompromis, hvis Ha Long er en vigtig del af rejsen. Du får aften og morgen på vandet uden at bruge tre dage.</p>
+  <p><strong>2 nætter:</strong> giver først rigtig ekstra værdi, når den konkrete sejlrute går længere væk eller giver markant mere tid til kajak, Cat Ba eller roligere områder.</p>
+  <p>Når antallet af nætter er besluttet, bør du vælge selve båden på den separate <a href="/ture/halong-bay-cruise/">Ha Long Bay cruise-side</a> i stedet for at gentage de samme bookingkriterier her.</p>
 
   <h2 id="vejr">Vejr og fleksibilitet</h2>
   <p>Vietnam Tourism beskriver juni-august som den mere uforudsigelige regn- og stormsæson i Ha Long. September-november giver ofte køligere, klarere forhold, mens vinteren kan være diset.</p>
