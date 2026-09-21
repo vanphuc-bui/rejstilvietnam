@@ -93,6 +93,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <span>Ca. pr. person / dag inkl. alt</span>
           <b id="per-day-total">—</b>
         </div>
+        <button class="share-budget" id="copy-budget-link" type="button">Kopiér link til dette budget</button>
+        <span class="share-status" id="copy-budget-status" aria-live="polite"></span>
       </aside>
     </div>
   </section>
@@ -144,6 +146,30 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
         style:'currency', currency:'VND', maximumFractionDigits:0
       }).format(value);
 
+      const paramNames = {
+        people:'personer', days:'dage', hotel:'hotel', food:'mad',
+        localTransport:'lokal', activities:'oplevelser', longTransport:'transport',
+        internationalFlights:'fly', buffer:'buffer', rate:'kurs',
+      };
+
+      const loadFromUrl = () => {
+        const params = new URL(window.location.href).searchParams;
+        Object.entries(paramNames).forEach(([name,param]) => {
+          const value = params.get(param);
+          const field = form.elements.namedItem(name);
+          if (value !== null && field && Number.isFinite(Number(value))) field.value = value;
+        });
+      };
+
+      const scenarioUrl = () => {
+        const url = new URL(window.location.href);
+        Object.entries(paramNames).forEach(([name,param]) => {
+          const field = form.elements.namedItem(name);
+          url.searchParams.set(param, String(field?.value ?? defaults[name]));
+        });
+        return url;
+      };
+
       const set = (id, value) => {
         const node = document.getElementById(id);
         if (node) node.textContent = value;
@@ -176,7 +202,20 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
         set('per-day-total', dkk(total / people / days));
       };
 
+      loadFromUrl();
       form.addEventListener('input', calculate);
+      document.getElementById('copy-budget-link')?.addEventListener('click', async () => {
+        const url = scenarioUrl();
+        const status = document.getElementById('copy-budget-status');
+        try {
+          await navigator.clipboard.writeText(url.toString());
+          history.replaceState({}, '', url);
+          if (status) status.textContent = 'Link kopieret.';
+        } catch {
+          if (status) status.textContent = 'Kopiér adressen fra browserens adresselinje.';
+        }
+      });
+
       document.getElementById('budget-reset')?.addEventListener('click', () => {
         Object.entries(defaults).forEach(([name,value]) => {
           const field = form.elements.namedItem(name);
@@ -215,7 +254,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 .result-list div,.per-day{display:flex;justify-content:space-between;gap:18px}
 .result-list span,.per-day span{color:rgba(255,255,255,.62);font-size:.82rem}
 .result-list b,.per-day b{white-space:nowrap}
-.per-day{padding-top:16px;border-top:1px solid rgba(255,255,255,.14)}
+.per-day{padding-top:16px;border-top:1px solid rgba(255,255,255,.14)}.share-budget{width:100%;min-height:44px;margin-top:20px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.08);color:white;font:inherit;font-size:.82rem;font-weight:850;cursor:pointer}.share-budget:hover{background:rgba(255,255,255,.14)}.share-status{display:block;min-height:18px;margin-top:8px;color:#b8dec9;font-size:.76rem;text-align:center}
 .budget-context{background:#f5efe2}
 .context-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .context-grid article{padding:24px;border:1px solid var(--border);border-radius:22px;background:#fffdf8}
