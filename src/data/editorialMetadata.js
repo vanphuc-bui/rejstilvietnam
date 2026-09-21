@@ -29,6 +29,7 @@ export const editorialPeople = {
 };
 
 const exactDates = {
+  '/aktiv-ferie-i-vietnam/': ['2026-09-21', '2026-09-21'],
   '/destinationer/hanoi/': ['2026-09-14', '2026-09-19'],
   '/destinationer/hanoi/sevaerdigheder/': ['2026-09-14', '2026-09-19'],
   '/destinationer/hanoi/3-dage-i-hanoi/': ['2026-09-14', '2026-09-19'],
