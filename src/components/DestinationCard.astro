@@ -1,6 +1,35 @@
 ---
 const { name, kicker, description, href, image } = Astro.props;
 const hasImage = Boolean(image);
+
+function sizedUrl(input, width) {
+  if (!input || !input.startsWith('http')) return null;
+  try {
+    const url = new URL(input);
+    if (url.hostname === 'commons.wikimedia.org' && url.pathname.includes('/wiki/Special:FilePath/')) {
+      url.searchParams.set('width', String(width));
+      return url.toString();
+    }
+    if (url.hostname === 'images.unsplash.com') {
+      url.searchParams.set('auto', 'format');
+      url.searchParams.set('fit', url.searchParams.get('fit') ?? 'crop');
+      url.searchParams.set('w', String(width));
+      url.searchParams.set('q', width <= 720 ? '70' : '76');
+      return url.toString();
+    }
+  } catch {}
+  return null;
+}
+
+const cardSrcset = hasImage
+  ? [360, 540, 720, 960]
+      .map((width) => {
+        const url = sizedUrl(image, width);
+        return url ? `${url} ${width}w` : null;
+      })
+      .filter(Boolean)
+      .join(', ')
+  : '';
 ---
 <a class:list={{ destination:true, 'destination--plain':!hasImage }} href={href}>
   <div class="visual" aria-hidden="true">
@@ -13,6 +42,10 @@ const hasImage = Boolean(image);
     {hasImage && (
       <img
         src={image}
+        srcset={cardSrcset || undefined}
+        sizes={cardSrcset ? '(max-width: 640px) calc(100vw - 24px), (max-width: 900px) calc(50vw - 26px), 380px' : undefined}
+        width="960"
+        height="640"
         alt=""
         loading="lazy"
         decoding="async"
