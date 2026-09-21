@@ -50,7 +50,7 @@ export const daLatPages = {
 
   'hvor-skal-man-bo': {
     destinationName:'Da Lat',
-    title:'Hvor skal man bo i Da Lat? Centrum, søen eller roligere villaområder',
+    title:'Hvor skal man bo i Da Lat? Centrum, søen eller villaområder',
     description:'Sammenlign centrum ved markedet, området omkring Xuan Huong Lake og roligere villa/resortområder i Da Lat.',
     eyebrow:'Da Lat · Områder',
     heading:'Hvor skal man bo i Da Lat? Centrum er nemmest på en kort rejse',
