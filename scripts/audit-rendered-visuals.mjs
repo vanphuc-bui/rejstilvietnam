@@ -88,7 +88,7 @@ function sectionVisualStats(html) {
   let visualSections = 0;
 
   for (const piece of pieces) {
-    const hasVisual = /<img\b|<iframe\b|<table\b|class="[^"]*(?:place-map|visual-highlights|activity-grid|video-block|fact-grid|hotel-list|area-list|route-grid|timeline|comparison-grid|day-route|priority-grid|provider-grid|agency-list|check-list|food-grid|link-list)[^"]*"/i.test(piece);
+    const hasVisual = /<img\b|<iframe\b|<table\b|class="[^"]*(?:place-map|visual-highlights|activity-grid|active-grid|video-block|fact-grid|hotel-list|area-list|route-grid|timeline|comparison-grid|day-route|priority-grid|provider-grid|agency-list|check-list|food-grid|link-list)[^"]*"/i.test(piece);
     if (hasVisual) {
       visualSections += 1;
       currentRun = 0;
@@ -114,6 +114,8 @@ for (const file of pages) {
   const mainHtml = editorialContent(html);
   const images = count(html, /<img\b[^>]*\bsrc=(?:"[^"]+"|'[^']+')/gi);
   const contentImages = count(mainHtml, /<img\b[^>]*\bsrc=(?:"[^"]+"|'[^']+')/gi);
+  const structuredVisuals = count(mainHtml, /class=(?:"[^"]*\bactive-grid\b[^"]*"|'[^']*\bactive-grid\b[^']*')/gi);
+  const contentVisuals = contentImages + structuredVisuals;
   const h2s = count(mainHtml, /<h2\b/gi);
   const videos = count(mainHtml, /class=(?:"[^"]*\bvideo-block\b[^"]*"|'[^']*\bvideo-block\b[^']*')/gi);
   const density = sectionVisualStats(html);
@@ -123,12 +125,12 @@ for (const file of pages) {
     errors.push({ route, message: 'Travel page renders without any image.' });
   }
 
-  if (isEditorial && h2s >= 4 && contentImages < 2) {
-    errors.push({ route, message: `Only ${contentImages} in-content image(s) for ${h2s} H2 sections; minimum is 2 outside the global shell/hero.` });
+  if (isEditorial && h2s >= 4 && contentVisuals < 2) {
+    errors.push({ route, message: `Only ${contentVisuals} in-content visual(s) for ${h2s} H2 sections; minimum is 2 outside the global shell/hero.` });
   }
 
-  if (isEditorial && h2s >= 7 && contentImages < 3) {
-    errors.push({ route, message: `Only ${contentImages} in-content image(s) for a long ${h2s}-section guide; minimum is 3 outside the global shell/hero.` });
+  if (isEditorial && h2s >= 7 && contentVisuals < 3) {
+    errors.push({ route, message: `Only ${contentVisuals} in-content visual(s) for a long ${h2s}-section guide; minimum is 3 outside the global shell/hero.` });
   }
 
   if (isEditorial && density.maxTextOnlyRun > 2) {
@@ -139,7 +141,7 @@ for (const file of pages) {
     warnings.push({ route, message: 'This visual page family has no embedded video yet.' });
   }
 
-  stats.push({ route, h2s, images, contentImages, videos, ...density });
+  stats.push({ route, h2s, images, contentImages, structuredVisuals, contentVisuals, videos, ...density });
 }
 
 fs.mkdirSync(reportDir, { recursive: true });

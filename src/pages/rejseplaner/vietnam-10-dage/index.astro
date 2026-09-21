@@ -1,5 +1,6 @@
 ---
 import GuideCover from '../../../components/GuideCover.astro';
+import ActiveTripCallout from '../../../components/ActiveTripCallout.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
@@ -37,6 +38,8 @@ const stops = [
   <div class="container route-video"><VideoEmbed youtubeId="NgvC-Frin1Y" title="Vietnam i levende billeder" caption="Den officielle Vietnam Tourism-video giver et hurtigt visuelt indtryk af landet; brug rejseplanen her til den praktiske rækkefølge." /></div>
 
   <section class="section cut-section"><div class="container cut-grid"><div><p class="eyebrow">Hvad ville vi skære væk?</p><h2>Det svære er at sige nej.</h2></div><div class="card cut-card"><b>Drop Ha Long Bay</b><p>Hvis Hoi An og Ho Chi Minh City er vigtigere. Du sparer endnu et transportled og en overnatning.</p></div><div class="card cut-card"><b>Drop Ho Chi Minh City</b><p>Hvis du hellere vil have Ha Long Bay. Så kan du holde hele turen i nord + central Vietnam og flyve hjem via Da Nang/Hanoi.</p></div></div></section>
+
+  <section class="section section--tight"><div class="container"><ActiveTripCallout /></div></section>
 
   <section class="section section--tight"><div class="container booking-cta"><div><p class="eyebrow">Når ruten passer</p><h2>Book i den rigtige rækkefølge.</h2><p>Internationale fly → centrale hoteller → indenrigsfly → de få ture der kræver reservation.</p></div><a class="btn btn--primary" href="/book-rejsen/">Gå til Book rejsen →</a></div></section>
 </BaseLayout>

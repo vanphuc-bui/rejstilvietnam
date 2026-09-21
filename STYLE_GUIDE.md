@@ -29,6 +29,20 @@ Alle nye rejseguider skal have ét tydeligt søgeformål og kunne besvare hoveds
 
 Skriv med danske rejsende som målgruppe. Når det er relevant, så forklar priser, tidsforbrug, bagage, familiebehov, rejserytme og praktiske forskelle på en måde der hjælper en dansk læser med at træffe en beslutning.
 
+## Aktiv ferie og outdoor
+
+Outdoor er en fast del af destinationernes profil, fordi mange danske rejsende interesserer sig for løb, cykling, vandring og aktiviteter på vandet. Det skal dog kun bruges, når emnet er relevant.
+
+- Alle destination hubs skal vise mindst 2-3 konkrete aktive muligheder.
+- Relevante sider om seværdigheder, strande, natur og rejseplaner skal linke til eller vise et kompakt outdoor-afsnit.
+- Et aktivitetsforslag skal indeholde distance, tid, sværhedsgrad, bedste tidspunkt, startområde, lokale forhold og et praktisk tip.
+- Forklar varme, fugt, trafik, underlag, bølger og sikkerhed fra et dansk perspektiv.
+- Kortlinks viser som udgangspunkt startområdet. Kald det ikke en fuld rute eller GPX, medmindre ruten er kontrolleret.
+- Gør det tydeligt, hvornår en guide er nyttig, og hvornår aktiviteten er nem at gennemføre selv.
+- Undgå at fremstille scooterkørsel som en enkel standardløsning. Forsikring, erfaring og lokal trafik skal nævnes, når det er relevant.
+
+Den fulde sidestruktur og activity-card-skabelon ligger i `CONTENT_PAGE_TEMPLATE.md`.
+
 ## Praktiske råd
 
 - En artikel skal ikke kun fortælle, hvilke muligheder der findes. Den skal hjælpe læseren med at vælge.

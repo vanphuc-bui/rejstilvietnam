@@ -1,0 +1,44 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import ActiveOutdoor from '../../components/ActiveOutdoor.astro';
+import { activeOutdoorOrder, activeOutdoorByDestination } from '../../data/activeOutdoor.js';
+
+const toc = activeOutdoorOrder.map((slug) => ({
+  id: `aktiv-${slug}`,
+  label: activeOutdoorByDestination[slug].destination,
+}));
+---
+
+<ArticleLayout
+  title="Aktiv ferie i Vietnam | Løb, cykling, vandring og kajak"
+  description="Dansk guide til aktiv ferie i Vietnam med konkrete forslag til løb, cykling, vandring, kajak og SUP i Hanoi, Hoi An, Da Nang, Nha Trang, Ho Chi Minh City og Phu Quoc."
+  eyebrow="Aktiv ferie"
+  heading="Vietnam for dig, der gerne vil være aktiv"
+  intro="Du behøver ikke vælge mellem kultur, mad og en aktiv ferie. Her finder du konkrete ruter og aktivitetsidéer med distance, tidsforbrug, sværhedsgrad, bedste tidspunkt og de praktiske forhold, der betyder mest i varme og trafik."
+  updated="21. september 2026"
+  dateModified="2026-09-21"
+  toc={toc}
+>
+  <div class="active-principles" aria-label="Sådan bruger du guiden">
+    <div><span>01</span><strong>Start tidligt</strong><p>Varme, fugt og trafik gør morgenen til det bedste tidspunkt de fleste steder.</p></div>
+    <div><span>02</span><strong>Vælg efter forhold</strong><p>Regn, bølger, glatte sten og lokal vejadgang kan ændre planen fra dag til dag.</p></div>
+    <div><span>03</span><strong>Se ruten før afgang</strong><p>Kortlinket viser startområdet. Kontroller den præcise rute lokalt, især til cykling og vandring.</p></div>
+  </div>
+
+  <div class="notice">
+    <strong>Afstandene er pejlemærker.</strong> Ruter kan ændre sig med byggearbejde, trafik, vejr og lokal adgang. Brug oplysningerne til at vælge den rigtige type aktivitet, og kontroller forholdene på dagen.
+  </div>
+
+  {activeOutdoorOrder.map((slug) => (
+    <ActiveOutdoor destinationSlug={slug} id={`aktiv-${slug}`} />
+  ))}
+
+  <h2>Sådan ville vi vælge første aktive stop</h2>
+  <p><strong>Hoi An</strong> er lettest til rolig cykling. <strong>Da Nang</strong> er bedst til løb langs stranden og mere krævende cykling. <strong>Nha Trang</strong> kombinerer morgenløb med aktiviteter på vandet. I <strong>Hanoi og Ho Chi Minh City</strong> ville vi holde os til tidlige ruter med et tydeligt startområde, mens <strong>Phu Quoc</strong> kræver mere planlægning af afstande og transport.</p>
+  <p>Hvis en aktivitet er vigtig for hele rejsen, bør den påvirke hotelvalget. Et hotel tæt på My Khe, Tran Phu eller Hoan Kiem kan være mere værd end et billigere hotel, der kræver taxi før hvert morgenpas.</p>
+</ArticleLayout>
+
+<style>
+.active-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 26px}.active-principles>div{padding:18px;border:1px solid var(--border);border-radius:18px;background:#fff}.active-principles span{display:block;color:var(--coral);font-size:.72rem;font-weight:900;letter-spacing:.09em}.active-principles strong{display:block;margin-top:8px;color:var(--green-950)}.active-principles p{margin:5px 0 0!important;color:var(--muted)!important;font-size:.88rem}:global(.prose) :global(.active-outdoor){max-width:none}:global(.prose) :global(.active-grid){grid-template-columns:1fr}:global(.prose) :global(.active-card){display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1fr);column-gap:20px}:global(.prose) :global(.active-card__top),:global(.prose) :global(.active-card h3){grid-column:1}:global(.prose) :global(.activity-facts),:global(.prose) :global(.conditions),:global(.prose) :global(.active-tip),:global(.prose) :global(.map-link){grid-column:2}:global(.prose) :global(.activity-facts){grid-row:1 / span 2}:global(.prose) :global(.conditions){margin-top:6px!important}
+@media(max-width:760px){.active-principles{grid-template-columns:1fr}:global(.prose) :global(.active-card){display:flex}:global(.prose) :global(.activity-facts){grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>

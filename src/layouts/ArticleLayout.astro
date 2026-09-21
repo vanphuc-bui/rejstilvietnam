@@ -3,6 +3,9 @@ import BaseLayout from './BaseLayout.astro';
 import HubGrid from '../components/HubGrid.astro';
 import MarineHubHighlights from '../components/MarineHubHighlights.astro';
 import GuideCover from '../components/GuideCover.astro';
+import ActiveOutdoor from '../components/ActiveOutdoor.astro';
+import ActiveTripCallout from '../components/ActiveTripCallout.astro';
+import { getActiveOutdoor } from '../data/activeOutdoor.js';
 import { hoiAnPages } from '../data/hoiAnCluster.js';
 import { hoChiMinhPages } from '../data/hoChiMinhCluster.js';
 import { phuQuocPages } from '../data/phuQuocCluster.js';
@@ -72,6 +75,17 @@ const hubMeta = {
 };
 const hubMatch = Astro.url.pathname.match(/^\/destinationer\/([^/]+)\/$/);
 const hubSlug = hubMatch?.[1] ?? null;
+const guideMatch = Astro.url.pathname.match(/^\/destinationer\/([^/]+)\/([^/]+)\/$/);
+const guideSlug = guideMatch?.[2] ?? null;
+const activeData = getActiveOutdoor(destinationSlug ?? hubSlug);
+const activeGuidePattern = /^(sevaerdigheder|bedste-strande|3-dage-|4-dage-|vandsport|snorkling|dykning|oehop)/;
+const showActiveOnGuide = Boolean(activeData && guideSlug && activeGuidePattern.test(guideSlug));
+const showActiveOnItinerary = /^\/rejseplaner\/[^/]+\/$/.test(Astro.url.pathname);
+const finalToc = [
+  ...toc,
+  ...(showActiveOnGuide && !toc.some((item) => item.id === 'aktiv-ferie') ? [{ id: 'aktiv-ferie', label: 'Aktiv ferie' }] : []),
+  ...(showActiveOnItinerary && !toc.some((item) => item.id === 'aktiv-rute') ? [{ id: 'aktiv-rute', label: 'Aktiv rejseprofil' }] : []),
+];
 const currentCluster = hubSlug ? clusterSets[hubSlug] : null;
 const currentHubMeta = hubSlug ? hubMeta[hubSlug] : null;
 const finalTitle = currentHubMeta?.title ?? title;
@@ -137,9 +151,15 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
     </div>
   )}
 
+  {hubSlug && getActiveOutdoor(hubSlug) && (
+    <div class="container active-hub-wrap">
+      <ActiveOutdoor destinationSlug={hubSlug} />
+    </div>
+  )}
+
   <section class="section section--tight article-content">
     <div class="container article-shell">
-      {toc.length > 0 && (
+      {finalToc.length > 0 && (
         <nav class="mobile-toc card" aria-label="Indholdsfortegnelse">
           {hubHref && <a class="mobile-hub-back" href={hubHref}>← {hubLabel}</a>}
           <details class="mobile-toc-details">
@@ -147,22 +167,24 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
               <span>På denne side</span>
               <span class="toc-toggle" aria-hidden="true">⌄</span>
             </summary>
-            <div class="toc">{toc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}</div>
+            <div class="toc">{finalToc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}</div>
           </details>
         </nav>
       )}
 
       <article class="prose">
         <slot />
+        {showActiveOnGuide && <ActiveOutdoor destinationSlug={destinationSlug} compact />}
+        {showActiveOnItinerary && <ActiveTripCallout />}
       </article>
 
       <aside class="card sidebar article-sidebar" aria-label="Guideinformation">
         {hubHref && <a class="hub-back" href={hubHref}>← {hubLabel}</a>}
-        {toc.length > 0 && (
+        {finalToc.length > 0 && (
           <>
             <p class="sidebar-label">På denne side</p>
             <nav class="toc" aria-label="Indholdsfortegnelse">
-              {toc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
+              {finalToc.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
             </nav>
           </>
         )}
@@ -193,6 +215,7 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
 .article-hero-media :global(.media-frame) { aspect-ratio: 16 / 7; }
 .auto-hub-grid { margin-top: 28px; }
 .marine-hub-wrap { margin-top: -8px; }
+.active-hub-wrap { margin-top: 18px; }
 .article-sidebar { display: grid; gap: 24px; }
 .sidebar-label { font-size: .75rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; color: var(--green-700); margin-bottom: 10px; }
 .toc, .sidebar-sources { display: grid; gap: 9px; }
