@@ -324,6 +324,52 @@ for (const [title, routes] of titleOwners) {
   if (routes.length > 1) addIssue({ category: 'seo', message: `Duplicate title "${title}": ${routes.join(', ')}`, impact: 'medium', effort: 'small' });
 }
 
+// Catch likely search-intent cannibalization even when titles are not identical.
+// This is intentionally conservative: we ignore common Danish glue words, years
+// and brand terms, then flag only pairs sharing at least four meaningful tokens
+// and at least 80% of the smaller token set.
+const seoStopWords = new Set([
+  'og','i','på','til','fra','med','for','af','en','et','den','det','de','din','dit','dine',
+  'sådan','guide','rejseguide','rejse','rejsen','rejser','vietnam','rejstilvietnam','dk',
+]);
+function seoTokens(value = '') {
+  return new Set(
+    value
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/20\d{2}(?:\/20\d{2})?/g, ' ')
+      .replace(/[^a-z0-9æøå]+/g, ' ')
+      .split(/\s+/)
+      .filter((token) => token.length > 2 && !seoStopWords.has(token))
+  );
+}
+function intentSimilarity(a, b) {
+  if (!a.size || !b.size) return { shared: 0, containment: 0 };
+  const shared = [...a].filter((token) => b.has(token)).length;
+  return { shared, containment: shared / Math.min(a.size, b.size) };
+}
+
+const intentPages = [...pageData.values()].map((page) => ({
+  ...page,
+  intentTokens: seoTokens(`${page.title} ${page.h1s?.[0] ?? ''}`),
+}));
+for (let i = 0; i < intentPages.length; i += 1) {
+  for (let j = i + 1; j < intentPages.length; j += 1) {
+    const left = intentPages[i];
+    const right = intentPages[j];
+    const { shared, containment } = intentSimilarity(left.intentTokens, right.intentTokens);
+    if (shared >= 4 && containment >= 0.8) {
+      addIssue({
+        category: 'seo-cannibalization',
+        message: `Possible overlapping search intent: ${left.route} ↔ ${right.route} (${shared} shared intent tokens, ${Math.round(containment * 100)}% containment).`,
+        impact: 'medium',
+        effort: 'small',
+      });
+    }
+  }
+}
+
 const reachableFromHome = new Set(['/']);
 const queue = ['/'];
 while (queue.length) {
