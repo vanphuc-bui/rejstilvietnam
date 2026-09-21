@@ -2,6 +2,12 @@
 
 Danish-first Vietnam travel guide built with Astro and deployed as static assets on Cloudflare Workers.
 
+## Editorial standards
+
+- `CONTENT_PAGE_TEMPLATE.md` - canonical one-page structure, including the Active & Outdoor block
+- `STYLE_GUIDE.md` - natural Danish tone, decision-focused writing and affiliate wording
+- `IMAGE_STANDARD.md` - image ownership, relevance, licences and visual QA
+
 ## Local development
 
 ```bash
@@ -17,7 +23,7 @@ npm run build
 
 The production build is blocked when it finds broken internal links, missing local assets,
 invalid canonicals or structured data, orphan pages, inaccessible H1/alt markup, or a required
-visitor journey that no longer works.
+visitor journey that no longer works. Destination hubs are also checked for complete Active & Outdoor coverage.
 
 ## Visitor-agent QA
 

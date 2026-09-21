@@ -1,5 +1,6 @@
 ---
 import GuideCover from '../../../components/GuideCover.astro';
+import ActiveTripCallout from '../../../components/ActiveTripCallout.astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SectionMedia from '../../../components/SectionMedia.astro';
 import VideoEmbed from '../../../components/VideoEmbed.astro';
@@ -29,6 +30,8 @@ const stops = [
   <div class="container route-video"><VideoEmbed youtubeId="NgvC-Frin1Y" title="Vietnam fra nord til syd" caption="Videoen giver et visuelt tværsnit af landet; ruten på siden hjælper med at omsætte inspirationen til 21 realistiske dage." /></div>
 
   <section class="section swap-section"><div class="container"><div class="section-head"><div><p class="eyebrow">Tilpas ruten</p><h2>Byt efter det, du faktisk glæder dig til.</h2></div></div><div class="grid grid--3"><div class="card swap"><span>⛰️</span><h3>Vil du hellere have bjerge?</h3><p>Byt Phu Quoc eller to Hoi An-dage ud med Sapa. Gør det kun, hvis trekking og bjerglandskab er en hovedgrund til rejsen.</p></div><div class="card swap"><span>🏖️</span><h3>Vil du have mere strand?</h3><p>Behold Phu Quoc og skær Mekong væk. Det giver 6-7 rolige dage til sidst.</p></div><div class="card swap"><span>🚆</span><h3>Vil du have mindre fly?</h3><p>Overvej Hue mellem nord og Hoi An, men pas på at du ikke bare tilføjer endnu et hotelskift.</p></div></div></div></section>
+
+  <section class="section section--tight"><div class="container"><ActiveTripCallout /></div></section>
 
   <section class="section section--tight"><div class="container end-cta"><div><p class="eyebrow">Planlæg næste lag</p><h2>Har du ruten? Så kommer bookingen.</h2><p>Book de dyreste og mest tidskritiske led først. Resten kan være fleksibelt.</p></div><a class="btn btn--primary" href="/book-rejsen/">Gå til Book rejsen →</a></div></section>
 </BaseLayout>

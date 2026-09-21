@@ -4,9 +4,9 @@ import SectionMedia from '../../components/SectionMedia.astro';
 import { hubVisuals } from '../../data/hubVisuals.js';
 
 const guides = [
+  { kicker:'Aktiv ferie', title:'Løb, cykling og vandring', text:'Konkrete forslag med distance, tidsforbrug, sværhedsgrad, bedste tidspunkt og kort til startområdet.', href:'/aktiv-ferie-i-vietnam/', image:hubVisuals.tours.streetFood },
   { kicker:'Cruise', title:'Ha Long Bay', text:'Dagstur eller 1 nat? Se hvad vi ville tjekke i rute, kahyt, transfer og nyere anmeldelser.', href:'/ture/halong-bay-cruise/', image:hubVisuals.tours.halong },
   { kicker:'Fra Hanoi', title:'Ninh Binh', text:'Dagstur eller overnatning? Se hvilke stop der er værd at prioritere, og hvad du roligt kan springe over.', href:'/ture/ninh-binh-fra-hanoi/', image:hubVisuals.tours.ninhBinh },
-  { kicker:'Mad i Hanoi', title:'Street food', text:'Hvis du vil booke en madtur, ville vi vælge en lille gruppe og en tur, der faktisk besøger lokale spisesteder.', href:'/destinationer/hanoi/', image:hubVisuals.tours.streetFood },
 ];
 ---
 <BaseLayout title="Oplevelser og ture i Vietnam | RejsTilVietnam.dk" description="Danske guides til oplevelser i Vietnam: Ha Long Bay cruise, Ninh Binh fra Hanoi, street food og andre ture, hvor det kan betale sig at sammenligne før booking.">
@@ -14,7 +14,7 @@ const guides = [
     <div class="container">
       <p class="eyebrow">Oplevelser</p>
       <h1>Hvad er værd at booke på forhånd?</h1>
-      <p class="lead">Nogle ture gør rejsen lettere. Andre er mest ekstra transport og ventetid. Her samler vi de oplevelser, hvor det giver mening at sammenligne mulighederne først.</p>
+      <p class="lead">Nogle oplevelser kan du nemt planlægge selv. Andre bliver bedre med transport, udstyr eller en lokal guide. Her kan du vælge mellem aktive dage, natur og ture, der er værd at sammenligne først.</p>
     </div>
   </section>
   <div class="container hub-hero-media"><SectionMedia {...hubVisuals.toursHero} loading="eager" fetchpriority="high" /></div>

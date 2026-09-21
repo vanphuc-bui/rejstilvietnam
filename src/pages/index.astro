@@ -3,12 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import DestinationCard from '../components/DestinationCard.astro';
 
 const destinations = [
-  { name: 'Hanoi', kicker: 'Nordvietnam', description: 'Gadekøkkener, gamle kvarterer og et godt udgangspunkt for Ninh Binh og Ha Long.', href: '/destinationer/hanoi/', image: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=82' },
-  { name: 'Hoi An', kicker: 'Centralvietnam', description: 'Lanterner, strand, cykelture og masser af gode steder at spise.', href: '/destinationer/hoi-an/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hoi%20An%20lanterns.jpg?width=1200' },
-  { name: 'Da Nang', kicker: 'Centralvietnam', description: 'Strand, moderne byliv og en praktisk base mellem Hoi An og Hue.', href: '/destinationer/da-nang/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/My%20Khe%20Beach%20Danang%20Coastline.jpg?width=1200' },
-  { name: 'Nha Trang', kicker: 'Sydcentral Vietnam', description: 'Strandby med seafood, byliv og nem adgang til bugten og øture.', href: '/destinationer/nha-trang/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Nha%20trang%20beach.jpg?width=1200' },
-  { name: 'Ho Chi Minh City', kicker: 'Sydvietnam', description: 'Storby, historie, street food og et naturligt udgangspunkt for Mekongdeltaet.', href: '/destinationer/ho-chi-minh-city/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Motorcycles%20in%20Ho%20Chi%20Minh%20City.jpg?width=1200' },
-  { name: 'Phu Quoc', kicker: 'Sydvietnam', description: 'Strand, solnedgang og nogle rolige dage sidst på rejsen.', href: '/destinationer/phu-quoc/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20Quoc%20Beach.jpg?width=1200' },
+  { name: 'Hanoi', kicker: 'Nordvietnam', description: 'Gadekøkkener og historie - plus morgenløb ved søerne og naturdage uden for byen.', href: '/destinationer/hanoi/', image: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=82' },
+  { name: 'Hoi An', kicker: 'Centralvietnam', description: 'Lanterner, strand og flade cykelruter gennem rismarkerne omkring byen.', href: '/destinationer/hoi-an/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hoi%20An%20lanterns.jpg?width=1200' },
+  { name: 'Da Nang', kicker: 'Centralvietnam', description: 'Strandby med løb på My Khe, Son Tra på cykel og korte aktive udflugter.', href: '/destinationer/da-nang/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/My%20Khe%20Beach%20Danang%20Coastline.jpg?width=1200' },
+  { name: 'Nha Trang', kicker: 'Sydcentral Vietnam', description: 'Strandby med morgenløb, vandring ved Ba Ho og aktiviteter i bugten.', href: '/destinationer/nha-trang/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Nha%20trang%20beach.jpg?width=1200' },
+  { name: 'Ho Chi Minh City', kicker: 'Sydvietnam', description: 'Storby, street food og tidlige løberuter i parker og nyere flodområder.', href: '/destinationer/ho-chi-minh-city/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Motorcycles%20in%20Ho%20Chi%20Minh%20City.jpg?width=1200' },
+  { name: 'Phu Quoc', kicker: 'Sydvietnam', description: 'Strand og solnedgang - med kajak, cykling og skov til de aktive dage.', href: '/destinationer/phu-quoc/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Phu%20Quoc%20Beach.jpg?width=1200' },
 ];
 
 const plans = [
@@ -25,9 +25,9 @@ const practical = [
 ];
 
 const experiences = [
+  ['Aktiv ferie','Løb, cykling og vandring','Find konkrete forslag med distance, sværhedsgrad, bedste tidspunkt og kort til startområdet.','/aktiv-ferie-i-vietnam/'],
   ['Cruise','Ha Long Bay','Dagstur eller 1 nat? Sammenlign rute, kahyt, transfer og nyere anmeldelser.','/ture/halong-bay-cruise/'],
   ['Fra Hanoi','Ninh Binh','Se om en dagstur er nok, eller om du bør blive en nat.','/ture/ninh-binh-fra-hanoi/'],
-  ['Mad & byliv','Street food i Hanoi','Brug byen til fods og vælg kun guidede ture, når de faktisk tilfører noget.','/destinationer/hanoi/'],
 ];
 
 const booking = [
@@ -82,7 +82,7 @@ const booking = [
 
   <section class="section featured-guides">
     <div class="container">
-      <div class="section-head"><div><p class="eyebrow">Oplevelser</p><h2>Det er ikke alt, du behøver booke på forhånd.</h2></div><p>Vi fokuserer på de ture og oplevelser, hvor transport, adgang eller en lokal guide faktisk kan gøre dagen bedre.</p></div>
+      <div class="section-head"><div><p class="eyebrow">Oplevelser</p><h2>Se Vietnam i dit eget tempo.</h2></div><p>Fra morgenløb og cykling til cruise og naturdage. Vi viser både det, du kan gøre selv, og de ture hvor transport eller en lokal guide faktisk gør dagen bedre.</p></div>
       <div class="grid grid--3">
         {experiences.map(([kicker,title,text,href]) => <a class="card guide-card" href={href}><span>{kicker}</span><h3>{title}</h3><p>{text}</p><b>Læs guiden →</b></a>)}
       </div>

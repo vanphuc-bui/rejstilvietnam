@@ -257,5 +257,16 @@
       { "type": "route", "value": "/destinationer/nha-trang/vandsport-og-dykning/", "maxHops": 1, "required": true },
       { "type": "external-domain", "value": "getyourguide.com", "maxHops": 1, "required": false }
     ]
+  },
+  {
+    "id": "active-danish-traveller",
+    "name": "Aktiv dansk Vietnam-rejsende",
+    "device": "mobile",
+    "intent": "Find konkrete steder til løb, cykling og vandring med distance, tidspunkt og kort",
+    "entry": "/",
+    "outcomes": [
+      { "type": "route", "value": "/aktiv-ferie-i-vietnam/", "maxHops": 1, "required": true },
+      { "type": "route", "value": "/destinationer/da-nang/", "maxHops": 2, "required": true }
+    ]
   }
 ]

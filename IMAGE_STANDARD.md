@@ -21,8 +21,10 @@ Long guides should normally contain 2-4 different visual types, for example:
 - landmark or cultural detail
 - map when geography matters
 - one useful video on larger pillar guides
+- activity photography showing running, cycling, hiking or water activities when outdoor is part of the page intent
 
 Avoid making every page a sequence of generic landscape photos.
+For active-travel content, prefer a photo that shows the actual terrain, traffic, coast or trail conditions. A generic landmark photo is not enough when the text is helping the reader judge an activity.
 
 ## 3. Relevance
 

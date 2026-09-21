@@ -111,6 +111,14 @@ const publicPages = htmlFiles.filter((file) => path.basename(file) !== '404.html
 const routeSet = new Set(htmlFiles.map(routeFor));
 const pageData = new Map();
 const issues = [];
+const activeDestinationHubs = new Set([
+  '/destinationer/hanoi/',
+  '/destinationer/hoi-an/',
+  '/destinationer/da-nang/',
+  '/destinationer/nha-trang/',
+  '/destinationer/ho-chi-minh-city/',
+  '/destinationer/phu-quoc/',
+]);
 
 function addIssue({ severity = 'warning', category, route = '', message, impact = 'medium', effort = 'small' }) {
   issues.push({ severity, category, route, message, impact, effort });
@@ -225,6 +233,30 @@ for (const file of publicPages) {
   const wordCount = stripTags(html).split(/\s+/).filter(Boolean).length;
   if (wordCount < 180 && !['/', '/destinationer/', '/rejseguide/', '/rejseplaner/', '/ture/', '/book-rejsen/'].includes(route)) {
     addIssue({ category: 'content', route, message: `Page has only about ${wordCount} rendered words; review for thin content.`, impact: 'medium', effort: 'medium' });
+  }
+
+  if (activeDestinationHubs.has(route)) {
+    const activeCards = (html.match(/class="[^"]*active-card(?:\s|\")/g) ?? []).length;
+    if (!html.includes('data-active-outdoor=')) {
+      addIssue({ severity: 'error', category: 'active-outdoor', route, message: 'Destination hub is missing its Active & Outdoor block.', impact: 'high', effort: 'small' });
+    } else if (activeCards < 3) {
+      addIssue({ severity: 'error', category: 'active-outdoor', route, message: `Destination hub has only ${activeCards} activity card(s); expected at least 3.`, impact: 'high', effort: 'small' });
+    }
+  }
+
+  if (route === '/aktiv-ferie-i-vietnam/') {
+    const destinationBlocks = (html.match(/data-active-outdoor=/g) ?? []).length;
+    const requiredLabels = ['Distance', 'Tid', 'Bedst', 'Start', 'Forhold:'];
+    if (destinationBlocks < activeDestinationHubs.size) {
+      addIssue({ severity: 'error', category: 'active-outdoor', route, message: `Active-travel hub covers only ${destinationBlocks} destinations; expected ${activeDestinationHubs.size}.`, impact: 'high', effort: 'small' });
+    }
+    for (const label of requiredLabels) {
+      if (!html.includes(label)) addIssue({ severity: 'error', category: 'active-outdoor', route, message: `Active-travel template is missing the required field "${label}".`, impact: 'high', effort: 'tiny' });
+    }
+  }
+
+  if (/^\/rejseplaner\/[^/]+\/$/.test(route) && !html.includes('data-active-trip-callout')) {
+    addIssue({ severity: 'error', category: 'active-outdoor', route, message: 'Detailed itinerary is missing its active-travel route option.', impact: 'medium', effort: 'tiny' });
   }
 
   pageData.set(route, { route, title, description, canonical, h1s, images: images.length, internalLinks, externalHosts, wordCount });
