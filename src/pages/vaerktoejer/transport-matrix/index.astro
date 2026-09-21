@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { transportMatrix, transportPlaces, transportSources } from '../../../data/transportMatrix.js';
+
+const payload = { transportMatrix, transportPlaces };
+const appStructuredData = {
+  '@context':'https://schema.org',
+  '@type':'WebApplication',
+  name:'Vietnam Transport Matrix',
+  description:'Gratis dansk transportmatrix til at sammenligne rejsetid, transportform og planlægningspris mellem populære stop i Vietnam.',
+  url:new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString(),
+  applicationCategory:'TravelApplication',
+  operatingSystem:'Any',
+  inLanguage:'da-DK',
+  isAccessibleForFree:true,
+  featureList:[
+    'Sammenligning af transport mellem Vietnam-destinationer',
+    'Dør-til-dør rejsetid',
+    'Planlægningspris i VND og DKK',
+    'Komfort og besvær',
+    'Delbare fra/til-links',
+  ],
+};
+---
+<BaseLayout
+  title="Transport i Vietnam | Interaktiv transportmatrix"
+  description="Sammenlign transport mellem Hanoi, Ninh Binh, Ha Long Bay, Hoi An, Nha Trang, Ho Chi Minh City, Phu Quoc m.fl. Se tid, pris, komfort og vores valg."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appStructuredData)}></script>
+
+  <section class="page-hero matrix-hero">
+    <div class="container matrix-hero__grid">
+      <div>
+        <p class="eyebrow">Gratis transportværktøj</p>
+        <h1>Hvor lang tid tager næste <em>hop</em> egentlig?</h1>
+        <p class="lead">Sammenlign de strækninger, der typisk afgør om en Vietnam-rute føles rolig eller som en række transportdage. Vi viser dør-til-dør-tid, planlægningspris og hvilket transportvalg vi ville starte med.</p>
+        <div class="matrix-hero__badges">
+          <span>20+ populære forbindelser</span>
+          <span>Dør-til-dør fokus</span>
+          <span>VND + ca. DKK</span>
+          <span>Delbart link</span>
+        </div>
+      </div>
+      <div class="matrix-hero__card" aria-hidden="true">
+        <div><span>Hanoi</span><b>🚐 2 t</b><span>Ninh Binh</span></div>
+        <i>↓</i>
+        <div><span>Hoi An</span><b>✈️ 4–5 t</b><span>HCMC</span></div>
+        <i>↓</i>
+        <div><span>HCMC</span><b>✈️ 3–4 t</b><span>Phu Quoc</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight matrix-tool">
+    <div class="container">
+      <div class="matrix-controls card">
+        <div class="matrix-controls__head">
+          <div><p class="eyebrow">Vælg en strækning</p><h2>Sammenlign før du låser ruten.</h2></div>
+          <button class="reset-button" type="button" id="matrix-reset">Vis alle forbindelser</button>
+        </div>
+        <div class="route-selectors">
+          <label>
+            <span>Fra</span>
+            <select id="matrix-from">
+              <option value="">Alle steder</option>
+              {transportPlaces.map((place) => <option value={place}>{place}</option>)}
+            </select>
+          </label>
+          <div class="swap-wrap"><button id="matrix-swap" type="button" aria-label="Byt om på fra og til">⇄</button></div>
+          <label>
+            <span>Til</span>
+            <select id="matrix-to">
+              <option value="">Alle steder</option>
+              {transportPlaces.map((place) => <option value={place}>{place}</option>)}
+            </select>
+          </label>
+        </div>
+        <div class="filter-row">
+          <button type="button" class="matrix-filter is-active" data-filter="all" aria-pressed="true">Alle</button>
+          <button type="button" class="matrix-filter" data-filter="✈️" aria-pressed="false">✈️ Fly</button>
+          <button type="button" class="matrix-filter" data-filter="🚆" aria-pressed="false">🚆 Tog</button>
+          <button type="button" class="matrix-filter" data-filter="🚌" aria-pressed="false">🚌 Bus</button>
+          <button type="button" class="matrix-filter" data-filter="🚐" aria-pressed="false">🚐 Transfer</button>
+        </div>
+        <div class="matrix-meta">
+          <span id="matrix-count"></span>
+          <span>Planlægningskurs: 4.050 VND ≈ 1 DKK</span>
+        </div>
+      </div>
+
+      <div id="matrix-featured" class="featured-route" aria-live="polite"></div>
+      <div id="matrix-list" class="matrix-list"></div>
+
+      <div class="matrix-empty" id="matrix-empty" hidden>
+        <strong>Vi har ikke en direkte standardforbindelse mellem de to steder endnu.</strong>
+        <p>Prøv et større transportknudepunkt som Hanoi, Da Nang/Hoi An eller Ho Chi Minh City — eller se hele transportguiden.</p>
+        <a class="btn btn--outline" href="/rejseguide/transport/">Læs transportguiden →</a>
+      </div>
+
+      <div class="matrix-actions">
+        <button class="btn btn--outline" type="button" id="copy-matrix-link">Kopiér link til denne sammenligning</button>
+        <a class="btn btn--primary" href="/vaerktoejer/vietnam-trip-planner/">Byg en hel rute →</a>
+        <span id="matrix-copy-status" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section matrix-explain">
+    <div class="container">
+      <div class="section-head">
+        <div><p class="eyebrow">Sådan læser du tabellen</p><h2>Flyvetid er ikke det samme som ferietid.</h2></div>
+        <p>Et “1 time 25 min”-fly bliver hurtigt til 4–5 timer fra hotel til hotel. Derfor bruger vi realistisk planlægningstid, når det er vigtigere end selve køre- eller flyvetiden.</p>
+      </div>
+      <div class="explain-grid">
+        <article><span>⏱️</span><h3>Tid</h3><p>Dør-til-dør hvor det giver mening: transfer, check-in, lufthavn og videre transport tæller med.</p></article>
+        <article><span>💰</span><h3>Pris</h3><p>Et bredt planlægningsinterval, ikke live fare. Brug det til rutevalg — tjek den konkrete dato før booking.</p></article>
+        <article><span>😌</span><h3>Komfort</h3><p>En redaktionel vurdering af hvor nem turen typisk er med normal bagage og almindelig ferieplan.</p></article>
+        <article><span>🧩</span><h3>Besvær</h3><p>Skift, pickup, lufthavnstransfers og usikre forbindelser kan være vigtigere end den laveste pris.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight matrix-method">
+    <div class="container source-shell">
+      <div>
+        <p class="eyebrow">Kilder & metode</p>
+        <h2>Brug tallene til planlægning — ikke som billetpris.</h2>
+        <p>Transportdata kombinerer officielle rute-/rejsetidsoplysninger med aktuelle operatørmarkeder. Vietnam Tourism fremhæver selv, at tog Hanoi–Ho Chi Minh City kan tage op mod 30 timer, mens indenrigsfly ofte er mere rationelle for korte ferier.</p>
+      </div>
+      <div class="source-list">
+        {transportSources.map((source) => (
+          <a href={source.href} target="_blank" rel="noopener noreferrer">{source.label}<span>↗</span></a>
+        ))}
+        <p>Prisintervallerne er senest redaktionelt kontrolleret i september 2026 og kan ændre sig med dato, bagage, weekend, Tet og operatør.</p>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/json" id="matrix-data" set:html={JSON.stringify(payload)}></script>
+  <script is:inline>
+    (() => {
+      const node = document.getElementById('matrix-data');
+      const list = document.getElementById('matrix-list');
+      const featured = document.getElementById('matrix-featured');
+      const empty = document.getElementById('matrix-empty');
+      const from = document.getElementById('matrix-from');
+      const to = document.getElementById('matrix-to');
+      const count = document.getElementById('matrix-count');
+      if (!node || !list || !featured || !from || !to || !count || !empty) return;
+
+      const { transportMatrix = [] } = JSON.parse(node.textContent || '{}');
+      const DKK_RATE = 4050;
+      let modeFilter = 'all';
+
+      const vnd = (value) => new Intl.NumberFormat('vi-VN', { maximumFractionDigits:0 }).format(value) + ' ₫';
+      const dkk = (value) => new Intl.NumberFormat('da-DK', { style:'currency',currency:'DKK',maximumFractionDigits:0 }).format(value / DKK_RATE);
+      const dots = (value, max = 5) => Array.from({length:max},(_,index) => `<i class="${index < value ? 'on' : ''}"></i>`).join('');
+
+      const orientation = (item) => {
+        const a = from.value;
+        const b = to.value;
+        if (a && b && item.bidirectional && item.from === b && item.to === a) {
+          return { ...item, from:b, to:a };
+        }
+        if (a && !b && item.bidirectional && item.to === a) {
+          return { ...item, from:a, to:item.from };
+        }
+        return item;
+      };
+
+      const routeMatches = (item) => {
+        const a = from.value;
+        const b = to.value;
+        const endpoints = [item.from,item.to];
+        if (a && !endpoints.includes(a)) return false;
+        if (b && !endpoints.includes(b)) return false;
+        if (a && b && a === b) return false;
+        if (modeFilter !== 'all' && item.modeIcon !== modeFilter) return false;
+        return true;
+      };
+
+      const card = (raw, large = false) => {
+        const item = orientation(raw);
+        return `
+          <article class="matrix-card ${large ? 'matrix-card--featured' : ''}">
+            <div class="matrix-card__route">
+              <div><span>Fra</span><b>${item.from}</b></div>
+              <div class="mode-icon">${item.modeIcon}</div>
+              <div><span>Til</span><b>${item.to}</b></div>
+            </div>
+            <div class="matrix-card__facts">
+              <div><span>Tid</span><b>${item.duration}</b></div>
+              <div><span>Planlægningspris</span><b>${vnd(item.priceMin)}–${vnd(item.priceMax)}</b><small>ca. ${dkk(item.priceMin)}–${dkk(item.priceMax)} · ${item.priceBasis}</small></div>
+              <div><span>Vores startvalg</span><b>${item.best}</b><small>${item.mode}</small></div>
+            </div>
+            <div class="matrix-card__ratings">
+              <div><span>Komfort</span><div class="rating-dots">${dots(item.comfort)}</div></div>
+              <div><span>Besvær</span><div class="rating-dots rating-dots--hassle">${dots(item.hassle)}</div></div>
+            </div>
+            <p class="matrix-card__note">${item.note}</p>
+            <small class="matrix-card__source">Kilde/grundlag: ${item.source}</small>
+          </article>
+        `;
+      };
+
+      const updateUrl = () => {
+        const url = new URL(window.location.href);
+        if (from.value) url.searchParams.set('fra',from.value); else url.searchParams.delete('fra');
+        if (to.value) url.searchParams.set('til',to.value); else url.searchParams.delete('til');
+        if (modeFilter !== 'all') url.searchParams.set('type',modeFilter); else url.searchParams.delete('type');
+        history.replaceState({},'',url);
+        return url;
+      };
+
+      const render = () => {
+        const matches = transportMatrix.filter(routeMatches).sort((a,b) => a.minutes - b.minutes);
+        const exact = from.value && to.value && matches.length === 1;
+        featured.innerHTML = exact ? card(matches[0],true) : '';
+        list.innerHTML = exact ? '' : matches.map((item) => card(item,false)).join('');
+        empty.hidden = matches.length > 0;
+        count.textContent = matches.length === 1 ? '1 forbindelse' : `${matches.length} forbindelser`;
+        updateUrl();
+      };
+
+      const loadFromUrl = () => {
+        const params = new URL(window.location.href).searchParams;
+        const fromParam = params.get('fra');
+        const toParam = params.get('til');
+        const typeParam = params.get('type');
+        if (fromParam && [...from.options].some((opt) => opt.value === fromParam)) from.value = fromParam;
+        if (toParam && [...to.options].some((opt) => opt.value === toParam)) to.value = toParam;
+        if (typeParam && ['✈️','🚆','🚌','🚐'].includes(typeParam)) modeFilter = typeParam;
+      };
+
+      from.addEventListener('change',render);
+      to.addEventListener('change',render);
+
+      document.getElementById('matrix-swap')?.addEventListener('click',() => {
+        const previous = from.value;
+        from.value = to.value;
+        to.value = previous;
+        render();
+      });
+
+      document.getElementById('matrix-reset')?.addEventListener('click',() => {
+        from.value = '';
+        to.value = '';
+        modeFilter = 'all';
+        document.querySelectorAll('.matrix-filter').forEach((button) => {
+          const active = button.dataset.filter === 'all';
+          button.classList.toggle('is-active',active);
+          button.setAttribute('aria-pressed',active ? 'true' : 'false');
+        });
+        render();
+      });
+
+      document.querySelectorAll('.matrix-filter').forEach((button) => button.addEventListener('click',() => {
+        modeFilter = button.dataset.filter || 'all';
+        document.querySelectorAll('.matrix-filter').forEach((other) => {
+          const active = other === button;
+          other.classList.toggle('is-active',active);
+          other.setAttribute('aria-pressed',active ? 'true' : 'false');
+        });
+        render();
+      }));
+
+      document.getElementById('copy-matrix-link')?.addEventListener('click',async () => {
+        const status = document.getElementById('matrix-copy-status');
+        const url = updateUrl();
+        try {
+          await navigator.clipboard.writeText(url.toString());
+          if (status) status.textContent = 'Link kopieret.';
+        } catch {
+          if (status) status.textContent = 'Kopiér adressen fra browserens adresselinje.';
+        }
+      });
+
+      loadFromUrl();
+      document.querySelectorAll('.matrix-filter').forEach((button) => {
+        const active = button.dataset.filter === modeFilter;
+        button.classList.toggle('is-active',active);
+        button.setAttribute('aria-pressed',active ? 'true' : 'false');
+      });
+      render();
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+.matrix-hero{background:linear-gradient(145deg,#edf4ef,#f5ead5);overflow:hidden}.matrix-hero h1 em{font-family:Georgia,serif;font-weight:400;color:var(--coral)}.matrix-hero__grid{display:grid;grid-template-columns:1.12fr .7fr;gap:58px;align-items:center}.matrix-hero__badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.matrix-hero__badges span{padding:8px 11px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.6);font-size:.76rem;font-weight:800;color:var(--green-800)}
+.matrix-hero__card{display:grid;gap:8px;padding:24px;border-radius:28px;background:var(--green-950);box-shadow:var(--shadow);transform:rotate(-1deg)}.matrix-hero__card>div{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;padding:15px;border:1px solid rgba(255,255,255,.12);border-radius:15px;background:rgba(255,255,255,.07);color:white}.matrix-hero__card>div span:last-child{text-align:right}.matrix-hero__card b{color:#f0c986;font-size:.75rem}.matrix-hero__card i{text-align:center;color:#b8dec9;font-style:normal}
+.matrix-tool{background:#f5efe2}.matrix-controls{padding:28px;background:#fffdf8}.matrix-controls__head{display:flex;align-items:end;justify-content:space-between;gap:20px}.matrix-controls__head h2{font-size:clamp(1.8rem,4vw,2.6rem)}.reset-button{border:0;background:transparent;color:var(--green-700);font-weight:850;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.route-selectors{display:grid;grid-template-columns:1fr 52px 1fr;gap:10px;align-items:end;margin-top:22px}.route-selectors label{display:grid;gap:7px}.route-selectors label>span{font-size:.73rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--green-800)}.route-selectors select{width:100%;min-height:52px;padding:0 13px;border:1px solid var(--border);border-radius:14px;background:white;color:var(--green-950);font:inherit;font-weight:800}.swap-wrap{display:grid;place-items:end center}.swap-wrap button{width:46px;height:46px;border:1px solid var(--border);border-radius:50%;background:var(--green-100);color:var(--green-800);font-size:1.25rem;font-weight:900;cursor:pointer}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.matrix-filter{min-height:38px;padding:0 13px;border:1px solid var(--border);border-radius:999px;background:white;color:var(--green-800);font:inherit;font-size:.78rem;font-weight:850;cursor:pointer}.matrix-filter.is-active{background:var(--green-950);color:white;border-color:var(--green-950)}
+.matrix-meta{display:flex;justify-content:space-between;gap:16px;margin-top:15px;color:var(--muted);font-size:.75rem}.matrix-meta span:first-child{font-weight:850;color:var(--green-800)}
+.featured-route{margin-top:22px}.matrix-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:22px}.matrix-card{padding:22px;border:1px solid var(--border);border-radius:24px;background:#fffdf8;box-shadow:0 9px 30px rgba(16,55,41,.045)}.matrix-card--featured{padding:30px;border-color:rgba(28,106,77,.28);box-shadow:0 15px 42px rgba(16,55,41,.08)}
+.matrix-card__route{display:grid;grid-template-columns:1fr 42px 1fr;gap:9px;align-items:center}.matrix-card__route>div:not(.mode-icon){display:grid;gap:2px}.matrix-card__route>div:last-child{text-align:right}.matrix-card__route span,.matrix-card__facts span,.matrix-card__ratings>div>span{color:var(--muted);font-size:.66rem;font-weight:850;text-transform:uppercase;letter-spacing:.07em}.matrix-card__route b{color:var(--green-950);font-size:1rem}.mode-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:var(--green-100);font-size:1.25rem}
+.matrix-card__facts{display:grid;grid-template-columns:.9fr 1.3fr 1fr;gap:9px;margin-top:18px}.matrix-card__facts>div{padding:11px;border-radius:13px;background:#f7f3e9}.matrix-card__facts b{display:block;margin-top:3px;color:var(--green-950);font-size:.83rem;line-height:1.3}.matrix-card__facts small{display:block;margin-top:3px;color:var(--muted);font-size:.67rem;line-height:1.3}
+.matrix-card__ratings{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.matrix-card__ratings>div{display:flex;align-items:center;justify-content:space-between;gap:10px}.rating-dots{display:flex;gap:3px}.rating-dots i{width:8px;height:8px;border-radius:50%;background:#d9dfdc}.rating-dots i.on{background:var(--green-700)}.rating-dots--hassle i.on{background:var(--coral)}
+.matrix-card__note{margin-top:14px;color:#46534d;font-size:.82rem}.matrix-card__source{display:block;margin-top:8px;color:#7a847f;font-size:.66rem}.matrix-card--featured .matrix-card__route b{font-size:1.25rem}.matrix-card--featured .matrix-card__facts b{font-size:.92rem}
+.matrix-empty{margin-top:22px;padding:28px;border:1px dashed var(--border);border-radius:22px;background:#fffdf8;text-align:center}.matrix-empty strong{color:var(--green-950);font-size:1.05rem}.matrix-empty p{max-width:600px;margin:8px auto 18px;color:var(--muted)}
+.matrix-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:20px}.matrix-actions .btn{width:auto}.matrix-actions span{color:var(--green-700);font-size:.78rem;font-weight:850}
+.matrix-explain{background:var(--cream)}.explain-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.explain-grid article{padding:22px;border:1px solid var(--border);border-radius:21px;background:#fffdf8}.explain-grid article>span{font-size:1.5rem}.explain-grid h3{margin-top:10px}.explain-grid p{margin-top:8px;color:var(--muted);font-size:.86rem}
+.matrix-method{background:#f5efe2}.source-shell{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;padding:34px;border-radius:28px;background:var(--green-950);color:white}.source-shell h2{color:white}.source-shell>div:first-child>p:last-child{margin-top:16px;color:rgba(255,255,255,.68)}.source-list{display:grid;gap:9px;align-content:center}.source-list a{display:flex;justify-content:space-between;gap:16px;padding:11px 13px;border:1px solid rgba(255,255,255,.14);border-radius:12px;background:rgba(255,255,255,.06);color:white;font-size:.83rem;font-weight:750}.source-list p{margin-top:6px;color:rgba(255,255,255,.6);font-size:.78rem}
+@media(max-width:900px){.matrix-hero__grid,.source-shell{grid-template-columns:1fr}.matrix-hero__card{display:none}.matrix-list,.explain-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.matrix-controls{padding:20px}.matrix-controls__head{align-items:flex-start;flex-direction:column}.route-selectors{grid-template-columns:1fr}.swap-wrap{place-items:center}.swap-wrap button{transform:rotate(90deg)}.matrix-meta{flex-direction:column;gap:3px}.matrix-list,.explain-grid{grid-template-columns:1fr}.matrix-card,.matrix-card--featured{padding:18px;border-radius:20px}.matrix-card__facts{grid-template-columns:1fr}.matrix-card__ratings{grid-template-columns:1fr}.matrix-actions{align-items:stretch;flex-direction:column}.matrix-actions .btn{width:100%}.source-shell{padding:24px}.matrix-card__route b{font-size:.9rem}}
+</style>
