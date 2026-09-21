@@ -86,7 +86,7 @@ const galleryItems = items.map((item) => ({
     const render = (index) => {
       current = (index + galleryItems.length) % galleryItems.length;
       const item = galleryItems[current];
-      img.src = item.src;
+      img.src = window.__rtvImageUrl ? window.__rtvImageUrl(item.src) : item.src;
       img.alt = item.alt || '';
       caption.textContent = item.caption || item.alt || '';
       if (item.credit && item.creditUrl) {
