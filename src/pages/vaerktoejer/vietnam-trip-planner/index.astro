@@ -214,7 +214,7 @@ const appStructuredData = {
           return `<article class="route-stop">
             <div class="route-stop__number">${String(index+1).padStart(2,'0')}</div>
             <div class="route-stop__main">
-              <div class="route-stop__head"><div><span>${destination.region||''}</span><h3><a href="${destination.href||'#'}">${stop.name}</a></h3></div><b>${stop.days} ${stop.days===1?'dag':'dage'}</b></div>
+              <div class="route-stop__head"><div><span>${destination.region||''}</span><h3><a data-dynamic-href="${destination.href||'#'}">${stop.name}</a></h3></div><b>${stop.days} ${stop.days===1?'dag':'dage'}</b></div>
               <p>${stop.why}</p>
               <div class="season-chip season-chip--${season[0]}"><i>${statusIcon[season[0]]}</i>${statusLabel[season[0]]}</div>
             </div>
@@ -225,7 +225,7 @@ const appStructuredData = {
         return `<div class="result-shell ${rank?'result-shell--alternative':''}">
           <div class="result-top"><div><span class="result-kicker">${rank?'Alternativ '+rank:'Vores bedste match'}</span><h2>${plan.label}</h2><p>${current.days} dage · ${monthName} · ${peopleLabel} · ${plan.stops.length} baser</p></div><div class="season-score season-score--${seasonClass}"><span>Sæson</span><b>${climate.strong}/${current.days} dage</b><small>i stærkt match</small></div></div>
           <div class="route-timeline">${stops}</div>
-          <div class="result-insights"><div><span class="insight-label">Sæsoncheck for ${monthName}</span><ul>${notes}</ul><a href="/vaerktoejer/vietnam-vejrhjaelp/?maaned=${current.month}">Se hele vejrplanlæggeren →</a></div><div><span class="insight-label">Næste skridt</span><p>Brug budgetberegneren med et startniveau, der matcher din profil. Ret derefter hotel, mad og fly efter jeres konkrete ønsker.</p><a class="btn btn--primary" href="${budgetUrl(current)}">Beregn budget til denne profil →</a></div></div>
+          <div class="result-insights"><div><span class="insight-label">Sæsoncheck for ${monthName}</span><ul>${notes}</ul><a href="/vaerktoejer/vietnam-vejrhjaelp/?maaned=${current.month}">Se hele vejrplanlæggeren →</a></div><div><span class="insight-label">Næste skridt</span><p>Brug budgetberegneren med et startniveau, der matcher din profil. Ret derefter hotel, mad og fly efter jeres konkrete ønsker.</p><a class="btn btn--primary" data-dynamic-href="${budgetUrl(current)}">Beregn budget til denne profil →</a></div></div>
           ${rank===0?`<div class="result-actions"><button type="button" class="btn btn--outline" id="copy-plan-link">Kopiér link til min plan</button><a class="btn btn--outline" href="/vaerktoejer/vietnam-rutekort/?rute=${current.days===21?'21':current.days===10?'10':'14'}">Sammenlign med standardruten</a><span id="copy-plan-status" aria-live="polite"></span></div>`:''}
         </div>`;
       };
@@ -239,6 +239,10 @@ const appStructuredData = {
         if(!best){result.innerHTML='<div class="card empty-result">Vi kunne ikke finde en rute til de valgte kriterier.</div>';return;}
         const shareUrl=updateUrl(current);
         result.innerHTML=`${planHtml(best,current,0)}<div class="alternative-head"><p class="eyebrow">To andre måder at bruge dagene</p><h2>Hvis du vil vægte noget andet.</h2></div><div class="alternative-grid">${alternatives.map((plan,index)=>planHtml(plan,current,index+1)).join('')}</div>`;
+        result.querySelectorAll('[data-dynamic-href]').forEach((anchor)=>{
+          const href=anchor.getAttribute('data-dynamic-href');
+          if(href)anchor.setAttribute('href',href);
+        });
         document.getElementById('copy-plan-link')?.addEventListener('click',async()=>{
           const status=document.getElementById('copy-plan-status');
           try{await navigator.clipboard.writeText(shareUrl.toString());if(status)status.textContent='Link kopieret.';}catch{if(status)status.textContent='Kopiér adressen fra browserens adresselinje.';}
