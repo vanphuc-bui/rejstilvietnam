@@ -62,6 +62,52 @@ async function fetchAllowedRemoteImage(targetUrl) {
   return new Response('Too many image redirects', { status: 508 });
 }
 
+function proxiedRemoteImageUrl(value, siteUrl) {
+  try {
+    const remote = new URL(value);
+    if (!isAllowedRemoteImageUrl(remote)) return value;
+    const proxy = new URL('/media/remote-image', siteUrl);
+    proxy.searchParams.set('url', remote.toString());
+    return proxy.pathname + proxy.search;
+  } catch {
+    return value;
+  }
+}
+
+function proxiedSrcset(value, siteUrl) {
+  if (!value) return value;
+  return value.split(',').map((candidate) => {
+    const parts = candidate.trim().split(/\s+/);
+    const source = parts.shift();
+    if (!source) return candidate.trim();
+    return [proxiedRemoteImageUrl(source, siteUrl), ...parts].join(' ');
+  }).join(', ');
+}
+
+function rewriteRemoteImages(response, requestUrl) {
+  if (typeof HTMLRewriter === 'undefined') return response;
+
+  const contentType = response.headers.get('Content-Type') || '';
+  if (!contentType.toLowerCase().includes('text/html')) return response;
+
+  return new HTMLRewriter()
+    .on('img', {
+      element(element) {
+        const src = element.getAttribute('src');
+        const srcset = element.getAttribute('srcset');
+        if (src) element.setAttribute('src', proxiedRemoteImageUrl(src, requestUrl));
+        if (srcset) element.setAttribute('srcset', proxiedSrcset(srcset, requestUrl));
+      },
+    })
+    .on('source', {
+      element(element) {
+        const srcset = element.getAttribute('srcset');
+        if (srcset) element.setAttribute('srcset', proxiedSrcset(srcset, requestUrl));
+      },
+    })
+    .transform(response);
+}
+
 async function serveRemoteImage(request, ctx) {
   const requestUrl = new URL(request.url);
   if (requestUrl.pathname !== '/media/remote-image') return null;
@@ -266,10 +312,12 @@ export default {
     headers.set('X-Content-Type-Options', 'nosniff');
     headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
-    return new Response(response.body, {
+    const securedResponse = new Response(response.body, {
       status: response.status,
       statusText: response.statusText,
       headers,
     });
+
+    return rewriteRemoteImages(securedResponse, url);
   },
 };
