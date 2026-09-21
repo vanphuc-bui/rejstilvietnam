@@ -8,12 +8,13 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run audit:images && astro build && npm run audit:visuals && npm run audit:site",
+    "build": "npm run audit:images && astro build && npm run audit:visuals && npm run audit:site && npm run audit:worker",
     "preview": "astro preview",
     "audit:images": "node scripts/audit-images.mjs",
     "audit:visuals": "node scripts/audit-rendered-visuals.mjs",
     "audit:site": "node scripts/audit-site.mjs",
-    "audit:browser": "node scripts/audit-browser.mjs"
+    "audit:browser": "node scripts/audit-browser.mjs",
+    "audit:worker": "node scripts/audit-worker.mjs && wrangler deploy --dry-run --outdir .wrangler-dry-run"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

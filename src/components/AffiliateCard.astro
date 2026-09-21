@@ -7,7 +7,7 @@ const isReady = Boolean(href && href !== '#');
     <div><span class="badge">{label}</span><h3>{title}</h3><p>{text}</p><small>{price}</small></div>
     <div class="action">
       <span class="disclosure">Annoncelink</span>
-      <a href={href} rel="sponsored noopener" target="_blank">Se hos {partner} →</a>
+      <a href={href} rel="sponsored noopener" target="_blank" data-affiliate-provider={partner} data-affiliate-placement="affiliate-card-cta">Se hos {partner} →</a>
     </div>
   </div>
 )}

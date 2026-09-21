@@ -5,6 +5,10 @@ import PracticalTable from '../../../components/PracticalTable.astro';
 import CommercialCta from '../../../components/CommercialCta.astro';
 import { editorialVisuals as v } from '../../../data/editorialVisuals.js';
 
+const currentYear = new Date().getFullYear();
+const nextYear = currentYear + 1;
+const yearRange = `${currentYear}/${nextYear}`;
+
 const toc = [
   { id:'start', label:'Start med de tre valg' },
   { id:'rute', label:'Vælg rute' },
@@ -23,14 +27,14 @@ const sources = [
 const faq = [
   { question:'Hvor mange dage bør man have til Vietnam første gang?', answer:'Vi synes 14-21 dage giver den bedste balance. Ti dage kan fungere, men så bør du vælge færre regioner og undgå at skifte hotel hele tiden.' },
   { question:'Skal man rejse fra nord til syd eller syd til nord?', answer:'Begge dele fungerer. Vejr, flypris og den stranddel du prioriterer betyder mere end retningen. Mange starter i Hanoi og slutter i Ho Chi Minh City, fordi ruten er intuitiv.' },
-  { question:'Er 2026 et godt år at rejse til Vietnam?', answer:'Vietnam har et stort udvalg af direkte og forbindende fly, enkel indenrigstransport og gunstige visumregler for danskere. Det vigtigste er stadig at vælge rute efter sæson og egen rejsetid.' },
+  { question:`Er ${yearRange} et godt tidspunkt at rejse til Vietnam?`, answer:'Vietnam kan besøges året rundt, men den bedste rute afhænger af sæson, regioner og hvor lang tid du har. Tjek altid aktuelle indrejse- og rejseråd tæt på afrejse.' },
 ];
 ---
 <EditorialArticle
-  title="Rejser til Vietnam 2026 | Den komplette guide for danskere"
-  description="Planlæg rejser til Vietnam i 2026: rute, rejsetid, visum, budget, transport, hoteller og bookingrækkefølge samlet i én dansk guide."
-  eyebrow="Rejser til Vietnam · 2026"
-  heading="Rejser til Vietnam 2026: sådan bygger du en god tur fra start"
+  title={`Rejser til Vietnam ${yearRange} | Den komplette guide for danskere`}
+  description={`Planlæg rejser til Vietnam i ${yearRange}: rute, rejsetid, visum, budget, transport, hoteller og bookingrækkefølge samlet i én dansk guide.`}
+  eyebrow={`Rejser til Vietnam · ${yearRange}`}
+  heading={`Rejser til Vietnam ${yearRange}: sådan bygger du en god tur fra start`}
   intro="Den største fejl er at begynde med hoteller. Start i stedet med tre valg: hvor mange dage du har, hvilken del af Vietnam der passer til vejret, og hvor mange stop du realistisk vil nå. Derefter bliver booking langt lettere."
   toc={toc}
   sources={sources}

@@ -22,7 +22,7 @@ const rel = external ? (affiliate ? 'sponsored noopener noreferrer' : 'noopener 
     {provider && <small>{affiliate ? `Annoncelink via ${provider}.` : `Eksternt link til ${provider}.`}</small>}
   </div>
   <div class="commercial-actions">
-    <a class="btn btn--primary" href={primaryHref} target={external ? '_blank' : undefined} rel={rel}>{primaryLabel}</a>
+    <a class="btn btn--primary" href={primaryHref} target={external ? '_blank' : undefined} rel={rel} data-affiliate-provider={affiliate ? provider : undefined} data-affiliate-placement={affiliate ? "commercial-cta" : undefined}>{primaryLabel}</a>
     {secondaryHref && secondaryLabel && <a class="commercial-secondary" href={secondaryHref}>{secondaryLabel}</a>}
   </div>
 </aside>

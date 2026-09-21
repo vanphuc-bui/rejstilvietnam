@@ -94,3 +94,11 @@ Hold tonen nøgtern. Outdoor-indhold skal hjælpe med et valg - ikke få alle de
 - [ ] Interne links fører til næste naturlige trin
 - [ ] Affiliate-indhold er relevant og tydeligt markeret
 - [ ] `npm run build` og `npm run audit:browser` er kørt
+
+
+## Evergreen URL rule
+
+- Do **not** put years in permanent slugs for evergreen guides. Prefer `/rejseguide/rejser-til-vietnam/` over `/rejseguide/rejser-til-vietnam-2026/`.
+- A year or rolling year range may appear in the page title/heading when freshness helps the reader, but the URL should stay stable.
+- When replacing an existing year-specific route, add a permanent 301 redirect in `worker.js` and update all internal links to the evergreen URL.
+- Do not create annual duplicates such as `...-2026/`, `...-2027/`, `...-2028/` for the same search intent.

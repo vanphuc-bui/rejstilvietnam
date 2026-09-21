@@ -16,8 +16,10 @@ const {
 const siteRoot = new URL('/', Astro.site ?? Astro.url.origin);
 const canonical = new URL(Astro.url.pathname, siteRoot);
 const isHomepage = Astro.url.pathname === '/';
+const currentYear = new Date().getFullYear();
+const nextYear = currentYear + 1;
 const finalTitle = isHomepage
-  ? 'Rejse til Vietnam 2026: dansk guide og rejseplaner'
+  ? `Rejse til Vietnam ${currentYear}/${nextYear}: dansk guide og rejseplaner`
   : title;
 const finalDescription = isHomepage
   ? 'Planlæg din rejse til Vietnam med danske guider til Hanoi, Hoi An, Da Nang, Ho Chi Minh City og Phu Quoc samt visum, vejr og rejseplaner.'
@@ -210,6 +212,95 @@ const structuredData = {
             setTimeout(() => { target.style.display = ''; }, 0);
           }
         }, true);
+      })();
+    </script>
+    <script is:inline>
+      (() => {
+        window.dataLayer = window.dataLayer || [];
+
+        const cleanProvider = (value = '') => {
+          const provider = value.toLowerCase().trim();
+          if (provider.includes('getyourguide') || provider === 'gyg') return 'getyourguide';
+          if (provider.includes('booking')) return 'booking';
+          if (provider.includes('viator')) return 'viator';
+          if (provider.includes('airalo')) return 'airalo';
+          if (provider.includes('holafly')) return 'holafly';
+          if (provider.includes('nomad')) return 'nomad';
+          return provider || 'unknown';
+        };
+
+        const providerFromUrl = (href) => {
+          try {
+            const host = new URL(href, window.location.href).hostname.toLowerCase();
+            if (host === 'gyg.me' || host.endsWith('.getyourguide.com') || host === 'getyourguide.com') return 'getyourguide';
+            if (host.endsWith('.booking.com') || host === 'booking.com') return 'booking';
+            if (host.endsWith('.viator.com') || host === 'viator.com') return 'viator';
+            if (host.includes('airalo')) return 'airalo';
+            if (host.includes('holafly')) return 'holafly';
+            if (host.includes('getnomad') || host === 'nomad.com') return 'nomad';
+            return host.replace(/^www\./, '') || 'unknown';
+          } catch {
+            return 'unknown';
+          }
+        };
+
+        const destinationFromPath = () => {
+          const match = window.location.pathname.match(/^\/destinationer\/([^/]+)/);
+          return match?.[1] || 'sitewide';
+        };
+
+        const trackAffiliateClick = (anchor) => {
+          const rel = (anchor.getAttribute('rel') || '').split(/\s+/);
+          const explicitlyAffiliate = rel.includes('sponsored') || Boolean(anchor.dataset.affiliateProvider);
+          if (!explicitlyAffiliate) return;
+
+          const provider = cleanProvider(anchor.dataset.affiliateProvider || providerFromUrl(anchor.href));
+          const placement = anchor.dataset.affiliatePlacement
+            || anchor.closest('[data-analytics-placement]')?.dataset.analyticsPlacement
+            || 'unspecified';
+          let targetHost = 'unknown';
+          try { targetHost = new URL(anchor.href, window.location.href).hostname.replace(/^www\./, ''); } catch {}
+
+          const payload = {
+            page: window.location.pathname,
+            provider,
+            destination: anchor.dataset.affiliateDestination || destinationFromPath(),
+            placement,
+            targetHost,
+            linkText: (anchor.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 120),
+          };
+
+          window.dataLayer.push({
+            event: 'affiliate_click',
+            affiliate_provider: payload.provider,
+            affiliate_destination: payload.destination,
+            affiliate_placement: payload.placement,
+            affiliate_target_host: payload.targetHost,
+            page_path: payload.page,
+          });
+
+          const body = JSON.stringify(payload);
+          try {
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon('/api/affiliate-click', new Blob([body], { type: 'application/json' }));
+            } else {
+              fetch('/api/affiliate-click', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body,
+                keepalive: true,
+                credentials: 'same-origin',
+              }).catch(() => {});
+            }
+          } catch {}
+        };
+
+        document.addEventListener('click', (event) => {
+          const target = event.target;
+          if (!(target instanceof Element)) return;
+          const anchor = target.closest('a[href]');
+          if (anchor) trackAffiliateClick(anchor);
+        }, { capture: true });
       })();
     </script>
     <slot name="head" />
