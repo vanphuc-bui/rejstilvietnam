@@ -53,8 +53,8 @@ function tags(html, name) {
   // Audit rendered markup only. Inline JS/CSS may legitimately contain strings
   // such as "<img>" or "<a>", which must not be mistaken for DOM elements.
   const markup = html
-    .replace(/<script\\b[^>]*>[\\s\\S]*?<\\/script>/gi, ' ')
-    .replace(/<style\\b[^>]*>[\\s\\S]*?<\\/style>/gi, ' ');
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ');
   const pattern = new RegExp(`<${name}\\b([^>]*)>`, 'gi');
   return [...markup.matchAll(pattern)].map((match) => ({ raw: match[0], attrs: parseAttributes(match[1]) }));
 }
