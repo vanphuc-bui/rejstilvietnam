@@ -8,9 +8,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run audit:images && astro build && npm run audit:visuals && npm run audit:site && npm run audit:worker",
+    "build": "npm run audit:images && npm run audit:image-context && astro build && npm run audit:visuals && npm run audit:site && npm run audit:worker",
     "preview": "astro preview",
     "audit:images": "node scripts/audit-images.mjs",
+    "audit:image-context": "node scripts/audit-image-context.mjs",
     "audit:visuals": "node scripts/audit-rendered-visuals.mjs",
     "audit:site": "node scripts/audit-site.mjs",
     "audit:browser": "node scripts/audit-browser.mjs",

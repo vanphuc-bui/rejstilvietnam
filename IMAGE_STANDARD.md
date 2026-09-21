@@ -28,7 +28,9 @@ For active-travel content, prefer a photo that shows the actual terrain, traffic
 
 ## 3. Relevance
 
-- The image must match the exact place or topic discussed in the surrounding section.
+- The image must match the **exact place and exact topic** discussed in the surrounding section.
+- Same destination is not enough: a generic Hanoi street photo must not illustrate a Hanoi food section; a skyline must not illustrate airport transport; a generic beach must not illustrate a specific diving activity when a diving image is available.
+- Use the nearest H2 as the semantic contract for the image. The photo should still make editorial sense if the reader sees only the H2 + image.
 - Event/holiday images are only used on event/holiday content.
 - Do not use a Ha Long Bay photo to decorate an unrelated generic Vietnam section.
 - Prefer real destination photography over generic stock-style imagery.
@@ -57,19 +59,22 @@ For Wikimedia images, include a caption, credit and source URL when practical. D
 - [ ] Hero is not used anywhere else on the site
 - [ ] Section images are unique where practical, and any reuse is editorially justified rather than decorative
 - [ ] At least 2 visual types are present on a long guide
-- [ ] Every image matches the exact section
+- [ ] Every image matches the exact H2 topic, not only the destination
 - [ ] Alt text is descriptive
 - [ ] Caption is useful
 - [ ] Credit/source is included when required
 - [ ] No event-specific image is used as generic decoration
 - [ ] Video is relevant and from a trustworthy channel
 - [ ] Run `npm run audit:images`
+- [ ] Run `npm run audit:image-context`
 
 ## Automated guard
 
 `scripts/audit-images.mjs` normalizes Unsplash and Wikimedia image URLs (so changing only width/crop does not bypass the check).
 
 The build fails when any page under `src/pages/` reuses the same remote image, including reuse inside the same page. Changing only width, crop or query parameters does not count as a new image.
+
+The build also runs `scripts/audit-image-context.mjs`. For strong semantic sections such as food, transport, marine/beach and active travel, it blocks clear cases where the selected image's alt/caption/curated metadata does not match the section topic.
 
 Legacy data-driven destination articles deliberately use maps, timelines, comparison cards and video instead of a shared photographic hero. Shared cluster photos are not rendered on those pages; a photo should only be reintroduced when that exact page has its own unique, relevant image.
 

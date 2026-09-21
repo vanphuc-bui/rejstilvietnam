@@ -15,6 +15,7 @@ export const editorialVisuals = {
     stay: img('Ben Trang An.jpg','Bådhavn ved Trang An i Ninh Binh','Trang An er både en oplevelse og et praktisk pejlemærke, hvis du vil bo tættere på landskabet end på Ninh Binh by.'),
     sights: img('View from Hang Mua.jpg','Udsigt fra Hang Mua over Ninh Binh','Hang Mua giver et af de bedste overblik over flod, rismarker og kalkstenslandskab.'),
     route: img('Ninh Binh-Tam Coc.jpg','Landskab ved Tam Coc','Tam Coc viser, hvorfor Ninh Binh fungerer bedst med mindst én overnatning frem for en presset dagstur.'),
+    transport: img('Ninh Binh Railway Station.jpg','Ninh Binh Railway Station på strækningen syd for Hanoi','Tog er ét af flere realistiske valg fra Hanoi; limousine og privat transfer er ofte nemmere, hvis du vil direkte til Tam Coc eller Trang An.','anjči / Wikimedia Commons'),
   },
   sapa: {
     valley: img('Rice terraces in Sa Pa 01.jpg','Risterrasser i Sapa','Risterrasserne er selve grunden til at give Sapa tid til en rigtig gådag.'),
@@ -25,6 +26,7 @@ export const editorialVisuals = {
     tomb: img('The tomb of Emperor Khai Dinh (12060688173).jpg','Khai Dinh-kejsergraven ved Hue','Khai Dinh er kompakt og dekorativ og fungerer godt, hvis du kun vil vælge én kejsergrav.'),
     river: img('Hue Vietnam Perfume-River-01.jpg','Perfume River i Hue','Perfume River binder Citadellet, pagoderne og byens roligere tempo sammen.'),
     citadel: img('Citadel of Hue.jpg','Det kejserlige citadel i Hue','Citadellet er Hues vigtigste historiske stop og fortjener sin egen halvdag.'),
+    transport: img('Hai Van Pass, Vietnam, North-South Railway.jpg','North-South Railway ved Hai Van Pass mellem Hue og Da Nang','Tog og vejtransport syd for Hue følger en af Centralvietnams mest markante transportkorridorer mod Da Nang og Hoi An.','Vyacheslav Argenberg / Wikimedia Commons'),
   },
   daLat: {
     lake: img('Xuan Huong Lake in Da Lat (28219543381).jpg','Xuan Huong Lake i Da Lat','Søen er det letteste pejlemærke til at forstå centrum af Da Lat.'),
@@ -35,6 +37,7 @@ export const editorialVisuals = {
     cruise: img('Halong Bay Cruise Boats 01.jpg','Cruisebåde i Ha Long Bay','Cruisevalget handler om rute, kahyt og tid på vandet mere end om den flotteste båd i brochuren.'),
     kayak: img('Kayaking in Ha Long Bay.jpg','Kajak mellem kalkstensøer i Ha Long Bay','Kajak eller en mindre båd giver en anden skala end udsigten fra et stort cruise-dæk.'),
     cave: img('Sung Sot cave Ha Long Bay.jpg','Sung Sot Cave i Ha Long Bay','Grotter er et typisk stop på mange ruter, men kvaliteten af hele sejldagen er vigtigere end antallet af stop.'),
+    transport: img('Bai Chay Bridge-Halong Vietnam-Andres Larin.jpg','Bai Chay Bridge og vejforbindelsen ved Ha Long','Transfer fra Hanoi ender typisk omkring Ha Long/Bai Chay, så havn og terminal bør matches med det cruise, du booker.','Saaremees / Wikimedia Commons'),
   },
   food: {
     north: img('Bun Cha.jpg','Bún chả med nudler og grillet svinekød','Bún chả er en af de mest oplagte retter at prøve i Hanoi og Nordvietnam.'),
@@ -75,6 +78,7 @@ export const editorialVisuals = {
   hanoi: {
     lake: img('Hoan Kiem Lake photo.jpg','Hoan Kiem Lake i Hanoi','Hoan Kiem er det naturlige pejlemærke for en første dag i Hanoi.'),
     oldQuarter: img('Old Quarter Street Scene - Hanoi - Vietnam (48256301206).jpg','Gadeliv i Hanois Old Quarter','Old Quarter fungerer bedst til fods, med plads til mad og små omveje.','Adam Jones / Wikimedia Commons'),
+    food: img('Bun-cha-hanoi.jpg','Bún chả med grillet svinekød, nudler og urter i Hanoi','Bún chả er et oplagt eksempel på den type lokale retter, der gør Hanoi til en stærk maddestination.','Valentin Orange / Wikimedia Commons'),
     temple: img('Temple of Literature Hanoi 1.jpg','Litteraturtemplet i Hanoi','Litteraturtemplet passer naturligt ind i en historiedag vest for centrum.'),
     trainStreet: img('Train Street, Hanoi (52352080696).jpg','Train Street i Hanoi','Train Street er bedst som et kort fleksibelt stop, fordi adgang og togtider kan ændre sig.'),
     airport: img('Noi Bai International Airport Terminal, Hanoi (6914127808).jpg','Noi Bai International Airport ved Hanoi','Lufthavnstransfer er den første logistiske beslutning efter ankomst til Hanoi.'),
@@ -83,6 +87,7 @@ export const editorialVisuals = {
     bay: img('Nha Trang Bay and Vinwonders. Nha Trang, Vietnam. June 2025.jpg','Nha Trang Bay og Hon Tre','Bugten gør det let at kombinere strandbyen med øture og aktiviteter på vandet.'),
     market: img('Dam Market Nha Trang 1.jpg','Dam Market i Nha Trang','Markedet giver et mere lokalt indblik i byen mellem stranddagene.'),
     pagoda: img('Long Son Pagoda 1.jpg','Long Son Pagoda i Nha Trang','Long Son Pagoda er et roligt kulturstop tæt på byen.'),
+    transport: img('Railway in Nha Trang.jpg','Jernbanen ved Nha Trang station','Nha Trang ligger på nord-syd-jernbanen; lokalt er taxi eller Grab stadig mest praktisk til hotel, strand og lufthavnstransfer.','Bún bòa / Wikimedia Commons'),
   },
   weather: {
     central: img('HoiAnOldQuarter.jpg','Hoi An i Centralvietnam','Centralvietnam har et andet regn- og stormsæsonmønster end både Hanoi og Sydvietnam.'),
