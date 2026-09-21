@@ -49,10 +49,12 @@ const topics = [
   <section class="section tools-section">
     <div class="container">
       <div class="section-head">
-        <div><p class="eyebrow">Gratis værktøjer</p><h2>Test ruten, budgettet og måneden før du booker.</h2></div>
-        <p>De tre værktøjer er lavet til de valg, hvor et konkret overblik er mere nyttigt end endnu et langt afsnit tekst.</p>
+        <div><p class="eyebrow">Gratis værktøjer</p><h2>Byg ruten, kontrollér transporten og test budgettet.</h2></div>
+        <p>Start med Trip Planner, brug Transport Matrix til de store hop, og kontrollér derefter budget og vejrsæson.</p>
       </div>
-      <div class="grid grid--3">
+      <div class="tools-grid">
+        <a class="card tool-card tool-card--lead" href="/vaerktoejer/vietnam-trip-planner/"><span>🧭</span><h3>Vietnam Trip Planner</h3><p>Få en personlig 10-, 14- eller 21-dages rute ud fra måned, rejsetype, tempo, budget og interesser.</p><b>Byg min rute →</b></a>
+        <a class="card tool-card tool-card--lead" href="/vaerktoejer/transport-matrix/"><span>⇄</span><h3>Transport Matrix</h3><p>Sammenlign realistisk rejsetid, pris og besvær mellem de vigtigste stop.</p><b>Sammenlign transport →</b></a>
         <a class="card tool-card" href="/vaerktoejer/vietnam-rutekort/"><span>🗺️</span><h3>Vietnam rutekort</h3><p>Sammenlign 10, 14 og 21 dage og se de store transporthop på én skærm.</p><b>Åbn rutekort →</b></a>
         <a class="card tool-card" href="/vaerktoejer/vietnam-budgetberegner/"><span>🧮</span><h3>Budgetberegner</h3><p>Regn hotel, mad, transport, ture og fly om til både DKK og VND.</p><b>Beregn budget →</b></a>
         <a class="card tool-card" href="/vaerktoejer/vietnam-vejrhjaelp/"><span>☀️</span><h3>Vejrplanlægger</h3><p>Vælg måned og sammenlign nord, central, syd og Phu Quoc.</p><b>Vælg måned →</b></a>
@@ -77,4 +79,4 @@ const topics = [
   </section>
 </BaseLayout>
 
-<style>.hub-hero-media{margin-top:8px}.hub-hero-media :global(.section-media){margin-top:0}.tools-section{background:#f5efe2}.tool-card{display:flex;flex-direction:column;padding:26px;min-height:250px}.tool-card>span{font-size:1.7rem}.tool-card h3{margin-top:14px}.tool-card p{margin-top:8px;color:var(--muted)}.tool-card b{margin-top:auto;padding-top:20px;color:var(--green-700)}@media(max-width:640px){.hub-hero-media{margin-top:0}.tool-card{min-height:0}}</style>
+<style>.hub-hero-media{margin-top:8px}.tools-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}.tool-card{grid-column:span 2}.tool-card--lead{grid-column:span 3}.hub-hero-media :global(.section-media){margin-top:0}.tools-section{background:#f5efe2}.tool-card{display:flex;flex-direction:column;padding:26px;min-height:250px}.tool-card>span{font-size:1.7rem}.tool-card h3{margin-top:14px}.tool-card p{margin-top:8px;color:var(--muted)}.tool-card b{margin-top:auto;padding-top:20px;color:var(--green-700)}@media(max-width:900px){.tools-grid{grid-template-columns:1fr 1fr}.tool-card,.tool-card--lead{grid-column:auto}}@media(max-width:640px){.tools-grid{grid-template-columns:1fr}.hub-hero-media{margin-top:0}.tool-card{min-height:0}}</style>
