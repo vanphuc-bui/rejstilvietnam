@@ -71,8 +71,12 @@ for (const viewport of viewports) {
 
       const result = { route, viewport: viewport.name, errors: [], warnings: [] };
       try {
-        const response = await page.goto(new URL(route, baseUrl).toString(), { waitUntil: 'networkidle', timeout: 30_000 });
+        const response = await page.goto(new URL(route, baseUrl).toString(), { waitUntil: 'domcontentloaded', timeout: 30_000 });
         if (!response || response.status() >= 400) result.errors.push(`HTTP ${response?.status() ?? 'no response'}`);
+        // Do not gate page readiness on third-party image hosts. Production rewrites
+        // those images through the Cloudflare same-origin proxy; local Astro preview
+        // intentionally has no Worker route.
+        await page.waitForTimeout(800);
 
         const metrics = await page.evaluate(() => {
           const visible = (element) => {
@@ -126,6 +130,12 @@ for (const viewport of viewports) {
                   return true;
                 }
               }),
+            fallbackImages: [...document.images]
+              .filter((image) => image.dataset.rtvFallbackStage === 'svg')
+              .map((image) => ({
+                alt: image.alt || '',
+                src: image.currentSrc || image.src,
+              })),
             missingViewportMeta: !document.querySelector('meta[name="viewport"]'),
             importantControls,
             tinyText,
@@ -141,6 +151,10 @@ for (const viewport of viewports) {
         if (metrics.h1Count !== 1) result.errors.push(`Expected one H1, found ${metrics.h1Count}.`);
         if (metrics.missingViewportMeta) result.errors.push('Missing viewport meta tag.');
         if (metrics.brokenImages.length) result.errors.push(`${metrics.brokenImages.length} broken rendered image(s).`);
+        if (metrics.fallbackImages.length) {
+          const examples = metrics.fallbackImages.slice(0, 3).map((image) => image.alt || image.src).join(' | ');
+          result.warnings.push(`${metrics.fallbackImages.length} image(s) used the generic SVG fallback in local preview.${examples ? ' Examples: ' + examples : ''} Production retries these through the Worker image proxy.`);
+        }
         if (metrics.tinyText) result.warnings.push(`${metrics.tinyText} visible text element(s) render below 12px.`);
 
         if (viewport.isMobile) {
@@ -149,7 +163,14 @@ for (const viewport of viewports) {
           if (metrics.h1Metrics?.lines > 4) result.warnings.push(`H1 wraps to about ${metrics.h1Metrics.lines} lines on ${viewport.name}.`);
         }
 
-        const localFailures = failedRequests.filter((request) => request.url.startsWith(baseUrl));
+        const localFailures = failedRequests.filter((request) => {
+          if (!request.url.startsWith(baseUrl)) return false;
+          try {
+            return new URL(request.url).pathname !== '/media/remote-image';
+          } catch {
+            return true;
+          }
+        });
         const remoteFailures = failedRequests.filter((request) => !request.url.startsWith(baseUrl));
         if (localFailures.length) result.errors.push(`${localFailures.length} local request(s) failed.`);
         if (remoteFailures.length) result.warnings.push(`${remoteFailures.length} external request(s) failed during the test.`);
