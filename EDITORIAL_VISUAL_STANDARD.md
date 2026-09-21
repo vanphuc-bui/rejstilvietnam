@@ -135,6 +135,30 @@ Use `IMAGE_STANDARD.md` for the detailed image rules.
 
 ---
 
+## 4.1 Semantic visual relevance — blocking rule
+
+A visual must illustrate the **exact section it sits under**, not merely the same city or destination.
+
+Examples:
+- Under `Mad i Hanoi`, use a dish, food stall, kitchen, market-food scene or dining scene. A generic Old Quarter street photo is **not** acceptable.
+- Under an airport/transport section, show the airport, station, train, bus, road, taxi or transfer context. A skyline is not enough.
+- Under a beach/snorkelling/diving section, show the beach, water, reef, boat or the actual activity.
+- Under an active-travel section, show the trail, terrain or activity itself.
+
+Decision rule before inserting a photo:
+
+> If the H2 were shown without its paragraph text, would the image still make sense as an illustration of that H2?
+
+If the answer is no, choose another image.
+
+Being geographically correct is necessary but **not sufficient**. A photo of Hanoi is not automatically relevant to every Hanoi section.
+
+### Automated guard
+
+`npm run audit:image-context` checks strong visual-intent sections such as food, transport, marine/beach and active travel. It compares the H2 topic with the image alt/caption or curated visual metadata and blocks clear mismatches.
+
+Do not weaken the audit to make a mismatched image pass. Fix the image or its editorial placement instead.
+
 ## 5. Section-specific guidance
 
 ### Seværdigheder
