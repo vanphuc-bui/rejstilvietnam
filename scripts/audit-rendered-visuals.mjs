@@ -12,6 +12,7 @@ const watchedPrefixes = [
   'rejseguide/',
   'bedste-hoteller/',
   'book-rejsen/',
+  'vaerktoejer/',
 ];
 
 const hubRoutes = new Set([
@@ -21,6 +22,7 @@ const hubRoutes = new Set([
   '/ture/',
   '/bedste-hoteller/',
   '/book-rejsen/',
+  '/vaerktoejer/',
 ]);
 
 function walk(dir) {
