@@ -46,7 +46,15 @@ const faqSchema = faq.length > 0 ? {
   sources={sources}
   authorName={authorName}
 >
-  {hero && <SectionMedia slot="heroMedia" {...hero} />}
+  {hero && (
+    <SectionMedia
+      slot="heroMedia"
+      {...hero}
+      loading="eager"
+      fetchpriority="high"
+      sizes="(max-width: 640px) calc(100vw - 24px), (max-width: 900px) calc(100vw - 32px), 1160px"
+    />
+  )}
 
   <slot />
 
