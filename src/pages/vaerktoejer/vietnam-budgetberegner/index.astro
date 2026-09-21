@@ -1,10 +1,23 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const appStructuredData = {
+  '@context':'https://schema.org',
+  '@type':'WebApplication',
+  name:"Vietnam budgetberegner i DKK og VND",
+  description:"Gratis rejsebudgetberegner til Vietnam med hotel, mad, transport, oplevelser, fly, buffer og justerbar DKK/VND-kurs.",
+  url:new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString(),
+  applicationCategory:'TravelApplication',
+  operatingSystem:'Any',
+  inLanguage:'da-DK',
+  isAccessibleForFree:true,
+};
 ---
 <BaseLayout
   title="Vietnam budgetberegner | DKK og VND"
   description="Beregn et realistisk Vietnam-budget i danske kroner og vietnamesiske dong. Justér hotel, mad, transport, oplevelser, fly, antal personer og valutakurs."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appStructuredData)}></script>
   <section class="page-hero budget-hero">
     <div class="container">
       <p class="eyebrow">Gratis budgetværktøj</p>
