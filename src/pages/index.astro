@@ -2,6 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DestinationCard from '../components/DestinationCard.astro';
 
+const homepageHero = (width, quality = width <= 960 ? 72 : 78) =>
+  `https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=${width}&q=${quality}`;
+const homepageHeroSrcset = [480, 640, 960, 1280, 1600]
+  .map((width) => `${homepageHero(width)} ${width}w`)
+  .join(', ');
+
 const destinations = [
   { name: 'Hanoi', kicker: 'Nordvietnam', description: 'Gadekøkkener og historie - plus morgenløb ved søerne og naturdage uden for byen.', href: '/destinationer/hanoi/', image: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=82' },
   { name: 'Hoi An', kicker: 'Centralvietnam', description: 'Lanterner, strand og flade cykelruter gennem rismarkerne omkring byen.', href: '/destinationer/hoi-an/', image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Hoi%20An%20lanterns.jpg?width=1200' },
@@ -44,8 +50,31 @@ const booking = [
 ];
 ---
 <BaseLayout title="Rejs til Vietnam - dansk guide til rejseplaner, steder og booking | RejsTilVietnam.dk" description="Planlæg din rejse til Vietnam med danske guider til rejsemål, 10-21 dages rejseplaner, visum, vejr, transport, oplevelser, hoteller og pakkerejser.">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin="" />
+    <link
+      rel="preload"
+      as="image"
+      href={homepageHero(960)}
+      imagesrcset={homepageHeroSrcset}
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+  </Fragment>
   <section class="hero">
-    <div class="hero-bg"><img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=2000&q=88" alt="Grønt landskab i Vietnam" decoding="async" fetchpriority="high" onerror="window.__rtvImageFallback?.(this)" /><span></span></div>
+    <div class="hero-bg"><img
+      src={homepageHero(1280)}
+      srcset={homepageHeroSrcset}
+      sizes="100vw"
+      width="1600"
+      height="1067"
+      alt="Grønt landskab i Vietnam"
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      referrerpolicy="no-referrer"
+      onerror="window.__rtvImageFallback?.(this)"
+    /><span></span></div>
     <div class="container hero-inner">
       <div class="hero-copy">
         <p class="eyebrow hero-eye">Vietnam for danskere</p>

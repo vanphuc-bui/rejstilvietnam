@@ -98,6 +98,7 @@ const hubCards = currentCluster ? Object.entries(currentCluster).map(([guide, pa
   text: page.intro,
 })) : [];
 const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
+const hasHeroMedia = Astro.slots.has('heroMedia');
 ---
 <BaseLayout
   title={finalTitle}
@@ -107,6 +108,13 @@ const showMarineHighlights = hubSlug === 'phu-quoc' || hubSlug === 'nha-trang';
   dateModified={dateModified}
   authorName={authorName}
 >
+  {hasHeroMedia && (
+    <Fragment slot="head">
+      <link rel="preconnect" href="https://images.unsplash.com" crossorigin="" />
+      <link rel="preconnect" href="https://commons.wikimedia.org" crossorigin="" />
+      <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin="" />
+    </Fragment>
+  )}
   <section class="page-hero article-hero">
     <div class="container">
       <p class="eyebrow">{eyebrow}</p>
