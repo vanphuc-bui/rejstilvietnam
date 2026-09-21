@@ -7,11 +7,24 @@ const options = [
   { key:'14', label:'14 dage', text:'5 stop · vores standard til første tur', href:'/rejseplaner/vietnam-2-uger/' },
   { key:'21', label:'21 dage', text:'7 stop · plads til strand og langsommere tempo', href:'/rejseplaner/vietnam-3-uger/' },
 ];
+
+const appStructuredData = {
+  '@context':'https://schema.org',
+  '@type':'WebApplication',
+  name:"Vietnam rutekort – 10, 14 og 21 dage",
+  description:"Gratis skematisk rutekort til at sammenligne Vietnam-rejser på 10, 14 og 21 dage.",
+  url:new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString(),
+  applicationCategory:'TravelApplication',
+  operatingSystem:'Any',
+  inLanguage:'da-DK',
+  isAccessibleForFree:true,
+};
 ---
 <BaseLayout
   title="Vietnam rutekort | 10, 14 eller 21 dage"
   description="Sammenlign Vietnam-ruter på 10, 14 og 21 dage på ét skematisk kort. Se stop, rækkefølge og hvor meget transport hver rejseplan kræver."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(appStructuredData)}></script>
   <section class="page-hero route-tool-hero">
     <div class="container">
       <p class="eyebrow">Gratis rutekort</p>
