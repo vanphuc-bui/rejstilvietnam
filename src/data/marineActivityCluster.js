@@ -238,7 +238,7 @@ export const phuQuocMarinePages = {
 
   'vandsport-og-aktiviteter': {
     destinationName: 'Phu Quoc',
-    title: 'Vandsport på Phu Quoc 2026 | Jetski, parasailing, Hon Thom og speedboat',
+    title: 'Vandsport på Phu Quoc | Jetski, parasailing og Hon Thom',
     description: 'Visuel guide til vandsport på Phu Quoc med jetski, parasailing, speedboat, snorkling, Hon Thom, kabelbane, billeder, kort og praktiske sikkerhedsråd.',
     eyebrow: 'Phu Quoc · Vandsport',
     heading: 'Vandsport på Phu Quoc: vælg én eller to gode aktiviteter i stedet for at fylde hele ferien',
@@ -345,7 +345,7 @@ export const nhaTrangMarinePages = {
 
   'vandsport-og-dykning': {
     destinationName: 'Nha Trang',
-    title: 'Vandsport og dykning i Nha Trang 2026 | Scuba, jetski og parasailing',
+    title: 'Vandsport i Nha Trang | Dykning, jetski og parasailing',
     description: 'Visuel guide til scuba diving, snorkling, jetski, parasailing og speedboat i Nha Trang med undervandsbilleder, video, kort og praktiske råd.',
     eyebrow: 'Nha Trang · Vandsport',
     heading: 'Vandsport og dykning i Nha Trang: her giver en dedikeret havdag faktisk mening',
