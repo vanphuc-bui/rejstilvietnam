@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { priorityGuideGroups } from '../src/data/priorityGuides.js';
 import path from 'node:path';
 import process from 'node:process';
 
@@ -309,6 +310,22 @@ for (const file of publicPages) {
   }
 
   pageData.set(route, { route, title, description, canonical, h1s, images: images.length, internalLinks, externalHosts, wordCount });
+}
+
+// Keep the 20 visitor-first guides reachable as ordinary HTML links from the homepage.
+const priorityLinks = priorityGuideGroups.flatMap((group) => group.links ?? []);
+if (priorityLinks.length !== 20 || new Set(priorityLinks.map((link) => link.href)).size !== 20) {
+  addIssue({ severity: 'error', category: 'indexing', message: 'Priority guide inventory must contain 20 distinct URLs.', impact: 'high' });
+}
+const homepageLinks = pageData.get('/')?.internalLinks ?? new Set();
+for (const link of priorityLinks) {
+  const route = normalizeRoute(link.href);
+  if (!pageData.has(route)) {
+    addIssue({ severity: 'error', category: 'indexing', route, message: 'Priority guide target is not a generated HTML page.', impact: 'high' });
+  }
+  if (!homepageLinks.has(route)) {
+    addIssue({ severity: 'error', category: 'information-architecture', route, message: 'Priority guide is not directly linked from the homepage.', impact: 'high' });
+  }
 }
 
 const canonicalOwners = new Map();
