@@ -31,6 +31,27 @@ assert.equal(
   'https://rejstilvietnam.dk/rejseguide/rejser-til-vietnam/?src=test'
 );
 
+// A previously discovered Mekong Delta URL must resolve to the published guide.
+for (const oldPath of [
+  '/destinationer/ho-chi-minh-city/mekong-delta',
+  '/destinationer/ho-chi-minh-city/mekong-delta/',
+]) {
+  const response = await worker.fetch(
+    new Request(`https://rejstilvietnam.dk${oldPath}`), env
+  );
+  assert.equal(response.status, 301);
+  assert.equal(
+    response.headers.get('location'),
+    'https://rejstilvietnam.dk/destinationer/ho-chi-minh-city/mekong-delta-fra-ho-chi-minh-city/'
+  );
+}
+
+// Non-page endpoints should fail invalid bot GETs, but remain functional for valid requests.
+const analyticsGet = await worker.fetch(new Request('https://rejstilvietnam.dk/api/affiliate-click'), env);
+assert.equal(analyticsGet.status, 405);
+const missingImageSource = await worker.fetch(new Request('https://rejstilvietnam.dk/media/remote?src='), env);
+assert.equal(missingImageSource.status, 400);
+
 const analytics = await worker.fetch(
   new Request('https://rejstilvietnam.dk/api/affiliate-click', {
     method: 'POST',
