@@ -5,6 +5,8 @@ const LEGACY_REDIRECTS = new Map([
   ['/destinationer/ha-long-bay/dagstur-eller-overnatning/', '/destinationer/hanoi/ha-long-bay-fra-hanoi/'],
   ['/destinationer/da-nang/da-nang-til-hoi-an', '/destinationer/hoi-an/da-nang-til-hoi-an/'],
   ['/destinationer/da-nang/da-nang-til-hoi-an/', '/destinationer/hoi-an/da-nang-til-hoi-an/'],
+  ['/destinationer/ho-chi-minh-city/mekong-delta', '/destinationer/ho-chi-minh-city/mekong-delta-fra-ho-chi-minh-city/'],
+  ['/destinationer/ho-chi-minh-city/mekong-delta/', '/destinationer/ho-chi-minh-city/mekong-delta-fra-ho-chi-minh-city/'],
 ]);
 
 const clean = (value, max = 160) => typeof value === 'string'
