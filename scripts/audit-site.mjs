@@ -328,6 +328,39 @@ for (const link of priorityLinks) {
   }
 }
 
+// The main Vietnamese travel-guide pillar must remain a substantial, crawlable
+// overview with a distinct search intent from the homepage and deep-dive guides.
+const pillar = pageData.get('/rejseguide/');
+if (!pillar) {
+  addIssue({ severity: 'error', category: 'seo-pillar', route: '/rejseguide/', message: 'Vietnam rejseguide pillar page is missing.', impact: 'high' });
+} else {
+  const expectedSections = ['kort-svar','rejsetid','rejsemaal','rejseplan','budget','transport','praktisk','bestilling','faq'];
+  const pillarHtml = fs.readFileSync(resolveDistPath('/rejseguide/'), 'utf8');
+  for (const id of expectedSections) {
+    if (!new RegExp('id=["\\x27]' + id + '["\\x27]').test(pillarHtml)) {
+      addIssue({ severity: 'error', category: 'seo-pillar', route: '/rejseguide/', message: 'Missing essential guide section: ' + id, impact: 'high' });
+    }
+  }
+  if (!pillar.title.toLowerCase().includes('vietnam rejseguide')) {
+    addIssue({ severity: 'error', category: 'seo-pillar', route: '/rejseguide/', message: 'Pillar title must clearly identify Vietnam rejseguide intent.', impact: 'high' });
+  }
+  if (pillar.wordCount < 1400) {
+    addIssue({ severity: 'error', category: 'seo-pillar', route: '/rejseguide/', message: 'Pillar page lost its substantial decision-oriented content.', impact: 'high' });
+  }
+  if (pillar.images < 4) {
+    addIssue({ severity: 'error', category: 'seo-pillar', route: '/rejseguide/', message: 'Pillar page should have hero and region-specific editorial images.', impact: 'high' });
+  }
+  for (const href of ['/rejseguide/bedste-rejsetid/','/rejseguide/visum/','/rejseplaner/vietnam-2-uger/','/vaerktoejer/vietnam-budgetberegner/']) {
+    if (!pillar.internalLinks.has(href)) {
+      addIssue({ severity: 'error', category: 'seo-pillar', route: '/rejseguide/', message: 'Missing decision-context link to ' + href, impact: 'high' });
+    }
+  }
+}
+const homepage = pageData.get('/');
+if (homepage && !homepage.internalLinks.has('/rejseguide/')) {
+  addIssue({ severity: 'error', category: 'seo-pillar', route: '/', message: 'Homepage must link to Vietnam rejseguide pillar.', impact: 'high' });
+}
+
 const canonicalOwners = new Map();
 const titleOwners = new Map();
 for (const page of pageData.values()) {
